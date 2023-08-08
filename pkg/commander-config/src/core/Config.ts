@@ -10,22 +10,16 @@ import { IConfigSettings } from './IConfigSettings'
 export class Config {
   appdataDirectory: string
   definitions: IConfigSettings
-  settings: Record<string, string>
+  settings: Record<string, any>
 
-  constructor(
-    appAuthor: string,
-    appName: string,
-    definitions: {
-      [key: string]: IConfigSetting
-    },
-  ) {
+  constructor(appAuthor: string, appName: string, definitions: Record<string, IConfigSetting>) {
     this.appdataDirectory = path.join(getAppDataPath(), appAuthor, appName)
     this.definitions = Object.entries(definitions).reduce((accum: IConfigSettings, [name, options]) => {
       accum[name] = new ConfigSetting(name, options)
       return accum
     }, {} as IConfigSettings)
     this.ensureConfigFileExists()
-    this.settings = JSON.parse(fs.readFileSync(this.configFilepath, 'utf8')) as Record<keyof typeof definitions, string>
+    this.settings = JSON.parse(fs.readFileSync(this.configFilepath, 'utf8')) as Record<keyof typeof definitions, any>
   }
 
   get configFilepath() {
@@ -53,7 +47,7 @@ export class Config {
       .action((setting: string, value: string) => this.set(setting, value))
   }
 
-  protected ensureConfigFileExists() {
+  ensureConfigFileExists() {
     if (!fs.existsSync(this.configFilepath)) {
       const defaults = Object.fromEntries(
         Object.entries(this.definitions).map(([name, definition]) => {
@@ -65,11 +59,11 @@ export class Config {
     }
   }
 
-  protected saveConfigFile() {
+  saveConfigFile() {
     fs.writeFileSync(this.configFilepath, JSON.stringify(this.settings, null, 1))
   }
 
-  protected set(setting: string, value: string) {
+  set(setting: string, value: string) {
     const definition = this.definitions[setting]
     if (!definition) {
       console.log(`The '${setting}' setting not recognized.`)
@@ -81,7 +75,7 @@ export class Config {
     this.print(setting)
   }
 
-  protected print(setting?: string) {
+  print(setting?: string) {
     if (setting) {
       const definition = this.definitions[setting]
       if (definition) {

@@ -3,9 +3,9 @@ import { IConfigSetting } from './IConfigSetting'
 export class ConfigSetting implements IConfigSetting {
   name: string
   description: string
-  default: string
+  default: any
   required: boolean
-  parse: (string: string) => string
+  parse: (string: string) => any
 
   constructor(name: string, options: IConfigSetting) {
     this.name = name
