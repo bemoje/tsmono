@@ -85,11 +85,10 @@ export const config = new Config('bemoje', 'bfind', {
     description:
       'Directories to ignore/skip when scanning (regex mode). Use semicolon as separator for multiple expressions.',
     default: [
-      '^c:\\/windows',
-      '^c:\\/Program Files',
-      '\\/\\$recycle\\.bin',
-      '^c:\\/ProgramData',
-      '\\/System Volume Information$',
+      '^\\w:\\/windows',
+      '^\\w:\\/Program Files',
+      '^\\w:\\/ProgramData',
+      '^\\w:\\/System Volume Information$',
       '\\/node_modules$',
       '\\/\\.git$',
       '\\/AppData$',
