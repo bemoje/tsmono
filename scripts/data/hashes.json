@@ -1,0 +1,68 @@
+{
+  "api-util": {
+    "docsmd": -10875240494,
+    "docshtml": 6056864234,
+    "test": 44422612758,
+    "build": -14638278346
+  },
+  "commander-config": {
+    "test": 19538214594,
+    "build": 7129773938,
+    "docsmd": 13044847764,
+    "docshtml": -10387223256
+  },
+  "fswalk": {
+    "docsmd": -43913792096,
+    "docshtml": 35091087364,
+    "test": 7177806822,
+    "build": 16727525174
+  },
+  "open-repo": {
+    "test": -18095309980,
+    "build": -29798488508,
+    "docsmd": 812542840,
+    "docshtml": 11591357824
+  },
+  "pdf-util": {
+    "docsmd": 57120503962,
+    "docshtml": -28537286230,
+    "test": -3519106702,
+    "build": -22611697998
+  },
+  "bfind": {
+    "test": -73160505364,
+    "build": -43819092516,
+    "docsmd": -4020904118,
+    "docshtml": -75638160682
+  },
+  "log": {
+    "docsmd": 72990440308,
+    "docshtml": 6958104932,
+    "test": -2972465284,
+    "build": -2876502180
+  },
+  "split-sentences": {
+    "docsmd": -5017901841,
+    "docshtml": -63661624609,
+    "test": -5397484457,
+    "build": 58847487063
+  },
+  "excel-util": {
+    "docsmd": -23394336475,
+    "docshtml": 38868971085,
+    "test": 22805008897,
+    "build": 39595565217
+  },
+  "openai-api-client": {
+    "test": 18836348782,
+    "build": 16137264526,
+    "docsmd": 51428157622,
+    "docshtml": -19150019770
+  },
+  "terminal-gpt": {
+    "test": 67211069274,
+    "build": 50192995274,
+    "docsmd": -33335771436,
+    "docshtml": -69879037320
+  }
+}

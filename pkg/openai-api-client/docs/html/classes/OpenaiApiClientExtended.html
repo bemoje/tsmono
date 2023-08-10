@@ -1,0 +1,929 @@
+<!DOCTYPE html><html class="default" lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>OpenaiApiClientExtended | @bemoje/openai-api-client</title><meta name="description" content="Documentation for @bemoje/openai-api-client"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><script defer src="../assets/main.js"></script><script async src="../assets/search.js" id="tsd-search-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os"</script><header class="tsd-page-toolbar">
+<div class="tsd-toolbar-contents container">
+<div class="table-cell" id="tsd-search" data-base="..">
+<div class="field"><label for="tsd-search-field" class="tsd-widget tsd-toolbar-icon search no-caption"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M15.7824 13.833L12.6666 10.7177C12.5259 10.5771 12.3353 10.499 12.1353 10.499H11.6259C12.4884 9.39596 13.001 8.00859 13.001 6.49937C13.001 2.90909 10.0914 0 6.50048 0C2.90959 0 0 2.90909 0 6.49937C0 10.0896 2.90959 12.9987 6.50048 12.9987C8.00996 12.9987 9.39756 12.4863 10.5008 11.6239V12.1332C10.5008 12.3332 10.5789 12.5238 10.7195 12.6644L13.8354 15.7797C14.1292 16.0734 14.6042 16.0734 14.8948 15.7797L15.7793 14.8954C16.0731 14.6017 16.0731 14.1267 15.7824 13.833ZM6.50048 10.499C4.29094 10.499 2.50018 8.71165 2.50018 6.49937C2.50018 4.29021 4.28781 2.49976 6.50048 2.49976C8.71001 2.49976 10.5008 4.28708 10.5008 6.49937C10.5008 8.70852 8.71314 10.499 6.50048 10.499Z" fill="var(--color-text)"></path></svg></label><input type="text" id="tsd-search-field" aria-label="Search"/></div>
+<div class="field">
+<div id="tsd-toolbar-links"></div></div>
+<ul class="results">
+<li class="state loading">Preparing search index...</li>
+<li class="state failure">The search index is not available</li></ul><a href="../index.html" class="title">@bemoje/openai-api-client</a></div>
+<div class="table-cell" id="tsd-widgets"><a href="#" class="tsd-widget tsd-toolbar-icon menu no-caption" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="2" fill="var(--color-text)"></rect><rect x="1" y="7" width="14" height="2" fill="var(--color-text)"></rect><rect x="1" y="11" width="14" height="2" fill="var(--color-text)"></rect></svg></a></div></div></header>
+<div class="container container-main">
+<div class="col-content">
+<div class="tsd-page-title">
+<ul class="tsd-breadcrumb">
+<li><a href="../modules.html">@bemoje/openai-api-client</a></li>
+<li><a href="OpenaiApiClientExtended.html">OpenaiApiClientExtended</a></li></ul>
+<h1>Class OpenaiApiClientExtended</h1></div>
+<section class="tsd-panel tsd-comment">
+<div class="tsd-comment tsd-typography"><p>A class representing an OpenAI API client but with already prompt-egineered utilities.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></section>
+<section class="tsd-panel tsd-hierarchy">
+<h4>Hierarchy</h4>
+<ul class="tsd-hierarchy">
+<li><a href="OpenaiApiClient.html" class="tsd-signature-type tsd-kind-class">OpenaiApiClient</a>
+<ul class="tsd-hierarchy">
+<li><span class="target">OpenaiApiClientExtended</span></li></ul></li></ul></section><aside class="tsd-sources">
+<ul>
+<li>Defined in pkg/openai-api-client/src/lib/OpenaiApiClientExtended.ts:8</li></ul></aside>
+<section class="tsd-panel-group tsd-index-group">
+<section class="tsd-panel tsd-index-panel">
+<details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
+<h5 class="tsd-index-heading uppercase" role="button" aria-expanded="false" tabIndex=0><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1.5 5.50969L8 11.6609L14.5 5.50969L12.5466 3.66086L8 7.96494L3.45341 3.66086L1.5 5.50969Z" fill="var(--color-text)"></path></svg> Index</h5></summary>
+<div class="tsd-accordion-details">
+<section class="tsd-index-section">
+<h3 class="tsd-index-heading">Constructors</h3>
+<div class="tsd-index-list"><a href="OpenaiApiClientExtended.html#constructor" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-512"><rect fill="var(--color-icon-background)" stroke="#4D7FFF" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="12"></rect><path d="M11.898 16.1201C11.098 16.1201 10.466 15.8961 10.002 15.4481C9.53803 15.0001 9.30603 14.3841 9.30603 13.6001V9.64012C9.30603 8.85612 9.53803 8.24012 10.002 7.79212C10.466 7.34412 11.098 7.12012 11.898 7.12012C12.682 7.12012 13.306 7.34812 13.77 7.80412C14.234 8.25212 14.466 8.86412 14.466 9.64012H13.386C13.386 9.14412 13.254 8.76412 12.99 8.50012C12.734 8.22812 12.37 8.09212 11.898 8.09212C11.426 8.09212 11.054 8.22412 10.782 8.48812C10.518 8.75212 10.386 9.13212 10.386 9.62812V13.6001C10.386 14.0961 10.518 14.4801 10.782 14.7521C11.054 15.0161 11.426 15.1481 11.898 15.1481C12.37 15.1481 12.734 15.0161 12.99 14.7521C13.254 14.4801 13.386 14.0961 13.386 13.6001H14.466C14.466 14.3761 14.234 14.9921 13.77 15.4481C13.306 15.8961 12.682 16.1201 11.898 16.1201Z" fill="var(--color-text)"></path></g></svg><span>constructor</span></a>
+</div></section>
+<section class="tsd-index-section">
+<h3 class="tsd-index-heading">Properties</h3>
+<div class="tsd-index-list"><a href="OpenaiApiClientExtended.html#apiDefaults" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-1024"><rect fill="var(--color-icon-background)" stroke="#FF984D" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="12"></rect><path d="M9.354 16V7.24H12.174C12.99 7.24 13.638 7.476 14.118 7.948C14.606 8.412 14.85 9.036 14.85 9.82C14.85 10.604 14.606 11.232 14.118 11.704C13.638 12.168 12.99 12.4 12.174 12.4H10.434V16H9.354ZM10.434 11.428H12.174C12.646 11.428 13.022 11.284 13.302 10.996C13.59 10.7 13.734 10.308 13.734 9.82C13.734 9.324 13.59 8.932 13.302 8.644C13.022 8.356 12.646 8.212 12.174 8.212H10.434V11.428Z" fill="var(--color-text)"></path></g></svg><span>api<wbr/>Defaults</span></a>
+<a href="OpenaiApiClientExtended.html#cache" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>cache?</span></a>
+<a href="OpenaiApiClientExtended.html#cacheDefaults" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>cache<wbr/>Defaults</span></a>
+<a href="OpenaiApiClientExtended.html#client" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>client</span></a>
+<a href="OpenaiApiClientExtended.html#concurrencyJustReduced" class="tsd-index-link tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>concurrency<wbr/>Just<wbr/>Reduced</span></a>
+<a href="OpenaiApiClientExtended.html#events" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>events</span></a>
+<a href="OpenaiApiClientExtended.html#queue" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>queue</span></a>
+<a href="OpenaiApiClientExtended.html#retryDefaults" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>retry<wbr/>Defaults</span></a>
+<a href="OpenaiApiClientExtended.html#sendRequest" class="tsd-index-link tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>send<wbr/>Request</span></a>
+<a href="OpenaiApiClientExtended.html#concurrencyDefaults" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>concurrency<wbr/>Defaults</span></a>
+</div></section>
+<section class="tsd-index-section">
+<h3 class="tsd-index-heading">Accessors</h3>
+<div class="tsd-index-list"><a href="OpenaiApiClientExtended.html#eventNames" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-262144"><rect fill="var(--color-icon-background)" stroke="#FF4D4D" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="12"></rect><path d="M8.85 16L11.13 7.24H12.582L14.85 16H13.758L13.182 13.672H10.53L9.954 16H8.85ZM10.746 12.76H12.954L12.282 10.06C12.154 9.548 12.054 9.12 11.982 8.776C11.91 8.432 11.866 8.208 11.85 8.104C11.834 8.208 11.79 8.432 11.718 8.776C11.646 9.12 11.546 9.544 11.418 10.048L10.746 12.76Z" fill="var(--color-text)"></path></g></svg><span>event<wbr/>Names</span></a>
+</div></section>
+<section class="tsd-index-section">
+<h3 class="tsd-index-heading">Methods</h3>
+<div class="tsd-index-list"><a href="OpenaiApiClientExtended.html#_chat" class="tsd-index-link tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-2048"><rect fill="var(--color-icon-background)" stroke="#FF4DB8" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="12"></rect><path d="M9.162 16V7.24H10.578L11.514 10.072C11.602 10.328 11.674 10.584 11.73 10.84C11.794 11.088 11.842 11.28 11.874 11.416C11.906 11.28 11.954 11.088 12.018 10.84C12.082 10.584 12.154 10.324 12.234 10.06L13.122 7.24H14.538V16H13.482V12.82C13.482 12.468 13.49 12.068 13.506 11.62C13.53 11.172 13.558 10.716 13.59 10.252C13.622 9.78 13.654 9.332 13.686 8.908C13.726 8.476 13.762 8.1 13.794 7.78L12.366 12.16H11.334L9.894 7.78C9.934 8.092 9.97 8.456 10.002 8.872C10.042 9.28 10.078 9.716 10.11 10.18C10.142 10.636 10.166 11.092 10.182 11.548C10.206 12.004 10.218 12.428 10.218 12.82V16H9.162Z" fill="var(--color-text)"></path></g></svg><span>_chat</span></a>
+<a href="OpenaiApiClientExtended.html#_completion" class="tsd-index-link tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>_completion</span></a>
+<a href="OpenaiApiClientExtended.html#_transcribe" class="tsd-index-link tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>_transcribe</span></a>
+<a href="OpenaiApiClientExtended.html#assertReponseDataComplete" class="tsd-index-link tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>assert<wbr/>Reponse<wbr/>Data<wbr/>Complete</span></a>
+<a href="OpenaiApiClientExtended.html#completion" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>completion</span></a>
+<a href="OpenaiApiClientExtended.html#countTokens" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>count<wbr/>Tokens</span></a>
+<a href="OpenaiApiClientExtended.html#deleteDefaultOrUndefinedOptions" class="tsd-index-link tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>delete<wbr/>Default<wbr/>Or<wbr/>Undefined<wbr/>Options</span></a>
+<a href="OpenaiApiClientExtended.html#emit" class="tsd-index-link tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>emit</span></a>
+<a href="OpenaiApiClientExtended.html#gpt3_16k" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>gpt3_<wbr/>16k</span></a>
+<a href="OpenaiApiClientExtended.html#gpt3_8k" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>gpt3_<wbr/>8k</span></a>
+<a href="OpenaiApiClientExtended.html#gpt4_8k" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>gpt4_<wbr/>8k</span></a>
+<a href="OpenaiApiClientExtended.html#handleApiError" class="tsd-index-link tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>handle<wbr/>Api<wbr/>Error</span></a>
+<a href="OpenaiApiClientExtended.html#handleCacheOptions" class="tsd-index-link tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>handle<wbr/>Cache<wbr/>Options</span></a>
+<a href="OpenaiApiClientExtended.html#handleChatOptions" class="tsd-index-link tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>handle<wbr/>Chat<wbr/>Options</span></a>
+<a href="OpenaiApiClientExtended.html#handleCompletionOptions" class="tsd-index-link tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>handle<wbr/>Completion<wbr/>Options</span></a>
+<a href="OpenaiApiClientExtended.html#handleOptions" class="tsd-index-link tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>handle<wbr/>Options</span></a>
+<a href="OpenaiApiClientExtended.html#handleRetryOptions" class="tsd-index-link tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>handle<wbr/>Retry<wbr/>Options</span></a>
+<a href="OpenaiApiClientExtended.html#handleTranscribeOptions" class="tsd-index-link tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>handle<wbr/>Transcribe<wbr/>Options</span></a>
+<a href="OpenaiApiClientExtended.html#lowerConcurrency" class="tsd-index-link tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>lower<wbr/>Concurrency</span></a>
+<a href="OpenaiApiClientExtended.html#parseChoices" class="tsd-index-link tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>parse<wbr/>Choices</span></a>
+<a href="OpenaiApiClientExtended.html#proofread" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>proofread</span></a>
+<a href="OpenaiApiClientExtended.html#proofreadEnglish" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>proofread<wbr/>English</span></a>
+<a href="OpenaiApiClientExtended.html#stringTokens" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>string<wbr/>Tokens</span></a>
+<a href="OpenaiApiClientExtended.html#transcribe" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>transcribe</span></a>
+<a href="OpenaiApiClientExtended.html#translateEnglishTo" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>translate<wbr/>English<wbr/>To</span></a>
+<a href="OpenaiApiClientExtended.html#translateFromTo" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>translate<wbr/>From<wbr/>To</span></a>
+</div></section></div></details></section></section>
+<section class="tsd-panel-group tsd-member-group">
+<h2>Constructors</h2>
+<section class="tsd-panel tsd-member"><a id="constructor" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>constructor</span><a href="#constructor" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="constructor.new_OpenaiApiClientExtended"><span class="tsd-kind-constructor-signature">new <wbr/>Openai<wbr/>Api<wbr/>Client<wbr/>Extended</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">options</span><span class="tsd-signature-symbol">?</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="OpenaiApiClientExtended.html" class="tsd-signature-type tsd-kind-class">OpenaiApiClientExtended</a><a href="#constructor.new_OpenaiApiClientExtended" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Create a new OpenAiApiClient instance.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">options</span>: <a href="../interfaces/IOpenaiApiClientOptions.html" class="tsd-signature-type tsd-kind-interface">IOpenaiApiClientOptions</a><span class="tsd-signature-symbol"> = {}</span></h5></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="OpenaiApiClientExtended.html" class="tsd-signature-type tsd-kind-class">OpenaiApiClientExtended</a></h4>
+<div class="tsd-comment tsd-typography">
+<h4>Example</h4><pre><code class="language-ts"><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-4">openai</span><span class="hl-1"> = </span><span class="hl-3">new</span><span class="hl-1"> </span><span class="hl-0">OpenaiAPIClient</span><span class="hl-1">({ </span><span class="hl-5">apiKey:</span><span class="hl-1"> </span><span class="hl-2">&quot;API_KEY&quot;</span><span class="hl-1"> })</span>
+</code><button>Copy</button></pre>
+</div><aside class="tsd-sources">
+<p>Overrides <a href="OpenaiApiClient.html">OpenaiApiClient</a>.<a href="OpenaiApiClient.html#constructor">constructor</a></p>
+<ul>
+<li>Defined in pkg/openai-api-client/src/lib/OpenaiApiClientExtended.ts:16</li></ul></aside></li></ul></section></section>
+<section class="tsd-panel-group tsd-member-group">
+<h2>Properties</h2>
+<section class="tsd-panel tsd-member tsd-is-inherited"><a id="apiDefaults" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagReadonly">Readonly</code> <span>api<wbr/>Defaults</span><a href="#apiDefaults" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">api<wbr/>Defaults</span><span class="tsd-signature-symbol">:</span> <a href="../interfaces/IOpenaiApiClientApiDefaultsOptions.html" class="tsd-signature-type tsd-kind-interface">IOpenaiApiClientApiDefaultsOptions</a><span class="tsd-signature-symbol"> = ...</span></div>
+<div class="tsd-comment tsd-typography"><p>Defaults for API requests. Can be overriden in individual method calls.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="OpenaiApiClient.html">OpenaiApiClient</a>.<a href="OpenaiApiClient.html#apiDefaults">apiDefaults</a></p>
+<ul>
+<li>Defined in pkg/openai-api-client/src/lib/OpenaiApiClient.ts:27</li></ul></aside></section>
+<section class="tsd-panel tsd-member tsd-is-inherited"><a id="cache" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <code class="tsd-tag ts-flagReadonly">Readonly</code> <span>cache</span><a href="#cache" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">cache</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type ">ApiReponseCache</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></div>
+<div class="tsd-comment tsd-typography"><p>API response cache</p>
+</div>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="OpenaiApiClient.html">OpenaiApiClient</a>.<a href="OpenaiApiClient.html#cache">cache</a></p>
+<ul>
+<li>Defined in pkg/api-util/src/lib/AbstractApiClient.ts:33</li></ul></aside></section>
+<section class="tsd-panel tsd-member tsd-is-inherited"><a id="cacheDefaults" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagReadonly">Readonly</code> <span>cache<wbr/>Defaults</span><a href="#cacheDefaults" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">cache<wbr/>Defaults</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type ">IResponseCacheOptions</span><span class="tsd-signature-symbol"> = ...</span></div>
+<div class="tsd-comment tsd-typography"><p>Default options for caching for api requests.
+Can be overriden in individual method calls.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="OpenaiApiClient.html">OpenaiApiClient</a>.<a href="OpenaiApiClient.html#cacheDefaults">cacheDefaults</a></p>
+<ul>
+<li>Defined in pkg/api-util/src/lib/AbstractApiClient.ts:55</li></ul></aside></section>
+<section class="tsd-panel tsd-member tsd-is-inherited"><a id="client" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagReadonly">Readonly</code> <span>client</span><a href="#client" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">client</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type ">OpenAIApi</span></div>
+<div class="tsd-comment tsd-typography"><p>API client instance</p>
+</div>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="OpenaiApiClient.html">OpenaiApiClient</a>.<a href="OpenaiApiClient.html#client">client</a></p>
+<ul>
+<li>Defined in pkg/openai-api-client/src/lib/OpenaiApiClient.ts:22</li></ul></aside></section>
+<section class="tsd-panel tsd-member tsd-is-protected tsd-is-inherited"><a id="concurrencyJustReduced" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagProtected">Protected</code> <span>concurrency<wbr/>Just<wbr/>Reduced</span><a href="#concurrencyJustReduced" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">concurrency<wbr/>Just<wbr/>Reduced</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></div><aside class="tsd-sources">
+<p>Inherited from <a href="OpenaiApiClient.html">OpenaiApiClient</a>.<a href="OpenaiApiClient.html#concurrencyJustReduced">concurrencyJustReduced</a></p>
+<ul>
+<li>Defined in pkg/openai-api-client/src/lib/OpenaiApiClient.ts:35</li></ul></aside></section>
+<section class="tsd-panel tsd-member tsd-is-inherited"><a id="events" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagReadonly">Readonly</code> <span>events</span><a href="#events" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">events</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type ">EventEmitter</span><span class="tsd-signature-symbol"> = ...</span></div>
+<div class="tsd-comment tsd-typography"><p>Event emitter for cache events</p>
+</div>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="OpenaiApiClient.html">OpenaiApiClient</a>.<a href="OpenaiApiClient.html#events">events</a></p>
+<ul>
+<li>Defined in pkg/api-util/src/lib/AbstractApiClient.ts:21</li></ul></aside></section>
+<section class="tsd-panel tsd-member tsd-is-inherited"><a id="queue" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagReadonly">Readonly</code> <span>queue</span><a href="#queue" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">queue</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type ">PromiseQueue</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type ">IQueue</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type ">RunFunction</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type ">IQueueAddOptions</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type ">IQueueAddOptions</span><span class="tsd-signature-symbol">&gt;</span></div>
+<div class="tsd-comment tsd-typography"><p>Global queue for sending requests to the openai api.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="OpenaiApiClient.html">OpenaiApiClient</a>.<a href="OpenaiApiClient.html#queue">queue</a></p>
+<ul>
+<li>Defined in pkg/api-util/src/lib/AbstractApiClient.ts:38</li></ul></aside></section>
+<section class="tsd-panel tsd-member tsd-is-inherited"><a id="retryDefaults" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagReadonly">Readonly</code> <span>retry<wbr/>Defaults</span><a href="#retryDefaults" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">retry<wbr/>Defaults</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type ">Options</span><span class="tsd-signature-symbol"> = ...</span></div>
+<div class="tsd-comment tsd-typography"><p>Default options for async retry for api requests.
+Can be overriden in individual method calls.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="OpenaiApiClient.html">OpenaiApiClient</a>.<a href="OpenaiApiClient.html#retryDefaults">retryDefaults</a></p>
+<ul>
+<li>Defined in pkg/api-util/src/lib/AbstractApiClient.ts:44</li></ul></aside></section>
+<section class="tsd-panel tsd-member tsd-is-protected tsd-is-inherited"><a id="sendRequest" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagProtected">Protected</code> <code class="tsd-tag ts-flagReadonly">Readonly</code> <span>send<wbr/>Request</span><a href="#sendRequest" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">send<wbr/>Request</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type tsd-kind-type-parameter">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">options</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type tsd-kind-type-parameter">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span></div>
+<div class="tsd-type-declaration">
+<h4>Type declaration</h4>
+<ul class="tsd-parameters">
+<li class="tsd-parameter-signature">
+<ul class="tsd-signatures">
+<li class="tsd-signature" id="sendRequest.__type.__type-1"><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type tsd-kind-type-parameter">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">options</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type tsd-kind-type-parameter">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Generic function for sending requests to the openai api.
+This is used for all the API endpoints.
+It handles retrying, cache, hashing, and emitting events.
+This method is bound to the instance on initialization because it gets wrapped with a concurrency controller in the constructor.</p>
+</div>
+<section class="tsd-panel">
+<h4>Type Parameters</h4>
+<ul class="tsd-type-parameter-list">
+<li>
+<h4><span class="tsd-kind-type-parameter">T</span></h4></li></ul></section>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">options</span>: <span class="tsd-signature-symbol">{ </span><br/><span>    </span><span class="tsd-kind-property">apiRequest</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type tsd-kind-type-parameter">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">; </span><br/><span>    </span><span class="tsd-kind-property">args</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span><br/><span>    </span><span class="tsd-kind-property">cache</span><span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type ">IResponseCacheOptions</span><span class="tsd-signature-symbol">; </span><br/><span>    </span><span class="tsd-kind-property">retry</span><span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type ">Options</span><span class="tsd-signature-symbol">; </span><br/><span class="tsd-signature-symbol">}</span></h5>
+<ul class="tsd-parameters">
+<li class="tsd-parameter">
+<h5><span class="tsd-kind-property">api<wbr/>Request</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type tsd-kind-type-parameter">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span></h5>
+<ul class="tsd-parameters">
+<li class="tsd-parameter-signature">
+<ul class="tsd-signatures">
+<li class="tsd-signature"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type tsd-kind-type-parameter">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+<li class="tsd-description">
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type tsd-kind-type-parameter">T</span><span class="tsd-signature-symbol">&gt;</span></h4></li></ul></li></ul></li>
+<li class="tsd-parameter">
+<h5><span class="tsd-kind-property">args</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5></li>
+<li class="tsd-parameter">
+<h5><code class="tsd-tag ts-flagOptional">Optional</code> <span class="tsd-kind-property">cache</span><span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type ">IResponseCacheOptions</span></h5></li>
+<li class="tsd-parameter">
+<h5><code class="tsd-tag ts-flagOptional">Optional</code> <span class="tsd-kind-property">retry</span><span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type ">Options</span></h5></li></ul></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type tsd-kind-type-parameter">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+<div class="tsd-comment tsd-typography"></div></li></ul></li></ul></div><aside class="tsd-sources">
+<p>Inherited from <a href="OpenaiApiClient.html">OpenaiApiClient</a>.<a href="OpenaiApiClient.html#sendRequest">sendRequest</a></p>
+<ul>
+<li>Defined in pkg/api-util/src/lib/AbstractApiClient.ts:85</li></ul></aside></section>
+<section class="tsd-panel tsd-member tsd-is-inherited"><a id="concurrencyDefaults" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagStatic">Static</code> <code class="tsd-tag ts-flagReadonly">Readonly</code> <span>concurrency<wbr/>Defaults</span><a href="#concurrencyDefaults" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">concurrency<wbr/>Defaults</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type ">IPromiseQueueOptions</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type ">IQueue</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type ">RunFunction</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type ">IQueueAddOptions</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type ">IQueueAddOptions</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
+<div class="tsd-comment tsd-typography"><p>Options for concurrency control. These affect all API requests.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="OpenaiApiClient.html">OpenaiApiClient</a>.<a href="OpenaiApiClient.html#concurrencyDefaults">concurrencyDefaults</a></p>
+<ul>
+<li>Defined in pkg/api-util/src/lib/AbstractApiClient.ts:62</li></ul></aside></section></section>
+<section class="tsd-panel-group tsd-member-group">
+<h2>Accessors</h2>
+<section class="tsd-panel tsd-member tsd-is-inherited"><a id="eventNames" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>event<wbr/>Names</span><a href="#eventNames" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-signature" id="eventNames.eventNames-1"><span class="tsd-signature-symbol">get</span> eventNames<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>All emitted event names. Please note that the cache also emits events.</p>
+</div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from OpenaiApiClient.eventNames</p>
+<ul>
+<li>Defined in pkg/api-util/src/lib/AbstractApiClient.ts:26</li></ul></aside></li></ul></section></section>
+<section class="tsd-panel-group tsd-member-group">
+<h2>Methods</h2>
+<section class="tsd-panel tsd-member tsd-is-protected tsd-is-inherited"><a id="_chat" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagProtected">Protected</code> <span>_chat</span><a href="#_chat" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-protected tsd-is-inherited">
+<li class="tsd-signature tsd-anchor-link" id="_chat._chat-1"><span class="tsd-kind-call-signature">_chat</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">request</span>, <span class="tsd-kind-parameter">retry</span>, <span class="tsd-kind-parameter">cache</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><a href="#_chat._chat-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Send chat request to the openai API.
+This is used by all the preset methods, the public methods: chat3_8, chat3_16, and chat4_8.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">request</span>: <span class="tsd-signature-type ">CreateChatCompletionRequest</span></h5>
+<div class="tsd-comment tsd-typography"><p>The request object to send to the openai api.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
+<li>
+<h5><span class="tsd-kind-parameter">retry</span>: <span class="tsd-signature-type ">Options</span></h5>
+<div class="tsd-comment tsd-typography"><p>The retry options.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
+<li>
+<h5><span class="tsd-kind-parameter">cache</span>: <span class="tsd-signature-type ">IResponseCacheOptions</span></h5>
+<div class="tsd-comment tsd-typography"><p>The cache options.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="OpenaiApiClient.html">OpenaiApiClient</a>.<a href="OpenaiApiClient.html#_chat">_chat</a></p>
+<ul>
+<li>Defined in pkg/openai-api-client/src/lib/OpenaiApiClient.ts:186</li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-protected tsd-is-inherited"><a id="_completion" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagProtected">Protected</code> <span>_completion</span><a href="#_completion" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-protected tsd-is-inherited">
+<li class="tsd-signature tsd-anchor-link" id="_completion._completion-1"><span class="tsd-kind-call-signature">_completion</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">request</span>, <span class="tsd-kind-parameter">retry</span>, <span class="tsd-kind-parameter">cache</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><a href="#_completion._completion-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Send completion request to the openai API.
+This is used by all the preset methods, the public methods: completion.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">request</span>: <span class="tsd-signature-type ">CreateCompletionRequest</span></h5>
+<div class="tsd-comment tsd-typography"><p>The request object to send to the openai api.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
+<li>
+<h5><span class="tsd-kind-parameter">retry</span>: <span class="tsd-signature-type ">Options</span></h5>
+<div class="tsd-comment tsd-typography"><p>The retry options.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
+<li>
+<h5><span class="tsd-kind-parameter">cache</span>: <span class="tsd-signature-type ">IResponseCacheOptions</span></h5>
+<div class="tsd-comment tsd-typography"><p>The cache options.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="OpenaiApiClient.html">OpenaiApiClient</a>.<a href="OpenaiApiClient.html#_completion">_completion</a></p>
+<ul>
+<li>Defined in pkg/openai-api-client/src/lib/OpenaiApiClient.ts:162</li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-protected tsd-is-inherited"><a id="_transcribe" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagProtected">Protected</code> <span>_transcribe</span><a href="#_transcribe" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-protected tsd-is-inherited">
+<li class="tsd-signature tsd-anchor-link" id="_transcribe._transcribe-1"><span class="tsd-kind-call-signature">_transcribe</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">request</span>, <span class="tsd-kind-parameter">retry</span>, <span class="tsd-kind-parameter">cache</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><a href="#_transcribe._transcribe-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Send transcribe (speech to text) request to the openai API.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">request</span>: <a href="../interfaces/IOpenaiTranscribeRequest.html" class="tsd-signature-type tsd-kind-interface">IOpenaiTranscribeRequest</a></h5>
+<div class="tsd-comment tsd-typography"><p>The request object to send to the openai api.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
+<li>
+<h5><span class="tsd-kind-parameter">retry</span>: <span class="tsd-signature-type ">Options</span></h5>
+<div class="tsd-comment tsd-typography"><p>The retry options.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
+<li>
+<h5><span class="tsd-kind-parameter">cache</span>: <span class="tsd-signature-type ">IResponseCacheOptions</span></h5>
+<div class="tsd-comment tsd-typography"><p>The cache options.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="OpenaiApiClient.html">OpenaiApiClient</a>.<a href="OpenaiApiClient.html#_transcribe">_transcribe</a></p>
+<ul>
+<li>Defined in pkg/openai-api-client/src/lib/OpenaiApiClient.ts:215</li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-protected tsd-is-inherited"><a id="assertReponseDataComplete" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagProtected">Protected</code> <span>assert<wbr/>Reponse<wbr/>Data<wbr/>Complete</span><a href="#assertReponseDataComplete" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-protected tsd-is-inherited">
+<li class="tsd-signature tsd-anchor-link" id="assertReponseDataComplete.assertReponseDataComplete-1"><span class="tsd-kind-call-signature">assert<wbr/>Reponse<wbr/>Data<wbr/>Complete</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">data</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#assertReponseDataComplete.assertReponseDataComplete-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Assert that the response data is complete by verifying that all returned choices have finish_reason: stop.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">data</span>: <span class="tsd-signature-type ">CreateChatCompletionResponse</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type ">CreateCompletionResponse</span></h5></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="OpenaiApiClient.html">OpenaiApiClient</a>.<a href="OpenaiApiClient.html#assertReponseDataComplete">assertReponseDataComplete</a></p>
+<ul>
+<li>Defined in pkg/openai-api-client/src/lib/OpenaiApiClient.ts:327</li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited"><a id="completion" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>completion</span><a href="#completion" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-signature tsd-anchor-link" id="completion.completion-1"><span class="tsd-kind-call-signature">completion</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">options</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><a href="#completion.completion-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Send a completion request to the openai api.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">options</span>: <a href="../interfaces/IOpenaiCompletionRequestOptions.html" class="tsd-signature-type tsd-kind-interface">IOpenaiCompletionRequestOptions</a></h5>
+<div class="tsd-comment tsd-typography"><p>The options to use.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="OpenaiApiClient.html">OpenaiApiClient</a>.<a href="OpenaiApiClient.html#completion">completion</a></p>
+<ul>
+<li>Defined in pkg/openai-api-client/src/lib/OpenaiApiClient.ts:51</li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited"><a id="countTokens" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>count<wbr/>Tokens</span><a href="#countTokens" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-signature tsd-anchor-link" id="countTokens.countTokens-1"><span class="tsd-kind-call-signature">count<wbr/>Tokens</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><a href="#countTokens.countTokens-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Count the number of tokens in a string.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">string</span>: <span class="tsd-signature-type">string</span></h5>
+<div class="tsd-comment tsd-typography"><p>The string to count tokens in.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="OpenaiApiClient.html">OpenaiApiClient</a>.<a href="OpenaiApiClient.html#countTokens">countTokens</a></p>
+<ul>
+<li>Defined in pkg/openai-api-client/src/lib/OpenaiApiClient.ts:349</li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-protected tsd-is-inherited"><a id="deleteDefaultOrUndefinedOptions" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagProtected">Protected</code> <span>delete<wbr/>Default<wbr/>Or<wbr/>Undefined<wbr/>Options</span><a href="#deleteDefaultOrUndefinedOptions" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-protected tsd-is-inherited">
+<li class="tsd-signature tsd-anchor-link" id="deleteDefaultOrUndefinedOptions.deleteDefaultOrUndefinedOptions-1"><span class="tsd-kind-call-signature">delete<wbr/>Default<wbr/>Or<wbr/>Undefined<wbr/>Options</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type tsd-kind-type-parameter">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">options</span>, <span class="tsd-kind-parameter">defaults</span><span class="tsd-signature-symbol">?</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type tsd-kind-type-parameter">T</span><a href="#deleteDefaultOrUndefinedOptions.deleteDefaultOrUndefinedOptions-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Delete all options that are undefined or equal to the default value.
+The response cache uses hashed options to determine if the request has already been made.
+Removing default values and undefined values normalizes the options object so it hashes the same.</p>
+</div>
+<section class="tsd-panel">
+<h4>Type Parameters</h4>
+<ul class="tsd-type-parameter-list">
+<li>
+<h4><span class="tsd-kind-type-parameter">T</span><span class="tsd-signature-symbol"> extends </span><span class="tsd-signature-type ">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4></li></ul></section>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">options</span>: <span class="tsd-signature-type tsd-kind-type-parameter">T</span></h5>
+<div class="tsd-comment tsd-typography"><p>The options to delete from.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
+<li>
+<h5><span class="tsd-kind-parameter">defaults</span>: <span class="tsd-signature-type ">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = {}</span></h5>
+<div class="tsd-comment tsd-typography"><p>The default values to compare against.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type tsd-kind-type-parameter">T</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="OpenaiApiClient.html">OpenaiApiClient</a>.<a href="OpenaiApiClient.html#deleteDefaultOrUndefinedOptions">deleteDefaultOrUndefinedOptions</a></p>
+<ul>
+<li>Defined in pkg/openai-api-client/src/lib/OpenaiApiClient.ts:303</li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-protected tsd-is-inherited"><a id="emit" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagProtected">Protected</code> <span>emit</span><a href="#emit" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-protected tsd-is-inherited">
+<li class="tsd-signature tsd-anchor-link" id="emit.emit-1"><span class="tsd-kind-call-signature">emit</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type tsd-kind-type-parameter">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">event</span>, <span class="tsd-kind-parameter">arg</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type tsd-kind-type-parameter">T</span><a href="#emit.emit-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Emit an event but adds &#39;this&#39; as an extra trailing argument.</p>
+</div>
+<section class="tsd-panel">
+<h4>Type Parameters</h4>
+<ul class="tsd-type-parameter-list">
+<li>
+<h4><span class="tsd-kind-type-parameter">T</span></h4></li></ul></section>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">event</span>: <span class="tsd-signature-type">string</span></h5>
+<div class="tsd-comment tsd-typography"><p>The event name.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
+<li>
+<h5><span class="tsd-kind-parameter">arg</span>: <span class="tsd-signature-type tsd-kind-type-parameter">T</span></h5>
+<div class="tsd-comment tsd-typography"><p>The argument to emit.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type tsd-kind-type-parameter">T</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="OpenaiApiClient.html">OpenaiApiClient</a>.<a href="OpenaiApiClient.html#emit">emit</a></p>
+<ul>
+<li>Defined in pkg/api-util/src/lib/AbstractApiClient.ts:179</li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited"><a id="gpt3_16k" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>gpt3_<wbr/>16k</span><a href="#gpt3_16k" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-signature tsd-anchor-link" id="gpt3_16k.gpt3_16k-1"><span class="tsd-kind-call-signature">gpt3_<wbr/>16k</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">options</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><a href="#gpt3_16k.gpt3_16k-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Send a chat completion request to the openai api with a max_tokens cap of 16384.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">options</span>: <a href="../interfaces/IOpenaiChatRequestOptions.html" class="tsd-signature-type tsd-kind-interface">IOpenaiChatRequestOptions</a></h5>
+<div class="tsd-comment tsd-typography"><p>The options to use.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="OpenaiApiClient.html">OpenaiApiClient</a>.<a href="OpenaiApiClient.html#gpt3_16k">gpt3_16k</a></p>
+<ul>
+<li>Defined in pkg/openai-api-client/src/lib/OpenaiApiClient.ts:67</li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited"><a id="gpt3_8k" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>gpt3_<wbr/>8k</span><a href="#gpt3_8k" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-signature tsd-anchor-link" id="gpt3_8k.gpt3_8k-1"><span class="tsd-kind-call-signature">gpt3_<wbr/>8k</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">options</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><a href="#gpt3_8k.gpt3_8k-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Send a chat completion request to the openai api with a max_tokens cap of 4096.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">options</span>: <a href="../interfaces/IOpenaiChatRequestOptions.html" class="tsd-signature-type tsd-kind-interface">IOpenaiChatRequestOptions</a></h5>
+<div class="tsd-comment tsd-typography"><p>The options to use.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="OpenaiApiClient.html">OpenaiApiClient</a>.<a href="OpenaiApiClient.html#gpt3_8k">gpt3_8k</a></p>
+<ul>
+<li>Defined in pkg/openai-api-client/src/lib/OpenaiApiClient.ts:59</li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited"><a id="gpt4_8k" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>gpt4_<wbr/>8k</span><a href="#gpt4_8k" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-signature tsd-anchor-link" id="gpt4_8k.gpt4_8k-1"><span class="tsd-kind-call-signature">gpt4_<wbr/>8k</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">options</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><a href="#gpt4_8k.gpt4_8k-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Send a gpt4 chat completion request to the openai api with a max_tokens cap of 8k.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">options</span>: <a href="../interfaces/IOpenaiChatRequestOptions.html" class="tsd-signature-type tsd-kind-interface">IOpenaiChatRequestOptions</a></h5>
+<div class="tsd-comment tsd-typography"><p>The options to use.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="OpenaiApiClient.html">OpenaiApiClient</a>.<a href="OpenaiApiClient.html#gpt4_8k">gpt4_8k</a></p>
+<ul>
+<li>Defined in pkg/openai-api-client/src/lib/OpenaiApiClient.ts:76</li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-protected tsd-is-inherited"><a id="handleApiError" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagProtected">Protected</code> <span>handle<wbr/>Api<wbr/>Error</span><a href="#handleApiError" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-protected tsd-is-inherited">
+<li class="tsd-signature tsd-anchor-link" id="handleApiError.handleApiError-1"><span class="tsd-kind-call-signature">handle<wbr/>Api<wbr/>Error</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">error</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#handleApiError.handleApiError-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Parses API error codes.
+When the error is a rate limit error, lowers the concurrency.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">error</span>: <span class="tsd-signature-type">any</span></h5>
+<div class="tsd-comment tsd-typography"><p>The error to parse.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="OpenaiApiClient.html">OpenaiApiClient</a>.<a href="OpenaiApiClient.html#handleApiError">handleApiError</a></p>
+<ul>
+<li>Defined in pkg/openai-api-client/src/lib/OpenaiApiClient.ts:248</li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-protected tsd-is-inherited"><a id="handleCacheOptions" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagProtected">Protected</code> <span>handle<wbr/>Cache<wbr/>Options</span><a href="#handleCacheOptions" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-protected tsd-is-inherited">
+<li class="tsd-signature tsd-anchor-link" id="handleCacheOptions.handleCacheOptions-1"><span class="tsd-kind-call-signature">handle<wbr/>Cache<wbr/>Options</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">cacheOptions</span><span class="tsd-signature-symbol">?</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type ">IResponseCacheOptions</span><a href="#handleCacheOptions.handleCacheOptions-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Handle cache options.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><code class="tsd-tag ts-flagOptional">Optional</code> <span class="tsd-kind-parameter">cacheOptions</span>: <span class="tsd-signature-type ">IResponseCacheOptions</span></h5>
+<div class="tsd-comment tsd-typography"><p>The cache options to handle.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type ">IResponseCacheOptions</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="OpenaiApiClient.html">OpenaiApiClient</a>.<a href="OpenaiApiClient.html#handleCacheOptions">handleCacheOptions</a></p>
+<ul>
+<li>Defined in pkg/api-util/src/lib/AbstractApiClient.ts:170</li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-protected tsd-is-inherited"><a id="handleChatOptions" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagProtected">Protected</code> <span>handle<wbr/>Chat<wbr/>Options</span><a href="#handleChatOptions" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-protected tsd-is-inherited">
+<li class="tsd-signature tsd-anchor-link" id="handleChatOptions.handleChatOptions-1"><span class="tsd-kind-call-signature">handle<wbr/>Chat<wbr/>Options</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">options</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type ">CreateChatCompletionRequest</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type ">Options</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type ">IResponseCacheOptions</span><span class="tsd-signature-symbol">]</span><a href="#handleChatOptions.handleChatOptions-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Handle chat options.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">options</span>: <a href="../interfaces/IOpenaiChatRequestOptions.html" class="tsd-signature-type tsd-kind-interface">IOpenaiChatRequestOptions</a></h5>
+<div class="tsd-comment tsd-typography"><p>The options to handle.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type ">CreateChatCompletionRequest</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type ">Options</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type ">IResponseCacheOptions</span><span class="tsd-signature-symbol">]</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="OpenaiApiClient.html">OpenaiApiClient</a>.<a href="OpenaiApiClient.html#handleChatOptions">handleChatOptions</a></p>
+<ul>
+<li>Defined in pkg/openai-api-client/src/lib/OpenaiApiClient.ts:122</li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-protected tsd-is-inherited"><a id="handleCompletionOptions" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagProtected">Protected</code> <span>handle<wbr/>Completion<wbr/>Options</span><a href="#handleCompletionOptions" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-protected tsd-is-inherited">
+<li class="tsd-signature tsd-anchor-link" id="handleCompletionOptions.handleCompletionOptions-1"><span class="tsd-kind-call-signature">handle<wbr/>Completion<wbr/>Options</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">options</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type ">CreateCompletionRequest</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type ">Options</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type ">IResponseCacheOptions</span><span class="tsd-signature-symbol">]</span><a href="#handleCompletionOptions.handleCompletionOptions-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Handle completion options.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">options</span>: <a href="../interfaces/IOpenaiCompletionRequestOptions.html" class="tsd-signature-type tsd-kind-interface">IOpenaiCompletionRequestOptions</a></h5>
+<div class="tsd-comment tsd-typography"><p>The options to handle.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type ">CreateCompletionRequest</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type ">Options</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type ">IResponseCacheOptions</span><span class="tsd-signature-symbol">]</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="OpenaiApiClient.html">OpenaiApiClient</a>.<a href="OpenaiApiClient.html#handleCompletionOptions">handleCompletionOptions</a></p>
+<ul>
+<li>Defined in pkg/openai-api-client/src/lib/OpenaiApiClient.ts:93</li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-protected tsd-is-inherited"><a id="handleOptions" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagProtected">Protected</code> <span>handle<wbr/>Options</span><a href="#handleOptions" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-protected tsd-is-inherited">
+<li class="tsd-signature tsd-anchor-link" id="handleOptions.handleOptions-1"><span class="tsd-kind-call-signature">handle<wbr/>Options</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">options</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type ">IAbstractApiClientOptions</span><a href="#handleOptions.handleOptions-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Handle the options passed to the constructor.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">options</span>: <span class="tsd-signature-type ">IAbstractApiClientOptions</span></h5>
+<div class="tsd-comment tsd-typography"><p>The options to handle.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type ">IAbstractApiClientOptions</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="OpenaiApiClient.html">OpenaiApiClient</a>.<a href="OpenaiApiClient.html#handleOptions">handleOptions</a></p>
+<ul>
+<li>Defined in pkg/api-util/src/lib/AbstractApiClient.ts:146</li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-protected tsd-is-inherited"><a id="handleRetryOptions" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagProtected">Protected</code> <span>handle<wbr/>Retry<wbr/>Options</span><a href="#handleRetryOptions" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-protected tsd-is-inherited">
+<li class="tsd-signature tsd-anchor-link" id="handleRetryOptions.handleRetryOptions-1"><span class="tsd-kind-call-signature">handle<wbr/>Retry<wbr/>Options</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">retryOptions</span><span class="tsd-signature-symbol">?</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type ">Options</span><a href="#handleRetryOptions.handleRetryOptions-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Handle retry options.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><code class="tsd-tag ts-flagOptional">Optional</code> <span class="tsd-kind-parameter">retryOptions</span>: <span class="tsd-signature-type ">Options</span></h5>
+<div class="tsd-comment tsd-typography"><p>The retry options to handle.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type ">Options</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="OpenaiApiClient.html">OpenaiApiClient</a>.<a href="OpenaiApiClient.html#handleRetryOptions">handleRetryOptions</a></p>
+<ul>
+<li>Defined in pkg/api-util/src/lib/AbstractApiClient.ts:162</li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-protected tsd-is-inherited"><a id="handleTranscribeOptions" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagProtected">Protected</code> <span>handle<wbr/>Transcribe<wbr/>Options</span><a href="#handleTranscribeOptions" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-protected tsd-is-inherited">
+<li class="tsd-signature tsd-anchor-link" id="handleTranscribeOptions.handleTranscribeOptions-1"><span class="tsd-kind-call-signature">handle<wbr/>Transcribe<wbr/>Options</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">options</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><a href="../interfaces/IOpenaiTranscribeRequest.html" class="tsd-signature-type tsd-kind-interface">IOpenaiTranscribeRequest</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type ">Options</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type ">IResponseCacheOptions</span><span class="tsd-signature-symbol">]</span><a href="#handleTranscribeOptions.handleTranscribeOptions-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Handle transcribe options.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">options</span>: <a href="../interfaces/IOpenaiTranscribeOptions.html" class="tsd-signature-type tsd-kind-interface">IOpenaiTranscribeOptions</a></h5>
+<div class="tsd-comment tsd-typography"><p>The options to handle.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">[</span><a href="../interfaces/IOpenaiTranscribeRequest.html" class="tsd-signature-type tsd-kind-interface">IOpenaiTranscribeRequest</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type ">Options</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type ">IResponseCacheOptions</span><span class="tsd-signature-symbol">]</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="OpenaiApiClient.html">OpenaiApiClient</a>.<a href="OpenaiApiClient.html#handleTranscribeOptions">handleTranscribeOptions</a></p>
+<ul>
+<li>Defined in pkg/openai-api-client/src/lib/OpenaiApiClient.ts:146</li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-protected tsd-is-inherited"><a id="lowerConcurrency" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagProtected">Protected</code> <span>lower<wbr/>Concurrency</span><a href="#lowerConcurrency" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-protected tsd-is-inherited">
+<li class="tsd-signature tsd-anchor-link" id="lowerConcurrency.lowerConcurrency-1"><span class="tsd-kind-call-signature">lower<wbr/>Concurrency</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">lowerBy</span><span class="tsd-signature-symbol">?</span>, <span class="tsd-kind-parameter">raiseAgainBy</span><span class="tsd-signature-symbol">?</span>, <span class="tsd-kind-parameter">delay</span><span class="tsd-signature-symbol">?</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#lowerConcurrency.lowerConcurrency-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Lower the concurrency to prevent rate limiting.
+Automatically raises the concurrency again after a delay.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">lowerBy</span>: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 7</span></h5>
+<div class="tsd-comment tsd-typography"><p>The amount to lower the concurrency by.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
+<li>
+<h5><span class="tsd-kind-parameter">raiseAgainBy</span>: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 6</span></h5>
+<div class="tsd-comment tsd-typography"><p>The amount to raise the concurrency by after a delay.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
+<li>
+<h5><span class="tsd-kind-parameter">delay</span>: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></h5>
+<div class="tsd-comment tsd-typography"><p>The delay to wait before raising the concurrency again. This is randomized by +/- 5 seconds to prevent multiple requests from affecting the concurrency at the same time.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="OpenaiApiClient.html">OpenaiApiClient</a>.<a href="OpenaiApiClient.html#lowerConcurrency">lowerConcurrency</a></p>
+<ul>
+<li>Defined in pkg/openai-api-client/src/lib/OpenaiApiClient.ts:265</li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-protected tsd-is-inherited"><a id="parseChoices" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagProtected">Protected</code> <span>parse<wbr/>Choices</span><a href="#parseChoices" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-protected tsd-is-inherited">
+<li class="tsd-signature tsd-anchor-link" id="parseChoices.parseChoices-1"><span class="tsd-kind-call-signature">parse<wbr/>Choices</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">choices</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><a href="#parseChoices.parseChoices-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Extract the actual concent from the &#39;choices&#39; object from the response data.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">choices</span>: <span class="tsd-signature-type ">CreateChatCompletionResponseChoicesInner</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type ">CreateCompletionResponseChoicesInner</span><span class="tsd-signature-symbol">[]</span></h5>
+<div class="tsd-comment tsd-typography"><p>The choices object from the response data.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="OpenaiApiClient.html">OpenaiApiClient</a>.<a href="OpenaiApiClient.html#parseChoices">parseChoices</a></p>
+<ul>
+<li>Defined in pkg/openai-api-client/src/lib/OpenaiApiClient.ts:284</li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member"><a id="proofread" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>proofread</span><a href="#proofread" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="proofread.proofread-1"><span class="tsd-kind-call-signature">proofread</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">language</span>, <span class="tsd-kind-parameter">prompt</span>, <span class="tsd-kind-parameter">options</span><span class="tsd-signature-symbol">?</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><a href="#proofread.proofread-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Proofread in a given language.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">language</span>: <span class="tsd-signature-type">string</span></h5>
+<div class="tsd-comment tsd-typography"><p>The language of the input.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
+<li>
+<h5><span class="tsd-kind-parameter">prompt</span>: <span class="tsd-signature-type">string</span></h5>
+<div class="tsd-comment tsd-typography"><p>The input string.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
+<li>
+<h5><span class="tsd-kind-parameter">options</span>: <a href="../interfaces/IOpenaiChatRequestOptions.html" class="tsd-signature-type tsd-kind-interface">IOpenaiChatRequestOptions</a><span class="tsd-signature-symbol"> = {}</span></h5></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+<div class="tsd-comment tsd-typography">
+<h4>Example</h4><pre><code class="language-ts"><span class="hl-6">await</span><span class="hl-1"> </span><span class="hl-5">openai</span><span class="hl-1">.</span><span class="hl-0">proofread</span><span class="hl-1">(</span><span class="hl-2">&#39;english&#39;</span><span class="hl-1">, </span><span class="hl-2">&#39;I no have more money.&#39;</span><span class="hl-1">)</span><br/><span class="hl-6">await</span><span class="hl-1"> </span><span class="hl-5">openai</span><span class="hl-1">.</span><span class="hl-0">proofread</span><span class="hl-1">(</span><span class="hl-2">&#39;java&#39;</span><span class="hl-1">, </span><span class="hl-2">`System.out.println(&quot;Hello&quot;)`</span><span class="hl-1">)</span>
+</code><button>Copy</button></pre>
+</div><aside class="tsd-sources">
+<ul>
+<li>Defined in pkg/openai-api-client/src/lib/OpenaiApiClientExtended.ts:29</li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member"><a id="proofreadEnglish" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>proofread<wbr/>English</span><a href="#proofreadEnglish" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="proofreadEnglish.proofreadEnglish-1"><span class="tsd-kind-call-signature">proofread<wbr/>English</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">prompt</span>, <span class="tsd-kind-parameter">options</span><span class="tsd-signature-symbol">?</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><a href="#proofreadEnglish.proofreadEnglish-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Proofread in English.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">prompt</span>: <span class="tsd-signature-type">string</span></h5>
+<div class="tsd-comment tsd-typography"><p>The input string.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
+<li>
+<h5><span class="tsd-kind-parameter">options</span>: <a href="../interfaces/IOpenaiChatRequestOptions.html" class="tsd-signature-type tsd-kind-interface">IOpenaiChatRequestOptions</a><span class="tsd-signature-symbol"> = {}</span></h5></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+<div class="tsd-comment tsd-typography">
+<h4>Example</h4><pre><code class="language-ts"><span class="hl-6">await</span><span class="hl-1"> </span><span class="hl-5">openai</span><span class="hl-1">.</span><span class="hl-0">proofread</span><span class="hl-1">(</span><span class="hl-2">&#39;english&#39;</span><span class="hl-1">, </span><span class="hl-2">&#39;I no have more money.&#39;</span><span class="hl-1">)</span><br/><span class="hl-6">await</span><span class="hl-1"> </span><span class="hl-5">openai</span><span class="hl-1">.</span><span class="hl-0">proofread</span><span class="hl-1">(</span><span class="hl-2">&#39;java&#39;</span><span class="hl-1">, </span><span class="hl-2">`System.out.println(&quot;Hello&quot;)`</span><span class="hl-1">)</span>
+</code><button>Copy</button></pre>
+</div><aside class="tsd-sources">
+<ul>
+<li>Defined in pkg/openai-api-client/src/lib/OpenaiApiClientExtended.ts:50</li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited"><a id="stringTokens" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>string<wbr/>Tokens</span><a href="#stringTokens" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-signature tsd-anchor-link" id="stringTokens.stringTokens-1"><span class="tsd-kind-call-signature">string<wbr/>Tokens</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span><a href="#stringTokens.stringTokens-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Encode a string into tokens.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">string</span>: <span class="tsd-signature-type">string</span></h5>
+<div class="tsd-comment tsd-typography"><p>The string to encode.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="OpenaiApiClient.html">OpenaiApiClient</a>.<a href="OpenaiApiClient.html#stringTokens">stringTokens</a></p>
+<ul>
+<li>Defined in pkg/openai-api-client/src/lib/OpenaiApiClient.ts:341</li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited"><a id="transcribe" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>transcribe</span><a href="#transcribe" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-signature tsd-anchor-link" id="transcribe.transcribe-1"><span class="tsd-kind-call-signature">transcribe</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">options</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><a href="#transcribe.transcribe-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Send a transcribe completion request to the openai api.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">options</span>: <a href="../interfaces/IOpenaiTranscribeOptions.html" class="tsd-signature-type tsd-kind-interface">IOpenaiTranscribeOptions</a></h5>
+<div class="tsd-comment tsd-typography"><p>The options to use.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="OpenaiApiClient.html">OpenaiApiClient</a>.<a href="OpenaiApiClient.html#transcribe">transcribe</a></p>
+<ul>
+<li>Defined in pkg/openai-api-client/src/lib/OpenaiApiClient.ts:85</li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member"><a id="translateEnglishTo" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>translate<wbr/>English<wbr/>To</span><a href="#translateEnglishTo" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="translateEnglishTo.translateEnglishTo-1"><span class="tsd-kind-call-signature">translate<wbr/>English<wbr/>To</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">language</span>, <span class="tsd-kind-parameter">prompt</span>, <span class="tsd-kind-parameter">options</span><span class="tsd-signature-symbol">?</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><a href="#translateEnglishTo.translateEnglishTo-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Translate text from English to a given language.
+For short input text, use options.instruction to provide context.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">language</span>: <span class="tsd-signature-type">string</span></h5></li>
+<li>
+<h5><span class="tsd-kind-parameter">prompt</span>: <span class="tsd-signature-type">string</span></h5></li>
+<li>
+<h5><span class="tsd-kind-parameter">options</span>: <a href="../interfaces/IOpenaiChatRequestOptions.html" class="tsd-signature-type tsd-kind-interface">IOpenaiChatRequestOptions</a><span class="tsd-signature-symbol"> = {}</span></h5></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+<div class="tsd-comment tsd-typography">
+<h4>Example</h4><pre><code class="language-ts"><span class="hl-6">await</span><span class="hl-1"> </span><span class="hl-5">openai</span><span class="hl-1">.</span><span class="hl-0">translateEnglishTo</span><span class="hl-1">(</span><span class="hl-2">&#39;Spanish&#39;</span><span class="hl-1">, </span><span class="hl-2">&#39;Clear&#39;</span><span class="hl-1">, { </span><span class="hl-5">instruction:</span><span class="hl-1"> </span><span class="hl-2">&#39;This is a color.&#39;</span><span class="hl-1"> })</span>
+</code><button>Copy</button></pre>
+</div><aside class="tsd-sources">
+<ul>
+<li>Defined in pkg/openai-api-client/src/lib/OpenaiApiClientExtended.ts:85</li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member"><a id="translateFromTo" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>translate<wbr/>From<wbr/>To</span><a href="#translateFromTo" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="translateFromTo.translateFromTo-1"><span class="tsd-kind-call-signature">translate<wbr/>From<wbr/>To</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">fromLanguage</span>, <span class="tsd-kind-parameter">toLanguage</span>, <span class="tsd-kind-parameter">prompt</span>, <span class="tsd-kind-parameter">options</span><span class="tsd-signature-symbol">?</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><a href="#translateFromTo.translateFromTo-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Translate text from one language to another.
+For short input text, use options.instruction to provide context.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">fromLanguage</span>: <span class="tsd-signature-type">string</span></h5></li>
+<li>
+<h5><span class="tsd-kind-parameter">toLanguage</span>: <span class="tsd-signature-type">string</span></h5></li>
+<li>
+<h5><span class="tsd-kind-parameter">prompt</span>: <span class="tsd-signature-type">string</span></h5>
+<div class="tsd-comment tsd-typography"><p>The text to translate.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
+<li>
+<h5><span class="tsd-kind-parameter">options</span>: <a href="../interfaces/IOpenaiChatRequestOptions.html" class="tsd-signature-type tsd-kind-interface">IOpenaiChatRequestOptions</a><span class="tsd-signature-symbol"> = {}</span></h5></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+<div class="tsd-comment tsd-typography">
+<h4>Example</h4><pre><code class="language-ts"><span class="hl-6">await</span><span class="hl-1"> </span><span class="hl-5">openai</span><span class="hl-1">.</span><span class="hl-0">translateFrom</span><span class="hl-1">(</span><span class="hl-2">&#39;English&#39;</span><span class="hl-1">, </span><span class="hl-2">&#39;Spanish&#39;</span><span class="hl-1">, </span><span class="hl-2">&#39;Clear&#39;</span><span class="hl-1">, { </span><span class="hl-5">instruction:</span><span class="hl-1"> </span><span class="hl-2">&#39;This is a color.&#39;</span><span class="hl-1"> })</span>
+</code><button>Copy</button></pre>
+</div><aside class="tsd-sources">
+<ul>
+<li>Defined in pkg/openai-api-client/src/lib/OpenaiApiClientExtended.ts:62</li></ul></aside></li></ul></section></section></div>
+<div class="col-sidebar">
+<div class="page-menu">
+<div class="tsd-navigation settings">
+<details class="tsd-index-accordion"><summary class="tsd-accordion-summary">
+<h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)" id="icon-chevronDown"></path></svg>Settings</h3></summary>
+<div class="tsd-accordion-details">
+<div class="tsd-filter-visibility">
+<h4 class="uppercase">Member Visibility</h4><form>
+<ul id="tsd-filter-options">
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-private" name="private"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Private</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></form></div>
+<div class="tsd-theme-toggle">
+<h4 class="uppercase">Theme</h4><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div>
+<details open class="tsd-index-accordion tsd-page-navigation"><summary class="tsd-accordion-summary">
+<h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="#icon-chevronDown"></use></svg>On This Page</h3></summary>
+<div class="tsd-accordion-details">
+<ul>
+<li><a href="#constructor" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-512"></use></svg><span>constructor</span></a></li>
+<li><a href="#apiDefaults" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>api<wbr/>Defaults</span></a></li>
+<li><a href="#cache" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>cache</span></a></li>
+<li><a href="#cacheDefaults" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>cache<wbr/>Defaults</span></a></li>
+<li><a href="#client" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>client</span></a></li>
+<li><a href="#concurrencyJustReduced" class="tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>concurrency<wbr/>Just<wbr/>Reduced</span></a></li>
+<li><a href="#events" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>events</span></a></li>
+<li><a href="#queue" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>queue</span></a></li>
+<li><a href="#retryDefaults" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>retry<wbr/>Defaults</span></a></li>
+<li><a href="#sendRequest" class="tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>send<wbr/>Request</span></a></li>
+<li><a href="#concurrencyDefaults" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>concurrency<wbr/>Defaults</span></a></li>
+<li><a href="#eventNames" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-262144"></use></svg><span>event<wbr/>Names</span></a></li>
+<li><a href="#_chat" class="tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>_chat</span></a></li>
+<li><a href="#_completion" class="tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>_completion</span></a></li>
+<li><a href="#_transcribe" class="tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>_transcribe</span></a></li>
+<li><a href="#assertReponseDataComplete" class="tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>assert<wbr/>Reponse<wbr/>Data<wbr/>Complete</span></a></li>
+<li><a href="#completion" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>completion</span></a></li>
+<li><a href="#countTokens" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>count<wbr/>Tokens</span></a></li>
+<li><a href="#deleteDefaultOrUndefinedOptions" class="tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>delete<wbr/>Default<wbr/>Or<wbr/>Undefined<wbr/>Options</span></a></li>
+<li><a href="#emit" class="tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>emit</span></a></li>
+<li><a href="#gpt3_16k" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>gpt3_<wbr/>16k</span></a></li>
+<li><a href="#gpt3_8k" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>gpt3_<wbr/>8k</span></a></li>
+<li><a href="#gpt4_8k" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>gpt4_<wbr/>8k</span></a></li>
+<li><a href="#handleApiError" class="tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>handle<wbr/>Api<wbr/>Error</span></a></li>
+<li><a href="#handleCacheOptions" class="tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>handle<wbr/>Cache<wbr/>Options</span></a></li>
+<li><a href="#handleChatOptions" class="tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>handle<wbr/>Chat<wbr/>Options</span></a></li>
+<li><a href="#handleCompletionOptions" class="tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>handle<wbr/>Completion<wbr/>Options</span></a></li>
+<li><a href="#handleOptions" class="tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>handle<wbr/>Options</span></a></li>
+<li><a href="#handleRetryOptions" class="tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>handle<wbr/>Retry<wbr/>Options</span></a></li>
+<li><a href="#handleTranscribeOptions" class="tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>handle<wbr/>Transcribe<wbr/>Options</span></a></li>
+<li><a href="#lowerConcurrency" class="tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>lower<wbr/>Concurrency</span></a></li>
+<li><a href="#parseChoices" class="tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>parse<wbr/>Choices</span></a></li>
+<li><a href="#proofread" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>proofread</span></a></li>
+<li><a href="#proofreadEnglish" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>proofread<wbr/>English</span></a></li>
+<li><a href="#stringTokens" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>string<wbr/>Tokens</span></a></li>
+<li><a href="#transcribe" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>transcribe</span></a></li>
+<li><a href="#translateEnglishTo" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>translate<wbr/>English<wbr/>To</span></a></li>
+<li><a href="#translateFromTo" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>translate<wbr/>From<wbr/>To</span></a></li></ul></div></details></div>
+<div class="site-menu">
+<nav class="tsd-navigation"><a href="../modules.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-4"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-namespace)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M9.33 16V7.24H10.77L13.446 14.74C13.43 14.54 13.41 14.296 13.386 14.008C13.37 13.712 13.354 13.404 13.338 13.084C13.33 12.756 13.326 12.448 13.326 12.16V7.24H14.37V16H12.93L10.266 8.5C10.282 8.692 10.298 8.936 10.314 9.232C10.33 9.52 10.342 9.828 10.35 10.156C10.366 10.476 10.374 10.784 10.374 11.08V16H9.33Z" fill="var(--color-text)"></path></g></svg><span>@bemoje/openai-<wbr/>api-<wbr/>client</span></a>
+<ul class="tsd-small-nested-navigation">
+<li><a href="OpenaiApiClient.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-128"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-class)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M11.898 16.1201C11.098 16.1201 10.466 15.8961 10.002 15.4481C9.53803 15.0001 9.30603 14.3841 9.30603 13.6001V9.64012C9.30603 8.85612 9.53803 8.24012 10.002 7.79212C10.466 7.34412 11.098 7.12012 11.898 7.12012C12.682 7.12012 13.306 7.34812 13.77 7.80412C14.234 8.25212 14.466 8.86412 14.466 9.64012H13.386C13.386 9.14412 13.254 8.76412 12.99 8.50012C12.734 8.22812 12.37 8.09212 11.898 8.09212C11.426 8.09212 11.054 8.22412 10.782 8.48812C10.518 8.75212 10.386 9.13212 10.386 9.62812V13.6001C10.386 14.0961 10.518 14.4801 10.782 14.7521C11.054 15.0161 11.426 15.1481 11.898 15.1481C12.37 15.1481 12.734 15.0161 12.99 14.7521C13.254 14.4801 13.386 14.0961 13.386 13.6001H14.466C14.466 14.3761 14.234 14.9921 13.77 15.4481C13.306 15.8961 12.682 16.1201 11.898 16.1201Z" fill="var(--color-text)"></path></g></svg><span>Openai<wbr/>Api<wbr/>Client</span></a></li>
+<li><a href="OpenaiApiClientExtended.html" class="current"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Openai<wbr/>Api<wbr/>Client<wbr/>Extended</span></a></li>
+<li><a href="../interfaces/IOpenaiApiClientApiDefaultsOptions.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-256"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-interface)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M9.51 16V15.016H11.298V8.224H9.51V7.24H14.19V8.224H12.402V15.016H14.19V16H9.51Z" fill="var(--color-text)"></path></g></svg><span>IOpenai<wbr/>Api<wbr/>Client<wbr/>Api<wbr/>Defaults<wbr/>Options</span></a></li>
+<li><a href="../interfaces/IOpenaiApiClientOptions.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>IOpenai<wbr/>Api<wbr/>Client<wbr/>Options</span></a></li>
+<li><a href="../interfaces/IOpenaiChatRequestOptions.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>IOpenai<wbr/>Chat<wbr/>Request<wbr/>Options</span></a></li>
+<li><a href="../interfaces/IOpenaiCompletionRequestOptions.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>IOpenai<wbr/>Completion<wbr/>Request<wbr/>Options</span></a></li>
+<li><a href="../interfaces/IOpenaiTranscribeOptions.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>IOpenai<wbr/>Transcribe<wbr/>Options</span></a></li>
+<li><a href="../interfaces/IOpenaiTranscribeRequest.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>IOpenai<wbr/>Transcribe<wbr/>Request</span></a></li></ul></nav></div></div></div>
+<div class="tsd-generator">
+<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div>
+<div class="overlay"></div></body></html>

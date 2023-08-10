@@ -3,6 +3,8 @@ import { Command } from 'commander'
 import fs from 'fs'
 import { mkdirpSync } from 'mkdirp'
 import path from 'path'
+import { getUserInputFromEditor } from '../util/getUserInputFromEditor'
+import { parseString } from '../util/parseString'
 import { ConfigSetting } from './ConfigSetting'
 import { IConfigSetting } from './IConfigSetting'
 import { IConfigSettings } from './IConfigSettings'
@@ -10,22 +12,25 @@ import { IConfigSettings } from './IConfigSettings'
 export class Config {
   appdataDirectory: string
   definitions: IConfigSettings
-  settings: Record<string, string>
+  settings: Record<string, any>
 
-  constructor(
-    appAuthor: string,
-    appName: string,
-    definitions: {
-      [key: string]: IConfigSetting
-    },
-  ) {
+  constructor(appAuthor: string, appName: string, definitions: Record<string, IConfigSetting>) {
+    definitions = {
+      editor: {
+        description: 'The editor to use for example when editing config settings as JSON.',
+        default: 'notepad',
+        required: true,
+        parse: parseString,
+      },
+      ...definitions,
+    }
     this.appdataDirectory = path.join(getAppDataPath(), appAuthor, appName)
     this.definitions = Object.entries(definitions).reduce((accum: IConfigSettings, [name, options]) => {
       accum[name] = new ConfigSetting(name, options)
       return accum
     }, {} as IConfigSettings)
     this.ensureConfigFileExists()
-    this.settings = JSON.parse(fs.readFileSync(this.configFilepath, 'utf8')) as Record<keyof typeof definitions, string>
+    this.settings = JSON.parse(fs.readFileSync(this.configFilepath, 'utf8')) as Record<keyof typeof definitions, any>
   }
 
   get configFilepath() {
@@ -34,6 +39,20 @@ export class Config {
 
   initialize(program: Command) {
     program
+      .command('config')
+      .description('View / edit the settings as JSON in the defined editor.')
+      .action(async () => {
+        const json = JSON.stringify(this.settings, null, 1)
+        const newJson = await getUserInputFromEditor({
+          appdataDirectory: this.appdataDirectory,
+          editor: this.settings.editor,
+          currentContent: json,
+        })
+        this.settings = JSON.parse(newJson)
+        this.saveConfigFile()
+      })
+
+    program
       .command('config-list')
       .description('List the current config settings.')
       .argument('[setting]', 'The name of the setting. Omit to list all settings.')
@@ -41,7 +60,7 @@ export class Config {
 
     program
       .command('config-reset')
-      .description('List current config settings.')
+      .description('Reset one or all settings to their default values.')
       .argument('[setting]', 'The name of the setting. Omit to reset all settings.')
       .action((setting?: string) => this.reset(setting))
 
@@ -53,23 +72,23 @@ export class Config {
       .action((setting: string, value: string) => this.set(setting, value))
   }
 
-  protected ensureConfigFileExists() {
+  ensureConfigFileExists() {
     if (!fs.existsSync(this.configFilepath)) {
-      const defaults = Object.fromEntries(
+      this.settings = Object.fromEntries(
         Object.entries(this.definitions).map(([name, definition]) => {
           return [name, definition.default]
         }),
       )
-      mkdirpSync(this.appdataDirectory)
-      fs.writeFileSync(this.configFilepath, JSON.stringify(defaults, null, 1))
+      this.saveConfigFile()
     }
   }
 
-  protected saveConfigFile() {
+  saveConfigFile() {
+    mkdirpSync(this.appdataDirectory)
     fs.writeFileSync(this.configFilepath, JSON.stringify(this.settings, null, 1))
   }
 
-  protected set(setting: string, value: string) {
+  set(setting: string, value: string) {
     const definition = this.definitions[setting]
     if (!definition) {
       console.log(`The '${setting}' setting not recognized.`)
@@ -81,7 +100,7 @@ export class Config {
     this.print(setting)
   }
 
-  protected print(setting?: string) {
+  print(setting?: string) {
     if (setting) {
       const definition = this.definitions[setting]
       if (definition) {
@@ -126,7 +145,9 @@ export class Config {
   }
 
   assertNoMissingRequired(): void {
-    const missing = Object.values(this.definitions).filter((o) => o.required && !this.settings[o.name])
+    const missing = Object.values(this.definitions).filter(
+      (o) => o.required && (this.settings[o.name] === '' || this.settings[o.name] === undefined),
+    )
     if (missing.length) {
       console.log(
         `The following required settings are missing: ${missing

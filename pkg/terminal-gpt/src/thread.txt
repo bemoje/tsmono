@@ -1,0 +1,805 @@
+Fra: Frederik Hvas <fhv@wemarket.dk>
+Sendt: 23. maj 2023 10:41
+Til: Thomas Alstrup <tal@wemarket.dk>
+Cc: Thomas Siggaard <thomas@redefinedfashion.dk>; Benjamin Møller Jensen <bmj@redefinedfashion.dk>; Kasper Moeslund <kasper@redefinedfashion.dk>; Julie Møller Jakobsen <julie@redefinedfashion.dk>
+Emne: Re: Keywords til 23 Summer
+ 
+Hej Thomas Siggaard, 
+
+Jeg er nu kommet igennem det spanske SEO i det samme ark, som vores Thomas har oprettet og arbejdet i. 
+
+Det burde ligge derinde til jer nu. Sig endelig til hvis I har spørgsmål eller kommentarer til indholdet. 
+
+Den man. 15. maj 2023 kl. 05.30 skrev Thomas Alstrup <tal@wemarket.dk>:
+Hej Thomas
+
+Lige en update på denne her...
+
+Jeg har fået lavet tysk SEO (med hovedfokus på Sommer-kw) til de forskellige produktkategorier. 
+Disse befinder sig nu i Sheet'et: https://docs.google.com/spreadsheets/d/1MAtCLe_aQukmw_IK9f19SBqGVsa19cN8nF5XssgimaE/edit#gid=0
+
+De keywords, som du finder i arket, har næsten udelukkende en månedlig søgevolumen de sidste 30 dage på mindst 500 søgninger og en Cerebro IQ Score på mindst 300. 
+Desuden har jeg ved næsten hver kategori filtreret det sådan, at det kun er keywords med en positiv søgetendens, der er taget med. 
+
+Så de fleste af keywords i Sheet'et, burde være højaktuelle og med en relativ stor søgevolumen. 
+Jeg har naturligvis forsøgt også at få sorteret alle - i forhold til jeres produkter - irrelevante keywords fra. Dog er der helt sikkert enkelte af de keywords, som jeg har taget med, som ikke passer lige godt til jeres individuelle produkter, men det håber jeg, I vil være i stand til at finsortere i. 
+
+Jeg kunne ikke nå at lave SEO til Spanien, og fordi jeg har ferie i denne uge, har jeg bedt min kollega, Frederik, som jeg også har sat på denne mail som CC, til at hjælpe med det spanske. Det arbejder han løbende på i denne uge. 
+
+Hvis du umiddelbart har spørgsmål til noget, så skriv gerne til Frederik. 
+Ellers skal jeg nok kigge på det i næste uge, hvor jeg er tilbage fra ferie. 
+
+
+
+Den tors. 11. maj 2023 kl. 21.19 skrev Thomas Siggaard <thomas@redefinedfashion.dk>:
+Hej Thomas,
+
+ 
+
+Det lyder fint
+Cerebro score er fint – det skal bruges til at gøre bedre keywords mere sandsynlige.  
+Jeg tror ikke det giver mening at du skal kigge på hver enkelt og vælge et tal fra 0-10
+
+ 
+
+Med venlig hilsen / Best Regards
+
+ 
+
+Thomas Siggaard
+
+RPA Developer
+
+
+
+NYGADE 111, DK-7430 IKAST
+
+Office: +45 7026 1115
+
+Email: thomas@redefinedfashion.dk
+
+
+
+ 
+
+From: Thomas Alstrup <tal@wemarket.dk>
+Sent: Thursday, May 11, 2023 2:54 PM
+To: Thomas Siggaard <thomas@redefinedfashion.dk>
+Cc: Benjamin Møller Jensen <bmj@redefinedfashion.dk>; Kasper Moeslund <kasper@redefinedfashion.dk>; Julie Møller Jakobsen <julie@redefinedfashion.dk>
+Subject: Re: Keywords til 23 Summer
+
+ 
+
+Hej Thomas
+
+
+Tak for feedback. 
+
+ 
+
+Har lige kigget på dine opdateringer. 
+
+ 
+
+Jeg har umiddelbart kun 2 kommentarer/spørgsmål til det: 
+
+1) Jeg tror ikke, det er optimalt at blande de "generelle" kw sammen med de produktspecifikke.
+Ville det være et problem, hvis jeg oprettede en ny fane til de generelle, der som udgangspunkt vil skulle/kunne bruges til (næsten) alle tøjkategorier...?
+
+ 
+
+2) I forhold til vægtning...Helium har en såkaldt "Cerebro IQ Score", og denne score angiver en sammenhæng mellem antal søgninger vs. antal konkurrenter på et givent keyword (jo højere score, jo større potentiale - overordnet set).
+Vil du have denne score under "vægtning", eller er det mere noget i stil med 1=vigtigst og 10=ikke så vigtigt keyword, du havde forestillet dig...?
+
+ 
+
+Den ons. 10. maj 2023 kl. 15.23 skrev Thomas Siggaard <thomas@redefinedfashion.dk>:
+
+Hej Thomas,
+
+ 
+
+Jeg tænkte sådan her.
+
+https://docs.google.com/spreadsheets/d/1MAtCLe_aQukmw_IK9f19SBqGVsa19cN8nF5XssgimaE/edit#gid=0
+
+ 
+
+Evt. (hvis du tænker det er en god idé) kunne vi også tilføje en type der hedder generel?
+
+Hvis der evt. er keywords som duer på alle typer tøj.
+
+Jeg forestiller mig noget som ”WeMarket ist cool” eller ”kleidung für damen” hvis det bliver søgt på. 😉
+
+ 
+
+Husk du må altid give mig et kald på
+
++45 2067 2399
+
+ 
+
+Med venlig hilsen / Best Regards
+
+ 
+
+Thomas Siggaard
+
+RPA Developer
+
+
+
+NYGADE 111, DK-7430 IKAST
+
+Office: +45 7026 1115
+
+Email: thomas@redefinedfashion.dk
+
+
+
+ 
+
+From: Thomas Alstrup <tal@wemarket.dk>
+Sent: Monday, May 8, 2023 2:48 PM
+To: Thomas Siggaard <thomas@redefinedfashion.dk>
+Cc: Benjamin Møller Jensen <bmj@redefinedfashion.dk>; Kasper Moeslund <kasper@redefinedfashion.dk>; Julie Møller Jakobsen <julie@redefinedfashion.dk>
+Subject: Re: Keywords til 23 Summer
+
+ 
+
+Hej Thomas
+
+ 
+
+Jeg har netop siddet og lavet en skabelon til de keywords, du efterspørger. 
+
+Er det noget i denne stil, du har forestillet dig, at du gerne vil have overdraget keywords? https://docs.google.com/spreadsheets/d/1MAtCLe_aQukmw_IK9f19SBqGVsa19cN8nF5XssgimaE/edit?usp=share_link
+
+Jeg har gjort, så du selv kan rette i arket, hvis du gerne vil have det stillet anderledes op. 
+
+ 
+
+Vi har i øvrigt aftalt med Kasper, at vi foreløbigt koncentrerer os om keywords til Tyskland og Spanien. Derfor jeg kun nævner "DE" og "ES" under sprog. 
+
+ 
+
+ 
+
+Den tors. 4. maj 2023 kl. 13.21 skrev Thomas Siggaard <thomas@redefinedfashion.dk>:
+
+Hej Thomas,
+
+ 
+
+Kan jeg få dig til at generere en liste med Keywords her til sommersæsonen?
+
+Jeg har selv forsøgt mig med Helium10, men jeg får en del irrelevante ord.
+
+ 
+
+Jeg vil gerne have svaret i én fil, formateret med kolonnerne:
+
+Keyword
+
+Vægtning
+
+Sprog
+
+Type
+
+ 
+
+Hvor ”keyword” refererer til selve ord/ordene
+
+Hvor ”vægtning” refererer til en relativ score mellem keywordsene ift. Vigtighed
+
+Hvor ”sprog” refererer til sproget af selve kw
+
+Hvor ”type” refererer til typen af produktet der sælges med det keyword.
+
+ 
+
+ 
+
+Du må give så mange keywords du overhovedet kan, på så mange sprog du kan.
+
+ 
+
+Typerne ser jeg helst følger disse:
+
+Bag
+
+Belt
+
+Bikini
+
+Bikini
+
+Blazer
+
+Blouse
+
+Bodystocking
+
+Cardigan
+
+Coat
+
+Dress
+
+Hat
+
+Head
+
+Jacket
+
+Jeans
+
+Jumpsuit
+
+Kimono
+
+Leggings
+
+Pant
+
+Poncho
+
+Puffer
+
+Pullover
+
+Raincoat
+
+Sales
+
+Samples
+
+Scarf
+
+Shirt
+
+Shoes
+
+Shorts
+
+Skirt
+
+Socks
+
+Sweat
+
+Sweatshirt
+
+Swimsuit
+
+T-Shirt
+
+Top
+
+Trenchcoat
+
+Tunic
+
+Vest
+
+ 
+
+Med venlig hilsen / Best Regards
+
+ 
+
+Thomas Siggaard
+
+RPA Developer
+
+
+
+NYGADE 111, DK-7430 IKAST
+
+Office: +45 7026 1115
+
+Email: thomas@redefinedfashion.dk
+
+
+
+ 
+
+From: Kasper Moeslund <kasper@redefinedfashion.dk>
+Sent: Wednesday, May 3, 2023 4:24 PM
+To: Thomas Siggaard <thomas@redefinedfashion.dk>; Julie Møller Jakobsen <julie@redefinedfashion.dk>
+Cc: Benjamin Møller Jensen <bmj@redefinedfashion.dk>
+Subject: SV: Keywords til 23 Summer
+
+ 
+
+Hej Thomas
+
+ 
+
+Tror der er for mange irrelevante ord med.
+
+Thomas fra WM må kunne lave en mere specifik keyword liste til dig pr type.
+
+ 
+
+ 
+
+ 
+
+Med venlig hilsen / Best Regards
+
+ 
+
+Kasper R. Moeslund
+
+CFO
+
+
+
+Showroom/head office : Nygade 111
+
+Warehouse : Nygade 109A
+
+DK- 7430 Ikast
+
+Tel. +45 7026 1115
+
+Mobile +45 6167 4241
+www.redefined-fashion.com
+
+ 
+
+   
+
+ 
+
+Fra: Thomas Siggaard <thomas@redefinedfashion.dk>
+Sendt: 3. maj 2023 16:12
+Til: Julie Møller Jakobsen <julie@redefinedfashion.dk>; Kasper Moeslund <kasper@redefinedfashion.dk>
+Cc: Benjamin Møller Jensen <bmj@redefinedfashion.dk>
+Emne: RE: Keywords til 23 Summer
+
+ 
+
+Hej Julle og Kasper,
+
+ 
+
+Jeg sidder lige og kigger lidt i H10. Er gået ind på tools -> Magnet og har skrevet Dress.
+
+Så får jeg ~9k keywords…
+
+Af dem kan jeg så få denne oversigt:
+
+
+
+Skal vi ikke prøve at bruge disse til at generere start data til CGPT. Vi kan måske lave lidt prompt engineering til at fjerne irrelevante ord som ”dressing”.
+
+Er der et andet sted eller en anden start prompt som I hellere vil have jeg henter data fra?
+
+ 
+
+Med venlig hilsen / Best Regards
+
+ 
+
+Thomas Siggaard
+
+RPA Developer
+
+
+
+NYGADE 111, DK-7430 IKAST
+
+Office: +45 7026 1115
+
+Email: thomas@redefinedfashion.dk
+
+
+
+ 
+
+From: Julie Møller Jakobsen <julie@redefinedfashion.dk>
+Sent: Tuesday, April 18, 2023 3:02 PM
+To: Thomas Siggaard <thomas@redefinedfashion.dk>
+Cc: bemoje@bemoje.net
+Subject: VS: Keywords til 23 Summer
+
+ 
+
+Husk dette når i skal lave nye titler på 4/5 (alle brands).
+
+ 
+
+Med venlig hilsen / Best Regards
+
+ 
+
+Julie Møller Jakobsen
+
+Marketplace Specialist
+
+ 
+
+
+
+Office: Nygade 111, DK - 7430 Ikast
+
+Warehouse: Nygade 109A, DK - 7430 Ikast
+
+Tel. +45 7026 1115
+
+Mobile +45 2811 2805
+www.redefined-fashion.com
+
+ 
+
+Text
+
+Description automatically generated with medium confidence
+
+ 
+
+ 
+
+Fra: Thomas Alstrup <tal@wemarket.dk>
+Sendt: 14. april 2023 12:46
+Til: Julie Møller Jakobsen <julie@redefinedfashion.dk>
+Cc: Jens Vittrup <jv@wemarket.dk>; Frederik Hvas <fhv@wemarket.dk>; Thomas Siggaard <thomas@redefinedfashion.dk>
+Emne: Re: Keywords til 23 Summer
+
+ 
+
+Hej igen Julie
+
+ 
+
+Som lovet har jeg foretaget et par stikprøver.
+Jeg har fokuseret på kjoler og top/T-shirt på DE og UK. 
+
+ 
+
+Vedhæftet finder du et excel-ark med de umiddelbart vigtigste sommer-keywords. 
+
+Når jeg sammenligner med de keyword-lister, som vi tidligere har sendt jer, vil jeg vurdere, at I i grove træk sagtens kan tage de nuværende sæsonbetonede keywords og så sætte "Sommer"/"Summer" ind. 
+
+Jeg vil dog alligevel anbefale dig (eller Thomas) at gå igennem listerne med mine sommer-keywords og sikre, at en del af dem er repræsenteret i teksterne, efter I har indsat "Sommer" eller "Summer". 
+
+ 
+
+Måden, jeg har foretaget stikprøverne på, er ved at gøre følgende: 
+
+Åbn Magnet i Helium10
+Indtast fx "Kleid damen" eller "dresses for women" under "Find Suggestions" (uanset om du skriver "Kleid Damen", "Kleid für Damen", "Damen Kleid" eller en anden variant, så burde stort set de samme kw dukke op) 
+Filtrer ved under "Phrases Containing" at indtaste fx "Summer"
+ 
+
+I den helt ideelle verden burde man inden hver sæson lave nye SEO-optimeringer, men i forhold til gevinsten tror jeg ikke, det ville være ressourcerne værd. 
+
+Så vil jeg hellere anbefale at lave nogle små stikprøver, sådan som jeg har beskrevet ovenfor. 
+
+ 
+
+Jeg kan i øvrigt se, at de vigtigste forårs-keywords på DE typisk begynder at aftage i søgevolumen her omkring d. 15.-20. april, og at sommer-keywords på DE begynder at stige ret kraftigt lige omkring d. 1. maj. 
+
+ 
+
+Den ons. 12. apr. 2023 kl. 15.15 skrev Julie Møller Jakobsen <julie@redefinedfashion.dk>:
+
+Hej Thomas,
+
+ 
+
+Tak for svar, det er noteret 😊
+
+ 
+
+Du må gerne tag stikprøver på kjoler og top/T-shirt.
+
+ 
+
+Tak.
+
+ 
+
+Med venlig hilsen / Best Regards
+
+ 
+
+Julie Møller Jakobsen
+
+Marketplace Specialist
+
+ 
+
+
+
+Office: Nygade 111, DK - 7430 Ikast
+
+Warehouse: Nygade 109A, DK - 7430 Ikast
+
+Tel. +45 7026 1115
+
+Mobile +45 2811 2805
+www.redefined-fashion.com
+
+ 
+
+Text
+
+Description automatically generated with medium confidence
+
+ 
+
+ 
+
+Fra: Thomas Alstrup <tal@wemarket.dk>
+Sendt: 12. april 2023 14:58
+Til: Jens Vittrup <jv@wemarket.dk>
+Cc: Julie Møller Jakobsen <julie@redefinedfashion.dk>; Frederik Hvas <fhv@wemarket.dk>; Thomas Siggaard <thomas@redefinedfashion.dk>
+Emne: Re: Keywords til 23 Summer
+
+ 
+
+Hej Julie
+
+Beklager det lidt sene svar. 
+
+ 
+
+Som Jens skriver, så bare send den slags spørgsmål til mig fremadrettet. :)
+
+ 
+
+Jeg er overbevist om, at I kan genbruge keyword-listerne og så blot opdatere de søgeord, der indeholder årstidsangivelse med den aktuelle årstid (dvs. "Sommer" i dette tilfælde).
+Jeg ville i hvert fald være overrasket, hvis søgemønstrene i forhold til jeres produkter ikke er næsten identiske uanset årstid, og at eneste nævneværdige forskel vil være navnet på den aktuelle årstid. 
+
+ 
+
+Men for at være helt sikker vil jeg gerne lave et par stikprøver. 
+
+Hvilke 2-3 produktkategorier er jeres vigtigste i forhold til omsætning henover sommeren? For så skal jeg som nævnt nok lige lave et par stikprøver på disse og sende resultatet til dig inden ugens udgang. 
+
+ 
+
+ 
+
+ 
+
+Den ons. 12. apr. 2023 kl. 14.48 skrev Jens Vittrup <jv@wemarket.dk>:
+
+Hej Julie 
+
+ 
+
+Yes - Frederik eller Thomas sender dig lige et svar :) 
+
+Du må meget gerne sende sådan spørgsmål direkte til Thomas, han er meget hurtigere end mig 
+
+
+
+Bedste hilsner / Best regards
+
+Jens Vittrup Thomsen
+Partner & Director of Marketplaces
+
+Billede fjernet af afsender.
+Billede fjernet af afsender.
+★★★★★ - Trustpilot
+★★★★★ - Facebook
+★★★★★ - Google
+42 47 73 53
+jv@wemarket.dk
+www.wemarket.dk
+
+Billede fjernet af afsender. Billede fjernet af afsender.
+
+ 
+
+ 
+
+Den ons. 12. apr. 2023 kl. 14.41 skrev Julie Møller Jakobsen <julie@redefinedfashion.dk>:
+
+Hej Jens,
+
+ 
+
+Har du set min mail?
+
+ 
+
+Med venlig hilsen / Best Regards
+
+ 
+
+Julie Møller Jakobsen
+
+Marketplace Specialist
+
+ 
+
+
+
+Office: Nygade 111, DK - 7430 Ikast
+
+Warehouse: Nygade 109A, DK - 7430 Ikast
+
+Tel. +45 7026 1115
+
+Mobile +45 2811 2805
+www.redefined-fashion.com
+
+ 
+
+Text
+
+Description automatically generated with medium confidence
+
+ 
+
+ 
+
+Fra: Julie Møller Jakobsen
+Sendt: 5. april 2023 13:54
+Til: Jens Vittrup <jv@wemarket.dk>
+Cc: Frederik Hvas <fhv@wemarket.dk>; Thomas Siggaard <thomas@redefinedfashion.dk>; tal@wemarket.dk
+Emne: Keywords til 23 Summer
+
+ 
+
+Hej Jens,
+
+ 
+
+Vi skal til at opdatere vores titler, bullets og keywords på alle vores 23 Summer styles – skal vi have nye keyword lister eller kan vi bruge dem i sendte på Spring?
+
+ 
+
+Med venlig hilsen / Best Regards
+
+ 
+
+Julie Møller Jakobsen
+
+Marketplace Specialist
+
+ 
+
+
+
+Office: Nygade 111, DK - 7430 Ikast
+
+Warehouse: Nygade 109A, DK - 7430 Ikast
+
+Tel. +45 7026 1115
+
+Mobile +45 2811 2805
+www.redefined-fashion.com
+
+ 
+
+Text
+
+Description automatically generated with medium confidence
+
+ 
+
+ 
+
+
+
+ 
+
+--
+
+
+
+Bedste hilsner / Best regards / Mit freundlichen Grüßen
+
+Thomas Alstrup
+Amazon Specialist
+
+Billede fjernet af afsender.
+Billede fjernet af afsender.
+★★★★★ - Trustpilot
+★★★★★ - Facebook
+★★★★★ - Google
+71 99 34 74
+tal@wemarket.dk
+www.wemarket.dk
+
+Billede fjernet af afsender. Billede fjernet af afsender.
+
+
+
+ 
+
+--
+
+
+
+Bedste hilsner / Best regards / Mit freundlichen Grüßen
+
+Thomas Alstrup
+Amazon Specialist
+
+Billede fjernet af afsender.
+Billede fjernet af afsender.
+★★★★★ - Trustpilot
+★★★★★ - Facebook
+★★★★★ - Google
+71 99 34 74
+tal@wemarket.dk
+www.wemarket.dk
+
+Billede fjernet af afsender. Billede fjernet af afsender.
+
+
+
+ 
+
+--
+
+
+
+Bedste hilsner / Best regards / Mit freundlichen Grüßen
+
+Thomas Alstrup
+Amazon Specialist
+
+
+
+★★★★★ - Trustpilot
+★★★★★ - Facebook
+★★★★★ - Google
+71 99 34 74
+tal@wemarket.dk
+www.wemarket.dk
+
+ 
+
+
+
+ 
+
+--
+
+
+
+Bedste hilsner / Best regards / Mit freundlichen Grüßen
+
+Thomas Alstrup
+Amazon Specialist
+
+
+
+★★★★★ - Trustpilot
+★★★★★ - Facebook
+★★★★★ - Google
+71 99 34 74
+tal@wemarket.dk
+www.wemarket.dk
+
+ 
+
+
+
+--
+
+
+Bedste hilsner / Best regards / Mit freundlichen Grüßen
+
+Thomas Alstrup
+Amazon Specialist
+
+
+
+★★★★★ - Trustpilot
+★★★★★ - Facebook
+★★★★★ - Google
+71 99 34 74
+tal@wemarket.dk
+www.wemarket.dk
+
+ 

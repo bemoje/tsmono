@@ -1,6 +1,6 @@
 export interface IConfigSetting {
   description: string
-  default: string
+  default: any
   required: boolean
-  parse: (string: string) => string
+  parse: (string: string) => any
 }

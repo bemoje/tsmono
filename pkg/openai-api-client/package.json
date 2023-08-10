@@ -1,0 +1,78 @@
+{
+  "name": "@bemoje/openai-api-client",
+  "version": "0.0.3",
+  "description": "API client for openai with various built-in functionality, such as caching, auto-retry, etc.",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/types/index.d.ts",
+  "scripts": {
+    "lint": "eslint \"*/**/*.{ts,js,json}\" --fix",
+    "test": "jest --preset ts-jest",
+    "rollup": "rollup --config ./rollup.config.js --bundleConfigAsCjs",
+    "build": "npm run lint && rimraf dist && npm run rollup",
+    "docsmd": "rimraf docs/md && typedoc --out docs/md src/index.ts --readme none --plugin typedoc-plugin-markdown --theme markdown --entryDocument index.md --publicPath /docs/md/ && typedoc --out docs/html --entryPoints src/index.ts",
+    "docshtml": "rimraf docs/html && typedoc --out docs/html --entryPoints src/index.ts",
+    "docs": "rimraf docs && npm run docsmd && npm run docshtml",
+    "viewdocs": "start docs/html/index.html",
+    "prepub": "npm run build && npm run test && npm run docs"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.3",
+    "@rollup/plugin-node-resolve": "^15.1.0",
+    "@types/async-retry": "^1.4.5",
+    "@types/cli-color": "^2.0.2",
+    "@types/commander": "^2.12.2",
+    "@types/eslint-plugin-prettier": "^3.1.0",
+    "@types/jest": "^29.5.3",
+    "@types/mkdirp": "^2.0.0",
+    "@types/node": "^20.4.8",
+    "@types/pdf-parse": "^1.1.1",
+    "@types/rimraf": "^4.0.5",
+    "@types/rollup": "^0.54.0",
+    "@typescript-eslint/eslint-plugin": "^6.3.0",
+    "@typescript-eslint/parser": "^6.3.0",
+    "camel-case": "^4.1.2",
+    "eslint": "^8.46.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "jest": "^29.6.2",
+    "jest-environment-node": "^29.6.2",
+    "prettier": "^3.0.1",
+    "rimraf": "^5.0.1",
+    "rollup": "^3.27.2",
+    "rollup-plugin-babel-minify": "^10.0.0",
+    "rollup-plugin-typescript2": "^0.35.0",
+    "ts-jest": "^29.1.1",
+    "ts-node": "^10.9.1",
+    "tslib": "^2.6.1",
+    "typedoc-plugin-markdown": "^3.15.4",
+    "typescript": "^5.1.6"
+  },
+  "author": {
+    "name": "Benjamin Møller Jensen",
+    "email": "bemoje@bemoje.net",
+    "url": "https://github.com/bemoje/"
+  },
+  "license": "MIT",
+  "keywords": [],
+  "dependencies": {
+    "@bemoje/api-util": "latest",
+    "@bemoje/node-util": "latest",
+    "async-retry": "^1.3.3",
+    "cli-color": "^2.0.3",
+    "gpt-3-encoder": "^1.1.4",
+    "openai": "^3.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bemoje/tsmono.git"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/user?u=40752770"
+  },
+  "bugs": {
+    "url": "https://github.com/bemoje/tsmono/issues"
+  },
+  "homepage": "https://github.com/bemoje/tsmono"
+}

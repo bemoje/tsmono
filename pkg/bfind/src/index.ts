@@ -1,0 +1,137 @@
+import { Config, parseBoolean, parseDirectories, parseInteger } from '@bemoje/commander-config'
+import { getDiskDrivesWindows, getRootDir, isWindows } from '@bemoje/node-util'
+import { TrieMap } from '@bemoje/trie-map'
+import { green, red, yellow } from 'cli-color'
+import { Command } from 'commander'
+import fs from 'fs'
+import path from 'path'
+import { FILE_LIST_JSON_PATH } from './constants/FILE_LIST_JSON_PATH'
+import { WORD_TRIE_JSON_PATH } from './constants/WORD_TRIE_JSON_PATH'
+import { buildIndex } from './core/buildIndex'
+import { printSearchResult } from './core/printSearchResult'
+import { search } from './core/search'
+import { wipeIndex } from './core/wipeIndex'
+// import { parseBoolean } from './core/parseBoolean'
+// import { parseDirectories } from './core/parseDirectories'
+// import { parseInteger } from './core/parseInteger'
+
+export const config = new Config('bemoje', 'bfind', {
+  'print-scan-errors': {
+    description: [
+      'Whether to print errors when scans of files or directories fail.',
+      'Reasons could be permission denied or other errors.',
+    ].join(' '),
+    default: true,
+    required: false,
+    parse: parseBoolean,
+  },
+  'print-scan-ignored': {
+    description: [
+      'Whether to print when files or directories are skipped during scan.',
+      'This is controlled by the user settings for what to ignore/skip.',
+    ].join(' '),
+    default: true,
+    required: false,
+    parse: parseBoolean,
+  },
+  'max-results': {
+    description: ['The maximum number of search results to display.'].join(' '),
+    default: 35,
+    required: true,
+    parse: parseInteger,
+  },
+  'rootdirs': {
+    description: [
+      'The root directories which should be indexed for search.',
+      'Use semicolon as separator for multiple directories.',
+    ].join(' '),
+    default: isWindows() ? getDiskDrivesWindows() : [getRootDir()],
+    required: true,
+    parse: (string: string) => {
+      const res = parseDirectories(string)
+      wipeIndex()
+      return res
+    },
+  },
+  'ignore': {
+    description:
+      'Directories to ignore/skip when scanning (regex mode). Use semicolon as separator for multiple expressions.',
+    default: [
+      '^\\w:\\/\\$recycle\\.bin',
+      '^\\w:\\/windows',
+      '^\\w:\\/Program Files',
+      '^\\w:\\/ProgramData',
+      '^\\w:\\/Documents and Settings',
+      '^\\w:\\/System Volume Information',
+      '^\\w:\\/Recovery',
+      '^\\w:\\/Users\\/All Users',
+      '^\\w:\\/Users\\/Public',
+      '^\\w:\\/Users\\/Default( User)?',
+      '^\\w:\\/Users\\/\\w+\\/Documents\\/My',
+      '\\/node_modules$',
+      '\\/AppData$',
+      '\\/Application Data$',
+      '\\/\\.',
+    ],
+    required: true,
+    parse: (string: string): string[] => {
+      const arr = string.split(';').map((d) => d.trim())
+      wipeIndex()
+      return arr
+    },
+  },
+})
+
+export const program = new Command()
+  .name('bfind')
+  .description(
+    [
+      'Very fast file search. File contents are not indexed - only file and directory names.',
+      'Directories are highlighted in blue in search results.',
+      'Search results are sorted by last modified date.',
+      'Regex ignore patterns are configurable in CLI or the JSON config file.',
+      'Each argument is a search term. If multiple terms are provided, ' +
+        'they all must be present in the filepath to be considered a search hit.',
+    ].join(' '),
+  )
+  .version('0.1.0')
+  .argument(
+    '[search...]',
+    'Each argument is a search term. If multiple terms are provided, ' +
+      'they all must be present in the filepath to be considered a search hit.',
+  )
+  .option('-s, --scan', 'Scan disk again and refresh the index.')
+  .option('-a, --all', 'Force print all search results.')
+  .action(async (args: string[], options = {}) => {
+    process.on('uncaughtException', (error: any) => {
+      if (config.settings['print-scan-errors']) console.error(error.message)
+    })
+    config.assertNoMissingRequired()
+    const keywords = args.join(' ').trim()
+
+    const indexExists = fs.existsSync(WORD_TRIE_JSON_PATH) && fs.existsSync(FILE_LIST_JSON_PATH)
+    if (!indexExists || options.scan) await buildIndex()
+    if (!options.scan && !keywords.length) return console.log('No search terms provided.')
+
+    const PATHS: string[] = JSON.parse(await fs.promises.readFile(FILE_LIST_JSON_PATH, 'utf8'))
+    const TRIE: TrieMap<Set<number>> = TrieMap.fromJSON(await fs.promises.readFile(WORD_TRIE_JSON_PATH, 'utf8'))
+
+    const indexAge = Math.floor((Date.now() - fs.statSync(FILE_LIST_JSON_PATH).mtimeMs) / 1000 / 60 / 60 / 24)
+    const color = indexAge > 7 ? red : indexAge > 3 ? yellow : green
+    console.log(`Index is ${color(indexAge)} days old.`)
+
+    const t1 = Date.now()
+    const searchResult = search(keywords, PATHS, TRIE)
+    const executionTime = Date.now() - t1 + ' ms'
+    await printSearchResult(searchResult, keywords, options.all)
+    console.log('Search time: ' + executionTime + '\n')
+  })
+
+config.initialize(program)
+
+program
+  .command('config-json')
+  .description('Print the filepath to where the config file is (JSON)')
+  .action(() => console.log(path.join(config.appdataDirectory, 'config.json')))
+
+program.parse()
