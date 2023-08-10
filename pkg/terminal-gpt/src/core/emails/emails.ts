@@ -1,4 +1,4 @@
-import { strWrapIn } from '@bemoje/node-util'
+import { strWrapIn } from '@bemoje/string'
 import {
   blackBright,
   blueBright,

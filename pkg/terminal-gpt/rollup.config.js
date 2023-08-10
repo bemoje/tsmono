@@ -1,7 +1,6 @@
 import { strUnwrap, tsExtractImports } from '@bemoje/node-util'
 import commonjs from '@rollup/plugin-commonjs'
 import json from '@rollup/plugin-json'
-import resolve from '@rollup/plugin-node-resolve'
 import { camelCase } from 'camel-case'
 import fs from 'fs'
 import path from 'path'
@@ -112,7 +111,7 @@ export default {
   external,
   output,
   plugins: [
-    resolve(),
+    // resolve(),
     commonjs(),
     json(),
     typescript2({

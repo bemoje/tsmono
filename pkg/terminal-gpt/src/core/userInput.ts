@@ -1,5 +1,5 @@
 import { getUserInputFromEditor } from '@bemoje/commander-config'
-import { strWrapIn } from '@bemoje/node-util'
+import { strWrapIn } from '@bemoje/string'
 import { config } from '../config'
 
 export async function userInput(
