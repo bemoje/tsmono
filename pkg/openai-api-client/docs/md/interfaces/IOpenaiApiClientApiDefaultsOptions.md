@@ -1,4 +1,4 @@
-[@bemoje/openai-api-client](/docs/md/index.md) / IOpenaiApiClientApiDefaultsOptions
+[@bemoje/openai-api-client](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/index.md) / IOpenaiApiClientApiDefaultsOptions
 
 # Interface: IOpenaiApiClientApiDefaultsOptions
 
@@ -6,11 +6,11 @@
 
 ### Properties
 
-- [chat3\_16Model](/docs/md/interfaces/IOpenaiApiClientApiDefaultsOptions.md#chat3_16model)
-- [chat3\_8Model](/docs/md/interfaces/IOpenaiApiClientApiDefaultsOptions.md#chat3_8model)
-- [chat4\_8Model](/docs/md/interfaces/IOpenaiApiClientApiDefaultsOptions.md#chat4_8model)
-- [choicesDelimiter](/docs/md/interfaces/IOpenaiApiClientApiDefaultsOptions.md#choicesdelimiter)
-- [completionModel](/docs/md/interfaces/IOpenaiApiClientApiDefaultsOptions.md#completionmodel)
+- [chat3\_16Model](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiApiClientApiDefaultsOptions.md#chat3_16model)
+- [chat3\_8Model](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiApiClientApiDefaultsOptions.md#chat3_8model)
+- [chat4\_8Model](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiApiClientApiDefaultsOptions.md#chat4_8model)
+- [choicesDelimiter](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiApiClientApiDefaultsOptions.md#choicesdelimiter)
+- [completionModel](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiApiClientApiDefaultsOptions.md#completionmodel)
 
 ## Properties
 

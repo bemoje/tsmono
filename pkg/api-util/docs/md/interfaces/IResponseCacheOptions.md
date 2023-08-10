@@ -1,4 +1,4 @@
-[@bemoje/api-util](/docs/md/index.md) / IResponseCacheOptions
+[@bemoje/api-util](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/index.md) / IResponseCacheOptions
 
 # Interface: IResponseCacheOptions
 
@@ -6,7 +6,7 @@
 
 ### Properties
 
-- [overwrite](/docs/md/interfaces/IResponseCacheOptions.md#overwrite)
+- [overwrite](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IResponseCacheOptions.md#overwrite)
 
 ## Properties
 

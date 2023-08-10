@@ -1,4 +1,4 @@
-[@bemoje/fswalk](/docs/md/index.md) / IWalkDirectoryOptions
+[@bemoje/fswalk](https://github.com/bemoje/tsmono/blob/main/pkg/fswalk/docs/md/index.md) / IWalkDirectoryOptions
 
 # Interface: IWalkDirectoryOptions
 
@@ -12,15 +12,15 @@
 
 ### Properties
 
-- [filter](/docs/md/interfaces/IWalkDirectoryOptions.md#filter)
-- [find\_links](/docs/md/interfaces/IWalkDirectoryOptions.md#find_links)
-- [follow\_symlinks](/docs/md/interfaces/IWalkDirectoryOptions.md#follow_symlinks)
-- [fs](/docs/md/interfaces/IWalkDirectoryOptions.md#fs)
-- [max\_depth](/docs/md/interfaces/IWalkDirectoryOptions.md#max_depth)
-- [no\_recurse](/docs/md/interfaces/IWalkDirectoryOptions.md#no_recurse)
-- [return\_object](/docs/md/interfaces/IWalkDirectoryOptions.md#return_object)
-- [sync](/docs/md/interfaces/IWalkDirectoryOptions.md#sync)
-- [track\_inodes](/docs/md/interfaces/IWalkDirectoryOptions.md#track_inodes)
+- [filter](https://github.com/bemoje/tsmono/blob/main/pkg/fswalk/docs/md/interfaces/IWalkDirectoryOptions.md#filter)
+- [find\_links](https://github.com/bemoje/tsmono/blob/main/pkg/fswalk/docs/md/interfaces/IWalkDirectoryOptions.md#find_links)
+- [follow\_symlinks](https://github.com/bemoje/tsmono/blob/main/pkg/fswalk/docs/md/interfaces/IWalkDirectoryOptions.md#follow_symlinks)
+- [fs](https://github.com/bemoje/tsmono/blob/main/pkg/fswalk/docs/md/interfaces/IWalkDirectoryOptions.md#fs)
+- [max\_depth](https://github.com/bemoje/tsmono/blob/main/pkg/fswalk/docs/md/interfaces/IWalkDirectoryOptions.md#max_depth)
+- [no\_recurse](https://github.com/bemoje/tsmono/blob/main/pkg/fswalk/docs/md/interfaces/IWalkDirectoryOptions.md#no_recurse)
+- [return\_object](https://github.com/bemoje/tsmono/blob/main/pkg/fswalk/docs/md/interfaces/IWalkDirectoryOptions.md#return_object)
+- [sync](https://github.com/bemoje/tsmono/blob/main/pkg/fswalk/docs/md/interfaces/IWalkDirectoryOptions.md#sync)
+- [track\_inodes](https://github.com/bemoje/tsmono/blob/main/pkg/fswalk/docs/md/interfaces/IWalkDirectoryOptions.md#track_inodes)
 
 ## Properties
 

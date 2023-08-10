@@ -1,4 +1,4 @@
-[@bemoje/openai-api-client](/docs/md/index.md) / OpenaiApiClientExtended
+[@bemoje/openai-api-client](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/index.md) / OpenaiApiClientExtended
 
 # Class: OpenaiApiClientExtended
 
@@ -6,7 +6,7 @@ A class representing an OpenAI API client but with already prompt-egineered util
 
 ## Hierarchy
 
-- [`OpenaiApiClient`](/docs/md/classes/OpenaiApiClient.md)
+- [`OpenaiApiClient`](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md)
 
   ↳ **`OpenaiApiClientExtended`**
 
@@ -14,53 +14,53 @@ A class representing an OpenAI API client but with already prompt-egineered util
 
 ### Constructors
 
-- [constructor](/docs/md/classes/OpenaiApiClientExtended.md#constructor)
+- [constructor](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClientExtended.md#constructor)
 
 ### Properties
 
-- [apiDefaults](/docs/md/classes/OpenaiApiClientExtended.md#apidefaults)
-- [cache](/docs/md/classes/OpenaiApiClientExtended.md#cache)
-- [cacheDefaults](/docs/md/classes/OpenaiApiClientExtended.md#cachedefaults)
-- [client](/docs/md/classes/OpenaiApiClientExtended.md#client)
-- [concurrencyJustReduced](/docs/md/classes/OpenaiApiClientExtended.md#concurrencyjustreduced)
-- [events](/docs/md/classes/OpenaiApiClientExtended.md#events)
-- [queue](/docs/md/classes/OpenaiApiClientExtended.md#queue)
-- [retryDefaults](/docs/md/classes/OpenaiApiClientExtended.md#retrydefaults)
-- [sendRequest](/docs/md/classes/OpenaiApiClientExtended.md#sendrequest)
-- [concurrencyDefaults](/docs/md/classes/OpenaiApiClientExtended.md#concurrencydefaults)
+- [apiDefaults](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClientExtended.md#apidefaults)
+- [cache](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClientExtended.md#cache)
+- [cacheDefaults](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClientExtended.md#cachedefaults)
+- [client](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClientExtended.md#client)
+- [concurrencyJustReduced](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClientExtended.md#concurrencyjustreduced)
+- [events](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClientExtended.md#events)
+- [queue](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClientExtended.md#queue)
+- [retryDefaults](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClientExtended.md#retrydefaults)
+- [sendRequest](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClientExtended.md#sendrequest)
+- [concurrencyDefaults](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClientExtended.md#concurrencydefaults)
 
 ### Accessors
 
-- [eventNames](/docs/md/classes/OpenaiApiClientExtended.md#eventnames)
+- [eventNames](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClientExtended.md#eventnames)
 
 ### Methods
 
-- [\_chat](/docs/md/classes/OpenaiApiClientExtended.md#_chat)
-- [\_completion](/docs/md/classes/OpenaiApiClientExtended.md#_completion)
-- [\_transcribe](/docs/md/classes/OpenaiApiClientExtended.md#_transcribe)
-- [assertReponseDataComplete](/docs/md/classes/OpenaiApiClientExtended.md#assertreponsedatacomplete)
-- [completion](/docs/md/classes/OpenaiApiClientExtended.md#completion)
-- [countTokens](/docs/md/classes/OpenaiApiClientExtended.md#counttokens)
-- [deleteDefaultOrUndefinedOptions](/docs/md/classes/OpenaiApiClientExtended.md#deletedefaultorundefinedoptions)
-- [emit](/docs/md/classes/OpenaiApiClientExtended.md#emit)
-- [gpt3\_16k](/docs/md/classes/OpenaiApiClientExtended.md#gpt3_16k)
-- [gpt3\_8k](/docs/md/classes/OpenaiApiClientExtended.md#gpt3_8k)
-- [gpt4\_8k](/docs/md/classes/OpenaiApiClientExtended.md#gpt4_8k)
-- [handleApiError](/docs/md/classes/OpenaiApiClientExtended.md#handleapierror)
-- [handleCacheOptions](/docs/md/classes/OpenaiApiClientExtended.md#handlecacheoptions)
-- [handleChatOptions](/docs/md/classes/OpenaiApiClientExtended.md#handlechatoptions)
-- [handleCompletionOptions](/docs/md/classes/OpenaiApiClientExtended.md#handlecompletionoptions)
-- [handleOptions](/docs/md/classes/OpenaiApiClientExtended.md#handleoptions)
-- [handleRetryOptions](/docs/md/classes/OpenaiApiClientExtended.md#handleretryoptions)
-- [handleTranscribeOptions](/docs/md/classes/OpenaiApiClientExtended.md#handletranscribeoptions)
-- [lowerConcurrency](/docs/md/classes/OpenaiApiClientExtended.md#lowerconcurrency)
-- [parseChoices](/docs/md/classes/OpenaiApiClientExtended.md#parsechoices)
-- [proofread](/docs/md/classes/OpenaiApiClientExtended.md#proofread)
-- [proofreadEnglish](/docs/md/classes/OpenaiApiClientExtended.md#proofreadenglish)
-- [stringTokens](/docs/md/classes/OpenaiApiClientExtended.md#stringtokens)
-- [transcribe](/docs/md/classes/OpenaiApiClientExtended.md#transcribe)
-- [translateEnglishTo](/docs/md/classes/OpenaiApiClientExtended.md#translateenglishto)
-- [translateFromTo](/docs/md/classes/OpenaiApiClientExtended.md#translatefromto)
+- [\_chat](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClientExtended.md#_chat)
+- [\_completion](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClientExtended.md#_completion)
+- [\_transcribe](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClientExtended.md#_transcribe)
+- [assertReponseDataComplete](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClientExtended.md#assertreponsedatacomplete)
+- [completion](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClientExtended.md#completion)
+- [countTokens](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClientExtended.md#counttokens)
+- [deleteDefaultOrUndefinedOptions](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClientExtended.md#deletedefaultorundefinedoptions)
+- [emit](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClientExtended.md#emit)
+- [gpt3\_16k](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClientExtended.md#gpt3_16k)
+- [gpt3\_8k](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClientExtended.md#gpt3_8k)
+- [gpt4\_8k](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClientExtended.md#gpt4_8k)
+- [handleApiError](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClientExtended.md#handleapierror)
+- [handleCacheOptions](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClientExtended.md#handlecacheoptions)
+- [handleChatOptions](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClientExtended.md#handlechatoptions)
+- [handleCompletionOptions](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClientExtended.md#handlecompletionoptions)
+- [handleOptions](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClientExtended.md#handleoptions)
+- [handleRetryOptions](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClientExtended.md#handleretryoptions)
+- [handleTranscribeOptions](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClientExtended.md#handletranscribeoptions)
+- [lowerConcurrency](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClientExtended.md#lowerconcurrency)
+- [parseChoices](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClientExtended.md#parsechoices)
+- [proofread](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClientExtended.md#proofread)
+- [proofreadEnglish](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClientExtended.md#proofreadenglish)
+- [stringTokens](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClientExtended.md#stringtokens)
+- [transcribe](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClientExtended.md#transcribe)
+- [translateEnglishTo](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClientExtended.md#translateenglishto)
+- [translateFromTo](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClientExtended.md#translatefromto)
 
 ## Constructors
 
@@ -74,7 +74,7 @@ Create a new OpenAiApiClient instance.
 
 | Name | Type |
 | :------ | :------ |
-| `options` | [`IOpenaiApiClientOptions`](/docs/md/interfaces/IOpenaiApiClientOptions.md) |
+| `options` | [`IOpenaiApiClientOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiApiClientOptions.md) |
 
 **`Example`**
 
@@ -84,7 +84,7 @@ const openai = new OpenaiAPIClient({ apiKey: "API_KEY" })
 
 #### Overrides
 
-[OpenaiApiClient](/docs/md/classes/OpenaiApiClient.md).[constructor](/docs/md/classes/OpenaiApiClient.md#constructor)
+[OpenaiApiClient](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md).[constructor](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md#constructor)
 
 #### Defined in
 
@@ -94,13 +94,13 @@ pkg/openai-api-client/src/lib/OpenaiApiClientExtended.ts:16
 
 ### apiDefaults
 
-• `Readonly` **apiDefaults**: [`IOpenaiApiClientApiDefaultsOptions`](/docs/md/interfaces/IOpenaiApiClientApiDefaultsOptions.md)
+• `Readonly` **apiDefaults**: [`IOpenaiApiClientApiDefaultsOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiApiClientApiDefaultsOptions.md)
 
 Defaults for API requests. Can be overriden in individual method calls.
 
 #### Inherited from
 
-[OpenaiApiClient](/docs/md/classes/OpenaiApiClient.md).[apiDefaults](/docs/md/classes/OpenaiApiClient.md#apidefaults)
+[OpenaiApiClient](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md).[apiDefaults](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md#apidefaults)
 
 #### Defined in
 
@@ -116,7 +116,7 @@ API response cache
 
 #### Inherited from
 
-[OpenaiApiClient](/docs/md/classes/OpenaiApiClient.md).[cache](/docs/md/classes/OpenaiApiClient.md#cache)
+[OpenaiApiClient](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md).[cache](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md#cache)
 
 #### Defined in
 
@@ -133,7 +133,7 @@ Can be overriden in individual method calls.
 
 #### Inherited from
 
-[OpenaiApiClient](/docs/md/classes/OpenaiApiClient.md).[cacheDefaults](/docs/md/classes/OpenaiApiClient.md#cachedefaults)
+[OpenaiApiClient](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md).[cacheDefaults](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md#cachedefaults)
 
 #### Defined in
 
@@ -149,7 +149,7 @@ API client instance
 
 #### Inherited from
 
-[OpenaiApiClient](/docs/md/classes/OpenaiApiClient.md).[client](/docs/md/classes/OpenaiApiClient.md#client)
+[OpenaiApiClient](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md).[client](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md#client)
 
 #### Defined in
 
@@ -163,7 +163,7 @@ ___
 
 #### Inherited from
 
-[OpenaiApiClient](/docs/md/classes/OpenaiApiClient.md).[concurrencyJustReduced](/docs/md/classes/OpenaiApiClient.md#concurrencyjustreduced)
+[OpenaiApiClient](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md).[concurrencyJustReduced](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md#concurrencyjustreduced)
 
 #### Defined in
 
@@ -179,7 +179,7 @@ Event emitter for cache events
 
 #### Inherited from
 
-[OpenaiApiClient](/docs/md/classes/OpenaiApiClient.md).[events](/docs/md/classes/OpenaiApiClient.md#events)
+[OpenaiApiClient](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md).[events](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md#events)
 
 #### Defined in
 
@@ -195,7 +195,7 @@ Global queue for sending requests to the openai api.
 
 #### Inherited from
 
-[OpenaiApiClient](/docs/md/classes/OpenaiApiClient.md).[queue](/docs/md/classes/OpenaiApiClient.md#queue)
+[OpenaiApiClient](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md).[queue](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md#queue)
 
 #### Defined in
 
@@ -212,7 +212,7 @@ Can be overriden in individual method calls.
 
 #### Inherited from
 
-[OpenaiApiClient](/docs/md/classes/OpenaiApiClient.md).[retryDefaults](/docs/md/classes/OpenaiApiClient.md#retrydefaults)
+[OpenaiApiClient](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md).[retryDefaults](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md#retrydefaults)
 
 #### Defined in
 
@@ -255,7 +255,7 @@ This method is bound to the instance on initialization because it gets wrapped w
 
 #### Inherited from
 
-[OpenaiApiClient](/docs/md/classes/OpenaiApiClient.md).[sendRequest](/docs/md/classes/OpenaiApiClient.md#sendrequest)
+[OpenaiApiClient](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md).[sendRequest](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md#sendrequest)
 
 #### Defined in
 
@@ -271,7 +271,7 @@ Options for concurrency control. These affect all API requests.
 
 #### Inherited from
 
-[OpenaiApiClient](/docs/md/classes/OpenaiApiClient.md).[concurrencyDefaults](/docs/md/classes/OpenaiApiClient.md#concurrencydefaults)
+[OpenaiApiClient](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md).[concurrencyDefaults](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md#concurrencydefaults)
 
 #### Defined in
 
@@ -320,7 +320,7 @@ This is used by all the preset methods, the public methods: chat3_8, chat3_16, a
 
 #### Inherited from
 
-[OpenaiApiClient](/docs/md/classes/OpenaiApiClient.md).[_chat](/docs/md/classes/OpenaiApiClient.md#_chat)
+[OpenaiApiClient](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md).[_chat](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md#_chat)
 
 #### Defined in
 
@@ -349,7 +349,7 @@ This is used by all the preset methods, the public methods: completion.
 
 #### Inherited from
 
-[OpenaiApiClient](/docs/md/classes/OpenaiApiClient.md).[_completion](/docs/md/classes/OpenaiApiClient.md#_completion)
+[OpenaiApiClient](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md).[_completion](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md#_completion)
 
 #### Defined in
 
@@ -367,7 +367,7 @@ Send transcribe (speech to text) request to the openai API.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `request` | [`IOpenaiTranscribeRequest`](/docs/md/interfaces/IOpenaiTranscribeRequest.md) | The request object to send to the openai api. |
+| `request` | [`IOpenaiTranscribeRequest`](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiTranscribeRequest.md) | The request object to send to the openai api. |
 | `retry` | `Options` | The retry options. |
 | `cache` | `IResponseCacheOptions` | The cache options. |
 
@@ -377,7 +377,7 @@ Send transcribe (speech to text) request to the openai API.
 
 #### Inherited from
 
-[OpenaiApiClient](/docs/md/classes/OpenaiApiClient.md).[_transcribe](/docs/md/classes/OpenaiApiClient.md#_transcribe)
+[OpenaiApiClient](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md).[_transcribe](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md#_transcribe)
 
 #### Defined in
 
@@ -403,7 +403,7 @@ Assert that the response data is complete by verifying that all returned choices
 
 #### Inherited from
 
-[OpenaiApiClient](/docs/md/classes/OpenaiApiClient.md).[assertReponseDataComplete](/docs/md/classes/OpenaiApiClient.md#assertreponsedatacomplete)
+[OpenaiApiClient](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md).[assertReponseDataComplete](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md#assertreponsedatacomplete)
 
 #### Defined in
 
@@ -421,7 +421,7 @@ Send a completion request to the openai api.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `options` | [`IOpenaiCompletionRequestOptions`](/docs/md/interfaces/IOpenaiCompletionRequestOptions.md) | The options to use. |
+| `options` | [`IOpenaiCompletionRequestOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiCompletionRequestOptions.md) | The options to use. |
 
 #### Returns
 
@@ -429,7 +429,7 @@ Send a completion request to the openai api.
 
 #### Inherited from
 
-[OpenaiApiClient](/docs/md/classes/OpenaiApiClient.md).[completion](/docs/md/classes/OpenaiApiClient.md#completion)
+[OpenaiApiClient](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md).[completion](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md#completion)
 
 #### Defined in
 
@@ -455,7 +455,7 @@ Count the number of tokens in a string.
 
 #### Inherited from
 
-[OpenaiApiClient](/docs/md/classes/OpenaiApiClient.md).[countTokens](/docs/md/classes/OpenaiApiClient.md#counttokens)
+[OpenaiApiClient](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md).[countTokens](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md#counttokens)
 
 #### Defined in
 
@@ -490,7 +490,7 @@ Removing default values and undefined values normalizes the options object so it
 
 #### Inherited from
 
-[OpenaiApiClient](/docs/md/classes/OpenaiApiClient.md).[deleteDefaultOrUndefinedOptions](/docs/md/classes/OpenaiApiClient.md#deletedefaultorundefinedoptions)
+[OpenaiApiClient](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md).[deleteDefaultOrUndefinedOptions](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md#deletedefaultorundefinedoptions)
 
 #### Defined in
 
@@ -523,7 +523,7 @@ Emit an event but adds 'this' as an extra trailing argument.
 
 #### Inherited from
 
-[OpenaiApiClient](/docs/md/classes/OpenaiApiClient.md).[emit](/docs/md/classes/OpenaiApiClient.md#emit)
+[OpenaiApiClient](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md).[emit](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md#emit)
 
 #### Defined in
 
@@ -541,7 +541,7 @@ Send a chat completion request to the openai api with a max_tokens cap of 16384.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `options` | [`IOpenaiChatRequestOptions`](/docs/md/interfaces/IOpenaiChatRequestOptions.md) | The options to use. |
+| `options` | [`IOpenaiChatRequestOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiChatRequestOptions.md) | The options to use. |
 
 #### Returns
 
@@ -549,7 +549,7 @@ Send a chat completion request to the openai api with a max_tokens cap of 16384.
 
 #### Inherited from
 
-[OpenaiApiClient](/docs/md/classes/OpenaiApiClient.md).[gpt3_16k](/docs/md/classes/OpenaiApiClient.md#gpt3_16k)
+[OpenaiApiClient](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md).[gpt3_16k](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md#gpt3_16k)
 
 #### Defined in
 
@@ -567,7 +567,7 @@ Send a chat completion request to the openai api with a max_tokens cap of 4096.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `options` | [`IOpenaiChatRequestOptions`](/docs/md/interfaces/IOpenaiChatRequestOptions.md) | The options to use. |
+| `options` | [`IOpenaiChatRequestOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiChatRequestOptions.md) | The options to use. |
 
 #### Returns
 
@@ -575,7 +575,7 @@ Send a chat completion request to the openai api with a max_tokens cap of 4096.
 
 #### Inherited from
 
-[OpenaiApiClient](/docs/md/classes/OpenaiApiClient.md).[gpt3_8k](/docs/md/classes/OpenaiApiClient.md#gpt3_8k)
+[OpenaiApiClient](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md).[gpt3_8k](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md#gpt3_8k)
 
 #### Defined in
 
@@ -593,7 +593,7 @@ Send a gpt4 chat completion request to the openai api with a max_tokens cap of 8
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `options` | [`IOpenaiChatRequestOptions`](/docs/md/interfaces/IOpenaiChatRequestOptions.md) | The options to use. |
+| `options` | [`IOpenaiChatRequestOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiChatRequestOptions.md) | The options to use. |
 
 #### Returns
 
@@ -601,7 +601,7 @@ Send a gpt4 chat completion request to the openai api with a max_tokens cap of 8
 
 #### Inherited from
 
-[OpenaiApiClient](/docs/md/classes/OpenaiApiClient.md).[gpt4_8k](/docs/md/classes/OpenaiApiClient.md#gpt4_8k)
+[OpenaiApiClient](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md).[gpt4_8k](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md#gpt4_8k)
 
 #### Defined in
 
@@ -628,7 +628,7 @@ When the error is a rate limit error, lowers the concurrency.
 
 #### Inherited from
 
-[OpenaiApiClient](/docs/md/classes/OpenaiApiClient.md).[handleApiError](/docs/md/classes/OpenaiApiClient.md#handleapierror)
+[OpenaiApiClient](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md).[handleApiError](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md#handleapierror)
 
 #### Defined in
 
@@ -654,7 +654,7 @@ Handle cache options.
 
 #### Inherited from
 
-[OpenaiApiClient](/docs/md/classes/OpenaiApiClient.md).[handleCacheOptions](/docs/md/classes/OpenaiApiClient.md#handlecacheoptions)
+[OpenaiApiClient](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md).[handleCacheOptions](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md#handlecacheoptions)
 
 #### Defined in
 
@@ -672,7 +672,7 @@ Handle chat options.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `options` | [`IOpenaiChatRequestOptions`](/docs/md/interfaces/IOpenaiChatRequestOptions.md) | The options to handle. |
+| `options` | [`IOpenaiChatRequestOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiChatRequestOptions.md) | The options to handle. |
 
 #### Returns
 
@@ -680,7 +680,7 @@ Handle chat options.
 
 #### Inherited from
 
-[OpenaiApiClient](/docs/md/classes/OpenaiApiClient.md).[handleChatOptions](/docs/md/classes/OpenaiApiClient.md#handlechatoptions)
+[OpenaiApiClient](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md).[handleChatOptions](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md#handlechatoptions)
 
 #### Defined in
 
@@ -698,7 +698,7 @@ Handle completion options.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `options` | [`IOpenaiCompletionRequestOptions`](/docs/md/interfaces/IOpenaiCompletionRequestOptions.md) | The options to handle. |
+| `options` | [`IOpenaiCompletionRequestOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiCompletionRequestOptions.md) | The options to handle. |
 
 #### Returns
 
@@ -706,7 +706,7 @@ Handle completion options.
 
 #### Inherited from
 
-[OpenaiApiClient](/docs/md/classes/OpenaiApiClient.md).[handleCompletionOptions](/docs/md/classes/OpenaiApiClient.md#handlecompletionoptions)
+[OpenaiApiClient](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md).[handleCompletionOptions](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md#handlecompletionoptions)
 
 #### Defined in
 
@@ -732,7 +732,7 @@ Handle the options passed to the constructor.
 
 #### Inherited from
 
-[OpenaiApiClient](/docs/md/classes/OpenaiApiClient.md).[handleOptions](/docs/md/classes/OpenaiApiClient.md#handleoptions)
+[OpenaiApiClient](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md).[handleOptions](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md#handleoptions)
 
 #### Defined in
 
@@ -758,7 +758,7 @@ Handle retry options.
 
 #### Inherited from
 
-[OpenaiApiClient](/docs/md/classes/OpenaiApiClient.md).[handleRetryOptions](/docs/md/classes/OpenaiApiClient.md#handleretryoptions)
+[OpenaiApiClient](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md).[handleRetryOptions](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md#handleretryoptions)
 
 #### Defined in
 
@@ -768,7 +768,7 @@ ___
 
 ### handleTranscribeOptions
 
-▸ `Protected` **handleTranscribeOptions**(`options`): [[`IOpenaiTranscribeRequest`](/docs/md/interfaces/IOpenaiTranscribeRequest.md), `Options`, `IResponseCacheOptions`]
+▸ `Protected` **handleTranscribeOptions**(`options`): [[`IOpenaiTranscribeRequest`](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiTranscribeRequest.md), `Options`, `IResponseCacheOptions`]
 
 Handle transcribe options.
 
@@ -776,15 +776,15 @@ Handle transcribe options.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `options` | [`IOpenaiTranscribeOptions`](/docs/md/interfaces/IOpenaiTranscribeOptions.md) | The options to handle. |
+| `options` | [`IOpenaiTranscribeOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiTranscribeOptions.md) | The options to handle. |
 
 #### Returns
 
-[[`IOpenaiTranscribeRequest`](/docs/md/interfaces/IOpenaiTranscribeRequest.md), `Options`, `IResponseCacheOptions`]
+[[`IOpenaiTranscribeRequest`](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiTranscribeRequest.md), `Options`, `IResponseCacheOptions`]
 
 #### Inherited from
 
-[OpenaiApiClient](/docs/md/classes/OpenaiApiClient.md).[handleTranscribeOptions](/docs/md/classes/OpenaiApiClient.md#handletranscribeoptions)
+[OpenaiApiClient](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md).[handleTranscribeOptions](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md#handletranscribeoptions)
 
 #### Defined in
 
@@ -813,7 +813,7 @@ Automatically raises the concurrency again after a delay.
 
 #### Inherited from
 
-[OpenaiApiClient](/docs/md/classes/OpenaiApiClient.md).[lowerConcurrency](/docs/md/classes/OpenaiApiClient.md#lowerconcurrency)
+[OpenaiApiClient](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md).[lowerConcurrency](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md#lowerconcurrency)
 
 #### Defined in
 
@@ -839,7 +839,7 @@ Extract the actual concent from the 'choices' object from the response data.
 
 #### Inherited from
 
-[OpenaiApiClient](/docs/md/classes/OpenaiApiClient.md).[parseChoices](/docs/md/classes/OpenaiApiClient.md#parsechoices)
+[OpenaiApiClient](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md).[parseChoices](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md#parsechoices)
 
 #### Defined in
 
@@ -859,7 +859,7 @@ Proofread in a given language.
 | :------ | :------ | :------ |
 | `language` | `string` | The language of the input. |
 | `prompt` | `string` | The input string. |
-| `options` | [`IOpenaiChatRequestOptions`](/docs/md/interfaces/IOpenaiChatRequestOptions.md) | - |
+| `options` | [`IOpenaiChatRequestOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiChatRequestOptions.md) | - |
 
 #### Returns
 
@@ -889,7 +889,7 @@ Proofread in English.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `prompt` | `string` | The input string. |
-| `options` | [`IOpenaiChatRequestOptions`](/docs/md/interfaces/IOpenaiChatRequestOptions.md) | - |
+| `options` | [`IOpenaiChatRequestOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiChatRequestOptions.md) | - |
 
 #### Returns
 
@@ -926,7 +926,7 @@ Encode a string into tokens.
 
 #### Inherited from
 
-[OpenaiApiClient](/docs/md/classes/OpenaiApiClient.md).[stringTokens](/docs/md/classes/OpenaiApiClient.md#stringtokens)
+[OpenaiApiClient](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md).[stringTokens](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md#stringtokens)
 
 #### Defined in
 
@@ -944,7 +944,7 @@ Send a transcribe completion request to the openai api.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `options` | [`IOpenaiTranscribeOptions`](/docs/md/interfaces/IOpenaiTranscribeOptions.md) | The options to use. |
+| `options` | [`IOpenaiTranscribeOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiTranscribeOptions.md) | The options to use. |
 
 #### Returns
 
@@ -952,7 +952,7 @@ Send a transcribe completion request to the openai api.
 
 #### Inherited from
 
-[OpenaiApiClient](/docs/md/classes/OpenaiApiClient.md).[transcribe](/docs/md/classes/OpenaiApiClient.md#transcribe)
+[OpenaiApiClient](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md).[transcribe](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md#transcribe)
 
 #### Defined in
 
@@ -973,7 +973,7 @@ For short input text, use options.instruction to provide context.
 | :------ | :------ |
 | `language` | `string` |
 | `prompt` | `string` |
-| `options` | [`IOpenaiChatRequestOptions`](/docs/md/interfaces/IOpenaiChatRequestOptions.md) |
+| `options` | [`IOpenaiChatRequestOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiChatRequestOptions.md) |
 
 #### Returns
 
@@ -1005,7 +1005,7 @@ For short input text, use options.instruction to provide context.
 | `fromLanguage` | `string` | - |
 | `toLanguage` | `string` | - |
 | `prompt` | `string` | The text to translate. |
-| `options` | [`IOpenaiChatRequestOptions`](/docs/md/interfaces/IOpenaiChatRequestOptions.md) | - |
+| `options` | [`IOpenaiChatRequestOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiChatRequestOptions.md) | - |
 
 #### Returns
 

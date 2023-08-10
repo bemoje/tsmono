@@ -6,8 +6,8 @@
 
 ### Variables
 
-- [config](/docs/md/index.md#config)
-- [program](/docs/md/index.md#program)
+- [config](https://github.com/bemoje/tsmono/blob/main/pkg/terminal-gpt/docs/md/index.md#config)
+- [program](https://github.com/bemoje/tsmono/blob/main/pkg/terminal-gpt/docs/md/index.md#program)
 
 ## Variables
 

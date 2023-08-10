@@ -1,4 +1,4 @@
-[@bemoje/api-util](/docs/md/index.md) / IAbstractApiClientOptions
+[@bemoje/api-util](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/index.md) / IAbstractApiClientOptions
 
 # Interface: IAbstractApiClientOptions
 
@@ -12,16 +12,16 @@ AbstractApiClient
 
 ### Properties
 
-- [cache](/docs/md/interfaces/IAbstractApiClientOptions.md#cache)
-- [cacheDefaults](/docs/md/interfaces/IAbstractApiClientOptions.md#cachedefaults)
-- [concurrency](/docs/md/interfaces/IAbstractApiClientOptions.md#concurrency)
-- [retryDefaults](/docs/md/interfaces/IAbstractApiClientOptions.md#retrydefaults)
+- [cache](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IAbstractApiClientOptions.md#cache)
+- [cacheDefaults](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IAbstractApiClientOptions.md#cachedefaults)
+- [concurrency](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IAbstractApiClientOptions.md#concurrency)
+- [retryDefaults](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IAbstractApiClientOptions.md#retrydefaults)
 
 ## Properties
 
 ### cache
 
-• `Optional` **cache**: [`IApiResponseCacheOptions`](/docs/md/interfaces/IApiResponseCacheOptions.md)
+• `Optional` **cache**: [`IApiResponseCacheOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IApiResponseCacheOptions.md)
 
 Options for initialization the cache
 
@@ -33,7 +33,7 @@ ___
 
 ### cacheDefaults
 
-• `Optional` **cacheDefaults**: [`IResponseCacheOptions`](/docs/md/interfaces/IResponseCacheOptions.md)
+• `Optional` **cacheDefaults**: [`IResponseCacheOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IResponseCacheOptions.md)
 
 Defaults for API request cache behaviour. Can be overriden in individual method calls.
 
@@ -57,7 +57,7 @@ ___
 
 ### retryDefaults
 
-• `Optional` **retryDefaults**: [`IAsyncRetryOptions`](/docs/md/interfaces/IAsyncRetryOptions.md)
+• `Optional` **retryDefaults**: [`IAsyncRetryOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IAsyncRetryOptions.md)
 
 Defaults for API request retry behaviour. Can be overriden in individual method calls.
 

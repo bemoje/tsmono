@@ -1,4 +1,4 @@
-[@bemoje/log](/docs/md/index.md) / ILogEmitterEventsOptions
+[@bemoje/log](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/index.md) / ILogEmitterEventsOptions
 
 # Interface: ILogEmitterEventsOptions
 
@@ -6,11 +6,11 @@
 
 ### Properties
 
-- [debug](/docs/md/interfaces/ILogEmitterEventsOptions.md#debug)
-- [error](/docs/md/interfaces/ILogEmitterEventsOptions.md#error)
-- [eventNamePrefix](/docs/md/interfaces/ILogEmitterEventsOptions.md#eventnameprefix)
-- [info](/docs/md/interfaces/ILogEmitterEventsOptions.md#info)
-- [warn](/docs/md/interfaces/ILogEmitterEventsOptions.md#warn)
+- [debug](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/interfaces/ILogEmitterEventsOptions.md#debug)
+- [error](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/interfaces/ILogEmitterEventsOptions.md#error)
+- [eventNamePrefix](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/interfaces/ILogEmitterEventsOptions.md#eventnameprefix)
+- [info](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/interfaces/ILogEmitterEventsOptions.md#info)
+- [warn](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/interfaces/ILogEmitterEventsOptions.md#warn)
 
 ## Properties
 

@@ -6,12 +6,12 @@
 
 ### Classes
 
-- [AbstractApiClient](/docs/md/classes/AbstractApiClient.md)
-- [ApiReponseCache](/docs/md/classes/ApiReponseCache.md)
+- [AbstractApiClient](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/AbstractApiClient.md)
+- [ApiReponseCache](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/ApiReponseCache.md)
 
 ### Interfaces
 
-- [IAbstractApiClientOptions](/docs/md/interfaces/IAbstractApiClientOptions.md)
-- [IApiResponseCacheOptions](/docs/md/interfaces/IApiResponseCacheOptions.md)
-- [IAsyncRetryOptions](/docs/md/interfaces/IAsyncRetryOptions.md)
-- [IResponseCacheOptions](/docs/md/interfaces/IResponseCacheOptions.md)
+- [IAbstractApiClientOptions](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IAbstractApiClientOptions.md)
+- [IApiResponseCacheOptions](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IApiResponseCacheOptions.md)
+- [IAsyncRetryOptions](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IAsyncRetryOptions.md)
+- [IResponseCacheOptions](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IResponseCacheOptions.md)

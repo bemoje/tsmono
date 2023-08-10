@@ -1,4 +1,4 @@
-[@bemoje/openai-api-client](/docs/md/index.md) / IOpenaiTranscribeRequest
+[@bemoje/openai-api-client](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/index.md) / IOpenaiTranscribeRequest
 
 # Interface: IOpenaiTranscribeRequest
 
@@ -6,9 +6,9 @@
 
 ### Properties
 
-- [filepath](/docs/md/interfaces/IOpenaiTranscribeRequest.md#filepath)
-- [format](/docs/md/interfaces/IOpenaiTranscribeRequest.md#format)
-- [language](/docs/md/interfaces/IOpenaiTranscribeRequest.md#language)
+- [filepath](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiTranscribeRequest.md#filepath)
+- [format](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiTranscribeRequest.md#format)
+- [language](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiTranscribeRequest.md#language)
 
 ## Properties
 

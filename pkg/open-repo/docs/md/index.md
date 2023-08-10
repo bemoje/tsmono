@@ -6,7 +6,7 @@
 
 ### Variables
 
-- [program](/docs/md/index.md#program)
+- [program](https://github.com/bemoje/tsmono/blob/main/pkg/open-repo/docs/md/index.md#program)
 
 ## Variables
 

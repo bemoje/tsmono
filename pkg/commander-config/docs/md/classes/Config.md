@@ -1,4 +1,4 @@
-[@bemoje/commander-config](/docs/md/index.md) / Config
+[@bemoje/commander-config](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/index.md) / Config
 
 # Class: Config
 
@@ -6,27 +6,27 @@
 
 ### Constructors
 
-- [constructor](/docs/md/classes/Config.md#constructor)
+- [constructor](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/classes/Config.md#constructor)
 
 ### Properties
 
-- [appdataDirectory](/docs/md/classes/Config.md#appdatadirectory)
-- [definitions](/docs/md/classes/Config.md#definitions)
-- [settings](/docs/md/classes/Config.md#settings)
+- [appdataDirectory](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/classes/Config.md#appdatadirectory)
+- [definitions](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/classes/Config.md#definitions)
+- [settings](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/classes/Config.md#settings)
 
 ### Accessors
 
-- [configFilepath](/docs/md/classes/Config.md#configfilepath)
+- [configFilepath](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/classes/Config.md#configfilepath)
 
 ### Methods
 
-- [assertNoMissingRequired](/docs/md/classes/Config.md#assertnomissingrequired)
-- [ensureConfigFileExists](/docs/md/classes/Config.md#ensureconfigfileexists)
-- [initialize](/docs/md/classes/Config.md#initialize)
-- [print](/docs/md/classes/Config.md#print)
-- [reset](/docs/md/classes/Config.md#reset)
-- [saveConfigFile](/docs/md/classes/Config.md#saveconfigfile)
-- [set](/docs/md/classes/Config.md#set)
+- [assertNoMissingRequired](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/classes/Config.md#assertnomissingrequired)
+- [ensureConfigFileExists](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/classes/Config.md#ensureconfigfileexists)
+- [initialize](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/classes/Config.md#initialize)
+- [print](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/classes/Config.md#print)
+- [reset](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/classes/Config.md#reset)
+- [saveConfigFile](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/classes/Config.md#saveconfigfile)
+- [set](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/classes/Config.md#set)
 
 ## Constructors
 
@@ -40,7 +40,7 @@
 | :------ | :------ |
 | `appAuthor` | `string` |
 | `appName` | `string` |
-| `definitions` | `Record`<`string`, [`IConfigSetting`](/docs/md/interfaces/IConfigSetting.md)\> |
+| `definitions` | `Record`<`string`, [`IConfigSetting`](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/interfaces/IConfigSetting.md)\> |
 
 #### Defined in
 
@@ -60,7 +60,7 @@ ___
 
 ### definitions
 
-• **definitions**: [`IConfigSettings`](/docs/md/interfaces/IConfigSettings.md)
+• **definitions**: [`IConfigSettings`](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/interfaces/IConfigSettings.md)
 
 #### Defined in
 

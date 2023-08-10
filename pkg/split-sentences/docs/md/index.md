@@ -6,7 +6,7 @@
 
 ### Functions
 
-- [splitSentences](/docs/md/index.md#splitsentences)
+- [splitSentences](https://github.com/bemoje/tsmono/blob/main/pkg/split-sentences/docs/md/index.md#splitsentences)
 
 ## Functions
 

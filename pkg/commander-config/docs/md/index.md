@@ -6,24 +6,24 @@
 
 ### Classes
 
-- [Config](/docs/md/classes/Config.md)
-- [ConfigSetting](/docs/md/classes/ConfigSetting.md)
+- [Config](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/classes/Config.md)
+- [ConfigSetting](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/classes/ConfigSetting.md)
 
 ### Interfaces
 
-- [IConfigSetting](/docs/md/interfaces/IConfigSetting.md)
-- [IConfigSettings](/docs/md/interfaces/IConfigSettings.md)
-- [IGetUserInputFromEditorOptions](/docs/md/interfaces/IGetUserInputFromEditorOptions.md)
+- [IConfigSetting](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/interfaces/IConfigSetting.md)
+- [IConfigSettings](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/interfaces/IConfigSettings.md)
+- [IGetUserInputFromEditorOptions](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/interfaces/IGetUserInputFromEditorOptions.md)
 
 ### Functions
 
-- [getUserInputFromEditor](/docs/md/index.md#getuserinputfromeditor)
-- [getUserInputFromEditorSync](/docs/md/index.md#getuserinputfromeditorsync)
-- [parseBoolean](/docs/md/index.md#parseboolean)
-- [parseDirectories](/docs/md/index.md#parsedirectories)
-- [parseInteger](/docs/md/index.md#parseinteger)
-- [parseNumber](/docs/md/index.md#parsenumber)
-- [parseString](/docs/md/index.md#parsestring)
+- [getUserInputFromEditor](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/index.md#getuserinputfromeditor)
+- [getUserInputFromEditorSync](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/index.md#getuserinputfromeditorsync)
+- [parseBoolean](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/index.md#parseboolean)
+- [parseDirectories](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/index.md#parsedirectories)
+- [parseInteger](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/index.md#parseinteger)
+- [parseNumber](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/index.md#parsenumber)
+- [parseString](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/index.md#parsestring)
 
 ## Functions
 
@@ -35,7 +35,7 @@
 
 | Name | Type |
 | :------ | :------ |
-| `options` | [`IGetUserInputFromEditorOptions`](/docs/md/interfaces/IGetUserInputFromEditorOptions.md) |
+| `options` | [`IGetUserInputFromEditorOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/interfaces/IGetUserInputFromEditorOptions.md) |
 
 #### Returns
 
@@ -55,7 +55,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `options` | [`IGetUserInputFromEditorOptions`](/docs/md/interfaces/IGetUserInputFromEditorOptions.md) |
+| `options` | [`IGetUserInputFromEditorOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/interfaces/IGetUserInputFromEditorOptions.md) |
 
 #### Returns
 
