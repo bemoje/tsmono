@@ -1,4 +1,4 @@
-[@bemoje/trie-map](/docs/md/index.md) / TrieMap
+[@bemoje/trie-map](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/index.md) / TrieMap
 
 # Class: TrieMap<T\>
 
@@ -14,47 +14,47 @@ Class for a fast trie map.
 
 ### Constructors
 
-- [constructor](/docs/md/classes/TrieMap.md#constructor)
+- [constructor](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md#constructor)
 
 ### Properties
 
-- [root](/docs/md/classes/TrieMap.md#root)
+- [root](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md#root)
 
 ### Accessors
 
-- [count](/docs/md/classes/TrieMap.md#count)
+- [count](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md#count)
 
 ### Methods
 
-- [[iterator]](/docs/md/classes/TrieMap.md#[iterator])
-- [clear](/docs/md/classes/TrieMap.md#clear)
-- [delete](/docs/md/classes/TrieMap.md#delete)
-- [deleteNodeValue](/docs/md/classes/TrieMap.md#deletenodevalue)
-- [deleteStrict](/docs/md/classes/TrieMap.md#deletestrict)
-- [entries](/docs/md/classes/TrieMap.md#entries)
-- [find](/docs/md/classes/TrieMap.md#find)
-- [forEach](/docs/md/classes/TrieMap.md#foreach)
-- [get](/docs/md/classes/TrieMap.md#get)
-- [getNode](/docs/md/classes/TrieMap.md#getnode)
-- [getNodeValue](/docs/md/classes/TrieMap.md#getnodevalue)
-- [getStrict](/docs/md/classes/TrieMap.md#getstrict)
-- [getValues](/docs/md/classes/TrieMap.md#getvalues)
-- [has](/docs/md/classes/TrieMap.md#has)
-- [hasNodeValue](/docs/md/classes/TrieMap.md#hasnodevalue)
-- [keys](/docs/md/classes/TrieMap.md#keys)
-- [load](/docs/md/classes/TrieMap.md#load)
-- [set](/docs/md/classes/TrieMap.md#set)
-- [setNode](/docs/md/classes/TrieMap.md#setnode)
-- [setNodeValue](/docs/md/classes/TrieMap.md#setnodevalue)
-- [toArray](/docs/md/classes/TrieMap.md#toarray)
-- [toJson](/docs/md/classes/TrieMap.md#tojson)
-- [update](/docs/md/classes/TrieMap.md#update)
-- [updateAll](/docs/md/classes/TrieMap.md#updateall)
-- [updateNodeValue](/docs/md/classes/TrieMap.md#updatenodevalue)
-- [validatePrefixInput](/docs/md/classes/TrieMap.md#validateprefixinput)
-- [values](/docs/md/classes/TrieMap.md#values)
-- [fromIterable](/docs/md/classes/TrieMap.md#fromiterable)
-- [fromJSON](/docs/md/classes/TrieMap.md#fromjson)
+- [[iterator]](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md#[iterator])
+- [clear](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md#clear)
+- [delete](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md#delete)
+- [deleteNodeValue](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md#deletenodevalue)
+- [deleteStrict](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md#deletestrict)
+- [entries](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md#entries)
+- [find](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md#find)
+- [forEach](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md#foreach)
+- [get](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md#get)
+- [getNode](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md#getnode)
+- [getNodeValue](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md#getnodevalue)
+- [getStrict](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md#getstrict)
+- [getValues](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md#getvalues)
+- [has](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md#has)
+- [hasNodeValue](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md#hasnodevalue)
+- [keys](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md#keys)
+- [load](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md#load)
+- [set](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md#set)
+- [setNode](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md#setnode)
+- [setNodeValue](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md#setnodevalue)
+- [toArray](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md#toarray)
+- [toJson](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md#tojson)
+- [update](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md#update)
+- [updateAll](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md#updateall)
+- [updateNodeValue](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md#updatenodevalue)
+- [validatePrefixInput](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md#validateprefixinput)
+- [values](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md#values)
+- [fromIterable](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md#fromiterable)
+- [fromJSON](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md#fromjson)
 
 ## Constructors
 
@@ -159,13 +159,13 @@ ___
 
 ### clear
 
-▸ **clear**(): [`TrieMap`](/docs/md/classes/TrieMap.md)<`T`\>
+▸ **clear**(): [`TrieMap`](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md)<`T`\>
 
 Deletes all entries from the TrieMap
 
 #### Returns
 
-[`TrieMap`](/docs/md/classes/TrieMap.md)<`T`\>
+[`TrieMap`](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md)<`T`\>
 
 this/self (chainable)
 
@@ -315,7 +315,7 @@ ___
 
 ### find
 
-▸ **find**(`prefix`, `valueToFind`, `f`): [`TrieMap`](/docs/md/classes/TrieMap.md)<`T`\>
+▸ **find**(`prefix`, `valueToFind`, `f`): [`TrieMap`](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md)<`T`\>
 
 Iterates all (value, prefix) where value === ´valueToFind´.
 
@@ -329,7 +329,7 @@ Iterates all (value, prefix) where value === ´valueToFind´.
 
 #### Returns
 
-[`TrieMap`](/docs/md/classes/TrieMap.md)<`T`\>
+[`TrieMap`](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md)<`T`\>
 
 **`Example`**
 
@@ -358,7 +358,7 @@ ___
 
 ### forEach
 
-▸ **forEach**(`prefix`, `f`): [`TrieMap`](/docs/md/classes/TrieMap.md)<`T`\>
+▸ **forEach**(`prefix`, `f`): [`TrieMap`](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md)<`T`\>
 
 Iterate each (value, prefix) with the given prefix.
 
@@ -371,7 +371,7 @@ Iterate each (value, prefix) with the given prefix.
 
 #### Returns
 
-[`TrieMap`](/docs/md/classes/TrieMap.md)<`T`\>
+[`TrieMap`](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md)<`T`\>
 
 **`Example`**
 
@@ -630,7 +630,7 @@ ___
 
 ### load
 
-▸ **load**(`iterable`): [`TrieMap`](/docs/md/classes/TrieMap.md)<`T`\>
+▸ **load**(`iterable`): [`TrieMap`](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md)<`T`\>
 
 Insert multiple entries into the TrieMap.
 
@@ -642,7 +642,7 @@ Insert multiple entries into the TrieMap.
 
 #### Returns
 
-[`TrieMap`](/docs/md/classes/TrieMap.md)<`T`\>
+[`TrieMap`](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md)<`T`\>
 
 this/self (chainable)
 
@@ -663,7 +663,7 @@ ___
 
 ### set
 
-▸ **set**(`prefix`, `value`): [`TrieMap`](/docs/md/classes/TrieMap.md)<`T`\>
+▸ **set**(`prefix`, `value`): [`TrieMap`](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md)<`T`\>
 
 Insert a value into the TrieMap.
 
@@ -676,7 +676,7 @@ Insert a value into the TrieMap.
 
 #### Returns
 
-[`TrieMap`](/docs/md/classes/TrieMap.md)<`T`\>
+[`TrieMap`](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md)<`T`\>
 
 this/self (chainable)
 
@@ -817,7 +817,7 @@ ___
 
 ### update
 
-▸ **update**(`prefix`, `f`): [`TrieMap`](/docs/md/classes/TrieMap.md)<`T`\>
+▸ **update**(`prefix`, `f`): [`TrieMap`](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md)<`T`\>
 
 Updates a value in the TrieMap.
 
@@ -830,7 +830,7 @@ Updates a value in the TrieMap.
 
 #### Returns
 
-[`TrieMap`](/docs/md/classes/TrieMap.md)<`T`\>
+[`TrieMap`](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md)<`T`\>
 
 this/self (chainable)
 
@@ -856,7 +856,7 @@ ___
 
 ### updateAll
 
-▸ **updateAll**(`prefix`, `f`): [`TrieMap`](/docs/md/classes/TrieMap.md)<`T`\>
+▸ **updateAll**(`prefix`, `f`): [`TrieMap`](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md)<`T`\>
 
 Iterate each (value, prefix) with the given prefix and replace all elements using a callback function.
 
@@ -869,7 +869,7 @@ Iterate each (value, prefix) with the given prefix and replace all elements usin
 
 #### Returns
 
-[`TrieMap`](/docs/md/classes/TrieMap.md)<`T`\>
+[`TrieMap`](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md)<`T`\>
 
 **`Example`**
 
@@ -968,7 +968,7 @@ ___
 
 ### fromIterable
 
-▸ `Static` **fromIterable**<`T`\>(`iterable`): [`TrieMap`](/docs/md/classes/TrieMap.md)<`T`\>
+▸ `Static` **fromIterable**<`T`\>(`iterable`): [`TrieMap`](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md)<`T`\>
 
 Creates a new instance from existing data.
 
@@ -986,7 +986,7 @@ Creates a new instance from existing data.
 
 #### Returns
 
-[`TrieMap`](/docs/md/classes/TrieMap.md)<`T`\>
+[`TrieMap`](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md)<`T`\>
 
 **`Example`**
 
@@ -1005,7 +1005,7 @@ ___
 
 ### fromJSON
 
-▸ `Static` **fromJSON**<`T`\>(`json`): [`TrieMap`](/docs/md/classes/TrieMap.md)<`T`\>
+▸ `Static` **fromJSON**<`T`\>(`json`): [`TrieMap`](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md)<`T`\>
 
 Creates a new instance from existing data.
 
@@ -1023,7 +1023,7 @@ Creates a new instance from existing data.
 
 #### Returns
 
-[`TrieMap`](/docs/md/classes/TrieMap.md)<`T`\>
+[`TrieMap`](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md)<`T`\>
 
 **`Example`**
 

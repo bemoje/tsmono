@@ -6,4 +6,4 @@
 
 ### Classes
 
-- [TrieMap](/docs/md/classes/TrieMap.md)
+- [TrieMap](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md)
