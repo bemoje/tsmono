@@ -27,8 +27,8 @@ npm install @bemoje/excel-util
 ```
 
 ## Documentation
-- [Markdown](https://github.com/bemoje/tsmono/pkg/excel-util/docs/md/index.md)
-- [HTML](https://github.com/bemoje/tsmono/pkg/excel-util/docs/md/index.md)
+- [Markdown](https://github.com/bemoje/tsmono/blob/main/pkg/excel-util/docs/md/index.md)
+- [HTML](https://github.com/bemoje/tsmono/blob/main/pkg/excel-util/docs/html/index.html)
 
 ## Issues
 Please let me know of any bugs or [issues](https://github.com/bemoje/https://github.com/bemoje/tsmono/issues).
