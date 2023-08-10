@@ -21,7 +21,7 @@ console.log({ scripts })
 
 const packages = getPackages()
 
-const order = ['node-util', 'trie-map']
+const order = ['node-util']
 const numExternals = order.length
 const length = packages.length + numExternals
 

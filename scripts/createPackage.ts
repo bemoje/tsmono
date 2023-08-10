@@ -36,8 +36,6 @@ pkg.description = description
 if (!isCLI) {
   Reflect.deleteProperty(pkg, 'bin')
   Reflect.deleteProperty(pkg, 'preferGlobal')
-  Reflect.deleteProperty(pkg, 'module')
-  Reflect.deleteProperty(pkg, 'browser')
 }
 fs.writeFileSync(path.join(root, 'package.json'), JSON.stringify(pkg, null, 2), 'utf8')
 
