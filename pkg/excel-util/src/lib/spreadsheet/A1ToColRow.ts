@@ -1,4 +1,4 @@
-import { rexec } from '@bemoje/node-util'
+import { rexec } from '@bemoje/regex'
 import { letterToCol } from './letterToCol'
 
 /**

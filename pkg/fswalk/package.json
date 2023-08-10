@@ -52,7 +52,6 @@
   "license": "MIT",
   "keywords": [],
   "dependencies": {
-    "@bemoje/node-util": "latest"
   },
   "repository": {
     "type": "git",

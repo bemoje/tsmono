@@ -1,4 +1,5 @@
-import { strUnwrap, tsExtractImports } from '@bemoje/node-util'
+import { strUnwrap } from '@bemoje/string'
+import { tsExtractImports } from '@bemoje/tscode'
 import fs from 'fs'
 import path from 'path'
 import { walkTsFiles } from './walkTsFiles'

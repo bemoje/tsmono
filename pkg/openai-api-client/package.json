@@ -56,8 +56,6 @@
   "license": "MIT",
   "keywords": [],
   "dependencies": {
-    "@bemoje/api-util": "latest",
-    "@bemoje/node-util": "latest",
     "async-retry": "^1.3.3",
     "cli-color": "^2.0.3",
     "gpt-3-encoder": "^1.1.4",

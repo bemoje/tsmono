@@ -55,7 +55,6 @@
   "license": "MIT",
   "keywords": [],
   "dependencies": {
-    "@bemoje/commander-config": "latest",
     "commander": "^11.0.0"
   },
   "repository": {

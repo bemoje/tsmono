@@ -1,12 +1,12 @@
-import { PathFilter } from '@bemoje/node-util'
+import { FSPathFilter } from '@bemoje/fspath-filter'
 import { TrieMap } from '@bemoje/trie-map'
 import fs from 'fs'
 import { mkdirp } from 'mkdirp'
 import path from 'path'
 import walkdir from 'walkdir'
-import { config } from './config'
 import { FILE_LIST_JSON_PATH } from '../constants/FILE_LIST_JSON_PATH'
 import { WORD_TRIE_JSON_PATH } from '../constants/WORD_TRIE_JSON_PATH'
+import { config } from './config'
 import { extractSearchKeys } from './extractSearchKeys'
 
 export async function buildIndex(): Promise<void> {
@@ -14,7 +14,7 @@ export async function buildIndex(): Promise<void> {
   const PATHS: string[] = []
   const TRIE: TrieMap<SerializableSet<number>> = new TrieMap()
 
-  const pathFilter = new PathFilter()
+  const pathFilter = new FSPathFilter()
   config.settings['ignore'].forEach((reg: string) => {
     pathFilter.ignoreDirpathRegex(new RegExp(reg.replace(/\/|\\/g, path.sep), 'i'))
   })

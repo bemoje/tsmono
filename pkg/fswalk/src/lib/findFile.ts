@@ -1,4 +1,4 @@
-import { regexEscapeString } from '@bemoje/node-util'
+import { regexEscapeString } from '@bemoje/regex'
 import path from 'path'
 import walkdir from 'walkdir'
 import { convertFilter } from './core/convertFilter'

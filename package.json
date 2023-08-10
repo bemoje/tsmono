@@ -12,7 +12,20 @@
     "pkg/pdf-util",
     "pkg/split-sentences",
     "pkg/terminal-gpt",
-    "pkg/trie-map"
+    "pkg/trie-map",
+    "pkg/queue",
+    "pkg/matrix",
+    "pkg/time",
+    "pkg/tsdoc",
+    "pkg/tscode",
+    "pkg/sorted-array",
+    "pkg/table",
+    "pkg/fspath-filter",
+    "pkg/fspath",
+    "pkg/fs",
+    "pkg/subtitles",
+    "pkg/regex",
+    "pkg/string"
   ],
   "scripts": {
     "foreach": "npm run update-readmes && ts-node -P tsconfig.json scripts/runForEach.ts",
@@ -22,6 +35,9 @@
     "create-package": "ts-node -P tsconfig.json scripts/createPackage.ts",
     "delete-package": "ts-node -P tsconfig.json scripts/deletePackage.ts",
     "wipe-bemoje": "ts-node -P tsconfig.json scripts/wipeBemojeNodeModules.ts"
+  },
+  "dependencies": {
+    "@bemoje/node-util": "latest"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.3",

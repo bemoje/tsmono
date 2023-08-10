@@ -1,4 +1,4 @@
-import { strHashToStringDJB2 } from '@bemoje/node-util'
+import { strHashToStringDJB2 } from '@bemoje/string'
 import fs from 'fs'
 import path from 'path'
 import walkdir from 'walkdir'

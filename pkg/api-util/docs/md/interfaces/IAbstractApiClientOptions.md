@@ -27,7 +27,7 @@ Options for initialization the cache
 
 #### Defined in
 
-[pkg/api-util/src/lib/types/IAbstractApiClientOptions.ts:14](https://github.com/bemoje/tsmono/blob/5043a85/pkg/api-util/src/lib/types/IAbstractApiClientOptions.ts#L14)
+[pkg/api-util/src/lib/types/IAbstractApiClientOptions.ts:14](https://github.com/bemoje/tsmono/blob/f74277c/pkg/api-util/src/lib/types/IAbstractApiClientOptions.ts#L14)
 
 ___
 
@@ -39,19 +39,19 @@ Defaults for API request cache behaviour. Can be overriden in individual method 
 
 #### Defined in
 
-[pkg/api-util/src/lib/types/IAbstractApiClientOptions.ts:29](https://github.com/bemoje/tsmono/blob/5043a85/pkg/api-util/src/lib/types/IAbstractApiClientOptions.ts#L29)
+[pkg/api-util/src/lib/types/IAbstractApiClientOptions.ts:29](https://github.com/bemoje/tsmono/blob/f74277c/pkg/api-util/src/lib/types/IAbstractApiClientOptions.ts#L29)
 
 ___
 
 ### concurrency
 
-• `Optional` **concurrency**: `IPromiseQueueOptions`<`IQueue`<`RunFunction`, `IQueueAddOptions`\>, `IQueueAddOptions`\>
+• `Optional` **concurrency**: `IPromiseQueueOptions`<`IQueue`<() => `Promise`<`unknown`\>, `IQueueAddOptions`\>, `IQueueAddOptions`\>
 
 Global options for concurrency control. These affect all API requests.
 
 #### Defined in
 
-[pkg/api-util/src/lib/types/IAbstractApiClientOptions.ts:19](https://github.com/bemoje/tsmono/blob/5043a85/pkg/api-util/src/lib/types/IAbstractApiClientOptions.ts#L19)
+[pkg/api-util/src/lib/types/IAbstractApiClientOptions.ts:19](https://github.com/bemoje/tsmono/blob/f74277c/pkg/api-util/src/lib/types/IAbstractApiClientOptions.ts#L19)
 
 ___
 
@@ -63,4 +63,4 @@ Defaults for API request retry behaviour. Can be overriden in individual method 
 
 #### Defined in
 
-[pkg/api-util/src/lib/types/IAbstractApiClientOptions.ts:24](https://github.com/bemoje/tsmono/blob/5043a85/pkg/api-util/src/lib/types/IAbstractApiClientOptions.ts#L24)
+[pkg/api-util/src/lib/types/IAbstractApiClientOptions.ts:24](https://github.com/bemoje/tsmono/blob/f74277c/pkg/api-util/src/lib/types/IAbstractApiClientOptions.ts#L24)

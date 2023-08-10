@@ -1,5 +1,6 @@
-import type { IQueue, IQueueAddOptions, PromiseQueue, RunFunction } from '@bemoje/node-util'
-import { funAsyncRateLimit, IPromiseQueueOptions } from '@bemoje/node-util'
+import { funAsyncRateLimit } from '@bemoje/node-util'
+import type { IQueue, IQueueAddOptions } from '@bemoje/queue'
+import { IPromiseQueueOptions, PromiseQueue } from '@bemoje/queue'
 import asyncRetry from 'async-retry'
 import EventEmitter from 'events'
 import { cloneDeep } from 'lodash'
@@ -35,7 +36,7 @@ export abstract class AbstractApiClient {
   /**
    * Global queue for sending requests to the openai api.
    */
-  readonly queue: PromiseQueue<IQueue<RunFunction, IQueueAddOptions>, IQueueAddOptions>
+  readonly queue: PromiseQueue<IQueue<() => Promise<unknown>, IQueueAddOptions>, IQueueAddOptions>
 
   /**
    * Default options for async retry for api requests.
@@ -59,7 +60,10 @@ export abstract class AbstractApiClient {
   /**
    * Options for concurrency control. These affect all API requests.
    */
-  static readonly concurrencyDefaults: IPromiseQueueOptions<IQueue<RunFunction, IQueueAddOptions>, IQueueAddOptions> = {
+  static readonly concurrencyDefaults: IPromiseQueueOptions<
+    IQueue<() => Promise<unknown>, IQueueAddOptions>,
+    IQueueAddOptions
+  > = {
     // max requests
     // intervalCap: 10000,
     // per minute

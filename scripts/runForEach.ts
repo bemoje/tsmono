@@ -50,6 +50,8 @@ if (!fs.existsSync(hashfile)) {
 }
 const hashes = JSON.parse(fs.readFileSync(hashfile, 'utf8'))
 
+const cwd = process.cwd()
+
 const bat =
   '@echo off\n\ncall npm run wipe-bemoje\n\n' +
   order
@@ -81,7 +83,7 @@ const bat =
     })
     .join('\n\n') +
   '\n\ncall cd ' +
-  process.cwd() +
+  cwd +
   '\ncall npm run fix-docs\ncall npm run wipe-bemoje'
 
 const tempdir = process.env['TEMP']!

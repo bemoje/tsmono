@@ -49,7 +49,7 @@ A1ToColRow('B2', true);
 
 #### Defined in
 
-[lib/spreadsheet/A1ToColRow.ts:17](https://github.com/bemoje/tsmono/blob/5043a85/pkg/excel-util/src/lib/spreadsheet/A1ToColRow.ts#L17)
+[lib/spreadsheet/A1ToColRow.ts:17](https://github.com/bemoje/tsmono/blob/f74277c/pkg/excel-util/src/lib/spreadsheet/A1ToColRow.ts#L17)
 
 ___
 
@@ -95,7 +95,7 @@ colRowToA1([3, 5], true);;
 
 #### Defined in
 
-[lib/spreadsheet/colRowToA1.ts:18](https://github.com/bemoje/tsmono/blob/5043a85/pkg/excel-util/src/lib/spreadsheet/colRowToA1.ts#L18)
+[lib/spreadsheet/colRowToA1.ts:18](https://github.com/bemoje/tsmono/blob/f74277c/pkg/excel-util/src/lib/spreadsheet/colRowToA1.ts#L18)
 
 ___
 
@@ -139,7 +139,7 @@ colToLetter(1, true);;
 
 #### Defined in
 
-[lib/spreadsheet/colToLetter.ts:17](https://github.com/bemoje/tsmono/blob/5043a85/pkg/excel-util/src/lib/spreadsheet/colToLetter.ts#L17)
+[lib/spreadsheet/colToLetter.ts:17](https://github.com/bemoje/tsmono/blob/f74277c/pkg/excel-util/src/lib/spreadsheet/colToLetter.ts#L17)
 
 ___
 
@@ -178,7 +178,7 @@ const data = await csvParseStream(stream, options);
 
 #### Defined in
 
-[lib/csvParseStream.ts:21](https://github.com/bemoje/tsmono/blob/5043a85/pkg/excel-util/src/lib/csvParseStream.ts#L21)
+[lib/csvParseStream.ts:21](https://github.com/bemoje/tsmono/blob/f74277c/pkg/excel-util/src/lib/csvParseStream.ts#L21)
 
 ___
 
@@ -220,7 +220,7 @@ letterToCol('AB', true);;
 
 #### Defined in
 
-[lib/spreadsheet/letterToCol.ts:18](https://github.com/bemoje/tsmono/blob/5043a85/pkg/excel-util/src/lib/spreadsheet/letterToCol.ts#L18)
+[lib/spreadsheet/letterToCol.ts:18](https://github.com/bemoje/tsmono/blob/f74277c/pkg/excel-util/src/lib/spreadsheet/letterToCol.ts#L18)
 
 ___
 
@@ -260,7 +260,7 @@ readExcelFile('path/to/file.xlsx').then((worksheets) => {
 
 #### Defined in
 
-[lib/readExcelFile.ts:16](https://github.com/bemoje/tsmono/blob/5043a85/pkg/excel-util/src/lib/readExcelFile.ts#L16)
+[lib/readExcelFile.ts:16](https://github.com/bemoje/tsmono/blob/f74277c/pkg/excel-util/src/lib/readExcelFile.ts#L16)
 
 ___
 
@@ -317,4 +317,4 @@ await writeExcelFile('path/to/file.xlsx', {
 
 #### Defined in
 
-[lib/writeExcelFile.ts:28](https://github.com/bemoje/tsmono/blob/5043a85/pkg/excel-util/src/lib/writeExcelFile.ts#L28)
+[lib/writeExcelFile.ts:28](https://github.com/bemoje/tsmono/blob/f74277c/pkg/excel-util/src/lib/writeExcelFile.ts#L28)

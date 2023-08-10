@@ -1,0 +1,5 @@
+export * from './lib/AbstractSubtitle'
+export * from './lib/SRTSubtitle'
+export * from './lib/SRTSubtitles'
+export * from './lib/VTTSubtitle'
+export * from './lib/VTTSubtitles'

@@ -1,4 +1,4 @@
-import { deleteDirectorySafeSync } from '@bemoje/node-util'
+import { deleteDirectorySafeSync } from '@bemoje/fs'
 import { execSync } from 'child_process'
 import fs from 'fs'
 import path from 'path'

@@ -1,4 +1,4 @@
-import { deleteDirectorySafeSync } from '@bemoje/node-util'
+import { deleteDirectorySafeSync } from '@bemoje/fs'
 import fs from 'fs'
 import path from 'path'
 import { getPackages } from './util/getPackages'

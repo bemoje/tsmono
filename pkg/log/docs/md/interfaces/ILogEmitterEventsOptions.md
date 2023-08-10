@@ -22,7 +22,7 @@ The event names to log at debug level.
 
 #### Defined in
 
-[lib/types/ILogEmitterEventsOptions.ts:5](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/types/ILogEmitterEventsOptions.ts#L5)
+[lib/types/ILogEmitterEventsOptions.ts:5](https://github.com/bemoje/tsmono/blob/f74277c/pkg/log/src/lib/types/ILogEmitterEventsOptions.ts#L5)
 
 ___
 
@@ -34,7 +34,7 @@ The event names to log at error level.
 
 #### Defined in
 
-[lib/types/ILogEmitterEventsOptions.ts:20](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/types/ILogEmitterEventsOptions.ts#L20)
+[lib/types/ILogEmitterEventsOptions.ts:20](https://github.com/bemoje/tsmono/blob/f74277c/pkg/log/src/lib/types/ILogEmitterEventsOptions.ts#L20)
 
 ___
 
@@ -46,7 +46,7 @@ For example a class name, so that emitted events are displayed as className.even
 
 #### Defined in
 
-[lib/types/ILogEmitterEventsOptions.ts:25](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/types/ILogEmitterEventsOptions.ts#L25)
+[lib/types/ILogEmitterEventsOptions.ts:25](https://github.com/bemoje/tsmono/blob/f74277c/pkg/log/src/lib/types/ILogEmitterEventsOptions.ts#L25)
 
 ___
 
@@ -58,7 +58,7 @@ The event names to log at info level.
 
 #### Defined in
 
-[lib/types/ILogEmitterEventsOptions.ts:10](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/types/ILogEmitterEventsOptions.ts#L10)
+[lib/types/ILogEmitterEventsOptions.ts:10](https://github.com/bemoje/tsmono/blob/f74277c/pkg/log/src/lib/types/ILogEmitterEventsOptions.ts#L10)
 
 ___
 
@@ -70,4 +70,4 @@ The event names to log at warn level.
 
 #### Defined in
 
-[lib/types/ILogEmitterEventsOptions.ts:15](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/types/ILogEmitterEventsOptions.ts#L15)
+[lib/types/ILogEmitterEventsOptions.ts:15](https://github.com/bemoje/tsmono/blob/f74277c/pkg/log/src/lib/types/ILogEmitterEventsOptions.ts#L15)

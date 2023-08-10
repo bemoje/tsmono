@@ -1,15 +1,9 @@
 {
   "compilerOptions": {
     "target": "ES2015",
-    "lib": [
-      "ESNext",
-      "DOM"
-    ],
+    "lib": ["ESNext", "DOM"],
     "moduleResolution": "node",
-    "types": [
-      "jest",
-      "node"
-    ],
+    "types": ["jest", "node"],
     "declaration": true,
     "declarationMap": true,
     "newLine": "lf",
@@ -20,45 +14,32 @@
     "skipDefaultLibCheck": false,
     "skipLibCheck": false,
     "paths": {
-      "@bemoje/api-util": [
-        "./pkg/api-util/src/index.ts"
-      ],
-      "@bemoje/bfind": [
-        "./pkg/bfind/src/index.ts"
-      ],
-      "@bemoje/commander-config": [
-        "./pkg/commander-config/src/index.ts"
-      ],
-      "@bemoje/excel-util": [
-        "./pkg/excel-util/src/index.ts"
-      ],
-      "@bemoje/fswalk": [
-        "./pkg/fswalk/src/index.ts"
-      ],
-      "@bemoje/log": [
-        "./pkg/log/src/index.ts"
-      ],
-      "@bemoje/open-repo": [
-        "./pkg/open-repo/src/index.ts"
-      ],
-      "@bemoje/openai-api-client": [
-        "./pkg/openai-api-client/src/index.ts"
-      ],
-      "@bemoje/pdf-util": [
-        "./pkg/pdf-util/src/index.ts"
-      ],
-      "@bemoje/split-sentences": [
-        "./pkg/split-sentences/src/index.ts"
-      ],
-      "@bemoje/terminal-gpt": [
-        "./pkg/terminal-gpt/src/index.ts"
-      ],
-      "@bemoje/trie-map": [
-        "./pkg/trie-map/src/index.ts"
-      ]
+      "@bemoje/api-util": ["./pkg/api-util/src/index.ts"],
+      "@bemoje/bfind": ["./pkg/bfind/src/index.ts"],
+      "@bemoje/commander-config": ["./pkg/commander-config/src/index.ts"],
+      "@bemoje/excel-util": ["./pkg/excel-util/src/index.ts"],
+      "@bemoje/fswalk": ["./pkg/fswalk/src/index.ts"],
+      "@bemoje/log": ["./pkg/log/src/index.ts"],
+      "@bemoje/open-repo": ["./pkg/open-repo/src/index.ts"],
+      "@bemoje/openai-api-client": ["./pkg/openai-api-client/src/index.ts"],
+      "@bemoje/pdf-util": ["./pkg/pdf-util/src/index.ts"],
+      "@bemoje/split-sentences": ["./pkg/split-sentences/src/index.ts"],
+      "@bemoje/terminal-gpt": ["./pkg/terminal-gpt/src/index.ts"],
+      "@bemoje/trie-map": ["./pkg/trie-map/src/index.ts"],
+      "@bemoje/queue": ["./pkg/queue/src/index.ts"],
+      "@bemoje/matrix": ["./pkg/matrix/src/index.ts"],
+      "@bemoje/time": ["./pkg/time/src/index.ts"],
+      "@bemoje/tsdoc": ["./pkg/tsdoc/src/index.ts"],
+      "@bemoje/tscode": ["./pkg/tscode/src/index.ts"],
+      "@bemoje/sorted-array": ["./pkg/sorted-array/src/index.ts"],
+      "@bemoje/table": ["./pkg/table/src/index.ts"],
+      "@bemoje/fspath-filter": ["./pkg/fspath-filter/src/index.ts"],
+      "@bemoje/fspath": ["./pkg/fspath/src/index.ts"],
+      "@bemoje/fs": ["./pkg/fs/src/index.ts"],
+      "@bemoje/subtitles": ["./pkg/subtitles/src/index.ts"],
+      "@bemoje/regex": ["./pkg/regex/src/index.ts"],
+      "@bemoje/string": ["./pkg/string/src/index.ts"]
     }
   },
-  "include": [
-    "./pkg/**/src/**/*.ts"
-  ]
+  "include": ["./pkg/**/src/**/*.ts", "./scripts/**/*.ts"]
 }

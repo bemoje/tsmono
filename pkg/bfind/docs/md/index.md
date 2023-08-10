@@ -16,4 +16,4 @@
 
 #### Defined in
 
-[index.ts:13](https://github.com/bemoje/tsmono/blob/5043a85/pkg/bfind/src/index.ts#L13)
+[index.ts:13](https://github.com/bemoje/tsmono/blob/f74277c/pkg/bfind/src/index.ts#L13)

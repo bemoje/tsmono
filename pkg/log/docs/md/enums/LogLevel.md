@@ -20,7 +20,7 @@
 
 #### Defined in
 
-[lib/types/LogLevel.ts:3](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/types/LogLevel.ts#L3)
+[lib/types/LogLevel.ts:3](https://github.com/bemoje/tsmono/blob/f74277c/pkg/log/src/lib/types/LogLevel.ts#L3)
 
 ___
 
@@ -30,7 +30,7 @@ ___
 
 #### Defined in
 
-[lib/types/LogLevel.ts:6](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/types/LogLevel.ts#L6)
+[lib/types/LogLevel.ts:6](https://github.com/bemoje/tsmono/blob/f74277c/pkg/log/src/lib/types/LogLevel.ts#L6)
 
 ___
 
@@ -40,7 +40,7 @@ ___
 
 #### Defined in
 
-[lib/types/LogLevel.ts:4](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/types/LogLevel.ts#L4)
+[lib/types/LogLevel.ts:4](https://github.com/bemoje/tsmono/blob/f74277c/pkg/log/src/lib/types/LogLevel.ts#L4)
 
 ___
 
@@ -50,7 +50,7 @@ ___
 
 #### Defined in
 
-[lib/types/LogLevel.ts:2](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/types/LogLevel.ts#L2)
+[lib/types/LogLevel.ts:2](https://github.com/bemoje/tsmono/blob/f74277c/pkg/log/src/lib/types/LogLevel.ts#L2)
 
 ___
 
@@ -60,4 +60,4 @@ ___
 
 #### Defined in
 
-[lib/types/LogLevel.ts:5](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/types/LogLevel.ts#L5)
+[lib/types/LogLevel.ts:5](https://github.com/bemoje/tsmono/blob/f74277c/pkg/log/src/lib/types/LogLevel.ts#L5)

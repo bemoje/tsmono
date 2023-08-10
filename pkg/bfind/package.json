@@ -57,9 +57,6 @@
   "license": "MIT",
   "keywords": [],
   "dependencies": {
-    "@bemoje/commander-config": "latest",
-    "@bemoje/node-util": "latest",
-    "@bemoje/trie-map": "latest",
     "cli-color": "^2.0.3",
     "commander": "^11.0.0",
     "lodash": "^4.17.21",

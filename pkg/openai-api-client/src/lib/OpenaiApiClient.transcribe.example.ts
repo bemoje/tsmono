@@ -1,4 +1,5 @@
-import { VTTSubtitles, cwdpath } from '@bemoje/node-util'
+import { cwdpath } from '@bemoje/fs'
+import { VTTSubtitles } from '@bemoje/subtitles'
 import { OpenaiApiClientExtended } from './OpenaiApiClientExtended'
 
 //

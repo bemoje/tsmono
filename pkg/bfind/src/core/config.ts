@@ -1,5 +1,5 @@
 import { Config, parseBoolean, parseDirectories, parseInteger } from '@bemoje/commander-config'
-import { getDiskDrivesWindows, getRootDir, isWindows } from '@bemoje/node-util'
+import { getDiskDrivesWindows, getRootDir, isWindows } from '@bemoje/fs'
 import { wipeIndex } from './wipeIndex'
 
 // import { parseBoolean } from './core/parseBoolean'

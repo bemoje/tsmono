@@ -21,7 +21,7 @@ Path to cache directory. Defaults to a directory named 'ApiReponseCache' in the 
 
 #### Defined in
 
-[pkg/api-util/src/lib/types/IApiResponseCacheOptions.ts:15](https://github.com/bemoje/tsmono/blob/5043a85/pkg/api-util/src/lib/types/IApiResponseCacheOptions.ts#L15)
+[pkg/api-util/src/lib/types/IApiResponseCacheOptions.ts:15](https://github.com/bemoje/tsmono/blob/f74277c/pkg/api-util/src/lib/types/IApiResponseCacheOptions.ts#L15)
 
 ___
 
@@ -33,7 +33,7 @@ Whether to enable the cache. Defaults to false.
 
 #### Defined in
 
-[pkg/api-util/src/lib/types/IApiResponseCacheOptions.ts:5](https://github.com/bemoje/tsmono/blob/5043a85/pkg/api-util/src/lib/types/IApiResponseCacheOptions.ts#L5)
+[pkg/api-util/src/lib/types/IApiResponseCacheOptions.ts:5](https://github.com/bemoje/tsmono/blob/f74277c/pkg/api-util/src/lib/types/IApiResponseCacheOptions.ts#L5)
 
 ___
 
@@ -45,7 +45,7 @@ Max age of cached data in milliseconds. Defaults to 0 (no max age).
 
 #### Defined in
 
-[pkg/api-util/src/lib/types/IApiResponseCacheOptions.ts:20](https://github.com/bemoje/tsmono/blob/5043a85/pkg/api-util/src/lib/types/IApiResponseCacheOptions.ts#L20)
+[pkg/api-util/src/lib/types/IApiResponseCacheOptions.ts:20](https://github.com/bemoje/tsmono/blob/f74277c/pkg/api-util/src/lib/types/IApiResponseCacheOptions.ts#L20)
 
 ___
 
@@ -57,4 +57,4 @@ Unique name to be used as the cache directory name.
 
 #### Defined in
 
-[pkg/api-util/src/lib/types/IApiResponseCacheOptions.ts:10](https://github.com/bemoje/tsmono/blob/5043a85/pkg/api-util/src/lib/types/IApiResponseCacheOptions.ts#L10)
+[pkg/api-util/src/lib/types/IApiResponseCacheOptions.ts:10](https://github.com/bemoje/tsmono/blob/f74277c/pkg/api-util/src/lib/types/IApiResponseCacheOptions.ts#L10)
