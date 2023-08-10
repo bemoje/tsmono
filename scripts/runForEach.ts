@@ -82,7 +82,7 @@ const bat =
     .join('\n\n') +
   '\n\ncall cd ' +
   process.cwd() +
-  '\ncall npm run wipe-bemoje'
+  '\ncall npm run fix-docs\ncall npm run wipe-bemoje'
 
 const tempdir = process.env['TEMP']!
 const tempfile = path.join(tempdir, Date.now() + '.bat')

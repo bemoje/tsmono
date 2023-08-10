@@ -1,4 +1,4 @@
-[@bemoje/api-util](/docs/md/index.md) / IAsyncRetryOptions
+[@bemoje/api-util](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/index.md) / IAsyncRetryOptions
 
 # Interface: IAsyncRetryOptions
 
@@ -12,15 +12,15 @@
 
 ### Properties
 
-- [factor](/docs/md/interfaces/IAsyncRetryOptions.md#factor)
-- [forever](/docs/md/interfaces/IAsyncRetryOptions.md#forever)
-- [maxRetryTime](/docs/md/interfaces/IAsyncRetryOptions.md#maxretrytime)
-- [maxTimeout](/docs/md/interfaces/IAsyncRetryOptions.md#maxtimeout)
-- [minTimeout](/docs/md/interfaces/IAsyncRetryOptions.md#mintimeout)
-- [onRetry](/docs/md/interfaces/IAsyncRetryOptions.md#onretry)
-- [randomize](/docs/md/interfaces/IAsyncRetryOptions.md#randomize)
-- [retries](/docs/md/interfaces/IAsyncRetryOptions.md#retries)
-- [unref](/docs/md/interfaces/IAsyncRetryOptions.md#unref)
+- [factor](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IAsyncRetryOptions.md#factor)
+- [forever](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IAsyncRetryOptions.md#forever)
+- [maxRetryTime](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IAsyncRetryOptions.md#maxretrytime)
+- [maxTimeout](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IAsyncRetryOptions.md#maxtimeout)
+- [minTimeout](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IAsyncRetryOptions.md#mintimeout)
+- [onRetry](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IAsyncRetryOptions.md#onretry)
+- [randomize](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IAsyncRetryOptions.md#randomize)
+- [retries](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IAsyncRetryOptions.md#retries)
+- [unref](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IAsyncRetryOptions.md#unref)
 
 ## Properties
 

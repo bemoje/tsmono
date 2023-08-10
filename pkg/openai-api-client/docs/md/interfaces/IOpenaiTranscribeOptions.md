@@ -1,4 +1,4 @@
-[@bemoje/openai-api-client](/docs/md/index.md) / IOpenaiTranscribeOptions
+[@bemoje/openai-api-client](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/index.md) / IOpenaiTranscribeOptions
 
 # Interface: IOpenaiTranscribeOptions
 
@@ -6,9 +6,9 @@
 
 ### Properties
 
-- [cache](/docs/md/interfaces/IOpenaiTranscribeOptions.md#cache)
-- [request](/docs/md/interfaces/IOpenaiTranscribeOptions.md#request)
-- [retry](/docs/md/interfaces/IOpenaiTranscribeOptions.md#retry)
+- [cache](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiTranscribeOptions.md#cache)
+- [request](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiTranscribeOptions.md#request)
+- [retry](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiTranscribeOptions.md#retry)
 
 ## Properties
 
@@ -26,7 +26,7 @@ ___
 
 ### request
 
-• `Optional` **request**: [`IOpenaiTranscribeRequest`](/docs/md/interfaces/IOpenaiTranscribeRequest.md)
+• `Optional` **request**: [`IOpenaiTranscribeRequest`](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiTranscribeRequest.md)
 
 Transcription request object
 

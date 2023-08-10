@@ -1,24 +1,24 @@
-[@bemoje/commander-config](/docs/md/index.md) / ConfigSetting
+[@bemoje/commander-config](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/index.md) / ConfigSetting
 
 # Class: ConfigSetting
 
 ## Implements
 
-- [`IConfigSetting`](/docs/md/interfaces/IConfigSetting.md)
+- [`IConfigSetting`](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/interfaces/IConfigSetting.md)
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](/docs/md/classes/ConfigSetting.md#constructor)
+- [constructor](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/classes/ConfigSetting.md#constructor)
 
 ### Properties
 
-- [default](/docs/md/classes/ConfigSetting.md#default)
-- [description](/docs/md/classes/ConfigSetting.md#description)
-- [name](/docs/md/classes/ConfigSetting.md#name)
-- [parse](/docs/md/classes/ConfigSetting.md#parse)
-- [required](/docs/md/classes/ConfigSetting.md#required)
+- [default](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/classes/ConfigSetting.md#default)
+- [description](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/classes/ConfigSetting.md#description)
+- [name](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/classes/ConfigSetting.md#name)
+- [parse](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/classes/ConfigSetting.md#parse)
+- [required](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/classes/ConfigSetting.md#required)
 
 ## Constructors
 
@@ -31,7 +31,7 @@
 | Name | Type |
 | :------ | :------ |
 | `name` | `string` |
-| `options` | [`IConfigSetting`](/docs/md/interfaces/IConfigSetting.md) |
+| `options` | [`IConfigSetting`](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/interfaces/IConfigSetting.md) |
 
 #### Defined in
 
@@ -45,7 +45,7 @@
 
 #### Implementation of
 
-[IConfigSetting](/docs/md/interfaces/IConfigSetting.md).[default](/docs/md/interfaces/IConfigSetting.md#default)
+[IConfigSetting](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/interfaces/IConfigSetting.md).[default](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/interfaces/IConfigSetting.md#default)
 
 #### Defined in
 
@@ -59,7 +59,7 @@ ___
 
 #### Implementation of
 
-[IConfigSetting](/docs/md/interfaces/IConfigSetting.md).[description](/docs/md/interfaces/IConfigSetting.md#description)
+[IConfigSetting](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/interfaces/IConfigSetting.md).[description](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/interfaces/IConfigSetting.md#description)
 
 #### Defined in
 
@@ -97,7 +97,7 @@ ___
 
 #### Implementation of
 
-[IConfigSetting](/docs/md/interfaces/IConfigSetting.md).[parse](/docs/md/interfaces/IConfigSetting.md#parse)
+[IConfigSetting](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/interfaces/IConfigSetting.md).[parse](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/interfaces/IConfigSetting.md#parse)
 
 #### Defined in
 
@@ -111,7 +111,7 @@ ___
 
 #### Implementation of
 
-[IConfigSetting](/docs/md/interfaces/IConfigSetting.md).[required](/docs/md/interfaces/IConfigSetting.md#required)
+[IConfigSetting](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/interfaces/IConfigSetting.md).[required](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/interfaces/IConfigSetting.md#required)
 
 #### Defined in
 

@@ -1,4 +1,4 @@
-[@bemoje/log](/docs/md/index.md) / Log
+[@bemoje/log](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/index.md) / Log
 
 # Class: Log
 
@@ -10,44 +10,44 @@ It also supports color formatting for console messages. Different colors can be 
 
 ### Constructors
 
-- [constructor](/docs/md/classes/Log.md#constructor)
+- [constructor](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/classes/Log.md#constructor)
 
 ### Properties
 
-- [consoleLogLevel](/docs/md/classes/Log.md#consoleloglevel)
-- [debugColor](/docs/md/classes/Log.md#debugcolor)
-- [debugToConsole](/docs/md/classes/Log.md#debugtoconsole)
-- [debugToFile](/docs/md/classes/Log.md#debugtofile)
-- [errorColor](/docs/md/classes/Log.md#errorcolor)
-- [errorToConsole](/docs/md/classes/Log.md#errortoconsole)
-- [errorToFile](/docs/md/classes/Log.md#errortofile)
-- [fileLogLevel](/docs/md/classes/Log.md#fileloglevel)
-- [infoColor](/docs/md/classes/Log.md#infocolor)
-- [infoToConsole](/docs/md/classes/Log.md#infotoconsole)
-- [infoToFile](/docs/md/classes/Log.md#infotofile)
-- [logDirpath](/docs/md/classes/Log.md#logdirpath)
-- [logFilepath](/docs/md/classes/Log.md#logfilepath)
-- [warnColor](/docs/md/classes/Log.md#warncolor)
-- [warnToConsole](/docs/md/classes/Log.md#warntoconsole)
-- [warnToFile](/docs/md/classes/Log.md#warntofile)
-- [optionDefaults](/docs/md/classes/Log.md#optiondefaults)
+- [consoleLogLevel](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/classes/Log.md#consoleloglevel)
+- [debugColor](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/classes/Log.md#debugcolor)
+- [debugToConsole](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/classes/Log.md#debugtoconsole)
+- [debugToFile](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/classes/Log.md#debugtofile)
+- [errorColor](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/classes/Log.md#errorcolor)
+- [errorToConsole](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/classes/Log.md#errortoconsole)
+- [errorToFile](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/classes/Log.md#errortofile)
+- [fileLogLevel](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/classes/Log.md#fileloglevel)
+- [infoColor](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/classes/Log.md#infocolor)
+- [infoToConsole](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/classes/Log.md#infotoconsole)
+- [infoToFile](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/classes/Log.md#infotofile)
+- [logDirpath](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/classes/Log.md#logdirpath)
+- [logFilepath](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/classes/Log.md#logfilepath)
+- [warnColor](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/classes/Log.md#warncolor)
+- [warnToConsole](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/classes/Log.md#warntoconsole)
+- [warnToFile](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/classes/Log.md#warntofile)
+- [optionDefaults](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/classes/Log.md#optiondefaults)
 
 ### Methods
 
-- [\_logToConsole](/docs/md/classes/Log.md#_logtoconsole)
-- [\_logToFile](/docs/md/classes/Log.md#_logtofile)
-- [dashline](/docs/md/classes/Log.md#dashline)
-- [debug](/docs/md/classes/Log.md#debug)
-- [deleteLogFiles](/docs/md/classes/Log.md#deletelogfiles)
-- [error](/docs/md/classes/Log.md#error)
-- [getProperties](/docs/md/classes/Log.md#getproperties)
-- [info](/docs/md/classes/Log.md#info)
-- [initialize](/docs/md/classes/Log.md#initialize)
-- [logEmitterEvents](/docs/md/classes/Log.md#logemitterevents)
-- [newline](/docs/md/classes/Log.md#newline)
-- [task](/docs/md/classes/Log.md#task)
-- [taskSync](/docs/md/classes/Log.md#tasksync)
-- [warn](/docs/md/classes/Log.md#warn)
+- [\_logToConsole](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/classes/Log.md#_logtoconsole)
+- [\_logToFile](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/classes/Log.md#_logtofile)
+- [dashline](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/classes/Log.md#dashline)
+- [debug](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/classes/Log.md#debug)
+- [deleteLogFiles](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/classes/Log.md#deletelogfiles)
+- [error](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/classes/Log.md#error)
+- [getProperties](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/classes/Log.md#getproperties)
+- [info](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/classes/Log.md#info)
+- [initialize](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/classes/Log.md#initialize)
+- [logEmitterEvents](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/classes/Log.md#logemitterevents)
+- [newline](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/classes/Log.md#newline)
+- [task](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/classes/Log.md#task)
+- [taskSync](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/classes/Log.md#tasksync)
+- [warn](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/classes/Log.md#warn)
 
 ## Constructors
 
@@ -61,7 +61,7 @@ Create a new instance.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `options` | [`ILogOptions`](/docs/md/interfaces/ILogOptions.md) | Options for creating a new instance. |
+| `options` | [`ILogOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/interfaces/ILogOptions.md) | Options for creating a new instance. |
 
 #### Defined in
 
@@ -71,7 +71,7 @@ lib/Log.ts:124
 
 ### consoleLogLevel
 
-• `Protected` **consoleLogLevel**: [`LogLevel`](/docs/md/enums/LogLevel.md)
+• `Protected` **consoleLogLevel**: [`LogLevel`](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/enums/LogLevel.md)
 
 The log level for console output. Can be 'NONE', 'DEBUG', 'INFO', 'WARN', or 'ERROR'.
 
@@ -155,7 +155,7 @@ ___
 
 ### fileLogLevel
 
-• `Protected` **fileLogLevel**: [`LogLevel`](/docs/md/enums/LogLevel.md)
+• `Protected` **fileLogLevel**: [`LogLevel`](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/enums/LogLevel.md)
 
 The log level for the logfile. Can be 'NONE', 'DEBUG', 'INFO', 'WARN', or 'ERROR'.
 
@@ -263,7 +263,7 @@ ___
 
 ### optionDefaults
 
-▪ `Static` **optionDefaults**: `Required`<[`ILogOptions`](/docs/md/interfaces/ILogOptions.md)\>
+▪ `Static` **optionDefaults**: `Required`<[`ILogOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/interfaces/ILogOptions.md)\>
 
 Default options for creating new instances.
 
@@ -289,7 +289,7 @@ Generic function for logging to console, used by the log-level specific function
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `loglevel` | [`LogLevel`](/docs/md/enums/LogLevel.md) | The log level. |
+| `loglevel` | [`LogLevel`](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/enums/LogLevel.md) | The log level. |
 | `message` | `T` | The message to print to console. |
 | `color` | `Format` | A 'cli-color' module function to wrap the output-part of the string in color formatting. |
 | `depth?` | ``null`` \| `number` | The depth to which to print object properties. |
@@ -320,7 +320,7 @@ Write log entry to logfile
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `loglevel` | [`LogLevel`](/docs/md/enums/LogLevel.md) | The log level. |
+| `loglevel` | [`LogLevel`](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/enums/LogLevel.md) | The log level. |
 | `message` | `T` | The message to print to console. |
 
 #### Returns
@@ -452,14 +452,14 @@ Get the current instance's properties.
 
 | Name | Type |
 | :------ | :------ |
-| `consoleLogLevel` | [`LogLevel`](/docs/md/enums/LogLevel.md) |
+| `consoleLogLevel` | [`LogLevel`](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/enums/LogLevel.md) |
 | `debugColor` | `Format` |
 | `debugToConsole` | `boolean` |
 | `debugToFile` | `boolean` |
 | `errorColor` | `Format` |
 | `errorToConsole` | `boolean` |
 | `errorToFile` | `boolean` |
-| `fileLogLevel` | [`LogLevel`](/docs/md/enums/LogLevel.md) |
+| `fileLogLevel` | [`LogLevel`](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/enums/LogLevel.md) |
 | `infoColor` | `Format` |
 | `infoToConsole` | `boolean` |
 | `infoToFile` | `boolean` |
@@ -514,7 +514,7 @@ Re-initialize the current instance with the specified options.
 
 | Name | Type |
 | :------ | :------ |
-| `options` | [`ILogOptions`](/docs/md/interfaces/ILogOptions.md) |
+| `options` | [`ILogOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/interfaces/ILogOptions.md) |
 
 #### Returns
 
@@ -537,7 +537,7 @@ This function is used to print the events emitted by an EventEmitter.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `emitter` | `EventEmitter` | The EventEmitter that is emitting the events. |
-| `options` | [`ILogEmitterEventsOptions`](/docs/md/interfaces/ILogEmitterEventsOptions.md) | Options for logging the events. |
+| `options` | [`ILogEmitterEventsOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/interfaces/ILogEmitterEventsOptions.md) | Options for logging the events. |
 
 #### Returns
 

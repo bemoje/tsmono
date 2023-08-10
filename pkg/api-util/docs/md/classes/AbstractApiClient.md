@@ -1,4 +1,4 @@
-[@bemoje/api-util](/docs/md/index.md) / AbstractApiClient
+[@bemoje/api-util](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/index.md) / AbstractApiClient
 
 # Class: AbstractApiClient
 
@@ -12,28 +12,28 @@ In order to use this class, it must be extended first and then use the sendReque
 
 ### Constructors
 
-- [constructor](/docs/md/classes/AbstractApiClient.md#constructor)
+- [constructor](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/AbstractApiClient.md#constructor)
 
 ### Properties
 
-- [cache](/docs/md/classes/AbstractApiClient.md#cache)
-- [cacheDefaults](/docs/md/classes/AbstractApiClient.md#cachedefaults)
-- [events](/docs/md/classes/AbstractApiClient.md#events)
-- [queue](/docs/md/classes/AbstractApiClient.md#queue)
-- [retryDefaults](/docs/md/classes/AbstractApiClient.md#retrydefaults)
-- [sendRequest](/docs/md/classes/AbstractApiClient.md#sendrequest)
-- [concurrencyDefaults](/docs/md/classes/AbstractApiClient.md#concurrencydefaults)
+- [cache](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/AbstractApiClient.md#cache)
+- [cacheDefaults](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/AbstractApiClient.md#cachedefaults)
+- [events](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/AbstractApiClient.md#events)
+- [queue](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/AbstractApiClient.md#queue)
+- [retryDefaults](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/AbstractApiClient.md#retrydefaults)
+- [sendRequest](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/AbstractApiClient.md#sendrequest)
+- [concurrencyDefaults](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/AbstractApiClient.md#concurrencydefaults)
 
 ### Accessors
 
-- [eventNames](/docs/md/classes/AbstractApiClient.md#eventnames)
+- [eventNames](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/AbstractApiClient.md#eventnames)
 
 ### Methods
 
-- [emit](/docs/md/classes/AbstractApiClient.md#emit)
-- [handleCacheOptions](/docs/md/classes/AbstractApiClient.md#handlecacheoptions)
-- [handleOptions](/docs/md/classes/AbstractApiClient.md#handleoptions)
-- [handleRetryOptions](/docs/md/classes/AbstractApiClient.md#handleretryoptions)
+- [emit](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/AbstractApiClient.md#emit)
+- [handleCacheOptions](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/AbstractApiClient.md#handlecacheoptions)
+- [handleOptions](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/AbstractApiClient.md#handleoptions)
+- [handleRetryOptions](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/AbstractApiClient.md#handleretryoptions)
 
 ## Constructors
 
@@ -45,9 +45,9 @@ Create a new OpenaiApiClient instance.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `options` | [`IAbstractApiClientOptions`](/docs/md/interfaces/IAbstractApiClientOptions.md) | The constructor options to use. |
+| Name      | Type                                                                            | Description                     |
+| :-------- | :------------------------------------------------------------------------------ | :------------------------------ |
+| `options` | [`IAbstractApiClientOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IAbstractApiClientOptions.md) | The constructor options to use. |
 
 #### Defined in
 
@@ -57,7 +57,7 @@ pkg/api-util/src/lib/AbstractApiClient.ts:96
 
 ### cache
 
-• `Optional` `Readonly` **cache**: [`ApiReponseCache`](/docs/md/classes/ApiReponseCache.md)<`any`\>
+• `Optional` `Readonly` **cache**: [`ApiReponseCache`](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/ApiReponseCache.md)<`any`\>
 
 API response cache
 
@@ -69,7 +69,7 @@ ___
 
 ### cacheDefaults
 
-• `Readonly` **cacheDefaults**: [`IResponseCacheOptions`](/docs/md/interfaces/IResponseCacheOptions.md)
+• `Readonly` **cacheDefaults**: [`IResponseCacheOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IResponseCacheOptions.md)
 
 Default options for caching for api requests.
 Can be overriden in individual method calls.
@@ -106,7 +106,7 @@ ___
 
 ### retryDefaults
 
-• `Readonly` **retryDefaults**: [`IAsyncRetryOptions`](/docs/md/interfaces/IAsyncRetryOptions.md)
+• `Readonly` **retryDefaults**: [`IAsyncRetryOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IAsyncRetryOptions.md)
 
 Default options for async retry for api requests.
 Can be overriden in individual method calls.
@@ -119,7 +119,7 @@ ___
 
 ### sendRequest
 
-• `Protected` `Readonly` **sendRequest**: <T\>(`options`: { `apiRequest`: () => `Promise`<`T`\> ; `args`: `any`[] ; `cache?`: [`IResponseCacheOptions`](/docs/md/interfaces/IResponseCacheOptions.md) ; `retry?`: [`IAsyncRetryOptions`](/docs/md/interfaces/IAsyncRetryOptions.md)  }) => `Promise`<`T`\>
+• `Protected` `Readonly` **sendRequest**: <T\>(`options`: { `apiRequest`: () => `Promise`<`T`\> ; `args`: `any`[] ; `cache?`: [`IResponseCacheOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IResponseCacheOptions.md) ; `retry?`: [`IAsyncRetryOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IAsyncRetryOptions.md)  }) => `Promise`<`T`\>
 
 #### Type declaration
 
@@ -133,18 +133,18 @@ This method is bound to the instance on initialization because it gets wrapped w
 ##### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `options` | `Object` |
-| `options.apiRequest` | () => `Promise`<`T`\> |
-| `options.args` | `any`[] |
-| `options.cache?` | [`IResponseCacheOptions`](/docs/md/interfaces/IResponseCacheOptions.md) |
-| `options.retry?` | [`IAsyncRetryOptions`](/docs/md/interfaces/IAsyncRetryOptions.md) |
+| Name                 | Type                                                                    |
+| :------------------- | :---------------------------------------------------------------------- |
+| `options`            | `Object`                                                                |
+| `options.apiRequest` | () => `Promise`<`T`\>                                                   |
+| `options.args`       | `any`[]                                                                 |
+| `options.cache?`     | [`IResponseCacheOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IResponseCacheOptions.md) |
+| `options.retry?`     | [`IAsyncRetryOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IAsyncRetryOptions.md)       |
 
 ##### Returns
 
@@ -193,15 +193,15 @@ Emit an event but adds 'this' as an extra trailing argument.
 #### Type parameters
 
 | Name |
-| :------ |
-| `T` |
+| :--- |
+| `T`  |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `event` | `string` | The event name. |
-| `arg` | `T` | The argument to emit. |
+| Name    | Type     | Description           |
+| :------ | :------- | :-------------------- |
+| `event` | `string` | The event name.       |
+| `arg`   | `T`      | The argument to emit. |
 
 #### Returns
 
@@ -215,19 +215,19 @@ ___
 
 ### handleCacheOptions
 
-▸ `Protected` **handleCacheOptions**(`cacheOptions?`): [`IResponseCacheOptions`](/docs/md/interfaces/IResponseCacheOptions.md)
+▸ `Protected` **handleCacheOptions**(`cacheOptions?`): [`IResponseCacheOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IResponseCacheOptions.md)
 
 Handle cache options.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `cacheOptions?` | [`IResponseCacheOptions`](/docs/md/interfaces/IResponseCacheOptions.md) | The cache options to handle. |
+| Name            | Type                                                                    | Description                  |
+| :-------------- | :---------------------------------------------------------------------- | :--------------------------- |
+| `cacheOptions?` | [`IResponseCacheOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IResponseCacheOptions.md) | The cache options to handle. |
 
 #### Returns
 
-[`IResponseCacheOptions`](/docs/md/interfaces/IResponseCacheOptions.md)
+[`IResponseCacheOptions`](https://github.com/bemoje/tsmono/docs/md/interfaces/IResponseCacheOptions.md)
 
 #### Defined in
 
@@ -237,19 +237,19 @@ ___
 
 ### handleOptions
 
-▸ `Protected` **handleOptions**(`options`): [`IAbstractApiClientOptions`](/docs/md/interfaces/IAbstractApiClientOptions.md)
+▸ `Protected` **handleOptions**(`options`): [`IAbstractApiClientOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IAbstractApiClientOptions.md)
 
 Handle the options passed to the constructor.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `options` | [`IAbstractApiClientOptions`](/docs/md/interfaces/IAbstractApiClientOptions.md) | The options to handle. |
+| Name      | Type                                                                            | Description            |
+| :-------- | :------------------------------------------------------------------------------ | :--------------------- |
+| `options` | [`IAbstractApiClientOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IAbstractApiClientOptions.md) | The options to handle. |
 
 #### Returns
 
-[`IAbstractApiClientOptions`](/docs/md/interfaces/IAbstractApiClientOptions.md)
+[`IAbstractApiClientOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IAbstractApiClientOptions.md)
 
 #### Defined in
 
@@ -259,19 +259,19 @@ ___
 
 ### handleRetryOptions
 
-▸ `Protected` **handleRetryOptions**(`retryOptions?`): [`IAsyncRetryOptions`](/docs/md/interfaces/IAsyncRetryOptions.md)
+▸ `Protected` **handleRetryOptions**(`retryOptions?`): [`IAsyncRetryOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IAsyncRetryOptions.md)
 
 Handle retry options.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `retryOptions?` | [`IAsyncRetryOptions`](/docs/md/interfaces/IAsyncRetryOptions.md) | The retry options to handle. |
+| Name            | Type                                                              | Description                  |
+| :-------------- | :---------------------------------------------------------------- | :--------------------------- |
+| `retryOptions?` | [`IAsyncRetryOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IAsyncRetryOptions.md) | The retry options to handle. |
 
 #### Returns
 
-[`IAsyncRetryOptions`](/docs/md/interfaces/IAsyncRetryOptions.md)
+[`IAsyncRetryOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IAsyncRetryOptions.md)
 
 #### Defined in
 

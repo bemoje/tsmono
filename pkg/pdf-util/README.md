@@ -27,8 +27,8 @@ npm install @bemoje/pdf-util
 ```
 
 ## Documentation
-- [Markdown](https://github.com/bemoje/tsmono/pkg/pdf-util/docs/md/index.md)
-- [HTML](https://github.com/bemoje/tsmono/pkg/pdf-util/docs/md/index.md)
+- [Markdown](https://github.com/bemoje/tsmono/blob/main/pkg/pdf-util/docs/md/index.md)
+- [HTML](https://github.com/bemoje/tsmono/blob/main/pkg/pdf-util/docs/html/index.html)
 
 ## Issues
 Please let me know of any bugs or [issues](https://github.com/bemoje/https://github.com/bemoje/tsmono/issues).

@@ -27,8 +27,8 @@ npm install @bemoje/commander-config
 ```
 
 ## Documentation
-- [Markdown](https://github.com/bemoje/tsmono/pkg/commander-config/docs/md/index.md)
-- [HTML](https://github.com/bemoje/tsmono/pkg/commander-config/docs/md/index.md)
+- [Markdown](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/index.md)
+- [HTML](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/html/index.html)
 
 ## Issues
 Please let me know of any bugs or [issues](https://github.com/bemoje/https://github.com/bemoje/tsmono/issues).

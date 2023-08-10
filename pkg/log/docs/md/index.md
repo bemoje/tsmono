@@ -6,13 +6,13 @@
 
 ### Enumerations
 
-- [LogLevel](/docs/md/enums/LogLevel.md)
+- [LogLevel](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/enums/LogLevel.md)
 
 ### Classes
 
-- [Log](/docs/md/classes/Log.md)
+- [Log](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/classes/Log.md)
 
 ### Interfaces
 
-- [ILogEmitterEventsOptions](/docs/md/interfaces/ILogEmitterEventsOptions.md)
-- [ILogOptions](/docs/md/interfaces/ILogOptions.md)
+- [ILogEmitterEventsOptions](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/interfaces/ILogEmitterEventsOptions.md)
+- [ILogOptions](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/interfaces/ILogOptions.md)

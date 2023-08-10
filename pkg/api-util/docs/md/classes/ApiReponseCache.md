@@ -1,4 +1,4 @@
-[@bemoje/api-util](/docs/md/index.md) / ApiReponseCache
+[@bemoje/api-util](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/index.md) / ApiReponseCache
 
 # Class: ApiReponseCache<V\>
 
@@ -14,41 +14,41 @@ Persistent API response cache based on level-db.
 
 ### Constructors
 
-- [constructor](/docs/md/classes/ApiReponseCache.md#constructor)
+- [constructor](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/ApiReponseCache.md#constructor)
 
 ### Properties
 
-- [db](/docs/md/classes/ApiReponseCache.md#db)
-- [events](/docs/md/classes/ApiReponseCache.md#events)
-- [maxAgeMs](/docs/md/classes/ApiReponseCache.md#maxagems)
-- [optionsDefaults](/docs/md/classes/ApiReponseCache.md#optionsdefaults)
+- [db](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/ApiReponseCache.md#db)
+- [events](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/ApiReponseCache.md#events)
+- [maxAgeMs](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/ApiReponseCache.md#maxagems)
+- [optionsDefaults](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/ApiReponseCache.md#optionsdefaults)
 
 ### Accessors
 
-- [eventNames](/docs/md/classes/ApiReponseCache.md#eventnames)
+- [eventNames](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/ApiReponseCache.md#eventnames)
 
 ### Methods
 
-- [delete](/docs/md/classes/ApiReponseCache.md#delete)
-- [deleteEverything](/docs/md/classes/ApiReponseCache.md#deleteeverything)
-- [deleteExpired](/docs/md/classes/ApiReponseCache.md#deleteexpired)
-- [emit](/docs/md/classes/ApiReponseCache.md#emit)
-- [ensureNotExpired](/docs/md/classes/ApiReponseCache.md#ensurenotexpired)
-- [entries](/docs/md/classes/ApiReponseCache.md#entries)
-- [get](/docs/md/classes/ApiReponseCache.md#get)
-- [getOrElse](/docs/md/classes/ApiReponseCache.md#getorelse)
-- [getSafe](/docs/md/classes/ApiReponseCache.md#getsafe)
-- [has](/docs/md/classes/ApiReponseCache.md#has)
-- [hashKey](/docs/md/classes/ApiReponseCache.md#hashkey)
-- [isExpired](/docs/md/classes/ApiReponseCache.md#isexpired)
-- [keys](/docs/md/classes/ApiReponseCache.md#keys)
-- [orThrow](/docs/md/classes/ApiReponseCache.md#orthrow)
-- [parseSerializedTimestamp](/docs/md/classes/ApiReponseCache.md#parseserializedtimestamp)
-- [parseSerializedValue](/docs/md/classes/ApiReponseCache.md#parseserializedvalue)
-- [put](/docs/md/classes/ApiReponseCache.md#put)
-- [serializeValue](/docs/md/classes/ApiReponseCache.md#serializevalue)
-- [size](/docs/md/classes/ApiReponseCache.md#size)
-- [values](/docs/md/classes/ApiReponseCache.md#values)
+- [delete](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/ApiReponseCache.md#delete)
+- [deleteEverything](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/ApiReponseCache.md#deleteeverything)
+- [deleteExpired](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/ApiReponseCache.md#deleteexpired)
+- [emit](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/ApiReponseCache.md#emit)
+- [ensureNotExpired](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/ApiReponseCache.md#ensurenotexpired)
+- [entries](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/ApiReponseCache.md#entries)
+- [get](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/ApiReponseCache.md#get)
+- [getOrElse](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/ApiReponseCache.md#getorelse)
+- [getSafe](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/ApiReponseCache.md#getsafe)
+- [has](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/ApiReponseCache.md#has)
+- [hashKey](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/ApiReponseCache.md#hashkey)
+- [isExpired](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/ApiReponseCache.md#isexpired)
+- [keys](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/ApiReponseCache.md#keys)
+- [orThrow](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/ApiReponseCache.md#orthrow)
+- [parseSerializedTimestamp](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/ApiReponseCache.md#parseserializedtimestamp)
+- [parseSerializedValue](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/ApiReponseCache.md#parseserializedvalue)
+- [put](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/ApiReponseCache.md#put)
+- [serializeValue](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/ApiReponseCache.md#serializevalue)
+- [size](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/ApiReponseCache.md#size)
+- [values](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/ApiReponseCache.md#values)
 
 ## Constructors
 
@@ -68,7 +68,7 @@ Create a new instance.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `options` | [`IApiResponseCacheOptions`](/docs/md/interfaces/IApiResponseCacheOptions.md) | Options for creating a new instance. |
+| `options` | [`IApiResponseCacheOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IApiResponseCacheOptions.md) | Options for creating a new instance. |
 
 **`Emits`**
 
@@ -208,13 +208,13 @@ ___
 
 ### deleteExpired
 
-▸ **deleteExpired**(): `Promise`<[`ApiReponseCache`](/docs/md/classes/ApiReponseCache.md)<`V`\>\>
+▸ **deleteExpired**(): `Promise`<[`ApiReponseCache`](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/ApiReponseCache.md)<`V`\>\>
 
 Delete all expired data.
 
 #### Returns
 
-`Promise`<[`ApiReponseCache`](/docs/md/classes/ApiReponseCache.md)<`V`\>\>
+`Promise`<[`ApiReponseCache`](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/ApiReponseCache.md)<`V`\>\>
 
 #### Defined in
 

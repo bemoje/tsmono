@@ -37,8 +37,8 @@ npm install${pkg.preferGlobal ? ' -g ' : ' '}${pkg.name}
 \`\`\`
 
 ## Documentation
-- [Markdown](https://github.com/bemoje/tsmono/pkg/${shortname}/docs/md/index.md)
-- [HTML](https://github.com/bemoje/tsmono/pkg/${shortname}/docs/md/index.md)
+- [Markdown](https://github.com/bemoje/tsmono/blob/main/pkg/${shortname}/docs/md/index.md)
+- [HTML](https://github.com/bemoje/tsmono/blob/main/pkg/${shortname}/docs/html/index.html)
 
 ## Issues
 Please let me know of any bugs or [issues](${`https://github.com/${'bemoje'}/${'https://github.com/bemoje/tsmono'}/issues`}).

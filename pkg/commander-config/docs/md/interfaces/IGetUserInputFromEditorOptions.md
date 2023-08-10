@@ -1,4 +1,4 @@
-[@bemoje/commander-config](/docs/md/index.md) / IGetUserInputFromEditorOptions
+[@bemoje/commander-config](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/index.md) / IGetUserInputFromEditorOptions
 
 # Interface: IGetUserInputFromEditorOptions
 
@@ -6,9 +6,9 @@
 
 ### Properties
 
-- [appdataDirectory](/docs/md/interfaces/IGetUserInputFromEditorOptions.md#appdatadirectory)
-- [currentContent](/docs/md/interfaces/IGetUserInputFromEditorOptions.md#currentcontent)
-- [editor](/docs/md/interfaces/IGetUserInputFromEditorOptions.md#editor)
+- [appdataDirectory](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/interfaces/IGetUserInputFromEditorOptions.md#appdatadirectory)
+- [currentContent](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/interfaces/IGetUserInputFromEditorOptions.md#currentcontent)
+- [editor](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/interfaces/IGetUserInputFromEditorOptions.md#editor)
 
 ## Properties
 

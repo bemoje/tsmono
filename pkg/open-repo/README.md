@@ -27,8 +27,8 @@ npm install -g @bemoje/open-repo
 ```
 
 ## Documentation
-- [Markdown](https://github.com/bemoje/tsmono/pkg/open-repo/docs/md/index.md)
-- [HTML](https://github.com/bemoje/tsmono/pkg/open-repo/docs/md/index.md)
+- [Markdown](https://github.com/bemoje/tsmono/blob/main/pkg/open-repo/docs/md/index.md)
+- [HTML](https://github.com/bemoje/tsmono/blob/main/pkg/open-repo/docs/html/index.html)
 
 ## Issues
 Please let me know of any bugs or [issues](https://github.com/bemoje/https://github.com/bemoje/tsmono/issues).

@@ -13,7 +13,7 @@
     "test": "jest --preset ts-jest",
     "rollup": "rollup --config ./rollup.config.js --bundleConfigAsCjs",
     "build": "npm run lint && rimraf dist && npm run rollup",
-    "docsmd": "rimraf docs/md && typedoc --out docs/md src/index.ts --readme none --plugin typedoc-plugin-markdown --theme markdown --entryDocument index.md --publicPath /docs/md/ && typedoc --out docs/html --entryPoints src/index.ts",
+    "docsmd": "rimraf docs/md && typedoc --out docs/md src/index.ts --readme none --plugin typedoc-plugin-markdown --theme markdown --entryDocument index.md --publicPath /docs/md",
     "docshtml": "rimraf docs/html && typedoc --out docs/html --entryPoints src/index.ts",
     "docs": "rimraf docs && npm run docsmd && npm run docshtml",
     "viewdocs": "start docs/html/index.html",

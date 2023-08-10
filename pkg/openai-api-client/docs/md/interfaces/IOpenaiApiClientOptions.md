@@ -1,4 +1,4 @@
-[@bemoje/openai-api-client](/docs/md/index.md) / IOpenaiApiClientOptions
+[@bemoje/openai-api-client](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/index.md) / IOpenaiApiClientOptions
 
 # Interface: IOpenaiApiClientOptions
 
@@ -12,11 +12,11 @@
 
 ### Properties
 
-- [apiKey](/docs/md/interfaces/IOpenaiApiClientOptions.md#apikey)
-- [cache](/docs/md/interfaces/IOpenaiApiClientOptions.md#cache)
-- [cacheDefaults](/docs/md/interfaces/IOpenaiApiClientOptions.md#cachedefaults)
-- [concurrency](/docs/md/interfaces/IOpenaiApiClientOptions.md#concurrency)
-- [retryDefaults](/docs/md/interfaces/IOpenaiApiClientOptions.md#retrydefaults)
+- [apiKey](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiApiClientOptions.md#apikey)
+- [cache](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiApiClientOptions.md#cache)
+- [cacheDefaults](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiApiClientOptions.md#cachedefaults)
+- [concurrency](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiApiClientOptions.md#concurrency)
+- [retryDefaults](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiApiClientOptions.md#retrydefaults)
 
 ## Properties
 

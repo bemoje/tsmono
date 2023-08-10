@@ -1,19 +1,19 @@
-[@bemoje/commander-config](/docs/md/index.md) / IConfigSetting
+[@bemoje/commander-config](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/index.md) / IConfigSetting
 
 # Interface: IConfigSetting
 
 ## Implemented by
 
-- [`ConfigSetting`](/docs/md/classes/ConfigSetting.md)
+- [`ConfigSetting`](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/classes/ConfigSetting.md)
 
 ## Table of contents
 
 ### Properties
 
-- [default](/docs/md/interfaces/IConfigSetting.md#default)
-- [description](/docs/md/interfaces/IConfigSetting.md#description)
-- [parse](/docs/md/interfaces/IConfigSetting.md#parse)
-- [required](/docs/md/interfaces/IConfigSetting.md#required)
+- [default](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/interfaces/IConfigSetting.md#default)
+- [description](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/interfaces/IConfigSetting.md#description)
+- [parse](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/interfaces/IConfigSetting.md#parse)
+- [required](https://github.com/bemoje/tsmono/blob/main/pkg/commander-config/docs/md/interfaces/IConfigSetting.md#required)
 
 ## Properties
 

@@ -27,8 +27,8 @@ npm install @bemoje/api-util
 ```
 
 ## Documentation
-- [Markdown](https://github.com/bemoje/tsmono/pkg/api-util/docs/md/index.md)
-- [HTML](https://github.com/bemoje/tsmono/pkg/api-util/docs/md/index.md)
+- [Markdown](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/index.md)
+- [HTML](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/html/index.html)
 
 ## Issues
 Please let me know of any bugs or [issues](https://github.com/bemoje/https://github.com/bemoje/tsmono/issues).

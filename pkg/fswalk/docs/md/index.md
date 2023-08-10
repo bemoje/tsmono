@@ -6,15 +6,15 @@
 
 ### Interfaces
 
-- [IWalkDirectoryOptions](/docs/md/interfaces/IWalkDirectoryOptions.md)
+- [IWalkDirectoryOptions](https://github.com/bemoje/tsmono/blob/main/pkg/fswalk/docs/md/interfaces/IWalkDirectoryOptions.md)
 
 ### Functions
 
-- [convertFilter](/docs/md/index.md#convertfilter)
-- [findFile](/docs/md/index.md#findfile)
-- [walkDirectory](/docs/md/index.md#walkdirectory)
-- [walkDirectoryEmitter](/docs/md/index.md#walkdirectoryemitter)
-- [walkDirectorySync](/docs/md/index.md#walkdirectorysync)
+- [convertFilter](https://github.com/bemoje/tsmono/blob/main/pkg/fswalk/docs/md/index.md#convertfilter)
+- [findFile](https://github.com/bemoje/tsmono/blob/main/pkg/fswalk/docs/md/index.md#findfile)
+- [walkDirectory](https://github.com/bemoje/tsmono/blob/main/pkg/fswalk/docs/md/index.md#walkdirectory)
+- [walkDirectoryEmitter](https://github.com/bemoje/tsmono/blob/main/pkg/fswalk/docs/md/index.md#walkdirectoryemitter)
+- [walkDirectorySync](https://github.com/bemoje/tsmono/blob/main/pkg/fswalk/docs/md/index.md#walkdirectorysync)
 
 ## Functions
 
@@ -61,7 +61,7 @@ ___
 | :------ | :------ |
 | `dirpath` | `string` |
 | `search` | `string` |
-| `options` | [`IWalkDirectoryOptions`](/docs/md/interfaces/IWalkDirectoryOptions.md) |
+| `options` | [`IWalkDirectoryOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/fswalk/docs/md/interfaces/IWalkDirectoryOptions.md) |
 
 #### Returns
 
@@ -82,7 +82,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `dirpath` | `string` |
-| `options` | [`IWalkDirectoryOptions`](/docs/md/interfaces/IWalkDirectoryOptions.md) |
+| `options` | [`IWalkDirectoryOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/fswalk/docs/md/interfaces/IWalkDirectoryOptions.md) |
 | `callback?` | (`filepath`: `string`, `stat`: `Stats`) => `void` |
 
 #### Returns
@@ -104,7 +104,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `dirpath` | `string` |
-| `options` | [`IWalkDirectoryOptions`](/docs/md/interfaces/IWalkDirectoryOptions.md) |
+| `options` | [`IWalkDirectoryOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/fswalk/docs/md/interfaces/IWalkDirectoryOptions.md) |
 
 #### Returns
 
@@ -125,7 +125,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `dirpath` | `string` |
-| `options` | [`IWalkDirectoryOptions`](/docs/md/interfaces/IWalkDirectoryOptions.md) |
+| `options` | [`IWalkDirectoryOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/fswalk/docs/md/interfaces/IWalkDirectoryOptions.md) |
 | `callback?` | (`filepath`: `string`, `stat`: `Stats`) => `void` |
 
 #### Returns

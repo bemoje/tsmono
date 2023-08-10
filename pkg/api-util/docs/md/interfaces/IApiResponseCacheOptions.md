@@ -1,4 +1,4 @@
-[@bemoje/api-util](/docs/md/index.md) / IApiResponseCacheOptions
+[@bemoje/api-util](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/index.md) / IApiResponseCacheOptions
 
 # Interface: IApiResponseCacheOptions
 
@@ -6,10 +6,10 @@
 
 ### Properties
 
-- [dirpath](/docs/md/interfaces/IApiResponseCacheOptions.md#dirpath)
-- [enable](/docs/md/interfaces/IApiResponseCacheOptions.md#enable)
-- [maxAgeMs](/docs/md/interfaces/IApiResponseCacheOptions.md#maxagems)
-- [name](/docs/md/interfaces/IApiResponseCacheOptions.md#name)
+- [dirpath](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IApiResponseCacheOptions.md#dirpath)
+- [enable](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IApiResponseCacheOptions.md#enable)
+- [maxAgeMs](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IApiResponseCacheOptions.md#maxagems)
+- [name](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IApiResponseCacheOptions.md#name)
 
 ## Properties
 

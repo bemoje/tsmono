@@ -1,4 +1,4 @@
-[@bemoje/log](/docs/md/index.md) / ILogOptions
+[@bemoje/log](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/index.md) / ILogOptions
 
 # Interface: ILogOptions
 
@@ -6,20 +6,20 @@
 
 ### Properties
 
-- [consoleLogLevel](/docs/md/interfaces/ILogOptions.md#consoleloglevel)
-- [debugColor](/docs/md/interfaces/ILogOptions.md#debugcolor)
-- [deleteFilesOlderThan](/docs/md/interfaces/ILogOptions.md#deletefilesolderthan)
-- [errorColor](/docs/md/interfaces/ILogOptions.md#errorcolor)
-- [fileLogLevel](/docs/md/interfaces/ILogOptions.md#fileloglevel)
-- [infoColor](/docs/md/interfaces/ILogOptions.md#infocolor)
-- [logDirpath](/docs/md/interfaces/ILogOptions.md#logdirpath)
-- [warnColor](/docs/md/interfaces/ILogOptions.md#warncolor)
+- [consoleLogLevel](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/interfaces/ILogOptions.md#consoleloglevel)
+- [debugColor](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/interfaces/ILogOptions.md#debugcolor)
+- [deleteFilesOlderThan](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/interfaces/ILogOptions.md#deletefilesolderthan)
+- [errorColor](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/interfaces/ILogOptions.md#errorcolor)
+- [fileLogLevel](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/interfaces/ILogOptions.md#fileloglevel)
+- [infoColor](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/interfaces/ILogOptions.md#infocolor)
+- [logDirpath](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/interfaces/ILogOptions.md#logdirpath)
+- [warnColor](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/interfaces/ILogOptions.md#warncolor)
 
 ## Properties
 
 ### consoleLogLevel
 
-• `Optional` **consoleLogLevel**: [`LogLevel`](/docs/md/enums/LogLevel.md)
+• `Optional` **consoleLogLevel**: [`LogLevel`](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/enums/LogLevel.md)
 
 The log level for console output. Can be 'NONE', 'DEBUG', 'INFO', 'WARN', or 'ERROR'.
 
@@ -67,7 +67,7 @@ ___
 
 ### fileLogLevel
 
-• `Optional` **fileLogLevel**: [`LogLevel`](/docs/md/enums/LogLevel.md)
+• `Optional` **fileLogLevel**: [`LogLevel`](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/enums/LogLevel.md)
 
 The log level for the logfile. Can be 'NONE', 'DEBUG', 'INFO', 'WARN', or 'ERROR'.
 

@@ -1,4 +1,4 @@
-[@bemoje/openai-api-client](/docs/md/index.md) / IOpenaiCompletionRequestOptions
+[@bemoje/openai-api-client](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/index.md) / IOpenaiCompletionRequestOptions
 
 # Interface: IOpenaiCompletionRequestOptions
 
@@ -12,26 +12,26 @@
 
 ### Properties
 
-- [best\_of](/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#best_of)
-- [cache](/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#cache)
-- [echo](/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#echo)
-- [frequency\_penalty](/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#frequency_penalty)
-- [instruction](/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#instruction)
-- [logit\_bias](/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#logit_bias)
-- [logprobs](/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#logprobs)
-- [max\_tokens](/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#max_tokens)
-- [model](/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#model)
-- [n](/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#n)
-- [presence\_penalty](/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#presence_penalty)
-- [prompt](/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#prompt)
-- [response\_max\_tokens](/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#response_max_tokens)
-- [retry](/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#retry)
-- [stop](/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#stop)
-- [stream](/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#stream)
-- [suffix](/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#suffix)
-- [temperature](/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#temperature)
-- [top\_p](/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#top_p)
-- [user](/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#user)
+- [best\_of](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#best_of)
+- [cache](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#cache)
+- [echo](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#echo)
+- [frequency\_penalty](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#frequency_penalty)
+- [instruction](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#instruction)
+- [logit\_bias](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#logit_bias)
+- [logprobs](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#logprobs)
+- [max\_tokens](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#max_tokens)
+- [model](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#model)
+- [n](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#n)
+- [presence\_penalty](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#presence_penalty)
+- [prompt](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#prompt)
+- [response\_max\_tokens](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#response_max_tokens)
+- [retry](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#retry)
+- [stop](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#stop)
+- [stream](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#stream)
+- [suffix](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#suffix)
+- [temperature](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#temperature)
+- [top\_p](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#top_p)
+- [user](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiCompletionRequestOptions.md#user)
 
 ## Properties
 

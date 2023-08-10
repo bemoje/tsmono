@@ -8,7 +8,7 @@ export function hashPackage(name: string, scripts: string[]): [string, number][]
   const fpaths = walkdir
     .sync(dpath, {
       filter: (dpath: string, files: string[]): string[] => {
-        if (/node_modules/i.test(dpath)) return []
+        if (/node_modules|docs/i.test(dpath)) return []
         return files.filter((file) => !/package-lock.json/i.test(file))
       },
     })

@@ -1,4 +1,4 @@
-[@bemoje/openai-api-client](/docs/md/index.md) / IOpenaiChatRequestOptions
+[@bemoje/openai-api-client](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/index.md) / IOpenaiChatRequestOptions
 
 # Interface: IOpenaiChatRequestOptions
 
@@ -12,24 +12,24 @@
 
 ### Properties
 
-- [cache](/docs/md/interfaces/IOpenaiChatRequestOptions.md#cache)
-- [frequency\_penalty](/docs/md/interfaces/IOpenaiChatRequestOptions.md#frequency_penalty)
-- [function\_call](/docs/md/interfaces/IOpenaiChatRequestOptions.md#function_call)
-- [functions](/docs/md/interfaces/IOpenaiChatRequestOptions.md#functions)
-- [instruction](/docs/md/interfaces/IOpenaiChatRequestOptions.md#instruction)
-- [logit\_bias](/docs/md/interfaces/IOpenaiChatRequestOptions.md#logit_bias)
-- [max\_tokens](/docs/md/interfaces/IOpenaiChatRequestOptions.md#max_tokens)
-- [messages](/docs/md/interfaces/IOpenaiChatRequestOptions.md#messages)
-- [model](/docs/md/interfaces/IOpenaiChatRequestOptions.md#model)
-- [n](/docs/md/interfaces/IOpenaiChatRequestOptions.md#n)
-- [presence\_penalty](/docs/md/interfaces/IOpenaiChatRequestOptions.md#presence_penalty)
-- [prompt](/docs/md/interfaces/IOpenaiChatRequestOptions.md#prompt)
-- [retry](/docs/md/interfaces/IOpenaiChatRequestOptions.md#retry)
-- [stop](/docs/md/interfaces/IOpenaiChatRequestOptions.md#stop)
-- [stream](/docs/md/interfaces/IOpenaiChatRequestOptions.md#stream)
-- [temperature](/docs/md/interfaces/IOpenaiChatRequestOptions.md#temperature)
-- [top\_p](/docs/md/interfaces/IOpenaiChatRequestOptions.md#top_p)
-- [user](/docs/md/interfaces/IOpenaiChatRequestOptions.md#user)
+- [cache](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiChatRequestOptions.md#cache)
+- [frequency\_penalty](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiChatRequestOptions.md#frequency_penalty)
+- [function\_call](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiChatRequestOptions.md#function_call)
+- [functions](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiChatRequestOptions.md#functions)
+- [instruction](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiChatRequestOptions.md#instruction)
+- [logit\_bias](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiChatRequestOptions.md#logit_bias)
+- [max\_tokens](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiChatRequestOptions.md#max_tokens)
+- [messages](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiChatRequestOptions.md#messages)
+- [model](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiChatRequestOptions.md#model)
+- [n](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiChatRequestOptions.md#n)
+- [presence\_penalty](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiChatRequestOptions.md#presence_penalty)
+- [prompt](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiChatRequestOptions.md#prompt)
+- [retry](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiChatRequestOptions.md#retry)
+- [stop](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiChatRequestOptions.md#stop)
+- [stream](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiChatRequestOptions.md#stream)
+- [temperature](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiChatRequestOptions.md#temperature)
+- [top\_p](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiChatRequestOptions.md#top_p)
+- [user](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiChatRequestOptions.md#user)
 
 ## Properties
 

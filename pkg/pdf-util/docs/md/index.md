@@ -6,9 +6,9 @@
 
 ### Functions
 
-- [pdfGetPages](/docs/md/index.md#pdfgetpages)
-- [pdfIteratePages](/docs/md/index.md#pdfiteratepages)
-- [pdfSplitPages](/docs/md/index.md#pdfsplitpages)
+- [pdfGetPages](https://github.com/bemoje/tsmono/blob/main/pkg/pdf-util/docs/md/index.md#pdfgetpages)
+- [pdfIteratePages](https://github.com/bemoje/tsmono/blob/main/pkg/pdf-util/docs/md/index.md#pdfiteratepages)
+- [pdfSplitPages](https://github.com/bemoje/tsmono/blob/main/pkg/pdf-util/docs/md/index.md#pdfsplitpages)
 
 ## Functions
 

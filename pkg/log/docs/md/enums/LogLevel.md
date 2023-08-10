@@ -1,4 +1,4 @@
-[@bemoje/log](/docs/md/index.md) / LogLevel
+[@bemoje/log](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/index.md) / LogLevel
 
 # Enumeration: LogLevel
 
@@ -6,11 +6,11 @@
 
 ### Enumeration Members
 
-- [DEBUG](/docs/md/enums/LogLevel.md#debug)
-- [ERROR](/docs/md/enums/LogLevel.md#error)
-- [INFO](/docs/md/enums/LogLevel.md#info)
-- [NONE](/docs/md/enums/LogLevel.md#none)
-- [WARN](/docs/md/enums/LogLevel.md#warn)
+- [DEBUG](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/enums/LogLevel.md#debug)
+- [ERROR](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/enums/LogLevel.md#error)
+- [INFO](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/enums/LogLevel.md#info)
+- [NONE](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/enums/LogLevel.md#none)
+- [WARN](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/enums/LogLevel.md#warn)
 
 ## Enumeration Members
 
