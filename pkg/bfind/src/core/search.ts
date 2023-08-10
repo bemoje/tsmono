@@ -1,14 +1,9 @@
-import { arrEvery, setUnion, strToWords } from '@bemoje/node-util'
+import { setUnion } from '@bemoje/node-util'
 import { TrieMap } from '@bemoje/trie-map'
 import { green } from 'cli-color'
-import { SerializableSet } from '../util/SerializableSet'
-import { extractSearchKeys } from '../util/extractSearchKeys'
-
-export function search(
-  searchString: string,
-  PATHLIST: string[],
-  INDEX: TrieMap<SerializableSet<number>>,
-): Array<string> {
+import { words } from 'lodash'
+import { extractSearchKeys } from './extractSearchKeys'
+export function search(searchString: string, PATHS: string[], TRIE: TrieMap<Set<number>>): Array<string> {
   const keywords: Set<string> = extractSearchKeys(searchString)
   console.log(
     'Search keys: ' +
@@ -20,22 +15,26 @@ export function search(
   const indices: Array<Set<number>> = []
   for (const keyword of keywords) {
     const set: Set<number> = new Set()
-    INDEX.getValues(Array.from(keyword)).forEach((indices: Set<number>) => {
+    TRIE.getValues(Array.from(keyword)).forEach((indices: Set<number>) => {
       for (const i of indices) {
-        set.add(Number(i))
+        set.add(i)
       }
     })
     indices.push(set)
   }
 
   const union: Array<number> = Array.from(setUnion(indices))
-  const searchWords = strToWords(searchString)
+  const searchWords = words(searchString)
   const filepaths: string[] = []
   for (const i of union) {
-    const filepath = PATHLIST[i]
-    const hasAllKeywords = arrEvery(searchWords, (keyword) => {
-      return filepath.includes(keyword.toLowerCase())
-    })
+    const filepath = PATHS[i]
+    let hasAllKeywords = true
+    for (const kw of searchWords) {
+      if (!filepath.includes(kw)) {
+        hasAllKeywords = false
+        break
+      }
+    }
     if (!hasAllKeywords) continue
     filepaths.push(filepath.replace(/\\+/g, '/'))
   }

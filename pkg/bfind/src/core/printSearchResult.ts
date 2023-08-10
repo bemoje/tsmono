@@ -1,6 +1,6 @@
-import { strToWords } from '@bemoje/node-util'
 import { blackBright, cyan, red, yellow } from 'cli-color'
 import fs from 'fs'
+import { words } from 'lodash'
 import { config } from '../index'
 
 export async function printSearchResult(fspaths: string[], search: string, printAll = false) {
@@ -16,7 +16,7 @@ export async function printSearchResult(fspaths: string[], search: string, print
   }
 
   console.log()
-  const keywords = strToWords(search)
+  const keywords = words(search)
   for (let i = 0; i < pathstat.length; i++) {
     const stat = pathstat[i][0]
     const fspath = keywords.reduce((p: string, kw: string) => {

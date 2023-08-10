@@ -1,0 +1,61 @@
+{
+  "compilerOptions": {
+    "target": "ES2015",
+    "lib": [
+      "ESNext",
+      "DOM"
+    ],
+    "moduleResolution": "node",
+    "types": [
+      "jest",
+      "node"
+    ],
+    "declaration": true,
+    "declarationMap": true,
+    "newLine": "lf",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipDefaultLibCheck": false,
+    "skipLibCheck": false,
+    "paths": {
+      "@bemoje/api-util": [
+        "./pkg/api-util/src/index.ts"
+      ],
+      "@bemoje/bfind": [
+        "./pkg/bfind/src/index.ts"
+      ],
+      "@bemoje/commander-config": [
+        "./pkg/commander-config/src/index.ts"
+      ],
+      "@bemoje/excel-util": [
+        "./pkg/excel-util/src/index.ts"
+      ],
+      "@bemoje/fswalk": [
+        "./pkg/fswalk/src/index.ts"
+      ],
+      "@bemoje/log": [
+        "./pkg/log/src/index.ts"
+      ],
+      "@bemoje/open-repo": [
+        "./pkg/open-repo/src/index.ts"
+      ],
+      "@bemoje/openai-api-client": [
+        "./pkg/openai-api-client/src/index.ts"
+      ],
+      "@bemoje/pdf-util": [
+        "./pkg/pdf-util/src/index.ts"
+      ],
+      "@bemoje/split-sentences": [
+        "./pkg/split-sentences/src/index.ts"
+      ],
+      "@bemoje/terminal-gpt": [
+        "./pkg/terminal-gpt/src/index.ts"
+      ]
+    }
+  },
+  "include": [
+    "./pkg/**/src/**/*.ts"
+  ]
+}

@@ -1,0 +1,6 @@
+export * from './lib/core/convertFilter'
+export * from './lib/findFile'
+export * from './lib/types/IWalkDirectoryOptions'
+export * from './lib/walkDirectory'
+export * from './lib/walkDirectoryEmitter'
+export * from './lib/walkDirectorySync'

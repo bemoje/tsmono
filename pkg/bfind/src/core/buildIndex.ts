@@ -1,21 +1,18 @@
-import { memoryUsage, NumberFormatter } from '@bemoje/node-util'
+import { PathFilter } from '@bemoje/node-util'
 import { TrieMap } from '@bemoje/trie-map'
 import fs from 'fs'
 import { mkdirp } from 'mkdirp'
 import path from 'path'
 import walkdir from 'walkdir'
-import { FILES_HASH_JSON_PATH } from '../constants/FILES_HASH_JSON_PATH'
+import { FILE_LIST_JSON_PATH } from '../constants/FILE_LIST_JSON_PATH'
 import { WORD_TRIE_JSON_PATH } from '../constants/WORD_TRIE_JSON_PATH'
 import { config } from '../index'
-import { IDirectoryWalkStatus } from '../types/IDirectoryWalkStatus'
-import { extractSearchKeys } from '../util/extractSearchKeys'
-import { PathFilter } from '../util/PathFilter'
-import { SerializableSet } from '../util/SerializableSet'
+import { extractSearchKeys } from './extractSearchKeys'
 
 export async function buildIndex(): Promise<void> {
   const rootdirs: Array<string> = config.settings['rootdirs']
-  const PATHLIST: string[] = []
-  const INDEX: TrieMap<SerializableSet<number>> = new TrieMap()
+  const PATHS: string[] = []
+  const TRIE: TrieMap<SerializableSet<number>> = new TrieMap()
 
   const pathFilter = new PathFilter()
   config.settings['ignore'].forEach((reg: string) => {
@@ -29,23 +26,11 @@ export async function buildIndex(): Promise<void> {
 
   const count = {
     filesIndexed: 0,
-    keywords: 0,
-    indexedFileRefs: 0,
-    keywordsNormalized: 0,
+    keywordsIndexed: 0,
+    fileRefsIndexed: 0,
   }
 
-  function getStatus(filepath?: string): IDirectoryWalkStatus {
-    const formatter = new NumberFormatter(0).locale('en-US')
-    const status: IDirectoryWalkStatus = {
-      currentDirectory: filepath ? filepath.split(/(\\|\/)+/) : ['COMPLETED'],
-      filesIndexed: formatter.format(count.filesIndexed),
-      keywords: formatter.format(count.keywords),
-      indexedFileRefs: formatter.format(count.indexedFileRefs),
-      keywordsNormalized: formatter.format(count.keywordsNormalized),
-      memory: memoryUsage(),
-    }
-    return status
-  }
+  let nextIndex = -1
 
   function walkDirectory(rootdirpath: string): Promise<void> {
     return new Promise((resolve, reject) => {
@@ -70,26 +55,24 @@ export async function buildIndex(): Promise<void> {
         },
       })
 
-      let nextIndex = -1
       emitter.on('path', function (filepath, stat) {
         const index = ++nextIndex
         filepath = filepath.toLowerCase()
-        PATHLIST[index] = filepath
+        PATHS[index] = filepath
         const searchWords = extractSearchKeys(path.basename(filepath))
         for (const word of searchWords) {
-          count.keywords++
+          count.keywordsIndexed++
           for (let j = 0; j < word.length - 2; j++) {
             const key = Array.from(word.substring(j))
-            const indices = INDEX.get(key)
+            const indices = TRIE.get(key)
             if (indices) {
               if (!indices.has(index)) {
                 indices.add(index)
-                count.indexedFileRefs++
+                count.fileRefsIndexed++
               }
             } else {
-              INDEX.set(key, new SerializableSet([index]))
-              count.keywordsNormalized++
-              count.indexedFileRefs++
+              TRIE.set(key, new SerializableSet([index]))
+              count.fileRefsIndexed++
             }
           }
         }
@@ -113,13 +96,22 @@ export async function buildIndex(): Promise<void> {
       })
     })
   }
-  console.log({ rootdirs })
   const t0 = Date.now()
   await Promise.all(rootdirs.map(walkDirectory))
   await mkdirp(path.dirname(WORD_TRIE_JSON_PATH))
-  await fs.promises.writeFile(WORD_TRIE_JSON_PATH, INDEX.toJson(false), 'utf8')
-  await fs.promises.writeFile(FILES_HASH_JSON_PATH, JSON.stringify(PATHLIST), 'utf8')
+  await fs.promises.writeFile(WORD_TRIE_JSON_PATH, TRIE.toJson(false), 'utf8')
+  await fs.promises.writeFile(FILE_LIST_JSON_PATH, JSON.stringify(PATHS), 'utf8')
+  const indexSizeMB = (fs.statSync(WORD_TRIE_JSON_PATH).size + fs.statSync(FILE_LIST_JSON_PATH).size) / 1024 / 1024
   console.log('Indexing completed in ' + Math.floor((Date.now() - t0) / 1000) + ' seconds.')
-  console.log(getStatus())
+  console.log({ ...count, indexSizeMB: Math.round(indexSizeMB) })
   process.exit(1)
+}
+
+class SerializableSet<T> extends Set<T> {
+  constructor(...args: any[]) {
+    super(...args)
+  }
+  toJSON() {
+    return Array.from(this)
+  }
 }
