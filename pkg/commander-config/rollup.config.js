@@ -87,7 +87,6 @@ if (PKG.browser)
     name,
     file: PKG.browser,
     format: 'umd',
-    plugins: [resolve()],
   })
 if (PKG.main)
   output.push({
@@ -97,7 +96,6 @@ if (PKG.main)
     sourcemap: true,
     file: PKG.main,
     format: 'commonjs',
-    plugins: [],
   })
 if (PKG.module)
   output.push({
@@ -114,6 +112,7 @@ export default {
   external,
   output,
   plugins: [
+    resolve(),
     commonjs(),
     json(),
     typescript2({

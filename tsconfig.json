@@ -52,6 +52,9 @@
       ],
       "@bemoje/terminal-gpt": [
         "./pkg/terminal-gpt/src/index.ts"
+      ],
+      "@bemoje/trie-map": [
+        "./pkg/trie-map/src/index.ts"
       ]
     }
   },
