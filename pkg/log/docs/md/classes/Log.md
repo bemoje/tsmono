@@ -65,7 +65,7 @@ Create a new instance.
 
 #### Defined in
 
-[lib/Log.ts:124](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/Log.ts#L124)
+[lib/Log.ts:124](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/Log.ts#L124)
 
 ## Properties
 
@@ -77,7 +77,7 @@ The log level for console output. Can be 'NONE', 'DEBUG', 'INFO', 'WARN', or 'ER
 
 #### Defined in
 
-[lib/Log.ts:29](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/Log.ts#L29)
+[lib/Log.ts:29](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/Log.ts#L29)
 
 ___
 
@@ -89,7 +89,7 @@ Color format for debug messages when logged to console.
 
 #### Defined in
 
-[lib/Log.ts:89](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/Log.ts#L89)
+[lib/Log.ts:89](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/Log.ts#L89)
 
 ___
 
@@ -101,7 +101,7 @@ Whether to debug info to console.
 
 #### Defined in
 
-[lib/Log.ts:34](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/Log.ts#L34)
+[lib/Log.ts:34](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/Log.ts#L34)
 
 ___
 
@@ -113,7 +113,7 @@ Whether to log debug info to the logfile.
 
 #### Defined in
 
-[lib/Log.ts:59](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/Log.ts#L59)
+[lib/Log.ts:59](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/Log.ts#L59)
 
 ___
 
@@ -125,7 +125,7 @@ Color format for error messages when logged to console.
 
 #### Defined in
 
-[lib/Log.ts:104](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/Log.ts#L104)
+[lib/Log.ts:104](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/Log.ts#L104)
 
 ___
 
@@ -137,7 +137,7 @@ Whether to log errors to console.
 
 #### Defined in
 
-[lib/Log.ts:49](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/Log.ts#L49)
+[lib/Log.ts:49](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/Log.ts#L49)
 
 ___
 
@@ -149,7 +149,7 @@ Whether to log errors to the logfile.
 
 #### Defined in
 
-[lib/Log.ts:74](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/Log.ts#L74)
+[lib/Log.ts:74](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/Log.ts#L74)
 
 ___
 
@@ -161,7 +161,7 @@ The log level for the logfile. Can be 'NONE', 'DEBUG', 'INFO', 'WARN', or 'ERROR
 
 #### Defined in
 
-[lib/Log.ts:54](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/Log.ts#L54)
+[lib/Log.ts:54](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/Log.ts#L54)
 
 ___
 
@@ -173,7 +173,7 @@ Color format for info messages when logged to console.
 
 #### Defined in
 
-[lib/Log.ts:94](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/Log.ts#L94)
+[lib/Log.ts:94](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/Log.ts#L94)
 
 ___
 
@@ -185,7 +185,7 @@ Whether to log info to console.
 
 #### Defined in
 
-[lib/Log.ts:39](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/Log.ts#L39)
+[lib/Log.ts:39](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/Log.ts#L39)
 
 ___
 
@@ -197,7 +197,7 @@ Whether to log info to the logfile.
 
 #### Defined in
 
-[lib/Log.ts:64](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/Log.ts#L64)
+[lib/Log.ts:64](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/Log.ts#L64)
 
 ___
 
@@ -209,7 +209,7 @@ The directory path of the log file.
 
 #### Defined in
 
-[lib/Log.ts:79](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/Log.ts#L79)
+[lib/Log.ts:79](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/Log.ts#L79)
 
 ___
 
@@ -221,7 +221,7 @@ The filepath of the log file.
 
 #### Defined in
 
-[lib/Log.ts:84](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/Log.ts#L84)
+[lib/Log.ts:84](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/Log.ts#L84)
 
 ___
 
@@ -233,7 +233,7 @@ Color format for warning messages when logged to console.
 
 #### Defined in
 
-[lib/Log.ts:99](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/Log.ts#L99)
+[lib/Log.ts:99](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/Log.ts#L99)
 
 ___
 
@@ -245,7 +245,7 @@ Whether to log warnings to console.
 
 #### Defined in
 
-[lib/Log.ts:44](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/Log.ts#L44)
+[lib/Log.ts:44](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/Log.ts#L44)
 
 ___
 
@@ -257,7 +257,7 @@ Whether to log warnings to the logfile.
 
 #### Defined in
 
-[lib/Log.ts:69](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/Log.ts#L69)
+[lib/Log.ts:69](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/Log.ts#L69)
 
 ___
 
@@ -269,7 +269,7 @@ Default options for creating new instances.
 
 #### Defined in
 
-[lib/Log.ts:109](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/Log.ts#L109)
+[lib/Log.ts:109](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/Log.ts#L109)
 
 ## Methods
 
@@ -300,7 +300,7 @@ Generic function for logging to console, used by the log-level specific function
 
 #### Defined in
 
-[lib/Log.ts:313](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/Log.ts#L313)
+[lib/Log.ts:313](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/Log.ts#L313)
 
 ___
 
@@ -329,7 +329,7 @@ Write log entry to logfile
 
 #### Defined in
 
-[lib/Log.ts:296](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/Log.ts#L296)
+[lib/Log.ts:296](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/Log.ts#L296)
 
 ___
 
@@ -356,7 +356,7 @@ This is not logged to the log file.
 
 #### Defined in
 
-[lib/Log.ts:260](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/Log.ts#L260)
+[lib/Log.ts:260](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/Log.ts#L260)
 
 ___
 
@@ -385,7 +385,7 @@ Logs a debug message the console.
 
 #### Defined in
 
-[lib/Log.ts:170](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/Log.ts#L170)
+[lib/Log.ts:170](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/Log.ts#L170)
 
 ___
 
@@ -407,7 +407,7 @@ Delete log files older than the specified number of days.
 
 #### Defined in
 
-[lib/Log.ts:235](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/Log.ts#L235)
+[lib/Log.ts:235](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/Log.ts#L235)
 
 ___
 
@@ -436,7 +436,7 @@ Logs a error message to the console.
 
 #### Defined in
 
-[lib/Log.ts:201](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/Log.ts#L201)
+[lib/Log.ts:201](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/Log.ts#L201)
 
 ___
 
@@ -471,7 +471,7 @@ Get the current instance's properties.
 
 #### Defined in
 
-[lib/Log.ts:330](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/Log.ts#L330)
+[lib/Log.ts:330](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/Log.ts#L330)
 
 ___
 
@@ -500,7 +500,7 @@ Logs an info message the console.
 
 #### Defined in
 
-[lib/Log.ts:181](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/Log.ts#L181)
+[lib/Log.ts:181](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/Log.ts#L181)
 
 ___
 
@@ -522,7 +522,7 @@ Re-initialize the current instance with the specified options.
 
 #### Defined in
 
-[lib/Log.ts:161](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/Log.ts#L161)
+[lib/Log.ts:161](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/Log.ts#L161)
 
 ___
 
@@ -549,7 +549,7 @@ This function allows you to see what events are being emitted by an EventEmitter
 
 #### Defined in
 
-[lib/Log.ts:273](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/Log.ts#L273)
+[lib/Log.ts:273](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/Log.ts#L273)
 
 ___
 
@@ -575,7 +575,7 @@ This is not logged to the log file.
 
 #### Defined in
 
-[lib/Log.ts:250](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/Log.ts#L250)
+[lib/Log.ts:250](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/Log.ts#L250)
 
 ___
 
@@ -604,7 +604,7 @@ Wrap an async function as a task, logging the start and end of the task.
 
 #### Defined in
 
-[lib/Log.ts:211](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/Log.ts#L211)
+[lib/Log.ts:211](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/Log.ts#L211)
 
 ___
 
@@ -633,7 +633,7 @@ Wrap a synchronous function as a task, logging the start and end of the task.
 
 #### Defined in
 
-[lib/Log.ts:223](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/Log.ts#L223)
+[lib/Log.ts:223](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/Log.ts#L223)
 
 ___
 
@@ -662,4 +662,4 @@ Logs a warning message to the console.
 
 #### Defined in
 
-[lib/Log.ts:191](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/Log.ts#L191)
+[lib/Log.ts:191](https://github.com/bemoje/tsmono/blob/5043a85/pkg/log/src/lib/Log.ts#L191)

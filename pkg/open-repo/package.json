@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/open-repo",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "CLI-shorthand to opening a local repository in your IDE.",
   "main": "dist/index.cjs.js",
   "types": "dist/index.d.ts",
@@ -15,7 +15,7 @@
     "build": "npm run lint && rimraf dist && npm run rollup",
     "docsmd": "rimraf docs/md && typedoc --out docs/md/ src/index.ts --readme none --plugin typedoc-plugin-markdown --theme markdown --entryDocument index.md --publicPath /docs/md/",
     "docshtml": "rimraf docs/html && typedoc --out docs/html --entryPoints src/index.ts",
-    "docs": "rimraf docs && npm run docsmd && npm run docshtml",
+    "docs": "npm run docsmd && npm run docshtml",
     "viewdocs": "start docs/html/index.html",
     "prepub": "npm run build && npm run test && npm run docs"
   },

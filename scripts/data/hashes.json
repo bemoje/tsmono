@@ -1,35 +1,68 @@
 {
   "api-util": {
-    "docsmd": 24944318188
+    "test": -4817336594,
+    "build": 32442705534,
+    "docsmd": 19302386952,
+    "docshtml": -11434084692
   },
   "commander-config": {
-    "docsmd": 24278958404
+    "test": 35938106477,
+    "build": 23894559293,
+    "docsmd": 5629413659,
+    "docshtml": 20458093575
   },
   "fswalk": {
-    "docsmd": 33434162437
+    "test": -11984027081,
+    "build": 21066798951,
+    "docsmd": 51031899025,
+    "docshtml": 2793577589
   },
   "open-repo": {
-    "docsmd": 14628133145
+    "test": -20580269606,
+    "build": 42968346522,
+    "docsmd": -40072232342,
+    "docshtml": 64998619274
   },
   "pdf-util": {
-    "docsmd": 17317365990
+    "test": 13164151380,
+    "build": 49730374900,
+    "docsmd": -34971140028,
+    "docshtml": -14452440988
   },
   "bfind": {
-    "docsmd": -16522770757
+    "test": -33347107584,
+    "build": 65246451216,
+    "docsmd": -36742857970,
+    "docshtml": -48305764038
   },
   "log": {
-    "docsmd": 29577378141
+    "test": -3685894748,
+    "build": 64611232916,
+    "docsmd": 41896122082,
+    "docshtml": 49896475438
   },
   "split-sentences": {
-    "docsmd": -18809102721
+    "test": -52937512,
+    "build": 17769249624,
+    "docsmd": -5982297364,
+    "docshtml": -27170079820
   },
   "excel-util": {
-    "docsmd": 10002640338
+    "test": 39887983148,
+    "build": 594974700,
+    "docsmd": 47436441840,
+    "docshtml": -2523159016
   },
   "openai-api-client": {
-    "docsmd": -23863867657
+    "test": -44225712130,
+    "build": 54848328270,
+    "docsmd": -25443876676,
+    "docshtml": 23445565256
   },
   "terminal-gpt": {
-    "docsmd": 15295707891
+    "test": -32918110654,
+    "build": 53654875154,
+    "docsmd": 64145846124,
+    "docshtml": 77658061616
   }
 }

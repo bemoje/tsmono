@@ -35,7 +35,7 @@
 
 #### Defined in
 
-[core/ConfigSetting.ts:10](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/commander-config/src/core/ConfigSetting.ts#L10)
+[core/ConfigSetting.ts:10](https://github.com/bemoje/tsmono/blob/5043a85/pkg/commander-config/src/core/ConfigSetting.ts#L10)
 
 ## Properties
 
@@ -49,7 +49,7 @@
 
 #### Defined in
 
-[core/ConfigSetting.ts:6](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/commander-config/src/core/ConfigSetting.ts#L6)
+[core/ConfigSetting.ts:6](https://github.com/bemoje/tsmono/blob/5043a85/pkg/commander-config/src/core/ConfigSetting.ts#L6)
 
 ___
 
@@ -63,7 +63,7 @@ ___
 
 #### Defined in
 
-[core/ConfigSetting.ts:5](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/commander-config/src/core/ConfigSetting.ts#L5)
+[core/ConfigSetting.ts:5](https://github.com/bemoje/tsmono/blob/5043a85/pkg/commander-config/src/core/ConfigSetting.ts#L5)
 
 ___
 
@@ -73,7 +73,7 @@ ___
 
 #### Defined in
 
-[core/ConfigSetting.ts:4](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/commander-config/src/core/ConfigSetting.ts#L4)
+[core/ConfigSetting.ts:4](https://github.com/bemoje/tsmono/blob/5043a85/pkg/commander-config/src/core/ConfigSetting.ts#L4)
 
 ___
 
@@ -101,7 +101,7 @@ ___
 
 #### Defined in
 
-[core/ConfigSetting.ts:8](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/commander-config/src/core/ConfigSetting.ts#L8)
+[core/ConfigSetting.ts:8](https://github.com/bemoje/tsmono/blob/5043a85/pkg/commander-config/src/core/ConfigSetting.ts#L8)
 
 ___
 
@@ -115,4 +115,4 @@ ___
 
 #### Defined in
 
-[core/ConfigSetting.ts:7](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/commander-config/src/core/ConfigSetting.ts#L7)
+[core/ConfigSetting.ts:7](https://github.com/bemoje/tsmono/blob/5043a85/pkg/commander-config/src/core/ConfigSetting.ts#L7)

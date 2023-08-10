@@ -1,8 +1,7 @@
-import { deleteDirectorySafe } from '@bemoje/node-util'
+import { deleteDirectorySafe, wait } from '@bemoje/node-util'
 import { execSync } from 'child_process'
 import fs from 'fs'
 import path from 'path'
-import { setTimeout } from 'timers/promises'
 import { IGetUserInputFromEditorOptions } from './IGetUserInputFromEditorOptions'
 
 export async function getUserInputFromEditor(options: IGetUserInputFromEditorOptions): Promise<string> {
@@ -12,7 +11,7 @@ export async function getUserInputFromEditor(options: IGetUserInputFromEditorOpt
   const tempfile = path.join(tempdir, Date.now() + '.txt')
   await fs.promises.writeFile(tempfile, currentContent, 'utf8')
   execSync(`${editor} ${tempfile}`)
-  await setTimeout(200)
+  await wait(200)
   const userInput = await fs.promises.readFile(tempfile, 'utf8')
   await deleteDirectorySafe(tempdir)
   return userInput

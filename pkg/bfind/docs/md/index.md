@@ -6,20 +6,9 @@
 
 ### Variables
 
-- [config](https://github.com/bemoje/tsmono/blob/main/pkg/bfind/docs/md/index.md#config)
 - [program](https://github.com/bemoje/tsmono/blob/main/pkg/bfind/docs/md/index.md#program)
 
 ## Variables
-
-### config
-
-• `Const` **config**: `Config`
-
-#### Defined in
-
-[index.ts:18](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/bfind/src/index.ts#L18)
-
-___
 
 ### program
 
@@ -27,4 +16,4 @@ ___
 
 #### Defined in
 
-[index.ts:85](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/bfind/src/index.ts#L85)
+[index.ts:13](https://github.com/bemoje/tsmono/blob/5043a85/pkg/bfind/src/index.ts#L13)

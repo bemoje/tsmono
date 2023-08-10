@@ -20,7 +20,7 @@ Cache options
 
 #### Defined in
 
-[pkg/openai-api-client/src/lib/types/IOpenaiTranscribeOptions.ts:18](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/types/IOpenaiTranscribeOptions.ts#L18)
+[pkg/openai-api-client/src/lib/types/IOpenaiTranscribeOptions.ts:18](https://github.com/bemoje/tsmono/blob/5043a85/pkg/openai-api-client/src/lib/types/IOpenaiTranscribeOptions.ts#L18)
 
 ___
 
@@ -32,7 +32,7 @@ Transcription request object
 
 #### Defined in
 
-[pkg/openai-api-client/src/lib/types/IOpenaiTranscribeOptions.ts:8](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/types/IOpenaiTranscribeOptions.ts#L8)
+[pkg/openai-api-client/src/lib/types/IOpenaiTranscribeOptions.ts:8](https://github.com/bemoje/tsmono/blob/5043a85/pkg/openai-api-client/src/lib/types/IOpenaiTranscribeOptions.ts#L8)
 
 ___
 
@@ -44,4 +44,4 @@ API request retry options
 
 #### Defined in
 
-[pkg/openai-api-client/src/lib/types/IOpenaiTranscribeOptions.ts:13](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/types/IOpenaiTranscribeOptions.ts#L13)
+[pkg/openai-api-client/src/lib/types/IOpenaiTranscribeOptions.ts:13](https://github.com/bemoje/tsmono/blob/5043a85/pkg/openai-api-client/src/lib/types/IOpenaiTranscribeOptions.ts#L13)

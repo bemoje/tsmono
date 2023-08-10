@@ -11,7 +11,7 @@ import {
   underline,
   yellowBright,
 } from 'cli-color'
-import { config } from '../../index'
+import { config } from '../../config'
 import { sendChatRequest } from '../sendChatRequest'
 import { userInput } from '../userInput'
 import { extractContactsFromEmails } from './util/extractContactsFromEmails'

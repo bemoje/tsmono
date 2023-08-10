@@ -27,6 +27,7 @@ fs.readdirSync(template).map((filename) => {
   } else {
     fs.copyFileSync(fpath, path.join(root, filename))
   }
+  fs.mkdirSync(path.join(root, 'docs', 'examples'), { recursive: true })
 })
 
 const pkg = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'))

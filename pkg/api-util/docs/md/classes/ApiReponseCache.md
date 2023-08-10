@@ -76,7 +76,7 @@ options - the options used to create the instance.
 
 #### Defined in
 
-[pkg/api-util/src/lib/ApiReponseCache.ts:49](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/ApiReponseCache.ts#L49)
+[pkg/api-util/src/lib/ApiReponseCache.ts:49](https://github.com/bemoje/tsmono/blob/5043a85/pkg/api-util/src/lib/ApiReponseCache.ts#L49)
 
 ## Properties
 
@@ -88,7 +88,7 @@ Level database instance
 
 #### Defined in
 
-[pkg/api-util/src/lib/ApiReponseCache.ts:16](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/ApiReponseCache.ts#L16)
+[pkg/api-util/src/lib/ApiReponseCache.ts:16](https://github.com/bemoje/tsmono/blob/5043a85/pkg/api-util/src/lib/ApiReponseCache.ts#L16)
 
 ___
 
@@ -100,7 +100,7 @@ Event emitter for cache events
 
 #### Defined in
 
-[pkg/api-util/src/lib/ApiReponseCache.ts:21](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/ApiReponseCache.ts#L21)
+[pkg/api-util/src/lib/ApiReponseCache.ts:21](https://github.com/bemoje/tsmono/blob/5043a85/pkg/api-util/src/lib/ApiReponseCache.ts#L21)
 
 ___
 
@@ -112,7 +112,7 @@ Max age of cached data in milliseconds. Defaults to 0 (no max age).
 
 #### Defined in
 
-[pkg/api-util/src/lib/ApiReponseCache.ts:33](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/ApiReponseCache.ts#L33)
+[pkg/api-util/src/lib/ApiReponseCache.ts:33](https://github.com/bemoje/tsmono/blob/5043a85/pkg/api-util/src/lib/ApiReponseCache.ts#L33)
 
 ___
 
@@ -132,7 +132,7 @@ Default options for creating new instances
 
 #### Defined in
 
-[pkg/api-util/src/lib/ApiReponseCache.ts:38](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/ApiReponseCache.ts#L38)
+[pkg/api-util/src/lib/ApiReponseCache.ts:38](https://github.com/bemoje/tsmono/blob/5043a85/pkg/api-util/src/lib/ApiReponseCache.ts#L38)
 
 ## Accessors
 
@@ -148,7 +148,7 @@ All emitted event names.
 
 #### Defined in
 
-[pkg/api-util/src/lib/ApiReponseCache.ts:26](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/ApiReponseCache.ts#L26)
+[pkg/api-util/src/lib/ApiReponseCache.ts:26](https://github.com/bemoje/tsmono/blob/5043a85/pkg/api-util/src/lib/ApiReponseCache.ts#L26)
 
 ## Methods
 
@@ -182,7 +182,7 @@ delete - if deletion succeeds.
 
 #### Defined in
 
-[pkg/api-util/src/lib/ApiReponseCache.ts:155](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/ApiReponseCache.ts#L155)
+[pkg/api-util/src/lib/ApiReponseCache.ts:155](https://github.com/bemoje/tsmono/blob/5043a85/pkg/api-util/src/lib/ApiReponseCache.ts#L155)
 
 ___
 
@@ -202,7 +202,7 @@ delete - if deletion succeeds.
 
 #### Defined in
 
-[pkg/api-util/src/lib/ApiReponseCache.ts:176](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/ApiReponseCache.ts#L176)
+[pkg/api-util/src/lib/ApiReponseCache.ts:176](https://github.com/bemoje/tsmono/blob/5043a85/pkg/api-util/src/lib/ApiReponseCache.ts#L176)
 
 ___
 
@@ -218,7 +218,7 @@ Delete all expired data.
 
 #### Defined in
 
-[pkg/api-util/src/lib/ApiReponseCache.ts:165](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/ApiReponseCache.ts#L165)
+[pkg/api-util/src/lib/ApiReponseCache.ts:165](https://github.com/bemoje/tsmono/blob/5043a85/pkg/api-util/src/lib/ApiReponseCache.ts#L165)
 
 ___
 
@@ -247,7 +247,7 @@ Emit an event but this automatically adds 'this' as an extra argument.
 
 #### Defined in
 
-[pkg/api-util/src/lib/ApiReponseCache.ts:306](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/ApiReponseCache.ts#L306)
+[pkg/api-util/src/lib/ApiReponseCache.ts:306](https://github.com/bemoje/tsmono/blob/5043a85/pkg/api-util/src/lib/ApiReponseCache.ts#L306)
 
 ___
 
@@ -274,7 +274,7 @@ expired - if the value is expired.
 
 #### Defined in
 
-[pkg/api-util/src/lib/ApiReponseCache.ts:246](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/ApiReponseCache.ts#L246)
+[pkg/api-util/src/lib/ApiReponseCache.ts:246](https://github.com/bemoje/tsmono/blob/5043a85/pkg/api-util/src/lib/ApiReponseCache.ts#L246)
 
 ___
 
@@ -298,7 +298,7 @@ error - if iteration encounters an error.
 
 #### Defined in
 
-[pkg/api-util/src/lib/ApiReponseCache.ts:188](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/ApiReponseCache.ts#L188)
+[pkg/api-util/src/lib/ApiReponseCache.ts:188](https://github.com/bemoje/tsmono/blob/5043a85/pkg/api-util/src/lib/ApiReponseCache.ts#L188)
 
 ___
 
@@ -328,7 +328,7 @@ get - if the value exists for the given hash.
 
 #### Defined in
 
-[pkg/api-util/src/lib/ApiReponseCache.ts:94](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/ApiReponseCache.ts#L94)
+[pkg/api-util/src/lib/ApiReponseCache.ts:94](https://github.com/bemoje/tsmono/blob/5043a85/pkg/api-util/src/lib/ApiReponseCache.ts#L94)
 
 ___
 
@@ -360,7 +360,7 @@ miss - if the value does not exist in the cache.
 
 #### Defined in
 
-[pkg/api-util/src/lib/ApiReponseCache.ts:76](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/ApiReponseCache.ts#L76)
+[pkg/api-util/src/lib/ApiReponseCache.ts:76](https://github.com/bemoje/tsmono/blob/5043a85/pkg/api-util/src/lib/ApiReponseCache.ts#L76)
 
 ___
 
@@ -386,7 +386,7 @@ get - if the value exists for the given hash.
 
 #### Defined in
 
-[pkg/api-util/src/lib/ApiReponseCache.ts:108](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/ApiReponseCache.ts#L108)
+[pkg/api-util/src/lib/ApiReponseCache.ts:108](https://github.com/bemoje/tsmono/blob/5043a85/pkg/api-util/src/lib/ApiReponseCache.ts#L108)
 
 ___
 
@@ -408,7 +408,7 @@ Returns whether a value exists for a given key.
 
 #### Defined in
 
-[pkg/api-util/src/lib/ApiReponseCache.ts:123](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/ApiReponseCache.ts#L123)
+[pkg/api-util/src/lib/ApiReponseCache.ts:123](https://github.com/bemoje/tsmono/blob/5043a85/pkg/api-util/src/lib/ApiReponseCache.ts#L123)
 
 ___
 
@@ -430,7 +430,7 @@ Hash any type of key to a base64 string, using the SHA1 algorithm.
 
 #### Defined in
 
-[pkg/api-util/src/lib/ApiReponseCache.ts:64](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/ApiReponseCache.ts#L64)
+[pkg/api-util/src/lib/ApiReponseCache.ts:64](https://github.com/bemoje/tsmono/blob/5043a85/pkg/api-util/src/lib/ApiReponseCache.ts#L64)
 
 ___
 
@@ -452,7 +452,7 @@ Check if a still raw serialized value string is expired.
 
 #### Defined in
 
-[pkg/api-util/src/lib/ApiReponseCache.ts:258](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/ApiReponseCache.ts#L258)
+[pkg/api-util/src/lib/ApiReponseCache.ts:258](https://github.com/bemoje/tsmono/blob/5043a85/pkg/api-util/src/lib/ApiReponseCache.ts#L258)
 
 ___
 
@@ -472,7 +472,7 @@ error - if iteration encounters an error.
 
 #### Defined in
 
-[pkg/api-util/src/lib/ApiReponseCache.ts:205](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/ApiReponseCache.ts#L205)
+[pkg/api-util/src/lib/ApiReponseCache.ts:205](https://github.com/bemoje/tsmono/blob/5043a85/pkg/api-util/src/lib/ApiReponseCache.ts#L205)
 
 ___
 
@@ -507,7 +507,7 @@ error - if the provided function throws an error.
 
 #### Defined in
 
-[pkg/api-util/src/lib/ApiReponseCache.ts:294](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/ApiReponseCache.ts#L294)
+[pkg/api-util/src/lib/ApiReponseCache.ts:294](https://github.com/bemoje/tsmono/blob/5043a85/pkg/api-util/src/lib/ApiReponseCache.ts#L294)
 
 ___
 
@@ -529,7 +529,7 @@ Parse the timestamp part of a raw serialized value string from the database.
 
 #### Defined in
 
-[pkg/api-util/src/lib/ApiReponseCache.ts:275](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/ApiReponseCache.ts#L275)
+[pkg/api-util/src/lib/ApiReponseCache.ts:275](https://github.com/bemoje/tsmono/blob/5043a85/pkg/api-util/src/lib/ApiReponseCache.ts#L275)
 
 ___
 
@@ -551,7 +551,7 @@ Parse the json part of a raw serialized value string from the database.
 
 #### Defined in
 
-[pkg/api-util/src/lib/ApiReponseCache.ts:283](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/ApiReponseCache.ts#L283)
+[pkg/api-util/src/lib/ApiReponseCache.ts:283](https://github.com/bemoje/tsmono/blob/5043a85/pkg/api-util/src/lib/ApiReponseCache.ts#L283)
 
 ___
 
@@ -582,7 +582,7 @@ error - if insertion fails.
 
 #### Defined in
 
-[pkg/api-util/src/lib/ApiReponseCache.ts:139](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/ApiReponseCache.ts#L139)
+[pkg/api-util/src/lib/ApiReponseCache.ts:139](https://github.com/bemoje/tsmono/blob/5043a85/pkg/api-util/src/lib/ApiReponseCache.ts#L139)
 
 ___
 
@@ -604,7 +604,7 @@ Custom JSON stringify function that prepends a timestamp to the stringified obje
 
 #### Defined in
 
-[pkg/api-util/src/lib/ApiReponseCache.ts:267](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/ApiReponseCache.ts#L267)
+[pkg/api-util/src/lib/ApiReponseCache.ts:267](https://github.com/bemoje/tsmono/blob/5043a85/pkg/api-util/src/lib/ApiReponseCache.ts#L267)
 
 ___
 
@@ -620,7 +620,7 @@ Get the number of entries in the cache.
 
 #### Defined in
 
-[pkg/api-util/src/lib/ApiReponseCache.ts:232](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/ApiReponseCache.ts#L232)
+[pkg/api-util/src/lib/ApiReponseCache.ts:232](https://github.com/bemoje/tsmono/blob/5043a85/pkg/api-util/src/lib/ApiReponseCache.ts#L232)
 
 ___
 
@@ -640,4 +640,4 @@ error - if iteration encounters an error.
 
 #### Defined in
 
-[pkg/api-util/src/lib/ApiReponseCache.ts:219](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/ApiReponseCache.ts#L219)
+[pkg/api-util/src/lib/ApiReponseCache.ts:219](https://github.com/bemoje/tsmono/blob/5043a85/pkg/api-util/src/lib/ApiReponseCache.ts#L219)

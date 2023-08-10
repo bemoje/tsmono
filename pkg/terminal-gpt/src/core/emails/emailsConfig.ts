@@ -1,5 +1,4 @@
 import { getUserInputFromEditorSync, parseInteger } from '@bemoje/commander-config'
-import { config } from '../../index'
 
 const emailsDefaultSystemMessage = [
   'You are a helpful assistant who helps me summarize and interpret my work email threads.',
@@ -48,7 +47,8 @@ export const emailsConfig = {
       'The default instructions / system message to use with the gpt model. This settings can also be modified for each request.',
     default: emailsDefaultSystemMessage,
     required: true,
-    parse: (): string[] => {
+    parse: (json: string): string[] => {
+      const config = JSON.parse(json)
       return getUserInputFromEditorSync({
         appdataDirectory: config.appdataDirectory,
         editor: config.settings.editor,

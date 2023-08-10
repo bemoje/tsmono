@@ -41,7 +41,7 @@ console.log(pages); // logs the first 5 pages of the PDF
 
 #### Defined in
 
-[lib/pdfGetPages.ts:14](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/pdf-util/src/lib/pdfGetPages.ts#L14)
+[lib/pdfGetPages.ts:14](https://github.com/bemoje/tsmono/blob/5043a85/pkg/pdf-util/src/lib/pdfGetPages.ts#L14)
 
 ___
 
@@ -79,7 +79,7 @@ for await (const pageText of pdfIteratePages('path/to/file.pdf')) {
 
 #### Defined in
 
-[lib/pdfIteratePages.ts:18](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/pdf-util/src/lib/pdfIteratePages.ts#L18)
+[lib/pdfIteratePages.ts:18](https://github.com/bemoje/tsmono/blob/5043a85/pkg/pdf-util/src/lib/pdfIteratePages.ts#L18)
 
 ___
 
@@ -124,4 +124,4 @@ pdfSplitPages(inputFilePath, outputDirPath)
 
 #### Defined in
 
-[lib/pdfSplitPages.ts:24](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/pdf-util/src/lib/pdfSplitPages.ts#L24)
+[lib/pdfSplitPages.ts:24](https://github.com/bemoje/tsmono/blob/5043a85/pkg/pdf-util/src/lib/pdfSplitPages.ts#L24)

@@ -94,7 +94,7 @@ export class Config {
       console.log(`The '${setting}' setting not recognized.`)
       return
     }
-    this.settings[setting] = definition.parse(value)
+    this.settings[setting] = definition.parse(value || JSON.stringify(this))
     this.saveConfigFile()
     console.log(`The '${setting}' setting has been configured.`)
     this.print(setting)

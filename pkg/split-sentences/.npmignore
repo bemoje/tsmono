@@ -2,8 +2,8 @@ coverage
 logs
 node_modules
 src
-notes
 docs/html
+notes
 scripts
 .editorconfig
 .env

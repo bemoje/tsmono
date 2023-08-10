@@ -6,20 +6,9 @@
 
 ### Variables
 
-- [config](https://github.com/bemoje/tsmono/blob/main/pkg/terminal-gpt/docs/md/index.md#config)
 - [program](https://github.com/bemoje/tsmono/blob/main/pkg/terminal-gpt/docs/md/index.md#program)
 
 ## Variables
-
-### config
-
-• `Const` **config**: `Config`
-
-#### Defined in
-
-[index.ts:6](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/terminal-gpt/src/index.ts#L6)
-
-___
 
 ### program
 
@@ -27,4 +16,4 @@ ___
 
 #### Defined in
 
-[index.ts:23](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/terminal-gpt/src/index.ts#L23)
+[index.ts:5](https://github.com/bemoje/tsmono/blob/5043a85/pkg/terminal-gpt/src/index.ts#L5)

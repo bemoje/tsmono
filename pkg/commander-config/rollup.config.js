@@ -37,10 +37,40 @@ function getImportedBuiltins(pkgroot) {
   return [...imports]
 }
 
+function pkgDependenciesRecursive(pkg) {
+  const result = new Set(['walkdir', '@bemoje/node-util'])
+  // eslint-disable-next-line no-undef
+  const root = path.dirname(path.dirname(process.cwd()))
+  function recurse(pkg) {
+    const deps = Object.keys(pkg.dependencies)
+    deps.forEach((dep) => result.add(dep))
+    deps
+      .filter((dep) => dep.startsWith('@bemoje/'))
+      .map((dep) => dep.substring(8))
+      .forEach((dep) => {
+        const deppath = path.join(root, 'pkg', dep, 'package.json')
+        if (!fs.existsSync(deppath)) return
+        getImportedBuiltins(path.join(root, 'pkg', dep)).forEach((imp) => result.add(imp))
+        // eslint-disable-next-line no-undef, @typescript-eslint/no-var-requires
+        recurse(require(deppath))
+      })
+  }
+  recurse(pkg)
+  return [...result]
+}
+
 // eslint-disable-next-line no-undef
-const importedBuiltins = getImportedBuiltins(__dirname)
-const dependencies = [...Object.keys(PKG.dependencies)]
-const external = [...dependencies, ...importedBuiltins]
+const builtins = getImportedBuiltins(__dirname)
+const external = [...pkgDependenciesRecursive(PKG), ...builtins]
+
+if (PKG.browser && (PKG.preferGlobal || builtins.length)) {
+  Reflect.deleteProperty(PKG, 'browser')
+  fs.writeFileSync('./package.json', JSON.stringify(PKG, null, 2))
+}
+if (PKG.module && PKG.preferGlobal) {
+  Reflect.deleteProperty(PKG, 'module')
+  fs.writeFileSync('./package.json', JSON.stringify(PKG, null, 2))
+}
 
 const name = camelCase(PKG.name.replace(/^@bemoje/i, ''))
 
@@ -51,7 +81,7 @@ const banner = `/*!
  */
 `
 const output = []
-if (PKG.browser && !importedBuiltins.length)
+if (PKG.browser)
   output.push({
     banner,
     name,
@@ -67,7 +97,7 @@ if (PKG.main)
     sourcemap: true,
     file: PKG.main,
     format: 'commonjs',
-    plugins: [commonjs()],
+    plugins: [],
   })
 if (PKG.module)
   output.push({
@@ -84,6 +114,7 @@ export default {
   external,
   output,
   plugins: [
+    commonjs(),
     json(),
     typescript2({
       clean: true,

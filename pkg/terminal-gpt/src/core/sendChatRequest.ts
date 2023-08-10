@@ -1,4 +1,4 @@
-import { config } from '../index'
+import { config } from '../config'
 import { getApiClient } from './getApiClient'
 import { ISendChatRequestOptions } from './types/ISendChatRequestOptions'
 

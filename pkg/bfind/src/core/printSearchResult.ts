@@ -1,7 +1,7 @@
 import { blackBright, cyan, red, yellow } from 'cli-color'
 import fs from 'fs'
 import { words } from 'lodash'
-import { config } from '../index'
+import { config } from './config'
 
 export async function printSearchResult(fspaths: string[], search: string, printAll = false) {
   const origLen = fspaths.length

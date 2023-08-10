@@ -19,3 +19,6 @@ prettier.config.js
 rollup.config.js
 tsconfig.bundle.json
 tsconfig.json
+.metals
+.vscode
+docs
