@@ -86,7 +86,7 @@ const bat =
 
 const tempdir = process.env['TEMP']!
 const tempfile = path.join(tempdir, Date.now() + '.bat')
-console.log({ tempfile })
+console.log(bat.replace(/^call /gm, ''))
 let failed = false
 fs.writeFileSync(tempfile, bat, 'utf8')
 try {

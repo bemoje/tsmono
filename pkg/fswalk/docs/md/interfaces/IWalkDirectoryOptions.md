@@ -45,7 +45,7 @@
 
 #### Defined in
 
-pkg/fswalk/src/lib/types/IWalkDirectoryOptions.ts:5
+[pkg/fswalk/src/lib/types/IWalkDirectoryOptions.ts:5](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/fswalk/src/lib/types/IWalkDirectoryOptions.ts#L5)
 
 ___
 

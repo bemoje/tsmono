@@ -17,7 +17,7 @@
 
 #### Defined in
 
-[index.ts:18](https://github.com/bemoje/tsmono/blob/78f0bbb/pkg/bfind/src/index.ts#L18)
+[index.ts:18](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/bfind/src/index.ts#L18)
 
 ___
 
@@ -27,4 +27,4 @@ ___
 
 #### Defined in
 
-[index.ts:85](https://github.com/bemoje/tsmono/blob/78f0bbb/pkg/bfind/src/index.ts#L85)
+[index.ts:85](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/bfind/src/index.ts#L85)

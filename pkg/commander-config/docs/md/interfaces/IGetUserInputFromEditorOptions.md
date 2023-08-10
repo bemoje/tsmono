@@ -18,7 +18,7 @@
 
 #### Defined in
 
-util/IGetUserInputFromEditorOptions.ts:2
+[util/IGetUserInputFromEditorOptions.ts:2](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/commander-config/src/util/IGetUserInputFromEditorOptions.ts#L2)
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 #### Defined in
 
-util/IGetUserInputFromEditorOptions.ts:4
+[util/IGetUserInputFromEditorOptions.ts:4](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/commander-config/src/util/IGetUserInputFromEditorOptions.ts#L4)
 
 ___
 
@@ -38,4 +38,4 @@ ___
 
 #### Defined in
 
-util/IGetUserInputFromEditorOptions.ts:3
+[util/IGetUserInputFromEditorOptions.ts:3](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/commander-config/src/util/IGetUserInputFromEditorOptions.ts#L3)

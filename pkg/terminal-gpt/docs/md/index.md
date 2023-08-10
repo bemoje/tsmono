@@ -17,7 +17,7 @@
 
 #### Defined in
 
-index.ts:6
+[index.ts:6](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/terminal-gpt/src/index.ts#L6)
 
 ___
 
@@ -27,4 +27,4 @@ ___
 
 #### Defined in
 
-index.ts:23
+[index.ts:23](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/terminal-gpt/src/index.ts#L23)

@@ -22,7 +22,7 @@ Default model to use for chat gpt3 16k tokens completion requests
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/types/IOpenaiApiClientApiDefaultsOptions.ts:15
+[pkg/openai-api-client/src/lib/types/IOpenaiApiClientApiDefaultsOptions.ts:15](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/types/IOpenaiApiClientApiDefaultsOptions.ts#L15)
 
 ___
 
@@ -34,7 +34,7 @@ Default model to use for chat gpt3 8k tokens completion requests
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/types/IOpenaiApiClientApiDefaultsOptions.ts:10
+[pkg/openai-api-client/src/lib/types/IOpenaiApiClientApiDefaultsOptions.ts:10](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/types/IOpenaiApiClientApiDefaultsOptions.ts#L10)
 
 ___
 
@@ -46,7 +46,7 @@ Default model to use for chat gpt4 8k tokens completion requests
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/types/IOpenaiApiClientApiDefaultsOptions.ts:20
+[pkg/openai-api-client/src/lib/types/IOpenaiApiClientApiDefaultsOptions.ts:20](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/types/IOpenaiApiClientApiDefaultsOptions.ts#L20)
 
 ___
 
@@ -58,7 +58,7 @@ If openai api returns more than one choice, this string will be used to delimit 
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/types/IOpenaiApiClientApiDefaultsOptions.ts:25
+[pkg/openai-api-client/src/lib/types/IOpenaiApiClientApiDefaultsOptions.ts:25](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/types/IOpenaiApiClientApiDefaultsOptions.ts#L25)
 
 ___
 
@@ -70,4 +70,4 @@ Default model to use for completion requests
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/types/IOpenaiApiClientApiDefaultsOptions.ts:5
+[pkg/openai-api-client/src/lib/types/IOpenaiApiClientApiDefaultsOptions.ts:5](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/types/IOpenaiApiClientApiDefaultsOptions.ts#L5)

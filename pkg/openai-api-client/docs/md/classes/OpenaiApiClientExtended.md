@@ -88,7 +88,7 @@ const openai = new OpenaiAPIClient({ apiKey: "API_KEY" })
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/OpenaiApiClientExtended.ts:16
+[pkg/openai-api-client/src/lib/OpenaiApiClientExtended.ts:16](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/OpenaiApiClientExtended.ts#L16)
 
 ## Properties
 
@@ -104,7 +104,7 @@ Defaults for API requests. Can be overriden in individual method calls.
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/OpenaiApiClient.ts:27
+[pkg/openai-api-client/src/lib/OpenaiApiClient.ts:27](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/OpenaiApiClient.ts#L27)
 
 ___
 
@@ -120,7 +120,7 @@ API response cache
 
 #### Defined in
 
-pkg/api-util/src/lib/AbstractApiClient.ts:33
+[pkg/api-util/src/lib/AbstractApiClient.ts:33](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/AbstractApiClient.ts#L33)
 
 ___
 
@@ -137,7 +137,7 @@ Can be overriden in individual method calls.
 
 #### Defined in
 
-pkg/api-util/src/lib/AbstractApiClient.ts:55
+[pkg/api-util/src/lib/AbstractApiClient.ts:55](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/AbstractApiClient.ts#L55)
 
 ___
 
@@ -153,7 +153,7 @@ API client instance
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/OpenaiApiClient.ts:22
+[pkg/openai-api-client/src/lib/OpenaiApiClient.ts:22](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/OpenaiApiClient.ts#L22)
 
 ___
 
@@ -167,7 +167,7 @@ ___
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/OpenaiApiClient.ts:35
+[pkg/openai-api-client/src/lib/OpenaiApiClient.ts:35](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/OpenaiApiClient.ts#L35)
 
 ___
 
@@ -183,7 +183,7 @@ Event emitter for cache events
 
 #### Defined in
 
-pkg/api-util/src/lib/AbstractApiClient.ts:21
+[pkg/api-util/src/lib/AbstractApiClient.ts:21](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/AbstractApiClient.ts#L21)
 
 ___
 
@@ -199,7 +199,7 @@ Global queue for sending requests to the openai api.
 
 #### Defined in
 
-pkg/api-util/src/lib/AbstractApiClient.ts:38
+[pkg/api-util/src/lib/AbstractApiClient.ts:38](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/AbstractApiClient.ts#L38)
 
 ___
 
@@ -216,7 +216,7 @@ Can be overriden in individual method calls.
 
 #### Defined in
 
-pkg/api-util/src/lib/AbstractApiClient.ts:44
+[pkg/api-util/src/lib/AbstractApiClient.ts:44](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/AbstractApiClient.ts#L44)
 
 ___
 
@@ -259,7 +259,7 @@ This method is bound to the instance on initialization because it gets wrapped w
 
 #### Defined in
 
-pkg/api-util/src/lib/AbstractApiClient.ts:85
+[pkg/api-util/src/lib/AbstractApiClient.ts:85](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/AbstractApiClient.ts#L85)
 
 ___
 
@@ -275,7 +275,7 @@ Options for concurrency control. These affect all API requests.
 
 #### Defined in
 
-pkg/api-util/src/lib/AbstractApiClient.ts:62
+[pkg/api-util/src/lib/AbstractApiClient.ts:62](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/AbstractApiClient.ts#L62)
 
 ## Accessors
 
@@ -295,7 +295,7 @@ OpenaiApiClient.eventNames
 
 #### Defined in
 
-pkg/api-util/src/lib/AbstractApiClient.ts:26
+[pkg/api-util/src/lib/AbstractApiClient.ts:26](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/AbstractApiClient.ts#L26)
 
 ## Methods
 
@@ -324,7 +324,7 @@ This is used by all the preset methods, the public methods: chat3_8, chat3_16, a
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/OpenaiApiClient.ts:186
+[pkg/openai-api-client/src/lib/OpenaiApiClient.ts:186](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/OpenaiApiClient.ts#L186)
 
 ___
 
@@ -353,7 +353,7 @@ This is used by all the preset methods, the public methods: completion.
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/OpenaiApiClient.ts:162
+[pkg/openai-api-client/src/lib/OpenaiApiClient.ts:162](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/OpenaiApiClient.ts#L162)
 
 ___
 
@@ -381,7 +381,7 @@ Send transcribe (speech to text) request to the openai API.
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/OpenaiApiClient.ts:215
+[pkg/openai-api-client/src/lib/OpenaiApiClient.ts:215](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/OpenaiApiClient.ts#L215)
 
 ___
 
@@ -407,7 +407,7 @@ Assert that the response data is complete by verifying that all returned choices
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/OpenaiApiClient.ts:327
+[pkg/openai-api-client/src/lib/OpenaiApiClient.ts:327](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/OpenaiApiClient.ts#L327)
 
 ___
 
@@ -433,7 +433,7 @@ Send a completion request to the openai api.
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/OpenaiApiClient.ts:51
+[pkg/openai-api-client/src/lib/OpenaiApiClient.ts:51](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/OpenaiApiClient.ts#L51)
 
 ___
 
@@ -459,7 +459,7 @@ Count the number of tokens in a string.
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/OpenaiApiClient.ts:349
+[pkg/openai-api-client/src/lib/OpenaiApiClient.ts:349](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/OpenaiApiClient.ts#L349)
 
 ___
 
@@ -494,7 +494,7 @@ Removing default values and undefined values normalizes the options object so it
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/OpenaiApiClient.ts:303
+[pkg/openai-api-client/src/lib/OpenaiApiClient.ts:303](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/OpenaiApiClient.ts#L303)
 
 ___
 
@@ -527,7 +527,7 @@ Emit an event but adds 'this' as an extra trailing argument.
 
 #### Defined in
 
-pkg/api-util/src/lib/AbstractApiClient.ts:179
+[pkg/api-util/src/lib/AbstractApiClient.ts:179](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/AbstractApiClient.ts#L179)
 
 ___
 
@@ -553,7 +553,7 @@ Send a chat completion request to the openai api with a max_tokens cap of 16384.
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/OpenaiApiClient.ts:67
+[pkg/openai-api-client/src/lib/OpenaiApiClient.ts:67](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/OpenaiApiClient.ts#L67)
 
 ___
 
@@ -579,7 +579,7 @@ Send a chat completion request to the openai api with a max_tokens cap of 4096.
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/OpenaiApiClient.ts:59
+[pkg/openai-api-client/src/lib/OpenaiApiClient.ts:59](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/OpenaiApiClient.ts#L59)
 
 ___
 
@@ -605,7 +605,7 @@ Send a gpt4 chat completion request to the openai api with a max_tokens cap of 8
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/OpenaiApiClient.ts:76
+[pkg/openai-api-client/src/lib/OpenaiApiClient.ts:76](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/OpenaiApiClient.ts#L76)
 
 ___
 
@@ -632,7 +632,7 @@ When the error is a rate limit error, lowers the concurrency.
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/OpenaiApiClient.ts:248
+[pkg/openai-api-client/src/lib/OpenaiApiClient.ts:248](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/OpenaiApiClient.ts#L248)
 
 ___
 
@@ -658,7 +658,7 @@ Handle cache options.
 
 #### Defined in
 
-pkg/api-util/src/lib/AbstractApiClient.ts:170
+[pkg/api-util/src/lib/AbstractApiClient.ts:170](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/AbstractApiClient.ts#L170)
 
 ___
 
@@ -684,7 +684,7 @@ Handle chat options.
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/OpenaiApiClient.ts:122
+[pkg/openai-api-client/src/lib/OpenaiApiClient.ts:122](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/OpenaiApiClient.ts#L122)
 
 ___
 
@@ -710,7 +710,7 @@ Handle completion options.
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/OpenaiApiClient.ts:93
+[pkg/openai-api-client/src/lib/OpenaiApiClient.ts:93](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/OpenaiApiClient.ts#L93)
 
 ___
 
@@ -736,7 +736,7 @@ Handle the options passed to the constructor.
 
 #### Defined in
 
-pkg/api-util/src/lib/AbstractApiClient.ts:146
+[pkg/api-util/src/lib/AbstractApiClient.ts:146](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/AbstractApiClient.ts#L146)
 
 ___
 
@@ -762,7 +762,7 @@ Handle retry options.
 
 #### Defined in
 
-pkg/api-util/src/lib/AbstractApiClient.ts:162
+[pkg/api-util/src/lib/AbstractApiClient.ts:162](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/AbstractApiClient.ts#L162)
 
 ___
 
@@ -788,7 +788,7 @@ Handle transcribe options.
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/OpenaiApiClient.ts:146
+[pkg/openai-api-client/src/lib/OpenaiApiClient.ts:146](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/OpenaiApiClient.ts#L146)
 
 ___
 
@@ -817,7 +817,7 @@ Automatically raises the concurrency again after a delay.
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/OpenaiApiClient.ts:265
+[pkg/openai-api-client/src/lib/OpenaiApiClient.ts:265](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/OpenaiApiClient.ts#L265)
 
 ___
 
@@ -843,7 +843,7 @@ Extract the actual concent from the 'choices' object from the response data.
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/OpenaiApiClient.ts:284
+[pkg/openai-api-client/src/lib/OpenaiApiClient.ts:284](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/OpenaiApiClient.ts#L284)
 
 ___
 
@@ -874,7 +874,7 @@ await openai.proofread('java', `System.out.println("Hello")`)
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/OpenaiApiClientExtended.ts:29
+[pkg/openai-api-client/src/lib/OpenaiApiClientExtended.ts:29](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/OpenaiApiClientExtended.ts#L29)
 
 ___
 
@@ -904,7 +904,7 @@ await openai.proofread('java', `System.out.println("Hello")`)
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/OpenaiApiClientExtended.ts:50
+[pkg/openai-api-client/src/lib/OpenaiApiClientExtended.ts:50](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/OpenaiApiClientExtended.ts#L50)
 
 ___
 
@@ -930,7 +930,7 @@ Encode a string into tokens.
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/OpenaiApiClient.ts:341
+[pkg/openai-api-client/src/lib/OpenaiApiClient.ts:341](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/OpenaiApiClient.ts#L341)
 
 ___
 
@@ -956,7 +956,7 @@ Send a transcribe completion request to the openai api.
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/OpenaiApiClient.ts:85
+[pkg/openai-api-client/src/lib/OpenaiApiClient.ts:85](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/OpenaiApiClient.ts#L85)
 
 ___
 
@@ -987,7 +987,7 @@ await openai.translateEnglishTo('Spanish', 'Clear', { instruction: 'This is a co
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/OpenaiApiClientExtended.ts:85
+[pkg/openai-api-client/src/lib/OpenaiApiClientExtended.ts:85](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/OpenaiApiClientExtended.ts#L85)
 
 ___
 
@@ -1019,4 +1019,4 @@ await openai.translateFrom('English', 'Spanish', 'Clear', { instruction: 'This i
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/OpenaiApiClientExtended.ts:62
+[pkg/openai-api-client/src/lib/OpenaiApiClientExtended.ts:62](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/OpenaiApiClientExtended.ts#L62)

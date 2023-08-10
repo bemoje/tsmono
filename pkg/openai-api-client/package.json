@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/openai-api-client",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "API client for openai with various built-in functionality, such as caching, auto-retry, etc.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -10,7 +10,7 @@
     "test": "jest --preset ts-jest",
     "rollup": "rollup --config ./rollup.config.js --bundleConfigAsCjs",
     "build": "npm run lint && rimraf dist && npm run rollup",
-    "docsmd": "rimraf docs/md && typedoc --out docs/md src/index.ts --readme none --plugin typedoc-plugin-markdown --theme markdown --entryDocument index.md --publicPath /docs/md",
+    "docsmd": "rimraf docs/md && typedoc --out docs/md/ src/index.ts --readme none --plugin typedoc-plugin-markdown --theme markdown --entryDocument index.md --publicPath /docs/md/",
     "docshtml": "rimraf docs/html && typedoc --out docs/html --entryPoints src/index.ts",
     "docs": "rimraf docs && npm run docsmd && npm run docshtml",
     "viewdocs": "start docs/html/index.html",

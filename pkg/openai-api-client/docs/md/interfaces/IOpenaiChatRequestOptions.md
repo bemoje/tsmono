@@ -41,7 +41,7 @@ Cache options
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/types/IOpenaiChatRequestOptions.ts:34
+[pkg/openai-api-client/src/lib/types/IOpenaiChatRequestOptions.ts:34](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/types/IOpenaiChatRequestOptions.ts#L34)
 
 ___
 
@@ -111,7 +111,7 @@ System instructions message inserted before all user and assistant messages
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/types/IOpenaiChatRequestOptions.ts:24
+[pkg/openai-api-client/src/lib/types/IOpenaiChatRequestOptions.ts:24](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/types/IOpenaiChatRequestOptions.ts#L24)
 
 ___
 
@@ -163,7 +163,7 @@ Message history
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/types/IOpenaiChatRequestOptions.ts:14
+[pkg/openai-api-client/src/lib/types/IOpenaiChatRequestOptions.ts:14](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/types/IOpenaiChatRequestOptions.ts#L14)
 
 ___
 
@@ -175,7 +175,7 @@ The model to use if not the defeault one.
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/types/IOpenaiChatRequestOptions.ts:9
+[pkg/openai-api-client/src/lib/types/IOpenaiChatRequestOptions.ts:9](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/types/IOpenaiChatRequestOptions.ts#L9)
 
 ___
 
@@ -227,7 +227,7 @@ A user message inserted before all other messages, except the system instruction
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/types/IOpenaiChatRequestOptions.ts:19
+[pkg/openai-api-client/src/lib/types/IOpenaiChatRequestOptions.ts:19](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/types/IOpenaiChatRequestOptions.ts#L19)
 
 ___
 
@@ -239,7 +239,7 @@ API request retry options
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/types/IOpenaiChatRequestOptions.ts:29
+[pkg/openai-api-client/src/lib/types/IOpenaiChatRequestOptions.ts:29](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/types/IOpenaiChatRequestOptions.ts#L29)
 
 ___
 

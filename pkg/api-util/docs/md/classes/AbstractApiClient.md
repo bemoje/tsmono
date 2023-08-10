@@ -45,13 +45,13 @@ Create a new OpenaiApiClient instance.
 
 #### Parameters
 
-| Name      | Type                                                                            | Description                     |
-| :-------- | :------------------------------------------------------------------------------ | :------------------------------ |
+| Name | Type | Description |
+| :------ | :------ | :------ |
 | `options` | [`IAbstractApiClientOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IAbstractApiClientOptions.md) | The constructor options to use. |
 
 #### Defined in
 
-pkg/api-util/src/lib/AbstractApiClient.ts:96
+[pkg/api-util/src/lib/AbstractApiClient.ts:96](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/AbstractApiClient.ts#L96)
 
 ## Properties
 
@@ -63,7 +63,7 @@ API response cache
 
 #### Defined in
 
-pkg/api-util/src/lib/AbstractApiClient.ts:33
+[pkg/api-util/src/lib/AbstractApiClient.ts:33](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/AbstractApiClient.ts#L33)
 
 ___
 
@@ -76,7 +76,7 @@ Can be overriden in individual method calls.
 
 #### Defined in
 
-pkg/api-util/src/lib/AbstractApiClient.ts:55
+[pkg/api-util/src/lib/AbstractApiClient.ts:55](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/AbstractApiClient.ts#L55)
 
 ___
 
@@ -88,7 +88,7 @@ Event emitter for cache events
 
 #### Defined in
 
-pkg/api-util/src/lib/AbstractApiClient.ts:21
+[pkg/api-util/src/lib/AbstractApiClient.ts:21](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/AbstractApiClient.ts#L21)
 
 ___
 
@@ -100,7 +100,7 @@ Global queue for sending requests to the openai api.
 
 #### Defined in
 
-pkg/api-util/src/lib/AbstractApiClient.ts:38
+[pkg/api-util/src/lib/AbstractApiClient.ts:38](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/AbstractApiClient.ts#L38)
 
 ___
 
@@ -113,7 +113,7 @@ Can be overriden in individual method calls.
 
 #### Defined in
 
-pkg/api-util/src/lib/AbstractApiClient.ts:44
+[pkg/api-util/src/lib/AbstractApiClient.ts:44](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/AbstractApiClient.ts#L44)
 
 ___
 
@@ -133,18 +133,18 @@ This method is bound to the instance on initialization because it gets wrapped w
 ##### Type parameters
 
 | Name |
-| :--- |
-| `T`  |
+| :------ |
+| `T` |
 
 ##### Parameters
 
-| Name                 | Type                                                                    |
-| :------------------- | :---------------------------------------------------------------------- |
-| `options`            | `Object`                                                                |
-| `options.apiRequest` | () => `Promise`<`T`\>                                                   |
-| `options.args`       | `any`[]                                                                 |
-| `options.cache?`     | [`IResponseCacheOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IResponseCacheOptions.md) |
-| `options.retry?`     | [`IAsyncRetryOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IAsyncRetryOptions.md)       |
+| Name | Type |
+| :------ | :------ |
+| `options` | `Object` |
+| `options.apiRequest` | () => `Promise`<`T`\> |
+| `options.args` | `any`[] |
+| `options.cache?` | [`IResponseCacheOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IResponseCacheOptions.md) |
+| `options.retry?` | [`IAsyncRetryOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IAsyncRetryOptions.md) |
 
 ##### Returns
 
@@ -152,7 +152,7 @@ This method is bound to the instance on initialization because it gets wrapped w
 
 #### Defined in
 
-pkg/api-util/src/lib/AbstractApiClient.ts:85
+[pkg/api-util/src/lib/AbstractApiClient.ts:85](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/AbstractApiClient.ts#L85)
 
 ___
 
@@ -164,7 +164,7 @@ Options for concurrency control. These affect all API requests.
 
 #### Defined in
 
-pkg/api-util/src/lib/AbstractApiClient.ts:62
+[pkg/api-util/src/lib/AbstractApiClient.ts:62](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/AbstractApiClient.ts#L62)
 
 ## Accessors
 
@@ -180,7 +180,7 @@ All emitted event names. Please note that the cache also emits events.
 
 #### Defined in
 
-pkg/api-util/src/lib/AbstractApiClient.ts:26
+[pkg/api-util/src/lib/AbstractApiClient.ts:26](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/AbstractApiClient.ts#L26)
 
 ## Methods
 
@@ -193,15 +193,15 @@ Emit an event but adds 'this' as an extra trailing argument.
 #### Type parameters
 
 | Name |
-| :--- |
-| `T`  |
+| :------ |
+| `T` |
 
 #### Parameters
 
-| Name    | Type     | Description           |
-| :------ | :------- | :-------------------- |
-| `event` | `string` | The event name.       |
-| `arg`   | `T`      | The argument to emit. |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `event` | `string` | The event name. |
+| `arg` | `T` | The argument to emit. |
 
 #### Returns
 
@@ -209,7 +209,7 @@ Emit an event but adds 'this' as an extra trailing argument.
 
 #### Defined in
 
-pkg/api-util/src/lib/AbstractApiClient.ts:179
+[pkg/api-util/src/lib/AbstractApiClient.ts:179](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/AbstractApiClient.ts#L179)
 
 ___
 
@@ -221,17 +221,17 @@ Handle cache options.
 
 #### Parameters
 
-| Name            | Type                                                                    | Description                  |
-| :-------------- | :---------------------------------------------------------------------- | :--------------------------- |
+| Name | Type | Description |
+| :------ | :------ | :------ |
 | `cacheOptions?` | [`IResponseCacheOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IResponseCacheOptions.md) | The cache options to handle. |
 
 #### Returns
 
-[`IResponseCacheOptions`](https://github.com/bemoje/tsmono/docs/md/interfaces/IResponseCacheOptions.md)
+[`IResponseCacheOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IResponseCacheOptions.md)
 
 #### Defined in
 
-pkg/api-util/src/lib/AbstractApiClient.ts:170
+[pkg/api-util/src/lib/AbstractApiClient.ts:170](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/AbstractApiClient.ts#L170)
 
 ___
 
@@ -243,8 +243,8 @@ Handle the options passed to the constructor.
 
 #### Parameters
 
-| Name      | Type                                                                            | Description            |
-| :-------- | :------------------------------------------------------------------------------ | :--------------------- |
+| Name | Type | Description |
+| :------ | :------ | :------ |
 | `options` | [`IAbstractApiClientOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IAbstractApiClientOptions.md) | The options to handle. |
 
 #### Returns
@@ -253,7 +253,7 @@ Handle the options passed to the constructor.
 
 #### Defined in
 
-pkg/api-util/src/lib/AbstractApiClient.ts:146
+[pkg/api-util/src/lib/AbstractApiClient.ts:146](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/AbstractApiClient.ts#L146)
 
 ___
 
@@ -265,8 +265,8 @@ Handle retry options.
 
 #### Parameters
 
-| Name            | Type                                                              | Description                  |
-| :-------------- | :---------------------------------------------------------------- | :--------------------------- |
+| Name | Type | Description |
+| :------ | :------ | :------ |
 | `retryOptions?` | [`IAsyncRetryOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IAsyncRetryOptions.md) | The retry options to handle. |
 
 #### Returns
@@ -275,4 +275,4 @@ Handle retry options.
 
 #### Defined in
 
-pkg/api-util/src/lib/AbstractApiClient.ts:162
+[pkg/api-util/src/lib/AbstractApiClient.ts:162](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/api-util/src/lib/AbstractApiClient.ts#L162)

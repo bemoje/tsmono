@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/bfind",
-  "version": "0.1.3",
+  "version": "0.1.5",
   "description": "CLI for very fast file search. File contents are not indexed - only file and directory names. Directories are highlighted in blue in search results. Search results are sorted by last modified date. Regex ignore patterns are configurable in CLI or the JSON config file. Each argument is a search term. If multiple terms are provided, they all must be present in the filepath to be considered a search hit.",
   "main": "dist/index.cjs.js",
   "types": "dist/types/index.d.ts",
@@ -13,7 +13,7 @@
     "test": "jest --preset ts-jest",
     "rollup": "rollup --config ./rollup.config.js --bundleConfigAsCjs",
     "build": "npm run lint && rimraf dist && npm run rollup",
-    "docsmd": "rimraf docs/md && typedoc --out docs/md src/index.ts --readme none --plugin typedoc-plugin-markdown --theme markdown --entryDocument index.md --publicPath /docs/md",
+    "docsmd": "rimraf docs/md && typedoc --out docs/md/ src/index.ts --readme none --plugin typedoc-plugin-markdown --theme markdown --entryDocument index.md --publicPath /docs/md/",
     "docshtml": "rimraf docs/html && typedoc --out docs/html --entryPoints src/index.ts",
     "docs": "rimraf docs && npm run docsmd && npm run docshtml",
     "viewdocs": "start docs/html/index.html",

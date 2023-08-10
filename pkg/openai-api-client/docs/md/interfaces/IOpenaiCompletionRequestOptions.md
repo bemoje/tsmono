@@ -63,7 +63,7 @@ Cache options
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/types/IOpenaiCompletionRequestOptions.ts:29
+[pkg/openai-api-client/src/lib/types/IOpenaiCompletionRequestOptions.ts:29](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/types/IOpenaiCompletionRequestOptions.ts#L29)
 
 ___
 
@@ -115,7 +115,7 @@ Instructions message prepended to the prompt
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/types/IOpenaiCompletionRequestOptions.ts:24
+[pkg/openai-api-client/src/lib/types/IOpenaiCompletionRequestOptions.ts:24](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/types/IOpenaiCompletionRequestOptions.ts#L24)
 
 ___
 
@@ -187,7 +187,7 @@ The model to use if not the defeault one.
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/types/IOpenaiCompletionRequestOptions.ts:9
+[pkg/openai-api-client/src/lib/types/IOpenaiCompletionRequestOptions.ts:9](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/types/IOpenaiCompletionRequestOptions.ts#L9)
 
 ___
 
@@ -257,7 +257,7 @@ Alternative to max_tokens. The maximum number of tokens to generate. Requests ca
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/types/IOpenaiCompletionRequestOptions.ts:14
+[pkg/openai-api-client/src/lib/types/IOpenaiCompletionRequestOptions.ts:14](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/types/IOpenaiCompletionRequestOptions.ts#L14)
 
 ___
 
@@ -269,7 +269,7 @@ API request retry options
 
 #### Defined in
 
-pkg/openai-api-client/src/lib/types/IOpenaiCompletionRequestOptions.ts:19
+[pkg/openai-api-client/src/lib/types/IOpenaiCompletionRequestOptions.ts:19](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/openai-api-client/src/lib/types/IOpenaiCompletionRequestOptions.ts#L19)
 
 ___
 

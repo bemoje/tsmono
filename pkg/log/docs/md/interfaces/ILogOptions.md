@@ -25,7 +25,7 @@ The log level for console output. Can be 'NONE', 'DEBUG', 'INFO', 'WARN', or 'ER
 
 #### Defined in
 
-lib/types/ILogOptions.ts:8
+[lib/types/ILogOptions.ts:8](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/types/ILogOptions.ts#L8)
 
 ___
 
@@ -37,7 +37,7 @@ Color format for debug messages when logged to console.
 
 #### Defined in
 
-lib/types/ILogOptions.ts:28
+[lib/types/ILogOptions.ts:28](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/types/ILogOptions.ts#L28)
 
 ___
 
@@ -49,7 +49,7 @@ Max age of log files in days. If specified, existing log files older than this w
 
 #### Defined in
 
-lib/types/ILogOptions.ts:23
+[lib/types/ILogOptions.ts:23](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/types/ILogOptions.ts#L23)
 
 ___
 
@@ -61,7 +61,7 @@ Color format for error messages when logged to console.
 
 #### Defined in
 
-lib/types/ILogOptions.ts:43
+[lib/types/ILogOptions.ts:43](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/types/ILogOptions.ts#L43)
 
 ___
 
@@ -73,7 +73,7 @@ The log level for the logfile. Can be 'NONE', 'DEBUG', 'INFO', 'WARN', or 'ERROR
 
 #### Defined in
 
-lib/types/ILogOptions.ts:13
+[lib/types/ILogOptions.ts:13](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/types/ILogOptions.ts#L13)
 
 ___
 
@@ -85,7 +85,7 @@ Color format for info messages when logged to console.
 
 #### Defined in
 
-lib/types/ILogOptions.ts:33
+[lib/types/ILogOptions.ts:33](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/types/ILogOptions.ts#L33)
 
 ___
 
@@ -97,7 +97,7 @@ The directory path of the log files.
 
 #### Defined in
 
-lib/types/ILogOptions.ts:18
+[lib/types/ILogOptions.ts:18](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/types/ILogOptions.ts#L18)
 
 ___
 
@@ -109,4 +109,4 @@ Color format for warning messages when logged to console.
 
 #### Defined in
 
-lib/types/ILogOptions.ts:38
+[lib/types/ILogOptions.ts:38](https://github.com/bemoje/tsmono/blob/8bd5d16/pkg/log/src/lib/types/ILogOptions.ts#L38)

@@ -17,6 +17,7 @@
     "foreach": "npm run update-readmes && ts-node -P tsconfig.json scripts/runForEach.ts",
     "update-readmes": "ts-node -P tsconfig.json scripts/updateReadmes.ts",
     "fix-docs": "ts-node -P tsconfig.json scripts/fixDocs.ts",
+    "npm-publish": "ts-node -P tsconfig.json scripts/npmPublish.ts",
     "create-package": "ts-node -P tsconfig.json scripts/createPackage.ts",
     "delete-package": "ts-node -P tsconfig.json scripts/deletePackage.ts",
     "wipe-bemoje": "ts-node -P tsconfig.json scripts/wipeBemojeNodeModules.ts"
