@@ -1,6 +1,6 @@
 import { getUserInputFromEditor } from '@bemoje/commander-config'
 import { strWrapIn } from '@bemoje/string'
-import { config } from '../config'
+import { config } from './config'
 
 export async function userInput(
   defaultTemperature: number,

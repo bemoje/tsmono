@@ -1,6 +1,6 @@
 import { OpenaiApiClient } from '@bemoje/openai-api-client'
 import fs from 'fs'
-import { config } from '../config'
+import { config } from './config'
 
 export function getApiClient() {
   const apiKey = config.settings.api_key.startsWith('sk-')

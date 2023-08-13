@@ -1,4 +1,4 @@
-[@bemoje/time](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/index.md) / TimeInterval
+[@bemoje/time](/docs/md/index.md) / TimeInterval
 
 # Class: TimeInterval
 
@@ -8,17 +8,17 @@ Represents a time interval.
 
 ### Constructors
 
-- [constructor](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/TimeInterval.md#constructor)
+- [constructor](/docs/md/classes/TimeInterval.md#constructor)
 
 ### Properties
 
-- [end](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/TimeInterval.md#end)
-- [start](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/TimeInterval.md#start)
+- [end](/docs/md/classes/TimeInterval.md#end)
+- [start](/docs/md/classes/TimeInterval.md#start)
 
 ### Methods
 
-- [getDuration](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/TimeInterval.md#getduration)
-- [toString](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/TimeInterval.md#tostring)
+- [getDuration](/docs/md/classes/TimeInterval.md#getduration)
+- [toString](/docs/md/classes/TimeInterval.md#tostring)
 
 ## Constructors
 
@@ -32,8 +32,8 @@ Creates a new TimeInterval instance.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `start` | [`Time`](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md) | The start of the interval. |
-| `end` | [`Time`](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md) | The end of the interval. |
+| `start` | [`Time`](/docs/md/classes/Time.md) | The start of the interval. |
+| `end` | [`Time`](/docs/md/classes/Time.md) | The end of the interval. |
 
 **`Throws`**
 
@@ -41,47 +41,47 @@ if the start time is after the end time.
 
 #### Defined in
 
-lib/TimeInterval.ts:23
+[lib/TimeInterval.ts:23](https://github.com/bemoje/tsmono/blob/0b2dbaf/pkg/time/src/lib/TimeInterval.ts#L23)
 
 ## Properties
 
 ### end
 
-• **end**: [`Time`](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md)
+• **end**: [`Time`](/docs/md/classes/Time.md)
 
 The end of the interval.
 
 #### Defined in
 
-lib/TimeInterval.ts:15
+[lib/TimeInterval.ts:15](https://github.com/bemoje/tsmono/blob/0b2dbaf/pkg/time/src/lib/TimeInterval.ts#L15)
 
 ___
 
 ### start
 
-• **start**: [`Time`](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md)
+• **start**: [`Time`](/docs/md/classes/Time.md)
 
 The start of the interval.
 
 #### Defined in
 
-lib/TimeInterval.ts:10
+[lib/TimeInterval.ts:10](https://github.com/bemoje/tsmono/blob/0b2dbaf/pkg/time/src/lib/TimeInterval.ts#L10)
 
 ## Methods
 
 ### getDuration
 
-▸ **getDuration**(): [`Time`](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md)
+▸ **getDuration**(): [`Time`](/docs/md/classes/Time.md)
 
 Returns the duration of the interval as a new Time instance.
 
 #### Returns
 
-[`Time`](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md)
+[`Time`](/docs/md/classes/Time.md)
 
 #### Defined in
 
-lib/TimeInterval.ts:32
+[lib/TimeInterval.ts:32](https://github.com/bemoje/tsmono/blob/0b2dbaf/pkg/time/src/lib/TimeInterval.ts#L32)
 
 ___
 
@@ -105,4 +105,4 @@ Renders in the format "HH:MM:SS.mmm --> HH:MM:SS.mmm", with the default delimite
 
 #### Defined in
 
-lib/TimeInterval.ts:42
+[lib/TimeInterval.ts:42](https://github.com/bemoje/tsmono/blob/0b2dbaf/pkg/time/src/lib/TimeInterval.ts#L42)

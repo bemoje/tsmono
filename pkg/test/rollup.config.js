@@ -1,12 +1,12 @@
 import { strUnwrap, tsExtractImports } from '@bemoje/node-util'
 import commonjs from '@rollup/plugin-commonjs'
-// import json from '@rollup/plugin-json'
+import json from '@rollup/plugin-json'
 import resolve from '@rollup/plugin-node-resolve'
 import { camelCase } from 'camel-case'
 import fs from 'fs'
 import path from 'path'
-// import minify from 'rollup-plugin-babel-minify'
-import typescript from 'rollup-plugin-typescript2'
+import minify from 'rollup-plugin-babel-minify'
+import typescript2 from 'rollup-plugin-typescript2'
 import walkdir from 'walkdir'
 import PKG from './package.json'
 
@@ -61,7 +61,7 @@ function pkgDependenciesRecursive(pkg) {
 
 // eslint-disable-next-line no-undef
 const builtins = getImportedBuiltins(__dirname)
-const external = [...pkgDependenciesRecursive(PKG), ...builtins, '@bemoje/time']
+const external = [...pkgDependenciesRecursive(PKG), ...builtins]
 
 if (PKG.browser && (PKG.preferGlobal || builtins.length)) {
   Reflect.deleteProperty(PKG, 'browser')
@@ -112,14 +112,14 @@ export default {
   external,
   output,
   plugins: [
-    typescript({
-      // clean: true,
-      // useTsconfigDeclarationDir: true,
-      tsconfig: './tsconfig.bundle.json',
-    }),
     resolve(),
     commonjs(),
-    // json(),
-    // minify({ comments: false, builtIns: false, mangle: false, removeConsole: false }),
+    json(),
+    typescript2({
+      clean: true,
+      useTsconfigDeclarationDir: true,
+      tsconfig: './tsconfig.bundle.json',
+    }),
+    minify({ comments: false, builtIns: false, mangle: false, removeConsole: false }),
   ],
 }

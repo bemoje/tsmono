@@ -38,7 +38,8 @@
       "@bemoje/fs": ["./pkg/fs/src/index.ts"],
       "@bemoje/subtitles": ["./pkg/subtitles/src/index.ts"],
       "@bemoje/regex": ["./pkg/regex/src/index.ts"],
-      "@bemoje/string": ["./pkg/string/src/index.ts"]
+      "@bemoje/string": ["./pkg/string/src/index.ts"],
+      "@bemoje/test": ["./pkg/test/src/index.ts"]
     }
   },
   "include": ["./pkg/**/src/**/*.ts", "./scripts/**/*.ts"]

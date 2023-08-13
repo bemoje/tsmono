@@ -1,4 +1,4 @@
-[@bemoje/time](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/index.md) / Time
+[@bemoje/time](/docs/md/index.md) / Time
 
 # Class: Time
 
@@ -9,36 +9,36 @@ Precision is from hours to miliseconds.
 
 ### Constructors
 
-- [constructor](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md#constructor)
+- [constructor](/docs/md/classes/Time.md#constructor)
 
 ### Properties
 
-- [ms](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md#ms)
+- [ms](/docs/md/classes/Time.md#ms)
 
 ### Accessors
 
-- [hours](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md#hours)
-- [milliseconds](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md#milliseconds)
-- [minutes](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md#minutes)
-- [seconds](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md#seconds)
+- [hours](/docs/md/classes/Time.md#hours)
+- [milliseconds](/docs/md/classes/Time.md#milliseconds)
+- [minutes](/docs/md/classes/Time.md#minutes)
+- [seconds](/docs/md/classes/Time.md#seconds)
 
 ### Methods
 
-- [addHours](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md#addhours)
-- [addMilliseconds](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md#addmilliseconds)
-- [addMinutes](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md#addminutes)
-- [addSeconds](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md#addseconds)
-- [clone](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md#clone)
-- [compareTo](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md#compareto)
-- [difference](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md#difference)
-- [subtractHours](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md#subtracthours)
-- [subtractMilliseconds](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md#subtractmilliseconds)
-- [subtractMinutes](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md#subtractminutes)
-- [subtractSeconds](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md#subtractseconds)
-- [toArray](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md#toarray)
-- [toNumber](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md#tonumber)
-- [toString](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md#tostring)
-- [valueOf](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md#valueof)
+- [addHours](/docs/md/classes/Time.md#addhours)
+- [addMilliseconds](/docs/md/classes/Time.md#addmilliseconds)
+- [addMinutes](/docs/md/classes/Time.md#addminutes)
+- [addSeconds](/docs/md/classes/Time.md#addseconds)
+- [clone](/docs/md/classes/Time.md#clone)
+- [compareTo](/docs/md/classes/Time.md#compareto)
+- [difference](/docs/md/classes/Time.md#difference)
+- [subtractHours](/docs/md/classes/Time.md#subtracthours)
+- [subtractMilliseconds](/docs/md/classes/Time.md#subtractmilliseconds)
+- [subtractMinutes](/docs/md/classes/Time.md#subtractminutes)
+- [subtractSeconds](/docs/md/classes/Time.md#subtractseconds)
+- [toArray](/docs/md/classes/Time.md#toarray)
+- [toNumber](/docs/md/classes/Time.md#tonumber)
+- [toString](/docs/md/classes/Time.md#tostring)
+- [valueOf](/docs/md/classes/Time.md#valueof)
 
 ## Constructors
 
@@ -60,7 +60,7 @@ if the time is invalid.
 
 #### Defined in
 
-lib/Time.ts:27
+[lib/Time.ts:27](https://github.com/bemoje/tsmono/blob/0b2dbaf/pkg/time/src/lib/Time.ts#L27)
 
 ## Properties
 
@@ -73,7 +73,7 @@ This is the only value stored internally.
 
 #### Defined in
 
-lib/Time.ts:20
+[lib/Time.ts:20](https://github.com/bemoje/tsmono/blob/0b2dbaf/pkg/time/src/lib/Time.ts#L20)
 
 ## Accessors
 
@@ -89,7 +89,7 @@ Returns the hours.
 
 #### Defined in
 
-lib/Time.ts:137
+[lib/Time.ts:137](https://github.com/bemoje/tsmono/blob/0b2dbaf/pkg/time/src/lib/Time.ts#L137)
 
 • `set` **hours**(`value`): `void`
 
@@ -111,7 +111,7 @@ if the value is invalid.
 
 #### Defined in
 
-lib/Time.ts:146
+[lib/Time.ts:146](https://github.com/bemoje/tsmono/blob/0b2dbaf/pkg/time/src/lib/Time.ts#L146)
 
 ___
 
@@ -127,7 +127,7 @@ Returns the milliseconds.
 
 #### Defined in
 
-lib/Time.ts:188
+[lib/Time.ts:188](https://github.com/bemoje/tsmono/blob/0b2dbaf/pkg/time/src/lib/Time.ts#L188)
 
 • `set` **milliseconds**(`value`): `void`
 
@@ -149,7 +149,7 @@ if the value is invalid.
 
 #### Defined in
 
-lib/Time.ts:197
+[lib/Time.ts:197](https://github.com/bemoje/tsmono/blob/0b2dbaf/pkg/time/src/lib/Time.ts#L197)
 
 ___
 
@@ -165,7 +165,7 @@ Returns the minutes.
 
 #### Defined in
 
-lib/Time.ts:154
+[lib/Time.ts:154](https://github.com/bemoje/tsmono/blob/0b2dbaf/pkg/time/src/lib/Time.ts#L154)
 
 • `set` **minutes**(`value`): `void`
 
@@ -187,7 +187,7 @@ if the value is invalid.
 
 #### Defined in
 
-lib/Time.ts:163
+[lib/Time.ts:163](https://github.com/bemoje/tsmono/blob/0b2dbaf/pkg/time/src/lib/Time.ts#L163)
 
 ___
 
@@ -203,7 +203,7 @@ Returns the seconds.
 
 #### Defined in
 
-lib/Time.ts:171
+[lib/Time.ts:171](https://github.com/bemoje/tsmono/blob/0b2dbaf/pkg/time/src/lib/Time.ts#L171)
 
 • `set` **seconds**(`value`): `void`
 
@@ -225,13 +225,13 @@ if the value is invalid.
 
 #### Defined in
 
-lib/Time.ts:180
+[lib/Time.ts:180](https://github.com/bemoje/tsmono/blob/0b2dbaf/pkg/time/src/lib/Time.ts#L180)
 
 ## Methods
 
 ### addHours
 
-▸ **addHours**(`hours`): [`Time`](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md)
+▸ **addHours**(`hours`): [`Time`](/docs/md/classes/Time.md)
 
 Adds the specified amount of hours to the current time.
 Floating point numbers, neative values and otherwise out of bounds values are allowed unless they would cause the time to become invalid.
@@ -244,7 +244,7 @@ Floating point numbers, neative values and otherwise out of bounds values are al
 
 #### Returns
 
-[`Time`](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md)
+[`Time`](/docs/md/classes/Time.md)
 
 **`Throws`**
 
@@ -252,13 +252,13 @@ if the time becomes invalid after the operation.
 
 #### Defined in
 
-lib/Time.ts:44
+[lib/Time.ts:44](https://github.com/bemoje/tsmono/blob/0b2dbaf/pkg/time/src/lib/Time.ts#L44)
 
 ___
 
 ### addMilliseconds
 
-▸ **addMilliseconds**(`milliseconds`): [`Time`](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md)
+▸ **addMilliseconds**(`milliseconds`): [`Time`](/docs/md/classes/Time.md)
 
 Adds the specified amount of milliseconds to the current time.
 Floating point numbers, neative values and otherwise out of bounds values are allowed unless they would cause the time to become invalid.
@@ -271,7 +271,7 @@ Floating point numbers, neative values and otherwise out of bounds values are al
 
 #### Returns
 
-[`Time`](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md)
+[`Time`](/docs/md/classes/Time.md)
 
 **`Throws`**
 
@@ -279,13 +279,13 @@ if the time becomes invalid after the operation.
 
 #### Defined in
 
-lib/Time.ts:80
+[lib/Time.ts:80](https://github.com/bemoje/tsmono/blob/0b2dbaf/pkg/time/src/lib/Time.ts#L80)
 
 ___
 
 ### addMinutes
 
-▸ **addMinutes**(`minutes`): [`Time`](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md)
+▸ **addMinutes**(`minutes`): [`Time`](/docs/md/classes/Time.md)
 
 Adds the specified amount of minutes to the current time.
 Floating point numbers, neative values and otherwise out of bounds values are allowed unless they would cause the time to become invalid.
@@ -298,7 +298,7 @@ Floating point numbers, neative values and otherwise out of bounds values are al
 
 #### Returns
 
-[`Time`](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md)
+[`Time`](/docs/md/classes/Time.md)
 
 **`Throws`**
 
@@ -306,13 +306,13 @@ if the time becomes invalid after the operation.
 
 #### Defined in
 
-lib/Time.ts:56
+[lib/Time.ts:56](https://github.com/bemoje/tsmono/blob/0b2dbaf/pkg/time/src/lib/Time.ts#L56)
 
 ___
 
 ### addSeconds
 
-▸ **addSeconds**(`seconds`): [`Time`](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md)
+▸ **addSeconds**(`seconds`): [`Time`](/docs/md/classes/Time.md)
 
 Adds the specified amount of seconds to the current time.
 Floating point numbers, neative values and otherwise out of bounds values are allowed unless they would cause the time to become invalid.
@@ -325,7 +325,7 @@ Floating point numbers, neative values and otherwise out of bounds values are al
 
 #### Returns
 
-[`Time`](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md)
+[`Time`](/docs/md/classes/Time.md)
 
 **`Throws`**
 
@@ -333,23 +333,23 @@ if the time becomes invalid after the operation.
 
 #### Defined in
 
-lib/Time.ts:68
+[lib/Time.ts:68](https://github.com/bemoje/tsmono/blob/0b2dbaf/pkg/time/src/lib/Time.ts#L68)
 
 ___
 
 ### clone
 
-▸ **clone**(): [`Time`](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md)
+▸ **clone**(): [`Time`](/docs/md/classes/Time.md)
 
 Returns a new Time instance.
 
 #### Returns
 
-[`Time`](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md)
+[`Time`](/docs/md/classes/Time.md)
 
 #### Defined in
 
-lib/Time.ts:252
+[lib/Time.ts:252](https://github.com/bemoje/tsmono/blob/0b2dbaf/pkg/time/src/lib/Time.ts#L252)
 
 ___
 
@@ -363,7 +363,7 @@ Compares this instance to another by comparing millisecond representations.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `other` | [`Time`](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md) | The other Time instance to compare to. |
+| `other` | [`Time`](/docs/md/classes/Time.md) | The other Time instance to compare to. |
 
 #### Returns
 
@@ -375,13 +375,13 @@ difference for getting the difference as a new Time instance.
 
 #### Defined in
 
-lib/Time.ts:236
+[lib/Time.ts:236](https://github.com/bemoje/tsmono/blob/0b2dbaf/pkg/time/src/lib/Time.ts#L236)
 
 ___
 
 ### difference
 
-▸ **difference**(`other`): [`Time`](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md)
+▸ **difference**(`other`): [`Time`](/docs/md/classes/Time.md)
 
 Returns a new Time instance that represents the time difference between this instance and another.
 
@@ -389,11 +389,11 @@ Returns a new Time instance that represents the time difference between this ins
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `other` | [`Time`](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md) | The other Time instance to compare to. |
+| `other` | [`Time`](/docs/md/classes/Time.md) | The other Time instance to compare to. |
 
 #### Returns
 
-[`Time`](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md)
+[`Time`](/docs/md/classes/Time.md)
 
 **`See`**
 
@@ -401,13 +401,13 @@ compareTo for getting the difference in milliseconds.
 
 #### Defined in
 
-lib/Time.ts:245
+[lib/Time.ts:245](https://github.com/bemoje/tsmono/blob/0b2dbaf/pkg/time/src/lib/Time.ts#L245)
 
 ___
 
 ### subtractHours
 
-▸ **subtractHours**(`hours`): [`Time`](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md)
+▸ **subtractHours**(`hours`): [`Time`](/docs/md/classes/Time.md)
 
 Subtracts the specified amount of hours from the current time.
 Floating point numbers, neative values and otherwise out of bounds values are allowed unless they would cause the time to become invalid.
@@ -420,7 +420,7 @@ Floating point numbers, neative values and otherwise out of bounds values are al
 
 #### Returns
 
-[`Time`](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md)
+[`Time`](/docs/md/classes/Time.md)
 
 **`Throws`**
 
@@ -428,13 +428,13 @@ if the time becomes invalid after the operation.
 
 #### Defined in
 
-lib/Time.ts:92
+[lib/Time.ts:92](https://github.com/bemoje/tsmono/blob/0b2dbaf/pkg/time/src/lib/Time.ts#L92)
 
 ___
 
 ### subtractMilliseconds
 
-▸ **subtractMilliseconds**(`milliseconds`): [`Time`](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md)
+▸ **subtractMilliseconds**(`milliseconds`): [`Time`](/docs/md/classes/Time.md)
 
 Subtracts the specified amount of milliseconds from the current time.
 Floating point numbers, neative values and otherwise out of bounds values are allowed unless they would cause the time to become invalid.
@@ -447,7 +447,7 @@ Floating point numbers, neative values and otherwise out of bounds values are al
 
 #### Returns
 
-[`Time`](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md)
+[`Time`](/docs/md/classes/Time.md)
 
 **`Throws`**
 
@@ -455,13 +455,13 @@ if the time becomes invalid after the operation.
 
 #### Defined in
 
-lib/Time.ts:128
+[lib/Time.ts:128](https://github.com/bemoje/tsmono/blob/0b2dbaf/pkg/time/src/lib/Time.ts#L128)
 
 ___
 
 ### subtractMinutes
 
-▸ **subtractMinutes**(`minutes`): [`Time`](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md)
+▸ **subtractMinutes**(`minutes`): [`Time`](/docs/md/classes/Time.md)
 
 Subtracts the specified amount of minutes from the current time.
 Floating point numbers, neative values and otherwise out of bounds values are allowed unless they would cause the time to become invalid.
@@ -474,7 +474,7 @@ Floating point numbers, neative values and otherwise out of bounds values are al
 
 #### Returns
 
-[`Time`](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md)
+[`Time`](/docs/md/classes/Time.md)
 
 **`Throws`**
 
@@ -482,13 +482,13 @@ if the time becomes invalid after the operation.
 
 #### Defined in
 
-lib/Time.ts:104
+[lib/Time.ts:104](https://github.com/bemoje/tsmono/blob/0b2dbaf/pkg/time/src/lib/Time.ts#L104)
 
 ___
 
 ### subtractSeconds
 
-▸ **subtractSeconds**(`seconds`): [`Time`](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md)
+▸ **subtractSeconds**(`seconds`): [`Time`](/docs/md/classes/Time.md)
 
 Subtracts the specified amount of seconds from the current time.
 Floating point numbers, neative values and otherwise out of bounds values are allowed unless they would cause the time to become invalid.
@@ -501,7 +501,7 @@ Floating point numbers, neative values and otherwise out of bounds values are al
 
 #### Returns
 
-[`Time`](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md)
+[`Time`](/docs/md/classes/Time.md)
 
 **`Throws`**
 
@@ -509,7 +509,7 @@ if the time becomes invalid after the operation.
 
 #### Defined in
 
-lib/Time.ts:116
+[lib/Time.ts:116](https://github.com/bemoje/tsmono/blob/0b2dbaf/pkg/time/src/lib/Time.ts#L116)
 
 ___
 
@@ -525,7 +525,7 @@ Returns the time as an array in the format [HH, MM, SS, mmm].
 
 #### Defined in
 
-lib/Time.ts:205
+[lib/Time.ts:205](https://github.com/bemoje/tsmono/blob/0b2dbaf/pkg/time/src/lib/Time.ts#L205)
 
 ___
 
@@ -541,7 +541,7 @@ Returns the time in millisecond representation.
 
 #### Defined in
 
-lib/Time.ts:220
+[lib/Time.ts:220](https://github.com/bemoje/tsmono/blob/0b2dbaf/pkg/time/src/lib/Time.ts#L220)
 
 ___
 
@@ -563,7 +563,7 @@ Returns the time as a string in the format "HH:MM:SS.mmm".
 
 #### Defined in
 
-lib/Time.ts:213
+[lib/Time.ts:213](https://github.com/bemoje/tsmono/blob/0b2dbaf/pkg/time/src/lib/Time.ts#L213)
 
 ___
 
@@ -579,4 +579,4 @@ Returns the time in millisecond representation.
 
 #### Defined in
 
-lib/Time.ts:227
+[lib/Time.ts:227](https://github.com/bemoje/tsmono/blob/0b2dbaf/pkg/time/src/lib/Time.ts#L227)

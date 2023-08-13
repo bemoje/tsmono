@@ -1,11 +1,11 @@
 {
   "name": "@bemoje/time",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A simple time hh:mm:ss class with many features as well as various tools for easy format conversions for various use cases.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "browser": "dist/index.umd.js",
-  "types": "dist/types/index.d.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
     "lint": "eslint \"*/**/*.{ts,js,json}\" --fix",
     "test": "jest --preset ts-jest",
@@ -51,7 +51,13 @@
     "url": "https://github.com/bemoje/"
   },
   "license": "MIT",
-  "keywords": [],
+  "keywords": [
+    "time",
+    "time interval",
+    "timespan",
+    "time period",
+    "time range"
+  ],
   "dependencies": {},
   "repository": {
     "type": "git",

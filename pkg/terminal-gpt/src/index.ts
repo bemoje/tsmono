@@ -1,5 +1,5 @@
 import { Command } from 'commander'
-import { config } from './config'
+import { config } from './core/config'
 import { emails } from './core/emails/emails'
 
 export const program = new Command()

@@ -1,7 +1,7 @@
 coverage
 logs
 node_modules
-
+src
 docs/html
 notes
 scripts
