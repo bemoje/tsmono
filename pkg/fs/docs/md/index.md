@@ -74,7 +74,7 @@ absoluteToRelativePath(__filename)
 
 #### Defined in
 
-lib/absoluteToRelativePath.ts:16
+[lib/absoluteToRelativePath.ts:16](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fs/src/lib/absoluteToRelativePath.ts#L16)
 
 ___
 
@@ -110,7 +110,7 @@ await appendLineToFile('/path/to/file', 'This is a new line')
 
 #### Defined in
 
-lib/appendLineToFile.ts:15
+[lib/appendLineToFile.ts:15](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fs/src/lib/appendLineToFile.ts#L15)
 
 ___
 
@@ -150,7 +150,7 @@ cleanDirectorySync(dirpath, predicate);
 
 #### Defined in
 
-lib/cleanDirectorySync.ts:18
+[lib/cleanDirectorySync.ts:18](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fs/src/lib/cleanDirectorySync.ts#L18)
 
 ___
 
@@ -187,7 +187,7 @@ createDirectory('/path/to/directory').then((dirpath) => {
 
 #### Defined in
 
-lib/createDirectory.ts:14
+[lib/createDirectory.ts:14](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fs/src/lib/createDirectory.ts#L14)
 
 ___
 
@@ -218,7 +218,7 @@ createDirectorySync('/path/to/directory')
 
 #### Defined in
 
-lib/createDirectorySync.ts:12
+[lib/createDirectorySync.ts:12](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fs/src/lib/createDirectorySync.ts#L12)
 
 ___
 
@@ -267,7 +267,7 @@ createFileExtensionFilter('.ts', '.tsx')('index.js');;
 
 #### Defined in
 
-lib/createFileExtensionFilter.ts:16
+[lib/createFileExtensionFilter.ts:16](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fs/src/lib/createFileExtensionFilter.ts#L16)
 
 ___
 
@@ -302,7 +302,7 @@ console.log(cwdpath('src', 'index.ts'));
 
 #### Defined in
 
-lib/cwdpath.ts:14
+[lib/cwdpath.ts:14](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fs/src/lib/cwdpath.ts#L14)
 
 ___
 
@@ -341,7 +341,7 @@ deleteDirectory('/path/to/directory');
 
 #### Defined in
 
-lib/deleteDirectory.ts:14
+[lib/deleteDirectory.ts:14](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fs/src/lib/deleteDirectory.ts#L14)
 
 ___
 
@@ -381,7 +381,7 @@ deleteDirectorySafe('/path/to/directory');;
 
 #### Defined in
 
-lib/deleteDirectorySafe.ts:15
+[lib/deleteDirectorySafe.ts:15](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fs/src/lib/deleteDirectorySafe.ts#L15)
 
 ___
 
@@ -416,7 +416,7 @@ deleteDirectorySafeSync('/path/to/directory');;
 
 #### Defined in
 
-lib/deleteDirectorySafeSync.ts:13
+[lib/deleteDirectorySafeSync.ts:13](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fs/src/lib/deleteDirectorySafeSync.ts#L13)
 
 ___
 
@@ -455,7 +455,7 @@ deleteDirectorySync('/path/to/directory');;
 
 #### Defined in
 
-lib/deleteDirectorySync.ts:14
+[lib/deleteDirectorySync.ts:14](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fs/src/lib/deleteDirectorySync.ts#L14)
 
 ___
 
@@ -498,7 +498,7 @@ ensureValidWindowsPath('C:\\Users\\User\\Documents\\file.txt', { extendedMaxLeng
 
 #### Defined in
 
-lib/ensureValidWindowsPath.ts:23
+[lib/ensureValidWindowsPath.ts:23](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fs/src/lib/ensureValidWindowsPath.ts#L23)
 
 ___
 
@@ -512,7 +512,7 @@ ___
 
 #### Defined in
 
-lib/getDiskDrivesWindows.ts:5
+[lib/getDiskDrivesWindows.ts:5](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fs/src/lib/getDiskDrivesWindows.ts#L5)
 
 ___
 
@@ -526,7 +526,7 @@ ___
 
 #### Defined in
 
-lib/getDownloadsDirectory.ts:4
+[lib/getDownloadsDirectory.ts:4](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fs/src/lib/getDownloadsDirectory.ts#L4)
 
 ___
 
@@ -540,28 +540,27 @@ ___
 
 #### Defined in
 
-lib/getHomeDirectory.ts:3
+[lib/getHomeDirectory.ts:3](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fs/src/lib/getHomeDirectory.ts#L3)
 
 ___
 
 ### getLastMofifiedFileIn
 
-▸ **getLastMofifiedFileIn**(`dirpath`, `filter`): `Promise`<`FilePath`\>
+▸ **getLastMofifiedFileIn**(`dirpath`): `Promise`<`string`\>
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `dirpath` | `string` |
-| `filter` | (`file`: `FilePath`) => `boolean` |
 
 #### Returns
 
-`Promise`<`FilePath`\>
+`Promise`<`string`\>
 
 #### Defined in
 
-lib/getLastMofifiedFileIn.ts:3
+[lib/getLastMofifiedFileIn.ts:4](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fs/src/lib/getLastMofifiedFileIn.ts#L4)
 
 ___
 
@@ -575,7 +574,7 @@ ___
 
 #### Defined in
 
-lib/getRootDir.ts:3
+[lib/getRootDir.ts:3](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fs/src/lib/getRootDir.ts#L3)
 
 ___
 
@@ -589,7 +588,7 @@ ___
 
 #### Defined in
 
-lib/isWindows.ts:1
+[lib/isWindows.ts:1](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fs/src/lib/isWindows.ts#L1)
 
 ___
 
@@ -635,7 +634,7 @@ normalizeFileExtension('jpg|png');;
 
 #### Defined in
 
-lib/normalizeFileExtension.ts:22
+[lib/normalizeFileExtension.ts:22](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fs/src/lib/normalizeFileExtension.ts#L22)
 
 ___
 
@@ -676,7 +675,7 @@ const data: MyType = await readJsonFile<MyType>('path/to/myfile.json');
 
 #### Defined in
 
-lib/readJsonFile.ts:14
+[lib/readJsonFile.ts:14](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fs/src/lib/readJsonFile.ts#L14)
 
 ___
 
@@ -717,7 +716,7 @@ console.log(data);
 
 #### Defined in
 
-lib/readJsonFileSync.ts:14
+[lib/readJsonFileSync.ts:14](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fs/src/lib/readJsonFileSync.ts#L14)
 
 ___
 
@@ -737,7 +736,7 @@ ___
 
 #### Defined in
 
-lib/readPackageJson.ts:5
+[lib/readPackageJson.ts:5](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fs/src/lib/readPackageJson.ts#L5)
 
 ___
 
@@ -757,7 +756,7 @@ ___
 
 #### Defined in
 
-lib/removeIllegalFilenameCharacters.ts:1
+[lib/removeIllegalFilenameCharacters.ts:1](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fs/src/lib/removeIllegalFilenameCharacters.ts#L1)
 
 ___
 
@@ -778,7 +777,7 @@ ___
 
 #### Defined in
 
-lib/unzipFile.ts:3
+[lib/unzipFile.ts:3](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fs/src/lib/unzipFile.ts#L3)
 
 ___
 
@@ -799,7 +798,7 @@ ___
 
 #### Defined in
 
-lib/unzipMergeFiles.ts:8
+[lib/unzipMergeFiles.ts:8](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fs/src/lib/unzipMergeFiles.ts#L8)
 
 ___
 
@@ -819,7 +818,7 @@ ___
 
 #### Defined in
 
-lib/wipeDirectorySafe.ts:4
+[lib/wipeDirectorySafe.ts:4](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fs/src/lib/wipeDirectorySafe.ts#L4)
 
 ___
 
@@ -859,7 +858,7 @@ await writeJsonFile('./data.json', data, true);
 
 #### Defined in
 
-lib/writeJsonFile.ts:16
+[lib/writeJsonFile.ts:16](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fs/src/lib/writeJsonFile.ts#L16)
 
 ___
 
@@ -900,4 +899,4 @@ writeJsonFileSync('./data.json', data, true);
 
 #### Defined in
 
-lib/writeJsonFileSync.ts:15
+[lib/writeJsonFileSync.ts:15](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fs/src/lib/writeJsonFileSync.ts#L15)

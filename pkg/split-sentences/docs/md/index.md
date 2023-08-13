@@ -39,4 +39,4 @@ splitSentences('Hello world. How are you?');
 
 #### Defined in
 
-[lib/splitSentences.ts:12](https://github.com/bemoje/tsmono/blob/f74277c/pkg/split-sentences/src/lib/splitSentences.ts#L12)
+[lib/splitSentences.ts:12](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/split-sentences/src/lib/splitSentences.ts#L12)

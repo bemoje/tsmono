@@ -31,7 +31,7 @@
 
 #### Defined in
 
-pkg/fspath/src/lib/types/NodeJsBufferEncoding.ts:1
+[pkg/fspath/src/lib/types/NodeJsBufferEncoding.ts:1](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath/src/lib/types/NodeJsBufferEncoding.ts#L1)
 
 ## Functions
 
@@ -60,4 +60,4 @@ AbstractFsPath.
 
 #### Defined in
 
-pkg/fspath/src/lib/core/instantiateCorrectFsPathSubclass.ts:17
+[pkg/fspath/src/lib/core/instantiateCorrectFsPathSubclass.ts:17](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath/src/lib/core/instantiateCorrectFsPathSubclass.ts#L17)

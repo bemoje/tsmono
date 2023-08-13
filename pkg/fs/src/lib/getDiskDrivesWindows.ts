@@ -1,6 +1,6 @@
-import { isWindows } from '@bemoje/fs'
 import { execSync } from 'child_process'
 import path from 'path'
+import { isWindows } from './isWindows'
 
 export function getDiskDrivesWindows(): string[] {
   if (!isWindows()) throw new Error('This function is only available on Windows.')

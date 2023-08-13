@@ -1,4 +1,4 @@
-[@bemoje/subtitles](/docs/md/index.md) / VTTSubtitles
+[@bemoje/subtitles](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/index.md) / VTTSubtitles
 
 # Class: VTTSubtitles
 
@@ -8,15 +8,15 @@ A collection of VTTSubtitles.
 
 ### Constructors
 
-- [constructor](/docs/md/classes/VTTSubtitles.md#constructor)
+- [constructor](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/classes/VTTSubtitles.md#constructor)
 
 ### Properties
 
-- [subtitles](/docs/md/classes/VTTSubtitles.md#subtitles)
+- [subtitles](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/classes/VTTSubtitles.md#subtitles)
 
 ### Methods
 
-- [toString](/docs/md/classes/VTTSubtitles.md#tostring)
+- [toString](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/classes/VTTSubtitles.md#tostring)
 
 ## Constructors
 
@@ -34,19 +34,19 @@ Create a new VTTSubtitles instance.
 
 #### Defined in
 
-vtt/lib/VTTSubtitles.ts:17
+[vtt/lib/VTTSubtitles.ts:17](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/subtitles/src/vtt/lib/VTTSubtitles.ts#L17)
 
 ## Properties
 
 ### subtitles
 
-• **subtitles**: [`VTTSubtitle`](/docs/md/classes/VTTSubtitle.md)[]
+• **subtitles**: [`VTTSubtitle`](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/classes/VTTSubtitle.md)[]
 
 The SRTSubtitle instances.
 
 #### Defined in
 
-vtt/lib/VTTSubtitles.ts:11
+[vtt/lib/VTTSubtitles.ts:11](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/subtitles/src/vtt/lib/VTTSubtitles.ts#L11)
 
 ## Methods
 
@@ -62,4 +62,4 @@ Returns the subtitles to a VTT format string.
 
 #### Defined in
 
-vtt/lib/VTTSubtitles.ts:32
+[vtt/lib/VTTSubtitles.ts:32](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/subtitles/src/vtt/lib/VTTSubtitles.ts#L32)

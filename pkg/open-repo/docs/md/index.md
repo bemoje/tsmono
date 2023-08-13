@@ -16,4 +16,4 @@
 
 #### Defined in
 
-[index.ts:40](https://github.com/bemoje/tsmono/blob/f74277c/pkg/open-repo/src/index.ts#L40)
+[index.ts:40](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/open-repo/src/index.ts#L40)

@@ -1,0 +1,57 @@
+{
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx-cloud",
+      "options": {
+        "cacheableOperations": ["lint", "test", "build", "docsmd", "docshtml", "prepub", "prepub-old"],
+        "accessToken": "Yjk5YzQ2ZDAtNDA5YS00MWUwLWIzNDgtZjIyZWI4YzhkNzA5fHJlYWQtd3JpdGU="
+      }
+    }
+  },
+  "namedInputs": {
+    "default": [
+      "{projectRoot}/**/*",
+      "sharedGlobals",
+      "!{projectRoot}/node_modules/**/*",
+      "!{projectRoot}/dist/**/*",
+      "!{projectRoot}/coverage/**/*",
+      "!{projectRoot}/docs/**/*",
+      "!{projectRoot}/README.md"
+    ],
+    "production": [
+      "default",
+      "!{projectRoot}/.eslintrc.json",
+      "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
+      "!{projectRoot}/tsconfig.spec.json",
+      "!{projectRoot}/jest.config.[jt]s",
+      "!{projectRoot}/src/test-setup.[jt]s"
+    ],
+    "sharedGlobals": []
+  },
+  "targetDefaults": {
+    "lint": {
+      "inputs": ["default", "{projectRoot}/.eslintrc.json", "{projectRoot}/.eslintignore"]
+    },
+    "test": {
+      "inputs": ["production", "{projectRoot}/jest.preset.js"]
+    },
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production", "{projectRoot}/rollup.config.js", "{projectRoot}/tsconfig.bundle.json"],
+      "outputs": ["{projectRoot}/dist"]
+    },
+    "docsmd": {
+      "inputs": ["{projectRoot}/dist"],
+      "outputs": ["{projectRoot}/docs/md"]
+    },
+    "docshtml": {
+      "inputs": ["{projectRoot}/dist"],
+      "outputs": ["{projectRoot}/docs/html"]
+    },
+    "prepub": {},
+    "prepub-old": {}
+  },
+  "affected": {
+    "defaultBase": "main"
+  }
+}

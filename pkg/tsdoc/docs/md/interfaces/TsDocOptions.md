@@ -19,7 +19,7 @@ Constructor options for the TsDoc class.
 
 #### Defined in
 
-lib/types/TsDocOptions.ts:6
+[lib/types/TsDocOptions.ts:6](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/types/TsDocOptions.ts#L6)
 
 ___
 
@@ -29,4 +29,4 @@ ___
 
 #### Defined in
 
-lib/types/TsDocOptions.ts:5
+[lib/types/TsDocOptions.ts:5](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/types/TsDocOptions.ts#L5)

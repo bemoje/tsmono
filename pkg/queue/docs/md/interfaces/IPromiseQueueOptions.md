@@ -44,7 +44,7 @@ true
 
 #### Defined in
 
-pkg/queue/src/lib/types/IPromiseQueueOptions.ts:20
+[pkg/queue/src/lib/types/IPromiseQueueOptions.ts:20](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/types/IPromiseQueueOptions.ts#L20)
 
 ___
 
@@ -62,7 +62,7 @@ false
 
 #### Defined in
 
-pkg/queue/src/lib/types/IPromiseQueueOptions.ts:45
+[pkg/queue/src/lib/types/IPromiseQueueOptions.ts:45](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/types/IPromiseQueueOptions.ts#L45)
 
 ___
 
@@ -81,7 +81,7 @@ Infinity
 
 #### Defined in
 
-pkg/queue/src/lib/types/IPromiseQueueOptions.ts:14
+[pkg/queue/src/lib/types/IPromiseQueueOptions.ts:14](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/types/IPromiseQueueOptions.ts#L14)
 
 ___
 
@@ -100,7 +100,7 @@ The length of time in milliseconds before the interval count resets. Must be fin
 
 #### Defined in
 
-pkg/queue/src/lib/types/IPromiseQueueOptions.ts:39
+[pkg/queue/src/lib/types/IPromiseQueueOptions.ts:39](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/types/IPromiseQueueOptions.ts#L39)
 
 ___
 
@@ -119,7 +119,7 @@ Infinity
 
 #### Defined in
 
-pkg/queue/src/lib/types/IPromiseQueueOptions.ts:32
+[pkg/queue/src/lib/types/IPromiseQueueOptions.ts:32](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/types/IPromiseQueueOptions.ts#L32)
 
 ___
 
@@ -135,7 +135,7 @@ Class with a `enqueue` and `dequeue` method, and a `size` getter. See the [Custo
 
 #### Defined in
 
-pkg/queue/src/lib/types/IPromiseQueueOptions.ts:25
+[pkg/queue/src/lib/types/IPromiseQueueOptions.ts:25](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/types/IPromiseQueueOptions.ts#L25)
 
 ___
 
@@ -157,7 +157,7 @@ false
 
 #### Defined in
 
-pkg/queue/src/lib/types/ITimeoutOptions.ts:11
+[pkg/queue/src/lib/types/ITimeoutOptions.ts:11](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/types/ITimeoutOptions.ts#L11)
 
 ___
 
@@ -173,4 +173,4 @@ Per-operation timeout in milliseconds. Operations fulfill once `timeout` elapses
 
 #### Defined in
 
-pkg/queue/src/lib/types/ITimeoutOptions.ts:5
+[pkg/queue/src/lib/types/ITimeoutOptions.ts:5](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/types/ITimeoutOptions.ts#L5)

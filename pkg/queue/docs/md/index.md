@@ -32,7 +32,7 @@
 
 #### Defined in
 
-pkg/queue/src/lib/types/PromiseQueueEvent.ts:1
+[pkg/queue/src/lib/types/PromiseQueueEvent.ts:1](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/types/PromiseQueueEvent.ts#L1)
 
 ___
 
@@ -48,4 +48,4 @@ ___
 
 #### Defined in
 
-pkg/queue/src/lib/types/PromiseQueueTask.ts:3
+[pkg/queue/src/lib/types/PromiseQueueTask.ts:3](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/types/PromiseQueueTask.ts#L3)

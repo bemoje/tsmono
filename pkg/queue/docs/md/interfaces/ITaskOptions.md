@@ -22,4 +22,4 @@
 
 #### Defined in
 
-pkg/queue/src/lib/types/ITaskOptions.ts:2
+[pkg/queue/src/lib/types/ITaskOptions.ts:2](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/types/ITaskOptions.ts#L2)

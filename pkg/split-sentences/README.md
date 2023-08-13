@@ -26,9 +26,6 @@ This library is published in the NPM registry and can be installed using any com
 npm install @bemoje/split-sentences
 ```
 
-## Documentation
-- [Markdown](https://github.com/bemoje/tsmono/blob/main/pkg/split-sentences/docs/md/index.md)
-- [HTML](https://github.com/bemoje/tsmono/blob/main/pkg/split-sentences/docs/html/index.html)
 
 ## Issues
 Please let me know of any bugs or [issues](https://github.com/bemoje/https://github.com/bemoje/tsmono/issues).
@@ -38,3 +35,44 @@ Contributors are welcome to open a [pull request](https://github.com/bemoje/http
 
 ## License
 Released under the [MIT License](./LICENSE).
+
+## Documentation
+- [HTML](https://github.com/bemoje/tsmono/blob/main/pkg/split-sentences/docs/html/index.html)
+- [Markdown](https://github.com/bemoje/tsmono/blob/main/pkg/split-sentences/docs/md/index.md)
+
+### Functions
+
+- [splitSentences](https://github.com/bemoje/tsmono/blob/main/pkg/split-sentences/docs/md/index.md#splitsentences)
+
+## Functions
+
+### splitSentences
+
+▸ **splitSentences**(`text`): `string`[]
+
+Intelligently split a string into sentences.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `text` | `string` | Text to split into sentences. |
+
+#### Returns
+
+`string`[]
+
+**`Throws`**
+
+Will throw an error if the input is not a string.
+
+**`Example`**
+
+```ts
+splitSentences('Hello world. How are you?');
+//=> ['Hello world.', 'How are you?']
+```
+
+#### Defined in
+
+[lib/splitSentences.ts:12](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/split-sentences/src/lib/splitSentences.ts#L12)

@@ -19,7 +19,7 @@ Throw if not valid, otherwise return false.
 
 #### Defined in
 
-lib/types/IEnsureValidWindowsPathOptions.ts:9
+[lib/types/IEnsureValidWindowsPathOptions.ts:9](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fs/src/lib/types/IEnsureValidWindowsPathOptions.ts#L9)
 
 ___
 
@@ -31,4 +31,4 @@ On most versions of windows, the max allowed length of paths has been raised.
 
 #### Defined in
 
-lib/types/IEnsureValidWindowsPathOptions.ts:5
+[lib/types/IEnsureValidWindowsPathOptions.ts:5](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fs/src/lib/types/IEnsureValidWindowsPathOptions.ts#L5)

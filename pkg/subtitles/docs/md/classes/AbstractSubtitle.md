@@ -1,4 +1,4 @@
-[@bemoje/subtitles](/docs/md/index.md) / AbstractSubtitle
+[@bemoje/subtitles](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/index.md) / AbstractSubtitle
 
 # Class: AbstractSubtitle
 
@@ -8,20 +8,20 @@ Abstract class represents a subtitle of no specific format.
 
 - **`AbstractSubtitle`**
 
-  ↳ [`SRTSubtitle`](/docs/md/classes/SRTSubtitle.md)
+  ↳ [`SRTSubtitle`](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/classes/SRTSubtitle.md)
 
-  ↳ [`VTTSubtitle`](/docs/md/classes/VTTSubtitle.md)
+  ↳ [`VTTSubtitle`](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/classes/VTTSubtitle.md)
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](/docs/md/classes/AbstractSubtitle.md#constructor)
+- [constructor](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/classes/AbstractSubtitle.md#constructor)
 
 ### Properties
 
-- [interval](/docs/md/classes/AbstractSubtitle.md#interval)
-- [text](/docs/md/classes/AbstractSubtitle.md#text)
+- [interval](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/classes/AbstractSubtitle.md#interval)
+- [text](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/classes/AbstractSubtitle.md#text)
 
 ## Constructors
 
@@ -40,7 +40,7 @@ Creates a new Subtitle instance.
 
 #### Defined in
 
-core/AbstractSubtitle.ts:22
+[core/AbstractSubtitle.ts:22](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/subtitles/src/core/AbstractSubtitle.ts#L22)
 
 ## Properties
 
@@ -52,7 +52,7 @@ The time interval of the subtitle.
 
 #### Defined in
 
-core/AbstractSubtitle.ts:10
+[core/AbstractSubtitle.ts:10](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/subtitles/src/core/AbstractSubtitle.ts#L10)
 
 ___
 
@@ -64,4 +64,4 @@ The text of the subtitle.
 
 #### Defined in
 
-core/AbstractSubtitle.ts:15
+[core/AbstractSubtitle.ts:15](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/subtitles/src/core/AbstractSubtitle.ts#L15)

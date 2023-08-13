@@ -26,9 +26,6 @@ This library is published in the NPM registry and can be installed using any com
 npm install @bemoje/sorted-array
 ```
 
-## Documentation
-- [Markdown](https://github.com/bemoje/tsmono/blob/main/pkg/sorted-array/docs/md/index.md)
-- [HTML](https://github.com/bemoje/tsmono/blob/main/pkg/sorted-array/docs/html/index.html)
 
 ## Issues
 Please let me know of any bugs or [issues](https://github.com/bemoje/https://github.com/bemoje/tsmono/issues).
@@ -38,3 +35,15 @@ Contributors are welcome to open a [pull request](https://github.com/bemoje/http
 
 ## License
 Released under the [MIT License](./LICENSE).
+
+## Documentation
+- [HTML](https://github.com/bemoje/tsmono/blob/main/pkg/sorted-array/docs/html/index.html)
+- [Markdown](https://github.com/bemoje/tsmono/blob/main/pkg/sorted-array/docs/md/index.md)
+
+### Classes
+
+- [SortedArray](https://github.com/bemoje/tsmono/blob/main/pkg/sorted-array/docs/md/classes/SortedArray.md)
+
+### Interfaces
+
+- [ISortedArrayOptions](https://github.com/bemoje/tsmono/blob/main/pkg/sorted-array/docs/md/interfaces/ISortedArrayOptions.md)

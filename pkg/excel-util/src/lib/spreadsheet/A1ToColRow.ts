@@ -1,4 +1,4 @@
-import { rexec } from '@bemoje/regex'
+import { rexec } from '@bemoje/string'
 import { letterToCol } from './letterToCol'
 
 /**

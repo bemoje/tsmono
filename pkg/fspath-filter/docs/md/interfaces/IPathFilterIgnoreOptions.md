@@ -17,7 +17,7 @@
 
 #### Defined in
 
-pkg/fspath-filter/src/lib/IPathFilterIgnoreOptions.ts:3
+[pkg/fspath-filter/src/lib/IPathFilterIgnoreOptions.ts:3](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath-filter/src/lib/IPathFilterIgnoreOptions.ts#L3)
 
 ___
 
@@ -27,4 +27,4 @@ ___
 
 #### Defined in
 
-pkg/fspath-filter/src/lib/IPathFilterIgnoreOptions.ts:2
+[pkg/fspath-filter/src/lib/IPathFilterIgnoreOptions.ts:2](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath-filter/src/lib/IPathFilterIgnoreOptions.ts#L2)

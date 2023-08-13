@@ -26,9 +26,6 @@ This library is published in the NPM registry and can be installed using any com
 npm install -g @bemoje/bfind
 ```
 
-## Documentation
-- [Markdown](https://github.com/bemoje/tsmono/blob/main/pkg/bfind/docs/md/index.md)
-- [HTML](https://github.com/bemoje/tsmono/blob/main/pkg/bfind/docs/html/index.html)
 
 ## Issues
 Please let me know of any bugs or [issues](https://github.com/bemoje/https://github.com/bemoje/tsmono/issues).
@@ -38,3 +35,21 @@ Contributors are welcome to open a [pull request](https://github.com/bemoje/http
 
 ## License
 Released under the [MIT License](./LICENSE).
+
+## Documentation
+- [HTML](https://github.com/bemoje/tsmono/blob/main/pkg/bfind/docs/html/index.html)
+- [Markdown](https://github.com/bemoje/tsmono/blob/main/pkg/bfind/docs/md/index.md)
+
+### Variables
+
+- [program](https://github.com/bemoje/tsmono/blob/main/pkg/bfind/docs/md/index.md#program)
+
+## Variables
+
+### program
+
+• `Const` **program**: `Command`
+
+#### Defined in
+
+[index.ts:13](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/bfind/src/index.ts#L13)

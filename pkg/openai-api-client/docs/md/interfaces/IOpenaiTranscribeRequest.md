@@ -18,7 +18,7 @@
 
 #### Defined in
 
-[pkg/openai-api-client/src/lib/types/IOpenaiTranscribeRequest.ts:2](https://github.com/bemoje/tsmono/blob/f74277c/pkg/openai-api-client/src/lib/types/IOpenaiTranscribeRequest.ts#L2)
+[pkg/openai-api-client/src/lib/types/IOpenaiTranscribeRequest.ts:2](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/openai-api-client/src/lib/types/IOpenaiTranscribeRequest.ts#L2)
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 #### Defined in
 
-[pkg/openai-api-client/src/lib/types/IOpenaiTranscribeRequest.ts:4](https://github.com/bemoje/tsmono/blob/f74277c/pkg/openai-api-client/src/lib/types/IOpenaiTranscribeRequest.ts#L4)
+[pkg/openai-api-client/src/lib/types/IOpenaiTranscribeRequest.ts:4](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/openai-api-client/src/lib/types/IOpenaiTranscribeRequest.ts#L4)
 
 ___
 
@@ -38,4 +38,4 @@ ___
 
 #### Defined in
 
-[pkg/openai-api-client/src/lib/types/IOpenaiTranscribeRequest.ts:3](https://github.com/bemoje/tsmono/blob/f74277c/pkg/openai-api-client/src/lib/types/IOpenaiTranscribeRequest.ts#L3)
+[pkg/openai-api-client/src/lib/types/IOpenaiTranscribeRequest.ts:3](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/openai-api-client/src/lib/types/IOpenaiTranscribeRequest.ts#L3)

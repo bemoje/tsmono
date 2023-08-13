@@ -28,7 +28,7 @@ OpenAI API key
 
 #### Defined in
 
-[pkg/openai-api-client/src/lib/types/IOpenaiApiClientOptions.ts:7](https://github.com/bemoje/tsmono/blob/f74277c/pkg/openai-api-client/src/lib/types/IOpenaiApiClientOptions.ts#L7)
+[pkg/openai-api-client/src/lib/types/IOpenaiApiClientOptions.ts:7](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/openai-api-client/src/lib/types/IOpenaiApiClientOptions.ts#L7)
 
 ___
 
@@ -44,7 +44,7 @@ IAbstractApiClientOptions.cache
 
 #### Defined in
 
-[pkg/api-util/src/lib/types/IAbstractApiClientOptions.ts:14](https://github.com/bemoje/tsmono/blob/f74277c/pkg/api-util/src/lib/types/IAbstractApiClientOptions.ts#L14)
+[pkg/api-util/src/lib/types/IAbstractApiClientOptions.ts:14](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/api-util/src/lib/types/IAbstractApiClientOptions.ts#L14)
 
 ___
 
@@ -60,7 +60,7 @@ IAbstractApiClientOptions.cacheDefaults
 
 #### Defined in
 
-[pkg/api-util/src/lib/types/IAbstractApiClientOptions.ts:29](https://github.com/bemoje/tsmono/blob/f74277c/pkg/api-util/src/lib/types/IAbstractApiClientOptions.ts#L29)
+[pkg/api-util/src/lib/types/IAbstractApiClientOptions.ts:29](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/api-util/src/lib/types/IAbstractApiClientOptions.ts#L29)
 
 ___
 
@@ -76,7 +76,7 @@ IAbstractApiClientOptions.concurrency
 
 #### Defined in
 
-[pkg/api-util/src/lib/types/IAbstractApiClientOptions.ts:19](https://github.com/bemoje/tsmono/blob/f74277c/pkg/api-util/src/lib/types/IAbstractApiClientOptions.ts#L19)
+[pkg/api-util/src/lib/types/IAbstractApiClientOptions.ts:19](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/api-util/src/lib/types/IAbstractApiClientOptions.ts#L19)
 
 ___
 
@@ -92,4 +92,4 @@ IAbstractApiClientOptions.retryDefaults
 
 #### Defined in
 
-[pkg/api-util/src/lib/types/IAbstractApiClientOptions.ts:24](https://github.com/bemoje/tsmono/blob/f74277c/pkg/api-util/src/lib/types/IAbstractApiClientOptions.ts#L24)
+[pkg/api-util/src/lib/types/IAbstractApiClientOptions.ts:24](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/api-util/src/lib/types/IAbstractApiClientOptions.ts#L24)

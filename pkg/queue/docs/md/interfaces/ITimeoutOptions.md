@@ -33,7 +33,7 @@ false
 
 #### Defined in
 
-pkg/queue/src/lib/types/ITimeoutOptions.ts:11
+[pkg/queue/src/lib/types/ITimeoutOptions.ts:11](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/types/ITimeoutOptions.ts#L11)
 
 ___
 
@@ -45,4 +45,4 @@ Per-operation timeout in milliseconds. Operations fulfill once `timeout` elapses
 
 #### Defined in
 
-pkg/queue/src/lib/types/ITimeoutOptions.ts:5
+[pkg/queue/src/lib/types/ITimeoutOptions.ts:5](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/types/ITimeoutOptions.ts#L5)

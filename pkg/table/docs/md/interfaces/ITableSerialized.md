@@ -23,7 +23,7 @@
 
 #### Defined in
 
-lib/ITableSerialized.ts:3
+[lib/ITableSerialized.ts:3](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/table/src/lib/ITableSerialized.ts#L3)
 
 ___
 
@@ -33,4 +33,4 @@ ___
 
 #### Defined in
 
-lib/ITableSerialized.ts:2
+[lib/ITableSerialized.ts:2](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/table/src/lib/ITableSerialized.ts#L2)
