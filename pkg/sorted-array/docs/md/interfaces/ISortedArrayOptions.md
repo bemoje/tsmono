@@ -24,7 +24,7 @@
 
 #### Defined in
 
-pkg/sorted-array/src/lib/ISortedArrayOptions.ts:4
+[pkg/sorted-array/src/lib/ISortedArrayOptions.ts:4](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/sorted-array/src/lib/ISortedArrayOptions.ts#L4)
 
 ___
 
@@ -49,7 +49,7 @@ ___
 
 #### Defined in
 
-pkg/sorted-array/src/lib/ISortedArrayOptions.ts:2
+[pkg/sorted-array/src/lib/ISortedArrayOptions.ts:2](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/sorted-array/src/lib/ISortedArrayOptions.ts#L2)
 
 ___
 
@@ -59,4 +59,4 @@ ___
 
 #### Defined in
 
-pkg/sorted-array/src/lib/ISortedArrayOptions.ts:3
+[pkg/sorted-array/src/lib/ISortedArrayOptions.ts:3](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/sorted-array/src/lib/ISortedArrayOptions.ts#L3)

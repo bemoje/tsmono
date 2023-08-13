@@ -38,7 +38,7 @@
 
 #### Defined in
 
-pkg/queue/src/lib/types/IQueue.ts:4
+[pkg/queue/src/lib/types/IQueue.ts:4](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/types/IQueue.ts#L4)
 
 ___
 
@@ -63,7 +63,7 @@ ___
 
 #### Defined in
 
-pkg/queue/src/lib/types/IQueue.ts:5
+[pkg/queue/src/lib/types/IQueue.ts:5](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/types/IQueue.ts#L5)
 
 ___
 
@@ -87,7 +87,7 @@ ___
 
 #### Defined in
 
-pkg/queue/src/lib/types/IQueue.ts:3
+[pkg/queue/src/lib/types/IQueue.ts:3](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/types/IQueue.ts#L3)
 
 ___
 
@@ -97,4 +97,4 @@ ___
 
 #### Defined in
 
-pkg/queue/src/lib/types/IQueue.ts:2
+[pkg/queue/src/lib/types/IQueue.ts:2](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/types/IQueue.ts#L2)

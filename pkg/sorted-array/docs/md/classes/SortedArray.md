@@ -105,7 +105,7 @@ Array.constructor
 
 #### Defined in
 
-pkg/sorted-array/src/lib/SortedArray.ts:7
+[pkg/sorted-array/src/lib/SortedArray.ts:7](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/sorted-array/src/lib/SortedArray.ts#L7)
 
 ## Properties
 
@@ -174,7 +174,7 @@ ___
 
 #### Defined in
 
-pkg/sorted-array/src/lib/SortedArray.ts:5
+[pkg/sorted-array/src/lib/SortedArray.ts:5](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/sorted-array/src/lib/SortedArray.ts#L5)
 
 ___
 
@@ -199,7 +199,7 @@ ___
 
 #### Defined in
 
-pkg/sorted-array/src/lib/SortedArray.ts:4
+[pkg/sorted-array/src/lib/SortedArray.ts:4](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/sorted-array/src/lib/SortedArray.ts#L4)
 
 ___
 
@@ -271,7 +271,7 @@ Add an element to the sorted array.
 
 #### Defined in
 
-pkg/sorted-array/src/lib/SortedArray.ts:43
+[pkg/sorted-array/src/lib/SortedArray.ts:43](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/sorted-array/src/lib/SortedArray.ts#L43)
 
 ___
 
@@ -293,7 +293,7 @@ Add elements to the sorted array.
 
 #### Defined in
 
-pkg/sorted-array/src/lib/SortedArray.ts:58
+[pkg/sorted-array/src/lib/SortedArray.ts:58](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/sorted-array/src/lib/SortedArray.ts#L58)
 
 ___
 
@@ -746,7 +746,7 @@ Returns the index of the first element that is determined equal by the compare f
 
 #### Defined in
 
-pkg/sorted-array/src/lib/SortedArray.ts:154
+[pkg/sorted-array/src/lib/SortedArray.ts:154](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/sorted-array/src/lib/SortedArray.ts#L154)
 
 ___
 
@@ -768,7 +768,7 @@ Returns a tuple containing the first index of where to add an element to keep th
 
 #### Defined in
 
-pkg/sorted-array/src/lib/SortedArray.ts:109
+[pkg/sorted-array/src/lib/SortedArray.ts:109](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/sorted-array/src/lib/SortedArray.ts#L109)
 
 ___
 
@@ -942,7 +942,7 @@ Returns the index of the first element found that is determined equal by the com
 
 #### Defined in
 
-pkg/sorted-array/src/lib/SortedArray.ts:143
+[pkg/sorted-array/src/lib/SortedArray.ts:143](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/sorted-array/src/lib/SortedArray.ts#L143)
 
 ___
 
@@ -964,7 +964,7 @@ Returns all indices at which element exists. Equality is determined by the compa
 
 #### Defined in
 
-pkg/sorted-array/src/lib/SortedArray.ts:176
+[pkg/sorted-array/src/lib/SortedArray.ts:176](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/sorted-array/src/lib/SortedArray.ts#L176)
 
 ___
 
@@ -986,7 +986,7 @@ Returns a tuple containing the index of where to add an element to keep the arra
 
 #### Defined in
 
-pkg/sorted-array/src/lib/SortedArray.ts:88
+[pkg/sorted-array/src/lib/SortedArray.ts:88](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/sorted-array/src/lib/SortedArray.ts#L88)
 
 ___
 
@@ -1008,7 +1008,7 @@ Returns the interestion of this and another sorted array.
 
 #### Defined in
 
-pkg/sorted-array/src/lib/SortedArray.ts:208
+[pkg/sorted-array/src/lib/SortedArray.ts:208](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/sorted-array/src/lib/SortedArray.ts#L208)
 
 ___
 
@@ -1103,7 +1103,7 @@ Returns the index of the last element that is determined equal by the compare fu
 
 #### Defined in
 
-pkg/sorted-array/src/lib/SortedArray.ts:165
+[pkg/sorted-array/src/lib/SortedArray.ts:165](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/sorted-array/src/lib/SortedArray.ts#L165)
 
 ___
 
@@ -1125,7 +1125,7 @@ Returns a tuple containing the last index of where to add an element to keep the
 
 #### Defined in
 
-pkg/sorted-array/src/lib/SortedArray.ts:126
+[pkg/sorted-array/src/lib/SortedArray.ts:126](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/sorted-array/src/lib/SortedArray.ts#L126)
 
 ___
 
@@ -1205,7 +1205,7 @@ Array.push
 
 #### Defined in
 
-pkg/sorted-array/src/lib/SortedArray.ts:230
+[pkg/sorted-array/src/lib/SortedArray.ts:230](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/sorted-array/src/lib/SortedArray.ts#L230)
 
 ___
 
@@ -1377,7 +1377,7 @@ Array.reverse
 
 #### Defined in
 
-pkg/sorted-array/src/lib/SortedArray.ts:238
+[pkg/sorted-array/src/lib/SortedArray.ts:238](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/sorted-array/src/lib/SortedArray.ts#L238)
 
 ___
 
@@ -1508,7 +1508,7 @@ Array.splice
 
 #### Defined in
 
-pkg/sorted-array/src/lib/SortedArray.ts:245
+[pkg/sorted-array/src/lib/SortedArray.ts:245](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/sorted-array/src/lib/SortedArray.ts#L245)
 
 ___
 
@@ -1524,7 +1524,7 @@ Convert to a normal Array instance
 
 #### Defined in
 
-pkg/sorted-array/src/lib/SortedArray.ts:35
+[pkg/sorted-array/src/lib/SortedArray.ts:35](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/sorted-array/src/lib/SortedArray.ts#L35)
 
 ___
 
@@ -1580,7 +1580,7 @@ Remove all duplicate elements in the sorted array, leaving only unique values. E
 
 #### Defined in
 
-pkg/sorted-array/src/lib/SortedArray.ts:69
+[pkg/sorted-array/src/lib/SortedArray.ts:69](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/sorted-array/src/lib/SortedArray.ts#L69)
 
 ___
 

@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import { getPackages } from './util/getPackages'
 
-export function readme(pkg: Record<string, any>): string {
+export function readme(pkg: Record<string, any>, docs: string): string {
   const shortname = pkg.name.replace('@bemoje/', '')
   return `# ${pkg.name}
 ${pkg.description}
@@ -36,9 +36,6 @@ This library is published in the NPM registry and can be installed using any com
 npm install${pkg.preferGlobal ? ' -g ' : ' '}${pkg.name}
 \`\`\`
 
-## Documentation
-- [Markdown](https://github.com/bemoje/tsmono/blob/main/pkg/${shortname}/docs/md/index.md)
-- [HTML](https://github.com/bemoje/tsmono/blob/main/pkg/${shortname}/docs/html/index.html)
 
 ## Issues
 Please let me know of any bugs or [issues](${`https://github.com/${'bemoje'}/${'https://github.com/bemoje/tsmono'}/issues`}).
@@ -48,10 +45,18 @@ Contributors are welcome to open a [pull request](${`https://github.com/${'bemoj
 
 ## License
 Released under the [${pkg.license} License](./LICENSE).
+
+## Documentation
+- [HTML](https://github.com/bemoje/tsmono/blob/main/pkg/${shortname}/docs/html/index.html)
+- [Markdown](https://github.com/bemoje/tsmono/blob/main/pkg/${shortname}/docs/md/index.md)
+
+${docs}
 `
 }
 
 getPackages().forEach(({ rootdir, pkg }) => {
-  const content = readme(pkg)
+  const mdpath = path.join(rootdir, 'docs', 'md', 'index.md')
+  const docs = fs.readFileSync(mdpath, 'utf8').split('## Table of contents')[1].trim()
+  const content = readme(pkg, docs)
   fs.writeFileSync(path.join(rootdir, 'README.md'), content)
 })

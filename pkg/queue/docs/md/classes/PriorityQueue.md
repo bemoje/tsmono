@@ -44,7 +44,7 @@ Queue of functions to run
 
 #### Defined in
 
-pkg/queue/src/lib/PriorityQueue.ts:12
+[pkg/queue/src/lib/PriorityQueue.ts:12](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PriorityQueue.ts#L12)
 
 ## Accessors
 
@@ -64,7 +64,7 @@ Get the number of functions in the queue
 
 #### Defined in
 
-pkg/queue/src/lib/PriorityQueue.ts:17
+[pkg/queue/src/lib/PriorityQueue.ts:17](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PriorityQueue.ts#L17)
 
 ## Methods
 
@@ -84,7 +84,7 @@ Remove a function from the queue
 
 #### Defined in
 
-pkg/queue/src/lib/PriorityQueue.ts:50
+[pkg/queue/src/lib/PriorityQueue.ts:50](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PriorityQueue.ts#L50)
 
 ___
 
@@ -111,7 +111,7 @@ Add a function to the queue
 
 #### Defined in
 
-pkg/queue/src/lib/PriorityQueue.ts:26
+[pkg/queue/src/lib/PriorityQueue.ts:26](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PriorityQueue.ts#L26)
 
 ___
 
@@ -137,4 +137,4 @@ Get the functions with the given priority.
 
 #### Defined in
 
-pkg/queue/src/lib/PriorityQueue.ts:59
+[pkg/queue/src/lib/PriorityQueue.ts:59](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PriorityQueue.ts#L59)

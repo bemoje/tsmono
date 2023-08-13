@@ -61,7 +61,7 @@ on invalid markdown code block for example tag.
 
 #### Defined in
 
-lib/TsDocTag.ts:46
+[lib/TsDocTag.ts:46](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/TsDocTag.ts#L46)
 
 ## Properties
 
@@ -73,7 +73,7 @@ The tag's description.
 
 #### Defined in
 
-lib/TsDocTag.ts:24
+[lib/TsDocTag.ts:24](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/TsDocTag.ts#L24)
 
 ___
 
@@ -85,7 +85,7 @@ The tag's name parameter.
 
 #### Defined in
 
-lib/TsDocTag.ts:19
+[lib/TsDocTag.ts:19](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/TsDocTag.ts#L19)
 
 ___
 
@@ -97,7 +97,7 @@ The kind of tag.
 
 #### Defined in
 
-lib/TsDocTag.ts:14
+[lib/TsDocTag.ts:14](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/TsDocTag.ts#L14)
 
 ## Methods
 
@@ -117,4 +117,4 @@ Ensures that example tags are formatted as markdown ts-code blocks.
 
 #### Defined in
 
-lib/TsDocTag.ts:90
+[lib/TsDocTag.ts:90](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/TsDocTag.ts#L90)

@@ -1,11 +1,14 @@
+/* eslint-disable no-undef */
+/* eslint-disable @typescript-eslint/no-var-requires */
 import { strUnwrap, tsExtractImports } from '@bemoje/node-util'
 import commonjs from '@rollup/plugin-commonjs'
 import json from '@rollup/plugin-json'
+// import resolve from '@rollup/plugin-node-resolve'
 import { camelCase } from 'camel-case'
 import fs from 'fs'
 import path from 'path'
 import minify from 'rollup-plugin-babel-minify'
-import typescript2 from 'rollup-plugin-typescript2'
+import typescript from 'rollup-plugin-typescript2'
 import walkdir from 'walkdir'
 import PKG from './package.json'
 
@@ -22,7 +25,6 @@ function walkTsFiles(srcdir, filter, options) {
 }
 
 function getImportedBuiltins(pkgroot) {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires, no-undef
   const builtins = new Set(require('module').builtinModules)
   const srcdir = path.join(pkgroot, 'src')
   const fpaths = walkTsFiles(srcdir, (fpath) => !/node_modules/i.test(fpath))
@@ -38,7 +40,6 @@ function getImportedBuiltins(pkgroot) {
 
 function pkgDependenciesRecursive(pkg) {
   const result = new Set(['walkdir', '@bemoje/node-util'])
-  // eslint-disable-next-line no-undef
   const root = path.dirname(path.dirname(process.cwd()))
   function recurse(pkg) {
     const deps = Object.keys(pkg.dependencies)
@@ -50,7 +51,6 @@ function pkgDependenciesRecursive(pkg) {
         const deppath = path.join(root, 'pkg', dep, 'package.json')
         if (!fs.existsSync(deppath)) return
         getImportedBuiltins(path.join(root, 'pkg', dep)).forEach((imp) => result.add(imp))
-        // eslint-disable-next-line no-undef, @typescript-eslint/no-var-requires
         recurse(require(deppath))
       })
   }
@@ -58,8 +58,7 @@ function pkgDependenciesRecursive(pkg) {
   return [...result]
 }
 
-// eslint-disable-next-line no-undef
-const builtins = getImportedBuiltins(__dirname)
+const builtins = require('module').builtinModules
 const external = [...pkgDependenciesRecursive(PKG), ...builtins]
 
 if (PKG.browser && (PKG.preferGlobal || builtins.length)) {
@@ -111,14 +110,14 @@ export default {
   external,
   output,
   plugins: [
-    // resolve(),
-    commonjs(),
-    json(),
-    typescript2({
+    typescript({
       clean: true,
       useTsconfigDeclarationDir: true,
       tsconfig: './tsconfig.bundle.json',
     }),
+    // resolve(),
+    commonjs(),
+    json(),
     minify({ comments: false, builtIns: false, mangle: false, removeConsole: false }),
   ],
 }

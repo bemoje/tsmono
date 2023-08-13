@@ -1,4 +1,4 @@
-[@bemoje/subtitles](/docs/md/index.md) / VTTSubtitle
+[@bemoje/subtitles](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/index.md) / VTTSubtitle
 
 # Class: VTTSubtitle
 
@@ -6,7 +6,7 @@ Represents a single subtitle in the VTT format.
 
 ## Hierarchy
 
-- [`AbstractSubtitle`](/docs/md/classes/AbstractSubtitle.md)
+- [`AbstractSubtitle`](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/classes/AbstractSubtitle.md)
 
   ↳ **`VTTSubtitle`**
 
@@ -14,16 +14,16 @@ Represents a single subtitle in the VTT format.
 
 ### Constructors
 
-- [constructor](/docs/md/classes/VTTSubtitle.md#constructor)
+- [constructor](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/classes/VTTSubtitle.md#constructor)
 
 ### Properties
 
-- [interval](/docs/md/classes/VTTSubtitle.md#interval)
-- [text](/docs/md/classes/VTTSubtitle.md#text)
+- [interval](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/classes/VTTSubtitle.md#interval)
+- [text](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/classes/VTTSubtitle.md#text)
 
 ### Methods
 
-- [toString](/docs/md/classes/VTTSubtitle.md#tostring)
+- [toString](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/classes/VTTSubtitle.md#tostring)
 
 ## Constructors
 
@@ -42,11 +42,11 @@ Creates a new VTTSubtitle instance.
 
 #### Overrides
 
-[AbstractSubtitle](/docs/md/classes/AbstractSubtitle.md).[constructor](/docs/md/classes/AbstractSubtitle.md#constructor)
+[AbstractSubtitle](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/classes/AbstractSubtitle.md).[constructor](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/classes/AbstractSubtitle.md#constructor)
 
 #### Defined in
 
-vtt/lib/VTTSubtitle.ts:13
+[vtt/lib/VTTSubtitle.ts:13](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/subtitles/src/vtt/lib/VTTSubtitle.ts#L13)
 
 ## Properties
 
@@ -58,11 +58,11 @@ The time interval of the subtitle.
 
 #### Inherited from
 
-[AbstractSubtitle](/docs/md/classes/AbstractSubtitle.md).[interval](/docs/md/classes/AbstractSubtitle.md#interval)
+[AbstractSubtitle](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/classes/AbstractSubtitle.md).[interval](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/classes/AbstractSubtitle.md#interval)
 
 #### Defined in
 
-core/AbstractSubtitle.ts:10
+[core/AbstractSubtitle.ts:10](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/subtitles/src/core/AbstractSubtitle.ts#L10)
 
 ___
 
@@ -74,11 +74,11 @@ The text of the subtitle.
 
 #### Inherited from
 
-[AbstractSubtitle](/docs/md/classes/AbstractSubtitle.md).[text](/docs/md/classes/AbstractSubtitle.md#text)
+[AbstractSubtitle](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/classes/AbstractSubtitle.md).[text](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/classes/AbstractSubtitle.md#text)
 
 #### Defined in
 
-core/AbstractSubtitle.ts:15
+[core/AbstractSubtitle.ts:15](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/subtitles/src/core/AbstractSubtitle.ts#L15)
 
 ## Methods
 
@@ -94,4 +94,4 @@ Renders the subtitle as a string in the VTT format.
 
 #### Defined in
 
-vtt/lib/VTTSubtitle.ts:20
+[vtt/lib/VTTSubtitle.ts:20](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/subtitles/src/vtt/lib/VTTSubtitle.ts#L20)

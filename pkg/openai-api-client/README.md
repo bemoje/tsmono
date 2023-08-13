@@ -26,9 +26,6 @@ This library is published in the NPM registry and can be installed using any com
 npm install @bemoje/openai-api-client
 ```
 
-## Documentation
-- [Markdown](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/index.md)
-- [HTML](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/html/index.html)
 
 ## Issues
 Please let me know of any bugs or [issues](https://github.com/bemoje/https://github.com/bemoje/tsmono/issues).
@@ -38,3 +35,21 @@ Contributors are welcome to open a [pull request](https://github.com/bemoje/http
 
 ## License
 Released under the [MIT License](./LICENSE).
+
+## Documentation
+- [HTML](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/html/index.html)
+- [Markdown](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/index.md)
+
+### Classes
+
+- [OpenaiApiClient](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClient.md)
+- [OpenaiApiClientExtended](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/classes/OpenaiApiClientExtended.md)
+
+### Interfaces
+
+- [IOpenaiApiClientApiDefaultsOptions](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiApiClientApiDefaultsOptions.md)
+- [IOpenaiApiClientOptions](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiApiClientOptions.md)
+- [IOpenaiChatRequestOptions](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiChatRequestOptions.md)
+- [IOpenaiCompletionRequestOptions](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiCompletionRequestOptions.md)
+- [IOpenaiTranscribeOptions](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiTranscribeOptions.md)
+- [IOpenaiTranscribeRequest](https://github.com/bemoje/tsmono/blob/main/pkg/openai-api-client/docs/md/interfaces/IOpenaiTranscribeRequest.md)

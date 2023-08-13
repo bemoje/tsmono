@@ -19,7 +19,7 @@ import { OpenaiApiClientExtended } from './OpenaiApiClientExtended'
 
   const vtt = new VTTSubtitles(subtitles)
   vtt.subtitles = await Promise.all(
-    vtt.subtitles.map(async (sub) => {
+    vtt.subtitles.map(async (sub: any) => {
       sub.text = await openai.proofreadEnglish(sub.text)
       return sub
     }),

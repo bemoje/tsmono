@@ -1,15 +1,17 @@
-import { execFileSync } from 'child_process'
 import fs from 'fs'
 import path from 'path'
+import { execBatch } from './execBatch'
 import { getPackages } from './util/getPackages'
+
+const cwd = process.cwd()
 
 const type = process.argv[2]
 if (!type) throw new Error('no version upgrade type provided. Can be patch, minor or major.')
 
 let names = process.argv.slice(3)
-if (!names.length) names = fs.readdirSync(path.join(process.cwd(), 'pkg'))
+if (!names.length) names = fs.readdirSync(path.join(cwd, 'pkg'))
 
-const tempdir = process.env['TEMP']!
+// const tempdir = process.env['TEMP']!
 
 const failed: string[] = []
 
@@ -31,20 +33,40 @@ getPackages()
     pkg.version = version.join('.')
     fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
 
-    const bat = `@echo off\n\ncall cd ${rootdir}\ncall npm publish --access public`
-    console.log(bat)
+    execBatch(
+      [
+        `cd ${rootdir}`,
+        'npm publish --access public',
+        //
+      ],
+      () => {
+        failed.push(name)
+        pkg.version = original
+        fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
+      },
+    )
 
-    const tempfile = path.join(tempdir, Date.now() + '.bat')
-    fs.writeFileSync(tempfile, bat, 'utf8')
-    try {
-      execFileSync(tempfile, { stdio: 'inherit' })
-    } catch (error) {
-      failed.push(name)
-      pkg.version = original
-      fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
-      console.log(error)
-    }
-    fs.rmSync(tempfile)
+    // const bat = `@echo off\n\ncall cd ${rootdir}\ncall npm publish --access public`
+    // console.log(bat)
+
+    // const tempfile = path.join(tempdir, Date.now() + '.bat')
+    // fs.writeFileSync(tempfile, bat, 'utf8')
+    // try {
+    //   execFileSync(tempfile, { stdio: 'inherit' })
+    // } catch (error) {
+    //   failed.push(name)
+    //   pkg.version = original
+    //   fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
+    //   console.log(error)
+    // }
+    // fs.rmSync(tempfile)
   })
+
+execBatch([
+  `cd ${cwd}`,
+  'npm run wipe-bemoje all',
+  'npm i',
+  //
+])
 
 console.log({ failed })

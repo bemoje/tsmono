@@ -4,8 +4,24 @@
 
 ## Table of contents
 
+### Type Aliases
+
+- [RegexScopeTreeNode](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexscopetreenode)
+- [RexecYield](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#rexecyield)
+
 ### Functions
 
+- [createEncapsulatingRegex](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#createencapsulatingregex)
+- [regexClone](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexclone)
+- [regexEscapeString](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexescapestring)
+- [regexFixFlags](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexfixflags)
+- [regexGetGroupNames](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexgetgroupnames)
+- [regexIsValidFlags](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexisvalidflags)
+- [regexMatcherToValidater](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexmatchertovalidater)
+- [regexScopeTree](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexscopetree)
+- [regexValidFlags](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexvalidflags)
+- [rexec](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#rexec)
+- [rexecFirstMatch](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#rexecfirstmatch)
 - [strCountCharOccurances](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strcountcharoccurances)
 - [strCountChars](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strcountchars)
 - [strEnsureEndsWith](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strensureendswith)
@@ -46,7 +62,466 @@
 - [strWrapInParenthesis](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strwrapinparenthesis)
 - [strWrapInSingleQuotes](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strwrapinsinglequotes)
 
+## Type Aliases
+
+### RegexScopeTreeNode
+
+Ƭ **RegexScopeTreeNode**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `between` | [`RexecYield`](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#rexecyield) |
+| `children` | [`RegexScopeTreeNode`](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexscopetreenode)[] |
+| `depth` | `number` |
+| `left` | [`RexecYield`](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#rexecyield) |
+| `parent` | [`RegexScopeTreeNode`](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexscopetreenode) \| ``null`` |
+| `right` | [`RexecYield`](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#rexecyield) |
+
+#### Defined in
+
+regex/types/RegexScopeTreeNode.ts:3
+
+___
+
+### RexecYield
+
+Ƭ **RexecYield**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `groups` | `Record`<`string`, `string`\> |
+| `index` | `number` |
+| `lastIndex` | `number` |
+| `match` | `string` |
+
+#### Defined in
+
+regex/types/RexecYield.ts:1
+
 ## Functions
+
+### createEncapsulatingRegex
+
+▸ **createEncapsulatingRegex**(`left`, `right`, `flags?`): `RegExp`
+
+Builds a regex that matches a string between two provided strings. Supports regex as boundaries as well.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `left` | `string` \| `RegExp` | string or regex to match before |
+| `right` | `string` \| `RegExp` | - |
+| `flags?` | `string` | regex flags - 'g' and 's' are always added to whatever flags are passed. |
+
+#### Returns
+
+`RegExp`
+
+A regular expression that matches text between the left and right patterns.
+
+**`Remarks`**
+
+The function accepts either strings or regular expressions as the left and right patterns.
+If a string is provided, it will be escaped to form a valid regular expression.
+The function also accepts an optional flags parameter to specify regular expression flags.
+
+**`Example`**
+
+```ts
+const regex = createEncapsulatingRegex(/a/, /b/)
+'abc'.match(regex)?.groups?.mid // 'c'
+```
+
+#### Defined in
+
+regex/createEncapsulatingRegex.ts:17
+
+___
+
+### regexClone
+
+▸ **regexClone**(`regex`): `RegExp`
+
+Clones a regular expression.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `regex` | `RegExp` | The regular expression to clone. |
+
+#### Returns
+
+`RegExp`
+
+A new RegExp instance with the same source and flags as the provided regular expression.
+
+**`Remarks`**
+
+This function creates a new instance of the RegExp using the source and flags of the provided regular expression.
+
+**`Example`**
+
+```ts
+/abc/gi;;
+//=> /abc/gi
+regexClone(/abc/gi);;
+//=> /abc/gi
+```
+
+#### Defined in
+
+regex/regexClone.ts:13
+
+___
+
+### regexEscapeString
+
+▸ **regexEscapeString**(`str`): `string`
+
+Escapes special characters in a string to be used in a regular expression.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `str` | `string` | The input string to escape. |
+
+#### Returns
+
+`string`
+
+The escaped string.
+
+**`Example`**
+
+```ts
+const input = 'Hello, world!';
+regexEscapeString(input);;
+//=> 'Hello, world!'
+```
+
+#### Defined in
+
+regex/regexEscapeString.ts:11
+
+___
+
+### regexFixFlags
+
+▸ **regexFixFlags**(`flags`): `string`
+
+Takes a string of RegExp flags and returns a string guaranteed to be valid.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `flags` | `string` | string of RegExp flags |
+
+#### Returns
+
+`string`
+
+The processed string of regex flags.
+
+**`Remarks`**
+
+This function does not validate if the input string is a valid regex flags string. It only removes duplicates and non-regex characters.
+
+**`Throws`**
+
+This function does not throw any exceptions.
+
+**`See`**
+
+strSortChars, strRemoveDuplicateChars
+
+**`Example`**
+
+```ts
+regexFixFlags('ggim') // 'gim'
+regexFixFlags('?gim*') // 'gim'
+```
+
+#### Defined in
+
+regex/regexFixFlags.ts:16
+
+___
+
+### regexGetGroupNames
+
+▸ **regexGetGroupNames**(`re`): `string`[]
+
+Returns an array of group names from a regular expression.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `re` | `RegExp` | The regular expression to extract group names from. |
+
+#### Returns
+
+`string`[]
+
+An array of group names.
+
+**`Example`**
+
+```ts
+regexGetGroupNames(/(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/);;
+//=> ['year', 'month', 'day']
+```
+
+**`Remarks`**
+
+This function only works with regular expressions that use named capture groups.
+
+#### Defined in
+
+regex/regexGetGroupNames.ts:13
+
+___
+
+### regexIsValidFlags
+
+▸ **regexIsValidFlags**(`flags`): `boolean`
+
+Checks if the provided string is a valid regular expression flag.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `flags` | `string` | The string to be checked. |
+
+#### Returns
+
+`boolean`
+
+A boolean indicating whether the string is a valid regular expression flag.
+Checks if a string is a valid regex flags string.
+
+**`Remarks`**
+
+This function checks if the provided string contains only the characters 'g', 'i', 'm', 's', 'u', 'y' and if there are no duplicate characters.
+
+**`Example`**
+
+```ts
+regexIsValidFlags('gim') // true
+regexIsValidFlags('gmisuy') // false
+```
+
+#### Defined in
+
+regex/regexIsValidFlags.ts:14
+
+___
+
+### regexMatcherToValidater
+
+▸ **regexMatcherToValidater**(`regex`): `RegExp`
+
+Convert a regex for matching to a regex for validation.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `regex` | `RegExp` | The regex to convert |
+
+#### Returns
+
+`RegExp`
+
+A new regular expression that matches the entire string.
+
+**`Example`**
+
+```ts
+const regexMatchDigits = /\d+/gi;
+const regexIsDigit = regexMatcherToValidater(regexMatchDigits); //=> /^\d+$/i
+const isDigit = (str) => regexIsDigit.test(str)
+isDigit('1') //=> true
+isDigit('a') //=> false
+```
+
+#### Defined in
+
+regex/regexMatcherToValidater.ts:13
+
+___
+
+### regexScopeTree
+
+▸ **regexScopeTree**(`left`, `right`): (`string`: `string`, `yieldOnlyRootNodes?`: `boolean`) => `Generator`<[`RegexScopeTreeNode`](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexscopetreenode)\>
+
+Builds a regex that matches a string between two strings. Supports regex instead of string.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `left` | `string` \| `RegExp` | string or regex to match before |
+| `right` | `string` \| `RegExp` | string or regex to match after |
+
+#### Returns
+
+`fn`
+
+A generator function that takes a string and an optional boolean parameter.
+The generator function yields nodes of type IRegexScopeTreeNode.
+
+▸ (`string`, `yieldOnlyRootNodes?`): `Generator`<[`RegexScopeTreeNode`](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexscopetreenode)\>
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `string` | `string` |
+| `yieldOnlyRootNodes?` | `boolean` |
+
+##### Returns
+
+`Generator`<[`RegexScopeTreeNode`](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexscopetreenode)\>
+
+**`Throws`**
+
+If a match does not recognize itself as neither left nor right.
+
+**`Example`**
+
+```ts
+const generator = regexScopeTree('(', ')')
+const iterable = generator('(1+((3)+(1)))+(15+(21-(521))))', true)
+console.dir([...iterable], { depth: null })
+```
+
+#### Defined in
+
+regex/regexScopeTree.ts:21
+
+___
+
+### regexValidFlags
+
+▸ **regexValidFlags**(): `string`[]
+
+This function returns an array of valid flags for regular expressions in JavaScript.
+
+#### Returns
+
+`string`[]
+
+An array of valid flags for regular expressions.
+Returns an array of all valid flags for a regular expression.
+
+**`Example`**
+
+```ts
+regexValidFlags() //=> ['g', 'i', 'm', 's', 'u', 'y']
+```
+
+#### Defined in
+
+regex/regexValidFlags.ts:9
+
+___
+
+### rexec
+
+▸ **rexec**(`regex`, `string`): `Generator`<[`RexecYield`](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#rexecyield)\>
+
+Easily perform regex 'exec' on a string. An iterable is returned which steps through the exec process and yields all the details you might need.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `regex` | `RegExp` | The regular expression object |
+| `string` | `string` | The string to perform the operation on |
+
+#### Returns
+
+`Generator`<[`RexecYield`](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#rexecyield)\>
+
+A generator that yields an object for each match.
+
+**`Throws`**
+
+If the provided regex is not a RegExp instance.
+
+**`Example`**
+
+```ts
+const regex = /(?<g1>a)/g
+const str = 'Anthony wants a girlfriend.'
+console.log([...rexec(regex, str)])
+// [
+// 	{
+//     index: 9,
+//     lastIndex: 10,
+//     groups: { g1: 'a' },
+//     match: 'a',
+//   },
+//   {
+//     index: 14,
+//     lastIndex: 15,
+//     groups: { g1: 'a' },
+//     match: 'a',
+//   },
+// ]
+```
+
+#### Defined in
+
+regex/rexec.ts:30
+
+___
+
+### rexecFirstMatch
+
+▸ **rexecFirstMatch**(`regex`, `string`): [`RexecYield`](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#rexecyield) \| `undefined`
+
+Returns the first match of a regular expression in a string.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `regex` | `RegExp` | The regular expression to be used for matching. |
+| `string` | `string` | The string in which to search for a match. |
+
+#### Returns
+
+[`RexecYield`](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#rexecyield) \| `undefined`
+
+The first match as an `RexecYield` object, or `undefined` if no match is found.
+
+**`Remarks`**
+
+This function is a part of RegExp utilities.
+
+**`Example`**
+
+```ts
+rexecFirstMatch(/hello/g, 'hello world');;
+//=> { match: 'hello', index: 0, input: 'hello world', groups: undefined }
+```
+
+#### Defined in
+
+regex/rexecFirstMatch.ts:16
+
+___
 
 ### strCountCharOccurances
 
@@ -78,7 +553,7 @@ strCountCharOccurances('hello world', 'o');;
 
 #### Defined in
 
-lib/strCountCharOccurances.ts:11
+string/strCountCharOccurances.ts:11
 
 ___
 
@@ -107,7 +582,7 @@ strCountChars("hello");;
 
 #### Defined in
 
-lib/strCountChars.ts:9
+string/strCountChars.ts:9
 
 ___
 
@@ -139,7 +614,7 @@ strEnsureEndsWith('Hello World', ' World');
 
 #### Defined in
 
-lib/strEnsureEndsWith.ts:12
+string/strEnsureEndsWith.ts:12
 
 ___
 
@@ -168,7 +643,7 @@ strFirstCharToUpperCase('hello');
 
 #### Defined in
 
-lib/strFirstCharToUpperCase.ts:9
+string/strFirstCharToUpperCase.ts:9
 
 ___
 
@@ -202,7 +677,7 @@ strHash.toBuffer('hello')
 
 #### Defined in
 
-lib/strHashToBuffer.ts:13
+string/strHashToBuffer.ts:13
 
 ___
 
@@ -237,7 +712,7 @@ strHash.toString('hello', 'sha256', 'hex')
 
 #### Defined in
 
-lib/strHashToString.ts:15
+string/strHashToString.ts:15
 
 ___
 
@@ -257,7 +732,7 @@ ___
 
 #### Defined in
 
-lib/strHashToStringDJB2.ts:1
+string/strHashToStringDJB2.ts:1
 
 ___
 
@@ -295,7 +770,7 @@ strHash.toUint32Array('hello')
 
 #### Defined in
 
-lib/strHashToUint32Array.ts:15
+string/strHashToUint32Array.ts:15
 
 ___
 
@@ -326,7 +801,7 @@ strIsLowerCase('Hello');
 
 #### Defined in
 
-lib/strIsLowerCase.ts:11
+string/strIsLowerCase.ts:11
 
 ___
 
@@ -357,7 +832,7 @@ strIsMultiLine("Hello World");
 
 #### Defined in
 
-lib/strIsMultiLine.ts:11
+string/strIsMultiLine.ts:11
 
 ___
 
@@ -388,7 +863,7 @@ strIsUpperCase('Hello');;
 
 #### Defined in
 
-lib/strIsUpperCase.ts:11
+string/strIsUpperCase.ts:11
 
 ___
 
@@ -417,7 +892,7 @@ strNoConsecutiveEmptyLines("Hello\n\n\nWorld");;
 
 #### Defined in
 
-lib/strNoConsecutiveEmptyLines.ts:9
+string/strNoConsecutiveEmptyLines.ts:9
 
 ___
 
@@ -446,7 +921,7 @@ strNoConsecutiveWhitespace('Hello   World');
 
 #### Defined in
 
-lib/strNoConsecutiveWhitespace.ts:9
+string/strNoConsecutiveWhitespace.ts:9
 
 ___
 
@@ -477,7 +952,7 @@ strParseBoolean('False');
 
 #### Defined in
 
-lib/strParseBoolean.ts:11
+string/strParseBoolean.ts:11
 
 ___
 
@@ -510,7 +985,7 @@ strPrependLines(myString, '--');
 
 #### Defined in
 
-lib/strPrependLines.ts:12
+string/strPrependLines.ts:12
 
 ___
 
@@ -543,7 +1018,7 @@ strRemoveDuplicateChars('hello');
 
 #### Defined in
 
-lib/strRemoveDuplicateChars.ts:10
+string/strRemoveDuplicateChars.ts:10
 
 ___
 
@@ -572,7 +1047,7 @@ strRemoveEmptyLines('Hello\n\nWorld\n\n!');;
 
 #### Defined in
 
-lib/strRemoveEmptyLines.ts:9
+string/strRemoveEmptyLines.ts:9
 
 ___
 
@@ -601,7 +1076,7 @@ strRemoveFirstAndLastLine('Line1\nLine2\nLine3');;
 
 #### Defined in
 
-lib/strRemoveFirstAndLastLine.ts:9
+string/strRemoveFirstAndLastLine.ts:9
 
 ___
 
@@ -639,7 +1114,7 @@ console.log(result); // 'Hello World'
 
 #### Defined in
 
-lib/strRemoveNewLines.ts:15
+string/strRemoveNewLines.ts:15
 
 ___
 
@@ -669,7 +1144,7 @@ strRepeat('abc', 3);;
 
 #### Defined in
 
-lib/strRepeat.ts:10
+string/strRepeat.ts:10
 
 ___
 
@@ -704,7 +1179,7 @@ strReplaceAll(input, replace, replaceWith);
 
 #### Defined in
 
-lib/strReplaceAll.ts:17
+string/strReplaceAll.ts:17
 
 ___
 
@@ -733,7 +1208,7 @@ strSortChars('dcba');
 
 #### Defined in
 
-lib/strSortChars.ts:9
+string/strSortChars.ts:9
 
 ___
 
@@ -767,7 +1242,7 @@ strSplitAndTrim("  Hello ;  world ; ". ";", false;
 
 #### Defined in
 
-lib/strSplitAndTrim.ts:14
+string/strSplitAndTrim.ts:14
 
 ___
 
@@ -800,7 +1275,7 @@ strSplitCamelCase('someCamel10Case')
 
 #### Defined in
 
-lib/strSplitCamelCase.ts:14
+string/strSplitCamelCase.ts:14
 
 ___
 
@@ -829,7 +1304,7 @@ strToCharCodes('Hello');;
 
 #### Defined in
 
-lib/strToCharCodes.ts:9
+string/strToCharCodes.ts:9
 
 ___
 
@@ -858,7 +1333,7 @@ strToCharSet('hello');;
 
 #### Defined in
 
-lib/strToCharSet.ts:9
+string/strToCharSet.ts:9
 
 ___
 
@@ -887,7 +1362,7 @@ strToSortedCharSet('banana');
 
 #### Defined in
 
-lib/strToSortedCharSet.ts:9
+string/strToSortedCharSet.ts:9
 
 ___
 
@@ -916,7 +1391,7 @@ strTrimLines('  Hello, world!  \n  How are you?  ');;
 
 #### Defined in
 
-lib/strTrimLines.ts:9
+string/strTrimLines.ts:9
 
 ___
 
@@ -945,7 +1420,7 @@ strTrimLinesLeft('   line1\n   line2\n   line3');;
 
 #### Defined in
 
-lib/strTrimLinesLeft.ts:9
+string/strTrimLinesLeft.ts:9
 
 ___
 
@@ -974,7 +1449,7 @@ strTrimLinesRight('  Hello, world!  \n  How are you?  ');;
 
 #### Defined in
 
-lib/strTrimLinesRight.ts:9
+string/strTrimLinesRight.ts:9
 
 ___
 
@@ -1009,7 +1484,7 @@ strUnwrap(input, left, right);
 
 #### Defined in
 
-lib/strUnwrap.ts:17
+string/strUnwrap.ts:17
 
 ___
 
@@ -1040,7 +1515,7 @@ strWrapBetween('Hello', '<', '>');;
 
 #### Defined in
 
-lib/strWrapBetween.ts:11
+string/strWrapBetween.ts:11
 
 ___
 
@@ -1070,7 +1545,7 @@ strWrapIn('hello', '*');;
 
 #### Defined in
 
-lib/strWrapIn.ts:10
+string/strWrapIn.ts:10
 
 ___
 
@@ -1099,7 +1574,7 @@ strWrapInAngleBrackets('example');;
 
 #### Defined in
 
-lib/strWrapInAngleBrackets.ts:9
+string/strWrapInAngleBrackets.ts:9
 
 ___
 
@@ -1128,7 +1603,7 @@ strWrapInBraces('hello');
 
 #### Defined in
 
-lib/strWrapInBraces.ts:9
+string/strWrapInBraces.ts:9
 
 ___
 
@@ -1157,7 +1632,7 @@ strWrapInBrackets('test');
 
 #### Defined in
 
-lib/strWrapInBrackets.ts:9
+string/strWrapInBrackets.ts:9
 
 ___
 
@@ -1186,7 +1661,7 @@ strWrapInDoubleQuotes('Hello World');
 
 #### Defined in
 
-lib/strWrapInDoubleQuotes.ts:9
+string/strWrapInDoubleQuotes.ts:9
 
 ___
 
@@ -1215,7 +1690,7 @@ strWrapInParenthesis('hello');
 
 #### Defined in
 
-lib/strWrapInParenthesis.ts:9
+string/strWrapInParenthesis.ts:9
 
 ___
 
@@ -1244,4 +1719,4 @@ strWrapInSingleQuotes('Hello World');
 
 #### Defined in
 
-lib/strWrapInSingleQuotes.ts:9
+string/strWrapInSingleQuotes.ts:9

@@ -139,7 +139,7 @@ Creates a new FilePath instance.
 
 #### Defined in
 
-pkg/fspath/src/lib/FilePath.ts:17
+[pkg/fspath/src/lib/FilePath.ts:17](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath/src/lib/FilePath.ts#L17)
 
 ## Properties
 
@@ -173,7 +173,7 @@ AbstractFsPath.absolute
 
 #### Defined in
 
-pkg/fspath/src/lib/core/AbstractFsPath.ts:29
+[pkg/fspath/src/lib/core/AbstractFsPath.ts:29](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath/src/lib/core/AbstractFsPath.ts#L29)
 
 ___
 
@@ -193,7 +193,7 @@ AbstractFsPath.base
 
 #### Defined in
 
-pkg/fspath/src/lib/core/AbstractFsPath.ts:50
+[pkg/fspath/src/lib/core/AbstractFsPath.ts:50](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath/src/lib/core/AbstractFsPath.ts#L50)
 
 ___
 
@@ -213,7 +213,7 @@ AbstractFsPath.exists
 
 #### Defined in
 
-pkg/fspath/src/lib/core/AbstractFsPath.ts:71
+[pkg/fspath/src/lib/core/AbstractFsPath.ts:71](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath/src/lib/core/AbstractFsPath.ts#L71)
 
 ___
 
@@ -231,7 +231,7 @@ The file extension, including the leading dot.
 
 #### Defined in
 
-pkg/fspath/src/lib/FilePath.ts:53
+[pkg/fspath/src/lib/FilePath.ts:53](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath/src/lib/FilePath.ts#L53)
 
 ___
 
@@ -247,7 +247,7 @@ The filename (including the file extension).
 
 #### Defined in
 
-pkg/fspath/src/lib/FilePath.ts:45
+[pkg/fspath/src/lib/FilePath.ts:45](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath/src/lib/FilePath.ts#L45)
 
 ___
 
@@ -263,7 +263,7 @@ The absolute path to the file.
 
 #### Defined in
 
-pkg/fspath/src/lib/FilePath.ts:38
+[pkg/fspath/src/lib/FilePath.ts:38](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath/src/lib/FilePath.ts#L38)
 
 ___
 
@@ -283,7 +283,7 @@ AbstractFsPath.isBlockDevicePath
 
 #### Defined in
 
-pkg/fspath/src/lib/core/AbstractFsPath.ts:129
+[pkg/fspath/src/lib/core/AbstractFsPath.ts:129](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath/src/lib/core/AbstractFsPath.ts#L129)
 
 ___
 
@@ -303,7 +303,7 @@ AbstractFsPath.isCharacterDevicePath
 
 #### Defined in
 
-pkg/fspath/src/lib/core/AbstractFsPath.ts:143
+[pkg/fspath/src/lib/core/AbstractFsPath.ts:143](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath/src/lib/core/AbstractFsPath.ts#L143)
 
 ___
 
@@ -323,7 +323,7 @@ AbstractFsPath.isDirectoryPath
 
 #### Defined in
 
-pkg/fspath/src/lib/core/AbstractFsPath.ts:115
+[pkg/fspath/src/lib/core/AbstractFsPath.ts:115](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath/src/lib/core/AbstractFsPath.ts#L115)
 
 ___
 
@@ -343,7 +343,7 @@ AbstractFsPath.isFIFOPath
 
 #### Defined in
 
-pkg/fspath/src/lib/core/AbstractFsPath.ts:150
+[pkg/fspath/src/lib/core/AbstractFsPath.ts:150](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath/src/lib/core/AbstractFsPath.ts#L150)
 
 ___
 
@@ -363,7 +363,7 @@ AbstractFsPath.isFilePath
 
 #### Defined in
 
-pkg/fspath/src/lib/FilePath.ts:24
+[pkg/fspath/src/lib/FilePath.ts:24](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath/src/lib/FilePath.ts#L24)
 
 ___
 
@@ -383,7 +383,7 @@ AbstractFsPath.isSocketPath
 
 #### Defined in
 
-pkg/fspath/src/lib/core/AbstractFsPath.ts:157
+[pkg/fspath/src/lib/core/AbstractFsPath.ts:157](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath/src/lib/core/AbstractFsPath.ts#L157)
 
 ___
 
@@ -403,7 +403,7 @@ AbstractFsPath.isSymbolicLinkPath
 
 #### Defined in
 
-pkg/fspath/src/lib/core/AbstractFsPath.ts:136
+[pkg/fspath/src/lib/core/AbstractFsPath.ts:136](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath/src/lib/core/AbstractFsPath.ts#L136)
 
 ___
 
@@ -423,7 +423,7 @@ AbstractFsPath.name
 
 #### Defined in
 
-pkg/fspath/src/lib/core/AbstractFsPath.ts:57
+[pkg/fspath/src/lib/core/AbstractFsPath.ts:57](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath/src/lib/core/AbstractFsPath.ts#L57)
 
 ___
 
@@ -439,7 +439,7 @@ The absolute path to the directory of the filesystem object.
 
 #### Defined in
 
-pkg/fspath/src/lib/FilePath.ts:31
+[pkg/fspath/src/lib/FilePath.ts:31](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath/src/lib/FilePath.ts#L31)
 
 ___
 
@@ -459,7 +459,7 @@ AbstractFsPath.parentPath
 
 #### Defined in
 
-pkg/fspath/src/lib/core/AbstractFsPath.ts:64
+[pkg/fspath/src/lib/core/AbstractFsPath.ts:64](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath/src/lib/core/AbstractFsPath.ts#L64)
 
 ___
 
@@ -479,7 +479,7 @@ AbstractFsPath.relative
 
 #### Defined in
 
-pkg/fspath/src/lib/core/AbstractFsPath.ts:36
+[pkg/fspath/src/lib/core/AbstractFsPath.ts:36](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath/src/lib/core/AbstractFsPath.ts#L36)
 
 ___
 
@@ -499,7 +499,7 @@ AbstractFsPath.root
 
 #### Defined in
 
-pkg/fspath/src/lib/core/AbstractFsPath.ts:43
+[pkg/fspath/src/lib/core/AbstractFsPath.ts:43](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath/src/lib/core/AbstractFsPath.ts#L43)
 
 ## Methods
 
@@ -980,7 +980,7 @@ If the path does not exist.
 
 #### Defined in
 
-pkg/fspath/src/lib/core/AbstractFsPath.ts:184
+[pkg/fspath/src/lib/core/AbstractFsPath.ts:184](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath/src/lib/core/AbstractFsPath.ts#L184)
 
 ___
 
@@ -1010,7 +1010,7 @@ If the path does not exist.
 
 #### Defined in
 
-pkg/fspath/src/lib/core/AbstractFsPath.ts:202
+[pkg/fspath/src/lib/core/AbstractFsPath.ts:202](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath/src/lib/core/AbstractFsPath.ts#L202)
 
 ___
 
@@ -1040,7 +1040,7 @@ If the path does not exist.
 
 #### Defined in
 
-pkg/fspath/src/lib/core/AbstractFsPath.ts:166
+[pkg/fspath/src/lib/core/AbstractFsPath.ts:166](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath/src/lib/core/AbstractFsPath.ts#L166)
 
 ___
 
@@ -1070,7 +1070,7 @@ If the path does not exist.
 
 #### Defined in
 
-pkg/fspath/src/lib/core/AbstractFsPath.ts:211
+[pkg/fspath/src/lib/core/AbstractFsPath.ts:211](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath/src/lib/core/AbstractFsPath.ts#L211)
 
 ___
 
@@ -1100,7 +1100,7 @@ If the path does not exist.
 
 #### Defined in
 
-pkg/fspath/src/lib/core/AbstractFsPath.ts:175
+[pkg/fspath/src/lib/core/AbstractFsPath.ts:175](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath/src/lib/core/AbstractFsPath.ts#L175)
 
 ___
 
@@ -1130,7 +1130,7 @@ If the path does not exist.
 
 #### Defined in
 
-pkg/fspath/src/lib/core/AbstractFsPath.ts:220
+[pkg/fspath/src/lib/core/AbstractFsPath.ts:220](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath/src/lib/core/AbstractFsPath.ts#L220)
 
 ___
 
@@ -1160,7 +1160,7 @@ If the path does not exist.
 
 #### Defined in
 
-pkg/fspath/src/lib/core/AbstractFsPath.ts:193
+[pkg/fspath/src/lib/core/AbstractFsPath.ts:193](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath/src/lib/core/AbstractFsPath.ts#L193)
 
 ___
 
@@ -1186,7 +1186,7 @@ Returns whether the path is valid on Windows.
 
 #### Defined in
 
-pkg/fspath/src/lib/core/AbstractFsPath.ts:93
+[pkg/fspath/src/lib/core/AbstractFsPath.ts:93](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath/src/lib/core/AbstractFsPath.ts#L93)
 
 ___
 
@@ -1522,7 +1522,7 @@ Read the file asynchronously with fs.promises.readFile.
 
 #### Defined in
 
-pkg/fspath/src/lib/FilePath.ts:69
+[pkg/fspath/src/lib/FilePath.ts:69](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath/src/lib/FilePath.ts#L69)
 
 ___
 
@@ -1544,7 +1544,7 @@ Read the file asynchronously as a string with fs.promises.readFile.
 
 #### Defined in
 
-pkg/fspath/src/lib/FilePath.ts:85
+[pkg/fspath/src/lib/FilePath.ts:85](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath/src/lib/FilePath.ts#L85)
 
 ___
 
@@ -1566,7 +1566,7 @@ Read the file synchronously as a string with fs.readFileSync.
 
 #### Defined in
 
-pkg/fspath/src/lib/FilePath.ts:77
+[pkg/fspath/src/lib/FilePath.ts:77](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath/src/lib/FilePath.ts#L77)
 
 ___
 
@@ -1588,7 +1588,7 @@ Read the file synchronously with fs.readFileSync.
 
 #### Defined in
 
-pkg/fspath/src/lib/FilePath.ts:61
+[pkg/fspath/src/lib/FilePath.ts:61](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath/src/lib/FilePath.ts#L61)
 
 ___
 
@@ -1612,7 +1612,7 @@ relative
 
 #### Defined in
 
-pkg/fspath/src/lib/core/AbstractFsPath.ts:108
+[pkg/fspath/src/lib/core/AbstractFsPath.ts:108](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath/src/lib/core/AbstractFsPath.ts#L108)
 
 ___
 
@@ -1987,7 +1987,7 @@ Get fs.Stats asynchronously
 
 #### Defined in
 
-pkg/fspath/src/lib/core/AbstractFsPath.ts:85
+[pkg/fspath/src/lib/core/AbstractFsPath.ts:85](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath/src/lib/core/AbstractFsPath.ts#L85)
 
 ___
 
@@ -2007,7 +2007,7 @@ Get fs.Stats synchronously
 
 #### Defined in
 
-pkg/fspath/src/lib/core/AbstractFsPath.ts:78
+[pkg/fspath/src/lib/core/AbstractFsPath.ts:78](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath/src/lib/core/AbstractFsPath.ts#L78)
 
 ___
 
@@ -2157,7 +2157,7 @@ Split the absolute path into an array of path segments.
 
 #### Defined in
 
-pkg/fspath/src/lib/core/AbstractFsPath.ts:100
+[pkg/fspath/src/lib/core/AbstractFsPath.ts:100](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath/src/lib/core/AbstractFsPath.ts#L100)
 
 ___
 
@@ -2421,7 +2421,7 @@ If the directory path does not exist, it is created and no error is thrown.
 
 #### Defined in
 
-pkg/fspath/src/lib/FilePath.ts:106
+[pkg/fspath/src/lib/FilePath.ts:106](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath/src/lib/FilePath.ts#L106)
 
 ___
 
@@ -2445,7 +2445,7 @@ If the directory path does not exist, it is created and no error is thrown.
 
 #### Defined in
 
-pkg/fspath/src/lib/FilePath.ts:95
+[pkg/fspath/src/lib/FilePath.ts:95](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fspath/src/lib/FilePath.ts#L95)
 
 ___
 

@@ -61,7 +61,7 @@ Creates a new Table.
 
 #### Defined in
 
-lib/Table.ts:37
+[lib/Table.ts:37](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/table/src/lib/Table.ts#L37)
 
 ## Properties
 
@@ -73,7 +73,7 @@ Map from column names to column indices.
 
 #### Defined in
 
-lib/Table.ts:11
+[lib/Table.ts:11](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/table/src/lib/Table.ts#L11)
 
 ___
 
@@ -85,7 +85,7 @@ The data of the table.
 
 #### Defined in
 
-lib/Table.ts:21
+[lib/Table.ts:21](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/table/src/lib/Table.ts#L21)
 
 ___
 
@@ -97,7 +97,7 @@ The headers of the table.
 
 #### Defined in
 
-lib/Table.ts:16
+[lib/Table.ts:16](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/table/src/lib/Table.ts#L16)
 
 ## Accessors
 
@@ -113,7 +113,7 @@ Returns the table as a two-dimensional array, without column headers.
 
 #### Defined in
 
-lib/Table.ts:90
+[lib/Table.ts:90](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/table/src/lib/Table.ts#L90)
 
 ___
 
@@ -129,7 +129,7 @@ Gets the column headers.
 
 #### Defined in
 
-lib/Table.ts:83
+[lib/Table.ts:83](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/table/src/lib/Table.ts#L83)
 
 ___
 
@@ -145,7 +145,7 @@ Gets the number of cols in the table, not including headers.
 
 #### Defined in
 
-lib/Table.ts:69
+[lib/Table.ts:69](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/table/src/lib/Table.ts#L69)
 
 ___
 
@@ -161,7 +161,7 @@ Gets the number of rows in the table, not including headers.
 
 #### Defined in
 
-lib/Table.ts:76
+[lib/Table.ts:76](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/table/src/lib/Table.ts#L76)
 
 ## Methods
 
@@ -183,7 +183,7 @@ Checks if a row has the correct length.
 
 #### Defined in
 
-lib/Table.ts:62
+[lib/Table.ts:62](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/table/src/lib/Table.ts#L62)
 
 ___
 
@@ -206,7 +206,7 @@ Returns a value at a given (row, col) position.
 
 #### Defined in
 
-lib/Table.ts:99
+[lib/Table.ts:99](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/table/src/lib/Table.ts#L99)
 
 ___
 
@@ -230,7 +230,7 @@ Inserts a given value at a given (row, col) position.
 
 #### Defined in
 
-lib/Table.ts:112
+[lib/Table.ts:112](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/table/src/lib/Table.ts#L112)
 
 ___
 
@@ -246,7 +246,7 @@ Returns the table as a two-dimensional array, including row and column headers..
 
 #### Defined in
 
-lib/Table.ts:123
+[lib/Table.ts:123](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/table/src/lib/Table.ts#L123)
 
 ___
 
@@ -262,7 +262,7 @@ Override of the native toJSON method. When parsing the returned json string, it 
 
 #### Defined in
 
-lib/Table.ts:131
+[lib/Table.ts:131](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/table/src/lib/Table.ts#L131)
 
 ___
 
@@ -290,4 +290,4 @@ Revive a stringified Table object.
 
 #### Defined in
 
-lib/Table.ts:27
+[lib/Table.ts:27](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/table/src/lib/Table.ts#L27)

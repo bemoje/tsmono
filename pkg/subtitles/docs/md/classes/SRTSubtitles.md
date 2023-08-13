@@ -1,4 +1,4 @@
-[@bemoje/subtitles](/docs/md/index.md) / SRTSubtitles
+[@bemoje/subtitles](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/index.md) / SRTSubtitles
 
 # Class: SRTSubtitles
 
@@ -8,15 +8,15 @@ A collection of SRTSubtitles.
 
 ### Constructors
 
-- [constructor](/docs/md/classes/SRTSubtitles.md#constructor)
+- [constructor](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/classes/SRTSubtitles.md#constructor)
 
 ### Properties
 
-- [subtitles](/docs/md/classes/SRTSubtitles.md#subtitles)
+- [subtitles](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/classes/SRTSubtitles.md#subtitles)
 
 ### Methods
 
-- [toString](/docs/md/classes/SRTSubtitles.md#tostring)
+- [toString](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/classes/SRTSubtitles.md#tostring)
 
 ## Constructors
 
@@ -34,19 +34,19 @@ Create a new SRTSubtitles instance.
 
 #### Defined in
 
-srt/lib/SRTSubtitles.ts:17
+[srt/lib/SRTSubtitles.ts:17](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/subtitles/src/srt/lib/SRTSubtitles.ts#L17)
 
 ## Properties
 
 ### subtitles
 
-• **subtitles**: [`SRTSubtitle`](/docs/md/classes/SRTSubtitle.md)[]
+• **subtitles**: [`SRTSubtitle`](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/classes/SRTSubtitle.md)[]
 
 The SRTSubtitle instances.
 
 #### Defined in
 
-srt/lib/SRTSubtitles.ts:11
+[srt/lib/SRTSubtitles.ts:11](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/subtitles/src/srt/lib/SRTSubtitles.ts#L11)
 
 ## Methods
 
@@ -62,4 +62,4 @@ Returns the subtitles as a string in the SRT format.
 
 #### Defined in
 
-srt/lib/SRTSubtitles.ts:31
+[srt/lib/SRTSubtitles.ts:31](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/subtitles/src/srt/lib/SRTSubtitles.ts#L31)

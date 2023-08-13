@@ -26,9 +26,6 @@ This library is published in the NPM registry and can be installed using any com
 npm install @bemoje/subtitles
 ```
 
-## Documentation
-- [Markdown](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/index.md)
-- [HTML](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/html/index.html)
 
 ## Issues
 Please let me know of any bugs or [issues](https://github.com/bemoje/https://github.com/bemoje/tsmono/issues).
@@ -38,3 +35,15 @@ Contributors are welcome to open a [pull request](https://github.com/bemoje/http
 
 ## License
 Released under the [MIT License](./LICENSE).
+
+## Documentation
+- [HTML](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/html/index.html)
+- [Markdown](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/index.md)
+
+### Classes
+
+- [AbstractSubtitle](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/classes/AbstractSubtitle.md)
+- [SRTSubtitle](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/classes/SRTSubtitle.md)
+- [SRTSubtitles](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/classes/SRTSubtitles.md)
+- [VTTSubtitle](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/classes/VTTSubtitle.md)
+- [VTTSubtitles](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/classes/VTTSubtitles.md)

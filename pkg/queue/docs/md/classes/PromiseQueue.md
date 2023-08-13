@@ -122,7 +122,7 @@ EventEmitter.constructor
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:35
+[pkg/queue/src/lib/PromiseQueue.ts:35](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L35)
 
 ## Properties
 
@@ -132,7 +132,7 @@ pkg/queue/src/lib/PromiseQueue.ts:35
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:18
+[pkg/queue/src/lib/PromiseQueue.ts:18](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L18)
 
 ___
 
@@ -142,7 +142,7 @@ ___
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:29
+[pkg/queue/src/lib/PromiseQueue.ts:29](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L29)
 
 ___
 
@@ -152,7 +152,7 @@ ___
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:22
+[pkg/queue/src/lib/PromiseQueue.ts:22](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L22)
 
 ___
 
@@ -162,7 +162,7 @@ ___
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:21
+[pkg/queue/src/lib/PromiseQueue.ts:21](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L21)
 
 ___
 
@@ -172,7 +172,7 @@ ___
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:20
+[pkg/queue/src/lib/PromiseQueue.ts:20](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L20)
 
 ___
 
@@ -182,7 +182,7 @@ ___
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:23
+[pkg/queue/src/lib/PromiseQueue.ts:23](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L23)
 
 ___
 
@@ -192,7 +192,7 @@ ___
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:24
+[pkg/queue/src/lib/PromiseQueue.ts:24](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L24)
 
 ___
 
@@ -202,7 +202,7 @@ ___
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:19
+[pkg/queue/src/lib/PromiseQueue.ts:19](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L19)
 
 ___
 
@@ -212,7 +212,7 @@ ___
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:30
+[pkg/queue/src/lib/PromiseQueue.ts:30](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L30)
 
 ___
 
@@ -222,7 +222,7 @@ ___
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:28
+[pkg/queue/src/lib/PromiseQueue.ts:28](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L28)
 
 ___
 
@@ -232,7 +232,7 @@ ___
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:26
+[pkg/queue/src/lib/PromiseQueue.ts:26](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L26)
 
 ___
 
@@ -246,7 +246,7 @@ ___
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:27
+[pkg/queue/src/lib/PromiseQueue.ts:27](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L27)
 
 ___
 
@@ -256,7 +256,7 @@ ___
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:25
+[pkg/queue/src/lib/PromiseQueue.ts:25](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L25)
 
 ___
 
@@ -389,7 +389,7 @@ node_modules/@types/node/events.d.ts:348
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:77
+[pkg/queue/src/lib/PromiseQueue.ts:77](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L77)
 
 ___
 
@@ -403,7 +403,7 @@ ___
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:73
+[pkg/queue/src/lib/PromiseQueue.ts:73](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L73)
 
 ___
 
@@ -417,7 +417,7 @@ ___
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:93
+[pkg/queue/src/lib/PromiseQueue.ts:93](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L93)
 
 ___
 
@@ -431,7 +431,7 @@ ___
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:173
+[pkg/queue/src/lib/PromiseQueue.ts:173](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L173)
 
 • `set` **concurrency**(`newConcurrency`): `void`
 
@@ -447,7 +447,7 @@ pkg/queue/src/lib/PromiseQueue.ts:173
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:177
+[pkg/queue/src/lib/PromiseQueue.ts:177](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L177)
 
 ___
 
@@ -463,7 +463,7 @@ Whether the queue is currently paused.
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:362
+[pkg/queue/src/lib/PromiseQueue.ts:362](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L362)
 
 ___
 
@@ -479,7 +479,7 @@ Number of running items (no longer in the queue).
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:355
+[pkg/queue/src/lib/PromiseQueue.ts:355](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L355)
 
 ___
 
@@ -495,7 +495,7 @@ Size of the queue, the number of queued items waiting to run.
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:340
+[pkg/queue/src/lib/PromiseQueue.ts:340](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L340)
 
 ## Methods
 
@@ -509,7 +509,7 @@ pkg/queue/src/lib/PromiseQueue.ts:340
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:146
+[pkg/queue/src/lib/PromiseQueue.ts:146](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L146)
 
 ___
 
@@ -523,7 +523,7 @@ ___
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:81
+[pkg/queue/src/lib/PromiseQueue.ts:81](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L81)
 
 ___
 
@@ -544,7 +544,7 @@ ___
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:324
+[pkg/queue/src/lib/PromiseQueue.ts:324](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L324)
 
 ___
 
@@ -558,7 +558,7 @@ ___
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:156
+[pkg/queue/src/lib/PromiseQueue.ts:156](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L156)
 
 ___
 
@@ -572,7 +572,7 @@ ___
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:87
+[pkg/queue/src/lib/PromiseQueue.ts:87](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L87)
 
 ___
 
@@ -588,7 +588,7 @@ Executes all queued functions until it reaches the limit.
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:168
+[pkg/queue/src/lib/PromiseQueue.ts:168](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L168)
 
 ___
 
@@ -608,7 +608,7 @@ ___
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:187
+[pkg/queue/src/lib/PromiseQueue.ts:187](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L187)
 
 ___
 
@@ -622,7 +622,7 @@ ___
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:114
+[pkg/queue/src/lib/PromiseQueue.ts:114](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L114)
 
 ___
 
@@ -651,7 +651,7 @@ Adds a sync or async task to the queue. Always returns a promise.
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:202
+[pkg/queue/src/lib/PromiseQueue.ts:202](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L202)
 
 ▸ **add**<`TaskResultType`\>(`function_`, `options?`): `Promise`<`void` \| `TaskResultType`\>
 
@@ -674,7 +674,7 @@ pkg/queue/src/lib/PromiseQueue.ts:202
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:206
+[pkg/queue/src/lib/PromiseQueue.ts:206](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L206)
 
 ___
 
@@ -705,7 +705,7 @@ A promise that resolves when all functions are resolved.
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:246
+[pkg/queue/src/lib/PromiseQueue.ts:246](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L246)
 
 ▸ **addAll**<`TaskResultsType`\>(`functions`, `options?`): `Promise`<(`void` \| `TaskResultsType`)[]\>
 
@@ -728,7 +728,7 @@ pkg/queue/src/lib/PromiseQueue.ts:246
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:250
+[pkg/queue/src/lib/PromiseQueue.ts:250](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L250)
 
 ___
 
@@ -775,7 +775,7 @@ Clear the queue.
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:283
+[pkg/queue/src/lib/PromiseQueue.ts:283](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L283)
 
 ___
 
@@ -1082,7 +1082,7 @@ A promise that settles when the queue becomes empty.
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:291
+[pkg/queue/src/lib/PromiseQueue.ts:291](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L291)
 
 ___
 
@@ -1100,7 +1100,7 @@ A promise that settles when the queue becomes empty, and all promises have compl
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:316
+[pkg/queue/src/lib/PromiseQueue.ts:316](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L316)
 
 ___
 
@@ -1124,7 +1124,7 @@ Note that this only limits the number of items waiting to start. There could sti
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:304
+[pkg/queue/src/lib/PromiseQueue.ts:304](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L304)
 
 ___
 
@@ -1194,7 +1194,7 @@ Put queue execution on hold.
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:276
+[pkg/queue/src/lib/PromiseQueue.ts:276](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L276)
 
 ___
 
@@ -1535,7 +1535,7 @@ For example, this can be used to find the number of items remaining in the queue
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:348
+[pkg/queue/src/lib/PromiseQueue.ts:348](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L348)
 
 ___
 
@@ -1551,7 +1551,7 @@ Start (or resume) executing enqueued tasks within concurrency limit. No need to 
 
 #### Defined in
 
-pkg/queue/src/lib/PromiseQueue.ts:264
+[pkg/queue/src/lib/PromiseQueue.ts:264](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/PromiseQueue.ts#L264)
 
 ___
 

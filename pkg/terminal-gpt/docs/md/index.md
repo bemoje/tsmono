@@ -16,4 +16,4 @@
 
 #### Defined in
 
-[index.ts:5](https://github.com/bemoje/tsmono/blob/f74277c/pkg/terminal-gpt/src/index.ts#L5)
+[index.ts:5](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/terminal-gpt/src/index.ts#L5)

@@ -1,16 +1,18 @@
 {
   "compilerOptions": {
+    "removeComments": false,
     "target": "ES2015",
     "lib": ["ESNext", "DOM"],
     "moduleResolution": "node",
     "types": ["jest", "node"],
+    "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
     "newLine": "lf",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
     "strict": true,
+    "forceConsistentCasingInFileNames": true,
     "skipDefaultLibCheck": false,
     "skipLibCheck": false,
     "paths": {
@@ -37,9 +39,7 @@
       "@bemoje/fspath": ["./pkg/fspath/src/index.ts"],
       "@bemoje/fs": ["./pkg/fs/src/index.ts"],
       "@bemoje/subtitles": ["./pkg/subtitles/src/index.ts"],
-      "@bemoje/regex": ["./pkg/regex/src/index.ts"],
-      "@bemoje/string": ["./pkg/string/src/index.ts"],
-      "@bemoje/test": ["./pkg/test/src/index.ts"]
+      "@bemoje/string": ["./pkg/string/src/index.ts"]
     }
   },
   "include": ["./pkg/**/src/**/*.ts", "./scripts/**/*.ts"]

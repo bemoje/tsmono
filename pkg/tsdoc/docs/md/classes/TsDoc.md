@@ -59,7 +59,7 @@ If the provided code is not a valid TSDoc block comment.
 
 #### Defined in
 
-lib/TsDoc.ts:65
+[lib/TsDoc.ts:65](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/TsDoc.ts#L65)
 
 ## Properties
 
@@ -71,7 +71,7 @@ Multi tags are tags that can appear multiple times in a TSDoc comment, but each 
 
 #### Defined in
 
-lib/TsDoc.ts:52
+[lib/TsDoc.ts:52](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/TsDoc.ts#L52)
 
 ___
 
@@ -83,7 +83,7 @@ Named multi tags are tags that can appear multiple times in a TSDoc comment, but
 
 #### Defined in
 
-lib/TsDoc.ts:57
+[lib/TsDoc.ts:57](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/TsDoc.ts#L57)
 
 ___
 
@@ -95,7 +95,7 @@ Can be used to specify the order in which param-tags are rendered in the TSDoc c
 
 #### Defined in
 
-lib/TsDoc.ts:42
+[lib/TsDoc.ts:42](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/TsDoc.ts#L42)
 
 ___
 
@@ -107,7 +107,7 @@ Single tags are tags that can only appear once in a TSDoc comment.
 
 #### Defined in
 
-lib/TsDoc.ts:47
+[lib/TsDoc.ts:47](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/TsDoc.ts#L47)
 
 ___
 
@@ -120,7 +120,7 @@ Empty strings means spacing between tags when iterating and rendering.
 
 #### Defined in
 
-lib/TsDoc.ts:37
+[lib/TsDoc.ts:37](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/TsDoc.ts#L37)
 
 ___
 
@@ -132,7 +132,7 @@ The default order in which tags are rendered in the TSDoc comment.
 
 #### Defined in
 
-lib/TsDoc.ts:19
+[lib/TsDoc.ts:19](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/TsDoc.ts#L19)
 
 ## Accessors
 
@@ -148,7 +148,7 @@ Returns whether the TsDoc instance has no tags.
 
 #### Defined in
 
-lib/TsDoc.ts:116
+[lib/TsDoc.ts:116](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/TsDoc.ts#L116)
 
 ___
 
@@ -164,7 +164,7 @@ The number of tags in the TsDoc instance.
 
 #### Defined in
 
-lib/TsDoc.ts:106
+[lib/TsDoc.ts:106](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/TsDoc.ts#L106)
 
 ## Methods
 
@@ -186,7 +186,7 @@ Parses a TSDoc block comment and adds the tags to the TsDoc instance.
 
 #### Defined in
 
-lib/TsDoc.ts:77
+[lib/TsDoc.ts:77](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/TsDoc.ts#L77)
 
 ___
 
@@ -208,7 +208,7 @@ Adds a TsDocTag to the TsDoc instance.
 
 #### Defined in
 
-lib/TsDoc.ts:135
+[lib/TsDoc.ts:135](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/TsDoc.ts#L135)
 
 ___
 
@@ -230,7 +230,7 @@ Merge tags from another TsDoc instance.
 
 #### Defined in
 
-lib/TsDoc.ts:204
+[lib/TsDoc.ts:204](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/TsDoc.ts#L204)
 
 ___
 
@@ -247,7 +247,7 @@ The tagOrder and paramOrder properties are not affected.
 
 #### Defined in
 
-lib/TsDoc.ts:124
+[lib/TsDoc.ts:124](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/TsDoc.ts#L124)
 
 ___
 
@@ -263,7 +263,7 @@ Returns a deep clone of this instance.
 
 #### Defined in
 
-lib/TsDoc.ts:197
+[lib/TsDoc.ts:197](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/TsDoc.ts#L197)
 
 ___
 
@@ -280,7 +280,7 @@ If no tagOrder was specified in the constructor options, TsDoc.defaultTagOrder i
 
 #### Defined in
 
-lib/TsDoc.ts:246
+[lib/TsDoc.ts:246](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/TsDoc.ts#L246)
 
 ___
 
@@ -302,7 +302,7 @@ Iterate tags in the order specified in the ´tagOrder´ and ´paramOrder´ prope
 
 #### Defined in
 
-lib/TsDoc.ts:177
+[lib/TsDoc.ts:177](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/TsDoc.ts#L177)
 
 ___
 
@@ -326,7 +326,7 @@ If name is not provided, all tags matching the provided tag are deleted.
 
 #### Defined in
 
-lib/TsDoc.ts:159
+[lib/TsDoc.ts:159](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/TsDoc.ts#L159)
 
 ___
 
@@ -342,7 +342,7 @@ Renders a TSDoc block comment string with all tags in the order specified by the
 
 #### Defined in
 
-lib/TsDoc.ts:230
+[lib/TsDoc.ts:230](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/TsDoc.ts#L230)
 
 ___
 
@@ -358,7 +358,7 @@ Sort the param tags according to the order specified in the paramOrder property.
 
 #### Defined in
 
-lib/TsDoc.ts:214
+[lib/TsDoc.ts:214](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/TsDoc.ts#L214)
 
 ___
 
@@ -378,4 +378,4 @@ Identical to the `render` method.
 
 #### Defined in
 
-lib/TsDoc.ts:238
+[lib/TsDoc.ts:238](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/TsDoc.ts#L238)

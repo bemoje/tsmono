@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/bfind",
-  "version": "0.1.6",
+  "version": "0.1.8",
   "description": "CLI for very fast file search. File contents are not indexed - only file and directory names. Directories are highlighted in blue in search results. Search results are sorted by last modified date. Regex ignore patterns are configurable in CLI or the JSON config file. Each argument is a search term. If multiple terms are provided, they all must be present in the filepath to be considered a search hit.",
   "main": "dist/index.cjs.js",
   "types": "dist/types/index.d.ts",
@@ -11,13 +11,11 @@
   "scripts": {
     "lint": "eslint \"*/**/*.{ts,js,json}\" --fix",
     "test": "jest --preset ts-jest",
-    "rollup": "rollup --config ./rollup.config.js --bundleConfigAsCjs",
-    "build": "npm run lint && rimraf dist && npm run rollup",
+    "build": "rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs",
     "docsmd": "rimraf docs/md && typedoc --out docs/md/ src/index.ts --readme none --plugin typedoc-plugin-markdown --theme markdown --entryDocument index.md --publicPath /docs/md/",
     "docshtml": "rimraf docs/html && typedoc --out docs/html --entryPoints src/index.ts",
-    "docs": "npm run docsmd && npm run docshtml",
-    "viewdocs": "start docs/html/index.html",
-    "prepub": "npm run build && npm run test && npm run docs"
+    "prepub": "npm run lint && npm run build && npm run test && npm run docsmd && npm run docshtml",
+    "viewdocs": "start docs/html/index.html"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.3",
@@ -57,6 +55,11 @@
   "license": "MIT",
   "keywords": [],
   "dependencies": {
+    "@bemoje/fspath-filter": "latest",
+    "@bemoje/trie-map": "latest",
+    "@bemoje/commander-config": "latest",
+    "@bemoje/fs": "latest",
+    "@bemoje/node-util": "latest",
     "cli-color": "^2.0.3",
     "commander": "^11.0.0",
     "lodash": "^4.17.21",

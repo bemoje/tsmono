@@ -26,9 +26,6 @@ This library is published in the NPM registry and can be installed using any com
 npm install @bemoje/fspath-filter
 ```
 
-## Documentation
-- [Markdown](https://github.com/bemoje/tsmono/blob/main/pkg/fspath-filter/docs/md/index.md)
-- [HTML](https://github.com/bemoje/tsmono/blob/main/pkg/fspath-filter/docs/html/index.html)
 
 ## Issues
 Please let me know of any bugs or [issues](https://github.com/bemoje/https://github.com/bemoje/tsmono/issues).
@@ -38,3 +35,15 @@ Contributors are welcome to open a [pull request](https://github.com/bemoje/http
 
 ## License
 Released under the [MIT License](./LICENSE).
+
+## Documentation
+- [HTML](https://github.com/bemoje/tsmono/blob/main/pkg/fspath-filter/docs/html/index.html)
+- [Markdown](https://github.com/bemoje/tsmono/blob/main/pkg/fspath-filter/docs/md/index.md)
+
+### Classes
+
+- [FSPathFilter](https://github.com/bemoje/tsmono/blob/main/pkg/fspath-filter/docs/md/classes/FSPathFilter.md)
+
+### Interfaces
+
+- [IPathFilterIgnoreOptions](https://github.com/bemoje/tsmono/blob/main/pkg/fspath-filter/docs/md/interfaces/IPathFilterIgnoreOptions.md)

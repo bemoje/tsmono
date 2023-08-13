@@ -1,4 +1,4 @@
-import { rexec } from '@bemoje/regex'
+import { rexec } from '@bemoje/string'
 
 export function extractContactsFromEmails(thread: string): [string, string][] {
   const re =

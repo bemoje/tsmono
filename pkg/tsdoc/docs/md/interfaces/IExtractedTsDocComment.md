@@ -19,7 +19,7 @@
 
 #### Defined in
 
-lib/types/IExtractedTsDocComment.ts:3
+[lib/types/IExtractedTsDocComment.ts:3](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/types/IExtractedTsDocComment.ts#L3)
 
 ___
 
@@ -29,7 +29,7 @@ ___
 
 #### Defined in
 
-lib/types/IExtractedTsDocComment.ts:4
+[lib/types/IExtractedTsDocComment.ts:4](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/types/IExtractedTsDocComment.ts#L4)
 
 ___
 
@@ -39,7 +39,7 @@ ___
 
 #### Defined in
 
-lib/types/IExtractedTsDocComment.ts:5
+[lib/types/IExtractedTsDocComment.ts:5](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/types/IExtractedTsDocComment.ts#L5)
 
 ___
 
@@ -49,4 +49,4 @@ ___
 
 #### Defined in
 
-lib/types/IExtractedTsDocComment.ts:2
+[lib/types/IExtractedTsDocComment.ts:2](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/types/IExtractedTsDocComment.ts#L2)

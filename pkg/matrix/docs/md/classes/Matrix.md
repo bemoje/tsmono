@@ -80,7 +80,7 @@
 
 #### Defined in
 
-lib/Matrix.ts:35
+[lib/Matrix.ts:35](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L35)
 
 ## Properties
 
@@ -90,7 +90,7 @@ lib/Matrix.ts:35
 
 #### Defined in
 
-lib/Matrix.ts:3
+[lib/Matrix.ts:3](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L3)
 
 ___
 
@@ -100,7 +100,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:2
+[lib/Matrix.ts:2](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L2)
 
 ## Accessors
 
@@ -114,7 +114,7 @@ lib/Matrix.ts:2
 
 #### Defined in
 
-lib/Matrix.ts:48
+[lib/Matrix.ts:48](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L48)
 
 ___
 
@@ -128,7 +128,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:44
+[lib/Matrix.ts:44](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L44)
 
 ## Methods
 
@@ -142,7 +142,7 @@ lib/Matrix.ts:44
 
 #### Defined in
 
-lib/Matrix.ts:157
+[lib/Matrix.ts:157](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L157)
 
 ___
 
@@ -162,7 +162,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:213
+[lib/Matrix.ts:213](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L213)
 
 ___
 
@@ -183,7 +183,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:253
+[lib/Matrix.ts:253](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L253)
 
 ___
 
@@ -204,7 +204,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:233
+[lib/Matrix.ts:233](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L233)
 
 ___
 
@@ -224,7 +224,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:198
+[lib/Matrix.ts:198](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L198)
 
 ___
 
@@ -244,7 +244,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:185
+[lib/Matrix.ts:185](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L185)
 
 ___
 
@@ -258,7 +258,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:99
+[lib/Matrix.ts:99](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L99)
 
 ___
 
@@ -278,7 +278,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:65
+[lib/Matrix.ts:65](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L65)
 
 ___
 
@@ -298,7 +298,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:228
+[lib/Matrix.ts:228](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L228)
 
 ___
 
@@ -319,7 +319,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:268
+[lib/Matrix.ts:268](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L268)
 
 ___
 
@@ -340,7 +340,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:248
+[lib/Matrix.ts:248](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L248)
 
 ___
 
@@ -362,7 +362,7 @@ Performs dot product of the matrix with another given matrix.
 
 #### Defined in
 
-lib/Matrix.ts:344
+[lib/Matrix.ts:344](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L344)
 
 ___
 
@@ -382,7 +382,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:304
+[lib/Matrix.ts:304](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L304)
 
 ___
 
@@ -402,7 +402,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:109
+[lib/Matrix.ts:109](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L109)
 
 ___
 
@@ -423,7 +423,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:129
+[lib/Matrix.ts:129](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L129)
 
 ___
 
@@ -443,7 +443,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:138
+[lib/Matrix.ts:138](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L138)
 
 ___
 
@@ -464,7 +464,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:120
+[lib/Matrix.ts:120](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L120)
 
 ___
 
@@ -485,7 +485,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:83
+[lib/Matrix.ts:83](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L83)
 
 ___
 
@@ -499,7 +499,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:56
+[lib/Matrix.ts:56](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L56)
 
 ___
 
@@ -520,7 +520,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:87
+[lib/Matrix.ts:87](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L87)
 
 ___
 
@@ -541,7 +541,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:315
+[lib/Matrix.ts:315](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L315)
 
 ___
 
@@ -561,7 +561,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:52
+[lib/Matrix.ts:52](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L52)
 
 ___
 
@@ -577,7 +577,7 @@ Returns whether the matrix is a square matrix that has identical values on its d
 
 #### Defined in
 
-lib/Matrix.ts:326
+[lib/Matrix.ts:326](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L326)
 
 ___
 
@@ -591,7 +591,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:319
+[lib/Matrix.ts:319](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L319)
 
 ___
 
@@ -605,7 +605,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:337
+[lib/Matrix.ts:337](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L337)
 
 ___
 
@@ -625,7 +625,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:147
+[lib/Matrix.ts:147](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L147)
 
 ___
 
@@ -646,7 +646,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:177
+[lib/Matrix.ts:177](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L177)
 
 ___
 
@@ -667,7 +667,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:169
+[lib/Matrix.ts:169](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L169)
 
 ___
 
@@ -687,7 +687,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:223
+[lib/Matrix.ts:223](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L223)
 
 ___
 
@@ -708,7 +708,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:263
+[lib/Matrix.ts:263](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L263)
 
 ___
 
@@ -729,7 +729,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:243
+[lib/Matrix.ts:243](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L243)
 
 ___
 
@@ -751,7 +751,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:77
+[lib/Matrix.ts:77](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L77)
 
 ___
 
@@ -771,7 +771,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:60
+[lib/Matrix.ts:60](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L60)
 
 ___
 
@@ -791,7 +791,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:293
+[lib/Matrix.ts:293](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L293)
 
 ___
 
@@ -811,7 +811,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:218
+[lib/Matrix.ts:218](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L218)
 
 ___
 
@@ -832,7 +832,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:258
+[lib/Matrix.ts:258](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L258)
 
 ___
 
@@ -853,7 +853,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:238
+[lib/Matrix.ts:238](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L238)
 
 ___
 
@@ -874,7 +874,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:282
+[lib/Matrix.ts:282](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L282)
 
 ___
 
@@ -895,7 +895,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:273
+[lib/Matrix.ts:273](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L273)
 
 ___
 
@@ -909,7 +909,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:91
+[lib/Matrix.ts:91](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L91)
 
 ___
 
@@ -923,7 +923,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:165
+[lib/Matrix.ts:165](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L165)
 
 ___
 
@@ -943,7 +943,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:5
+[lib/Matrix.ts:5](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L5)
 
 ___
 
@@ -963,7 +963,7 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:19
+[lib/Matrix.ts:19](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L19)
 
 ___
 
@@ -983,4 +983,4 @@ ___
 
 #### Defined in
 
-lib/Matrix.ts:27
+[lib/Matrix.ts:27](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/matrix/src/lib/Matrix.ts#L27)

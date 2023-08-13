@@ -52,7 +52,7 @@
 
 #### Defined in
 
-pkg/queue/src/lib/Queue.ts:2
+[pkg/queue/src/lib/Queue.ts:2](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/Queue.ts#L2)
 
 ## Accessors
 
@@ -66,7 +66,7 @@ pkg/queue/src/lib/Queue.ts:2
 
 #### Defined in
 
-pkg/queue/src/lib/Queue.ts:25
+[pkg/queue/src/lib/Queue.ts:25](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/Queue.ts#L25)
 
 ## Methods
 
@@ -80,7 +80,7 @@ pkg/queue/src/lib/Queue.ts:25
 
 #### Defined in
 
-pkg/queue/src/lib/Queue.ts:37
+[pkg/queue/src/lib/Queue.ts:37](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/Queue.ts#L37)
 
 ___
 
@@ -94,7 +94,7 @@ ___
 
 #### Defined in
 
-pkg/queue/src/lib/Queue.ts:19
+[pkg/queue/src/lib/Queue.ts:19](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/Queue.ts#L19)
 
 ___
 
@@ -114,7 +114,7 @@ ___
 
 #### Defined in
 
-pkg/queue/src/lib/Queue.ts:14
+[pkg/queue/src/lib/Queue.ts:14](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/Queue.ts#L14)
 
 ___
 
@@ -128,7 +128,7 @@ ___
 
 #### Defined in
 
-pkg/queue/src/lib/Queue.ts:29
+[pkg/queue/src/lib/Queue.ts:29](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/Queue.ts#L29)
 
 ___
 
@@ -142,7 +142,7 @@ ___
 
 #### Defined in
 
-pkg/queue/src/lib/Queue.ts:33
+[pkg/queue/src/lib/Queue.ts:33](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/Queue.ts#L33)
 
 ___
 
@@ -168,7 +168,7 @@ ___
 
 #### Defined in
 
-pkg/queue/src/lib/Queue.ts:4
+[pkg/queue/src/lib/Queue.ts:4](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/Queue.ts#L4)
 
 ___
 
@@ -194,4 +194,4 @@ ___
 
 #### Defined in
 
-pkg/queue/src/lib/Queue.ts:10
+[pkg/queue/src/lib/Queue.ts:10](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/queue/src/lib/Queue.ts#L10)

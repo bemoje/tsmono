@@ -1,20 +1,21 @@
 {
-  "extends": "./tsconfig.json",
   "compilerOptions": {
-    //   // Transpilation settings.
+    "outDir": "./dist",
     "module": "ES2015",
     "target": "ES2015",
-
-    //   // Output settings.
-    // "charset": "utf-8",
-    "newLine": "LF",
-    "sourceMap": true,
+    "rootDir": "./src",
+    "declarationDir": "./dist/types",
     "removeComments": false,
-
-    // Type declaration settings.
+    "lib": ["ESNext", "DOM"],
+    "moduleResolution": "node",
+    "types": ["node"],
+    "sourceMap": true,
     "declaration": true,
-    "declarationDir": "dist/types",
-    "declarationMap": true
+    "declarationMap": true,
+    "newLine": "lf",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "strict": true
   },
-  "exclude": ["./**/*/*.test.ts"]
+  "exclude": ["./**/*/*.test.ts", "./**/*/*.example.ts", "./bin"]
 }
