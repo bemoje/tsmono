@@ -1,5 +1,5 @@
 import { TimeInterval } from '@bemoje/time'
-import { AbstractSubtitle } from './AbstractSubtitle'
+import { AbstractSubtitle } from '../../core/AbstractSubtitle'
 
 /**
  * Represents a single subtitle in the SRT format.

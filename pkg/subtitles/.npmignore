@@ -1,7 +1,7 @@
 coverage
 logs
 node_modules
-src
+src/**/*.test.ts
 docs/html
 notes
 scripts

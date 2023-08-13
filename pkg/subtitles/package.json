@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/subtitles",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Classes for SRT and VTT subtitles renderind parsing.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -53,6 +53,7 @@
   "license": "MIT",
   "keywords": [],
   "dependencies": {
+    "@bemoje/time": "latest"
   },
   "repository": {
     "type": "git",
