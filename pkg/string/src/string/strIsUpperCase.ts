@@ -4,7 +4,7 @@
  * @example ```ts
  * strIsUpperCase('HELLO');;
  * //=> true
- * strIsUpperCase('Hello');;
+ * strIsUpperCase('HEllo');;
  * //=> false
  * ```
  */

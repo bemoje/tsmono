@@ -1,0 +1,8 @@
+{
+  "name": "fswalk",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "pkg/fswalk/src",
+  "projectType": "library",
+  "targets": {},
+  "tags": []
+}

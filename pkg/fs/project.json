@@ -1,0 +1,8 @@
+{
+  "name": "fs",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "pkg/fs/src",
+  "projectType": "library",
+  "targets": {},
+  "tags": []
+}

@@ -1,0 +1,8 @@
+{
+  "name": "split-sentences",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "pkg/split-sentences/src",
+  "projectType": "library",
+  "targets": {},
+  "tags": []
+}

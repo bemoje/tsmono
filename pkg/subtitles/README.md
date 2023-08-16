@@ -37,13 +37,13 @@ Contributors are welcome to open a [pull request](https://github.com/bemoje/http
 Released under the [MIT License](./LICENSE).
 
 ## Documentation
-- [HTML](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/html/index.html)
-- [Markdown](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/index.md)
+- [HTML](https://github.com/bemoje/tsmono/blob/main/docs/html/index.html)
+- [Markdown](https://github.com/bemoje/tsmono/blob/main/docs/md/subtitles/index.md)
 
 ### Classes
 
-- [AbstractSubtitle](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/classes/AbstractSubtitle.md)
-- [SRTSubtitle](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/classes/SRTSubtitle.md)
-- [SRTSubtitles](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/classes/SRTSubtitles.md)
-- [VTTSubtitle](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/classes/VTTSubtitle.md)
-- [VTTSubtitles](https://github.com/bemoje/tsmono/blob/main/pkg/subtitles/docs/md/classes/VTTSubtitles.md)
+- [AbstractSubtitle](https://github.com/bemoje/tsmono/blob/main/docs/md/subtitles/classes/AbstractSubtitle.md)
+- [SRTSubtitle](https://github.com/bemoje/tsmono/blob/main/docs/md/subtitles/classes/SRTSubtitle.md)
+- [SRTSubtitles](https://github.com/bemoje/tsmono/blob/main/docs/md/subtitles/classes/SRTSubtitles.md)
+- [VTTSubtitle](https://github.com/bemoje/tsmono/blob/main/docs/md/subtitles/classes/VTTSubtitle.md)
+- [VTTSubtitles](https://github.com/bemoje/tsmono/blob/main/docs/md/subtitles/classes/VTTSubtitles.md)

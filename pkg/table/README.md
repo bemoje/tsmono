@@ -37,13 +37,13 @@ Contributors are welcome to open a [pull request](https://github.com/bemoje/http
 Released under the [MIT License](./LICENSE).
 
 ## Documentation
-- [HTML](https://github.com/bemoje/tsmono/blob/main/pkg/table/docs/html/index.html)
-- [Markdown](https://github.com/bemoje/tsmono/blob/main/pkg/table/docs/md/index.md)
+- [HTML](https://github.com/bemoje/tsmono/blob/main/docs/html/index.html)
+- [Markdown](https://github.com/bemoje/tsmono/blob/main/docs/md/table/index.md)
 
 ### Classes
 
-- [Table](https://github.com/bemoje/tsmono/blob/main/pkg/table/docs/md/classes/Table.md)
+- [Table](https://github.com/bemoje/tsmono/blob/main/docs/md/table/classes/Table.md)
 
 ### Interfaces
 
-- [ITableSerialized](https://github.com/bemoje/tsmono/blob/main/pkg/table/docs/md/interfaces/ITableSerialized.md)
+- [ITableSerialized](https://github.com/bemoje/tsmono/blob/main/docs/md/table/interfaces/ITableSerialized.md)

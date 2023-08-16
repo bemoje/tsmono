@@ -1,0 +1,8 @@
+{
+  "name": "fspath-filter",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "pkg/fspath-filter/src",
+  "projectType": "library",
+  "targets": {},
+  "tags": []
+}

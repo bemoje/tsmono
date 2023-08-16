@@ -37,46 +37,46 @@ Contributors are welcome to open a [pull request](https://github.com/bemoje/http
 Released under the [MIT License](./LICENSE).
 
 ## Documentation
-- [HTML](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/html/index.html)
-- [Markdown](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/index.md)
+- [HTML](https://github.com/bemoje/tsmono/blob/main/docs/html/index.html)
+- [Markdown](https://github.com/bemoje/tsmono/blob/main/docs/md/time/index.md)
 
 ### Classes
 
-- [Time](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/Time.md)
-- [TimeInterval](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/classes/TimeInterval.md)
+- [Time](https://github.com/bemoje/tsmono/blob/main/docs/md/time/classes/Time.md)
+- [TimeInterval](https://github.com/bemoje/tsmono/blob/main/docs/md/time/classes/TimeInterval.md)
 
 ### Functions
 
-- [assertValidHours](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/index.md#assertvalidhours)
-- [assertValidMilliseconds](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/index.md#assertvalidmilliseconds)
-- [assertValidMinutes](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/index.md#assertvalidminutes)
-- [assertValidSeconds](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/index.md#assertvalidseconds)
-- [assertValidTime](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/index.md#assertvalidtime)
-- [assertValidTimeArray](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/index.md#assertvalidtimearray)
-- [assertValidTimeInt](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/index.md#assertvalidtimeint)
-- [assertValidTimeString](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/index.md#assertvalidtimestring)
-- [assertValidTimeStringFormatting](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/index.md#assertvalidtimestringformatting)
-- [isValidHours](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/index.md#isvalidhours)
-- [isValidMilliseconds](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/index.md#isvalidmilliseconds)
-- [isValidMinutes](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/index.md#isvalidminutes)
-- [isValidSeconds](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/index.md#isvalidseconds)
-- [isValidTime](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/index.md#isvalidtime)
-- [isValidTimeArray](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/index.md#isvalidtimearray)
-- [isValidTimeInt](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/index.md#isvalidtimeint)
-- [isValidTimeString](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/index.md#isvalidtimestring)
-- [isValidTimeStringFormatting](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/index.md#isvalidtimestringformatting)
-- [timeArrayToInt](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/index.md#timearraytoint)
-- [timeArrayToIntUnsafe](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/index.md#timearraytointunsafe)
-- [timeArrayToString](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/index.md#timearraytostring)
-- [timeArrayToStringUnsafe](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/index.md#timearraytostringunsafe)
-- [timeIntToArray](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/index.md#timeinttoarray)
-- [timeIntToArrayUnsafe](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/index.md#timeinttoarrayunsafe)
-- [timeIntToString](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/index.md#timeinttostring)
-- [timeIntToStringUnsafe](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/index.md#timeinttostringunsafe)
-- [timeStringToArray](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/index.md#timestringtoarray)
-- [timeStringToArrayUnsafe](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/index.md#timestringtoarrayunsafe)
-- [timeStringToInt](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/index.md#timestringtoint)
-- [timeStringToIntUnsafe](https://github.com/bemoje/tsmono/blob/main/pkg/time/docs/md/index.md#timestringtointunsafe)
+- [assertValidHours](https://github.com/bemoje/tsmono/blob/main/docs/md/time/index.md#assertvalidhours)
+- [assertValidMilliseconds](https://github.com/bemoje/tsmono/blob/main/docs/md/time/index.md#assertvalidmilliseconds)
+- [assertValidMinutes](https://github.com/bemoje/tsmono/blob/main/docs/md/time/index.md#assertvalidminutes)
+- [assertValidSeconds](https://github.com/bemoje/tsmono/blob/main/docs/md/time/index.md#assertvalidseconds)
+- [assertValidTime](https://github.com/bemoje/tsmono/blob/main/docs/md/time/index.md#assertvalidtime)
+- [assertValidTimeArray](https://github.com/bemoje/tsmono/blob/main/docs/md/time/index.md#assertvalidtimearray)
+- [assertValidTimeInt](https://github.com/bemoje/tsmono/blob/main/docs/md/time/index.md#assertvalidtimeint)
+- [assertValidTimeString](https://github.com/bemoje/tsmono/blob/main/docs/md/time/index.md#assertvalidtimestring)
+- [assertValidTimeStringFormatting](https://github.com/bemoje/tsmono/blob/main/docs/md/time/index.md#assertvalidtimestringformatting)
+- [isValidHours](https://github.com/bemoje/tsmono/blob/main/docs/md/time/index.md#isvalidhours)
+- [isValidMilliseconds](https://github.com/bemoje/tsmono/blob/main/docs/md/time/index.md#isvalidmilliseconds)
+- [isValidMinutes](https://github.com/bemoje/tsmono/blob/main/docs/md/time/index.md#isvalidminutes)
+- [isValidSeconds](https://github.com/bemoje/tsmono/blob/main/docs/md/time/index.md#isvalidseconds)
+- [isValidTime](https://github.com/bemoje/tsmono/blob/main/docs/md/time/index.md#isvalidtime)
+- [isValidTimeArray](https://github.com/bemoje/tsmono/blob/main/docs/md/time/index.md#isvalidtimearray)
+- [isValidTimeInt](https://github.com/bemoje/tsmono/blob/main/docs/md/time/index.md#isvalidtimeint)
+- [isValidTimeString](https://github.com/bemoje/tsmono/blob/main/docs/md/time/index.md#isvalidtimestring)
+- [isValidTimeStringFormatting](https://github.com/bemoje/tsmono/blob/main/docs/md/time/index.md#isvalidtimestringformatting)
+- [timeArrayToInt](https://github.com/bemoje/tsmono/blob/main/docs/md/time/index.md#timearraytoint)
+- [timeArrayToIntUnsafe](https://github.com/bemoje/tsmono/blob/main/docs/md/time/index.md#timearraytointunsafe)
+- [timeArrayToString](https://github.com/bemoje/tsmono/blob/main/docs/md/time/index.md#timearraytostring)
+- [timeArrayToStringUnsafe](https://github.com/bemoje/tsmono/blob/main/docs/md/time/index.md#timearraytostringunsafe)
+- [timeIntToArray](https://github.com/bemoje/tsmono/blob/main/docs/md/time/index.md#timeinttoarray)
+- [timeIntToArrayUnsafe](https://github.com/bemoje/tsmono/blob/main/docs/md/time/index.md#timeinttoarrayunsafe)
+- [timeIntToString](https://github.com/bemoje/tsmono/blob/main/docs/md/time/index.md#timeinttostring)
+- [timeIntToStringUnsafe](https://github.com/bemoje/tsmono/blob/main/docs/md/time/index.md#timeinttostringunsafe)
+- [timeStringToArray](https://github.com/bemoje/tsmono/blob/main/docs/md/time/index.md#timestringtoarray)
+- [timeStringToArrayUnsafe](https://github.com/bemoje/tsmono/blob/main/docs/md/time/index.md#timestringtoarrayunsafe)
+- [timeStringToInt](https://github.com/bemoje/tsmono/blob/main/docs/md/time/index.md#timestringtoint)
+- [timeStringToIntUnsafe](https://github.com/bemoje/tsmono/blob/main/docs/md/time/index.md#timestringtointunsafe)
 
 ## Functions
 
@@ -110,7 +110,7 @@ assertValidHours(24); // Throws Error: 'Expected hours to be between 0 and 23. G
 
 #### Defined in
 
-[lib/util/assertValidHours.ts:13](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/time/src/lib/util/assertValidHours.ts#L13)
+[lib/util/assertValidHours.ts:13](https://github.com/bemoje/tsmono/blob/87185a0/pkg/time/src/lib/util/assertValidHours.ts#L13)
 
 ___
 
@@ -147,7 +147,7 @@ assertValidMilliseconds(1000); // Throws error
 
 #### Defined in
 
-[lib/util/assertValidMilliseconds.ts:14](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/time/src/lib/util/assertValidMilliseconds.ts#L14)
+[lib/util/assertValidMilliseconds.ts:14](https://github.com/bemoje/tsmono/blob/87185a0/pkg/time/src/lib/util/assertValidMilliseconds.ts#L14)
 
 ___
 
@@ -181,7 +181,7 @@ assertValidMinutes(60); // Throws Error: 'Expected minutes to be between 0 and 5
 
 #### Defined in
 
-[lib/util/assertValidMinutes.ts:13](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/time/src/lib/util/assertValidMinutes.ts#L13)
+[lib/util/assertValidMinutes.ts:13](https://github.com/bemoje/tsmono/blob/87185a0/pkg/time/src/lib/util/assertValidMinutes.ts#L13)
 
 ___
 
@@ -218,7 +218,7 @@ assertValidSeconds(60); // Throws error
 
 #### Defined in
 
-[lib/util/assertValidSeconds.ts:14](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/time/src/lib/util/assertValidSeconds.ts#L14)
+[lib/util/assertValidSeconds.ts:14](https://github.com/bemoje/tsmono/blob/87185a0/pkg/time/src/lib/util/assertValidSeconds.ts#L14)
 
 ___
 
@@ -255,7 +255,7 @@ assertValidTime(24, 60, 60, 1000); // Error thrown
 
 #### Defined in
 
-[lib/util/assertValidTime.ts:19](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/time/src/lib/util/assertValidTime.ts#L19)
+[lib/util/assertValidTime.ts:19](https://github.com/bemoje/tsmono/blob/87185a0/pkg/time/src/lib/util/assertValidTime.ts#L19)
 
 ___
 
@@ -290,7 +290,7 @@ assertValidTimeArray([12, 30, 45]); // Throws Error: 'Expected array of length 4
 
 #### Defined in
 
-[lib/util/assertValidTimeArray.ts:14](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/time/src/lib/util/assertValidTimeArray.ts#L14)
+[lib/util/assertValidTimeArray.ts:14](https://github.com/bemoje/tsmono/blob/87185a0/pkg/time/src/lib/util/assertValidTimeArray.ts#L14)
 
 ___
 
@@ -325,7 +325,7 @@ assertValidTimeInt(90000000); // Throws Error: 'Expected time int to be between 
 
 #### Defined in
 
-[lib/util/assertValidTimeInt.ts:14](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/time/src/lib/util/assertValidTimeInt.ts#L14)
+[lib/util/assertValidTimeInt.ts:14](https://github.com/bemoje/tsmono/blob/87185a0/pkg/time/src/lib/util/assertValidTimeInt.ts#L14)
 
 ___
 
@@ -362,7 +362,7 @@ assertValidTimeString('25:00:00'); // Throws Error
 
 #### Defined in
 
-[lib/util/assertValidTimeString.ts:16](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/time/src/lib/util/assertValidTimeString.ts#L16)
+[lib/util/assertValidTimeString.ts:16](https://github.com/bemoje/tsmono/blob/87185a0/pkg/time/src/lib/util/assertValidTimeString.ts#L16)
 
 ___
 
@@ -397,7 +397,7 @@ assertValidTimeStringFormatting('12:34:56'); // Throws Error
 
 #### Defined in
 
-[lib/util/assertValidTimeStringFormatting.ts:14](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/time/src/lib/util/assertValidTimeStringFormatting.ts#L14)
+[lib/util/assertValidTimeStringFormatting.ts:14](https://github.com/bemoje/tsmono/blob/87185a0/pkg/time/src/lib/util/assertValidTimeStringFormatting.ts#L14)
 
 ___
 
@@ -433,7 +433,7 @@ isValidHours(15.5);  // returns false
 
 #### Defined in
 
-[lib/util/isValidHours.ts:13](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/time/src/lib/util/isValidHours.ts#L13)
+[lib/util/isValidHours.ts:13](https://github.com/bemoje/tsmono/blob/87185a0/pkg/time/src/lib/util/isValidHours.ts#L13)
 
 ___
 
@@ -466,7 +466,7 @@ isValidMilliseconds(-1); // returns false
 
 #### Defined in
 
-[lib/util/isValidMilliseconds.ts:12](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/time/src/lib/util/isValidMilliseconds.ts#L12)
+[lib/util/isValidMilliseconds.ts:12](https://github.com/bemoje/tsmono/blob/87185a0/pkg/time/src/lib/util/isValidMilliseconds.ts#L12)
 
 ___
 
@@ -501,7 +501,7 @@ isValidMinutes(60); // returns false
 
 #### Defined in
 
-[lib/util/isValidMinutes.ts:12](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/time/src/lib/util/isValidMinutes.ts#L12)
+[lib/util/isValidMinutes.ts:12](https://github.com/bemoje/tsmono/blob/87185a0/pkg/time/src/lib/util/isValidMinutes.ts#L12)
 
 ___
 
@@ -537,7 +537,7 @@ isValidSeconds(30.5);  // returns false
 
 #### Defined in
 
-[lib/util/isValidSeconds.ts:13](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/time/src/lib/util/isValidSeconds.ts#L13)
+[lib/util/isValidSeconds.ts:13](https://github.com/bemoje/tsmono/blob/87185a0/pkg/time/src/lib/util/isValidSeconds.ts#L13)
 
 ___
 
@@ -575,7 +575,7 @@ isValidTime(24, 0, 0, 0);  // returns false
 
 #### Defined in
 
-[lib/util/isValidTime.ts:20](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/time/src/lib/util/isValidTime.ts#L20)
+[lib/util/isValidTime.ts:20](https://github.com/bemoje/tsmono/blob/87185a0/pkg/time/src/lib/util/isValidTime.ts#L20)
 
 ___
 
@@ -607,7 +607,7 @@ isValidTimeArray([12, 60, 45, 500]); // returns false
 
 #### Defined in
 
-[lib/util/isValidTimeArray.ts:13](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/time/src/lib/util/isValidTimeArray.ts#L13)
+[lib/util/isValidTimeArray.ts:13](https://github.com/bemoje/tsmono/blob/87185a0/pkg/time/src/lib/util/isValidTimeArray.ts#L13)
 
 ___
 
@@ -639,7 +639,7 @@ isValidTimeInt(90000000); // returns false
 
 #### Defined in
 
-[lib/util/isValidTimeInt.ts:11](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/time/src/lib/util/isValidTimeInt.ts#L11)
+[lib/util/isValidTimeInt.ts:11](https://github.com/bemoje/tsmono/blob/87185a0/pkg/time/src/lib/util/isValidTimeInt.ts#L11)
 
 ___
 
@@ -678,7 +678,7 @@ isValidTimeString("25:00:00") // returns false
 
 #### Defined in
 
-[lib/util/isValidTimeString.ts:15](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/time/src/lib/util/isValidTimeString.ts#L15)
+[lib/util/isValidTimeString.ts:15](https://github.com/bemoje/tsmono/blob/87185a0/pkg/time/src/lib/util/isValidTimeString.ts#L15)
 
 ___
 
@@ -711,7 +711,7 @@ isValidTimeStringFormatting('12:34:56'); // returns false
 
 #### Defined in
 
-[lib/util/isValidTimeStringFormatting.ts:12](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/time/src/lib/util/isValidTimeStringFormatting.ts#L12)
+[lib/util/isValidTimeStringFormatting.ts:12](https://github.com/bemoje/tsmono/blob/87185a0/pkg/time/src/lib/util/isValidTimeStringFormatting.ts#L12)
 
 ___
 
@@ -751,7 +751,7 @@ console.log(result); // Expected output: 123015
 
 #### Defined in
 
-[lib/util/timeArrayToInt.ts:17](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/time/src/lib/util/timeArrayToInt.ts#L17)
+[lib/util/timeArrayToInt.ts:17](https://github.com/bemoje/tsmono/blob/87185a0/pkg/time/src/lib/util/timeArrayToInt.ts#L17)
 
 ___
 
@@ -793,7 +793,7 @@ console.log(result); // Outputs: 5445500
 
 #### Defined in
 
-[lib/util/timeArrayToIntUnsafe.ts:15](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/time/src/lib/util/timeArrayToIntUnsafe.ts#L15)
+[lib/util/timeArrayToIntUnsafe.ts:15](https://github.com/bemoje/tsmono/blob/87185a0/pkg/time/src/lib/util/timeArrayToIntUnsafe.ts#L15)
 
 ___
 
@@ -830,7 +830,7 @@ console.log(result); // Outputs: '12:30:15.500'
 
 #### Defined in
 
-[lib/util/timeArrayToString.ts:16](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/time/src/lib/util/timeArrayToString.ts#L16)
+[lib/util/timeArrayToString.ts:16](https://github.com/bemoje/tsmono/blob/87185a0/pkg/time/src/lib/util/timeArrayToString.ts#L16)
 
 ___
 
@@ -865,7 +865,7 @@ console.log(result); // Outputs: "13:15:45:123"
 
 #### Defined in
 
-[lib/util/timeArrayToStringUnsafe.ts:14](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/time/src/lib/util/timeArrayToStringUnsafe.ts#L14)
+[lib/util/timeArrayToStringUnsafe.ts:14](https://github.com/bemoje/tsmono/blob/87185a0/pkg/time/src/lib/util/timeArrayToStringUnsafe.ts#L14)
 
 ___
 
@@ -903,7 +903,7 @@ const timeArray = timeIntToArray(3600000); // returns [1, 0, 0]
 
 #### Defined in
 
-[lib/util/timeIntToArray.ts:15](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/time/src/lib/util/timeIntToArray.ts#L15)
+[lib/util/timeIntToArray.ts:15](https://github.com/bemoje/tsmono/blob/87185a0/pkg/time/src/lib/util/timeIntToArray.ts#L15)
 
 ___
 
@@ -939,7 +939,7 @@ console.log(timeArray); // [1, 0, 1, 0]
 
 #### Defined in
 
-[lib/util/timeIntToArrayUnsafe.ts:13](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/time/src/lib/util/timeIntToArrayUnsafe.ts#L13)
+[lib/util/timeIntToArrayUnsafe.ts:13](https://github.com/bemoje/tsmono/blob/87185a0/pkg/time/src/lib/util/timeIntToArrayUnsafe.ts#L13)
 
 ___
 
@@ -974,7 +974,7 @@ timeIntToString(1500, ':'); // Returns '1:500'
 
 #### Defined in
 
-[lib/util/timeIntToString.ts:14](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/time/src/lib/util/timeIntToString.ts#L14)
+[lib/util/timeIntToString.ts:14](https://github.com/bemoje/tsmono/blob/87185a0/pkg/time/src/lib/util/timeIntToString.ts#L14)
 
 ___
 
@@ -1010,7 +1010,7 @@ console.log(timeString); // Outputs "1:500"
 
 #### Defined in
 
-[lib/util/timeIntToStringUnsafe.ts:16](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/time/src/lib/util/timeIntToStringUnsafe.ts#L16)
+[lib/util/timeIntToStringUnsafe.ts:16](https://github.com/bemoje/tsmono/blob/87185a0/pkg/time/src/lib/util/timeIntToStringUnsafe.ts#L16)
 
 ___
 
@@ -1049,7 +1049,7 @@ console.log(timeArray); // Output: [12, 34, 56]
 
 #### Defined in
 
-[lib/util/timeStringToArray.ts:17](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/time/src/lib/util/timeStringToArray.ts#L17)
+[lib/util/timeStringToArray.ts:17](https://github.com/bemoje/tsmono/blob/87185a0/pkg/time/src/lib/util/timeStringToArray.ts#L17)
 
 ___
 
@@ -1085,7 +1085,7 @@ console.log(timeArray); // [12, 34, 56]
 
 #### Defined in
 
-[lib/util/timeStringToArrayUnsafe.ts:12](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/time/src/lib/util/timeStringToArrayUnsafe.ts#L12)
+[lib/util/timeStringToArrayUnsafe.ts:12](https://github.com/bemoje/tsmono/blob/87185a0/pkg/time/src/lib/util/timeStringToArrayUnsafe.ts#L12)
 
 ___
 
@@ -1124,7 +1124,7 @@ timeStringToInt("12:34:56"); // returns 45296
 
 #### Defined in
 
-[lib/util/timeStringToInt.ts:17](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/time/src/lib/util/timeStringToInt.ts#L17)
+[lib/util/timeStringToInt.ts:17](https://github.com/bemoje/tsmono/blob/87185a0/pkg/time/src/lib/util/timeStringToInt.ts#L17)
 
 ___
 
@@ -1166,4 +1166,4 @@ console.log(timeInt); // Expected output: 45296
 
 #### Defined in
 
-[lib/util/timeStringToIntUnsafe.ts:19](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/time/src/lib/util/timeStringToIntUnsafe.ts#L19)
+[lib/util/timeStringToIntUnsafe.ts:19](https://github.com/bemoje/tsmono/blob/87185a0/pkg/time/src/lib/util/timeStringToIntUnsafe.ts#L19)

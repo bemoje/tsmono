@@ -37,12 +37,12 @@ Contributors are welcome to open a [pull request](https://github.com/bemoje/http
 Released under the [MIT License](./LICENSE).
 
 ## Documentation
-- [HTML](https://github.com/bemoje/tsmono/blob/main/pkg/open-repo/docs/html/index.html)
-- [Markdown](https://github.com/bemoje/tsmono/blob/main/pkg/open-repo/docs/md/index.md)
+- [HTML](https://github.com/bemoje/tsmono/blob/main/docs/html/index.html)
+- [Markdown](https://github.com/bemoje/tsmono/blob/main/docs/md/open-repo/index.md)
 
 ### Variables
 
-- [program](https://github.com/bemoje/tsmono/blob/main/pkg/open-repo/docs/md/index.md#program)
+- [program](https://github.com/bemoje/tsmono/blob/main/docs/md/open-repo/index.md#program)
 
 ## Variables
 
@@ -52,4 +52,4 @@ Released under the [MIT License](./LICENSE).
 
 #### Defined in
 
-[index.ts:40](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/open-repo/src/index.ts#L40)
+[index.ts:40](https://github.com/bemoje/tsmono/blob/87185a0/pkg/open-repo/src/index.ts#L40)

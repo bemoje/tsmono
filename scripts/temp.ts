@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-// import { walkTsFiles } from './util/walkTsFiles'
 import fs from 'fs'
 import path from 'path'
 import { getPackages } from './util/getPackages'
@@ -9,12 +7,13 @@ const npmignore = path.join(tdir, '.npmignore')
 const rollup = path.join(tdir, 'rollup.config.js')
 const bundle = path.join(tdir, 'tsconfig.bundle.json')
 const eslintrc = path.join(tdir, '.eslintrc.js')
-getPackages().forEach(({ rootdir, pkg }) => {
+const projectJson = path.join(tdir, 'project.json')
+getPackages().forEach(({ rootdir, pkg, name }) => {
   // fs.writeFileSync(path.join(rootdir, '.npmignore'), fs.readFileSync(npmignore, 'utf8'), 'utf8')
-  fs.writeFileSync(path.join(rootdir, 'rollup.config.js'), fs.readFileSync(rollup, 'utf8'), 'utf8')
+  // fs.writeFileSync(path.join(rootdir, 'rollup.config.js'), fs.readFileSync(rollup, 'utf8'), 'utf8')
   // fs.writeFileSync(path.join(rootdir, 'tsconfig.bundle.json'), fs.readFileSync(bundle, 'utf8'), 'utf8')
   // fs.writeFileSync(path.join(rootdir, '.eslintrc.js'), fs.readFileSync(eslintrc, 'utf8'), 'utf8')
-  // fs.rmdirSync(path.join(rootdir, 'examples'), { recursive: true })
+  fs.rmdirSync(path.join(rootdir, 'docs'), { recursive: true })
   // fs.mkdirSync(path.join(rootdir, 'docs', 'examples'), { recursive: true })
   // pkg.scripts = {
   //   'lint': 'eslint "*/**/*.{ts,js,json}" --fix',
@@ -22,13 +21,18 @@ getPackages().forEach(({ rootdir, pkg }) => {
   //   'build': 'rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs',
   //   'docsmd':
   //     'rimraf docs/md && typedoc --out docs/md/ src/index.ts --readme none --plugin typedoc-plugin-markdown --theme markdown --entryDocument index.md --publicPath /docs/md/',
-  //   'docshtml': 'rimraf docs/html && typedoc --out docs/html --entryPoints src/index.ts',
+  //   'docshtml': `rimraf ../../docs/html/${name} && typedoc --out ../../docs/html/${name} --entryPoints src/index.ts`,
   //   'prepub': 'npm run lint && npm run build && npm run test && npm run docsmd && npm run docshtml',
-  //   'viewdocs': 'start docs/html/index.html',
   // }
-  // pkg.scripts.rollup = 'rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs'
+  // pkg.scripts.docsmd = `rimraf ../../docs/md/${name} && typedoc --out ../../docs/md/${name}/ src/index.ts --readme none --plugin typedoc-plugin-markdown --theme markdown --entryDocument index.md --publicPath "https://github.com/bemoje/tsmono/blob/main/docs/md/${name}/"`
   // pkg.scripts.build = 'npm run lint && npm run rollup'
   // fs.writeFileSync(path.join(rootdir, 'package.json'), JSON.stringify(pkg, null, 2), 'utf8')
+  // const project = fs
+  //   .readFileSync(projectJson, 'utf8')
+  //   .replace(/\{\{NAME\}\}/g, name)
+  //   .replace(/\{\{LIBRARY_OR_APPLICATION\}\}/g, pkg.preferGlobal ? 'application' : 'library')
+
+  // fs.writeFileSync(path.join(rootdir, 'project.json'), project, 'utf8')
 })
 
 // const fpaths = walkTsFiles('C:/Users/bemoj/repos/bemoje-node-util/src')

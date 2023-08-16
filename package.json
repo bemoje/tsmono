@@ -34,12 +34,16 @@
     "create-package": "ts-node -P tsconfig.json scripts/createPackage.ts",
     "delete-package": "ts-node -P tsconfig.json scripts/deletePackage.ts",
     "wipe-bemoje": "ts-node -P tsconfig.json scripts/wipeBemojeNodeModules.ts",
-    "lint": "nx run-many -t lint --parallel 5",
-    "test": "nx run-many -t test --parallel 5",
-    "build": "nx run-many -t build --parallel 5",
-    "docsmd": "nx run-many -t docsmd --parallel 5",
-    "docshtml": "nx run-many -t docshtml --parallel 5",
-    "prepub": "npm run lint && npm run test && npm run build && npm run docsmd && npm run docshtml && npm run fix-docs && npm run update-readmes"
+    "lint": "nx run-many --parallel 4 -t lint",
+    "test": "nx run-many --parallel 4 -t test",
+    "build": "nx run-many --parallel 4 -t build",
+    "docsmd": "nx run-many --parallel 4 -t docsmd",
+    "docshtml": "nx run-many --parallel 4 -t docshtml",
+    "prepub-old": "npm run lint && npm run test && npm run build && npm run docsmd && npm run docshtml && npm run fix-docs && npm run update-readmes",
+    "prepub-build": "nx run-many --parallel 4 --targets=\"lint,test,build\"",
+    "prepub-docs": "nx run-many --parallel 4 --targets=\"docsmd,docshtml\" && npm run update-readmes",
+    "prepub": "npm run prepub-build && npm run prepub-docs",
+    "opendocs": "start docs/html/index.html"
   },
   "dependencies": {
     "@bemoje/node-util": "latest"

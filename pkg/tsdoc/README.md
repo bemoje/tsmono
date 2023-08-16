@@ -37,36 +37,36 @@ Contributors are welcome to open a [pull request](https://github.com/bemoje/http
 Released under the [MIT License](./LICENSE).
 
 ## Documentation
-- [HTML](https://github.com/bemoje/tsmono/blob/main/pkg/tsdoc/docs/html/index.html)
-- [Markdown](https://github.com/bemoje/tsmono/blob/main/pkg/tsdoc/docs/md/index.md)
+- [HTML](https://github.com/bemoje/tsmono/blob/main/docs/html/index.html)
+- [Markdown](https://github.com/bemoje/tsmono/blob/main/docs/md/tsdoc/index.md)
 
 ### Classes
 
-- [TsDoc](https://github.com/bemoje/tsmono/blob/main/pkg/tsdoc/docs/md/classes/TsDoc.md)
-- [TsDocTag](https://github.com/bemoje/tsmono/blob/main/pkg/tsdoc/docs/md/classes/TsDocTag.md)
+- [TsDoc](https://github.com/bemoje/tsmono/blob/main/docs/md/tsdoc/classes/TsDoc.md)
+- [TsDocTag](https://github.com/bemoje/tsmono/blob/main/docs/md/tsdoc/classes/TsDocTag.md)
 
 ### Interfaces
 
-- [IExtractedTsDocComment](https://github.com/bemoje/tsmono/blob/main/pkg/tsdoc/docs/md/interfaces/IExtractedTsDocComment.md)
-- [TsDocOptions](https://github.com/bemoje/tsmono/blob/main/pkg/tsdoc/docs/md/interfaces/TsDocOptions.md)
+- [IExtractedTsDocComment](https://github.com/bemoje/tsmono/blob/main/docs/md/tsdoc/interfaces/IExtractedTsDocComment.md)
+- [TsDocOptions](https://github.com/bemoje/tsmono/blob/main/docs/md/tsdoc/interfaces/TsDocOptions.md)
 
 ### Functions
 
-- [isMultiTsDocTag](https://github.com/bemoje/tsmono/blob/main/pkg/tsdoc/docs/md/index.md#ismultitsdoctag)
-- [isNamedMultiTsDocTag](https://github.com/bemoje/tsmono/blob/main/pkg/tsdoc/docs/md/index.md#isnamedmultitsdoctag)
-- [isNamedTsDocTag](https://github.com/bemoje/tsmono/blob/main/pkg/tsdoc/docs/md/index.md#isnamedtsdoctag)
-- [isValidTsDocComment](https://github.com/bemoje/tsmono/blob/main/pkg/tsdoc/docs/md/index.md#isvalidtsdoccomment)
-- [tsDocExtractAllComments](https://github.com/bemoje/tsmono/blob/main/pkg/tsdoc/docs/md/index.md#tsdocextractallcomments)
-- [tsDocExtractFirstComment](https://github.com/bemoje/tsmono/blob/main/pkg/tsdoc/docs/md/index.md#tsdocextractfirstcomment)
-- [tsDocFixSpacingBeforeAfter](https://github.com/bemoje/tsmono/blob/main/pkg/tsdoc/docs/md/index.md#tsdocfixspacingbeforeafter)
-- [tsDocNormalizeTagName](https://github.com/bemoje/tsmono/blob/main/pkg/tsdoc/docs/md/index.md#tsdocnormalizetagname)
-- [tsDocRemoveEmptyLines](https://github.com/bemoje/tsmono/blob/main/pkg/tsdoc/docs/md/index.md#tsdocremoveemptylines)
-- [tsDocStripAllButMostImportantTags](https://github.com/bemoje/tsmono/blob/main/pkg/tsdoc/docs/md/index.md#tsdocstripallbutmostimportanttags)
-- [tsDocStripExample](https://github.com/bemoje/tsmono/blob/main/pkg/tsdoc/docs/md/index.md#tsdocstripexample)
-- [tsDocStripTypesAndDefaults](https://github.com/bemoje/tsmono/blob/main/pkg/tsdoc/docs/md/index.md#tsdocstriptypesanddefaults)
-- [tsDocUnwrapComment](https://github.com/bemoje/tsmono/blob/main/pkg/tsdoc/docs/md/index.md#tsdocunwrapcomment)
-- [tsDocWrapAsComment](https://github.com/bemoje/tsmono/blob/main/pkg/tsdoc/docs/md/index.md#tsdocwrapascomment)
-- [tsDocWrapExample](https://github.com/bemoje/tsmono/blob/main/pkg/tsdoc/docs/md/index.md#tsdocwrapexample)
+- [isMultiTsDocTag](https://github.com/bemoje/tsmono/blob/main/docs/md/tsdoc/index.md#ismultitsdoctag)
+- [isNamedMultiTsDocTag](https://github.com/bemoje/tsmono/blob/main/docs/md/tsdoc/index.md#isnamedmultitsdoctag)
+- [isNamedTsDocTag](https://github.com/bemoje/tsmono/blob/main/docs/md/tsdoc/index.md#isnamedtsdoctag)
+- [isValidTsDocComment](https://github.com/bemoje/tsmono/blob/main/docs/md/tsdoc/index.md#isvalidtsdoccomment)
+- [tsDocExtractAllComments](https://github.com/bemoje/tsmono/blob/main/docs/md/tsdoc/index.md#tsdocextractallcomments)
+- [tsDocExtractFirstComment](https://github.com/bemoje/tsmono/blob/main/docs/md/tsdoc/index.md#tsdocextractfirstcomment)
+- [tsDocFixSpacingBeforeAfter](https://github.com/bemoje/tsmono/blob/main/docs/md/tsdoc/index.md#tsdocfixspacingbeforeafter)
+- [tsDocNormalizeTagName](https://github.com/bemoje/tsmono/blob/main/docs/md/tsdoc/index.md#tsdocnormalizetagname)
+- [tsDocRemoveEmptyLines](https://github.com/bemoje/tsmono/blob/main/docs/md/tsdoc/index.md#tsdocremoveemptylines)
+- [tsDocStripAllButMostImportantTags](https://github.com/bemoje/tsmono/blob/main/docs/md/tsdoc/index.md#tsdocstripallbutmostimportanttags)
+- [tsDocStripExample](https://github.com/bemoje/tsmono/blob/main/docs/md/tsdoc/index.md#tsdocstripexample)
+- [tsDocStripTypesAndDefaults](https://github.com/bemoje/tsmono/blob/main/docs/md/tsdoc/index.md#tsdocstriptypesanddefaults)
+- [tsDocUnwrapComment](https://github.com/bemoje/tsmono/blob/main/docs/md/tsdoc/index.md#tsdocunwrapcomment)
+- [tsDocWrapAsComment](https://github.com/bemoje/tsmono/blob/main/docs/md/tsdoc/index.md#tsdocwrapascomment)
+- [tsDocWrapExample](https://github.com/bemoje/tsmono/blob/main/docs/md/tsdoc/index.md#tsdocwrapexample)
 
 ## Functions
 
@@ -103,7 +103,7 @@ isMultiTsDocTag('example');;
 
 #### Defined in
 
-[lib/util/isMultiTsDocTag.ts:13](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/util/isMultiTsDocTag.ts#L13)
+[lib/util/isMultiTsDocTag.ts:13](https://github.com/bemoje/tsmono/blob/87185a0/pkg/tsdoc/src/lib/util/isMultiTsDocTag.ts#L13)
 
 ___
 
@@ -137,7 +137,7 @@ isNamedMultiTsDocTag('returns');;
 
 #### Defined in
 
-[lib/util/isNamedMultiTsDocTag.ts:13](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/util/isNamedMultiTsDocTag.ts#L13)
+[lib/util/isNamedMultiTsDocTag.ts:13](https://github.com/bemoje/tsmono/blob/87185a0/pkg/tsdoc/src/lib/util/isNamedMultiTsDocTag.ts#L13)
 
 ___
 
@@ -170,7 +170,7 @@ isNamedTsDocTag('random');;
 
 #### Defined in
 
-[lib/util/isNamedTsDocTag.ts:12](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/util/isNamedTsDocTag.ts#L12)
+[lib/util/isNamedTsDocTag.ts:12](https://github.com/bemoje/tsmono/blob/87185a0/pkg/tsdoc/src/lib/util/isNamedTsDocTag.ts#L12)
 
 ___
 
@@ -198,13 +198,13 @@ This function tests each line of the provided code string against a regular expr
 
 #### Defined in
 
-[lib/util/isValidTsDocComment.ts:7](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/util/isValidTsDocComment.ts#L7)
+[lib/util/isValidTsDocComment.ts:7](https://github.com/bemoje/tsmono/blob/87185a0/pkg/tsdoc/src/lib/util/isValidTsDocComment.ts#L7)
 
 ___
 
 ### tsDocExtractAllComments
 
-▸ **tsDocExtractAllComments**(`code`): `Generator`<[`IExtractedTsDocComment`](https://github.com/bemoje/tsmono/blob/main/pkg/tsdoc/docs/md/interfaces/IExtractedTsDocComment.md)\>
+▸ **tsDocExtractAllComments**(`code`): `Generator`<[`IExtractedTsDocComment`](https://github.com/bemoje/tsmono/blob/main/docs/md/tsdoc/interfaces/IExtractedTsDocComment.md)\>
 
 This function takes a source string, and yields each TSDoc block comments in it.
 
@@ -216,7 +216,7 @@ This function takes a source string, and yields each TSDoc block comments in it.
 
 #### Returns
 
-`Generator`<[`IExtractedTsDocComment`](https://github.com/bemoje/tsmono/blob/main/pkg/tsdoc/docs/md/interfaces/IExtractedTsDocComment.md)\>
+`Generator`<[`IExtractedTsDocComment`](https://github.com/bemoje/tsmono/blob/main/docs/md/tsdoc/interfaces/IExtractedTsDocComment.md)\>
 
 A generator that yields each TSDoc block comment in the source code.
 
@@ -226,13 +226,13 @@ Each TSDoc block comment in the source code.
 
 #### Defined in
 
-[lib/util/tsDocExtractAllComments.ts:9](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/util/tsDocExtractAllComments.ts#L9)
+[lib/util/tsDocExtractAllComments.ts:9](https://github.com/bemoje/tsmono/blob/87185a0/pkg/tsdoc/src/lib/util/tsDocExtractAllComments.ts#L9)
 
 ___
 
 ### tsDocExtractFirstComment
 
-▸ **tsDocExtractFirstComment**(`code`): [`IExtractedTsDocComment`](https://github.com/bemoje/tsmono/blob/main/pkg/tsdoc/docs/md/interfaces/IExtractedTsDocComment.md) \| `undefined`
+▸ **tsDocExtractFirstComment**(`code`): [`IExtractedTsDocComment`](https://github.com/bemoje/tsmono/blob/main/docs/md/tsdoc/interfaces/IExtractedTsDocComment.md) \| `undefined`
 
 Extracts the first TSDoc block comment from the provided TypeScript code.
 
@@ -244,11 +244,11 @@ Extracts the first TSDoc block comment from the provided TypeScript code.
 
 #### Returns
 
-[`IExtractedTsDocComment`](https://github.com/bemoje/tsmono/blob/main/pkg/tsdoc/docs/md/interfaces/IExtractedTsDocComment.md) \| `undefined`
+[`IExtractedTsDocComment`](https://github.com/bemoje/tsmono/blob/main/docs/md/tsdoc/interfaces/IExtractedTsDocComment.md) \| `undefined`
 
 #### Defined in
 
-[lib/util/tsDocExtractFirstComment.ts:8](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/util/tsDocExtractFirstComment.ts#L8)
+[lib/util/tsDocExtractFirstComment.ts:8](https://github.com/bemoje/tsmono/blob/87185a0/pkg/tsdoc/src/lib/util/tsDocExtractFirstComment.ts#L8)
 
 ___
 
@@ -292,7 +292,7 @@ const fixedCode = tsDocFixSpacingBeforeAfter(code);
 
 #### Defined in
 
-[lib/util/tsDocFixSpacingBeforeAfter.ts:23](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/util/tsDocFixSpacingBeforeAfter.ts#L23)
+[lib/util/tsDocFixSpacingBeforeAfter.ts:23](https://github.com/bemoje/tsmono/blob/87185a0/pkg/tsdoc/src/lib/util/tsDocFixSpacingBeforeAfter.ts#L23)
 
 ___
 
@@ -328,7 +328,7 @@ tsDocNormalizeTagName("TagName");;
 
 #### Defined in
 
-[lib/util/tsDocNormalizeTagName.ts:12](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/util/tsDocNormalizeTagName.ts#L12)
+[lib/util/tsDocNormalizeTagName.ts:12](https://github.com/bemoje/tsmono/blob/87185a0/pkg/tsdoc/src/lib/util/tsDocNormalizeTagName.ts#L12)
 
 ___
 
@@ -354,7 +354,7 @@ This function is particularly useful when dealing with multi-line strings that m
 
 #### Defined in
 
-[lib/util/tsDocRemoveEmptyLines.ts:6](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/util/tsDocRemoveEmptyLines.ts#L6)
+[lib/util/tsDocRemoveEmptyLines.ts:6](https://github.com/bemoje/tsmono/blob/87185a0/pkg/tsdoc/src/lib/util/tsDocRemoveEmptyLines.ts#L6)
 
 ___
 
@@ -403,7 +403,7 @@ tsDocStripAllTagsExcepThrowsParamDescription(source);
 
 #### Defined in
 
-[lib/util/tsDocStripAllButMostImportantTags.ts:25](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/util/tsDocStripAllButMostImportantTags.ts#L25)
+[lib/util/tsDocStripAllButMostImportantTags.ts:25](https://github.com/bemoje/tsmono/blob/87185a0/pkg/tsdoc/src/lib/util/tsDocStripAllButMostImportantTags.ts#L25)
 
 ___
 
@@ -427,7 +427,7 @@ The modified source string with all example TSDoc tags stripped.
 
 #### Defined in
 
-[lib/util/tsDocStripExample.ts:9](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/util/tsDocStripExample.ts#L9)
+[lib/util/tsDocStripExample.ts:9](https://github.com/bemoje/tsmono/blob/87185a0/pkg/tsdoc/src/lib/util/tsDocStripExample.ts#L9)
 
 ___
 
@@ -473,7 +473,7 @@ const expected = [
 
 #### Defined in
 
-[lib/util/tsDocStripTypesAndDefaults.ts:24](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/util/tsDocStripTypesAndDefaults.ts#L24)
+[lib/util/tsDocStripTypesAndDefaults.ts:24](https://github.com/bemoje/tsmono/blob/87185a0/pkg/tsdoc/src/lib/util/tsDocStripTypesAndDefaults.ts#L24)
 
 ___
 
@@ -527,7 +527,7 @@ actual === expected
 
 #### Defined in
 
-[lib/util/tsDocUnwrapComment.ts:30](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/util/tsDocUnwrapComment.ts#L30)
+[lib/util/tsDocUnwrapComment.ts:30](https://github.com/bemoje/tsmono/blob/87185a0/pkg/tsdoc/src/lib/util/tsDocUnwrapComment.ts#L30)
 
 ___
 
@@ -555,7 +555,7 @@ This function is useful when you want to generate TSDoc comments programmaticall
 
 #### Defined in
 
-[lib/util/tsDocWrapAsComment.ts:9](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/util/tsDocWrapAsComment.ts#L9)
+[lib/util/tsDocWrapAsComment.ts:9](https://github.com/bemoje/tsmono/blob/87185a0/pkg/tsdoc/src/lib/util/tsDocWrapAsComment.ts#L9)
 
 ___
 
@@ -594,4 +594,4 @@ tsWrapDocExample(code);
 
 #### Defined in
 
-[lib/util/tsDocWrapExample.ts:12](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tsdoc/src/lib/util/tsDocWrapExample.ts#L12)
+[lib/util/tsDocWrapExample.ts:12](https://github.com/bemoje/tsmono/blob/87185a0/pkg/tsdoc/src/lib/util/tsDocWrapExample.ts#L12)

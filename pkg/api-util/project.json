@@ -1,0 +1,8 @@
+{
+  "name": "api-util",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "pkg/api-util/src",
+  "projectType": "library",
+  "targets": {},
+  "tags": []
+}

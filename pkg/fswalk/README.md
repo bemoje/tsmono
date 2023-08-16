@@ -37,20 +37,20 @@ Contributors are welcome to open a [pull request](https://github.com/bemoje/http
 Released under the [MIT License](./LICENSE).
 
 ## Documentation
-- [HTML](https://github.com/bemoje/tsmono/blob/main/pkg/fswalk/docs/html/index.html)
-- [Markdown](https://github.com/bemoje/tsmono/blob/main/pkg/fswalk/docs/md/index.md)
+- [HTML](https://github.com/bemoje/tsmono/blob/main/docs/html/index.html)
+- [Markdown](https://github.com/bemoje/tsmono/blob/main/docs/md/fswalk/index.md)
 
 ### Interfaces
 
-- [IWalkDirectoryOptions](https://github.com/bemoje/tsmono/blob/main/pkg/fswalk/docs/md/interfaces/IWalkDirectoryOptions.md)
+- [IWalkDirectoryOptions](https://github.com/bemoje/tsmono/blob/main/docs/md/fswalk/interfaces/IWalkDirectoryOptions.md)
 
 ### Functions
 
-- [convertFilter](https://github.com/bemoje/tsmono/blob/main/pkg/fswalk/docs/md/index.md#convertfilter)
-- [findFile](https://github.com/bemoje/tsmono/blob/main/pkg/fswalk/docs/md/index.md#findfile)
-- [walkDirectory](https://github.com/bemoje/tsmono/blob/main/pkg/fswalk/docs/md/index.md#walkdirectory)
-- [walkDirectoryEmitter](https://github.com/bemoje/tsmono/blob/main/pkg/fswalk/docs/md/index.md#walkdirectoryemitter)
-- [walkDirectorySync](https://github.com/bemoje/tsmono/blob/main/pkg/fswalk/docs/md/index.md#walkdirectorysync)
+- [convertFilter](https://github.com/bemoje/tsmono/blob/main/docs/md/fswalk/index.md#convertfilter)
+- [findFile](https://github.com/bemoje/tsmono/blob/main/docs/md/fswalk/index.md#findfile)
+- [walkDirectory](https://github.com/bemoje/tsmono/blob/main/docs/md/fswalk/index.md#walkdirectory)
+- [walkDirectoryEmitter](https://github.com/bemoje/tsmono/blob/main/docs/md/fswalk/index.md#walkdirectoryemitter)
+- [walkDirectorySync](https://github.com/bemoje/tsmono/blob/main/docs/md/fswalk/index.md#walkdirectorysync)
 
 ## Functions
 
@@ -83,7 +83,7 @@ Released under the [MIT License](./LICENSE).
 
 #### Defined in
 
-[pkg/fswalk/src/lib/core/convertFilter.ts:4](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fswalk/src/lib/core/convertFilter.ts#L4)
+[pkg/fswalk/src/lib/core/convertFilter.ts:4](https://github.com/bemoje/tsmono/blob/87185a0/pkg/fswalk/src/lib/core/convertFilter.ts#L4)
 
 ___
 
@@ -97,7 +97,7 @@ ___
 | :------ | :------ |
 | `dirpath` | `string` |
 | `search` | `string` |
-| `options` | [`IWalkDirectoryOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/fswalk/docs/md/interfaces/IWalkDirectoryOptions.md) |
+| `options` | [`IWalkDirectoryOptions`](https://github.com/bemoje/tsmono/blob/main/docs/md/fswalk/interfaces/IWalkDirectoryOptions.md) |
 
 #### Returns
 
@@ -105,7 +105,7 @@ ___
 
 #### Defined in
 
-[pkg/fswalk/src/lib/findFile.ts:7](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fswalk/src/lib/findFile.ts#L7)
+[pkg/fswalk/src/lib/findFile.ts:7](https://github.com/bemoje/tsmono/blob/87185a0/pkg/fswalk/src/lib/findFile.ts#L7)
 
 ___
 
@@ -118,7 +118,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `dirpath` | `string` |
-| `options` | [`IWalkDirectoryOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/fswalk/docs/md/interfaces/IWalkDirectoryOptions.md) |
+| `options` | [`IWalkDirectoryOptions`](https://github.com/bemoje/tsmono/blob/main/docs/md/fswalk/interfaces/IWalkDirectoryOptions.md) |
 | `callback?` | (`filepath`: `string`, `stat`: `Stats`) => `void` |
 
 #### Returns
@@ -127,7 +127,7 @@ ___
 
 #### Defined in
 
-[pkg/fswalk/src/lib/walkDirectory.ts:6](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fswalk/src/lib/walkDirectory.ts#L6)
+[pkg/fswalk/src/lib/walkDirectory.ts:6](https://github.com/bemoje/tsmono/blob/87185a0/pkg/fswalk/src/lib/walkDirectory.ts#L6)
 
 ___
 
@@ -140,7 +140,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `dirpath` | `string` |
-| `options` | [`IWalkDirectoryOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/fswalk/docs/md/interfaces/IWalkDirectoryOptions.md) |
+| `options` | [`IWalkDirectoryOptions`](https://github.com/bemoje/tsmono/blob/main/docs/md/fswalk/interfaces/IWalkDirectoryOptions.md) |
 
 #### Returns
 
@@ -148,7 +148,7 @@ ___
 
 #### Defined in
 
-[pkg/fswalk/src/lib/walkDirectoryEmitter.ts:5](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fswalk/src/lib/walkDirectoryEmitter.ts#L5)
+[pkg/fswalk/src/lib/walkDirectoryEmitter.ts:5](https://github.com/bemoje/tsmono/blob/87185a0/pkg/fswalk/src/lib/walkDirectoryEmitter.ts#L5)
 
 ___
 
@@ -161,7 +161,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `dirpath` | `string` |
-| `options` | [`IWalkDirectoryOptions`](https://github.com/bemoje/tsmono/blob/main/pkg/fswalk/docs/md/interfaces/IWalkDirectoryOptions.md) |
+| `options` | [`IWalkDirectoryOptions`](https://github.com/bemoje/tsmono/blob/main/docs/md/fswalk/interfaces/IWalkDirectoryOptions.md) |
 | `callback?` | (`filepath`: `string`, `stat`: `Stats`) => `void` |
 
 #### Returns
@@ -170,4 +170,4 @@ ___
 
 #### Defined in
 
-[pkg/fswalk/src/lib/walkDirectorySync.ts:6](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/fswalk/src/lib/walkDirectorySync.ts#L6)
+[pkg/fswalk/src/lib/walkDirectorySync.ts:6](https://github.com/bemoje/tsmono/blob/87185a0/pkg/fswalk/src/lib/walkDirectorySync.ts#L6)

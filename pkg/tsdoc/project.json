@@ -1,0 +1,8 @@
+{
+  "name": "tsdoc",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "pkg/tsdoc/src",
+  "projectType": "library",
+  "targets": {},
+  "tags": []
+}

@@ -37,12 +37,12 @@ Contributors are welcome to open a [pull request](https://github.com/bemoje/http
 Released under the [MIT License](./LICENSE).
 
 ## Documentation
-- [HTML](https://github.com/bemoje/tsmono/blob/main/pkg/split-sentences/docs/html/index.html)
-- [Markdown](https://github.com/bemoje/tsmono/blob/main/pkg/split-sentences/docs/md/index.md)
+- [HTML](https://github.com/bemoje/tsmono/blob/main/docs/html/index.html)
+- [Markdown](https://github.com/bemoje/tsmono/blob/main/docs/md/split-sentences/index.md)
 
 ### Functions
 
-- [splitSentences](https://github.com/bemoje/tsmono/blob/main/pkg/split-sentences/docs/md/index.md#splitsentences)
+- [splitSentences](https://github.com/bemoje/tsmono/blob/main/docs/md/split-sentences/index.md#splitsentences)
 
 ## Functions
 
@@ -75,4 +75,4 @@ splitSentences('Hello world. How are you?');
 
 #### Defined in
 
-[lib/splitSentences.ts:12](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/split-sentences/src/lib/splitSentences.ts#L12)
+[lib/splitSentences.ts:12](https://github.com/bemoje/tsmono/blob/87185a0/pkg/split-sentences/src/lib/splitSentences.ts#L12)

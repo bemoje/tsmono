@@ -1,0 +1,8 @@
+{
+  "name": "trie-map",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "pkg/trie-map/src",
+  "projectType": "library",
+  "targets": {},
+  "tags": []
+}

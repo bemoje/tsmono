@@ -37,9 +37,9 @@ Contributors are welcome to open a [pull request](https://github.com/bemoje/http
 Released under the [MIT License](./LICENSE).
 
 ## Documentation
-- [HTML](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/html/index.html)
-- [Markdown](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/index.md)
+- [HTML](https://github.com/bemoje/tsmono/blob/main/docs/html/index.html)
+- [Markdown](https://github.com/bemoje/tsmono/blob/main/docs/md/trie-map/index.md)
 
 ### Classes
 
-- [TrieMap](https://github.com/bemoje/tsmono/blob/main/pkg/trie-map/docs/md/classes/TrieMap.md)
+- [TrieMap](https://github.com/bemoje/tsmono/blob/main/docs/md/trie-map/classes/TrieMap.md)

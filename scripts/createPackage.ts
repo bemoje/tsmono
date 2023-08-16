@@ -2,12 +2,14 @@ import fs from 'fs'
 import path from 'path'
 import strip from 'strip-comments'
 
+//args
 const args = process.argv.slice(2)
 const name = args[0]
 if (!name) throw new Error('no name provided')
 const isCLI = args[1] === 'true' ? true : false
 const description = args[2] || ''
 
+// copy template dir
 const template = path.join(process.cwd(), 'scripts', 'template')
 const root = path.join(process.cwd(), 'pkg', name)
 fs.mkdirSync(root, { recursive: true })
@@ -22,14 +24,16 @@ fs.readdirSync(template).map((filename) => {
     } else if (filename === 'src') {
       fs.mkdirSync(subdirdest, { recursive: true })
       fs.copyFileSync(path.join(fpath, 'index.ts'), path.join(subdirdest, 'index.ts'))
-      fs.copyFileSync(path.join(fpath, 'test.test.ts'), path.join(subdirdest, 'test.test.ts'))
+      const libdir = path.join(subdirdest, 'lib')
+      fs.mkdirSync(libdir, { recursive: true })
+      fs.copyFileSync(path.join(fpath, 'lib', 'test.test.ts'), path.join(libdir, 'test.test.ts'))
     }
   } else {
     fs.copyFileSync(fpath, path.join(root, filename))
   }
-  fs.mkdirSync(path.join(root, 'docs', 'examples'), { recursive: true })
 })
 
+// package.json
 const pkg = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'))
 pkg.name = '@bemoje/' + name
 pkg.description = description
@@ -37,17 +41,46 @@ if (!isCLI) {
   Reflect.deleteProperty(pkg, 'bin')
   Reflect.deleteProperty(pkg, 'preferGlobal')
 }
+pkg.scripts = {
+  'lint': 'eslint "*/**/*.{ts,js,json}" --fix',
+  'test': 'jest --preset ts-jest',
+  'build': 'rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs',
+  'docsmd': `rimraf ../../docs/md/${name} && typedoc --out ../../docs/md/${name}/ src/index.ts --readme none --plugin typedoc-plugin-markdown --theme markdown --entryDocument index.md --publicPath "https://github.com/bemoje/tsmono/blob/main/docs/md/${name}/"`,
+  'docshtml': `rimraf ../../docs/html/${name} && typedoc --out ../../docs/html/${name} --entryPoints src/index.ts`,
+  'prepub': 'npm run lint && npm run build && npm run test && npm run docsmd && npm run docshtml',
+}
 fs.writeFileSync(path.join(root, 'package.json'), JSON.stringify(pkg, null, 2), 'utf8')
 
+// project.json
+const projectJson = path.join(template, 'project.json')
+const project = fs
+  .readFileSync(projectJson, 'utf8')
+  .replace(/\{\{NAME\}\}/g, name)
+  .replace(/\{\{LIBRARY_OR_APPLICATION\}\}/g, pkg.preferGlobal ? 'application' : 'library')
+fs.writeFileSync(path.join(root, 'project.json'), project, 'utf8')
+
+// tsconfig
 const tsconfigpath = path.join(process.cwd(), 'tsconfig.json')
 const json = strip(fs.readFileSync(tsconfigpath, 'utf8'))
 const tsconfig = JSON.parse(json)
 tsconfig.compilerOptions.paths['@bemoje/' + name] = ['./pkg/' + name + '/src/index.ts']
 fs.writeFileSync(tsconfigpath, JSON.stringify(tsconfig, null, 2), 'utf8')
 
+// tsmono package.json
 const rootpkgpath = path.join(process.cwd(), 'package.json')
 const rootpkg = JSON.parse(fs.readFileSync(rootpkgpath, 'utf8'))
 rootpkg.workspaces.push('pkg/' + name)
 fs.writeFileSync(rootpkgpath, JSON.stringify(rootpkg, null, 2), 'utf8')
 
+// docs/html/index.html
+const docsindexpath = path.join(process.cwd(), 'docs', 'html', 'index.html')
+let docsindex = fs.readFileSync(docsindexpath, 'utf8')
+const find = pkg.preferGlobal ? '<h2>Applications</h2>' : '<h2>Libraries</h2>'
+const docsindexlines = docsindex.split('\n')
+const docsindexline = 2 + docsindexlines.findIndex((line) => line.includes(find))
+docsindexlines.splice(docsindexline, 0, `<li><a href="./${name}/modules.html">${name}</a></li>`)
+docsindex = docsindexlines.join('\n')
+fs.writeFileSync(docsindexpath, docsindex, 'utf8')
+
+// done
 console.log(name + ' initialized')

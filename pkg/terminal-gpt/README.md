@@ -37,12 +37,12 @@ Contributors are welcome to open a [pull request](https://github.com/bemoje/http
 Released under the [MIT License](./LICENSE).
 
 ## Documentation
-- [HTML](https://github.com/bemoje/tsmono/blob/main/pkg/terminal-gpt/docs/html/index.html)
-- [Markdown](https://github.com/bemoje/tsmono/blob/main/pkg/terminal-gpt/docs/md/index.md)
+- [HTML](https://github.com/bemoje/tsmono/blob/main/docs/html/index.html)
+- [Markdown](https://github.com/bemoje/tsmono/blob/main/docs/md/terminal-gpt/index.md)
 
 ### Variables
 
-- [program](https://github.com/bemoje/tsmono/blob/main/pkg/terminal-gpt/docs/md/index.md#program)
+- [program](https://github.com/bemoje/tsmono/blob/main/docs/md/terminal-gpt/index.md#program)
 
 ## Variables
 
@@ -52,4 +52,4 @@ Released under the [MIT License](./LICENSE).
 
 #### Defined in
 
-[index.ts:5](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/terminal-gpt/src/index.ts#L5)
+[index.ts:5](https://github.com/bemoje/tsmono/blob/87185a0/pkg/terminal-gpt/src/index.ts#L5)

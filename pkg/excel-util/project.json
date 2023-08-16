@@ -1,0 +1,8 @@
+{
+  "name": "excel-util",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "pkg/excel-util/src",
+  "projectType": "library",
+  "targets": {},
+  "tags": []
+}

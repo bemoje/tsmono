@@ -37,26 +37,26 @@ Contributors are welcome to open a [pull request](https://github.com/bemoje/http
 Released under the [MIT License](./LICENSE).
 
 ## Documentation
-- [HTML](https://github.com/bemoje/tsmono/blob/main/pkg/tscode/docs/html/index.html)
-- [Markdown](https://github.com/bemoje/tsmono/blob/main/pkg/tscode/docs/md/index.md)
+- [HTML](https://github.com/bemoje/tsmono/blob/main/docs/html/index.html)
+- [Markdown](https://github.com/bemoje/tsmono/blob/main/docs/md/tscode/index.md)
 
 ### Interfaces
 
-- [ITsExtractImportsResult](https://github.com/bemoje/tsmono/blob/main/pkg/tscode/docs/md/interfaces/ITsExtractImportsResult.md)
+- [ITsExtractImportsResult](https://github.com/bemoje/tsmono/blob/main/docs/md/tscode/interfaces/ITsExtractImportsResult.md)
 
 ### Functions
 
-- [tsCountExports](https://github.com/bemoje/tsmono/blob/main/pkg/tscode/docs/md/index.md#tscountexports)
-- [tsExtractImports](https://github.com/bemoje/tsmono/blob/main/pkg/tscode/docs/md/index.md#tsextractimports)
-- [tsExtractJestTests](https://github.com/bemoje/tsmono/blob/main/pkg/tscode/docs/md/index.md#tsextractjesttests)
-- [tsGetClassMemberAccessModifiers](https://github.com/bemoje/tsmono/blob/main/pkg/tscode/docs/md/index.md#tsgetclassmemberaccessmodifiers)
-- [tsHasDefaultExport](https://github.com/bemoje/tsmono/blob/main/pkg/tscode/docs/md/index.md#tshasdefaultexport)
-- [tsJestConvertExportNameString](https://github.com/bemoje/tsmono/blob/main/pkg/tscode/docs/md/index.md#tsjestconvertexportnamestring)
-- [tsJestEnsureLineSpacing](https://github.com/bemoje/tsmono/blob/main/pkg/tscode/docs/md/index.md#tsjestensurelinespacing)
-- [tsSimpleMinifyCode](https://github.com/bemoje/tsmono/blob/main/pkg/tscode/docs/md/index.md#tssimpleminifycode)
-- [tsStripDeclSourceMapComments](https://github.com/bemoje/tsmono/blob/main/pkg/tscode/docs/md/index.md#tsstripdeclsourcemapcomments)
-- [tsStripExportKeyword](https://github.com/bemoje/tsmono/blob/main/pkg/tscode/docs/md/index.md#tsstripexportkeyword)
-- [tsStripImports](https://github.com/bemoje/tsmono/blob/main/pkg/tscode/docs/md/index.md#tsstripimports)
+- [tsCountExports](https://github.com/bemoje/tsmono/blob/main/docs/md/tscode/index.md#tscountexports)
+- [tsExtractImports](https://github.com/bemoje/tsmono/blob/main/docs/md/tscode/index.md#tsextractimports)
+- [tsExtractJestTests](https://github.com/bemoje/tsmono/blob/main/docs/md/tscode/index.md#tsextractjesttests)
+- [tsGetClassMemberAccessModifiers](https://github.com/bemoje/tsmono/blob/main/docs/md/tscode/index.md#tsgetclassmemberaccessmodifiers)
+- [tsHasDefaultExport](https://github.com/bemoje/tsmono/blob/main/docs/md/tscode/index.md#tshasdefaultexport)
+- [tsJestConvertExportNameString](https://github.com/bemoje/tsmono/blob/main/docs/md/tscode/index.md#tsjestconvertexportnamestring)
+- [tsJestEnsureLineSpacing](https://github.com/bemoje/tsmono/blob/main/docs/md/tscode/index.md#tsjestensurelinespacing)
+- [tsSimpleMinifyCode](https://github.com/bemoje/tsmono/blob/main/docs/md/tscode/index.md#tssimpleminifycode)
+- [tsStripDeclSourceMapComments](https://github.com/bemoje/tsmono/blob/main/docs/md/tscode/index.md#tsstripdeclsourcemapcomments)
+- [tsStripExportKeyword](https://github.com/bemoje/tsmono/blob/main/docs/md/tscode/index.md#tsstripexportkeyword)
+- [tsStripImports](https://github.com/bemoje/tsmono/blob/main/docs/md/tscode/index.md#tsstripimports)
 
 ## Functions
 
@@ -93,13 +93,13 @@ const count = tsCountExports(code);
 
 #### Defined in
 
-[lib/tsCountExports.ts:16](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tscode/src/lib/tsCountExports.ts#L16)
+[lib/tsCountExports.ts:16](https://github.com/bemoje/tsmono/blob/87185a0/pkg/tscode/src/lib/tsCountExports.ts#L16)
 
 ___
 
 ### tsExtractImports
 
-▸ **tsExtractImports**(`code`): [`ITsExtractImportsResult`](https://github.com/bemoje/tsmono/blob/main/pkg/tscode/docs/md/interfaces/ITsExtractImportsResult.md)[]
+▸ **tsExtractImports**(`code`): [`ITsExtractImportsResult`](https://github.com/bemoje/tsmono/blob/main/docs/md/tscode/interfaces/ITsExtractImportsResult.md)[]
 
 Extract all import statements from a given TypeScript source code string.
 
@@ -111,13 +111,13 @@ Extract all import statements from a given TypeScript source code string.
 
 #### Returns
 
-[`ITsExtractImportsResult`](https://github.com/bemoje/tsmono/blob/main/pkg/tscode/docs/md/interfaces/ITsExtractImportsResult.md)[]
+[`ITsExtractImportsResult`](https://github.com/bemoje/tsmono/blob/main/docs/md/tscode/interfaces/ITsExtractImportsResult.md)[]
 
 An array of objects, each representing an import statement. Each object includes the start and end line numbers (0-indexed) of the import statement in the original code, and the full text of the import statement.
 
 #### Defined in
 
-[lib/tsExtractImports.ts:8](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tscode/src/lib/tsExtractImports.ts#L8)
+[lib/tsExtractImports.ts:8](https://github.com/bemoje/tsmono/blob/87185a0/pkg/tscode/src/lib/tsExtractImports.ts#L8)
 
 ___
 
@@ -151,7 +151,7 @@ Will throw an error if the input source code does not contain Jest tests.
 
 #### Defined in
 
-[lib/tsExtractJestTests.ts:13](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tscode/src/lib/tsExtractJestTests.ts#L13)
+[lib/tsExtractJestTests.ts:13](https://github.com/bemoje/tsmono/blob/87185a0/pkg/tscode/src/lib/tsExtractJestTests.ts#L13)
 
 ___
 
@@ -195,7 +195,7 @@ tsGetClassMemberAccessModifiers(code);
 
 #### Defined in
 
-[lib/tsGetClassMemberAccessModifiers.ts:20](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tscode/src/lib/tsGetClassMemberAccessModifiers.ts#L20)
+[lib/tsGetClassMemberAccessModifiers.ts:20](https://github.com/bemoje/tsmono/blob/87185a0/pkg/tscode/src/lib/tsGetClassMemberAccessModifiers.ts#L20)
 
 ___
 
@@ -227,7 +227,7 @@ tsHasDefaultExport(code);
 
 #### Defined in
 
-[lib/tsHasDefaultExport.ts:11](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tscode/src/lib/tsHasDefaultExport.ts#L11)
+[lib/tsHasDefaultExport.ts:11](https://github.com/bemoje/tsmono/blob/87185a0/pkg/tscode/src/lib/tsHasDefaultExport.ts#L11)
 
 ___
 
@@ -262,7 +262,7 @@ const newCode = tsJestConvertExportNameString(code, exportName);
 
 #### Defined in
 
-[lib/tsJestConvertExportNameString.ts:14](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tscode/src/lib/tsJestConvertExportNameString.ts#L14)
+[lib/tsJestConvertExportNameString.ts:14](https://github.com/bemoje/tsmono/blob/87185a0/pkg/tscode/src/lib/tsJestConvertExportNameString.ts#L14)
 
 ___
 
@@ -282,7 +282,7 @@ ___
 
 #### Defined in
 
-[lib/tsJestEnsureLineSpacing.ts:3](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tscode/src/lib/tsJestEnsureLineSpacing.ts#L3)
+[lib/tsJestEnsureLineSpacing.ts:3](https://github.com/bemoje/tsmono/blob/87185a0/pkg/tscode/src/lib/tsJestEnsureLineSpacing.ts#L3)
 
 ___
 
@@ -316,7 +316,7 @@ tsSimpleMinifyCode
 
 #### Defined in
 
-[lib/tsSimpleMinifyCode.ts:12](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tscode/src/lib/tsSimpleMinifyCode.ts#L12)
+[lib/tsSimpleMinifyCode.ts:12](https://github.com/bemoje/tsmono/blob/87185a0/pkg/tscode/src/lib/tsSimpleMinifyCode.ts#L12)
 
 ___
 
@@ -353,7 +353,7 @@ tsStripDeclSourceMapComments(
 
 #### Defined in
 
-[lib/tsStripDeclSourceMapComments.ts:13](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tscode/src/lib/tsStripDeclSourceMapComments.ts#L13)
+[lib/tsStripDeclSourceMapComments.ts:13](https://github.com/bemoje/tsmono/blob/87185a0/pkg/tscode/src/lib/tsStripDeclSourceMapComments.ts#L13)
 
 ___
 
@@ -388,7 +388,7 @@ tsStripExportKeyword('export const foo = "bar";\nexport function baz() {}');;
 
 #### Defined in
 
-[lib/tsStripExportKeyword.ts:11](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tscode/src/lib/tsStripExportKeyword.ts#L11)
+[lib/tsStripExportKeyword.ts:11](https://github.com/bemoje/tsmono/blob/87185a0/pkg/tscode/src/lib/tsStripExportKeyword.ts#L11)
 
 ___
 
@@ -424,4 +424,4 @@ tsStripImports(code)
 
 #### Defined in
 
-[lib/tsStripImports.ts:18](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/tscode/src/lib/tsStripImports.ts#L18)
+[lib/tsStripImports.ts:18](https://github.com/bemoje/tsmono/blob/87185a0/pkg/tscode/src/lib/tsStripImports.ts#L18)

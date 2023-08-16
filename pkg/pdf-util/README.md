@@ -37,14 +37,14 @@ Contributors are welcome to open a [pull request](https://github.com/bemoje/http
 Released under the [MIT License](./LICENSE).
 
 ## Documentation
-- [HTML](https://github.com/bemoje/tsmono/blob/main/pkg/pdf-util/docs/html/index.html)
-- [Markdown](https://github.com/bemoje/tsmono/blob/main/pkg/pdf-util/docs/md/index.md)
+- [HTML](https://github.com/bemoje/tsmono/blob/main/docs/html/index.html)
+- [Markdown](https://github.com/bemoje/tsmono/blob/main/docs/md/pdf-util/index.md)
 
 ### Functions
 
-- [pdfGetPages](https://github.com/bemoje/tsmono/blob/main/pkg/pdf-util/docs/md/index.md#pdfgetpages)
-- [pdfIteratePages](https://github.com/bemoje/tsmono/blob/main/pkg/pdf-util/docs/md/index.md#pdfiteratepages)
-- [pdfSplitPages](https://github.com/bemoje/tsmono/blob/main/pkg/pdf-util/docs/md/index.md#pdfsplitpages)
+- [pdfGetPages](https://github.com/bemoje/tsmono/blob/main/docs/md/pdf-util/index.md#pdfgetpages)
+- [pdfIteratePages](https://github.com/bemoje/tsmono/blob/main/docs/md/pdf-util/index.md#pdfiteratepages)
+- [pdfSplitPages](https://github.com/bemoje/tsmono/blob/main/docs/md/pdf-util/index.md#pdfsplitpages)
 
 ## Functions
 
@@ -77,7 +77,7 @@ console.log(pages); // logs the first 5 pages of the PDF
 
 #### Defined in
 
-[lib/pdfGetPages.ts:14](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/pdf-util/src/lib/pdfGetPages.ts#L14)
+[lib/pdfGetPages.ts:14](https://github.com/bemoje/tsmono/blob/87185a0/pkg/pdf-util/src/lib/pdfGetPages.ts#L14)
 
 ___
 
@@ -115,7 +115,7 @@ for await (const pageText of pdfIteratePages('path/to/file.pdf')) {
 
 #### Defined in
 
-[lib/pdfIteratePages.ts:18](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/pdf-util/src/lib/pdfIteratePages.ts#L18)
+[lib/pdfIteratePages.ts:18](https://github.com/bemoje/tsmono/blob/87185a0/pkg/pdf-util/src/lib/pdfIteratePages.ts#L18)
 
 ___
 
@@ -160,4 +160,4 @@ pdfSplitPages(inputFilePath, outputDirPath)
 
 #### Defined in
 
-[lib/pdfSplitPages.ts:24](https://github.com/bemoje/tsmono/blob/ad6c8c6/pkg/pdf-util/src/lib/pdfSplitPages.ts#L24)
+[lib/pdfSplitPages.ts:24](https://github.com/bemoje/tsmono/blob/87185a0/pkg/pdf-util/src/lib/pdfSplitPages.ts#L24)

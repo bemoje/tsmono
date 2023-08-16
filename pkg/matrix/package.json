@@ -9,10 +9,9 @@
     "lint": "eslint \"*/**/*.{ts,js,json}\" --fix",
     "test": "jest --preset ts-jest",
     "build": "rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs",
-    "docsmd": "rimraf docs/md && typedoc --out docs/md/ src/index.ts --readme none --plugin typedoc-plugin-markdown --theme markdown --entryDocument index.md --publicPath /docs/md/",
-    "docshtml": "rimraf docs/html && typedoc --out docs/html --entryPoints src/index.ts",
-    "prepub": "npm run lint && npm run build && npm run test && npm run docsmd && npm run docshtml",
-    "viewdocs": "start docs/html/index.html"
+    "docsmd": "rimraf ../../docs/md/matrix && typedoc --out ../../docs/md/matrix/ src/index.ts --readme none --plugin typedoc-plugin-markdown --theme markdown --entryDocument index.md --publicPath \"https://github.com/bemoje/tsmono/blob/main/docs/md/matrix/\"",
+    "docshtml": "rimraf ../../docs/html/matrix && typedoc --out ../../docs/html/matrix --entryPoints src/index.ts",
+    "prepub": "npm run lint && npm run build && npm run test && npm run docsmd && npm run docshtml"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.3",

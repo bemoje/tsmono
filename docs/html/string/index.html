@@ -1,0 +1,1876 @@
+<!DOCTYPE html><html class="default" lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>@bemoje/string</title><meta name="description" content="Documentation for @bemoje/string"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script defer src="assets/main.js"></script><script async src="assets/search.js" id="tsd-search-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os"</script><header class="tsd-page-toolbar">
+<div class="tsd-toolbar-contents container">
+<div class="table-cell" id="tsd-search" data-base=".">
+<div class="field"><label for="tsd-search-field" class="tsd-widget tsd-toolbar-icon search no-caption"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M15.7824 13.833L12.6666 10.7177C12.5259 10.5771 12.3353 10.499 12.1353 10.499H11.6259C12.4884 9.39596 13.001 8.00859 13.001 6.49937C13.001 2.90909 10.0914 0 6.50048 0C2.90959 0 0 2.90909 0 6.49937C0 10.0896 2.90959 12.9987 6.50048 12.9987C8.00996 12.9987 9.39756 12.4863 10.5008 11.6239V12.1332C10.5008 12.3332 10.5789 12.5238 10.7195 12.6644L13.8354 15.7797C14.1292 16.0734 14.6042 16.0734 14.8948 15.7797L15.7793 14.8954C16.0731 14.6017 16.0731 14.1267 15.7824 13.833ZM6.50048 10.499C4.29094 10.499 2.50018 8.71165 2.50018 6.49937C2.50018 4.29021 4.28781 2.49976 6.50048 2.49976C8.71001 2.49976 10.5008 4.28708 10.5008 6.49937C10.5008 8.70852 8.71314 10.499 6.50048 10.499Z" fill="var(--color-text)"></path></svg></label><input type="text" id="tsd-search-field" aria-label="Search"/></div>
+<div class="field">
+<div id="tsd-toolbar-links"></div></div>
+<ul class="results">
+<li class="state loading">Preparing search index...</li>
+<li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">@bemoje/string</a></div>
+<div class="table-cell" id="tsd-widgets"><a href="#" class="tsd-widget tsd-toolbar-icon menu no-caption" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="2" fill="var(--color-text)"></rect><rect x="1" y="7" width="14" height="2" fill="var(--color-text)"></rect><rect x="1" y="11" width="14" height="2" fill="var(--color-text)"></rect></svg></a></div></div></header>
+<div class="container container-main">
+<div class="col-content">
+<div class="tsd-page-title">
+<h2>@bemoje/string</h2></div>
+<div class="tsd-panel tsd-typography"><a id="md:bemojestring" class="tsd-anchor"></a><h1><a href="#md:bemojestring">@bemoje/string</a></h1><p>String utilities</p>
+<p><img src="https://img.shields.io/github/languages/top/bemoje/https://github.com/bemoje/tsmono" alt="GitHub Top Language"></p>
+<a id="md:github" class="tsd-anchor"></a><h5><a href="#md:github">Github</a></h5><p><img src="https://img.shields.io/github/last-commit/bemoje/https://github.com/bemoje/tsmono?color=red" alt="GitHub Last Commit">
+<img src="https://img.shields.io/github/stars/bemoje/https://github.com/bemoje/tsmono" alt="GitHub Stars">
+<img src="https://img.shields.io/github/forks/bemoje/https://github.com/bemoje/tsmono" alt="GitHub Forks">
+<img src="https://img.shields.io/github/watchers/bemoje/https://github.com/bemoje/tsmono" alt="GitHub Watchers">
+<img src="https://img.shields.io/github/repo-size/bemoje/https://github.com/bemoje/tsmono" alt="GitHub Repo Size"></p>
+<a id="md:npm" class="tsd-anchor"></a><h5><a href="#md:npm">NPM</a></h5><p><span><a href="https://npmjs.org/@bemoje/string" title="View this project on NPM"><img src="https://img.shields.io/npm/v/@bemoje/string" alt="NPM Version" /></a></span>
+<span><a href="https://npmjs.org/@bemoje/string" title="NPM Downloads"><img src="https://img.shields.io/npm/dt/@bemoje/string" alt="NPM Downloads" /></a></span></p>
+<a id="md:donate" class="tsd-anchor"></a><h5><a href="#md:donate">Donate</a></h5><p><span><a href="https://www.patreon.com/user?u=40752770" title="Donate using Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Patreon Donation" /></a></span></p>
+<a id="md:installation" class="tsd-anchor"></a><h2><a href="#md:installation">Installation</a></h2><p>This library is published in the NPM registry and can be installed using any compatible package manager.</p>
+<a id="md:npm-1" class="tsd-anchor"></a><h4><a href="#md:npm-1">NPM</a></h4><pre><code class="language-sh"><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-2">install</span><span class="hl-1"> </span><span class="hl-2">@bemoje/string</span>
+</code><button>Copy</button></pre>
+<a id="md:issues" class="tsd-anchor"></a><h2><a href="#md:issues">Issues</a></h2><p>Please let me know of any bugs or <a href="https://github.com/bemoje/https://github.com/bemoje/tsmono/issues">issues</a>.</p>
+<a id="md:contribute" class="tsd-anchor"></a><h2><a href="#md:contribute">Contribute</a></h2><p>Contributors are welcome to open a <a href="https://github.com/bemoje/https://github.com/bemoje/tsmono/pulls">pull request</a>.</p>
+<a id="md:license" class="tsd-anchor"></a><h2><a href="#md:license">License</a></h2><p>Released under the <a href="./LICENSE">MIT License</a>.</p>
+<a id="md:documentation" class="tsd-anchor"></a><h2><a href="#md:documentation">Documentation</a></h2><ul>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/html/index.html">HTML</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md">Markdown</a></li>
+</ul>
+<a id="md:type-aliases" class="tsd-anchor"></a><h3><a href="#md:type-aliases">Type Aliases</a></h3><ul>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexscopetreenode">RegexScopeTreeNode</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#rexecyield">RexecYield</a></li>
+</ul>
+<a id="md:functions" class="tsd-anchor"></a><h3><a href="#md:functions">Functions</a></h3><ul>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#createencapsulatingregex">createEncapsulatingRegex</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexclone">regexClone</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexescapestring">regexEscapeString</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexfixflags">regexFixFlags</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexgetgroupnames">regexGetGroupNames</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexisvalidflags">regexIsValidFlags</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexmatchertovalidater">regexMatcherToValidater</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexscopetree">regexScopeTree</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexvalidflags">regexValidFlags</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#rexec">rexec</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#rexecfirstmatch">rexecFirstMatch</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strcountcharoccurances">strCountCharOccurances</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strcountchars">strCountChars</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strensureendswith">strEnsureEndsWith</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strfirstchartouppercase">strFirstCharToUpperCase</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strhashtobuffer">strHashToBuffer</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strhashtostring">strHashToString</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strhashtostringdjb2">strHashToStringDJB2</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strhashtouint32array">strHashToUint32Array</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strislowercase">strIsLowerCase</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strismultiline">strIsMultiLine</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strisuppercase">strIsUpperCase</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strnoconsecutiveemptylines">strNoConsecutiveEmptyLines</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strnoconsecutivewhitespace">strNoConsecutiveWhitespace</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strparseboolean">strParseBoolean</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strprependlines">strPrependLines</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strremoveduplicatechars">strRemoveDuplicateChars</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strremoveemptylines">strRemoveEmptyLines</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strremovefirstandlastline">strRemoveFirstAndLastLine</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strremovenewlines">strRemoveNewLines</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strrepeat">strRepeat</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strreplaceall">strReplaceAll</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strsortchars">strSortChars</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strsplitandtrim">strSplitAndTrim</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strsplitcamelcase">strSplitCamelCase</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strtocharcodes">strToCharCodes</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strtocharset">strToCharSet</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strtosortedcharset">strToSortedCharSet</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strtrimlines">strTrimLines</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strtrimlinesleft">strTrimLinesLeft</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strtrimlinesright">strTrimLinesRight</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strunwrap">strUnwrap</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strwrapbetween">strWrapBetween</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strwrapin">strWrapIn</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strwrapinanglebrackets">strWrapInAngleBrackets</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strwrapinbraces">strWrapInBraces</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strwrapinbrackets">strWrapInBrackets</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strwrapindoublequotes">strWrapInDoubleQuotes</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strwrapinparenthesis">strWrapInParenthesis</a></li>
+<li><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strwrapinsinglequotes">strWrapInSingleQuotes</a></li>
+</ul>
+<a id="md:type-aliases-1" class="tsd-anchor"></a><h2><a href="#md:type-aliases-1">Type Aliases</a></h2><a id="md:regexscopetreenode" class="tsd-anchor"></a><h3><a href="#md:regexscopetreenode">RegexScopeTreeNode</a></h3><p>Ƭ <strong>RegexScopeTreeNode</strong>: <code>Object</code></p>
+<a id="md:type-declaration" class="tsd-anchor"></a><h4><a href="#md:type-declaration">Type declaration</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>between</code></td>
+<td align="left"><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#rexecyield"><code>RexecYield</code></a></td>
+</tr>
+<tr>
+<td align="left"><code>children</code></td>
+<td align="left"><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexscopetreenode"><code>RegexScopeTreeNode</code></a>[]</td>
+</tr>
+<tr>
+<td align="left"><code>depth</code></td>
+<td align="left"><code>number</code></td>
+</tr>
+<tr>
+<td align="left"><code>left</code></td>
+<td align="left"><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#rexecyield"><code>RexecYield</code></a></td>
+</tr>
+<tr>
+<td align="left"><code>parent</code></td>
+<td align="left"><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexscopetreenode"><code>RegexScopeTreeNode</code></a> | <code>null</code></td>
+</tr>
+<tr>
+<td align="left"><code>right</code></td>
+<td align="left"><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#rexecyield"><code>RexecYield</code></a></td>
+</tr>
+</tbody></table>
+<a id="md:defined-in" class="tsd-anchor"></a><h4><a href="#md:defined-in">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/regex/types/RegexScopeTreeNode.ts#L3">regex/types/RegexScopeTreeNode.ts:3</a></p>
+<hr>
+<a id="md:rexecyield" class="tsd-anchor"></a><h3><a href="#md:rexecyield">RexecYield</a></h3><p>Ƭ <strong>RexecYield</strong>: <code>Object</code></p>
+<a id="md:type-declaration-1" class="tsd-anchor"></a><h4><a href="#md:type-declaration-1">Type declaration</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>groups</code></td>
+<td align="left"><code>Record</code>&lt;<code>string</code>, <code>string</code>&gt;</td>
+</tr>
+<tr>
+<td align="left"><code>index</code></td>
+<td align="left"><code>number</code></td>
+</tr>
+<tr>
+<td align="left"><code>lastIndex</code></td>
+<td align="left"><code>number</code></td>
+</tr>
+<tr>
+<td align="left"><code>match</code></td>
+<td align="left"><code>string</code></td>
+</tr>
+</tbody></table>
+<a id="md:defined-in-1" class="tsd-anchor"></a><h4><a href="#md:defined-in-1">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/regex/types/RexecYield.ts#L1">regex/types/RexecYield.ts:1</a></p>
+<a id="md:functions-1" class="tsd-anchor"></a><h2><a href="#md:functions-1">Functions</a></h2><a id="md:createencapsulatingregex" class="tsd-anchor"></a><h3><a href="#md:createencapsulatingregex">createEncapsulatingRegex</a></h3><p>▸ <strong>createEncapsulatingRegex</strong>(<code>left</code>, <code>right</code>, <code>flags?</code>): <code>RegExp</code></p>
+<p>Builds a regex that matches a string between two provided strings. Supports regex as boundaries as well.</p>
+<a id="md:parameters" class="tsd-anchor"></a><h4><a href="#md:parameters">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>left</code></td>
+<td align="left"><code>string</code> | <code>RegExp</code></td>
+<td align="left">string or regex to match before</td>
+</tr>
+<tr>
+<td align="left"><code>right</code></td>
+<td align="left"><code>string</code> | <code>RegExp</code></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>flags?</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">regex flags - &#39;g&#39; and &#39;s&#39; are always added to whatever flags are passed.</td>
+</tr>
+</tbody></table>
+<a id="md:returns" class="tsd-anchor"></a><h4><a href="#md:returns">Returns</a></h4><p><code>RegExp</code></p>
+<p>A regular expression that matches text between the left and right patterns.</p>
+<p><strong><code>Remarks</code></strong></p>
+<p>The function accepts either strings or regular expressions as the left and right patterns.
+If a string is provided, it will be escaped to form a valid regular expression.
+The function also accepts an optional flags parameter to specify regular expression flags.</p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-4">regex</span><span class="hl-1"> = </span><span class="hl-0">createEncapsulatingRegex</span><span class="hl-1">(</span><span class="hl-5">/a/</span><span class="hl-1">,</span><span class="hl-5"> /b/</span><span class="hl-1">)</span><br/><span class="hl-2">&#39;abc&#39;</span><span class="hl-1">.</span><span class="hl-0">match</span><span class="hl-1">(</span><span class="hl-6">regex</span><span class="hl-1">)?.</span><span class="hl-6">groups</span><span class="hl-1">?.</span><span class="hl-6">mid</span><span class="hl-1"> </span><span class="hl-7">// &#39;c&#39;</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-2" class="tsd-anchor"></a><h4><a href="#md:defined-in-2">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/regex/createEncapsulatingRegex.ts#L17">regex/createEncapsulatingRegex.ts:17</a></p>
+<hr>
+<a id="md:regexclone" class="tsd-anchor"></a><h3><a href="#md:regexclone">regexClone</a></h3><p>▸ <strong>regexClone</strong>(<code>regex</code>): <code>RegExp</code></p>
+<p>Clones a regular expression.</p>
+<a id="md:parameters-1" class="tsd-anchor"></a><h4><a href="#md:parameters-1">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>regex</code></td>
+<td align="left"><code>RegExp</code></td>
+<td align="left">The regular expression to clone.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-1" class="tsd-anchor"></a><h4><a href="#md:returns-1">Returns</a></h4><p><code>RegExp</code></p>
+<p>A new RegExp instance with the same source and flags as the provided regular expression.</p>
+<p><strong><code>Remarks</code></strong></p>
+<p>This function creates a new instance of the RegExp using the source and flags of the provided regular expression.</p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-5">/abc/</span><span class="hl-3">gi</span><span class="hl-1">;;</span><br/><span class="hl-7">//=&gt; /abc/gi</span><br/><span class="hl-0">regexClone</span><span class="hl-1">(</span><span class="hl-5">/abc/</span><span class="hl-3">gi</span><span class="hl-1">);;</span><br/><span class="hl-7">//=&gt; /abc/gi</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-3" class="tsd-anchor"></a><h4><a href="#md:defined-in-3">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/regex/regexClone.ts#L13">regex/regexClone.ts:13</a></p>
+<hr>
+<a id="md:regexescapestring" class="tsd-anchor"></a><h3><a href="#md:regexescapestring">regexEscapeString</a></h3><p>▸ <strong>regexEscapeString</strong>(<code>str</code>): <code>string</code></p>
+<p>Escapes special characters in a string to be used in a regular expression.</p>
+<a id="md:parameters-2" class="tsd-anchor"></a><h4><a href="#md:parameters-2">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>str</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The input string to escape.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-2" class="tsd-anchor"></a><h4><a href="#md:returns-2">Returns</a></h4><p><code>string</code></p>
+<p>The escaped string.</p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-4">input</span><span class="hl-1"> = </span><span class="hl-2">&#39;Hello, world!&#39;</span><span class="hl-1">;</span><br/><span class="hl-0">regexEscapeString</span><span class="hl-1">(</span><span class="hl-6">input</span><span class="hl-1">);;</span><br/><span class="hl-7">//=&gt; &#39;Hello, world!&#39;</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-4" class="tsd-anchor"></a><h4><a href="#md:defined-in-4">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/regex/regexEscapeString.ts#L11">regex/regexEscapeString.ts:11</a></p>
+<hr>
+<a id="md:regexfixflags" class="tsd-anchor"></a><h3><a href="#md:regexfixflags">regexFixFlags</a></h3><p>▸ <strong>regexFixFlags</strong>(<code>flags</code>): <code>string</code></p>
+<p>Takes a string of RegExp flags and returns a string guaranteed to be valid.</p>
+<a id="md:parameters-3" class="tsd-anchor"></a><h4><a href="#md:parameters-3">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>flags</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">string of RegExp flags</td>
+</tr>
+</tbody></table>
+<a id="md:returns-3" class="tsd-anchor"></a><h4><a href="#md:returns-3">Returns</a></h4><p><code>string</code></p>
+<p>The processed string of regex flags.</p>
+<p><strong><code>Remarks</code></strong></p>
+<p>This function does not validate if the input string is a valid regex flags string. It only removes duplicates and non-regex characters.</p>
+<p><strong><code>Throws</code></strong></p>
+<p>This function does not throw any exceptions.</p>
+<p><strong><code>See</code></strong></p>
+<p>strSortChars, strRemoveDuplicateChars</p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-0">regexFixFlags</span><span class="hl-1">(</span><span class="hl-2">&#39;ggim&#39;</span><span class="hl-1">) </span><span class="hl-7">// &#39;gim&#39;</span><br/><span class="hl-0">regexFixFlags</span><span class="hl-1">(</span><span class="hl-2">&#39;?gim*&#39;</span><span class="hl-1">) </span><span class="hl-7">// &#39;gim&#39;</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-5" class="tsd-anchor"></a><h4><a href="#md:defined-in-5">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/regex/regexFixFlags.ts#L16">regex/regexFixFlags.ts:16</a></p>
+<hr>
+<a id="md:regexgetgroupnames" class="tsd-anchor"></a><h3><a href="#md:regexgetgroupnames">regexGetGroupNames</a></h3><p>▸ <strong>regexGetGroupNames</strong>(<code>re</code>): <code>string</code>[]</p>
+<p>Returns an array of group names from a regular expression.</p>
+<a id="md:parameters-4" class="tsd-anchor"></a><h4><a href="#md:parameters-4">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>re</code></td>
+<td align="left"><code>RegExp</code></td>
+<td align="left">The regular expression to extract group names from.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-4" class="tsd-anchor"></a><h4><a href="#md:returns-4">Returns</a></h4><p><code>string</code>[]</p>
+<p>An array of group names.</p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-0">regexGetGroupNames</span><span class="hl-1">(</span><span class="hl-5">/</span><span class="hl-8">(?&lt;</span><span class="hl-6">year</span><span class="hl-8">&gt;</span><span class="hl-5">\d</span><span class="hl-9">{4}</span><span class="hl-8">)</span><span class="hl-5">-</span><span class="hl-8">(?&lt;</span><span class="hl-6">month</span><span class="hl-8">&gt;</span><span class="hl-5">\d</span><span class="hl-9">{2}</span><span class="hl-8">)</span><span class="hl-5">-</span><span class="hl-8">(?&lt;</span><span class="hl-6">day</span><span class="hl-8">&gt;</span><span class="hl-5">\d</span><span class="hl-9">{2}</span><span class="hl-8">)</span><span class="hl-5">/</span><span class="hl-1">);;</span><br/><span class="hl-7">//=&gt; [&#39;year&#39;, &#39;month&#39;, &#39;day&#39;]</span>
+</code><button>Copy</button></pre>
+<p><strong><code>Remarks</code></strong></p>
+<p>This function only works with regular expressions that use named capture groups.</p>
+<a id="md:defined-in-6" class="tsd-anchor"></a><h4><a href="#md:defined-in-6">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/regex/regexGetGroupNames.ts#L13">regex/regexGetGroupNames.ts:13</a></p>
+<hr>
+<a id="md:regexisvalidflags" class="tsd-anchor"></a><h3><a href="#md:regexisvalidflags">regexIsValidFlags</a></h3><p>▸ <strong>regexIsValidFlags</strong>(<code>flags</code>): <code>boolean</code></p>
+<p>Checks if the provided string is a valid regular expression flag.</p>
+<a id="md:parameters-5" class="tsd-anchor"></a><h4><a href="#md:parameters-5">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>flags</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The string to be checked.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-5" class="tsd-anchor"></a><h4><a href="#md:returns-5">Returns</a></h4><p><code>boolean</code></p>
+<p>A boolean indicating whether the string is a valid regular expression flag.
+Checks if a string is a valid regex flags string.</p>
+<p><strong><code>Remarks</code></strong></p>
+<p>This function checks if the provided string contains only the characters &#39;g&#39;, &#39;i&#39;, &#39;m&#39;, &#39;s&#39;, &#39;u&#39;, &#39;y&#39; and if there are no duplicate characters.</p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-0">regexIsValidFlags</span><span class="hl-1">(</span><span class="hl-2">&#39;gim&#39;</span><span class="hl-1">) </span><span class="hl-7">// true</span><br/><span class="hl-0">regexIsValidFlags</span><span class="hl-1">(</span><span class="hl-2">&#39;gmisuy&#39;</span><span class="hl-1">) </span><span class="hl-7">// false</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-7" class="tsd-anchor"></a><h4><a href="#md:defined-in-7">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/regex/regexIsValidFlags.ts#L14">regex/regexIsValidFlags.ts:14</a></p>
+<hr>
+<a id="md:regexmatchertovalidater" class="tsd-anchor"></a><h3><a href="#md:regexmatchertovalidater">regexMatcherToValidater</a></h3><p>▸ <strong>regexMatcherToValidater</strong>(<code>regex</code>): <code>RegExp</code></p>
+<p>Convert a regex for matching to a regex for validation.</p>
+<a id="md:parameters-6" class="tsd-anchor"></a><h4><a href="#md:parameters-6">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>regex</code></td>
+<td align="left"><code>RegExp</code></td>
+<td align="left">The regex to convert</td>
+</tr>
+</tbody></table>
+<a id="md:returns-6" class="tsd-anchor"></a><h4><a href="#md:returns-6">Returns</a></h4><p><code>RegExp</code></p>
+<p>A new regular expression that matches the entire string.</p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-4">regexMatchDigits</span><span class="hl-1"> =</span><span class="hl-5"> /\d</span><span class="hl-9">+</span><span class="hl-5">/</span><span class="hl-3">gi</span><span class="hl-1">;</span><br/><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-4">regexIsDigit</span><span class="hl-1"> = </span><span class="hl-0">regexMatcherToValidater</span><span class="hl-1">(</span><span class="hl-6">regexMatchDigits</span><span class="hl-1">); </span><span class="hl-7">//=&gt; /^\d+$/i</span><br/><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-0">isDigit</span><span class="hl-1"> = (</span><span class="hl-6">str</span><span class="hl-1">) </span><span class="hl-3">=&gt;</span><span class="hl-1"> </span><span class="hl-6">regexIsDigit</span><span class="hl-1">.</span><span class="hl-0">test</span><span class="hl-1">(</span><span class="hl-6">str</span><span class="hl-1">)</span><br/><span class="hl-0">isDigit</span><span class="hl-1">(</span><span class="hl-2">&#39;1&#39;</span><span class="hl-1">) </span><span class="hl-7">//=&gt; true</span><br/><span class="hl-0">isDigit</span><span class="hl-1">(</span><span class="hl-2">&#39;a&#39;</span><span class="hl-1">) </span><span class="hl-7">//=&gt; false</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-8" class="tsd-anchor"></a><h4><a href="#md:defined-in-8">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/regex/regexMatcherToValidater.ts#L13">regex/regexMatcherToValidater.ts:13</a></p>
+<hr>
+<a id="md:regexscopetree" class="tsd-anchor"></a><h3><a href="#md:regexscopetree">regexScopeTree</a></h3><p>▸ <strong>regexScopeTree</strong>(<code>left</code>, <code>right</code>): (<code>string</code>: <code>string</code>, <code>yieldOnlyRootNodes?</code>: <code>boolean</code>) =&gt; <code>Generator</code>&lt;<a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexscopetreenode"><code>RegexScopeTreeNode</code></a>&gt;</p>
+<p>Builds a regex that matches a string between two strings. Supports regex instead of string.</p>
+<a id="md:parameters-7" class="tsd-anchor"></a><h4><a href="#md:parameters-7">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>left</code></td>
+<td align="left"><code>string</code> | <code>RegExp</code></td>
+<td align="left">string or regex to match before</td>
+</tr>
+<tr>
+<td align="left"><code>right</code></td>
+<td align="left"><code>string</code> | <code>RegExp</code></td>
+<td align="left">string or regex to match after</td>
+</tr>
+</tbody></table>
+<a id="md:returns-7" class="tsd-anchor"></a><h4><a href="#md:returns-7">Returns</a></h4><p><code>fn</code></p>
+<p>A generator function that takes a string and an optional boolean parameter.
+The generator function yields nodes of type IRegexScopeTreeNode.</p>
+<p>▸ (<code>string</code>, <code>yieldOnlyRootNodes?</code>): <code>Generator</code>&lt;<a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexscopetreenode"><code>RegexScopeTreeNode</code></a>&gt;</p>
+<a id="md:parameters-8" class="tsd-anchor"></a><h5><a href="#md:parameters-8">Parameters</a></h5><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>string</code></td>
+<td align="left"><code>string</code></td>
+</tr>
+<tr>
+<td align="left"><code>yieldOnlyRootNodes?</code></td>
+<td align="left"><code>boolean</code></td>
+</tr>
+</tbody></table>
+<a id="md:returns-8" class="tsd-anchor"></a><h5><a href="#md:returns-8">Returns</a></h5><p><code>Generator</code>&lt;<a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexscopetreenode"><code>RegexScopeTreeNode</code></a>&gt;</p>
+<p><strong><code>Throws</code></strong></p>
+<p>If a match does not recognize itself as neither left nor right.</p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-4">generator</span><span class="hl-1"> = </span><span class="hl-0">regexScopeTree</span><span class="hl-1">(</span><span class="hl-2">&#39;(&#39;</span><span class="hl-1">, </span><span class="hl-2">&#39;)&#39;</span><span class="hl-1">)</span><br/><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-4">iterable</span><span class="hl-1"> = </span><span class="hl-0">generator</span><span class="hl-1">(</span><span class="hl-2">&#39;(1+((3)+(1)))+(15+(21-(521))))&#39;</span><span class="hl-1">, </span><span class="hl-3">true</span><span class="hl-1">)</span><br/><span class="hl-6">console</span><span class="hl-1">.</span><span class="hl-0">dir</span><span class="hl-1">([...</span><span class="hl-6">iterable</span><span class="hl-1">], { </span><span class="hl-6">depth:</span><span class="hl-1"> </span><span class="hl-3">null</span><span class="hl-1"> })</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-9" class="tsd-anchor"></a><h4><a href="#md:defined-in-9">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/regex/regexScopeTree.ts#L21">regex/regexScopeTree.ts:21</a></p>
+<hr>
+<a id="md:regexvalidflags" class="tsd-anchor"></a><h3><a href="#md:regexvalidflags">regexValidFlags</a></h3><p>▸ <strong>regexValidFlags</strong>(): <code>string</code>[]</p>
+<p>This function returns an array of valid flags for regular expressions in JavaScript.</p>
+<a id="md:returns-9" class="tsd-anchor"></a><h4><a href="#md:returns-9">Returns</a></h4><p><code>string</code>[]</p>
+<p>An array of valid flags for regular expressions.
+Returns an array of all valid flags for a regular expression.</p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-0">regexValidFlags</span><span class="hl-1">() </span><span class="hl-7">//=&gt; [&#39;g&#39;, &#39;i&#39;, &#39;m&#39;, &#39;s&#39;, &#39;u&#39;, &#39;y&#39;]</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-10" class="tsd-anchor"></a><h4><a href="#md:defined-in-10">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/regex/regexValidFlags.ts#L9">regex/regexValidFlags.ts:9</a></p>
+<hr>
+<a id="md:rexec" class="tsd-anchor"></a><h3><a href="#md:rexec">rexec</a></h3><p>▸ <strong>rexec</strong>(<code>regex</code>, <code>string</code>): <code>Generator</code>&lt;<a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#rexecyield"><code>RexecYield</code></a>&gt;</p>
+<p>Easily perform regex &#39;exec&#39; on a string. An iterable is returned which steps through the exec process and yields all the details you might need.</p>
+<a id="md:parameters-9" class="tsd-anchor"></a><h4><a href="#md:parameters-9">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>regex</code></td>
+<td align="left"><code>RegExp</code></td>
+<td align="left">The regular expression object</td>
+</tr>
+<tr>
+<td align="left"><code>string</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The string to perform the operation on</td>
+</tr>
+</tbody></table>
+<a id="md:returns-10" class="tsd-anchor"></a><h4><a href="#md:returns-10">Returns</a></h4><p><code>Generator</code>&lt;<a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#rexecyield"><code>RexecYield</code></a>&gt;</p>
+<p>A generator that yields an object for each match.</p>
+<p><strong><code>Throws</code></strong></p>
+<p>If the provided regex is not a RegExp instance.</p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-4">regex</span><span class="hl-1"> =</span><span class="hl-5"> /</span><span class="hl-8">(?&lt;</span><span class="hl-6">g1</span><span class="hl-8">&gt;</span><span class="hl-5">a</span><span class="hl-8">)</span><span class="hl-5">/</span><span class="hl-3">g</span><br/><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-4">str</span><span class="hl-1"> = </span><span class="hl-2">&#39;Anthony wants a girlfriend.&#39;</span><br/><span class="hl-6">console</span><span class="hl-1">.</span><span class="hl-0">log</span><span class="hl-1">([...</span><span class="hl-0">rexec</span><span class="hl-1">(</span><span class="hl-6">regex</span><span class="hl-1">, </span><span class="hl-6">str</span><span class="hl-1">)])</span><br/><span class="hl-7">// [</span><br/><span class="hl-7">// 	{</span><br/><span class="hl-7">//     index: 9,</span><br/><span class="hl-7">//     lastIndex: 10,</span><br/><span class="hl-7">//     groups: { g1: &#39;a&#39; },</span><br/><span class="hl-7">//     match: &#39;a&#39;,</span><br/><span class="hl-7">//   },</span><br/><span class="hl-7">//   {</span><br/><span class="hl-7">//     index: 14,</span><br/><span class="hl-7">//     lastIndex: 15,</span><br/><span class="hl-7">//     groups: { g1: &#39;a&#39; },</span><br/><span class="hl-7">//     match: &#39;a&#39;,</span><br/><span class="hl-7">//   },</span><br/><span class="hl-7">// ]</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-11" class="tsd-anchor"></a><h4><a href="#md:defined-in-11">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/regex/rexec.ts#L30">regex/rexec.ts:30</a></p>
+<hr>
+<a id="md:rexecfirstmatch" class="tsd-anchor"></a><h3><a href="#md:rexecfirstmatch">rexecFirstMatch</a></h3><p>▸ <strong>rexecFirstMatch</strong>(<code>regex</code>, <code>string</code>): <a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#rexecyield"><code>RexecYield</code></a> | <code>undefined</code></p>
+<p>Returns the first match of a regular expression in a string.</p>
+<a id="md:parameters-10" class="tsd-anchor"></a><h4><a href="#md:parameters-10">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>regex</code></td>
+<td align="left"><code>RegExp</code></td>
+<td align="left">The regular expression to be used for matching.</td>
+</tr>
+<tr>
+<td align="left"><code>string</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The string in which to search for a match.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-11" class="tsd-anchor"></a><h4><a href="#md:returns-11">Returns</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#rexecyield"><code>RexecYield</code></a> | <code>undefined</code></p>
+<p>The first match as an <code>RexecYield</code> object, or <code>undefined</code> if no match is found.</p>
+<p><strong><code>Remarks</code></strong></p>
+<p>This function is a part of RegExp utilities.</p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-0">rexecFirstMatch</span><span class="hl-1">(</span><span class="hl-5">/hello/</span><span class="hl-3">g</span><span class="hl-1">, </span><span class="hl-2">&#39;hello world&#39;</span><span class="hl-1">);;</span><br/><span class="hl-7">//=&gt; { match: &#39;hello&#39;, index: 0, input: &#39;hello world&#39;, groups: undefined }</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-12" class="tsd-anchor"></a><h4><a href="#md:defined-in-12">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/regex/rexecFirstMatch.ts#L16">regex/rexecFirstMatch.ts:16</a></p>
+<hr>
+<a id="md:strcountcharoccurances" class="tsd-anchor"></a><h3><a href="#md:strcountcharoccurances">strCountCharOccurances</a></h3><p>▸ <strong>strCountCharOccurances</strong>(<code>input</code>, <code>char</code>): <code>number</code></p>
+<p>Counts the number of occurrences of a specific character in a string.</p>
+<a id="md:parameters-11" class="tsd-anchor"></a><h4><a href="#md:parameters-11">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>input</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The string to search within.</td>
+</tr>
+<tr>
+<td align="left"><code>char</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The character to count occurrences of. Must be a single character string of length 1.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-12" class="tsd-anchor"></a><h4><a href="#md:returns-12">Returns</a></h4><p><code>number</code></p>
+<p><strong><code>Throws</code></strong></p>
+<p>If the char parameter is not a single character string of length 1.</p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-0">strCountCharOccurances</span><span class="hl-1">(</span><span class="hl-2">&#39;hello world&#39;</span><span class="hl-1">, </span><span class="hl-2">&#39;o&#39;</span><span class="hl-1">);;</span><br/><span class="hl-7">//=&gt; 2</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-13" class="tsd-anchor"></a><h4><a href="#md:defined-in-13">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strCountCharOccurances.ts#L11">string/strCountCharOccurances.ts:11</a></p>
+<hr>
+<a id="md:strcountchars" class="tsd-anchor"></a><h3><a href="#md:strcountchars">strCountChars</a></h3><p>▸ <strong>strCountChars</strong>(<code>string</code>): <code>Map</code>&lt;<code>string</code>, <code>number</code>&gt;</p>
+<p>Counts the number of occurrences of each character in a string and returns a Map where the keys are the characters and the values are their counts.</p>
+<a id="md:parameters-12" class="tsd-anchor"></a><h4><a href="#md:parameters-12">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>string</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The string to count characters in.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-13" class="tsd-anchor"></a><h4><a href="#md:returns-13">Returns</a></h4><p><code>Map</code>&lt;<code>string</code>, <code>number</code>&gt;</p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-0">strCountChars</span><span class="hl-1">(</span><span class="hl-2">&quot;hello&quot;</span><span class="hl-1">);;</span><br/><span class="hl-7">//=&gt; Map { &#39;h&#39; =&gt; 1, &#39;e&#39; =&gt; 1, &#39;l&#39; =&gt; 2, &#39;o&#39; =&gt; 1 }</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-14" class="tsd-anchor"></a><h4><a href="#md:defined-in-14">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strCountChars.ts#L9">string/strCountChars.ts:9</a></p>
+<hr>
+<a id="md:strensureendswith" class="tsd-anchor"></a><h3><a href="#md:strensureendswith">strEnsureEndsWith</a></h3><p>▸ <strong>strEnsureEndsWith</strong>(<code>string</code>, <code>endsWith</code>): <code>string</code></p>
+<p>Ensures that a string ends with a specified substring. If the string already ends with the specified substring, it is returned as is. Otherwise, the substring is appended to the end of the string.</p>
+<a id="md:parameters-13" class="tsd-anchor"></a><h4><a href="#md:parameters-13">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>string</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The string to be processed.</td>
+</tr>
+<tr>
+<td align="left"><code>endsWith</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The substring that the string should end with.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-14" class="tsd-anchor"></a><h4><a href="#md:returns-14">Returns</a></h4><p><code>string</code></p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-0">strEnsureEndsWith</span><span class="hl-1">(</span><span class="hl-2">&#39;Hello&#39;</span><span class="hl-1">, </span><span class="hl-2">&#39; World&#39;</span><span class="hl-1">);</span><br/><span class="hl-7">//=&gt; &#39;Hello World&#39;</span><br/><span class="hl-0">strEnsureEndsWith</span><span class="hl-1">(</span><span class="hl-2">&#39;Hello World&#39;</span><span class="hl-1">, </span><span class="hl-2">&#39; World&#39;</span><span class="hl-1">);</span><br/><span class="hl-7">//=&gt; &#39;Hello World&#39;</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-15" class="tsd-anchor"></a><h4><a href="#md:defined-in-15">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strEnsureEndsWith.ts#L12">string/strEnsureEndsWith.ts:12</a></p>
+<hr>
+<a id="md:strfirstchartouppercase" class="tsd-anchor"></a><h3><a href="#md:strfirstchartouppercase">strFirstCharToUpperCase</a></h3><p>▸ <strong>strFirstCharToUpperCase</strong>(<code>string</code>): <code>string</code></p>
+<p>Converts the first character of a string to uppercase.</p>
+<a id="md:parameters-14" class="tsd-anchor"></a><h4><a href="#md:parameters-14">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>string</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The string to be converted.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-15" class="tsd-anchor"></a><h4><a href="#md:returns-15">Returns</a></h4><p><code>string</code></p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-0">strFirstCharToUpperCase</span><span class="hl-1">(</span><span class="hl-2">&#39;hello&#39;</span><span class="hl-1">);</span><br/><span class="hl-7">//=&gt; &#39;Hello&#39;</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-16" class="tsd-anchor"></a><h4><a href="#md:defined-in-16">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strFirstCharToUpperCase.ts#L9">string/strFirstCharToUpperCase.ts:9</a></p>
+<hr>
+<a id="md:strhashtobuffer" class="tsd-anchor"></a><h3><a href="#md:strhashtobuffer">strHashToBuffer</a></h3><p>▸ <strong>strHashToBuffer</strong>(<code>string</code>, <code>algorithm?</code>): <code>Buffer</code></p>
+<p>Hash a string into a buffer with a given algorithm</p>
+<a id="md:parameters-15" class="tsd-anchor"></a><h4><a href="#md:parameters-15">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Default value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>string</code></td>
+<td align="left"><code>string</code></td>
+<td align="left"><code>undefined</code></td>
+<td align="left">The string to hash</td>
+</tr>
+<tr>
+<td align="left"><code>algorithm</code></td>
+<td align="left"><code>string</code></td>
+<td align="left"><code>&#39;sha256&#39;</code></td>
+<td align="left">sha1 | sha256 | sha512 | md5 | etc...</td>
+</tr>
+</tbody></table>
+<a id="md:returns-16" class="tsd-anchor"></a><h4><a href="#md:returns-16">Returns</a></h4><p><code>Buffer</code></p>
+<p><strong><code>See</code></strong></p>
+<p>crypto.getHashes for a list of accepted strings for &#39;algorithm&#39;</p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-6">strHash</span><span class="hl-1">.</span><span class="hl-0">toBuffer</span><span class="hl-1">(</span><span class="hl-2">&#39;hello&#39;</span><span class="hl-1">)</span><br/><span class="hl-7">//=&gt; &lt;Buffer 2c f2 4d ba 5f b0 a3 0e 26 e8 3b 2a c5 b9 e2 9e 1b 16 1e 5c 1f a7 42 5e 73 04 33 62 93 8b 98 24&gt;</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-17" class="tsd-anchor"></a><h4><a href="#md:defined-in-17">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strHashToBuffer.ts#L13">string/strHashToBuffer.ts:13</a></p>
+<hr>
+<a id="md:strhashtostring" class="tsd-anchor"></a><h3><a href="#md:strhashtostring">strHashToString</a></h3><p>▸ <strong>strHashToString</strong>(<code>string</code>, <code>algorithm?</code>, <code>encoding?</code>): <code>string</code></p>
+<p>Hash a string into a buffer with a given algorithm</p>
+<a id="md:parameters-16" class="tsd-anchor"></a><h4><a href="#md:parameters-16">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Default value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>string</code></td>
+<td align="left"><code>string</code></td>
+<td align="left"><code>undefined</code></td>
+<td align="left">The string to hash</td>
+</tr>
+<tr>
+<td align="left"><code>algorithm</code></td>
+<td align="left"><code>string</code></td>
+<td align="left"><code>&#39;sha256&#39;</code></td>
+<td align="left">sha1 | sha256 | sha512 | md5 | etc...</td>
+</tr>
+<tr>
+<td align="left"><code>encoding</code></td>
+<td align="left"><code>Encoding</code></td>
+<td align="left"><code>&#39;base64&#39;</code></td>
+<td align="left">base64 | base64url | hex | binary | utf8 | utf-8 | utf16le | latin1 | ascii | binary | ucs2 | ucs-2</td>
+</tr>
+</tbody></table>
+<a id="md:returns-17" class="tsd-anchor"></a><h4><a href="#md:returns-17">Returns</a></h4><p><code>string</code></p>
+<p><strong><code>See</code></strong></p>
+<p>crypto.getHashes for a list of accepted strings for &#39;algorithm&#39;</p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-6">strHash</span><span class="hl-1">.</span><span class="hl-0">toString</span><span class="hl-1">(</span><span class="hl-2">&#39;hello&#39;</span><span class="hl-1">, </span><span class="hl-2">&#39;sha256&#39;</span><span class="hl-1">, </span><span class="hl-2">&#39;hex&#39;</span><span class="hl-1">)</span><br/><span class="hl-7">//=&gt; 2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-18" class="tsd-anchor"></a><h4><a href="#md:defined-in-18">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strHashToString.ts#L15">string/strHashToString.ts:15</a></p>
+<hr>
+<a id="md:strhashtostringdjb2" class="tsd-anchor"></a><h3><a href="#md:strhashtostringdjb2">strHashToStringDJB2</a></h3><p>▸ <strong>strHashToStringDJB2</strong>(<code>string</code>): <code>number</code></p>
+<a id="md:parameters-17" class="tsd-anchor"></a><h4><a href="#md:parameters-17">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>string</code></td>
+<td align="left"><code>string</code></td>
+</tr>
+</tbody></table>
+<a id="md:returns-18" class="tsd-anchor"></a><h4><a href="#md:returns-18">Returns</a></h4><p><code>number</code></p>
+<a id="md:defined-in-19" class="tsd-anchor"></a><h4><a href="#md:defined-in-19">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strHashToStringDJB2.ts#L1">string/strHashToStringDJB2.ts:1</a></p>
+<hr>
+<a id="md:strhashtouint32array" class="tsd-anchor"></a><h3><a href="#md:strhashtouint32array">strHashToUint32Array</a></h3><p>▸ <strong>strHashToUint32Array</strong>(<code>string</code>, <code>algorithm?</code>): <code>Uint32Array</code></p>
+<p>Hash a string into an array of unsigned 32-bit integers.</p>
+<a id="md:parameters-18" class="tsd-anchor"></a><h4><a href="#md:parameters-18">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Default value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>string</code></td>
+<td align="left"><code>string</code></td>
+<td align="left"><code>undefined</code></td>
+<td align="left">The string to hash</td>
+</tr>
+<tr>
+<td align="left"><code>algorithm</code></td>
+<td align="left"><code>string</code></td>
+<td align="left"><code>&#39;sha256&#39;</code></td>
+<td align="left">sha1 | sha256 | sha512 | md5 | etc...</td>
+</tr>
+</tbody></table>
+<a id="md:returns-19" class="tsd-anchor"></a><h4><a href="#md:returns-19">Returns</a></h4><p><code>Uint32Array</code></p>
+<p><strong><code>Throws</code></strong></p>
+<p>Will throw an error if the hashing algorithm is not supported.</p>
+<p><strong><code>See</code></strong></p>
+<p>crypto.getHashes for a list of accepted strings for &#39;algorithm&#39;</p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-6">strHash</span><span class="hl-1">.</span><span class="hl-0">toUint32Array</span><span class="hl-1">(</span><span class="hl-2">&#39;hello&#39;</span><span class="hl-1">)</span><br/><span class="hl-7">//=&gt; Uint32Array(8) [3125670444,  245608543, 708569126, 2665658821, 1545475611, 1581426463, 1647510643, 613976979]</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-20" class="tsd-anchor"></a><h4><a href="#md:defined-in-20">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strHashToUint32Array.ts#L15">string/strHashToUint32Array.ts:15</a></p>
+<hr>
+<a id="md:strislowercase" class="tsd-anchor"></a><h3><a href="#md:strislowercase">strIsLowerCase</a></h3><p>▸ <strong>strIsLowerCase</strong>(<code>input</code>): <code>boolean</code></p>
+<p>Checks if the given string is in lower case.</p>
+<a id="md:parameters-19" class="tsd-anchor"></a><h4><a href="#md:parameters-19">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>input</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The string to be checked.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-20" class="tsd-anchor"></a><h4><a href="#md:returns-20">Returns</a></h4><p><code>boolean</code></p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-0">strIsLowerCase</span><span class="hl-1">(</span><span class="hl-2">&#39;hello&#39;</span><span class="hl-1">);</span><br/><span class="hl-7">//=&gt; true</span><br/><span class="hl-0">strIsLowerCase</span><span class="hl-1">(</span><span class="hl-2">&#39;Hello&#39;</span><span class="hl-1">);</span><br/><span class="hl-7">//=&gt; false</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-21" class="tsd-anchor"></a><h4><a href="#md:defined-in-21">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strIsLowerCase.ts#L11">string/strIsLowerCase.ts:11</a></p>
+<hr>
+<a id="md:strismultiline" class="tsd-anchor"></a><h3><a href="#md:strismultiline">strIsMultiLine</a></h3><p>▸ <strong>strIsMultiLine</strong>(<code>string</code>): <code>boolean</code></p>
+<p>Checks if a string contains multiple lines.</p>
+<a id="md:parameters-20" class="tsd-anchor"></a><h4><a href="#md:parameters-20">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>string</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The string to check.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-21" class="tsd-anchor"></a><h4><a href="#md:returns-21">Returns</a></h4><p><code>boolean</code></p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-0">strIsMultiLine</span><span class="hl-1">(</span><span class="hl-2">&quot;Hello</span><span class="hl-10">\n</span><span class="hl-2">World&quot;</span><span class="hl-1">);</span><br/><span class="hl-7">//=&gt; true</span><br/><span class="hl-0">strIsMultiLine</span><span class="hl-1">(</span><span class="hl-2">&quot;Hello World&quot;</span><span class="hl-1">);</span><br/><span class="hl-7">//=&gt; false</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-22" class="tsd-anchor"></a><h4><a href="#md:defined-in-22">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strIsMultiLine.ts#L11">string/strIsMultiLine.ts:11</a></p>
+<hr>
+<a id="md:strisuppercase" class="tsd-anchor"></a><h3><a href="#md:strisuppercase">strIsUpperCase</a></h3><p>▸ <strong>strIsUpperCase</strong>(<code>input</code>): <code>boolean</code></p>
+<p>Checks if the given string is in upper case.</p>
+<a id="md:parameters-21" class="tsd-anchor"></a><h4><a href="#md:parameters-21">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>input</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The string to be checked.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-22" class="tsd-anchor"></a><h4><a href="#md:returns-22">Returns</a></h4><p><code>boolean</code></p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-0">strIsUpperCase</span><span class="hl-1">(</span><span class="hl-2">&#39;HELLO&#39;</span><span class="hl-1">);;</span><br/><span class="hl-7">//=&gt; true</span><br/><span class="hl-0">strIsUpperCase</span><span class="hl-1">(</span><span class="hl-2">&#39;HEllo&#39;</span><span class="hl-1">);;</span><br/><span class="hl-7">//=&gt; false</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-23" class="tsd-anchor"></a><h4><a href="#md:defined-in-23">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strIsUpperCase.ts#L11">string/strIsUpperCase.ts:11</a></p>
+<hr>
+<a id="md:strnoconsecutiveemptylines" class="tsd-anchor"></a><h3><a href="#md:strnoconsecutiveemptylines">strNoConsecutiveEmptyLines</a></h3><p>▸ <strong>strNoConsecutiveEmptyLines</strong>(<code>code</code>): <code>string</code></p>
+<p>Removes consecutive empty lines from a given string.</p>
+<a id="md:parameters-22" class="tsd-anchor"></a><h4><a href="#md:parameters-22">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>code</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The string from which to remove consecutive empty lines.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-23" class="tsd-anchor"></a><h4><a href="#md:returns-23">Returns</a></h4><p><code>string</code></p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-0">strNoConsecutiveEmptyLines</span><span class="hl-1">(</span><span class="hl-2">&quot;Hello</span><span class="hl-10">\n\n\n</span><span class="hl-2">World&quot;</span><span class="hl-1">);;</span><br/><span class="hl-7">//=&gt; &quot;Hello\n\nWorld&quot;</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-24" class="tsd-anchor"></a><h4><a href="#md:defined-in-24">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strNoConsecutiveEmptyLines.ts#L9">string/strNoConsecutiveEmptyLines.ts:9</a></p>
+<hr>
+<a id="md:strnoconsecutivewhitespace" class="tsd-anchor"></a><h3><a href="#md:strnoconsecutivewhitespace">strNoConsecutiveWhitespace</a></h3><p>▸ <strong>strNoConsecutiveWhitespace</strong>(<code>string</code>): <code>string</code></p>
+<p>Removes consecutive whitespace characters in a string and replaces them with a single space.</p>
+<a id="md:parameters-23" class="tsd-anchor"></a><h4><a href="#md:parameters-23">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>string</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The string to be processed.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-24" class="tsd-anchor"></a><h4><a href="#md:returns-24">Returns</a></h4><p><code>string</code></p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-0">strNoConsecutiveWhitespace</span><span class="hl-1">(</span><span class="hl-2">&#39;Hello   World&#39;</span><span class="hl-1">);</span><br/><span class="hl-7">//=&gt; &#39;Hello World&#39;</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-25" class="tsd-anchor"></a><h4><a href="#md:defined-in-25">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strNoConsecutiveWhitespace.ts#L9">string/strNoConsecutiveWhitespace.ts:9</a></p>
+<hr>
+<a id="md:strparseboolean" class="tsd-anchor"></a><h3><a href="#md:strparseboolean">strParseBoolean</a></h3><p>▸ <strong>strParseBoolean</strong>(<code>string</code>): <code>boolean</code></p>
+<p>Parses a string into a boolean.</p>
+<a id="md:parameters-24" class="tsd-anchor"></a><h4><a href="#md:parameters-24">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>string</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The string to parse into a boolean.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-25" class="tsd-anchor"></a><h4><a href="#md:returns-25">Returns</a></h4><p><code>boolean</code></p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-0">strParseBoolean</span><span class="hl-1">(</span><span class="hl-2">&#39;True&#39;</span><span class="hl-1">);</span><br/><span class="hl-7">//=&gt; true</span><br/><span class="hl-0">strParseBoolean</span><span class="hl-1">(</span><span class="hl-2">&#39;False&#39;</span><span class="hl-1">);</span><br/><span class="hl-7">//=&gt; false</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-26" class="tsd-anchor"></a><h4><a href="#md:defined-in-26">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strParseBoolean.ts#L11">string/strParseBoolean.ts:11</a></p>
+<hr>
+<a id="md:strprependlines" class="tsd-anchor"></a><h3><a href="#md:strprependlines">strPrependLines</a></h3><p>▸ <strong>strPrependLines</strong>(<code>string</code>, <code>toPrepend</code>): <code>string</code></p>
+<p>Prepend each line of a string with a specified string.</p>
+<a id="md:parameters-25" class="tsd-anchor"></a><h4><a href="#md:parameters-25">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>string</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The string to be processed.</td>
+</tr>
+<tr>
+<td align="left"><code>toPrepend</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The string to prepend to each line.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-26" class="tsd-anchor"></a><h4><a href="#md:returns-26">Returns</a></h4><p><code>string</code></p>
+<p>The processed string with each line prepended by the specified string.</p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-4">myString</span><span class="hl-1"> = </span><span class="hl-2">&#39;Hello</span><span class="hl-10">\n</span><span class="hl-2">World&#39;</span><span class="hl-1">;</span><br/><span class="hl-0">strPrependLines</span><span class="hl-1">(</span><span class="hl-6">myString</span><span class="hl-1">, </span><span class="hl-2">&#39;--&#39;</span><span class="hl-1">);</span><br/><span class="hl-7">//=&gt; &#39;--Hello\n--World&#39;</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-27" class="tsd-anchor"></a><h4><a href="#md:defined-in-27">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strPrependLines.ts#L12">string/strPrependLines.ts:12</a></p>
+<hr>
+<a id="md:strremoveduplicatechars" class="tsd-anchor"></a><h3><a href="#md:strremoveduplicatechars">strRemoveDuplicateChars</a></h3><p>▸ <strong>strRemoveDuplicateChars</strong>(<code>string</code>): <code>string</code></p>
+<p>Removes duplicate characters from a string.</p>
+<a id="md:parameters-26" class="tsd-anchor"></a><h4><a href="#md:parameters-26">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>string</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The string from which to remove duplicate characters.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-27" class="tsd-anchor"></a><h4><a href="#md:returns-27">Returns</a></h4><p><code>string</code></p>
+<p><strong><code>Throws</code></strong></p>
+<p>Will throw an error if the provided argument is not a string.</p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-0">strRemoveDuplicateChars</span><span class="hl-1">(</span><span class="hl-2">&#39;hello&#39;</span><span class="hl-1">);</span><br/><span class="hl-7">//=&gt; &#39;helo&#39;</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-28" class="tsd-anchor"></a><h4><a href="#md:defined-in-28">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strRemoveDuplicateChars.ts#L10">string/strRemoveDuplicateChars.ts:10</a></p>
+<hr>
+<a id="md:strremoveemptylines" class="tsd-anchor"></a><h3><a href="#md:strremoveemptylines">strRemoveEmptyLines</a></h3><p>▸ <strong>strRemoveEmptyLines</strong>(<code>string</code>): <code>string</code></p>
+<p>Removes all empty lines from a given string.</p>
+<a id="md:parameters-27" class="tsd-anchor"></a><h4><a href="#md:parameters-27">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>string</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The string from which to remove empty lines.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-28" class="tsd-anchor"></a><h4><a href="#md:returns-28">Returns</a></h4><p><code>string</code></p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-0">strRemoveEmptyLines</span><span class="hl-1">(</span><span class="hl-2">&#39;Hello</span><span class="hl-10">\n\n</span><span class="hl-2">World</span><span class="hl-10">\n\n</span><span class="hl-2">!&#39;</span><span class="hl-1">);;</span><br/><span class="hl-7">//=&gt; &#39;Hello\nWorld\n!&#39;</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-29" class="tsd-anchor"></a><h4><a href="#md:defined-in-29">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strRemoveEmptyLines.ts#L9">string/strRemoveEmptyLines.ts:9</a></p>
+<hr>
+<a id="md:strremovefirstandlastline" class="tsd-anchor"></a><h3><a href="#md:strremovefirstandlastline">strRemoveFirstAndLastLine</a></h3><p>▸ <strong>strRemoveFirstAndLastLine</strong>(<code>string</code>): <code>string</code></p>
+<p>Removes the first and last line from a given string.</p>
+<a id="md:parameters-28" class="tsd-anchor"></a><h4><a href="#md:parameters-28">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>string</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The string from which the first and last line will be removed.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-29" class="tsd-anchor"></a><h4><a href="#md:returns-29">Returns</a></h4><p><code>string</code></p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-0">strRemoveFirstAndLastLine</span><span class="hl-1">(</span><span class="hl-2">&#39;Line1</span><span class="hl-10">\n</span><span class="hl-2">Line2</span><span class="hl-10">\n</span><span class="hl-2">Line3&#39;</span><span class="hl-1">);;</span><br/><span class="hl-7">//=&gt; &#39;Line2&#39;</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-30" class="tsd-anchor"></a><h4><a href="#md:defined-in-30">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strRemoveFirstAndLastLine.ts#L9">string/strRemoveFirstAndLastLine.ts:9</a></p>
+<hr>
+<a id="md:strremovenewlines" class="tsd-anchor"></a><h3><a href="#md:strremovenewlines">strRemoveNewLines</a></h3><p>▸ <strong>strRemoveNewLines</strong>(<code>string</code>, <code>replaceWith?</code>): <code>string</code></p>
+<p>Removes all new line characters from a string.</p>
+<a id="md:parameters-29" class="tsd-anchor"></a><h4><a href="#md:parameters-29">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Default value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>string</code></td>
+<td align="left"><code>string</code></td>
+<td align="left"><code>undefined</code></td>
+<td align="left">The string from which to remove new line characters.</td>
+</tr>
+<tr>
+<td align="left"><code>replaceWith</code></td>
+<td align="left"><code>string</code></td>
+<td align="left"><code>&#39;&#39;</code></td>
+<td align="left">The string to replace new line characters with. Default is an empty string.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-30" class="tsd-anchor"></a><h4><a href="#md:returns-30">Returns</a></h4><p><code>string</code></p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-0">strRemoveNewLines</span><span class="hl-1">(</span><span class="hl-2">&#39;Hello</span><span class="hl-10">\n</span><span class="hl-2">World&#39;</span><span class="hl-1">);;</span><br/><span class="hl-7">//=&gt; &#39;HelloWorld&#39;</span>
+</code><button>Copy</button></pre>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-4">str</span><span class="hl-1"> = </span><span class="hl-2">&#39;Hello</span><span class="hl-10">\n</span><span class="hl-2">World&#39;</span><span class="hl-1">;</span><br/><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-4">result</span><span class="hl-1"> = </span><span class="hl-0">strRemoveNewLines</span><span class="hl-1">(</span><span class="hl-6">str</span><span class="hl-1">, </span><span class="hl-2">&#39; &#39;</span><span class="hl-1">);</span><br/><span class="hl-6">console</span><span class="hl-1">.</span><span class="hl-0">log</span><span class="hl-1">(</span><span class="hl-6">result</span><span class="hl-1">); </span><span class="hl-7">// &#39;Hello World&#39;</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-31" class="tsd-anchor"></a><h4><a href="#md:defined-in-31">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strRemoveNewLines.ts#L15">string/strRemoveNewLines.ts:15</a></p>
+<hr>
+<a id="md:strrepeat" class="tsd-anchor"></a><h3><a href="#md:strrepeat">strRepeat</a></h3><p>▸ <strong>strRepeat</strong>(<code>input</code>, <code>n</code>): <code>string</code></p>
+<p>Repeats the given string <code>n</code> times.</p>
+<a id="md:parameters-30" class="tsd-anchor"></a><h4><a href="#md:parameters-30">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>input</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The string to repeat.</td>
+</tr>
+<tr>
+<td align="left"><code>n</code></td>
+<td align="left"><code>number</code></td>
+<td align="left">The number of times to repeat the string.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-31" class="tsd-anchor"></a><h4><a href="#md:returns-31">Returns</a></h4><p><code>string</code></p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-0">strRepeat</span><span class="hl-1">(</span><span class="hl-2">&#39;abc&#39;</span><span class="hl-1">, </span><span class="hl-11">3</span><span class="hl-1">);;</span><br/><span class="hl-7">//=&gt; &#39;abcabcabc&#39;</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-32" class="tsd-anchor"></a><h4><a href="#md:defined-in-32">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strRepeat.ts#L10">string/strRepeat.ts:10</a></p>
+<hr>
+<a id="md:strreplaceall" class="tsd-anchor"></a><h3><a href="#md:strreplaceall">strReplaceAll</a></h3><p>▸ <strong>strReplaceAll</strong>(<code>input</code>, <code>replace</code>, <code>replaceWith</code>, <code>flags?</code>): <code>string</code></p>
+<p>Replaces all occurrences of a substring in a string with a specified replacement.</p>
+<a id="md:parameters-31" class="tsd-anchor"></a><h4><a href="#md:parameters-31">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Default value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>input</code></td>
+<td align="left"><code>string</code></td>
+<td align="left"><code>undefined</code></td>
+<td align="left">The input string.</td>
+</tr>
+<tr>
+<td align="left"><code>replace</code></td>
+<td align="left"><code>string</code></td>
+<td align="left"><code>undefined</code></td>
+<td align="left">The substring to be replaced.</td>
+</tr>
+<tr>
+<td align="left"><code>replaceWith</code></td>
+<td align="left"><code>string</code></td>
+<td align="left"><code>undefined</code></td>
+<td align="left">The replacement string.</td>
+</tr>
+<tr>
+<td align="left"><code>flags</code></td>
+<td align="left"><code>string</code></td>
+<td align="left"><code>&#39;g&#39;</code></td>
+<td align="left">Optional. The flags for the regular expression. Defaults to &#39;g&#39;.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-32" class="tsd-anchor"></a><h4><a href="#md:returns-32">Returns</a></h4><p><code>string</code></p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-4">input</span><span class="hl-1"> = </span><span class="hl-2">&#39;Hello, world!&#39;</span><span class="hl-1">;</span><br/><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-4">replace</span><span class="hl-1"> = </span><span class="hl-2">&#39;o&#39;</span><span class="hl-1">;</span><br/><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-4">replaceWith</span><span class="hl-1"> = </span><span class="hl-2">&#39;0&#39;</span><span class="hl-1">;</span><br/><span class="hl-0">strReplaceAll</span><span class="hl-1">(</span><span class="hl-6">input</span><span class="hl-1">, </span><span class="hl-6">replace</span><span class="hl-1">, </span><span class="hl-6">replaceWith</span><span class="hl-1">);</span><br/><span class="hl-7">//=&gt; &#39;Hell0, w0rld!&#39;</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-33" class="tsd-anchor"></a><h4><a href="#md:defined-in-33">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strReplaceAll.ts#L17">string/strReplaceAll.ts:17</a></p>
+<hr>
+<a id="md:strsortchars" class="tsd-anchor"></a><h3><a href="#md:strsortchars">strSortChars</a></h3><p>▸ <strong>strSortChars</strong>(<code>string</code>): <code>string</code></p>
+<p>Sorts the characters in a string in alphabetical order.</p>
+<a id="md:parameters-32" class="tsd-anchor"></a><h4><a href="#md:parameters-32">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>string</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The string to sort.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-33" class="tsd-anchor"></a><h4><a href="#md:returns-33">Returns</a></h4><p><code>string</code></p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-0">strSortChars</span><span class="hl-1">(</span><span class="hl-2">&#39;dcba&#39;</span><span class="hl-1">);</span><br/><span class="hl-7">//=&gt; &#39;abcd&#39;</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-34" class="tsd-anchor"></a><h4><a href="#md:defined-in-34">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strSortChars.ts#L9">string/strSortChars.ts:9</a></p>
+<hr>
+<a id="md:strsplitandtrim" class="tsd-anchor"></a><h3><a href="#md:strsplitandtrim">strSplitAndTrim</a></h3><p>▸ <strong>strSplitAndTrim</strong>(<code>string</code>, <code>delimiter</code>, <code>removeEmptyLines?</code>): <code>string</code>[]</p>
+<p>Splits a string by a specified delimiter and trims each resulting substring.
+Optionally, it can also remove empty lines.</p>
+<a id="md:parameters-33" class="tsd-anchor"></a><h4><a href="#md:parameters-33">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Default value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>string</code></td>
+<td align="left"><code>string</code></td>
+<td align="left"><code>undefined</code></td>
+<td align="left">The string to be split and trimmed.</td>
+</tr>
+<tr>
+<td align="left"><code>delimiter</code></td>
+<td align="left"><code>string</code></td>
+<td align="left"><code>undefined</code></td>
+<td align="left">The delimiter to split the string by.</td>
+</tr>
+<tr>
+<td align="left"><code>removeEmptyLines</code></td>
+<td align="left"><code>boolean</code></td>
+<td align="left"><code>false</code></td>
+<td align="left">Optional parameter. If true, removes empty lines from the resulting array. Default is false.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-34" class="tsd-anchor"></a><h4><a href="#md:returns-34">Returns</a></h4><p><code>string</code>[]</p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-0">strSplitAndTrim</span><span class="hl-1">(</span><span class="hl-2">&quot;  Hello ;  world ; &quot;</span><span class="hl-1">. </span><span class="hl-2">&quot;;&quot;</span><span class="hl-1">, </span><span class="hl-3">true</span><span class="hl-1">;</span><br/><span class="hl-7">//=&gt; [&quot;Hello&quot;, &quot;world&quot;]</span><br/><span class="hl-0">strSplitAndTrim</span><span class="hl-1">(</span><span class="hl-2">&quot;  Hello ;  world ; &quot;</span><span class="hl-1">. </span><span class="hl-2">&quot;;&quot;</span><span class="hl-1">, </span><span class="hl-3">false</span><span class="hl-1">;</span><br/><span class="hl-7">//=&gt; [&quot;Hello&quot;, &quot;world&quot;, &quot;&quot;]</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-35" class="tsd-anchor"></a><h4><a href="#md:defined-in-35">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strSplitAndTrim.ts#L14">string/strSplitAndTrim.ts:14</a></p>
+<hr>
+<a id="md:strsplitcamelcase" class="tsd-anchor"></a><h3><a href="#md:strsplitcamelcase">strSplitCamelCase</a></h3><p>▸ <strong>strSplitCamelCase</strong>(<code>word</code>): <code>string</code>[]</p>
+<p>Returns an array of words in the string</p>
+<a id="md:parameters-34" class="tsd-anchor"></a><h4><a href="#md:parameters-34">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>word</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The camel case word to split.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-35" class="tsd-anchor"></a><h4><a href="#md:returns-35">Returns</a></h4><p><code>string</code>[]</p>
+<p><strong><code>Throws</code></strong></p>
+<p>Throws an error if the input is not a string.</p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-0">strSplitCamelCase</span><span class="hl-1">(</span><span class="hl-2">&#39;someCamel10Case&#39;</span><span class="hl-1">)</span><br/><span class="hl-7">//=&gt; [&#39;some&#39;, &#39;Camel10&#39;, &#39;Case&#39;]</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-36" class="tsd-anchor"></a><h4><a href="#md:defined-in-36">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strSplitCamelCase.ts#L14">string/strSplitCamelCase.ts:14</a></p>
+<hr>
+<a id="md:strtocharcodes" class="tsd-anchor"></a><h3><a href="#md:strtocharcodes">strToCharCodes</a></h3><p>▸ <strong>strToCharCodes</strong>(<code>string</code>): <code>number</code>[]</p>
+<p>Converts a string to an array of character codes.</p>
+<a id="md:parameters-35" class="tsd-anchor"></a><h4><a href="#md:parameters-35">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>string</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The string to convert.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-36" class="tsd-anchor"></a><h4><a href="#md:returns-36">Returns</a></h4><p><code>number</code>[]</p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-0">strToCharCodes</span><span class="hl-1">(</span><span class="hl-2">&#39;Hello&#39;</span><span class="hl-1">);;</span><br/><span class="hl-7">//=&gt; [72, 101, 108, 108, 111]</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-37" class="tsd-anchor"></a><h4><a href="#md:defined-in-37">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strToCharCodes.ts#L9">string/strToCharCodes.ts:9</a></p>
+<hr>
+<a id="md:strtocharset" class="tsd-anchor"></a><h3><a href="#md:strtocharset">strToCharSet</a></h3><p>▸ <strong>strToCharSet</strong>(<code>string</code>): <code>Set</code>&lt;<code>string</code>&gt;</p>
+<p>Converts a string to a set of unique characters.</p>
+<a id="md:parameters-36" class="tsd-anchor"></a><h4><a href="#md:parameters-36">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>string</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The string to be converted.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-37" class="tsd-anchor"></a><h4><a href="#md:returns-37">Returns</a></h4><p><code>Set</code>&lt;<code>string</code>&gt;</p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-0">strToCharSet</span><span class="hl-1">(</span><span class="hl-2">&#39;hello&#39;</span><span class="hl-1">);;</span><br/><span class="hl-7">//=&gt; Set { &#39;h&#39;, &#39;e&#39;, &#39;l&#39;, &#39;o&#39; }</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-38" class="tsd-anchor"></a><h4><a href="#md:defined-in-38">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strToCharSet.ts#L9">string/strToCharSet.ts:9</a></p>
+<hr>
+<a id="md:strtosortedcharset" class="tsd-anchor"></a><h3><a href="#md:strtosortedcharset">strToSortedCharSet</a></h3><p>▸ <strong>strToSortedCharSet</strong>(<code>string</code>): <code>string</code></p>
+<p>Converts a string to a sorted set of unique characters.</p>
+<a id="md:parameters-37" class="tsd-anchor"></a><h4><a href="#md:parameters-37">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>string</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The string to be converted.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-38" class="tsd-anchor"></a><h4><a href="#md:returns-38">Returns</a></h4><p><code>string</code></p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-0">strToSortedCharSet</span><span class="hl-1">(</span><span class="hl-2">&#39;banana&#39;</span><span class="hl-1">);</span><br/><span class="hl-7">//=&gt; &#39;abn&#39;</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-39" class="tsd-anchor"></a><h4><a href="#md:defined-in-39">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strToSortedCharSet.ts#L9">string/strToSortedCharSet.ts:9</a></p>
+<hr>
+<a id="md:strtrimlines" class="tsd-anchor"></a><h3><a href="#md:strtrimlines">strTrimLines</a></h3><p>▸ <strong>strTrimLines</strong>(<code>string</code>): <code>string</code></p>
+<p>Trims leading and trailing whitespace from each line in a string.</p>
+<a id="md:parameters-38" class="tsd-anchor"></a><h4><a href="#md:parameters-38">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>string</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The string to trim.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-39" class="tsd-anchor"></a><h4><a href="#md:returns-39">Returns</a></h4><p><code>string</code></p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-0">strTrimLines</span><span class="hl-1">(</span><span class="hl-2">&#39;  Hello, world!  </span><span class="hl-10">\n</span><span class="hl-2">  How are you?  &#39;</span><span class="hl-1">);;</span><br/><span class="hl-7">//=&gt; &#39;Hello, world!\nHow are you?&#39;</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-40" class="tsd-anchor"></a><h4><a href="#md:defined-in-40">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strTrimLines.ts#L9">string/strTrimLines.ts:9</a></p>
+<hr>
+<a id="md:strtrimlinesleft" class="tsd-anchor"></a><h3><a href="#md:strtrimlinesleft">strTrimLinesLeft</a></h3><p>▸ <strong>strTrimLinesLeft</strong>(<code>string</code>): <code>string</code></p>
+<p>Trims the leading whitespace from each line in a string.</p>
+<a id="md:parameters-39" class="tsd-anchor"></a><h4><a href="#md:parameters-39">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>string</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The string to trim.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-40" class="tsd-anchor"></a><h4><a href="#md:returns-40">Returns</a></h4><p><code>string</code></p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-0">strTrimLinesLeft</span><span class="hl-1">(</span><span class="hl-2">&#39;   line1</span><span class="hl-10">\n</span><span class="hl-2">   line2</span><span class="hl-10">\n</span><span class="hl-2">   line3&#39;</span><span class="hl-1">);;</span><br/><span class="hl-7">//=&gt; &#39;line1\nline2\nline3&#39;</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-41" class="tsd-anchor"></a><h4><a href="#md:defined-in-41">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strTrimLinesLeft.ts#L9">string/strTrimLinesLeft.ts:9</a></p>
+<hr>
+<a id="md:strtrimlinesright" class="tsd-anchor"></a><h3><a href="#md:strtrimlinesright">strTrimLinesRight</a></h3><p>▸ <strong>strTrimLinesRight</strong>(<code>string</code>): <code>string</code></p>
+<p>Trims trailing whitespace from each line in a string.</p>
+<a id="md:parameters-40" class="tsd-anchor"></a><h4><a href="#md:parameters-40">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>string</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The string to trim.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-41" class="tsd-anchor"></a><h4><a href="#md:returns-41">Returns</a></h4><p><code>string</code></p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-0">strTrimLinesRight</span><span class="hl-1">(</span><span class="hl-2">&#39;  Hello, world!  </span><span class="hl-10">\n</span><span class="hl-2">  How are you?  &#39;</span><span class="hl-1">);;</span><br/><span class="hl-7">//=&gt; &#39;  Hello, world!\n  How are you?&#39;</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-42" class="tsd-anchor"></a><h4><a href="#md:defined-in-42">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strTrimLinesRight.ts#L9">string/strTrimLinesRight.ts:9</a></p>
+<hr>
+<a id="md:strunwrap" class="tsd-anchor"></a><h3><a href="#md:strunwrap">strUnwrap</a></h3><p>▸ <strong>strUnwrap</strong>(<code>input</code>, <code>left</code>, <code>right</code>, <code>flags?</code>): <code>string</code></p>
+<p>Removes the specified left and right substrings from the input string.</p>
+<a id="md:parameters-41" class="tsd-anchor"></a><h4><a href="#md:parameters-41">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Default value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>input</code></td>
+<td align="left"><code>string</code></td>
+<td align="left"><code>undefined</code></td>
+<td align="left">The input string from which to remove the substrings.</td>
+</tr>
+<tr>
+<td align="left"><code>left</code></td>
+<td align="left"><code>string</code></td>
+<td align="left"><code>undefined</code></td>
+<td align="left">The left substring to remove.</td>
+</tr>
+<tr>
+<td align="left"><code>right</code></td>
+<td align="left"><code>string</code></td>
+<td align="left"><code>undefined</code></td>
+<td align="left">The right substring to remove.</td>
+</tr>
+<tr>
+<td align="left"><code>flags</code></td>
+<td align="left"><code>string</code></td>
+<td align="left"><code>&#39;&#39;</code></td>
+<td align="left">The flags for the RegExp. Default is an empty string.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-42" class="tsd-anchor"></a><h4><a href="#md:returns-42">Returns</a></h4><p><code>string</code></p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-4">input</span><span class="hl-1"> = </span><span class="hl-2">&#39;Hello World&#39;</span><span class="hl-1">;</span><br/><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-4">left</span><span class="hl-1"> = </span><span class="hl-2">&#39;Hello &#39;</span><span class="hl-1">;</span><br/><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-4">right</span><span class="hl-1"> = </span><span class="hl-2">&#39; World&#39;</span><span class="hl-1">;</span><br/><span class="hl-0">strUnwrap</span><span class="hl-1">(</span><span class="hl-6">input</span><span class="hl-1">, </span><span class="hl-6">left</span><span class="hl-1">, </span><span class="hl-6">right</span><span class="hl-1">);</span><br/><span class="hl-7">//=&gt; &#39;World&#39;</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-43" class="tsd-anchor"></a><h4><a href="#md:defined-in-43">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strUnwrap.ts#L17">string/strUnwrap.ts:17</a></p>
+<hr>
+<a id="md:strwrapbetween" class="tsd-anchor"></a><h3><a href="#md:strwrapbetween">strWrapBetween</a></h3><p>▸ <strong>strWrapBetween</strong>(<code>input</code>, <code>left</code>, <code>right</code>): <code>string</code></p>
+<p>Wraps a string between two other strings.</p>
+<a id="md:parameters-42" class="tsd-anchor"></a><h4><a href="#md:parameters-42">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>input</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The string to be wrapped.</td>
+</tr>
+<tr>
+<td align="left"><code>left</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The string to be added to the left of the input string.</td>
+</tr>
+<tr>
+<td align="left"><code>right</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The string to be added to the right of the input string.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-43" class="tsd-anchor"></a><h4><a href="#md:returns-43">Returns</a></h4><p><code>string</code></p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-0">strWrapBetween</span><span class="hl-1">(</span><span class="hl-2">&#39;Hello&#39;</span><span class="hl-1">, </span><span class="hl-2">&#39;&lt;&#39;</span><span class="hl-1">, </span><span class="hl-2">&#39;&gt;&#39;</span><span class="hl-1">);;</span><br/><span class="hl-7">//=&gt; &#39;&lt;Hello&gt;&#39;</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-44" class="tsd-anchor"></a><h4><a href="#md:defined-in-44">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strWrapBetween.ts#L11">string/strWrapBetween.ts:11</a></p>
+<hr>
+<a id="md:strwrapin" class="tsd-anchor"></a><h3><a href="#md:strwrapin">strWrapIn</a></h3><p>▸ <strong>strWrapIn</strong>(<code>input</code>, <code>wrap</code>): <code>string</code></p>
+<p>Wraps a given string with another string.</p>
+<a id="md:parameters-43" class="tsd-anchor"></a><h4><a href="#md:parameters-43">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>input</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The string to be wrapped.</td>
+</tr>
+<tr>
+<td align="left"><code>wrap</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The string to wrap around the input.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-44" class="tsd-anchor"></a><h4><a href="#md:returns-44">Returns</a></h4><p><code>string</code></p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-0">strWrapIn</span><span class="hl-1">(</span><span class="hl-2">&#39;hello&#39;</span><span class="hl-1">, </span><span class="hl-2">&#39;*&#39;</span><span class="hl-1">);;</span><br/><span class="hl-7">//=&gt; &#39;*hello*&#39;</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-45" class="tsd-anchor"></a><h4><a href="#md:defined-in-45">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strWrapIn.ts#L10">string/strWrapIn.ts:10</a></p>
+<hr>
+<a id="md:strwrapinanglebrackets" class="tsd-anchor"></a><h3><a href="#md:strwrapinanglebrackets">strWrapInAngleBrackets</a></h3><p>▸ <strong>strWrapInAngleBrackets</strong>(<code>input</code>): <code>string</code></p>
+<p>Wraps a string in angle brackets.</p>
+<a id="md:parameters-44" class="tsd-anchor"></a><h4><a href="#md:parameters-44">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>input</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The string to be wrapped in angle brackets.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-45" class="tsd-anchor"></a><h4><a href="#md:returns-45">Returns</a></h4><p><code>string</code></p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-0">strWrapInAngleBrackets</span><span class="hl-1">(</span><span class="hl-2">&#39;example&#39;</span><span class="hl-1">);;</span><br/><span class="hl-7">//=&gt; &#39;&lt;example&gt;&#39;</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-46" class="tsd-anchor"></a><h4><a href="#md:defined-in-46">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strWrapInAngleBrackets.ts#L9">string/strWrapInAngleBrackets.ts:9</a></p>
+<hr>
+<a id="md:strwrapinbraces" class="tsd-anchor"></a><h3><a href="#md:strwrapinbraces">strWrapInBraces</a></h3><p>▸ <strong>strWrapInBraces</strong>(<code>input</code>): <code>string</code></p>
+<p>Wraps a given string in braces.</p>
+<a id="md:parameters-45" class="tsd-anchor"></a><h4><a href="#md:parameters-45">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>input</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The string to be wrapped in braces.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-46" class="tsd-anchor"></a><h4><a href="#md:returns-46">Returns</a></h4><p><code>string</code></p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-0">strWrapInBraces</span><span class="hl-1">(</span><span class="hl-2">&#39;hello&#39;</span><span class="hl-1">);</span><br/><span class="hl-7">//=&gt; &quot;{hello}&quot;</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-47" class="tsd-anchor"></a><h4><a href="#md:defined-in-47">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strWrapInBraces.ts#L9">string/strWrapInBraces.ts:9</a></p>
+<hr>
+<a id="md:strwrapinbrackets" class="tsd-anchor"></a><h3><a href="#md:strwrapinbrackets">strWrapInBrackets</a></h3><p>▸ <strong>strWrapInBrackets</strong>(<code>input</code>): <code>string</code></p>
+<p>Wraps a string in brackets.</p>
+<a id="md:parameters-46" class="tsd-anchor"></a><h4><a href="#md:parameters-46">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>input</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The string to be wrapped in brackets.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-47" class="tsd-anchor"></a><h4><a href="#md:returns-47">Returns</a></h4><p><code>string</code></p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-0">strWrapInBrackets</span><span class="hl-1">(</span><span class="hl-2">&#39;test&#39;</span><span class="hl-1">);</span><br/><span class="hl-7">//=&gt; &#39;[test]&#39;</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-48" class="tsd-anchor"></a><h4><a href="#md:defined-in-48">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strWrapInBrackets.ts#L9">string/strWrapInBrackets.ts:9</a></p>
+<hr>
+<a id="md:strwrapindoublequotes" class="tsd-anchor"></a><h3><a href="#md:strwrapindoublequotes">strWrapInDoubleQuotes</a></h3><p>▸ <strong>strWrapInDoubleQuotes</strong>(<code>input</code>): <code>string</code></p>
+<p>Wraps a given string in double quotes.</p>
+<a id="md:parameters-47" class="tsd-anchor"></a><h4><a href="#md:parameters-47">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>input</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The string to be wrapped in double quotes.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-48" class="tsd-anchor"></a><h4><a href="#md:returns-48">Returns</a></h4><p><code>string</code></p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-0">strWrapInDoubleQuotes</span><span class="hl-1">(</span><span class="hl-2">&#39;Hello World&#39;</span><span class="hl-1">);</span><br/><span class="hl-7">//=&gt; &#39;&quot;Hello World&quot;&#39;</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-49" class="tsd-anchor"></a><h4><a href="#md:defined-in-49">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strWrapInDoubleQuotes.ts#L9">string/strWrapInDoubleQuotes.ts:9</a></p>
+<hr>
+<a id="md:strwrapinparenthesis" class="tsd-anchor"></a><h3><a href="#md:strwrapinparenthesis">strWrapInParenthesis</a></h3><p>▸ <strong>strWrapInParenthesis</strong>(<code>input</code>): <code>string</code></p>
+<p>Wraps a given string in parenthesis.</p>
+<a id="md:parameters-48" class="tsd-anchor"></a><h4><a href="#md:parameters-48">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>input</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The string to be wrapped in parenthesis.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-49" class="tsd-anchor"></a><h4><a href="#md:returns-49">Returns</a></h4><p><code>string</code></p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-0">strWrapInParenthesis</span><span class="hl-1">(</span><span class="hl-2">&#39;hello&#39;</span><span class="hl-1">);</span><br/><span class="hl-7">//=&gt; &#39;(hello)&#39;</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-50" class="tsd-anchor"></a><h4><a href="#md:defined-in-50">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strWrapInParenthesis.ts#L9">string/strWrapInParenthesis.ts:9</a></p>
+<hr>
+<a id="md:strwrapinsinglequotes" class="tsd-anchor"></a><h3><a href="#md:strwrapinsinglequotes">strWrapInSingleQuotes</a></h3><p>▸ <strong>strWrapInSingleQuotes</strong>(<code>input</code>): <code>string</code></p>
+<p>Wraps a given string in single quotes.</p>
+<a id="md:parameters-49" class="tsd-anchor"></a><h4><a href="#md:parameters-49">Parameters</a></h4><table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>input</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">The string to be wrapped in single quotes.</td>
+</tr>
+</tbody></table>
+<a id="md:returns-50" class="tsd-anchor"></a><h4><a href="#md:returns-50">Returns</a></h4><p><code>string</code></p>
+<p><strong><code>Example</code></strong></p>
+<pre><code class="language-ts"><span class="hl-0">strWrapInSingleQuotes</span><span class="hl-1">(</span><span class="hl-2">&#39;Hello World&#39;</span><span class="hl-1">);</span><br/><span class="hl-7">//=&gt; &quot;&#39;Hello World&#39;&quot;</span>
+</code><button>Copy</button></pre>
+<a id="md:defined-in-51" class="tsd-anchor"></a><h4><a href="#md:defined-in-51">Defined in</a></h4><p><a href="https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strWrapInSingleQuotes.ts#L9">string/strWrapInSingleQuotes.ts:9</a></p>
+</div></div>
+<div class="col-sidebar">
+<div class="page-menu">
+<div class="tsd-navigation settings">
+<details class="tsd-index-accordion"><summary class="tsd-accordion-summary">
+<h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)" id="icon-chevronDown"></path></svg>Settings</h3></summary>
+<div class="tsd-accordion-details">
+<div class="tsd-filter-visibility">
+<h4 class="uppercase">Member Visibility</h4><form>
+<ul id="tsd-filter-options">
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-private" name="private"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Private</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></form></div>
+<div class="tsd-theme-toggle">
+<h4 class="uppercase">Theme</h4><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div>
+<details open class="tsd-index-accordion tsd-page-navigation"><summary class="tsd-accordion-summary">
+<h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="#icon-chevronDown"></use></svg>On This Page</h3></summary>
+<div class="tsd-accordion-details">
+<ul>
+<li>
+<ul>
+<li><a href="#md:bemojestring"><span>@bemoje/string</span></a></li>
+<li>
+<ul>
+<li><a href="#md:github"><span>Github</span></a></li>
+<li>
+<ul>
+<li><a href="#md:npm"><span>NPM</span></a></li>
+<li>
+<ul>
+<li><a href="#md:donate"><span>Donate</span></a></li></ul></li></ul></li>
+<li><a href="#md:installation"><span>Installation</span></a></li>
+<li>
+<ul>
+<li><a href="#md:npm-1"><span>NPM</span></a></li></ul></li>
+<li><a href="#md:issues"><span>Issues</span></a></li>
+<li><a href="#md:contribute"><span>Contribute</span></a></li>
+<li><a href="#md:license"><span>License</span></a></li>
+<li><a href="#md:documentation"><span>Documentation</span></a></li>
+<li>
+<ul>
+<li><a href="#md:type-aliases"><span>Type <wbr/>Aliases</span></a></li>
+<li><a href="#md:functions"><span>Functions</span></a></li></ul></li>
+<li><a href="#md:type-aliases-1"><span>Type <wbr/>Aliases</span></a></li>
+<li>
+<ul>
+<li><a href="#md:regexscopetreenode"><span>Regex<wbr/>Scope<wbr/>Tree<wbr/>Node</span></a></li>
+<li>
+<ul>
+<li><a href="#md:type-declaration"><span>Type declaration</span></a></li>
+<li><a href="#md:defined-in"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:rexecyield"><span>Rexec<wbr/>Yield</span></a></li>
+<li>
+<ul>
+<li><a href="#md:type-declaration-1"><span>Type declaration</span></a></li>
+<li><a href="#md:defined-in-1"><span>Defined in</span></a></li></ul></li></ul></li>
+<li><a href="#md:functions-1"><span>Functions</span></a></li>
+<li>
+<ul>
+<li><a href="#md:createencapsulatingregex"><span>create<wbr/>Encapsulating<wbr/>Regex</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters"><span>Parameters</span></a></li>
+<li><a href="#md:returns"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-2"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:regexclone"><span>regex<wbr/>Clone</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-1"><span>Parameters</span></a></li>
+<li><a href="#md:returns-1"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-3"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:regexescapestring"><span>regex<wbr/>Escape<wbr/>String</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-2"><span>Parameters</span></a></li>
+<li><a href="#md:returns-2"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-4"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:regexfixflags"><span>regex<wbr/>Fix<wbr/>Flags</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-3"><span>Parameters</span></a></li>
+<li><a href="#md:returns-3"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-5"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:regexgetgroupnames"><span>regex<wbr/>Get<wbr/>Group<wbr/>Names</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-4"><span>Parameters</span></a></li>
+<li><a href="#md:returns-4"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-6"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:regexisvalidflags"><span>regex<wbr/>Is<wbr/>Valid<wbr/>Flags</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-5"><span>Parameters</span></a></li>
+<li><a href="#md:returns-5"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-7"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:regexmatchertovalidater"><span>regex<wbr/>Matcher<wbr/>To<wbr/>Validater</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-6"><span>Parameters</span></a></li>
+<li><a href="#md:returns-6"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-8"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:regexscopetree"><span>regex<wbr/>Scope<wbr/>Tree</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-7"><span>Parameters</span></a></li>
+<li><a href="#md:returns-7"><span>Returns</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-8"><span>Parameters</span></a></li>
+<li><a href="#md:returns-8"><span>Returns</span></a></li></ul></li>
+<li><a href="#md:defined-in-9"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:regexvalidflags"><span>regex<wbr/>Valid<wbr/>Flags</span></a></li>
+<li>
+<ul>
+<li><a href="#md:returns-9"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-10"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:rexec"><span>rexec</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-9"><span>Parameters</span></a></li>
+<li><a href="#md:returns-10"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-11"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:rexecfirstmatch"><span>rexec<wbr/>First<wbr/>Match</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-10"><span>Parameters</span></a></li>
+<li><a href="#md:returns-11"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-12"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:strcountcharoccurances"><span>str<wbr/>Count<wbr/>Char<wbr/>Occurances</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-11"><span>Parameters</span></a></li>
+<li><a href="#md:returns-12"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-13"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:strcountchars"><span>str<wbr/>Count<wbr/>Chars</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-12"><span>Parameters</span></a></li>
+<li><a href="#md:returns-13"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-14"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:strensureendswith"><span>str<wbr/>Ensure<wbr/>Ends<wbr/>With</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-13"><span>Parameters</span></a></li>
+<li><a href="#md:returns-14"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-15"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:strfirstchartouppercase"><span>str<wbr/>First<wbr/>Char<wbr/>To<wbr/>Upper<wbr/>Case</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-14"><span>Parameters</span></a></li>
+<li><a href="#md:returns-15"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-16"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:strhashtobuffer"><span>str<wbr/>Hash<wbr/>To<wbr/>Buffer</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-15"><span>Parameters</span></a></li>
+<li><a href="#md:returns-16"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-17"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:strhashtostring"><span>str<wbr/>Hash<wbr/>To<wbr/>String</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-16"><span>Parameters</span></a></li>
+<li><a href="#md:returns-17"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-18"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:strhashtostringdjb2"><span>str<wbr/>Hash<wbr/>To<wbr/>StringDJB2</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-17"><span>Parameters</span></a></li>
+<li><a href="#md:returns-18"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-19"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:strhashtouint32array"><span>str<wbr/>Hash<wbr/>To<wbr/>Uint32<wbr/>Array</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-18"><span>Parameters</span></a></li>
+<li><a href="#md:returns-19"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-20"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:strislowercase"><span>str<wbr/>Is<wbr/>Lower<wbr/>Case</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-19"><span>Parameters</span></a></li>
+<li><a href="#md:returns-20"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-21"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:strismultiline"><span>str<wbr/>Is<wbr/>Multi<wbr/>Line</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-20"><span>Parameters</span></a></li>
+<li><a href="#md:returns-21"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-22"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:strisuppercase"><span>str<wbr/>Is<wbr/>Upper<wbr/>Case</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-21"><span>Parameters</span></a></li>
+<li><a href="#md:returns-22"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-23"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:strnoconsecutiveemptylines"><span>str<wbr/>No<wbr/>Consecutive<wbr/>Empty<wbr/>Lines</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-22"><span>Parameters</span></a></li>
+<li><a href="#md:returns-23"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-24"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:strnoconsecutivewhitespace"><span>str<wbr/>No<wbr/>Consecutive<wbr/>Whitespace</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-23"><span>Parameters</span></a></li>
+<li><a href="#md:returns-24"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-25"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:strparseboolean"><span>str<wbr/>Parse<wbr/>Boolean</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-24"><span>Parameters</span></a></li>
+<li><a href="#md:returns-25"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-26"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:strprependlines"><span>str<wbr/>Prepend<wbr/>Lines</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-25"><span>Parameters</span></a></li>
+<li><a href="#md:returns-26"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-27"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:strremoveduplicatechars"><span>str<wbr/>Remove<wbr/>Duplicate<wbr/>Chars</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-26"><span>Parameters</span></a></li>
+<li><a href="#md:returns-27"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-28"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:strremoveemptylines"><span>str<wbr/>Remove<wbr/>Empty<wbr/>Lines</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-27"><span>Parameters</span></a></li>
+<li><a href="#md:returns-28"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-29"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:strremovefirstandlastline"><span>str<wbr/>Remove<wbr/>First<wbr/>And<wbr/>Last<wbr/>Line</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-28"><span>Parameters</span></a></li>
+<li><a href="#md:returns-29"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-30"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:strremovenewlines"><span>str<wbr/>Remove<wbr/>New<wbr/>Lines</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-29"><span>Parameters</span></a></li>
+<li><a href="#md:returns-30"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-31"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:strrepeat"><span>str<wbr/>Repeat</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-30"><span>Parameters</span></a></li>
+<li><a href="#md:returns-31"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-32"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:strreplaceall"><span>str<wbr/>Replace<wbr/>All</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-31"><span>Parameters</span></a></li>
+<li><a href="#md:returns-32"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-33"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:strsortchars"><span>str<wbr/>Sort<wbr/>Chars</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-32"><span>Parameters</span></a></li>
+<li><a href="#md:returns-33"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-34"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:strsplitandtrim"><span>str<wbr/>Split<wbr/>And<wbr/>Trim</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-33"><span>Parameters</span></a></li>
+<li><a href="#md:returns-34"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-35"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:strsplitcamelcase"><span>str<wbr/>Split<wbr/>Camel<wbr/>Case</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-34"><span>Parameters</span></a></li>
+<li><a href="#md:returns-35"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-36"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:strtocharcodes"><span>str<wbr/>To<wbr/>Char<wbr/>Codes</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-35"><span>Parameters</span></a></li>
+<li><a href="#md:returns-36"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-37"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:strtocharset"><span>str<wbr/>To<wbr/>Char<wbr/>Set</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-36"><span>Parameters</span></a></li>
+<li><a href="#md:returns-37"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-38"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:strtosortedcharset"><span>str<wbr/>To<wbr/>Sorted<wbr/>Char<wbr/>Set</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-37"><span>Parameters</span></a></li>
+<li><a href="#md:returns-38"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-39"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:strtrimlines"><span>str<wbr/>Trim<wbr/>Lines</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-38"><span>Parameters</span></a></li>
+<li><a href="#md:returns-39"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-40"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:strtrimlinesleft"><span>str<wbr/>Trim<wbr/>Lines<wbr/>Left</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-39"><span>Parameters</span></a></li>
+<li><a href="#md:returns-40"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-41"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:strtrimlinesright"><span>str<wbr/>Trim<wbr/>Lines<wbr/>Right</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-40"><span>Parameters</span></a></li>
+<li><a href="#md:returns-41"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-42"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:strunwrap"><span>str<wbr/>Unwrap</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-41"><span>Parameters</span></a></li>
+<li><a href="#md:returns-42"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-43"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:strwrapbetween"><span>str<wbr/>Wrap<wbr/>Between</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-42"><span>Parameters</span></a></li>
+<li><a href="#md:returns-43"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-44"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:strwrapin"><span>str<wbr/>Wrap<wbr/>In</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-43"><span>Parameters</span></a></li>
+<li><a href="#md:returns-44"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-45"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:strwrapinanglebrackets"><span>str<wbr/>Wrap<wbr/>In<wbr/>Angle<wbr/>Brackets</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-44"><span>Parameters</span></a></li>
+<li><a href="#md:returns-45"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-46"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:strwrapinbraces"><span>str<wbr/>Wrap<wbr/>In<wbr/>Braces</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-45"><span>Parameters</span></a></li>
+<li><a href="#md:returns-46"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-47"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:strwrapinbrackets"><span>str<wbr/>Wrap<wbr/>In<wbr/>Brackets</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-46"><span>Parameters</span></a></li>
+<li><a href="#md:returns-47"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-48"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:strwrapindoublequotes"><span>str<wbr/>Wrap<wbr/>In<wbr/>Double<wbr/>Quotes</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-47"><span>Parameters</span></a></li>
+<li><a href="#md:returns-48"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-49"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:strwrapinparenthesis"><span>str<wbr/>Wrap<wbr/>In<wbr/>Parenthesis</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-48"><span>Parameters</span></a></li>
+<li><a href="#md:returns-49"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-50"><span>Defined in</span></a></li></ul></li>
+<li><a href="#md:strwrapinsinglequotes"><span>str<wbr/>Wrap<wbr/>In<wbr/>Single<wbr/>Quotes</span></a></li>
+<li>
+<ul>
+<li><a href="#md:parameters-49"><span>Parameters</span></a></li>
+<li><a href="#md:returns-50"><span>Returns</span></a></li>
+<li><a href="#md:defined-in-51"><span>Defined in</span></a></li></ul></li></ul></li></ul></li></ul></li></ul></div></details></div>
+<div class="site-menu">
+<nav class="tsd-navigation"><a href="modules.html" class="current"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-4"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-namespace)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M9.33 16V7.24H10.77L13.446 14.74C13.43 14.54 13.41 14.296 13.386 14.008C13.37 13.712 13.354 13.404 13.338 13.084C13.33 12.756 13.326 12.448 13.326 12.16V7.24H14.37V16H12.93L10.266 8.5C10.282 8.692 10.298 8.936 10.314 9.232C10.33 9.52 10.342 9.828 10.35 10.156C10.366 10.476 10.374 10.784 10.374 11.08V16H9.33Z" fill="var(--color-text)"></path></g></svg><span>@bemoje/string</span></a>
+<ul class="tsd-small-nested-navigation">
+<li><a href="types/RegexScopeTreeNode.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-4194304"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-type-alias)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M11.31 16V8.224H8.91V7.24H14.79V8.224H12.39V16H11.31Z" fill="var(--color-text)"></path></g></svg><span>Regex<wbr/>Scope<wbr/>Tree<wbr/>Node</span></a></li>
+<li><a href="types/RexecYield.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>Rexec<wbr/>Yield</span></a></li>
+<li><a href="functions/createEncapsulatingRegex.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-64"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-function)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M9.39 16V7.24H14.55V8.224H10.446V11.128H14.238V12.112H10.47V16H9.39Z" fill="var(--color-text)"></path></g></svg><span>create<wbr/>Encapsulating<wbr/>Regex</span></a></li>
+<li><a href="functions/regexClone.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>regex<wbr/>Clone</span></a></li>
+<li><a href="functions/regexEscapeString.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>regex<wbr/>Escape<wbr/>String</span></a></li>
+<li><a href="functions/regexFixFlags.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>regex<wbr/>Fix<wbr/>Flags</span></a></li>
+<li><a href="functions/regexGetGroupNames.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>regex<wbr/>Get<wbr/>Group<wbr/>Names</span></a></li>
+<li><a href="functions/regexIsValidFlags.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>regex<wbr/>Is<wbr/>Valid<wbr/>Flags</span></a></li>
+<li><a href="functions/regexMatcherToValidater.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>regex<wbr/>Matcher<wbr/>To<wbr/>Validater</span></a></li>
+<li><a href="functions/regexScopeTree.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>regex<wbr/>Scope<wbr/>Tree</span></a></li>
+<li><a href="functions/regexValidFlags.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>regex<wbr/>Valid<wbr/>Flags</span></a></li>
+<li><a href="functions/rexec.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>rexec</span></a></li>
+<li><a href="functions/rexecFirstMatch.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>rexec<wbr/>First<wbr/>Match</span></a></li>
+<li><a href="functions/strCountCharOccurances.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>str<wbr/>Count<wbr/>Char<wbr/>Occurances</span></a></li>
+<li><a href="functions/strCountChars.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>str<wbr/>Count<wbr/>Chars</span></a></li>
+<li><a href="functions/strEnsureEndsWith.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>str<wbr/>Ensure<wbr/>Ends<wbr/>With</span></a></li>
+<li><a href="functions/strFirstCharToUpperCase.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>str<wbr/>First<wbr/>Char<wbr/>To<wbr/>Upper<wbr/>Case</span></a></li>
+<li><a href="functions/strHashToBuffer.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>str<wbr/>Hash<wbr/>To<wbr/>Buffer</span></a></li>
+<li><a href="functions/strHashToString.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>str<wbr/>Hash<wbr/>To<wbr/>String</span></a></li>
+<li><a href="functions/strHashToStringDJB2.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>str<wbr/>Hash<wbr/>To<wbr/>StringDJB2</span></a></li>
+<li><a href="functions/strHashToUint32Array.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>str<wbr/>Hash<wbr/>To<wbr/>Uint32<wbr/>Array</span></a></li>
+<li><a href="functions/strIsLowerCase.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>str<wbr/>Is<wbr/>Lower<wbr/>Case</span></a></li>
+<li><a href="functions/strIsMultiLine.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>str<wbr/>Is<wbr/>Multi<wbr/>Line</span></a></li>
+<li><a href="functions/strIsUpperCase.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>str<wbr/>Is<wbr/>Upper<wbr/>Case</span></a></li>
+<li><a href="functions/strNoConsecutiveEmptyLines.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>str<wbr/>No<wbr/>Consecutive<wbr/>Empty<wbr/>Lines</span></a></li>
+<li><a href="functions/strNoConsecutiveWhitespace.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>str<wbr/>No<wbr/>Consecutive<wbr/>Whitespace</span></a></li>
+<li><a href="functions/strParseBoolean.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>str<wbr/>Parse<wbr/>Boolean</span></a></li>
+<li><a href="functions/strPrependLines.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>str<wbr/>Prepend<wbr/>Lines</span></a></li>
+<li><a href="functions/strRemoveDuplicateChars.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>str<wbr/>Remove<wbr/>Duplicate<wbr/>Chars</span></a></li>
+<li><a href="functions/strRemoveEmptyLines.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>str<wbr/>Remove<wbr/>Empty<wbr/>Lines</span></a></li>
+<li><a href="functions/strRemoveFirstAndLastLine.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>str<wbr/>Remove<wbr/>First<wbr/>And<wbr/>Last<wbr/>Line</span></a></li>
+<li><a href="functions/strRemoveNewLines.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>str<wbr/>Remove<wbr/>New<wbr/>Lines</span></a></li>
+<li><a href="functions/strRepeat.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>str<wbr/>Repeat</span></a></li>
+<li><a href="functions/strReplaceAll.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>str<wbr/>Replace<wbr/>All</span></a></li>
+<li><a href="functions/strSortChars.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>str<wbr/>Sort<wbr/>Chars</span></a></li>
+<li><a href="functions/strSplitAndTrim.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>str<wbr/>Split<wbr/>And<wbr/>Trim</span></a></li>
+<li><a href="functions/strSplitCamelCase.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>str<wbr/>Split<wbr/>Camel<wbr/>Case</span></a></li>
+<li><a href="functions/strToCharCodes.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>str<wbr/>To<wbr/>Char<wbr/>Codes</span></a></li>
+<li><a href="functions/strToCharSet.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>str<wbr/>To<wbr/>Char<wbr/>Set</span></a></li>
+<li><a href="functions/strToSortedCharSet.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>str<wbr/>To<wbr/>Sorted<wbr/>Char<wbr/>Set</span></a></li>
+<li><a href="functions/strTrimLines.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>str<wbr/>Trim<wbr/>Lines</span></a></li>
+<li><a href="functions/strTrimLinesLeft.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>str<wbr/>Trim<wbr/>Lines<wbr/>Left</span></a></li>
+<li><a href="functions/strTrimLinesRight.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>str<wbr/>Trim<wbr/>Lines<wbr/>Right</span></a></li>
+<li><a href="functions/strUnwrap.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>str<wbr/>Unwrap</span></a></li>
+<li><a href="functions/strWrapBetween.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>str<wbr/>Wrap<wbr/>Between</span></a></li>
+<li><a href="functions/strWrapIn.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>str<wbr/>Wrap<wbr/>In</span></a></li>
+<li><a href="functions/strWrapInAngleBrackets.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>str<wbr/>Wrap<wbr/>In<wbr/>Angle<wbr/>Brackets</span></a></li>
+<li><a href="functions/strWrapInBraces.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>str<wbr/>Wrap<wbr/>In<wbr/>Braces</span></a></li>
+<li><a href="functions/strWrapInBrackets.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>str<wbr/>Wrap<wbr/>In<wbr/>Brackets</span></a></li>
+<li><a href="functions/strWrapInDoubleQuotes.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>str<wbr/>Wrap<wbr/>In<wbr/>Double<wbr/>Quotes</span></a></li>
+<li><a href="functions/strWrapInParenthesis.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>str<wbr/>Wrap<wbr/>In<wbr/>Parenthesis</span></a></li>
+<li><a href="functions/strWrapInSingleQuotes.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>str<wbr/>Wrap<wbr/>In<wbr/>Single<wbr/>Quotes</span></a></li></ul></nav></div></div></div>
+<div class="tsd-generator">
+<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div>
+<div class="overlay"></div></body></html>

@@ -37,66 +37,66 @@ Contributors are welcome to open a [pull request](https://github.com/bemoje/http
 Released under the [MIT License](./LICENSE).
 
 ## Documentation
-- [HTML](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/html/index.html)
-- [Markdown](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md)
+- [HTML](https://github.com/bemoje/tsmono/blob/main/docs/html/index.html)
+- [Markdown](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md)
 
 ### Type Aliases
 
-- [RegexScopeTreeNode](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexscopetreenode)
-- [RexecYield](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#rexecyield)
+- [RegexScopeTreeNode](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#regexscopetreenode)
+- [RexecYield](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#rexecyield)
 
 ### Functions
 
-- [createEncapsulatingRegex](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#createencapsulatingregex)
-- [regexClone](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexclone)
-- [regexEscapeString](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexescapestring)
-- [regexFixFlags](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexfixflags)
-- [regexGetGroupNames](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexgetgroupnames)
-- [regexIsValidFlags](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexisvalidflags)
-- [regexMatcherToValidater](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexmatchertovalidater)
-- [regexScopeTree](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexscopetree)
-- [regexValidFlags](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexvalidflags)
-- [rexec](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#rexec)
-- [rexecFirstMatch](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#rexecfirstmatch)
-- [strCountCharOccurances](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strcountcharoccurances)
-- [strCountChars](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strcountchars)
-- [strEnsureEndsWith](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strensureendswith)
-- [strFirstCharToUpperCase](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strfirstchartouppercase)
-- [strHashToBuffer](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strhashtobuffer)
-- [strHashToString](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strhashtostring)
-- [strHashToStringDJB2](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strhashtostringdjb2)
-- [strHashToUint32Array](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strhashtouint32array)
-- [strIsLowerCase](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strislowercase)
-- [strIsMultiLine](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strismultiline)
-- [strIsUpperCase](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strisuppercase)
-- [strNoConsecutiveEmptyLines](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strnoconsecutiveemptylines)
-- [strNoConsecutiveWhitespace](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strnoconsecutivewhitespace)
-- [strParseBoolean](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strparseboolean)
-- [strPrependLines](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strprependlines)
-- [strRemoveDuplicateChars](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strremoveduplicatechars)
-- [strRemoveEmptyLines](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strremoveemptylines)
-- [strRemoveFirstAndLastLine](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strremovefirstandlastline)
-- [strRemoveNewLines](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strremovenewlines)
-- [strRepeat](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strrepeat)
-- [strReplaceAll](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strreplaceall)
-- [strSortChars](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strsortchars)
-- [strSplitAndTrim](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strsplitandtrim)
-- [strSplitCamelCase](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strsplitcamelcase)
-- [strToCharCodes](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strtocharcodes)
-- [strToCharSet](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strtocharset)
-- [strToSortedCharSet](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strtosortedcharset)
-- [strTrimLines](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strtrimlines)
-- [strTrimLinesLeft](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strtrimlinesleft)
-- [strTrimLinesRight](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strtrimlinesright)
-- [strUnwrap](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strunwrap)
-- [strWrapBetween](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strwrapbetween)
-- [strWrapIn](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strwrapin)
-- [strWrapInAngleBrackets](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strwrapinanglebrackets)
-- [strWrapInBraces](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strwrapinbraces)
-- [strWrapInBrackets](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strwrapinbrackets)
-- [strWrapInDoubleQuotes](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strwrapindoublequotes)
-- [strWrapInParenthesis](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strwrapinparenthesis)
-- [strWrapInSingleQuotes](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#strwrapinsinglequotes)
+- [createEncapsulatingRegex](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#createencapsulatingregex)
+- [regexClone](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#regexclone)
+- [regexEscapeString](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#regexescapestring)
+- [regexFixFlags](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#regexfixflags)
+- [regexGetGroupNames](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#regexgetgroupnames)
+- [regexIsValidFlags](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#regexisvalidflags)
+- [regexMatcherToValidater](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#regexmatchertovalidater)
+- [regexScopeTree](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#regexscopetree)
+- [regexValidFlags](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#regexvalidflags)
+- [rexec](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#rexec)
+- [rexecFirstMatch](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#rexecfirstmatch)
+- [strCountCharOccurances](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#strcountcharoccurances)
+- [strCountChars](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#strcountchars)
+- [strEnsureEndsWith](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#strensureendswith)
+- [strFirstCharToUpperCase](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#strfirstchartouppercase)
+- [strHashToBuffer](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#strhashtobuffer)
+- [strHashToString](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#strhashtostring)
+- [strHashToStringDJB2](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#strhashtostringdjb2)
+- [strHashToUint32Array](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#strhashtouint32array)
+- [strIsLowerCase](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#strislowercase)
+- [strIsMultiLine](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#strismultiline)
+- [strIsUpperCase](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#strisuppercase)
+- [strNoConsecutiveEmptyLines](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#strnoconsecutiveemptylines)
+- [strNoConsecutiveWhitespace](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#strnoconsecutivewhitespace)
+- [strParseBoolean](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#strparseboolean)
+- [strPrependLines](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#strprependlines)
+- [strRemoveDuplicateChars](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#strremoveduplicatechars)
+- [strRemoveEmptyLines](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#strremoveemptylines)
+- [strRemoveFirstAndLastLine](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#strremovefirstandlastline)
+- [strRemoveNewLines](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#strremovenewlines)
+- [strRepeat](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#strrepeat)
+- [strReplaceAll](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#strreplaceall)
+- [strSortChars](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#strsortchars)
+- [strSplitAndTrim](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#strsplitandtrim)
+- [strSplitCamelCase](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#strsplitcamelcase)
+- [strToCharCodes](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#strtocharcodes)
+- [strToCharSet](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#strtocharset)
+- [strToSortedCharSet](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#strtosortedcharset)
+- [strTrimLines](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#strtrimlines)
+- [strTrimLinesLeft](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#strtrimlinesleft)
+- [strTrimLinesRight](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#strtrimlinesright)
+- [strUnwrap](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#strunwrap)
+- [strWrapBetween](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#strwrapbetween)
+- [strWrapIn](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#strwrapin)
+- [strWrapInAngleBrackets](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#strwrapinanglebrackets)
+- [strWrapInBraces](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#strwrapinbraces)
+- [strWrapInBrackets](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#strwrapinbrackets)
+- [strWrapInDoubleQuotes](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#strwrapindoublequotes)
+- [strWrapInParenthesis](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#strwrapinparenthesis)
+- [strWrapInSingleQuotes](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#strwrapinsinglequotes)
 
 ## Type Aliases
 
@@ -108,16 +108,16 @@ Released under the [MIT License](./LICENSE).
 
 | Name | Type |
 | :------ | :------ |
-| `between` | [`RexecYield`](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#rexecyield) |
-| `children` | [`RegexScopeTreeNode`](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexscopetreenode)[] |
+| `between` | [`RexecYield`](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#rexecyield) |
+| `children` | [`RegexScopeTreeNode`](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#regexscopetreenode)[] |
 | `depth` | `number` |
-| `left` | [`RexecYield`](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#rexecyield) |
-| `parent` | [`RegexScopeTreeNode`](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexscopetreenode) \| ``null`` |
-| `right` | [`RexecYield`](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#rexecyield) |
+| `left` | [`RexecYield`](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#rexecyield) |
+| `parent` | [`RegexScopeTreeNode`](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#regexscopetreenode) \| ``null`` |
+| `right` | [`RexecYield`](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#rexecyield) |
 
 #### Defined in
 
-regex/types/RegexScopeTreeNode.ts:3
+[regex/types/RegexScopeTreeNode.ts:3](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/regex/types/RegexScopeTreeNode.ts#L3)
 
 ___
 
@@ -136,7 +136,7 @@ ___
 
 #### Defined in
 
-regex/types/RexecYield.ts:1
+[regex/types/RexecYield.ts:1](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/regex/types/RexecYield.ts#L1)
 
 ## Functions
 
@@ -175,7 +175,7 @@ const regex = createEncapsulatingRegex(/a/, /b/)
 
 #### Defined in
 
-regex/createEncapsulatingRegex.ts:17
+[regex/createEncapsulatingRegex.ts:17](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/regex/createEncapsulatingRegex.ts#L17)
 
 ___
 
@@ -212,7 +212,7 @@ regexClone(/abc/gi);;
 
 #### Defined in
 
-regex/regexClone.ts:13
+[regex/regexClone.ts:13](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/regex/regexClone.ts#L13)
 
 ___
 
@@ -244,7 +244,7 @@ regexEscapeString(input);;
 
 #### Defined in
 
-regex/regexEscapeString.ts:11
+[regex/regexEscapeString.ts:11](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/regex/regexEscapeString.ts#L11)
 
 ___
 
@@ -287,7 +287,7 @@ regexFixFlags('?gim*') // 'gim'
 
 #### Defined in
 
-regex/regexFixFlags.ts:16
+[regex/regexFixFlags.ts:16](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/regex/regexFixFlags.ts#L16)
 
 ___
 
@@ -322,7 +322,7 @@ This function only works with regular expressions that use named capture groups.
 
 #### Defined in
 
-regex/regexGetGroupNames.ts:13
+[regex/regexGetGroupNames.ts:13](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/regex/regexGetGroupNames.ts#L13)
 
 ___
 
@@ -358,7 +358,7 @@ regexIsValidFlags('gmisuy') // false
 
 #### Defined in
 
-regex/regexIsValidFlags.ts:14
+[regex/regexIsValidFlags.ts:14](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/regex/regexIsValidFlags.ts#L14)
 
 ___
 
@@ -392,13 +392,13 @@ isDigit('a') //=> false
 
 #### Defined in
 
-regex/regexMatcherToValidater.ts:13
+[regex/regexMatcherToValidater.ts:13](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/regex/regexMatcherToValidater.ts#L13)
 
 ___
 
 ### regexScopeTree
 
-▸ **regexScopeTree**(`left`, `right`): (`string`: `string`, `yieldOnlyRootNodes?`: `boolean`) => `Generator`<[`RegexScopeTreeNode`](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexscopetreenode)\>
+▸ **regexScopeTree**(`left`, `right`): (`string`: `string`, `yieldOnlyRootNodes?`: `boolean`) => `Generator`<[`RegexScopeTreeNode`](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#regexscopetreenode)\>
 
 Builds a regex that matches a string between two strings. Supports regex instead of string.
 
@@ -416,7 +416,7 @@ Builds a regex that matches a string between two strings. Supports regex instead
 A generator function that takes a string and an optional boolean parameter.
 The generator function yields nodes of type IRegexScopeTreeNode.
 
-▸ (`string`, `yieldOnlyRootNodes?`): `Generator`<[`RegexScopeTreeNode`](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexscopetreenode)\>
+▸ (`string`, `yieldOnlyRootNodes?`): `Generator`<[`RegexScopeTreeNode`](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#regexscopetreenode)\>
 
 ##### Parameters
 
@@ -427,7 +427,7 @@ The generator function yields nodes of type IRegexScopeTreeNode.
 
 ##### Returns
 
-`Generator`<[`RegexScopeTreeNode`](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#regexscopetreenode)\>
+`Generator`<[`RegexScopeTreeNode`](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#regexscopetreenode)\>
 
 **`Throws`**
 
@@ -443,7 +443,7 @@ console.dir([...iterable], { depth: null })
 
 #### Defined in
 
-regex/regexScopeTree.ts:21
+[regex/regexScopeTree.ts:21](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/regex/regexScopeTree.ts#L21)
 
 ___
 
@@ -468,13 +468,13 @@ regexValidFlags() //=> ['g', 'i', 'm', 's', 'u', 'y']
 
 #### Defined in
 
-regex/regexValidFlags.ts:9
+[regex/regexValidFlags.ts:9](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/regex/regexValidFlags.ts#L9)
 
 ___
 
 ### rexec
 
-▸ **rexec**(`regex`, `string`): `Generator`<[`RexecYield`](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#rexecyield)\>
+▸ **rexec**(`regex`, `string`): `Generator`<[`RexecYield`](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#rexecyield)\>
 
 Easily perform regex 'exec' on a string. An iterable is returned which steps through the exec process and yields all the details you might need.
 
@@ -487,7 +487,7 @@ Easily perform regex 'exec' on a string. An iterable is returned which steps thr
 
 #### Returns
 
-`Generator`<[`RexecYield`](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#rexecyield)\>
+`Generator`<[`RexecYield`](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#rexecyield)\>
 
 A generator that yields an object for each match.
 
@@ -519,13 +519,13 @@ console.log([...rexec(regex, str)])
 
 #### Defined in
 
-regex/rexec.ts:30
+[regex/rexec.ts:30](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/regex/rexec.ts#L30)
 
 ___
 
 ### rexecFirstMatch
 
-▸ **rexecFirstMatch**(`regex`, `string`): [`RexecYield`](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#rexecyield) \| `undefined`
+▸ **rexecFirstMatch**(`regex`, `string`): [`RexecYield`](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#rexecyield) \| `undefined`
 
 Returns the first match of a regular expression in a string.
 
@@ -538,7 +538,7 @@ Returns the first match of a regular expression in a string.
 
 #### Returns
 
-[`RexecYield`](https://github.com/bemoje/tsmono/blob/main/pkg/string/docs/md/index.md#rexecyield) \| `undefined`
+[`RexecYield`](https://github.com/bemoje/tsmono/blob/main/docs/md/string/index.md#rexecyield) \| `undefined`
 
 The first match as an `RexecYield` object, or `undefined` if no match is found.
 
@@ -555,7 +555,7 @@ rexecFirstMatch(/hello/g, 'hello world');;
 
 #### Defined in
 
-regex/rexecFirstMatch.ts:16
+[regex/rexecFirstMatch.ts:16](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/regex/rexecFirstMatch.ts#L16)
 
 ___
 
@@ -589,7 +589,7 @@ strCountCharOccurances('hello world', 'o');;
 
 #### Defined in
 
-string/strCountCharOccurances.ts:11
+[string/strCountCharOccurances.ts:11](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strCountCharOccurances.ts#L11)
 
 ___
 
@@ -618,7 +618,7 @@ strCountChars("hello");;
 
 #### Defined in
 
-string/strCountChars.ts:9
+[string/strCountChars.ts:9](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strCountChars.ts#L9)
 
 ___
 
@@ -650,7 +650,7 @@ strEnsureEndsWith('Hello World', ' World');
 
 #### Defined in
 
-string/strEnsureEndsWith.ts:12
+[string/strEnsureEndsWith.ts:12](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strEnsureEndsWith.ts#L12)
 
 ___
 
@@ -679,7 +679,7 @@ strFirstCharToUpperCase('hello');
 
 #### Defined in
 
-string/strFirstCharToUpperCase.ts:9
+[string/strFirstCharToUpperCase.ts:9](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strFirstCharToUpperCase.ts#L9)
 
 ___
 
@@ -713,7 +713,7 @@ strHash.toBuffer('hello')
 
 #### Defined in
 
-string/strHashToBuffer.ts:13
+[string/strHashToBuffer.ts:13](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strHashToBuffer.ts#L13)
 
 ___
 
@@ -748,7 +748,7 @@ strHash.toString('hello', 'sha256', 'hex')
 
 #### Defined in
 
-string/strHashToString.ts:15
+[string/strHashToString.ts:15](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strHashToString.ts#L15)
 
 ___
 
@@ -768,7 +768,7 @@ ___
 
 #### Defined in
 
-string/strHashToStringDJB2.ts:1
+[string/strHashToStringDJB2.ts:1](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strHashToStringDJB2.ts#L1)
 
 ___
 
@@ -806,7 +806,7 @@ strHash.toUint32Array('hello')
 
 #### Defined in
 
-string/strHashToUint32Array.ts:15
+[string/strHashToUint32Array.ts:15](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strHashToUint32Array.ts#L15)
 
 ___
 
@@ -837,7 +837,7 @@ strIsLowerCase('Hello');
 
 #### Defined in
 
-string/strIsLowerCase.ts:11
+[string/strIsLowerCase.ts:11](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strIsLowerCase.ts#L11)
 
 ___
 
@@ -868,7 +868,7 @@ strIsMultiLine("Hello World");
 
 #### Defined in
 
-string/strIsMultiLine.ts:11
+[string/strIsMultiLine.ts:11](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strIsMultiLine.ts#L11)
 
 ___
 
@@ -893,13 +893,13 @@ Checks if the given string is in upper case.
 ```ts
 strIsUpperCase('HELLO');;
 //=> true
-strIsUpperCase('Hello');;
+strIsUpperCase('HEllo');;
 //=> false
 ```
 
 #### Defined in
 
-string/strIsUpperCase.ts:11
+[string/strIsUpperCase.ts:11](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strIsUpperCase.ts#L11)
 
 ___
 
@@ -928,7 +928,7 @@ strNoConsecutiveEmptyLines("Hello\n\n\nWorld");;
 
 #### Defined in
 
-string/strNoConsecutiveEmptyLines.ts:9
+[string/strNoConsecutiveEmptyLines.ts:9](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strNoConsecutiveEmptyLines.ts#L9)
 
 ___
 
@@ -957,7 +957,7 @@ strNoConsecutiveWhitespace('Hello   World');
 
 #### Defined in
 
-string/strNoConsecutiveWhitespace.ts:9
+[string/strNoConsecutiveWhitespace.ts:9](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strNoConsecutiveWhitespace.ts#L9)
 
 ___
 
@@ -988,7 +988,7 @@ strParseBoolean('False');
 
 #### Defined in
 
-string/strParseBoolean.ts:11
+[string/strParseBoolean.ts:11](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strParseBoolean.ts#L11)
 
 ___
 
@@ -1021,7 +1021,7 @@ strPrependLines(myString, '--');
 
 #### Defined in
 
-string/strPrependLines.ts:12
+[string/strPrependLines.ts:12](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strPrependLines.ts#L12)
 
 ___
 
@@ -1054,7 +1054,7 @@ strRemoveDuplicateChars('hello');
 
 #### Defined in
 
-string/strRemoveDuplicateChars.ts:10
+[string/strRemoveDuplicateChars.ts:10](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strRemoveDuplicateChars.ts#L10)
 
 ___
 
@@ -1083,7 +1083,7 @@ strRemoveEmptyLines('Hello\n\nWorld\n\n!');;
 
 #### Defined in
 
-string/strRemoveEmptyLines.ts:9
+[string/strRemoveEmptyLines.ts:9](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strRemoveEmptyLines.ts#L9)
 
 ___
 
@@ -1112,7 +1112,7 @@ strRemoveFirstAndLastLine('Line1\nLine2\nLine3');;
 
 #### Defined in
 
-string/strRemoveFirstAndLastLine.ts:9
+[string/strRemoveFirstAndLastLine.ts:9](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strRemoveFirstAndLastLine.ts#L9)
 
 ___
 
@@ -1150,7 +1150,7 @@ console.log(result); // 'Hello World'
 
 #### Defined in
 
-string/strRemoveNewLines.ts:15
+[string/strRemoveNewLines.ts:15](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strRemoveNewLines.ts#L15)
 
 ___
 
@@ -1180,7 +1180,7 @@ strRepeat('abc', 3);;
 
 #### Defined in
 
-string/strRepeat.ts:10
+[string/strRepeat.ts:10](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strRepeat.ts#L10)
 
 ___
 
@@ -1215,7 +1215,7 @@ strReplaceAll(input, replace, replaceWith);
 
 #### Defined in
 
-string/strReplaceAll.ts:17
+[string/strReplaceAll.ts:17](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strReplaceAll.ts#L17)
 
 ___
 
@@ -1244,7 +1244,7 @@ strSortChars('dcba');
 
 #### Defined in
 
-string/strSortChars.ts:9
+[string/strSortChars.ts:9](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strSortChars.ts#L9)
 
 ___
 
@@ -1278,7 +1278,7 @@ strSplitAndTrim("  Hello ;  world ; ". ";", false;
 
 #### Defined in
 
-string/strSplitAndTrim.ts:14
+[string/strSplitAndTrim.ts:14](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strSplitAndTrim.ts#L14)
 
 ___
 
@@ -1311,7 +1311,7 @@ strSplitCamelCase('someCamel10Case')
 
 #### Defined in
 
-string/strSplitCamelCase.ts:14
+[string/strSplitCamelCase.ts:14](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strSplitCamelCase.ts#L14)
 
 ___
 
@@ -1340,7 +1340,7 @@ strToCharCodes('Hello');;
 
 #### Defined in
 
-string/strToCharCodes.ts:9
+[string/strToCharCodes.ts:9](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strToCharCodes.ts#L9)
 
 ___
 
@@ -1369,7 +1369,7 @@ strToCharSet('hello');;
 
 #### Defined in
 
-string/strToCharSet.ts:9
+[string/strToCharSet.ts:9](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strToCharSet.ts#L9)
 
 ___
 
@@ -1398,7 +1398,7 @@ strToSortedCharSet('banana');
 
 #### Defined in
 
-string/strToSortedCharSet.ts:9
+[string/strToSortedCharSet.ts:9](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strToSortedCharSet.ts#L9)
 
 ___
 
@@ -1427,7 +1427,7 @@ strTrimLines('  Hello, world!  \n  How are you?  ');;
 
 #### Defined in
 
-string/strTrimLines.ts:9
+[string/strTrimLines.ts:9](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strTrimLines.ts#L9)
 
 ___
 
@@ -1456,7 +1456,7 @@ strTrimLinesLeft('   line1\n   line2\n   line3');;
 
 #### Defined in
 
-string/strTrimLinesLeft.ts:9
+[string/strTrimLinesLeft.ts:9](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strTrimLinesLeft.ts#L9)
 
 ___
 
@@ -1485,7 +1485,7 @@ strTrimLinesRight('  Hello, world!  \n  How are you?  ');;
 
 #### Defined in
 
-string/strTrimLinesRight.ts:9
+[string/strTrimLinesRight.ts:9](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strTrimLinesRight.ts#L9)
 
 ___
 
@@ -1520,7 +1520,7 @@ strUnwrap(input, left, right);
 
 #### Defined in
 
-string/strUnwrap.ts:17
+[string/strUnwrap.ts:17](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strUnwrap.ts#L17)
 
 ___
 
@@ -1551,7 +1551,7 @@ strWrapBetween('Hello', '<', '>');;
 
 #### Defined in
 
-string/strWrapBetween.ts:11
+[string/strWrapBetween.ts:11](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strWrapBetween.ts#L11)
 
 ___
 
@@ -1581,7 +1581,7 @@ strWrapIn('hello', '*');;
 
 #### Defined in
 
-string/strWrapIn.ts:10
+[string/strWrapIn.ts:10](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strWrapIn.ts#L10)
 
 ___
 
@@ -1610,7 +1610,7 @@ strWrapInAngleBrackets('example');;
 
 #### Defined in
 
-string/strWrapInAngleBrackets.ts:9
+[string/strWrapInAngleBrackets.ts:9](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strWrapInAngleBrackets.ts#L9)
 
 ___
 
@@ -1639,7 +1639,7 @@ strWrapInBraces('hello');
 
 #### Defined in
 
-string/strWrapInBraces.ts:9
+[string/strWrapInBraces.ts:9](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strWrapInBraces.ts#L9)
 
 ___
 
@@ -1668,7 +1668,7 @@ strWrapInBrackets('test');
 
 #### Defined in
 
-string/strWrapInBrackets.ts:9
+[string/strWrapInBrackets.ts:9](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strWrapInBrackets.ts#L9)
 
 ___
 
@@ -1697,7 +1697,7 @@ strWrapInDoubleQuotes('Hello World');
 
 #### Defined in
 
-string/strWrapInDoubleQuotes.ts:9
+[string/strWrapInDoubleQuotes.ts:9](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strWrapInDoubleQuotes.ts#L9)
 
 ___
 
@@ -1726,7 +1726,7 @@ strWrapInParenthesis('hello');
 
 #### Defined in
 
-string/strWrapInParenthesis.ts:9
+[string/strWrapInParenthesis.ts:9](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strWrapInParenthesis.ts#L9)
 
 ___
 
@@ -1755,4 +1755,4 @@ strWrapInSingleQuotes('Hello World');
 
 #### Defined in
 
-string/strWrapInSingleQuotes.ts:9
+[string/strWrapInSingleQuotes.ts:9](https://github.com/bemoje/tsmono/blob/87185a0/pkg/string/src/string/strWrapInSingleQuotes.ts#L9)

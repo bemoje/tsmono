@@ -37,9 +37,9 @@ Contributors are welcome to open a [pull request](https://github.com/bemoje/http
 Released under the [MIT License](./LICENSE).
 
 ## Documentation
-- [HTML](https://github.com/bemoje/tsmono/blob/main/pkg/matrix/docs/html/index.html)
-- [Markdown](https://github.com/bemoje/tsmono/blob/main/pkg/matrix/docs/md/index.md)
+- [HTML](https://github.com/bemoje/tsmono/blob/main/docs/html/index.html)
+- [Markdown](https://github.com/bemoje/tsmono/blob/main/docs/md/matrix/index.md)
 
 ### Classes
 
-- [Matrix](https://github.com/bemoje/tsmono/blob/main/pkg/matrix/docs/md/classes/Matrix.md)
+- [Matrix](https://github.com/bemoje/tsmono/blob/main/docs/md/matrix/classes/Matrix.md)

@@ -37,13 +37,13 @@ Contributors are welcome to open a [pull request](https://github.com/bemoje/http
 Released under the [MIT License](./LICENSE).
 
 ## Documentation
-- [HTML](https://github.com/bemoje/tsmono/blob/main/pkg/fspath-filter/docs/html/index.html)
-- [Markdown](https://github.com/bemoje/tsmono/blob/main/pkg/fspath-filter/docs/md/index.md)
+- [HTML](https://github.com/bemoje/tsmono/blob/main/docs/html/index.html)
+- [Markdown](https://github.com/bemoje/tsmono/blob/main/docs/md/fspath-filter/index.md)
 
 ### Classes
 
-- [FSPathFilter](https://github.com/bemoje/tsmono/blob/main/pkg/fspath-filter/docs/md/classes/FSPathFilter.md)
+- [FSPathFilter](https://github.com/bemoje/tsmono/blob/main/docs/md/fspath-filter/classes/FSPathFilter.md)
 
 ### Interfaces
 
-- [IPathFilterIgnoreOptions](https://github.com/bemoje/tsmono/blob/main/pkg/fspath-filter/docs/md/interfaces/IPathFilterIgnoreOptions.md)
+- [IPathFilterIgnoreOptions](https://github.com/bemoje/tsmono/blob/main/docs/md/fspath-filter/interfaces/IPathFilterIgnoreOptions.md)

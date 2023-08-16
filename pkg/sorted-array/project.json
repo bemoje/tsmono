@@ -1,0 +1,8 @@
+{
+  "name": "sorted-array",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "pkg/sorted-array/src",
+  "projectType": "library",
+  "targets": {},
+  "tags": []
+}

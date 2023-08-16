@@ -3,7 +3,7 @@
     "default": {
       "runner": "nx-cloud",
       "options": {
-        "cacheableOperations": ["lint", "test", "build", "docsmd", "docshtml", "prepub", "prepub-old"],
+        "cacheableOperations": ["lint", "test", "build", "docsmd", "docshtml"],
         "accessToken": "Yjk5YzQ2ZDAtNDA5YS00MWUwLWIzNDgtZjIyZWI4YzhkNzA5fHJlYWQtd3JpdGU="
       }
     }
@@ -33,23 +33,18 @@
       "inputs": ["default", "{projectRoot}/.eslintrc.json", "{projectRoot}/.eslintignore"]
     },
     "test": {
-      "inputs": ["production", "{projectRoot}/jest.preset.js"]
+      "inputs": ["default", "^production", "{projectRoot}/jest.preset.js"]
     },
     "build": {
       "dependsOn": ["^build"],
-      "inputs": ["production", "^production", "{projectRoot}/rollup.config.js", "{projectRoot}/tsconfig.bundle.json"],
-      "outputs": ["{projectRoot}/dist"]
+      "inputs": ["production", "^production", "{projectRoot}/rollup.config.js", "{projectRoot}/tsconfig.bundle.json"]
     },
     "docsmd": {
-      "inputs": ["{projectRoot}/dist"],
-      "outputs": ["{projectRoot}/docs/md"]
+      "inputs": ["sharedGlobals", "{projectRoot}/src/**/*", "{projectRoot}/dist/**/*", "{projectRoot}/package.json"]
     },
     "docshtml": {
-      "inputs": ["{projectRoot}/dist"],
-      "outputs": ["{projectRoot}/docs/html"]
-    },
-    "prepub": {},
-    "prepub-old": {}
+      "inputs": ["sharedGlobals", "{projectRoot}/src/**/*", "{projectRoot}/dist/**/*", "{projectRoot}/package.json"]
+    }
   },
   "affected": {
     "defaultBase": "main"

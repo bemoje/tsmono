@@ -37,13 +37,13 @@ Contributors are welcome to open a [pull request](https://github.com/bemoje/http
 Released under the [MIT License](./LICENSE).
 
 ## Documentation
-- [HTML](https://github.com/bemoje/tsmono/blob/main/pkg/sorted-array/docs/html/index.html)
-- [Markdown](https://github.com/bemoje/tsmono/blob/main/pkg/sorted-array/docs/md/index.md)
+- [HTML](https://github.com/bemoje/tsmono/blob/main/docs/html/index.html)
+- [Markdown](https://github.com/bemoje/tsmono/blob/main/docs/md/sorted-array/index.md)
 
 ### Classes
 
-- [SortedArray](https://github.com/bemoje/tsmono/blob/main/pkg/sorted-array/docs/md/classes/SortedArray.md)
+- [SortedArray](https://github.com/bemoje/tsmono/blob/main/docs/md/sorted-array/classes/SortedArray.md)
 
 ### Interfaces
 
-- [ISortedArrayOptions](https://github.com/bemoje/tsmono/blob/main/pkg/sorted-array/docs/md/interfaces/ISortedArrayOptions.md)
+- [ISortedArrayOptions](https://github.com/bemoje/tsmono/blob/main/docs/md/sorted-array/interfaces/ISortedArrayOptions.md)

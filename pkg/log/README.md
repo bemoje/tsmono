@@ -37,18 +37,18 @@ Contributors are welcome to open a [pull request](https://github.com/bemoje/http
 Released under the [MIT License](./LICENSE).
 
 ## Documentation
-- [HTML](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/html/index.html)
-- [Markdown](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/index.md)
+- [HTML](https://github.com/bemoje/tsmono/blob/main/docs/html/index.html)
+- [Markdown](https://github.com/bemoje/tsmono/blob/main/docs/md/log/index.md)
 
 ### Enumerations
 
-- [LogLevel](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/enums/LogLevel.md)
+- [LogLevel](https://github.com/bemoje/tsmono/blob/main/docs/md/log/enums/LogLevel.md)
 
 ### Classes
 
-- [Log](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/classes/Log.md)
+- [Log](https://github.com/bemoje/tsmono/blob/main/docs/md/log/classes/Log.md)
 
 ### Interfaces
 
-- [ILogEmitterEventsOptions](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/interfaces/ILogEmitterEventsOptions.md)
-- [ILogOptions](https://github.com/bemoje/tsmono/blob/main/pkg/log/docs/md/interfaces/ILogOptions.md)
+- [ILogEmitterEventsOptions](https://github.com/bemoje/tsmono/blob/main/docs/md/log/interfaces/ILogEmitterEventsOptions.md)
+- [ILogOptions](https://github.com/bemoje/tsmono/blob/main/docs/md/log/interfaces/ILogOptions.md)

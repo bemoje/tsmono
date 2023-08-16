@@ -47,15 +47,15 @@ Contributors are welcome to open a [pull request](${`https://github.com/${'bemoj
 Released under the [${pkg.license} License](./LICENSE).
 
 ## Documentation
-- [HTML](https://github.com/bemoje/tsmono/blob/main/pkg/${shortname}/docs/html/index.html)
-- [Markdown](https://github.com/bemoje/tsmono/blob/main/pkg/${shortname}/docs/md/index.md)
+- [HTML](https://github.com/bemoje/tsmono/blob/main/docs/html/index.html)
+- [Markdown](https://github.com/bemoje/tsmono/blob/main/docs/md/${shortname}/index.md)
 
 ${docs}
 `
 }
 
-getPackages().forEach(({ rootdir, pkg }) => {
-  const mdpath = path.join(rootdir, 'docs', 'md', 'index.md')
+getPackages().forEach(({ rootdir, pkg, name }) => {
+  const mdpath = path.join(process.cwd(), 'docs', 'md', name, 'index.md')
   const docs = fs.readFileSync(mdpath, 'utf8').split('## Table of contents')[1].trim()
   const content = readme(pkg, docs)
   fs.writeFileSync(path.join(rootdir, 'README.md'), content)

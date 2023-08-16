@@ -1,0 +1,8 @@
+{
+  "name": "tscode",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "pkg/tscode/src",
+  "projectType": "library",
+  "targets": {},
+  "tags": []
+}

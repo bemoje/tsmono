@@ -37,17 +37,17 @@ Contributors are welcome to open a [pull request](https://github.com/bemoje/http
 Released under the [MIT License](./LICENSE).
 
 ## Documentation
-- [HTML](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/html/index.html)
-- [Markdown](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/index.md)
+- [HTML](https://github.com/bemoje/tsmono/blob/main/docs/html/index.html)
+- [Markdown](https://github.com/bemoje/tsmono/blob/main/docs/md/api-util/index.md)
 
 ### Classes
 
-- [AbstractApiClient](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/AbstractApiClient.md)
-- [ApiReponseCache](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/classes/ApiReponseCache.md)
+- [AbstractApiClient](https://github.com/bemoje/tsmono/blob/main/docs/md/api-util/classes/AbstractApiClient.md)
+- [ApiReponseCache](https://github.com/bemoje/tsmono/blob/main/docs/md/api-util/classes/ApiReponseCache.md)
 
 ### Interfaces
 
-- [IAbstractApiClientOptions](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IAbstractApiClientOptions.md)
-- [IApiResponseCacheOptions](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IApiResponseCacheOptions.md)
-- [IAsyncRetryOptions](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IAsyncRetryOptions.md)
-- [IResponseCacheOptions](https://github.com/bemoje/tsmono/blob/main/pkg/api-util/docs/md/interfaces/IResponseCacheOptions.md)
+- [IAbstractApiClientOptions](https://github.com/bemoje/tsmono/blob/main/docs/md/api-util/interfaces/IAbstractApiClientOptions.md)
+- [IApiResponseCacheOptions](https://github.com/bemoje/tsmono/blob/main/docs/md/api-util/interfaces/IApiResponseCacheOptions.md)
+- [IAsyncRetryOptions](https://github.com/bemoje/tsmono/blob/main/docs/md/api-util/interfaces/IAsyncRetryOptions.md)
+- [IResponseCacheOptions](https://github.com/bemoje/tsmono/blob/main/docs/md/api-util/interfaces/IResponseCacheOptions.md)
