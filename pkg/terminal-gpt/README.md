@@ -14,6 +14,8 @@
 <span><a href="https://npmjs.org/@bemoje/terminal-gpt" title="View this project on NPM"><img src="https://img.shields.io/npm/v/@bemoje/terminal-gpt" alt="NPM Version" /></a></span>
 <span><a href="https://npmjs.org/@bemoje/terminal-gpt" title="NPM Downloads"><img src="https://img.shields.io/npm/dt/@bemoje/terminal-gpt" alt="NPM Downloads" /></a></span>
 
+## Documentation
+[terminal-gpt docs](https://bemoje.github.io/tsmono/html/terminal-gpt/modules.html)
 
 ##### Donate
 <span><a href="https://www.patreon.com/user?u=40752770" title="Donate using Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Patreon Donation" /></a></span>
@@ -35,21 +37,3 @@ Contributors are welcome to open a [pull request](https://github.com/bemoje/http
 
 ## License
 Released under the [MIT License](./LICENSE).
-
-## Documentation
-- [HTML](https://github.com/bemoje/tsmono/blob/main/docs/html/index.html)
-- [Markdown](https://github.com/bemoje/tsmono/blob/main/docs/md/terminal-gpt/index.md)
-
-### Variables
-
-- [program](https://github.com/bemoje/tsmono/blob/main/docs/md/terminal-gpt/index.md#program)
-
-## Variables
-
-### program
-
-• `Const` **program**: `Command`
-
-#### Defined in
-
-[index.ts:5](https://github.com/bemoje/tsmono/blob/87185a0/pkg/terminal-gpt/src/index.ts#L5)

@@ -14,6 +14,8 @@ An array data structure for binary search, options for whether to allow duplicat
 <span><a href="https://npmjs.org/@bemoje/sorted-array" title="View this project on NPM"><img src="https://img.shields.io/npm/v/@bemoje/sorted-array" alt="NPM Version" /></a></span>
 <span><a href="https://npmjs.org/@bemoje/sorted-array" title="NPM Downloads"><img src="https://img.shields.io/npm/dt/@bemoje/sorted-array" alt="NPM Downloads" /></a></span>
 
+## Documentation
+[sorted-array docs](https://bemoje.github.io/tsmono/html/sorted-array/modules.html)
 
 ##### Donate
 <span><a href="https://www.patreon.com/user?u=40752770" title="Donate using Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Patreon Donation" /></a></span>
@@ -35,15 +37,3 @@ Contributors are welcome to open a [pull request](https://github.com/bemoje/http
 
 ## License
 Released under the [MIT License](./LICENSE).
-
-## Documentation
-- [HTML](https://github.com/bemoje/tsmono/blob/main/docs/html/index.html)
-- [Markdown](https://github.com/bemoje/tsmono/blob/main/docs/md/sorted-array/index.md)
-
-### Classes
-
-- [SortedArray](https://github.com/bemoje/tsmono/blob/main/docs/md/sorted-array/classes/SortedArray.md)
-
-### Interfaces
-
-- [ISortedArrayOptions](https://github.com/bemoje/tsmono/blob/main/docs/md/sorted-array/interfaces/ISortedArrayOptions.md)

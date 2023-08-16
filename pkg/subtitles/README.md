@@ -14,6 +14,8 @@ Classes for SRT and VTT subtitles renderind parsing.
 <span><a href="https://npmjs.org/@bemoje/subtitles" title="View this project on NPM"><img src="https://img.shields.io/npm/v/@bemoje/subtitles" alt="NPM Version" /></a></span>
 <span><a href="https://npmjs.org/@bemoje/subtitles" title="NPM Downloads"><img src="https://img.shields.io/npm/dt/@bemoje/subtitles" alt="NPM Downloads" /></a></span>
 
+## Documentation
+[subtitles docs](https://bemoje.github.io/tsmono/html/subtitles/modules.html)
 
 ##### Donate
 <span><a href="https://www.patreon.com/user?u=40752770" title="Donate using Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Patreon Donation" /></a></span>
@@ -35,15 +37,3 @@ Contributors are welcome to open a [pull request](https://github.com/bemoje/http
 
 ## License
 Released under the [MIT License](./LICENSE).
-
-## Documentation
-- [HTML](https://github.com/bemoje/tsmono/blob/main/docs/html/index.html)
-- [Markdown](https://github.com/bemoje/tsmono/blob/main/docs/md/subtitles/index.md)
-
-### Classes
-
-- [AbstractSubtitle](https://github.com/bemoje/tsmono/blob/main/docs/md/subtitles/classes/AbstractSubtitle.md)
-- [SRTSubtitle](https://github.com/bemoje/tsmono/blob/main/docs/md/subtitles/classes/SRTSubtitle.md)
-- [SRTSubtitles](https://github.com/bemoje/tsmono/blob/main/docs/md/subtitles/classes/SRTSubtitles.md)
-- [VTTSubtitle](https://github.com/bemoje/tsmono/blob/main/docs/md/subtitles/classes/VTTSubtitle.md)
-- [VTTSubtitles](https://github.com/bemoje/tsmono/blob/main/docs/md/subtitles/classes/VTTSubtitles.md)

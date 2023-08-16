@@ -27,23 +27,21 @@
     "pkg/string"
   ],
   "scripts": {
-    "foreach": "npm run update-readmes && ts-node -P tsconfig.json scripts/runForEach.ts",
     "update-readmes": "ts-node -P tsconfig.json scripts/updateReadmes.ts",
-    "fix-docs": "ts-node -P tsconfig.json scripts/fixDocs.ts",
+    "fix-bemoje-deps": "ts-node -P tsconfig.json scripts/fixBemojeDependencies.ts",
     "publish": "ts-node -P tsconfig.json scripts/npmPublish.ts",
     "create-package": "ts-node -P tsconfig.json scripts/createPackage.ts",
     "delete-package": "ts-node -P tsconfig.json scripts/deletePackage.ts",
-    "wipe-bemoje": "ts-node -P tsconfig.json scripts/wipeBemojeNodeModules.ts",
+    "wipe-bemoje-node-modules": "ts-node -P tsconfig.json scripts/wipeBemojeNodeModules.ts",
+    "wipe-all-node-modules": "ts-node -P tsconfig.json scripts/wipeNodeModules.ts",
     "lint": "nx run-many --parallel 4 -t lint",
     "test": "nx run-many --parallel 4 -t test",
     "build": "nx run-many --parallel 4 -t build",
-    "docsmd": "nx run-many --parallel 4 -t docsmd",
-    "docshtml": "nx run-many --parallel 4 -t docshtml",
-    "prepub-old": "npm run lint && npm run test && npm run build && npm run docsmd && npm run docshtml && npm run fix-docs && npm run update-readmes",
+    "docs": "nx run-many --parallel 4 -t docs",
     "prepub-build": "nx run-many --parallel 4 --targets=\"lint,test,build\"",
-    "prepub-docs": "nx run-many --parallel 4 --targets=\"docsmd,docshtml\" && npm run update-readmes",
+    "prepub-docs": "nx run-many --parallel 4 --targets=\"docs\" && npm run update-readmes",
     "prepub": "npm run prepub-build && npm run prepub-docs",
-    "opendocs": "start docs/html/index.html"
+    "opendocs": "start docs/index.html"
   },
   "dependencies": {
     "@bemoje/node-util": "latest"
@@ -62,11 +60,13 @@
     "@types/pdf-parse": "^1.1.1",
     "@types/prettier": "^2.7.3",
     "@types/rimraf": "^4.0.5",
+    "@types/camel-case": "^1.2.1",
     "@types/rollup": "^0.54.0",
     "@types/strip-comments": "^2.0.1",
     "@types/typescript": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "^6.3.0",
     "@typescript-eslint/parser": "^6.3.0",
+    "typedoc-plugin-markdown": "^3.15.4",
     "camel-case": "^4.1.2",
     "eslint": "^8.46.0",
     "eslint-config-prettier": "^9.0.0",
@@ -85,7 +85,6 @@
     "ts-node": "^10.9.1",
     "tslib": "^2.6.1",
     "typedoc": "^0.24.8",
-    "typedoc-plugin-markdown": "^3.15.4",
     "typescript": "^5.1.6",
     "walkdir": "^0.4.1"
   }

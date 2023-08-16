@@ -14,6 +14,8 @@ Logger utility for node-js.
 <span><a href="https://npmjs.org/@bemoje/log" title="View this project on NPM"><img src="https://img.shields.io/npm/v/@bemoje/log" alt="NPM Version" /></a></span>
 <span><a href="https://npmjs.org/@bemoje/log" title="NPM Downloads"><img src="https://img.shields.io/npm/dt/@bemoje/log" alt="NPM Downloads" /></a></span>
 
+## Documentation
+[log docs](https://bemoje.github.io/tsmono/html/log/modules.html)
 
 ##### Donate
 <span><a href="https://www.patreon.com/user?u=40752770" title="Donate using Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Patreon Donation" /></a></span>
@@ -35,20 +37,3 @@ Contributors are welcome to open a [pull request](https://github.com/bemoje/http
 
 ## License
 Released under the [MIT License](./LICENSE).
-
-## Documentation
-- [HTML](https://github.com/bemoje/tsmono/blob/main/docs/html/index.html)
-- [Markdown](https://github.com/bemoje/tsmono/blob/main/docs/md/log/index.md)
-
-### Enumerations
-
-- [LogLevel](https://github.com/bemoje/tsmono/blob/main/docs/md/log/enums/LogLevel.md)
-
-### Classes
-
-- [Log](https://github.com/bemoje/tsmono/blob/main/docs/md/log/classes/Log.md)
-
-### Interfaces
-
-- [ILogEmitterEventsOptions](https://github.com/bemoje/tsmono/blob/main/docs/md/log/interfaces/ILogEmitterEventsOptions.md)
-- [ILogOptions](https://github.com/bemoje/tsmono/blob/main/docs/md/log/interfaces/ILogOptions.md)

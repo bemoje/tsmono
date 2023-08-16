@@ -14,6 +14,8 @@ API client for openai with various built-in functionality, such as caching, auto
 <span><a href="https://npmjs.org/@bemoje/openai-api-client" title="View this project on NPM"><img src="https://img.shields.io/npm/v/@bemoje/openai-api-client" alt="NPM Version" /></a></span>
 <span><a href="https://npmjs.org/@bemoje/openai-api-client" title="NPM Downloads"><img src="https://img.shields.io/npm/dt/@bemoje/openai-api-client" alt="NPM Downloads" /></a></span>
 
+## Documentation
+[openai-api-client docs](https://bemoje.github.io/tsmono/html/openai-api-client/modules.html)
 
 ##### Donate
 <span><a href="https://www.patreon.com/user?u=40752770" title="Donate using Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Patreon Donation" /></a></span>
@@ -35,21 +37,3 @@ Contributors are welcome to open a [pull request](https://github.com/bemoje/http
 
 ## License
 Released under the [MIT License](./LICENSE).
-
-## Documentation
-- [HTML](https://github.com/bemoje/tsmono/blob/main/docs/html/index.html)
-- [Markdown](https://github.com/bemoje/tsmono/blob/main/docs/md/openai-api-client/index.md)
-
-### Classes
-
-- [OpenaiApiClient](https://github.com/bemoje/tsmono/blob/main/docs/md/openai-api-client/classes/OpenaiApiClient.md)
-- [OpenaiApiClientExtended](https://github.com/bemoje/tsmono/blob/main/docs/md/openai-api-client/classes/OpenaiApiClientExtended.md)
-
-### Interfaces
-
-- [IOpenaiApiClientApiDefaultsOptions](https://github.com/bemoje/tsmono/blob/main/docs/md/openai-api-client/interfaces/IOpenaiApiClientApiDefaultsOptions.md)
-- [IOpenaiApiClientOptions](https://github.com/bemoje/tsmono/blob/main/docs/md/openai-api-client/interfaces/IOpenaiApiClientOptions.md)
-- [IOpenaiChatRequestOptions](https://github.com/bemoje/tsmono/blob/main/docs/md/openai-api-client/interfaces/IOpenaiChatRequestOptions.md)
-- [IOpenaiCompletionRequestOptions](https://github.com/bemoje/tsmono/blob/main/docs/md/openai-api-client/interfaces/IOpenaiCompletionRequestOptions.md)
-- [IOpenaiTranscribeOptions](https://github.com/bemoje/tsmono/blob/main/docs/md/openai-api-client/interfaces/IOpenaiTranscribeOptions.md)
-- [IOpenaiTranscribeRequest](https://github.com/bemoje/tsmono/blob/main/docs/md/openai-api-client/interfaces/IOpenaiTranscribeRequest.md)

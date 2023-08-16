@@ -14,6 +14,8 @@ A 2D table data structure that validates structural integrity and has some usefu
 <span><a href="https://npmjs.org/@bemoje/table" title="View this project on NPM"><img src="https://img.shields.io/npm/v/@bemoje/table" alt="NPM Version" /></a></span>
 <span><a href="https://npmjs.org/@bemoje/table" title="NPM Downloads"><img src="https://img.shields.io/npm/dt/@bemoje/table" alt="NPM Downloads" /></a></span>
 
+## Documentation
+[table docs](https://bemoje.github.io/tsmono/html/table/modules.html)
 
 ##### Donate
 <span><a href="https://www.patreon.com/user?u=40752770" title="Donate using Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Patreon Donation" /></a></span>
@@ -35,15 +37,3 @@ Contributors are welcome to open a [pull request](https://github.com/bemoje/http
 
 ## License
 Released under the [MIT License](./LICENSE).
-
-## Documentation
-- [HTML](https://github.com/bemoje/tsmono/blob/main/docs/html/index.html)
-- [Markdown](https://github.com/bemoje/tsmono/blob/main/docs/md/table/index.md)
-
-### Classes
-
-- [Table](https://github.com/bemoje/tsmono/blob/main/docs/md/table/classes/Table.md)
-
-### Interfaces
-
-- [ITableSerialized](https://github.com/bemoje/tsmono/blob/main/docs/md/table/interfaces/ITableSerialized.md)

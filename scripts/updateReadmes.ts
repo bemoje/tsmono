@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import { getPackages } from './util/getPackages'
 
-export function readme(pkg: Record<string, any>, docs: string): string {
+export function readme(pkg: Record<string, any>): string {
   const shortname = pkg.name.replace('@bemoje/', '')
   return `# ${pkg.name}
 ${pkg.description}
@@ -24,6 +24,8 @@ ${pkg.description}
     pkg.name
   }" alt="NPM Downloads" /></a></span>
 
+## Documentation
+[${shortname} docs](https://bemoje.github.io/tsmono/html/${shortname}/modules.html)
 
 ##### Donate
 <span><a href="${`https://www.patreon.com/user?u=${'40752770'}`}" title="Donate using Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Patreon Donation" /></a></span>
@@ -45,18 +47,10 @@ Contributors are welcome to open a [pull request](${`https://github.com/${'bemoj
 
 ## License
 Released under the [${pkg.license} License](./LICENSE).
-
-## Documentation
-- [HTML](https://github.com/bemoje/tsmono/blob/main/docs/html/index.html)
-- [Markdown](https://github.com/bemoje/tsmono/blob/main/docs/md/${shortname}/index.md)
-
-${docs}
 `
 }
 
 getPackages().forEach(({ rootdir, pkg, name }) => {
-  const mdpath = path.join(process.cwd(), 'docs', 'md', name, 'index.md')
-  const docs = fs.readFileSync(mdpath, 'utf8').split('## Table of contents')[1].trim()
-  const content = readme(pkg, docs)
+  const content = readme(pkg)
   fs.writeFileSync(path.join(rootdir, 'README.md'), content)
 })

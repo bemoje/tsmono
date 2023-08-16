@@ -14,6 +14,8 @@ CLI-shorthand to opening a local repository in your IDE.
 <span><a href="https://npmjs.org/@bemoje/open-repo" title="View this project on NPM"><img src="https://img.shields.io/npm/v/@bemoje/open-repo" alt="NPM Version" /></a></span>
 <span><a href="https://npmjs.org/@bemoje/open-repo" title="NPM Downloads"><img src="https://img.shields.io/npm/dt/@bemoje/open-repo" alt="NPM Downloads" /></a></span>
 
+## Documentation
+[open-repo docs](https://bemoje.github.io/tsmono/html/open-repo/modules.html)
 
 ##### Donate
 <span><a href="https://www.patreon.com/user?u=40752770" title="Donate using Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Patreon Donation" /></a></span>
@@ -35,21 +37,3 @@ Contributors are welcome to open a [pull request](https://github.com/bemoje/http
 
 ## License
 Released under the [MIT License](./LICENSE).
-
-## Documentation
-- [HTML](https://github.com/bemoje/tsmono/blob/main/docs/html/index.html)
-- [Markdown](https://github.com/bemoje/tsmono/blob/main/docs/md/open-repo/index.md)
-
-### Variables
-
-- [program](https://github.com/bemoje/tsmono/blob/main/docs/md/open-repo/index.md#program)
-
-## Variables
-
-### program
-
-• `Const` **program**: `Command`
-
-#### Defined in
-
-[index.ts:40](https://github.com/bemoje/tsmono/blob/87185a0/pkg/open-repo/src/index.ts#L40)

@@ -4,10 +4,9 @@ import fs from 'fs'
 import path from 'path'
 import { walkTsFiles } from './walkTsFiles'
 
-export function getImported(pkgroot: string): string[] {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
+export function getImported(pkgroot: string) {
   const srcdir = path.join(pkgroot, 'src')
-  const fpaths = walkTsFiles(srcdir, (fpath) => !/node_modules/i.test(fpath))
+  const fpaths = walkTsFiles(srcdir)
   const imports: Set<string> = new Set()
   fpaths.forEach((fpath) => {
     tsExtractImports(fs.readFileSync(fpath, 'utf8')).forEach(({ match }) => {
@@ -15,5 +14,5 @@ export function getImported(pkgroot: string): string[] {
       imports.add(imp)
     })
   })
-  return [...imports]
+  return [...imports].sort()
 }

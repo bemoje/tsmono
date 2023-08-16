@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { execBatch } from './execBatch'
+import { execBatch } from './util/execBatch'
 import { getPackages } from './util/getPackages'
 
 const cwd = process.cwd()

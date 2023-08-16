@@ -14,6 +14,8 @@ CLI for very fast file search. File contents are not indexed - only file and dir
 <span><a href="https://npmjs.org/@bemoje/bfind" title="View this project on NPM"><img src="https://img.shields.io/npm/v/@bemoje/bfind" alt="NPM Version" /></a></span>
 <span><a href="https://npmjs.org/@bemoje/bfind" title="NPM Downloads"><img src="https://img.shields.io/npm/dt/@bemoje/bfind" alt="NPM Downloads" /></a></span>
 
+## Documentation
+[bfind docs](https://bemoje.github.io/tsmono/html/bfind/modules.html)
 
 ##### Donate
 <span><a href="https://www.patreon.com/user?u=40752770" title="Donate using Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Patreon Donation" /></a></span>
@@ -35,21 +37,3 @@ Contributors are welcome to open a [pull request](https://github.com/bemoje/http
 
 ## License
 Released under the [MIT License](./LICENSE).
-
-## Documentation
-- [HTML](https://github.com/bemoje/tsmono/blob/main/docs/html/index.html)
-- [Markdown](https://github.com/bemoje/tsmono/blob/main/docs/md/bfind/index.md)
-
-### Variables
-
-- [program](https://github.com/bemoje/tsmono/blob/main/docs/md/bfind/index.md#program)
-
-## Variables
-
-### program
-
-• `Const` **program**: `Command`
-
-#### Defined in
-
-[index.ts:13](https://github.com/bemoje/tsmono/blob/87185a0/pkg/bfind/src/index.ts#L13)

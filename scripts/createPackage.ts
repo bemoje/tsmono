@@ -33,6 +33,12 @@ fs.readdirSync(template).map((filename) => {
   }
 })
 
+// tsmono package.json
+const rootpkgpath = path.join(process.cwd(), 'package.json')
+const rootpkg = JSON.parse(fs.readFileSync(rootpkgpath, 'utf8'))
+rootpkg.workspaces.push('pkg/' + name)
+fs.writeFileSync(rootpkgpath, JSON.stringify(rootpkg, null, 2), 'utf8')
+
 // package.json
 const pkg = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'))
 pkg.name = '@bemoje/' + name
@@ -40,15 +46,18 @@ pkg.description = description
 if (!isCLI) {
   Reflect.deleteProperty(pkg, 'bin')
   Reflect.deleteProperty(pkg, 'preferGlobal')
+} else {
+  Reflect.deleteProperty(pkg, 'browser')
+  Reflect.deleteProperty(pkg, 'module')
 }
 pkg.scripts = {
   'lint': 'eslint "*/**/*.{ts,js,json}" --fix',
   'test': 'jest --preset ts-jest',
   'build': 'rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs',
-  'docsmd': `rimraf ../../docs/md/${name} && typedoc --out ../../docs/md/${name}/ src/index.ts --readme none --plugin typedoc-plugin-markdown --theme markdown --entryDocument index.md --publicPath "https://github.com/bemoje/tsmono/blob/main/docs/md/${name}/"`,
-  'docshtml': `rimraf ../../docs/html/${name} && typedoc --out ../../docs/html/${name} --entryPoints src/index.ts`,
-  'prepub': 'npm run lint && npm run build && npm run test && npm run docsmd && npm run docshtml',
+  'docs': `rimraf ../../docs/${name} && typedoc --out ../../docs/${name} --entryPoints src/index.ts`,
+  'prepub': 'npm run lint && npm run build && npm run test && npm run docs',
 }
+
 fs.writeFileSync(path.join(root, 'package.json'), JSON.stringify(pkg, null, 2), 'utf8')
 
 // project.json
@@ -66,14 +75,8 @@ const tsconfig = JSON.parse(json)
 tsconfig.compilerOptions.paths['@bemoje/' + name] = ['./pkg/' + name + '/src/index.ts']
 fs.writeFileSync(tsconfigpath, JSON.stringify(tsconfig, null, 2), 'utf8')
 
-// tsmono package.json
-const rootpkgpath = path.join(process.cwd(), 'package.json')
-const rootpkg = JSON.parse(fs.readFileSync(rootpkgpath, 'utf8'))
-rootpkg.workspaces.push('pkg/' + name)
-fs.writeFileSync(rootpkgpath, JSON.stringify(rootpkg, null, 2), 'utf8')
-
 // docs/html/index.html
-const docsindexpath = path.join(process.cwd(), 'docs', 'html', 'index.html')
+const docsindexpath = path.join(process.cwd(), 'docs', 'index.html')
 let docsindex = fs.readFileSync(docsindexpath, 'utf8')
 const find = pkg.preferGlobal ? '<h2>Applications</h2>' : '<h2>Libraries</h2>'
 const docsindexlines = docsindex.split('\n')

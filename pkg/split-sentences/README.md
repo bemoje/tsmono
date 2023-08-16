@@ -14,6 +14,8 @@ Split a text string into sentences.
 <span><a href="https://npmjs.org/@bemoje/split-sentences" title="View this project on NPM"><img src="https://img.shields.io/npm/v/@bemoje/split-sentences" alt="NPM Version" /></a></span>
 <span><a href="https://npmjs.org/@bemoje/split-sentences" title="NPM Downloads"><img src="https://img.shields.io/npm/dt/@bemoje/split-sentences" alt="NPM Downloads" /></a></span>
 
+## Documentation
+[split-sentences docs](https://bemoje.github.io/tsmono/html/split-sentences/modules.html)
 
 ##### Donate
 <span><a href="https://www.patreon.com/user?u=40752770" title="Donate using Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Patreon Donation" /></a></span>
@@ -35,44 +37,3 @@ Contributors are welcome to open a [pull request](https://github.com/bemoje/http
 
 ## License
 Released under the [MIT License](./LICENSE).
-
-## Documentation
-- [HTML](https://github.com/bemoje/tsmono/blob/main/docs/html/index.html)
-- [Markdown](https://github.com/bemoje/tsmono/blob/main/docs/md/split-sentences/index.md)
-
-### Functions
-
-- [splitSentences](https://github.com/bemoje/tsmono/blob/main/docs/md/split-sentences/index.md#splitsentences)
-
-## Functions
-
-### splitSentences
-
-▸ **splitSentences**(`text`): `string`[]
-
-Intelligently split a string into sentences.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `text` | `string` | Text to split into sentences. |
-
-#### Returns
-
-`string`[]
-
-**`Throws`**
-
-Will throw an error if the input is not a string.
-
-**`Example`**
-
-```ts
-splitSentences('Hello world. How are you?');
-//=> ['Hello world.', 'How are you?']
-```
-
-#### Defined in
-
-[lib/splitSentences.ts:12](https://github.com/bemoje/tsmono/blob/87185a0/pkg/split-sentences/src/lib/splitSentences.ts#L12)

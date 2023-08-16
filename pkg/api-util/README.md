@@ -14,6 +14,8 @@ Utilities for working woth APIs.
 <span><a href="https://npmjs.org/@bemoje/api-util" title="View this project on NPM"><img src="https://img.shields.io/npm/v/@bemoje/api-util" alt="NPM Version" /></a></span>
 <span><a href="https://npmjs.org/@bemoje/api-util" title="NPM Downloads"><img src="https://img.shields.io/npm/dt/@bemoje/api-util" alt="NPM Downloads" /></a></span>
 
+## Documentation
+[api-util docs](https://bemoje.github.io/tsmono/html/api-util/modules.html)
 
 ##### Donate
 <span><a href="https://www.patreon.com/user?u=40752770" title="Donate using Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Patreon Donation" /></a></span>
@@ -35,19 +37,3 @@ Contributors are welcome to open a [pull request](https://github.com/bemoje/http
 
 ## License
 Released under the [MIT License](./LICENSE).
-
-## Documentation
-- [HTML](https://github.com/bemoje/tsmono/blob/main/docs/html/index.html)
-- [Markdown](https://github.com/bemoje/tsmono/blob/main/docs/md/api-util/index.md)
-
-### Classes
-
-- [AbstractApiClient](https://github.com/bemoje/tsmono/blob/main/docs/md/api-util/classes/AbstractApiClient.md)
-- [ApiReponseCache](https://github.com/bemoje/tsmono/blob/main/docs/md/api-util/classes/ApiReponseCache.md)
-
-### Interfaces
-
-- [IAbstractApiClientOptions](https://github.com/bemoje/tsmono/blob/main/docs/md/api-util/interfaces/IAbstractApiClientOptions.md)
-- [IApiResponseCacheOptions](https://github.com/bemoje/tsmono/blob/main/docs/md/api-util/interfaces/IApiResponseCacheOptions.md)
-- [IAsyncRetryOptions](https://github.com/bemoje/tsmono/blob/main/docs/md/api-util/interfaces/IAsyncRetryOptions.md)
-- [IResponseCacheOptions](https://github.com/bemoje/tsmono/blob/main/docs/md/api-util/interfaces/IResponseCacheOptions.md)
