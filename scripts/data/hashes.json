@@ -1,96 +1,41 @@
 {
-  "api-util": {
-    "build": -77235065344
-  },
-  "commander-config": {
-    "build": -33948082031
-  },
-  "fswalk": {
-    "build": 112758405364
-  },
-  "open-repo": {
-    "build": -9215225757
-  },
-  "pdf-util": {
-    "test": -20130590831,
-    "build": -30081883407,
-    "docsmd": -15680100479,
-    "docshtml": -5388149215
-  },
-  "bfind": {
-    "build": 77528904355
-  },
-  "log": {
-    "build": -33282268496
-  },
-  "split-sentences": {
-    "test": 7332553853,
-    "build": 2279786301,
-    "docsmd": -11115863279,
-    "docshtml": 20457067609
-  },
-  "excel-util": {
-    "build": 145296211760
-  },
-  "openai-api-client": {
-    "build": 57820463437
-  },
-  "terminal-gpt": {
-    "build": 43967050880
-  },
-  "trie-map": {
-    "build": -2610040505,
-    "docsmd": -26811358587,
-    "docshtml": 571565105
-  },
-  "queue": {
-    "test": -8595844966,
-    "build": -20937118406,
-    "docsmd": -15381033042,
-    "docshtml": -34652080074
-  },
-  "matrix": {
-    "build": 32110526188,
-    "docsmd": 65154810954,
-    "docshtml": 23791182390
-  },
-  "time": {
-    "build": -26934035755,
-    "docsmd": 35099629547,
-    "docshtml": -63839442425
-  },
-  "tscode": {
-    "build": -9016549072
-  },
-  "tsdoc": {
-    "build": -44430723523
-  },
-  "fs": {
-    "build": 70284622946
-  },
-  "fspath-filter": {
-    "build": 79687179443
-  },
-  "sorted-array": {
-    "build": 8369115082,
-    "docsmd": -17201212858,
-    "docshtml": -1311621602
-  },
-  "table": {
-    "build": 21586670605,
-    "docsmd": -40116388567,
-    "docshtml": 29445275201
-  },
-  "subtitles": {
-    "build": -8114016692
-  },
-  "fspath": {
-    "build": 45895210026
-  },
-  "regex": {
-    "build": -63346628842
-  },
-  "string": {
-    "build": 86604945496
-  }
+  "sort": -1490897772,
+  "string": -59800070077,
+  "api-util": -14823900256,
+  "array": -5240062180,
+  "async": -27755570230,
+  "bfind": -8449008764,
+  "binary": 23939854076,
+  "commander-config": 56026829649,
+  "date": 1754594824,
+  "excel-util": -2856991283,
+  "fs": -26042202498,
+  "fspath": 19307203167,
+  "fspath-filter": 36991886160,
+  "fswalk": -34569278721,
+  "function": -18122751197,
+  "html": -21128746863,
+  "log": -10389883861,
+  "map": -5920012350,
+  "markdown": -6731822156,
+  "matrix": -1819313075,
+  "nlp": -551133830,
+  "node": 1589342931,
+  "number": -8163658272,
+  "object": -22938262447,
+  "open-repo": -2066607755,
+  "openai-api-client": 18447084699,
+  "pdf-util": -12663797263,
+  "queue": -35380240205,
+  "set": -23522843736,
+  "sorted-array": 2416683870,
+  "split-sentences": -2643997675,
+  "subtitles": -6440139292,
+  "table": 29808834273,
+  "terminal-gpt": 12821664967,
+  "time": 32730134373,
+  "trie-map": 23711983689,
+  "tscode": -16032938700,
+  "tsdoc": 45299926626,
+  "validation": -65103146695
 }

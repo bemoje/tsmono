@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/open-repo",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "description": "CLI-shorthand to opening a local repository in your IDE.",
   "main": "dist/index.cjs.js",
   "types": "dist/index.d.ts",

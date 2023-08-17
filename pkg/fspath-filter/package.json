@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/fspath-filter",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "Builder class to easily and flexibly construct and implement filesystem path filtering.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",

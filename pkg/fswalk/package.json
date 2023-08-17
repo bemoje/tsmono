@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/fswalk",
-  "version": "0.0.8",
+  "version": "0.0.10",
   "description": "Various utilities related to filesystem traversal",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",

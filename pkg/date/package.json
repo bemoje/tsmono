@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/date",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "Date related tools/util.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",

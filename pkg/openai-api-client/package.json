@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/openai-api-client",
-  "version": "0.0.9",
+  "version": "0.0.11",
   "description": "API client for openai with various built-in functionality, such as caching, auto-retry, etc.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",

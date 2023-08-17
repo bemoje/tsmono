@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/pdf-util",
-  "version": "0.0.8",
+  "version": "0.0.10",
   "description": "PDF utilities for parsing, merging, splitting, and more.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",

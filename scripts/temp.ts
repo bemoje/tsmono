@@ -1,6 +1,5 @@
 import fs from 'fs'
 import path from 'path'
-import { execBatch } from './util/execBatch'
 import { getPackages } from './util/getPackages'
 
 const tsmonopkgpath = path.join(process.cwd(), 'package.json')
@@ -30,10 +29,10 @@ getPackages().forEach(({ rootdir, pkg, name }) => {
   // Reflect.deleteProperty(pkg, 'devDependencies')
   // pkg.scripts.docsmd = `rimraf ../../docs/md/${name} && typedoc --out ../../docs/md/${name}/ src/index.ts --readme none --plugin typedoc-plugin-markdown --theme markdown --entryDocument index.md --publicPath "https://github.com/bemoje/tsmono/blob/main/docs/md/${name}/"`
   // fs.writeFileSync(path.join(rootdir, 'package.json'), JSON.stringify(pkg, null, 2), 'utf8')
-  console.log('--------------------')
-  console.log(name)
-  console.log()
-  execBatch([`cd ${rootdir}`, 'depcheck --skip-missing'])
+  // console.log('--------------------')
+  // console.log(name)
+  // console.log()
+  // execBatch([`cd ${rootdir}`, 'depcheck --skip-missing'])
   // const project = fs
   //   .readFileSync(projectJson, 'utf8')
   //   .replace(/\{\{NAME\}\}/g, name)

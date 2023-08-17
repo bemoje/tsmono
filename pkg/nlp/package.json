@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/nlp",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "Natural language processing tools.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",

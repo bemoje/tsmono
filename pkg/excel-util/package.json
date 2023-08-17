@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/excel-util",
-  "version": "0.0.9",
+  "version": "0.0.11",
   "description": "CSV and Excel utilities for parsing, reading, writing.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",

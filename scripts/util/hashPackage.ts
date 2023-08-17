@@ -3,25 +3,35 @@ import path from 'path'
 import walkdir from 'walkdir'
 import { strHashToStringDJB2 } from '../../pkg/string/src/string/strHashToStringDJB2'
 
-export function hashPackage(name: string, scripts: string[]): [string, number][] {
-  const dpath = path.join(process.cwd(), 'pkg', name)
+export function hashPackage(name: string): number {
+  const pkgPath = path.join(process.cwd(), 'pkg', name, 'package.json')
+  const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'))
+  delete pkg.scripts
+  delete pkg.devDependencies
+  delete pkg.version
+  const pkghash = strHashToStringDJB2(JSON.stringify(pkg))
+
+  const distdir = path.join(process.cwd(), 'pkg', name, 'dist')
+  const npmignorePath = path.join(process.cwd(), 'pkg', name, '.npmignore')
+  const readmePath = path.join(process.cwd(), 'pkg', name, 'README.md')
+
   const fpaths = walkdir
-    .sync(dpath, {
-      filter: (dpath: string, files: string[]): string[] => {
-        if (/node_modules|docs/i.test(dpath)) return []
-        return files.filter((file) => !/package-lock.json/i.test(file))
-      },
-    })
+    .sync(distdir)
+    .concat([npmignorePath, readmePath])
     .sort()
     .filter((fpath) => fs.statSync(fpath).isFile())
-  const hashes = fpaths.map((fpath) => {
-    let str = ''
-    try {
-      str = fs.readFileSync(fpath, 'utf8')
-    } catch (error) {
-      //
-    }
-    return str ? strHashToStringDJB2(str) : 0
-  })
-  return scripts.map((script) => [script, strHashToStringDJB2(hashes.map((n) => n.toString(16)).join(script))])
+
+  const hashes = fpaths
+    .map((fpath) => {
+      let str = ''
+      try {
+        str = fs.readFileSync(fpath).toString()
+      } catch (error) {
+        //
+      }
+      return strHashToStringDJB2(str || '')
+    })
+    .concat(pkghash)
+
+  return strHashToStringDJB2(hashes.map((n) => n.toString(36)).join(name))
 }

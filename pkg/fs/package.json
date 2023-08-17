@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/fs",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "Tools for working with the local filesystem in nodejs.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",

@@ -29,10 +29,15 @@
   },
   "targetDefaults": {
     "lint": {
-      "inputs": ["default", "{projectRoot}/.eslintrc.json", "{projectRoot}/.eslintignore"]
+      "inputs": [
+        "default",
+        "{projectRoot}/.eslintrc.json",
+        "{projectRoot}/.eslintignore",
+        "!{projectRoot}/package.json"
+      ]
     },
     "test": {
-      "inputs": ["default", "^production", "{projectRoot}/jest.preset.js"]
+      "inputs": ["default", "^production", "{projectRoot}/jest.preset.js", "!{projectRoot}/package.json"]
     },
     "build": {
       "dependsOn": ["^build"],
@@ -43,6 +48,7 @@
         "sharedGlobals",
         "{projectRoot}/src/**/*",
         "{projectRoot}/dist/**/*",
+        "!{projectRoot}/package.json",
         "!{projectRoot}/node_modules/**/*",
         "!{projectRoot}/dist/**/*",
         "!{projectRoot}/coverage/**/*",

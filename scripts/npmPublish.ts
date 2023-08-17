@@ -2,22 +2,31 @@ import fs from 'fs'
 import path from 'path'
 import { execBatch } from './util/execBatch'
 import { getPackages } from './util/getPackages'
+import { hashPackage } from './util/hashPackage'
 
-const cwd = process.cwd()
-
+// args
 const type = process.argv[2]
 if (!type) throw new Error('no version upgrade type provided. Can be patch, minor or major.')
 
+const cwd = process.cwd()
 let names = process.argv.slice(3)
 if (!names.length) names = fs.readdirSync(path.join(cwd, 'pkg'))
 
-// const tempdir = process.env['TEMP']!
+// prepub
+execBatch(['npm run prepub'], () => process.exit())
 
+// hashes
+const hashesPath = path.join(process.cwd(), 'scripts', 'data', 'hashes.json')
+const hashes = JSON.parse(fs.readFileSync(hashesPath, 'utf8'))
+
+// npm publish
 const failed: string[] = []
-
 getPackages()
   .filter(({ name }) => names.includes(name))
   .forEach(({ name, rootdir, pkgpath, pkg }) => {
+    let hash = hashPackage(name)
+    if (hashes[name] === hash) return
+
     const original = pkg.version + ''
     const version = pkg.version.split('.').map(Number)
     if (type === 'patch') {
@@ -33,6 +42,7 @@ getPackages()
     pkg.version = version.join('.')
     fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
 
+    let success = true
     execBatch(
       [
         `cd ${rootdir}`,
@@ -40,32 +50,27 @@ getPackages()
         //
       ],
       () => {
+        success = false
         failed.push(name)
         pkg.version = original
         fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
       },
     )
 
-    // const bat = `@echo off\n\ncall cd ${rootdir}\ncall npm publish --access public`
-    // console.log(bat)
-
-    // const tempfile = path.join(tempdir, Date.now() + '.bat')
-    // fs.writeFileSync(tempfile, bat, 'utf8')
-    // try {
-    //   execFileSync(tempfile, { stdio: 'inherit' })
-    // } catch (error) {
-    //   failed.push(name)
-    //   pkg.version = original
-    //   fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
-    //   console.log(error)
-    // }
-    // fs.rmSync(tempfile)
+    if (success) hashes[name] = hashPackage(name)
+    fs.writeFileSync(hashesPath, JSON.stringify(hashes, null, 2), 'utf8')
   })
-
-execBatch([
-  `cd ${cwd}`,
-  'npm i',
-  //
-])
-
 console.log({ failed })
+if (failed.length) process.exit()
+
+// publish github
+execBatch(
+  [
+    'npm run prepub',
+    'git add .',
+    'git commit -m "publish"',
+    'git push -u origin main',
+    //
+  ],
+  () => process.exit(),
+)
