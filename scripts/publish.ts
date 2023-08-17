@@ -1,5 +1,6 @@
 import fs from 'fs'
 import path from 'path'
+import { arrEvery } from '../pkg/array/src/lib/arrEvery'
 import { execBatch } from '../pkg/node/src/lib/execBatch'
 import { getPackages } from './util/getPackages'
 import { hashPackage } from './util/hashPackage'
@@ -14,6 +15,31 @@ const runAll = !names.length
 if (runAll) {
   names = fs.readdirSync(path.join(cwd, 'pkg'))
 }
+
+const packages = getPackages()
+const order: string[] = []
+const numExternals = order.length
+const length = packages.length + numExternals
+
+while (order.length < length) {
+  const curLen = order.length
+  for (const { name, deps } of packages) {
+    if (order.includes(name)) continue
+
+    if (arrEvery(deps, (dep) => order.includes(dep))) {
+      const i = packages.findIndex((o) => o.name === name)
+      packages.splice(i, 1)
+      order.push(name)
+    }
+  }
+  if (curLen === order.length) {
+    console.error('Circular dependency detected')
+    const remains = packages.map(({ name, deps }) => ({ name, deps })).filter(({ name }) => !order.includes(name))
+    console.dir({ order, remains }, { depth: null })
+    process.exit(1)
+  }
+}
+names = order.filter((name) => names.includes(name))
 
 console.log({ publishing: names })
 
