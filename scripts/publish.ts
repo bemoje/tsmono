@@ -73,6 +73,18 @@ namePackages.forEach(({ name, rootdir, pkgpath, pkg }) => {
     version[1] = 0
     version[2] = 0
   }
+
+  // Update version of CLIs.
+  if (pkg.preferGlobal) {
+    const indexPath = path.join(rootdir, 'src', 'index.ts')
+    fs.writeFileSync(
+      indexPath,
+      fs.readFileSync(indexPath, 'utf8').replace(/version: '\d+\.\d+\.\d+'/g, `version: '${version.join('.')}'`),
+      'utf8',
+    )
+    execBatch(['nx run ' + name + ':build'])
+  }
+
   pkg.version = version.join('.')
   pkg.main = 'dist/index.cjs.js'
   fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')

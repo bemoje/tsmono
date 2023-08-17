@@ -1,5 +1,4 @@
 import { Config } from '@bemoje/commander-config'
-import { findPackageJson } from '@bemoje/node'
 import { exec } from 'child_process'
 import { Command } from 'commander'
 import fs from 'fs'
@@ -41,7 +40,7 @@ const config = new Config('bemoje', 'open-repo', {
 export const program = new Command()
   .name('Open Repository')
   .description('Shortcut to opening a local repository in VS Code.')
-  .version(findPackageJson()?.['version'] || '0.0.1')
+  .version('0.0.1')
   .argument('[search]', 'A full or partial directory name of the repository to find and open.')
   .action((search = '') => {
     config.assertNoMissingRequired()

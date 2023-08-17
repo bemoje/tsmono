@@ -1,4 +1,3 @@
-import { findPackageJson } from '@bemoje/node'
 import { Command } from 'commander'
 import { config } from './core/config'
 import { emails } from './core/emails/emails'
@@ -7,7 +6,7 @@ import { ts } from './core/ts/ts'
 export const program = new Command()
   .name('TerminalGPT')
   .description('ChatGPT tools right in the terminal')
-  .version(findPackageJson()?.['version'] || '0.0.1')
+  .version('0.0.16')
 
 config.initialize(program)
 

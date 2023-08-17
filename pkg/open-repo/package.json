@@ -1,8 +1,8 @@
 {
   "name": "@bemoje/open-repo",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "CLI-shorthand to opening a local repository in your IDE.",
-  "main": "dist/index.cjs.js",
+  "main": "src/index.ts",
   "types": "dist/index.d.ts",
   "bin": {
     "repo": "./bin/index.js"
@@ -20,7 +20,6 @@
   "keywords": [],
   "dependencies": {
     "@bemoje/commander-config": "latest",
-    "@bemoje/node": "^0.0.7",
     "commander": "^11.0.0"
   },
   "repository": {
