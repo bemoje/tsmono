@@ -15,7 +15,7 @@ CLI-shorthand to opening a local repository in your IDE.
 <span><a href="https://npmjs.org/@bemoje/open-repo" title="NPM Downloads"><img src="https://img.shields.io/npm/dt/@bemoje/open-repo" alt="NPM Downloads" /></a></span>
 
 ## Documentation
-[open-repo docs](https://bemoje.github.io/tsmono/html/open-repo/modules.html)
+[open-repo docs](https://bemoje.github.io/tsmono/modules/open-repo.html)
 
 ##### Donate
 <span><a href="https://www.patreon.com/user?u=40752770" title="Donate using Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Patreon Donation" /></a></span>

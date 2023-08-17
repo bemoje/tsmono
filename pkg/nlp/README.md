@@ -15,7 +15,7 @@ Natural language processing tools.
 <span><a href="https://npmjs.org/@bemoje/nlp" title="NPM Downloads"><img src="https://img.shields.io/npm/dt/@bemoje/nlp" alt="NPM Downloads" /></a></span>
 
 ## Documentation
-[nlp docs](https://bemoje.github.io/tsmono/html/nlp/modules.html)
+[nlp docs](https://bemoje.github.io/tsmono/modules/nlp.html)
 
 ##### Donate
 <span><a href="https://www.patreon.com/user?u=40752770" title="Donate using Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Patreon Donation" /></a></span>

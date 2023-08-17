@@ -21,17 +21,18 @@ export function hashPackage(name: string): number {
     .sort()
     .filter((fpath) => fs.statSync(fpath).isFile())
 
+  const pathshash = strHashToStringDJB2(fpaths.map((p) => p.replace(process.cwd(), '').replace(/\\/g, '/')).join(name))
   const hashes = fpaths
     .map((fpath) => {
       let str = ''
       try {
-        str = fs.readFileSync(fpath).toString()
+        str = fs.readFileSync(fpath).toString().replace(pkg.version, '')
       } catch (error) {
         //
       }
       return strHashToStringDJB2(str || '')
     })
-    .concat(pkghash)
+    .concat(pkghash, pathshash)
 
   return strHashToStringDJB2(hashes.map((n) => n.toString(36)).join(name))
 }

@@ -1,13 +1,12 @@
 {
   "name": "@bemoje/split-sentences",
-  "version": "0.0.10",
+  "version": "0.0.12",
   "description": "Split a text string into sentences.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
-    "build": "rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs",
-    "docs": "rimraf ../../docs/split-sentences && typedoc --out ../../docs/split-sentences --entryPoints src/index.ts"
+    "build": "rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs"
   },
   "author": {
     "name": "Benjamin Møller Jensen",

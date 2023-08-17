@@ -15,7 +15,7 @@ String utilities
 <span><a href="https://npmjs.org/@bemoje/string" title="NPM Downloads"><img src="https://img.shields.io/npm/dt/@bemoje/string" alt="NPM Downloads" /></a></span>
 
 ## Documentation
-[string docs](https://bemoje.github.io/tsmono/html/string/modules.html)
+[string docs](https://bemoje.github.io/tsmono/modules/string.html)
 
 ##### Donate
 <span><a href="https://www.patreon.com/user?u=40752770" title="Donate using Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Patreon Donation" /></a></span>

@@ -1,13 +1,12 @@
 {
   "name": "@bemoje/table",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "description": "A 2D table data structure that validates structural integrity and has some useful methods.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
-    "build": "rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs",
-    "docs": "rimraf ../../docs/table && typedoc --out ../../docs/table --entryPoints src/index.ts"
+    "build": "rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs"
   },
   "author": {
     "name": "Benjamin Møller Jensen",

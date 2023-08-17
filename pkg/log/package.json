@@ -1,13 +1,12 @@
 {
   "name": "@bemoje/log",
-  "version": "0.0.12",
+  "version": "0.0.14",
   "description": "Logger utility for node-js.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
-    "build": "rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs",
-    "docs": "rimraf ../../docs/log && typedoc --out ../../docs/log --entryPoints src/index.ts"
+    "build": "rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs"
   },
   "author": {
     "name": "Benjamin Møller Jensen",

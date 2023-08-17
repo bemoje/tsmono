@@ -3,7 +3,7 @@
     "default": {
       "runner": "nx-cloud",
       "options": {
-        "cacheableOperations": ["lint", "test", "build", "docs"],
+        "cacheableOperations": ["lint", "test", "build"],
         "accessToken": "Yjk5YzQ2ZDAtNDA5YS00MWUwLWIzNDgtZjIyZWI4YzhkNzA5fHJlYWQtd3JpdGU="
       }
     }
@@ -42,19 +42,6 @@
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["production", "^production", "{projectRoot}/rollup.config.js", "{projectRoot}/tsconfig.bundle.json"]
-    },
-    "docs": {
-      "inputs": [
-        "sharedGlobals",
-        "{projectRoot}/src/**/*",
-        "{projectRoot}/dist/**/*",
-        "!{projectRoot}/package.json",
-        "!{projectRoot}/node_modules/**/*",
-        "!{projectRoot}/dist/**/*",
-        "!{projectRoot}/coverage/**/*",
-        "!{projectRoot}/README.md",
-        "!{workspaceRoot}/docs/**/*"
-      ]
     }
   },
   "affected": {

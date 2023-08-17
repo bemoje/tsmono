@@ -30,14 +30,14 @@ tsmonopkg.workspaces = tsmonopkg.workspaces.filter((workspace: string) => worksp
 fs.writeFileSync(tsmonopkgpath, JSON.stringify(tsmonopkg, null, 2), 'utf8')
 
 // docs/html/index.html
-const docsindexpath = path.join(process.cwd(), 'docs', 'index.html')
-let docsindex = fs.readFileSync(docsindexpath, 'utf8')
-const find = `<li><a href="./${name}/modules.html">${name}</a></li>`
-const docsindexlines = docsindex.split('\n')
-const docsindexline = docsindexlines.findIndex((line) => line.includes(find))
-docsindexlines.splice(docsindexline, 1)
-docsindex = docsindexlines.join('\n')
-fs.writeFileSync(docsindexpath, docsindex, 'utf8')
+// const docsindexpath = path.join(process.cwd(), 'docs', 'index.html')
+// let docsindex = fs.readFileSync(docsindexpath, 'utf8')
+// const find = `<li><a href="./${name}/modules.html">${name}</a></li>`
+// const docsindexlines = docsindex.split('\n')
+// const docsindexline = docsindexlines.findIndex((line) => line.includes(find))
+// docsindexlines.splice(docsindexline, 1)
+// docsindex = docsindexlines.join('\n')
+// fs.writeFileSync(docsindexpath, docsindex, 'utf8')
 
 // done
 console.log(name + ' deleted')

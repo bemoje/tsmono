@@ -15,7 +15,7 @@ Split a text string into sentences.
 <span><a href="https://npmjs.org/@bemoje/split-sentences" title="NPM Downloads"><img src="https://img.shields.io/npm/dt/@bemoje/split-sentences" alt="NPM Downloads" /></a></span>
 
 ## Documentation
-[split-sentences docs](https://bemoje.github.io/tsmono/html/split-sentences/modules.html)
+[split-sentences docs](https://bemoje.github.io/tsmono/modules/split-sentences.html)
 
 ##### Donate
 <span><a href="https://www.patreon.com/user?u=40752770" title="Donate using Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Patreon Donation" /></a></span>

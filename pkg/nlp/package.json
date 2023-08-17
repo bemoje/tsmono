@@ -1,13 +1,12 @@
 {
   "name": "@bemoje/nlp",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "Natural language processing tools.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
-    "build": "rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs",
-    "docs": "rimraf ../../docs/nlp && typedoc --out ../../docs/nlp --entryPoints src/index.ts"
+    "build": "rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs"
   },
   "author": {
     "name": "Benjamin Møller Jensen",

@@ -51,11 +51,7 @@ if (!isCLI) {
   Reflect.deleteProperty(pkg, 'module')
 }
 pkg.scripts = {
-  'lint': 'eslint "*/**/*.{ts,js,json}" --fix',
-  'test': 'jest --preset ts-jest',
   'build': 'rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs',
-  'docs': `rimraf ../../docs/${name} && typedoc --out ../../docs/${name} --entryPoints src/index.ts`,
-  'prepub': 'npm run lint && npm run build && npm run test && npm run docs',
 }
 
 fs.writeFileSync(path.join(root, 'package.json'), JSON.stringify(pkg, null, 2), 'utf8')
@@ -76,14 +72,14 @@ tsconfig.compilerOptions.paths['@bemoje/' + name] = ['./pkg/' + name + '/src/ind
 fs.writeFileSync(tsconfigpath, JSON.stringify(tsconfig, null, 2), 'utf8')
 
 // docs/html/index.html
-const docsindexpath = path.join(process.cwd(), 'docs', 'index.html')
-let docsindex = fs.readFileSync(docsindexpath, 'utf8')
-const find = pkg.preferGlobal ? '<h2>Applications</h2>' : '<h2>Libraries</h2>'
-const docsindexlines = docsindex.split('\n')
-const docsindexline = 2 + docsindexlines.findIndex((line) => line.includes(find))
-docsindexlines.splice(docsindexline, 0, `<li><a href="./${name}/modules.html">${name}</a></li>`)
-docsindex = docsindexlines.join('\n')
-fs.writeFileSync(docsindexpath, docsindex, 'utf8')
+// const docsindexpath = path.join(process.cwd(), 'docs', 'index.html')
+// let docsindex = fs.readFileSync(docsindexpath, 'utf8')
+// const find = pkg.preferGlobal ? '<h2>Applications</h2>' : '<h2>Libraries</h2>'
+// const docsindexlines = docsindex.split('\n')
+// const docsindexline = 2 + docsindexlines.findIndex((line) => line.includes(find))
+// docsindexlines.splice(docsindexline, 0, `<li><a href="./${name}/modules.html">${name}</a></li>`)
+// docsindex = docsindexlines.join('\n')
+// fs.writeFileSync(docsindexpath, docsindex, 'utf8')
 
 // done
 console.log(name + ' initialized')

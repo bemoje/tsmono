@@ -15,7 +15,7 @@ CLI for very fast file search. File contents are not indexed - only file and dir
 <span><a href="https://npmjs.org/@bemoje/bfind" title="NPM Downloads"><img src="https://img.shields.io/npm/dt/@bemoje/bfind" alt="NPM Downloads" /></a></span>
 
 ## Documentation
-[bfind docs](https://bemoje.github.io/tsmono/html/bfind/modules.html)
+[bfind docs](https://bemoje.github.io/tsmono/modules/bfind.html)
 
 ##### Donate
 <span><a href="https://www.patreon.com/user?u=40752770" title="Donate using Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Patreon Donation" /></a></span>

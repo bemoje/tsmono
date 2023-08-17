@@ -15,7 +15,7 @@ Async processing related tools/util.
 <span><a href="https://npmjs.org/@bemoje/async" title="NPM Downloads"><img src="https://img.shields.io/npm/dt/@bemoje/async" alt="NPM Downloads" /></a></span>
 
 ## Documentation
-[async docs](https://bemoje.github.io/tsmono/html/async/modules.html)
+[async docs](https://bemoje.github.io/tsmono/modules/async.html)
 
 ##### Donate
 <span><a href="https://www.patreon.com/user?u=40752770" title="Donate using Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Patreon Donation" /></a></span>

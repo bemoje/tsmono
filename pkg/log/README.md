@@ -15,7 +15,7 @@ Logger utility for node-js.
 <span><a href="https://npmjs.org/@bemoje/log" title="NPM Downloads"><img src="https://img.shields.io/npm/dt/@bemoje/log" alt="NPM Downloads" /></a></span>
 
 ## Documentation
-[log docs](https://bemoje.github.io/tsmono/html/log/modules.html)
+[log docs](https://bemoje.github.io/tsmono/modules/log.html)
 
 ##### Donate
 <span><a href="https://www.patreon.com/user?u=40752770" title="Donate using Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Patreon Donation" /></a></span>

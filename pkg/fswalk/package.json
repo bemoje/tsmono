@@ -1,13 +1,12 @@
 {
   "name": "@bemoje/fswalk",
-  "version": "0.0.10",
+  "version": "0.0.12",
   "description": "Various utilities related to filesystem traversal",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs",
-    "docs": "rimraf ../../docs/fswalk && typedoc --out ../../docs/fswalk --entryPoints src/index.ts"
+    "build": "rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs"
   },
   "author": {
     "name": "Benjamin Møller Jensen",

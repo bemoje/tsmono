@@ -1,13 +1,12 @@
 {
   "name": "@bemoje/trie-map",
-  "version": "1.3.6",
+  "version": "1.3.8",
   "description": "A fast trie map data structure.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
-    "build": "rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs",
-    "docs": "rimraf ../../docs/trie-map && typedoc --out ../../docs/trie-map --entryPoints src/index.ts"
+    "build": "rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs"
   },
   "author": {
     "name": "Benjamin Møller Jensen",

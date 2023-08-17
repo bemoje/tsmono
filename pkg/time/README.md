@@ -15,7 +15,7 @@ A simple time hh:mm:ss class with many features as well as various tools for eas
 <span><a href="https://npmjs.org/@bemoje/time" title="NPM Downloads"><img src="https://img.shields.io/npm/dt/@bemoje/time" alt="NPM Downloads" /></a></span>
 
 ## Documentation
-[time docs](https://bemoje.github.io/tsmono/html/time/modules.html)
+[time docs](https://bemoje.github.io/tsmono/modules/time.html)
 
 ##### Donate
 <span><a href="https://www.patreon.com/user?u=40752770" title="Donate using Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Patreon Donation" /></a></span>

@@ -25,7 +25,7 @@ ${pkg.description}
   }" alt="NPM Downloads" /></a></span>
 
 ## Documentation
-[${shortname} docs](https://bemoje.github.io/tsmono/html/${shortname}/modules.html)
+[${shortname} docs](https://bemoje.github.io/tsmono/modules/${shortname}.html)
 
 ##### Donate
 <span><a href="${`https://www.patreon.com/user?u=${'40752770'}`}" title="Donate using Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Patreon Donation" /></a></span>

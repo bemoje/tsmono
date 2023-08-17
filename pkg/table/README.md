@@ -15,7 +15,7 @@ A 2D table data structure that validates structural integrity and has some usefu
 <span><a href="https://npmjs.org/@bemoje/table" title="NPM Downloads"><img src="https://img.shields.io/npm/dt/@bemoje/table" alt="NPM Downloads" /></a></span>
 
 ## Documentation
-[table docs](https://bemoje.github.io/tsmono/html/table/modules.html)
+[table docs](https://bemoje.github.io/tsmono/modules/table.html)
 
 ##### Donate
 <span><a href="https://www.patreon.com/user?u=40752770" title="Donate using Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Patreon Donation" /></a></span>

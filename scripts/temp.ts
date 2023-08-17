@@ -22,13 +22,12 @@ getPackages().forEach(({ rootdir, pkg, name }) => {
   // fs.writeFileSync(path.join(rootdir, '.eslintrc.js'), fs.readFileSync(eslintrc, 'utf8'), 'utf8')
   // fs.rmdirSync(path.join(rootdir, 'docs'), { recursive: true })
   // fs.mkdirSync(path.join(rootdir, 'docs', 'examples'), { recursive: true })
-  // pkg.scripts = {
-  //   'build': 'rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs',
-  //   'docs': `rimraf ../../docs/${name} && typedoc --out ../../docs/${name} --entryPoints src/index.ts`,
-  // }
+  pkg.scripts = {
+    'build': 'rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs',
+  }
   // Reflect.deleteProperty(pkg, 'devDependencies')
   // pkg.scripts.docsmd = `rimraf ../../docs/md/${name} && typedoc --out ../../docs/md/${name}/ src/index.ts --readme none --plugin typedoc-plugin-markdown --theme markdown --entryDocument index.md --publicPath "https://github.com/bemoje/tsmono/blob/main/docs/md/${name}/"`
-  // fs.writeFileSync(path.join(rootdir, 'package.json'), JSON.stringify(pkg, null, 2), 'utf8')
+  fs.writeFileSync(path.join(rootdir, 'package.json'), JSON.stringify(pkg, null, 2), 'utf8')
   // console.log('--------------------')
   // console.log(name)
   // console.log()

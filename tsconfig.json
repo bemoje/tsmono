@@ -57,5 +57,5 @@
       "@bemoje/validation": ["./pkg/validation/src/index.ts"]
     }
   },
-  "include": ["./pkg/**/src/**/*.ts", "./scripts/**/*.ts"]
+  "include": ["./pkg/**/src/**/*.ts", "./pkg/index.ts"]
 }

@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/terminal-gpt",
-  "version": "0.0.10",
+  "version": "0.0.12",
   "description": "",
   "main": "dist/index.cjs.js",
   "types": "dist/index.d.ts",
@@ -9,8 +9,7 @@
   },
   "preferGlobal": true,
   "scripts": {
-    "build": "rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs",
-    "docs": "rimraf ../../docs/terminal-gpt && typedoc --out ../../docs/terminal-gpt --entryPoints src/index.ts"
+    "build": "rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs"
   },
   "author": {
     "name": "Benjamin Møller Jensen",

@@ -1,13 +1,12 @@
 {
   "name": "@bemoje/fspath",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "description": "Nodejs filesystem paths made very convenient to use and navigate the path tree.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
-    "build": "rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs",
-    "docs": "rimraf ../../docs/fspath && typedoc --out ../../docs/fspath --entryPoints src/index.ts"
+    "build": "rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs"
   },
   "author": {
     "name": "Benjamin Møller Jensen",

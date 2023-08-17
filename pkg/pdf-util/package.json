@@ -1,13 +1,12 @@
 {
   "name": "@bemoje/pdf-util",
-  "version": "0.0.10",
+  "version": "0.0.12",
   "description": "PDF utilities for parsing, merging, splitting, and more.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
-    "build": "rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs",
-    "docs": "rimraf ../../docs/pdf-util && typedoc --out ../../docs/pdf-util --entryPoints src/index.ts"
+    "build": "rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs"
   },
   "author": {
     "name": "Benjamin Møller Jensen",

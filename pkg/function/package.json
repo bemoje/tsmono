@@ -1,13 +1,12 @@
 {
   "name": "@bemoje/function",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "Function related tools/util.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
-    "build": "rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs",
-    "docs": "rimraf ../../docs/function && typedoc --out ../../docs/function --entryPoints src/index.ts"
+    "build": "rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs"
   },
   "author": {
     "name": "Benjamin Møller Jensen",

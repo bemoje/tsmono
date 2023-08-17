@@ -15,7 +15,7 @@ Sort related tools/util.
 <span><a href="https://npmjs.org/@bemoje/sort" title="NPM Downloads"><img src="https://img.shields.io/npm/dt/@bemoje/sort" alt="NPM Downloads" /></a></span>
 
 ## Documentation
-[sort docs](https://bemoje.github.io/tsmono/html/sort/modules.html)
+[sort docs](https://bemoje.github.io/tsmono/modules/sort.html)
 
 ##### Donate
 <span><a href="https://www.patreon.com/user?u=40752770" title="Donate using Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Patreon Donation" /></a></span>

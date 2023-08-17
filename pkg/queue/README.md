@@ -15,7 +15,7 @@ Queue-based data structures.
 <span><a href="https://npmjs.org/@bemoje/queue" title="NPM Downloads"><img src="https://img.shields.io/npm/dt/@bemoje/queue" alt="NPM Downloads" /></a></span>
 
 ## Documentation
-[queue docs](https://bemoje.github.io/tsmono/html/queue/modules.html)
+[queue docs](https://bemoje.github.io/tsmono/modules/queue.html)
 
 ##### Donate
 <span><a href="https://www.patreon.com/user?u=40752770" title="Donate using Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Patreon Donation" /></a></span>
