@@ -1,4 +1,4 @@
-import { regexEscapeString } from '@bemoje/node-util'
+import { regexEscapeString } from '../regex/regexEscapeString'
 
 /**
  * Removes the specified left and right substrings from the input string.

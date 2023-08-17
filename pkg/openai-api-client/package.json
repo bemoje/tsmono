@@ -1,16 +1,13 @@
 {
   "name": "@bemoje/openai-api-client",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "API client for openai with various built-in functionality, such as caching, auto-retry, etc.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
-    "lint": "eslint \"*/**/*.{ts,js,json}\" --fix",
-    "test": "jest --preset ts-jest",
     "build": "rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs",
-    "docs": "rimraf ../../docs/openai-api-client && typedoc --out ../../docs/openai-api-client --entryPoints src/index.ts",
-    "prepub": "npm run lint && npm run build && npm run test && npm run docs"
+    "docs": "rimraf ../../docs/openai-api-client && typedoc --out ../../docs/openai-api-client --entryPoints src/index.ts"
   },
   "author": {
     "name": "Benjamin Møller Jensen",
@@ -21,11 +18,11 @@
   "keywords": [],
   "dependencies": {
     "@bemoje/api-util": "latest",
-    "@bemoje/node-util": "latest",
     "async-retry": "^1.3.3",
-    "cli-color": "^2.0.3",
     "gpt-3-encoder": "^1.1.4",
-    "openai": "^3.3.0"
+    "openai": "^3.3.0",
+    "@bemoje/number": "latest",
+    "@bemoje/object": "latest"
   },
   "repository": {
     "type": "git",

@@ -1,4 +1,4 @@
-import { setUnion } from '@bemoje/node-util'
+import { setUnion } from '@bemoje/set'
 import { TrieMap } from '@bemoje/trie-map'
 import { green } from 'cli-color'
 import { words } from 'lodash'

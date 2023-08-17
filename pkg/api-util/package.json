@@ -1,16 +1,13 @@
 {
   "name": "@bemoje/api-util",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Utilities for working woth APIs.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
-    "lint": "eslint \"*/**/*.{ts,js,json}\" --fix",
-    "test": "jest --preset ts-jest",
     "build": "rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs",
-    "docs": "rimraf ../../docs/api-util && typedoc --out ../../docs/api-util --entryPoints src/index.ts",
-    "prepub": "npm run lint && npm run build && npm run test && npm run docs"
+    "docs": "rimraf ../../docs/api-util && typedoc --out ../../docs/api-util --entryPoints src/index.ts"
   },
   "author": {
     "name": "Benjamin Møller Jensen",
@@ -20,15 +17,14 @@
   "license": "MIT",
   "keywords": [],
   "dependencies": {
-    "@bemoje/node-util": "latest",
+    "@bemoje/function": "latest",
     "@bemoje/queue": "latest",
     "appdata-path": "^1.0.0",
     "async-retry": "^1.3.3",
     "level": "^8.0.0",
     "lodash": "^4.17.21",
     "mkdirp": "^3.0.1",
-    "object-hash": "^3.0.0",
-    "walkdir": "^0.4.1"
+    "object-hash": "^3.0.0"
   },
   "repository": {
     "type": "git",
@@ -41,5 +37,10 @@
   "bugs": {
     "url": "https://github.com/bemoje/tsmono/issues"
   },
-  "homepage": "https://github.com/bemoje/tsmono"
+  "homepage": "https://github.com/bemoje/tsmono",
+  "devDependencies": {
+    "@types/async-retry": "^1.4.5",
+    "@types/lodash": "^4.14.197",
+    "@types/object-hash": "^3.0.3"
+  }
 }

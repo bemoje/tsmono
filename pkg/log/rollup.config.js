@@ -1,6 +1,5 @@
 /* eslint-disable no-undef */
 /* eslint-disable @typescript-eslint/no-var-requires */
-import { strUnwrap, tsExtractImports } from '@bemoje/node-util'
 import commonjs from '@rollup/plugin-commonjs'
 import json from '@rollup/plugin-json'
 // import resolve from '@rollup/plugin-node-resolve'
@@ -11,6 +10,53 @@ import minify from 'rollup-plugin-babel-minify'
 import typescript from 'rollup-plugin-typescript2'
 import walkdir from 'walkdir'
 import PKG from './package.json'
+
+function regexEscapeString(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') // $& means the whole matched string
+}
+
+function strUnwrap(input, left, right, flags = '') {
+  return input
+    .replace(new RegExp('^' + regexEscapeString(left), flags), '')
+    .replace(new RegExp(regexEscapeString(right) + '$', flags), '')
+}
+
+function tsExtractImports(code) {
+  const isFirstLine = /^import /
+  const isFirstLineInMulti = /\{\s*$/
+  const isLastLineInMulti = /^\} from '/
+  const result = []
+  let isMulti = false
+  let impLines = []
+  const lines = code.split(/\r?\n/)
+  for (let l = 0; l < lines.length; l++) {
+    const line = lines[l]
+    if (isFirstLine.test(line)) {
+      if (isFirstLineInMulti.test(line)) {
+        impLines.push(line)
+        isMulti = true
+      } else {
+        result.push({
+          start: l,
+          end: l,
+          match: line,
+        })
+      }
+    } else if (isMulti) {
+      impLines.push(line)
+      if (isLastLineInMulti.test(line)) {
+        result.push({
+          start: l - impLines.length + 1,
+          end: l,
+          match: impLines.join('\n'),
+        })
+        impLines = []
+        isMulti = false
+      }
+    }
+  }
+  return result
+}
 
 function walkTsFiles(srcdir, filter, options) {
   const result = []
@@ -39,7 +85,7 @@ function getImportedBuiltins(pkgroot) {
 }
 
 function pkgDependenciesRecursive(pkg) {
-  const result = new Set(['walkdir', '@bemoje/node-util'])
+  const result = new Set([])
   const root = path.dirname(path.dirname(process.cwd()))
   function recurse(pkg) {
     const deps = Object.keys(pkg.dependencies)

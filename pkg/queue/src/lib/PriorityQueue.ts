@@ -1,4 +1,4 @@
-import { arrSortedInsertionIndex } from '@bemoje/node-util'
+import { arrSortedInsertionIndex } from '@bemoje/array'
 import { IPriorityQueueOptions } from './types/IPriorityQueueOptions'
 import { IQueue } from './types/IQueue'
 

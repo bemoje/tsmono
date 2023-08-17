@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/terminal-gpt",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "",
   "main": "dist/index.cjs.js",
   "types": "dist/index.d.ts",
@@ -9,11 +9,8 @@
   },
   "preferGlobal": true,
   "scripts": {
-    "lint": "eslint \"*/**/*.{ts,js,json}\" --fix",
-    "test": "jest --preset ts-jest",
     "build": "rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs",
-    "docs": "rimraf ../../docs/terminal-gpt && typedoc --out ../../docs/terminal-gpt --entryPoints src/index.ts",
-    "prepub": "npm run lint && npm run build && npm run test && npm run docs"
+    "docs": "rimraf ../../docs/terminal-gpt && typedoc --out ../../docs/terminal-gpt --entryPoints src/index.ts"
   },
   "author": {
     "name": "Benjamin Møller Jensen",
@@ -25,10 +22,10 @@
   "dependencies": {
     "@bemoje/commander-config": "latest",
     "@bemoje/string": "latest",
-    "@bemoje/node-util": "latest",
     "@bemoje/openai-api-client": "latest",
     "cli-color": "^2.0.3",
-    "commander": "^11.0.0"
+    "commander": "^11.0.0",
+    "@bemoje/array": "latest"
   },
   "repository": {
     "type": "git",

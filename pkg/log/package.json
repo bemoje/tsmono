@@ -1,16 +1,13 @@
 {
   "name": "@bemoje/log",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Logger utility for node-js.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
-    "lint": "eslint \"*/**/*.{ts,js,json}\" --fix",
-    "test": "jest --preset ts-jest",
     "build": "rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs",
-    "docs": "rimraf ../../docs/log && typedoc --out ../../docs/log --entryPoints src/index.ts",
-    "prepub": "npm run lint && npm run build && npm run test && npm run docs"
+    "docs": "rimraf ../../docs/log && typedoc --out ../../docs/log --entryPoints src/index.ts"
   },
   "author": {
     "name": "Benjamin Møller Jensen",
@@ -21,9 +18,10 @@
   "keywords": [],
   "dependencies": {
     "@bemoje/fs": "latest",
-    "@bemoje/node-util": "latest",
     "@bemoje/string": "latest",
-    "cli-color": "^2.0.3"
+    "cli-color": "^2.0.3",
+    "@bemoje/date": "latest",
+    "@bemoje/validation": "latest"
   },
   "repository": {
     "type": "git",

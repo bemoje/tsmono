@@ -1,16 +1,13 @@
 {
   "name": "@bemoje/fs",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Tools for working with the local filesystem in nodejs.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
-    "lint": "eslint \"*/**/*.{ts,js,json}\" --fix",
-    "test": "jest --preset ts-jest",
     "build": "rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs",
-    "docs": "rimraf ../../docs/fs && typedoc --out ../../docs/fs --entryPoints src/index.ts",
-    "prepub": "npm run lint && npm run build && npm run test && npm run docs"
+    "docs": "rimraf ../../docs/fs && typedoc --out ../../docs/fs --entryPoints src/index.ts"
   },
   "author": {
     "name": "Benjamin Møller Jensen",
@@ -20,7 +17,8 @@
   "license": "MIT",
   "keywords": [],
   "dependencies": {
-    "@bemoje/string": "latest"
+    "@bemoje/string": "latest",
+    "extract-zip": "^2.0.1"
   },
   "repository": {
     "type": "git",
@@ -33,5 +31,8 @@
   "bugs": {
     "url": "https://github.com/bemoje/tsmono/issues"
   },
-  "homepage": "https://github.com/bemoje/tsmono"
+  "homepage": "https://github.com/bemoje/tsmono",
+  "devDependencies": {
+    "@types/extract-zip": "^2.0.1"
+  }
 }

@@ -1,6 +1,7 @@
+import { MS_IN_DAY, isoDateTimestampForFilename } from '@bemoje/date'
 import { appendLineToFile, cleanDirectorySync, createDirectorySync } from '@bemoje/fs'
-import { MS_IN_DAY, ObjectKey, isObject, isoDateTimestampForFilename } from '@bemoje/node-util'
 import { strRepeat } from '@bemoje/string'
+import { isObject } from '@bemoje/validation'
 import type { Format } from 'cli-color'
 import { blackBright, green, red, yellow } from 'cli-color'
 import { EventEmitter } from 'events'
@@ -9,6 +10,7 @@ import path from 'path'
 import { ILogEmitterEventsOptions } from './types/ILogEmitterEventsOptions'
 import { ILogOptions } from './types/ILogOptions'
 import { LogLevel } from './types/LogLevel'
+import { ObjectKey } from './types/ObjectKey'
 
 /**
  * This class is a utility for logging messages to the console and/or a log file.

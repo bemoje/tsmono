@@ -1,7 +1,7 @@
-import { strUnwrap } from '@bemoje/string'
-import { tsExtractImports } from '@bemoje/tscode'
 import fs from 'fs'
 import path from 'path'
+import { strUnwrap } from '../../pkg/string/src/string/strUnwrap'
+import { tsExtractImports } from '../../pkg/tscode/src/lib/tsExtractImports'
 import { walkTsFiles } from './walkTsFiles'
 
 export function getImported(pkgroot: string) {

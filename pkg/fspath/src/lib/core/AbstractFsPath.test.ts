@@ -42,7 +42,7 @@ describe(AbstractFsPath.name, () => {
   describe('relative', () => {
     it('should return the relative path', () => {
       const path = new ExtendsAbstractFsPath(__filename)
-      expect(path.relative).toBe(npath.join('src', 'lib', 'core', 'AbstractFsPath.test.ts'))
+      expect(path.relative).toBe(npath.join('pkg', 'fspath', 'src', 'lib', 'core', 'AbstractFsPath.test.ts'))
     })
   })
 
@@ -70,7 +70,7 @@ describe(AbstractFsPath.name, () => {
   describe('parentPath', () => {
     it('should return the parent directory path', () => {
       const path = new ExtendsAbstractFsPath(__filename)
-      expect(path.parentPath).toBe(npath.join(process.cwd(), 'src', 'lib', 'core'))
+      expect(path.parentPath).toBe(npath.join(process.cwd(), 'pkg', 'fspath', 'src', 'lib', 'core'))
     })
   })
 
@@ -114,7 +114,7 @@ describe(AbstractFsPath.name, () => {
     it('should return an array of relative path segments', () => {
       const path = new ExtendsAbstractFsPath(__filename)
       const segments = path.relativeToArray()
-      expect(segments).toEqual(['src', 'lib', 'core', 'AbstractFsPath.test.ts'])
+      expect(segments).toEqual(['pkg', 'fspath', 'src', 'lib', 'core', 'AbstractFsPath.test.ts'])
     })
   })
 

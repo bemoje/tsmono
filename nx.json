@@ -39,7 +39,16 @@
       "inputs": ["production", "^production", "{projectRoot}/rollup.config.js", "{projectRoot}/tsconfig.bundle.json"]
     },
     "docs": {
-      "inputs": ["sharedGlobals", "{projectRoot}/src/**/*", "{projectRoot}/dist/**/*", "{projectRoot}/package.json"]
+      "inputs": [
+        "sharedGlobals",
+        "{projectRoot}/src/**/*",
+        "{projectRoot}/dist/**/*",
+        "!{projectRoot}/node_modules/**/*",
+        "!{projectRoot}/dist/**/*",
+        "!{projectRoot}/coverage/**/*",
+        "!{projectRoot}/README.md",
+        "!{workspaceRoot}/docs/**/*"
+      ]
     }
   },
   "affected": {

@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/bfind",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "CLI for very fast file search. File contents are not indexed - only file and directory names. Directories are highlighted in blue in search results. Search results are sorted by last modified date. Regex ignore patterns are configurable in CLI or the JSON config file. Each argument is a search term. If multiple terms are provided, they all must be present in the filepath to be considered a search hit.",
   "main": "dist/index.cjs.js",
   "types": "dist/types/index.d.ts",
@@ -9,11 +9,8 @@
   },
   "preferGlobal": true,
   "scripts": {
-    "lint": "eslint \"*/**/*.{ts,js,json}\" --fix",
-    "test": "jest --preset ts-jest",
     "build": "rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs",
-    "docs": "rimraf ../../docs/bfind && typedoc --out ../../docs/bfind --entryPoints src/index.ts",
-    "prepub": "npm run lint && npm run build && npm run test && npm run docs"
+    "docs": "rimraf ../../docs/bfind && typedoc --out ../../docs/bfind --entryPoints src/index.ts"
   },
   "author": {
     "name": "Benjamin Møller Jensen",
@@ -23,14 +20,16 @@
   "license": "MIT",
   "keywords": [],
   "dependencies": {
-    "@bemoje/fspath-filter": "latest",
-    "@bemoje/trie-map": "latest",
     "@bemoje/commander-config": "latest",
     "@bemoje/fs": "latest",
-    "@bemoje/node-util": "latest",
+    "@bemoje/fspath-filter": "latest",
+    "@bemoje/set": "latest",
+    "@bemoje/trie-map": "latest",
+    "appdata-path": "^1.0.0",
     "cli-color": "^2.0.3",
     "commander": "^11.0.0",
     "lodash": "^4.17.21",
+    "mkdirp": "^3.0.1",
     "walkdir": "^0.4.1"
   },
   "repository": {
@@ -44,5 +43,8 @@
   "bugs": {
     "url": "https://github.com/bemoje/tsmono/issues"
   },
-  "homepage": "https://github.com/bemoje/tsmono"
+  "homepage": "https://github.com/bemoje/tsmono",
+  "devDependencies": {
+    "@types/cli-color": "^2.0.2"
+  }
 }

@@ -1,4 +1,4 @@
-import { compareArray, setNonEnumerable } from '@bemoje/node-util'
+import { compareArray } from '@bemoje/sort'
 import { strRemoveDuplicateChars } from '../string/strRemoveDuplicateChars'
 import { regexEscapeString } from './regexEscapeString'
 import { rexec } from './rexec'
@@ -57,7 +57,7 @@ export function regexScopeTree(
           },
           children: [],
         }
-        setNonEnumerable(node, 'parent')
+        Object.defineProperty(node, 'parent', { enumerable: false })
         for (let i = nodes.length - 1; i >= 0; i--) {
           if (left.index >= nodes[i].left.index || right.lastIndex <= nodes[i].right.lastIndex) break
           node.children.push(nodes[i])

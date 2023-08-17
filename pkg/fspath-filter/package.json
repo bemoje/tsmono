@@ -1,16 +1,13 @@
 {
   "name": "@bemoje/fspath-filter",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Builder class to easily and flexibly construct and implement filesystem path filtering.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
-    "lint": "eslint \"*/**/*.{ts,js,json}\" --fix",
-    "test": "jest --preset ts-jest",
     "build": "rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs",
-    "docs": "rimraf ../../docs/fspath-filter && typedoc --out ../../docs/fspath-filter --entryPoints src/index.ts",
-    "prepub": "npm run lint && npm run build && npm run test && npm run docs"
+    "docs": "rimraf ../../docs/fspath-filter && typedoc --out ../../docs/fspath-filter --entryPoints src/index.ts"
   },
   "author": {
     "name": "Benjamin Møller Jensen",

@@ -1,7 +1,7 @@
-import { arrEvery } from '@bemoje/node-util'
 import { execFileSync } from 'child_process'
 import fs from 'fs'
 import path from 'path'
+import { arrEvery } from '../pkg/array/src/lib/arrEvery'
 import { getPackages } from './util/getPackages'
 import { hashPackage } from './util/hashPackage'
 import { pkgRepoDependents } from './util/pkgRepoDependents'
@@ -21,7 +21,7 @@ console.log({ scripts })
 
 const packages = getPackages()
 
-const order = ['node-util']
+const order: string[] = []
 const numExternals = order.length
 const length = packages.length + numExternals
 

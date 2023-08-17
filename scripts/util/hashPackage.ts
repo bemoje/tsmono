@@ -1,7 +1,7 @@
-import { strHashToStringDJB2 } from '@bemoje/string'
 import fs from 'fs'
 import path from 'path'
 import walkdir from 'walkdir'
+import { strHashToStringDJB2 } from '../../pkg/string/src/string/strHashToStringDJB2'
 
 export function hashPackage(name: string, scripts: string[]): [string, number][] {
   const dpath = path.join(process.cwd(), 'pkg', name)

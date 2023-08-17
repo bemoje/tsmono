@@ -1,4 +1,3 @@
-import { iterableFirstElement } from '@bemoje/node-util'
 import { rexec } from './rexec'
 import type { RexecYield } from './types/RexecYield'
 
@@ -14,5 +13,5 @@ import type { RexecYield } from './types/RexecYield'
  * ```
  */
 export function rexecFirstMatch(regex: RegExp, string: string): RexecYield | undefined {
-  return iterableFirstElement(rexec(new RegExp(regex.source, regex.flags), string))
+  for (const item of rexec(new RegExp(regex.source, regex.flags), string)) return item
 }

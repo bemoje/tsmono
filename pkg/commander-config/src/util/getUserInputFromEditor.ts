@@ -1,5 +1,5 @@
+import { wait } from '@bemoje/async'
 import { deleteDirectorySafe } from '@bemoje/fs'
-import { wait } from '@bemoje/node-util'
 import { execSync } from 'child_process'
 import fs from 'fs'
 import path from 'path'

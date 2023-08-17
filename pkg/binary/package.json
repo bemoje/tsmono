@@ -1,0 +1,32 @@
+{
+  "name": "@bemoje/binary",
+  "version": "0.0.2",
+  "description": "Binary/encoding related tools/util.",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/types/index.d.ts",
+  "scripts": {
+    "build": "rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs",
+    "docs": "rimraf ../../docs/binary && typedoc --out ../../docs/binary --entryPoints src/index.ts"
+  },
+  "author": {
+    "name": "Benjamin Møller Jensen",
+    "email": "bemoje@bemoje.net",
+    "url": "https://github.com/bemoje/"
+  },
+  "license": "MIT",
+  "keywords": [],
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bemoje/tsmono.git"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/user?u=40752770"
+  },
+  "bugs": {
+    "url": "https://github.com/bemoje/tsmono/issues"
+  },
+  "homepage": "https://github.com/bemoje/tsmono"
+}

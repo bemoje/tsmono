@@ -1,5 +1,6 @@
 import { AbstractApiClient, IAsyncRetryOptions, IResponseCacheOptions } from '@bemoje/api-util'
-import { objOmitKeysMutable, randomIntBetween } from '@bemoje/node-util'
+import { randomIntBetween } from '@bemoje/number'
+import { objOmitKeysMutable } from '@bemoje/object'
 import fs from 'fs'
 import { encode } from 'gpt-3-encoder'
 import type * as openai from 'openai'

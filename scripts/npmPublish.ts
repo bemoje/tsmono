@@ -64,7 +64,6 @@ getPackages()
 
 execBatch([
   `cd ${cwd}`,
-  'npm run wipe-bemoje all',
   'npm i',
   //
 ])

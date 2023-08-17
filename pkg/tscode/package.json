@@ -1,16 +1,13 @@
 {
   "name": "@bemoje/tscode",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Tools for parsing and editing TypeScript source code.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
-    "lint": "eslint \"*/**/*.{ts,js,json}\" --fix",
-    "test": "jest --preset ts-jest",
     "build": "rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs",
-    "docs": "rimraf ../../docs/tscode && typedoc --out ../../docs/tscode --entryPoints src/index.ts",
-    "prepub": "npm run lint && npm run build && npm run test && npm run docs"
+    "docs": "rimraf ../../docs/tscode && typedoc --out ../../docs/tscode --entryPoints src/index.ts"
   },
   "author": {
     "name": "Benjamin Møller Jensen",
@@ -20,8 +17,9 @@
   "license": "MIT",
   "keywords": [],
   "dependencies": {
-    "@bemoje/node-util": "latest",
-    "@bemoje/string": "latest"
+    "@bemoje/string": "latest",
+    "@bemoje/array": "latest",
+    "@bemoje/number": "latest"
   },
   "repository": {
     "type": "git",

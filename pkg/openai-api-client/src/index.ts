@@ -1,3 +1,4 @@
+export * from './lib/data/openaiApiErrorCodes'
 export * from './lib/OpenaiApiClient'
 export * from './lib/OpenaiApiClientExtended'
 export * from './lib/types/IOpenaiApiClientApiDefaultsOptions'

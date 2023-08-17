@@ -1,3 +1,5 @@
 export * from './core/AbstractSubtitle'
-export * from './srt'
-export * from './vtt'
+export * from './srt/SRTSubtitle'
+export * from './srt/SRTSubtitles'
+export * from './vtt/VTTSubtitle'
+export * from './vtt/VTTSubtitles'

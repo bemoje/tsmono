@@ -1,7 +1,7 @@
-import { strReplaceAll } from '@bemoje/string'
 import fs from 'fs'
 import path from 'path'
 import walkdir from 'walkdir'
+import { strReplaceAll } from '../pkg/string/src/string/strReplaceAll'
 import { getPackages } from './util/getPackages'
 
 const packages = getPackages()

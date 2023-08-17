@@ -17,5 +17,5 @@
     "esModuleInterop": true,
     "strict": true
   },
-  "exclude": ["./**/*/*.test.ts", "./**/*/*.example.ts", "./bin"]
+  "exclude": ["jest.config.ts", "./**/*/*.test.ts", "./**/*/*.example.ts", "./bin"]
 }

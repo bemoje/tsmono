@@ -1,16 +1,13 @@
 {
   "name": "@bemoje/subtitles",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Classes for SRT and VTT subtitles renderind parsing.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
-    "lint": "eslint \"*/**/*.{ts,js,json}\" --fix",
-    "test": "jest --preset ts-jest",
     "build": "rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs",
-    "docs": "rimraf ../../docs/subtitles && typedoc --out ../../docs/subtitles --entryPoints src/index.ts",
-    "prepub": "npm run lint && npm run build && npm run test && npm run docs"
+    "docs": "rimraf ../../docs/subtitles && typedoc --out ../../docs/subtitles --entryPoints src/index.ts"
   },
   "author": {
     "name": "Benjamin Møller Jensen",

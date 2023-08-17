@@ -1,4 +1,4 @@
-import { arrIndicesOf } from '@bemoje/node-util'
+import { arrIndicesOf } from '@bemoje/array'
 
 export function shortenNames(names: string[]): string[] {
   const firstNames = names.map((name) => name.split(' ')[0])

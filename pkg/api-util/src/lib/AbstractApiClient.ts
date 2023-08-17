@@ -1,4 +1,4 @@
-import { funAsyncRateLimit } from '@bemoje/node-util'
+import { funAsyncRateLimit } from '@bemoje/function'
 import type { IQueue, IQueueAddOptions } from '@bemoje/queue'
 import { IPromiseQueueOptions, PromiseQueue } from '@bemoje/queue'
 import asyncRetry from 'async-retry'
