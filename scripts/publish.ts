@@ -11,7 +11,11 @@ if (!type) throw new Error('no version upgrade type provided. Can be patch, mino
 const cwd = process.cwd()
 let names = process.argv.slice(3)
 const runAll = !names.length
-if (runAll) names = fs.readdirSync(path.join(cwd, 'pkg'))
+if (runAll) {
+  names = fs.readdirSync(path.join(cwd, 'pkg'))
+}
+
+console.log({ publishing: names })
 
 // prepub
 execBatch(['npm run prepub' + (!runAll ? ' -p ' + names.join(',') : '')], () => process.exit())
@@ -48,7 +52,6 @@ getPackages()
     execBatch(
       [
         `cd ${rootdir}`,
-        pkg.preferGlobal ? 'npm link' : '',
         'npm publish --access public',
         //
       ],
@@ -65,6 +68,12 @@ getPackages()
 
     if (success) hashes[name] = hashPackage(name)
     fs.writeFileSync(hashesPath, JSON.stringify(hashes, null, 2), 'utf8')
+
+    if (pkg.preferGlobal) {
+      setTimeout(() => {
+        execBatch(['npm i -g ' + pkg.name + '@latest'])
+      }, 1000 * 20)
+    }
   })
 console.log({ failed })
 if (failed.length) process.exit()
@@ -74,6 +83,7 @@ execBatch(
   [
     `cd ${cwd}`,
     'npm run prepub' + (!runAll ? ' -p ' + names.join(',') : ''),
+    'npm -g update @bemoje/*',
     'git add .',
     `git commit -m "publish new version (${type}) of packages: ${names.join(', ')}."`,
     //

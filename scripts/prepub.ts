@@ -1,6 +1,5 @@
 import { execBatch } from '../pkg/node/src/lib/execBatch'
 const names = process.argv.slice(2)
-console.log({ names })
 
 execBatch([
   'npm run fix-readmes',
