@@ -1,3 +1,4 @@
+import { findPackageJson } from '@bemoje/node'
 import { TrieMap } from '@bemoje/trie-map'
 import { green, red, yellow } from 'cli-color'
 import { Command } from 'commander'
@@ -22,7 +23,7 @@ export const program = new Command()
         'they all must be present in the filepath to be considered a search hit.',
     ].join(' '),
   )
-  .version('0.1.0')
+  .version(findPackageJson()?.['version'] || '0.0.1')
   .argument(
     '[search...]',
     'Each argument is a search term. If multiple terms are provided, ' +

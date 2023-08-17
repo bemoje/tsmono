@@ -76,8 +76,15 @@ export class Config {
 
     program
       .command('appdata')
-      .description('Get the directory to your data.')
-      .action(() => console.log('APPDATA: ' + this.appdataDirectory))
+      .description('Get the directory containing your app data.')
+      .option('--wipe', 'Delete both config and prompt history from the appdata directory.')
+      .action((wipe) => {
+        console.log('APPDATA: ' + this.appdataDirectory)
+        if (wipe) {
+          fs.rmdirSync(this.appdataDirectory, { recursive: true })
+          console.log('All app data deleted.')
+        }
+      })
   }
 
   ensureConfigFileExists() {

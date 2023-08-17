@@ -22,6 +22,7 @@
     "@bemoje/commander-config": "latest",
     "@bemoje/fs": "latest",
     "@bemoje/fspath-filter": "latest",
+    "@bemoje/node": "^0.0.7",
     "@bemoje/set": "latest",
     "@bemoje/trie-map": "latest",
     "appdata-path": "^1.0.0",

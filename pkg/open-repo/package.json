@@ -20,6 +20,7 @@
   "keywords": [],
   "dependencies": {
     "@bemoje/commander-config": "latest",
+    "@bemoje/node": "^0.0.7",
     "commander": "^11.0.0"
   },
   "repository": {

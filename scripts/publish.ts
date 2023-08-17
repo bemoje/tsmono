@@ -26,6 +26,7 @@ const hashes = JSON.parse(fs.readFileSync(hashesPath, 'utf8'))
 
 // npm publish
 const failed: string[] = []
+const installGlobally: string[] = []
 getPackages()
   .filter(({ name }) => names.includes(name))
   .forEach(({ name, rootdir, pkgpath, pkg }) => {
@@ -52,6 +53,7 @@ getPackages()
     execBatch(
       [
         `cd ${rootdir}`,
+        'npm i',
         'npm publish --access public',
         //
       ],
@@ -63,16 +65,14 @@ getPackages()
       },
     )
 
-    if (!pkg.preferGlobal) pkg.main = 'src/index.ts'
+    pkg.main = 'src/index.ts'
     fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
 
     if (success) hashes[name] = hashPackage(name)
     fs.writeFileSync(hashesPath, JSON.stringify(hashes, null, 2), 'utf8')
 
     if (pkg.preferGlobal) {
-      setTimeout(() => {
-        execBatch(['npm i -g ' + pkg.name + '@latest'])
-      }, 1000 * 20)
+      installGlobally.push('npm i -g ' + pkg.name)
     }
   })
 console.log({ failed })
@@ -83,7 +83,7 @@ execBatch(
   [
     `cd ${cwd}`,
     'npm run prepub' + (!runAll ? ' -p ' + names.join(',') : ''),
-    'npm -g update @bemoje/*',
+    ...installGlobally,
     'git add .',
     `git commit -m "publish new version (${type}) of packages: ${names.join(', ')}."`,
     //
