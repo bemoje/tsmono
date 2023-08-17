@@ -48,6 +48,7 @@ getPackages()
     execBatch(
       [
         `cd ${rootdir}`,
+        pkg.preferGlobal ? 'npm link' : '',
         'npm publish --access public',
         //
       ],
@@ -71,6 +72,7 @@ if (failed.length) process.exit()
 // prepub and commit
 execBatch(
   [
+    `cd ${cwd}`,
     'npm run prepub' + (!runAll ? ' -p ' + names.join(',') : ''),
     'git add .',
     `git commit -m "publish new version (${type}) of packages: ${names.join(', ')}."`,
