@@ -48,14 +48,14 @@
     "fix-readmes": "ts-node -P tsconfig.json scripts/fixReadmes.ts",
     "fix-dependencies": "ts-node -P tsconfig.json scripts/fixDependencies.ts",
     "fix-entrypoints": "ts-node -P tsconfig.json scripts/fixEntryPoints.ts",
-    "fix-docs": "ts-node -P tsconfig.json scripts/fixDocs.ts",
-    "pre-docs": "ts-node -P tsconfig.json scripts/predocs.ts",
     "lint": "nx run-many --parallel 3 -t lint",
     "test": "nx run-many --parallel 3 -t test",
     "build": "nx run-many --parallel 3 -t build",
-    "docs": "rimraf ./docs/ && npm run pre-docs && typedoc --out ./docs/ --entryPoints ./pkg/index.ts && npm run fix-docs",
+    "docs": "ts-node -P tsconfig.json scripts/docs.ts",
     "prepub": "npm run fix-readmes && npm run fix-dependencies && npm run fix-entrypoints && npm run lint && npm run test && npm run build && npm run docs",
-    "publish": "ts-node -P tsconfig.json scripts/npmPublish.ts",
+    "publish-npm": "ts-node -P tsconfig.json scripts/npmPublish.ts",
+    "publish-github": "ts-node -P tsconfig.json scripts/githubPublish.ts",
+    "publish": "npm run publish-npm && npm run publish-github",
     "opendocs": "start docs/modules.html"
   },
   "devDependencies": {

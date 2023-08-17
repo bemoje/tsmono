@@ -2,7 +2,7 @@
 Mono repository for varous TypeScript projects.
 
 ## Documentation
-[Documentation Website](https://bemoje.github.io/tsmono/)
+[Documentation Website](https://bemoje.github.io/tsmono/modules.html)
 
 ## Issues
 Please let me know of any bugs or [issues](https://github.com/bemoje/https://github.com/bemoje/tsmono/issues).

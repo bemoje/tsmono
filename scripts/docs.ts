@@ -3,8 +3,25 @@ import path from 'path'
 import { snakeCase } from 'snake-case'
 import walkdir from 'walkdir'
 import { strReplaceAll } from '../pkg/string/src/string/strReplaceAll'
+import { execBatch } from './util/execBatch'
 import { getPackages } from './util/getPackages'
 
+const pkgspath = path.join(process.cwd(), 'pkg')
+const indexpath = path.join(pkgspath, 'index.ts')
+
+// create index.ts (temp file)
+const src = fs
+  .readdirSync(pkgspath)
+  .filter((name) => name !== 'index.ts')
+  .map((name) => `export * as ${snakeCase(name)} from './${name}/src'`)
+  .join('\n')
+
+fs.writeFileSync(indexpath, src)
+
+// create docs
+execBatch(['rimraf ./docs/ && typedoc --out ./docs/ --entryPoints ./pkg/index.ts'])
+
+// fix docs
 const replace = getPackages().map(({ name }) => [snakeCase(name), name])
 const paths = walkdir.sync(path.join(process.cwd(), 'docs'))
 const htmlFiles = paths.filter((filepath) => filepath.endsWith('.html'))
@@ -34,6 +51,5 @@ paths.forEach((filepath) => {
   fs.renameSync(orig, filepath)
 })
 
-const pkgspath = path.join(process.cwd(), 'pkg')
-const indexpath = path.join(pkgspath, 'index.ts')
+// delete index.ts
 fs.rmSync(indexpath)
