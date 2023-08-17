@@ -59,7 +59,7 @@ getPackages()
       },
     )
 
-    pkg.main = 'src/index.ts'
+    if (!pkg.preferGlobal) pkg.main = 'src/index.ts'
     fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
 
     if (success) hashes[name] = hashPackage(name)
