@@ -1,8 +1,8 @@
 {
   "name": "@bemoje/trie-map",
-  "version": "1.3.8",
+  "version": "1.3.9",
   "description": "A fast trie map data structure.",
-  "main": "dist/index.cjs.js",
+  "main": "src/index.ts",
   "module": "dist/index.esm.js",
   "types": "dist/types/index.d.ts",
   "scripts": {

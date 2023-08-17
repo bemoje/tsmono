@@ -2,7 +2,7 @@
   "name": "@bemoje/asdf",
   "version": "0.0.1",
   "description": "",
-  "main": "dist/index.cjs.js",
+  "main": "src/index.ts",
   "module": "dist/index.esm.js",
   "browser": "dist/index.umd.js",
   "types": "dist/types/index.d.ts",

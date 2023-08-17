@@ -2,8 +2,8 @@ import fs from 'fs'
 import path from 'path'
 import { snakeCase } from 'snake-case'
 import walkdir from 'walkdir'
+import { execBatch } from '../pkg/node/src/lib/execBatch'
 import { strReplaceAll } from '../pkg/string/src/string/strReplaceAll'
-import { execBatch } from './util/execBatch'
 import { getPackages } from './util/getPackages'
 
 const pkgspath = path.join(process.cwd(), 'pkg')
@@ -43,7 +43,7 @@ htmlFiles.forEach((filepath) => {
   fs.writeFileSync(filepath, src, 'utf8')
 })
 
-paths.forEach((filepath) => {
+htmlFiles.forEach((filepath) => {
   const orig = filepath + ''
   for (const [from, to] of replace) {
     filepath = strReplaceAll(filepath, from, to)

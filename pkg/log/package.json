@@ -1,8 +1,8 @@
 {
   "name": "@bemoje/log",
-  "version": "0.0.14",
+  "version": "0.0.16",
   "description": "Logger utility for node-js.",
-  "main": "dist/index.cjs.js",
+  "main": "src/index.ts",
   "module": "dist/index.esm.js",
   "types": "dist/types/index.d.ts",
   "scripts": {

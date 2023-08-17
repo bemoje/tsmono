@@ -1,8 +1,8 @@
 {
   "name": "@bemoje/number",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Number related tools/util.",
-  "main": "dist/index.cjs.js",
+  "main": "src/index.ts",
   "module": "dist/index.esm.js",
   "types": "dist/types/index.d.ts",
   "scripts": {

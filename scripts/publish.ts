@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { execBatch } from './util/execBatch'
+import { execBatch } from '../pkg/node/src/lib/execBatch'
 import { getPackages } from './util/getPackages'
 import { hashPackage } from './util/hashPackage'
 
@@ -10,10 +10,11 @@ if (!type) throw new Error('no version upgrade type provided. Can be patch, mino
 
 const cwd = process.cwd()
 let names = process.argv.slice(3)
-if (!names.length) names = fs.readdirSync(path.join(cwd, 'pkg'))
+const runAll = !names.length
+if (runAll) names = fs.readdirSync(path.join(cwd, 'pkg'))
 
 // prepub
-execBatch(['npm run prepub'], () => process.exit())
+execBatch(['npm run prepub' + (!runAll ? ' -p ' + names.join(',') : '')], () => process.exit())
 
 // hashes
 const hashesPath = path.join(process.cwd(), 'scripts', 'data', 'hashes.json')
@@ -40,6 +41,7 @@ getPackages()
       version[2] = 0
     }
     pkg.version = version.join('.')
+    pkg.main = 'dist/index.cjs.js'
     fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
 
     let success = true
@@ -57,19 +59,21 @@ getPackages()
       },
     )
 
+    pkg.main = 'src/index.ts'
+    fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
+
     if (success) hashes[name] = hashPackage(name)
     fs.writeFileSync(hashesPath, JSON.stringify(hashes, null, 2), 'utf8')
   })
 console.log({ failed })
 if (failed.length) process.exit()
 
-// publish github
+// prepub and commit
 execBatch(
   [
-    'npm run prepub',
+    'npm run prepub' + (!runAll ? ' -p ' + names.join(',') : ''),
     'git add .',
-    'git commit -m "publish"',
-    'git push -u origin main',
+    `git commit -m "publish new version (${type}) of packages: ${names.join(', ')}."`,
     //
   ],
   () => process.exit(),

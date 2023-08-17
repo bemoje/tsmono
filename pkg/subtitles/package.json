@@ -1,8 +1,8 @@
 {
   "name": "@bemoje/subtitles",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Classes for SRT and VTT subtitles renderind parsing.",
-  "main": "dist/index.cjs.js",
+  "main": "src/index.ts",
   "module": "dist/index.esm.js",
   "types": "dist/types/index.d.ts",
   "scripts": {

@@ -1,4 +1,4 @@
-import { getUserInputFromEditorSync, parseInteger } from '@bemoje/commander-config'
+import { getUserInputFromEditorSync, parseInteger, parseNumber } from '@bemoje/commander-config'
 
 const emailsDefaultSystemMessage = [
   'You are a helpful assistant who helps me summarize and interpret my work email threads.',
@@ -40,7 +40,7 @@ export const emailsConfig = {
       'The default temperature to use with the gpt model. This settings can also be modified for each request.',
     default: 0.1,
     required: true,
-    parse: parseInteger,
+    parse: parseNumber,
   },
   emails_systemMessage: {
     description:
@@ -53,6 +53,7 @@ export const emailsConfig = {
         appdataDirectory: config.appdataDirectory,
         editor: config.settings.editor,
         currentContent: emailsDefaultSystemMessage.join('\n'),
+        extension: '.txt',
       }).split('\n')
     },
   },

@@ -10,8 +10,12 @@
   },
   "namedInputs": {
     "default": [
-      "{projectRoot}/**/*",
       "sharedGlobals",
+      "{projectRoot}/**/*",
+      "!{workspaceRoot}/pkg/index.ts",
+      "!{workspaceRoot}/docs/**/*",
+      "!{workspaceRoot}/scripts/**/*",
+      "!{workspaceRoot}/node_modules/**/*",
       "!{projectRoot}/node_modules/**/*",
       "!{projectRoot}/dist/**/*",
       "!{projectRoot}/coverage/**/*",

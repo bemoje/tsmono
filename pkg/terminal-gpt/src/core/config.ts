@@ -1,5 +1,6 @@
 import { Config, parseBoolean, parseString } from '@bemoje/commander-config'
 import { emailsConfig } from './emails/emailsConfig'
+import { tsConfig } from './ts/tsConfig'
 
 export const config = new Config('bemoje', 'terminal-gpt', {
   api_key: {
@@ -16,4 +17,5 @@ export const config = new Config('bemoje', 'terminal-gpt', {
     parse: parseBoolean,
   },
   ...emailsConfig,
+  ...tsConfig,
 })

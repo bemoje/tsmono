@@ -1,8 +1,8 @@
 {
   "name": "@bemoje/table",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "A 2D table data structure that validates structural integrity and has some useful methods.",
-  "main": "dist/index.cjs.js",
+  "main": "src/index.ts",
   "module": "dist/index.esm.js",
   "types": "dist/types/index.d.ts",
   "scripts": {

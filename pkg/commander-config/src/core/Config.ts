@@ -3,7 +3,7 @@ import { Command } from 'commander'
 import fs from 'fs'
 import { mkdirpSync } from 'mkdirp'
 import path from 'path'
-import { getUserInputFromEditor } from '../util/getUserInputFromEditor'
+import { getUserInputFromEditorSync } from '../util/getUserInputFromEditorSync'
 import { parseString } from '../util/parseString'
 import { ConfigSetting } from './ConfigSetting'
 import { IConfigSetting } from './IConfigSetting'
@@ -18,7 +18,7 @@ export class Config {
     definitions = {
       editor: {
         description: 'The editor to use for example when editing config settings as JSON.',
-        default: 'notepad',
+        default: 'code -w',
         required: true,
         parse: parseString,
       },
@@ -38,15 +38,18 @@ export class Config {
   }
 
   initialize(program: Command) {
+    const accepted = 'Accepted values are: ' + Object.keys(this.definitions).join(', ')
+
     program
       .command('config')
       .description('View / edit the settings as JSON in the defined editor.')
       .action(async () => {
         const json = JSON.stringify(this.settings, null, 1)
-        const newJson = await getUserInputFromEditor({
+        const newJson = getUserInputFromEditorSync({
           appdataDirectory: this.appdataDirectory,
           editor: this.settings.editor,
           currentContent: json,
+          extension: '.json',
         })
         this.settings = JSON.parse(newJson)
         this.saveConfigFile()
@@ -55,21 +58,26 @@ export class Config {
     program
       .command('config-list')
       .description('List the current config settings.')
-      .argument('[setting]', 'The name of the setting. Omit to list all settings.')
+      .argument('[setting]', 'The name of the setting. Omit to list all settings. ' + accepted)
       .action(() => this.print())
 
     program
       .command('config-reset')
       .description('Reset one or all settings to their default values.')
-      .argument('[setting]', 'The name of the setting. Omit to reset all settings.')
+      .argument('[setting]', 'The name of the setting. Omit to reset all settings. ' + accepted)
       .action((setting?: string) => this.reset(setting))
 
     program
       .command('config-set')
       .description('Configure a setting of the config.')
-      .argument('<setting>', 'The name of the setting.')
+      .argument('<setting>', 'The name of the setting. ' + accepted)
       .argument('<value>', 'The value to assign.')
       .action((setting: string, value: string) => this.set(setting, value))
+
+    program
+      .command('appdata')
+      .description('Get the directory to your data.')
+      .action(() => console.log('APPDATA: ' + this.appdataDirectory))
   }
 
   ensureConfigFileExists() {

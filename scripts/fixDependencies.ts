@@ -1,4 +1,4 @@
-import { execBatch } from './util/execBatch'
+import { execBatch } from '../pkg/node/src/lib/execBatch'
 import { getImportedExternal } from './util/getImportedExternal'
 import { getPackages } from './util/getPackages'
 

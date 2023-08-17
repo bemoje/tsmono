@@ -1,6 +1,7 @@
 import { Command } from 'commander'
 import { config } from './core/config'
 import { emails } from './core/emails/emails'
+import { ts } from './core/ts/ts'
 
 export const program = new Command()
   .name('TerminalGPT')
@@ -18,8 +19,12 @@ program
   })
 
 program
-  .command('test')
-  .description('test')
-  .action(() => console.log('test'))
+  .command('ts')
+  .description('Get help with typescript. Edit the config so the system message describes your setup.')
+  .argument('[prompt...]', 'Optionally, provide a prompt. If omitted, a text editor is opened.', '')
+  .action(async (prompt: string[]) => {
+    config.assertNoMissingRequired()
+    await ts(typeof prompt === 'string' ? prompt : prompt.join(' '))
+  })
 
 program.parse()

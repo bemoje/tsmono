@@ -3,7 +3,7 @@ import fs from 'fs'
 import path from 'path'
 
 export function execBatch(cmds: string[], onError?: () => void) {
-  cmds = cmds.map((cmd) => `call ${cmd}`)
+  cmds = cmds.length === 1 ? cmds : cmds.map((cmd) => `call ${cmd}`)
   console.log(cmds.join('\n'))
   const bat = [`@echo off`, ...cmds].join('\n')
   const tempdir = process.env['TEMP']!

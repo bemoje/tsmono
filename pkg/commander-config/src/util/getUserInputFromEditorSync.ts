@@ -8,9 +8,9 @@ export function getUserInputFromEditorSync(options: IGetUserInputFromEditorOptio
   const { appdataDirectory, editor, currentContent } = options
   const tempdir = path.join(appdataDirectory, 'temp')
   fs.mkdirSync(tempdir, { recursive: true })
-  const tempfile = path.join(tempdir, Date.now() + '.txt')
+  const tempfile = path.join(tempdir, Date.now() + (options.extension || '.txt'))
   fs.writeFileSync(tempfile, currentContent, 'utf8')
-  execSync(`${editor} ${tempfile}`)
+  execSync(`${editor} ${tempfile}`, { stdio: 'inherit' })
   const userInput = fs.readFileSync(tempfile, 'utf8')
   deleteDirectorySafeSync(tempdir)
   return userInput

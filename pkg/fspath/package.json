@@ -1,8 +1,8 @@
 {
   "name": "@bemoje/fspath",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Nodejs filesystem paths made very convenient to use and navigate the path tree.",
-  "main": "dist/index.cjs.js",
+  "main": "src/index.ts",
   "module": "dist/index.esm.js",
   "types": "dist/types/index.d.ts",
   "scripts": {

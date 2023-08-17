@@ -15,16 +15,17 @@ const eslintrc = path.join(tdir, '.eslintrc.js')
 const projectJson = path.join(tdir, 'project.json.txt')
 getPackages().forEach(({ rootdir, pkg, name }) => {
   // fs.writeFileSync(path.join(rootdir, '.npmignore'), fs.readFileSync(npmignore, 'utf8'), 'utf8')
-  // fs.writeFileSync(path.join(rootdir, 'rollup.config.js'), fs.readFileSync(rollup, 'utf8'), 'utf8')
+  fs.writeFileSync(path.join(rootdir, 'rollup.config.js'), fs.readFileSync(rollup, 'utf8'), 'utf8')
   // fs.writeFileSync(path.join(rootdir, 'jest.config.ts'), fs.readFileSync(jest, 'utf8'), 'utf8')
   // fs.writeFileSync(path.join(rootdir, 'tsconfig.spec.json'), fs.readFileSync(tsconfigspec, 'utf8'), 'utf8')
   // fs.writeFileSync(path.join(rootdir, 'tsconfig.bundle.json'), fs.readFileSync(bundle, 'utf8'), 'utf8')
   // fs.writeFileSync(path.join(rootdir, '.eslintrc.js'), fs.readFileSync(eslintrc, 'utf8'), 'utf8')
   // fs.rmdirSync(path.join(rootdir, 'docs'), { recursive: true })
   // fs.mkdirSync(path.join(rootdir, 'docs', 'examples'), { recursive: true })
-  pkg.scripts = {
-    'build': 'rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs',
-  }
+  pkg.main = 'src/index.ts'
+  // pkg.scripts = {
+  //   'build': 'rimraf dist && rollup --config ./rollup.config.js --bundleConfigAsCjs',
+  // }
   // Reflect.deleteProperty(pkg, 'devDependencies')
   // pkg.scripts.docsmd = `rimraf ../../docs/md/${name} && typedoc --out ../../docs/md/${name}/ src/index.ts --readme none --plugin typedoc-plugin-markdown --theme markdown --entryDocument index.md --publicPath "https://github.com/bemoje/tsmono/blob/main/docs/md/${name}/"`
   fs.writeFileSync(path.join(rootdir, 'package.json'), JSON.stringify(pkg, null, 2), 'utf8')

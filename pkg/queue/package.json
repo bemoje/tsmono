@@ -1,8 +1,8 @@
 {
   "name": "@bemoje/queue",
-  "version": "0.0.9",
+  "version": "0.0.11",
   "description": "Queue-based data structures.",
-  "main": "dist/index.cjs.js",
+  "main": "src/index.ts",
   "module": "dist/index.esm.js",
   "types": "dist/types/index.d.ts",
   "scripts": {

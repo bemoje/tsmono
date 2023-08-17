@@ -138,7 +138,7 @@ if (PKG.main)
     name,
     exports: 'named',
     sourcemap: true,
-    file: PKG.main,
+    file: 'dist/index.cjs.js',
     format: 'commonjs',
   })
 if (PKG.module)

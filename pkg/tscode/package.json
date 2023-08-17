@@ -1,8 +1,8 @@
 {
   "name": "@bemoje/tscode",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Tools for parsing and editing TypeScript source code.",
-  "main": "dist/index.cjs.js",
+  "main": "src/index.ts",
   "module": "dist/index.esm.js",
   "types": "dist/types/index.d.ts",
   "scripts": {

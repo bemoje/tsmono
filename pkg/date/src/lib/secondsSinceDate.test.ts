@@ -29,7 +29,7 @@ describe('secondsSinceDate', () => {
     const date = new Date()
     date.setSeconds(date.getSeconds() + 10) // 5 seconds in the future
 
-    const result = secondsSinceDate(date)
+    const result = Math.round(secondsSinceDate(date))
 
     expect(result).toBe(Math.round(-10))
   })
