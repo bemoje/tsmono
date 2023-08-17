@@ -2,6 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import { arrEvery } from '../pkg/array/src/lib/arrEvery'
 import { execBatch } from '../pkg/node/src/lib/execBatch'
+import { IPackageDetails } from './util/IPackageDetails'
 import { getPackages } from './util/getPackages'
 import { hashPackage } from './util/hashPackage'
 
@@ -16,7 +17,7 @@ if (runAll) {
   names = fs.readdirSync(path.join(cwd, 'pkg'))
 }
 
-const packages = getPackages()
+const packages: IPackageDetails[] = getPackages()
 const order: string[] = []
 const numExternals = order.length
 const length = packages.length + numExternals
@@ -53,54 +54,55 @@ const hashes = JSON.parse(fs.readFileSync(hashesPath, 'utf8'))
 // npm publish
 const failed: string[] = []
 const installGlobally: string[] = []
-getPackages()
-  .filter(({ name }) => names.includes(name))
-  .forEach(({ name, rootdir, pkgpath, pkg }) => {
-    let hash = hashPackage(name)
-    if (hashes[name] === hash) return
 
-    const original = pkg.version + ''
-    const version = pkg.version.split('.').map(Number)
-    if (type === 'patch') {
-      version[2] += 1
-    } else if (type === 'minor') {
-      version[1] += 1
-      version[2] = 0
-    } else if (type === 'major') {
-      version[0] += 1
-      version[1] = 0
-      version[2] = 0
-    }
-    pkg.version = version.join('.')
-    pkg.main = 'dist/index.cjs.js'
-    fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
+const newPackages = getPackages()
+const namePackages = names.map((n) => newPackages.find(({ name }) => n === name)) as IPackageDetails[]
+namePackages.forEach(({ name, rootdir, pkgpath, pkg }) => {
+  let hash = hashPackage(name)
+  if (hashes[name] === hash) return
 
-    let success = true
-    execBatch(
-      [
-        `cd ${rootdir}`,
-        'npm i',
-        'npm publish --access public',
-        //
-      ],
-      () => {
-        success = false
-        failed.push(name)
-        pkg.version = original
-        fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
-      },
-    )
+  const original = pkg.version + ''
+  const version = pkg.version.split('.').map(Number)
+  if (type === 'patch') {
+    version[2] += 1
+  } else if (type === 'minor') {
+    version[1] += 1
+    version[2] = 0
+  } else if (type === 'major') {
+    version[0] += 1
+    version[1] = 0
+    version[2] = 0
+  }
+  pkg.version = version.join('.')
+  pkg.main = 'dist/index.cjs.js'
+  fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
 
-    pkg.main = 'src/index.ts'
-    fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
+  let success = true
+  execBatch(
+    [
+      `cd ${rootdir}`,
+      'npm i',
+      'npm publish --access public',
+      //
+    ],
+    () => {
+      success = false
+      failed.push(name)
+      pkg.version = original
+      fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
+    },
+  )
 
-    if (success) hashes[name] = hashPackage(name)
-    fs.writeFileSync(hashesPath, JSON.stringify(hashes, null, 2), 'utf8')
+  pkg.main = 'src/index.ts'
+  fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
 
-    if (pkg.preferGlobal) {
-      installGlobally.push('npm i -g ' + pkg.name)
-    }
-  })
+  if (success) hashes[name] = hashPackage(name)
+  fs.writeFileSync(hashesPath, JSON.stringify(hashes, null, 2), 'utf8')
+
+  if (pkg.preferGlobal) {
+    installGlobally.push('npm i -g ' + pkg.name)
+  }
+})
 console.log({ failed })
 if (failed.length) process.exit()
 

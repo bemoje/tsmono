@@ -1,14 +1,9 @@
 import fs from 'fs'
 import path from 'path'
+import { IPackageDetails } from './IPackageDetails'
 import { pkgRepoDependencies } from './pkgRepoDependencies'
 
-export function getPackages(): Array<{
-  name: string
-  rootdir: string
-  pkgpath: string
-  pkg: Record<string, any>
-  deps: string[]
-}> {
+export function getPackages(): IPackageDetails[] {
   const packages = path.join(process.cwd(), 'pkg')
   return fs
     .readdirSync(packages)
