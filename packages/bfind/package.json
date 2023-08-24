@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/bfind",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "CLI for very fast file search. File contents are not indexed - only file and directory names. Directories are highlighted in blue in search results. Search results are sorted by last modified date. Regex ignore patterns are configurable in CLI or the JSON config file. Each argument is a search term. If multiple terms are provided, they all must be present in the filepath to be considered a search hit.",
   "main": "./src/index.js",
   "bin": {

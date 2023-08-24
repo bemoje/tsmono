@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/terminal-gpt",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "",
   "main": "./src/index.js",
   "bin": {

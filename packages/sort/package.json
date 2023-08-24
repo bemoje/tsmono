@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/sort",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Sort comparators including deep recursive comparison of arrays.",
   "main": "./src/index.js",
   "scripts": {},

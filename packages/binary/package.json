@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/binary",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Binary/encoding related tools/util.",
   "main": "./src/index.js",
   "scripts": {},

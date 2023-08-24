@@ -19,7 +19,7 @@ const src = fs
 fs.writeFileSync(indexpath, src)
 
 // create docs
-execBatch(['rimraf ./docs/ && typedoc --out ./docs/ --entryPoints ./packages/index.ts'])
+execBatch(['npm run tsdoc'])
 // fs.mkdirSync(path.join(process.cwd(), 'docs'))
 
 // fix docs

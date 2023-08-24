@@ -12,7 +12,7 @@ const cwd = process.cwd()
 let names = process.argv.slice(3)
 const runAll = !names.length
 if (runAll) {
-  names = fs.readdirSync(path.join(cwd, 'packages'))
+  names = fs.readdirSync(path.join(cwd, 'packages')).filter((name) => !name.startsWith('.'))
 }
 
 // prepub

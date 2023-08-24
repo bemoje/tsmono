@@ -14,6 +14,7 @@
     "lint": "ts-node -P tsconfig.scripts.json scripts/lint.ts",
     "test": "ts-node -P tsconfig.scripts.json scripts/test.ts",
     "build": "ts-node -P tsconfig.scripts.json scripts/build.ts",
+    "tsdoc": "rimraf ./docs/ && typedoc --out ./docs/ --entryPoints ./packages/index.ts",
     "docs": "ts-node -P tsconfig.scripts.json scripts/docs.ts",
     "prepub": "ts-node -P tsconfig.scripts.json scripts/prepub.ts",
     "publish": "ts-node -P tsconfig.scripts.json scripts/publish.ts",

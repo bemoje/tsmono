@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/tscode",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Tools for parsing and editing TypeScript source code.",
   "main": "./src/index.js",
   "scripts": {},
