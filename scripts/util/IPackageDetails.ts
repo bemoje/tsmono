@@ -4,4 +4,5 @@ export interface IPackageDetails {
   pkgpath: string
   pkg: Record<string, any>
   deps: string[]
+  distdir: string
 }

@@ -1,0 +1,47 @@
+{
+  "name": "terminal-gpt",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/terminal-gpt/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/rollup:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/terminal-gpt",
+        "main": "packages/terminal-gpt/src/index.ts",
+        "tsConfig": "packages/terminal-gpt/tsconfig.lib.json",
+        "assets": ["packages/terminal-gpt/src/bin"],
+        "project": "packages/terminal-gpt/package.json",
+        "compiler": "swc",
+        "format": ["cjs"]
+      }
+    },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs terminal-gpt {args.ver} {args.tag}",
+      "dependsOn": ["build"]
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/terminal-gpt/**/*.ts", "packages/terminal-gpt/package.json"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/terminal-gpt/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}

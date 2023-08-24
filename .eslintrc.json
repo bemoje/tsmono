@@ -1,0 +1,63 @@
+{
+  "root": true,
+  "ignorePatterns": ["**/*"],
+  "plugins": ["@nx"],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "rules": {
+        // "@nx/enforce-module-boundaries": [
+        //   "warn",
+        //   {
+        //     "enforceBuildableLibDependency": true,
+        //     "allow": [],
+        //     "depConstraints": [
+        //       {
+        //         "sourceTag": "*",
+        //         "onlyDependOnLibsWithTags": ["*"]
+        //       }
+        //     ]
+        //   }
+        // ],
+        "semi": 0,
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-unused-locals": "off",
+        "@typescript-eslint/no-unused-parameters": "off",
+        "@typescript-eslint/no-unused-vars": "off",
+        "@typescript-eslint/no-extra-semi": "off",
+        "@typescript-eslint/no-namespace": "off"
+      }
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "extends": ["plugin:@nx/typescript"],
+      "rules": {}
+    },
+    {
+      "files": ["*.js", "*.jsx"],
+      "extends": ["plugin:@nx/javascript"],
+      "rules": {}
+    },
+    {
+      "files": ["*.spec.ts", "*.spec.tsx", "*.spec.js", "*.spec.jsx"],
+      "env": {
+        "jest": true
+      },
+      "rules": {}
+    },
+    {
+      "files": ["*.json"],
+      "parser": "jsonc-eslint-parser",
+      "rules": {
+        "@nx/dependency-checks": "error",
+        "semi": 0,
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-unused-locals": "off",
+        "@typescript-eslint/no-unused-parameters": "off",
+        "@typescript-eslint/no-unused-vars": "off",
+        "@typescript-eslint/no-extra-semi": "off",
+        "@typescript-eslint/no-namespace": "off"
+      }
+    }
+  ]
+}

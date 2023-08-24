@@ -1,25 +1,365 @@
 {
+  "projects": {
+    "api-util": {
+      "tags": [],
+      "implicitDependencies": [
+        "function",
+        "queue"
+      ],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "array": {
+      "tags": [],
+      "implicitDependencies": [
+        "number",
+        "sort",
+        "string",
+        "validation"
+      ],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "async": {
+      "tags": [],
+      "implicitDependencies": [
+        "validation"
+      ],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "bfind": {
+      "tags": [],
+      "implicitDependencies": [
+        "commander-config",
+        "fs",
+        "fspath-filter",
+        "set",
+        "trie-map"
+      ],
+      "npmScope": "bemoje",
+      "projectType": "application"
+    },
+    "binary": {
+      "tags": [],
+      "implicitDependencies": [],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "commander-config": {
+      "tags": [],
+      "implicitDependencies": [
+        "async",
+        "fs",
+        "validation"
+      ],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "date": {
+      "tags": [],
+      "implicitDependencies": [],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "excel-util": {
+      "tags": [],
+      "implicitDependencies": [
+        "string"
+      ],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "fs": {
+      "tags": [],
+      "implicitDependencies": [
+        "string"
+      ],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "fspath": {
+      "tags": [],
+      "implicitDependencies": [
+        "fs"
+      ],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "fspath-filter": {
+      "tags": [],
+      "implicitDependencies": [
+        "fs",
+        "string"
+      ],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "fswalk": {
+      "tags": [],
+      "implicitDependencies": [
+        "string"
+      ],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "function": {
+      "tags": [],
+      "implicitDependencies": [
+        "async",
+        "queue"
+      ],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "html": {
+      "tags": [],
+      "implicitDependencies": [],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "log": {
+      "tags": [],
+      "implicitDependencies": [
+        "date",
+        "fs",
+        "string",
+        "validation"
+      ],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "map": {
+      "tags": [],
+      "implicitDependencies": [],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "markdown": {
+      "tags": [],
+      "implicitDependencies": [
+        "string"
+      ],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "matrix": {
+      "tags": [],
+      "implicitDependencies": [],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "nlp": {
+      "tags": [],
+      "implicitDependencies": [],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "node": {
+      "tags": [],
+      "implicitDependencies": [],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "number": {
+      "tags": [],
+      "implicitDependencies": [
+        "string",
+        "validation"
+      ],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "object": {
+      "tags": [],
+      "implicitDependencies": [
+        "validation"
+      ],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "open-repo": {
+      "tags": [],
+      "implicitDependencies": [
+        "commander-config"
+      ],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "openai-api-client": {
+      "tags": [],
+      "implicitDependencies": [
+        "api-util",
+        "number",
+        "object"
+      ],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "pdf-util": {
+      "tags": [],
+      "implicitDependencies": [],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "queue": {
+      "tags": [],
+      "implicitDependencies": [
+        "array"
+      ],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "set": {
+      "tags": [],
+      "implicitDependencies": [],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "sort": {
+      "tags": [],
+      "implicitDependencies": [],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "sorted-array": {
+      "tags": [],
+      "implicitDependencies": [
+        "sort"
+      ],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "split-sentences": {
+      "tags": [],
+      "implicitDependencies": [],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "string": {
+      "tags": [],
+      "implicitDependencies": [
+        "sort"
+      ],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "subtitles": {
+      "tags": [],
+      "implicitDependencies": [
+        "time"
+      ],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "table": {
+      "tags": [],
+      "implicitDependencies": [],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "terminal-gpt": {
+      "tags": [],
+      "implicitDependencies": [
+        "array",
+        "commander-config",
+        "date",
+        "fs",
+        "openai-api-client",
+        "string"
+      ],
+      "npmScope": "bemoje",
+      "projectType": "application"
+    },
+    "time": {
+      "tags": [],
+      "implicitDependencies": [],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "trie-map": {
+      "tags": [],
+      "implicitDependencies": [],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "tscode": {
+      "tags": [],
+      "implicitDependencies": [
+        "array",
+        "number",
+        "string"
+      ],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "tsdoc": {
+      "tags": [],
+      "implicitDependencies": [
+        "array",
+        "map",
+        "string"
+      ],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "validation": {
+      "tags": [],
+      "implicitDependencies": [
+        "date",
+        "string"
+      ],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    }
+  },
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "affected": {
+    "defaultBase": "master"
+  },
   "tasksRunnerOptions": {
     "default": {
       "runner": "nx-cloud",
       "options": {
-        "cacheableOperations": ["lint", "test", "build"],
-        "accessToken": "Yjk5YzQ2ZDAtNDA5YS00MWUwLWIzNDgtZjIyZWI4YzhkNzA5fHJlYWQtd3JpdGU="
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e"
+        ],
+        "accessToken": "Y2MzYWY3OTQtYWU5My00NWQzLTg3NDctOTBjNjQ3NWU3OGQ0fHJlYWQtd3JpdGU="
       }
+    }
+  },
+  "targetDefaults": {
+    "build": {
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "production",
+        "^production"
+      ]
+    },
+    "lint": {
+      "inputs": [
+        "default",
+        "{workspaceRoot}/.eslintrc.json",
+        "{workspaceRoot}/.eslintignore"
+      ]
+    },
+    "test": {
+      "inputs": [
+        "default",
+        "^production",
+        "{workspaceRoot}/jest.preset.js"
+      ]
     }
   },
   "namedInputs": {
     "default": [
-      "sharedGlobals",
       "{projectRoot}/**/*",
-      "!{workspaceRoot}/pkg/index.ts",
-      "!{workspaceRoot}/docs/**/*",
-      "!{workspaceRoot}/scripts/**/*",
-      "!{workspaceRoot}/node_modules/**/*",
-      "!{projectRoot}/node_modules/**/*",
-      "!{projectRoot}/dist/**/*",
-      "!{projectRoot}/coverage/**/*",
-      "!{projectRoot}/README.md"
+      "sharedGlobals"
     ],
     "production": [
       "default",
@@ -27,28 +367,13 @@
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
       "!{projectRoot}/tsconfig.spec.json",
       "!{projectRoot}/jest.config.[jt]s",
-      "!{projectRoot}/src/test-setup.[jt]s"
+      "!{projectRoot}/src/test-setup.[jt]s",
+      "!{projectRoot}/test-setup.[jt]s"
     ],
     "sharedGlobals": []
   },
-  "targetDefaults": {
-    "lint": {
-      "inputs": [
-        "default",
-        "{projectRoot}/.eslintrc.json",
-        "{projectRoot}/.eslintignore",
-        "!{projectRoot}/package.json"
-      ]
-    },
-    "test": {
-      "inputs": ["default", "^production", "{projectRoot}/jest.preset.js", "!{projectRoot}/package.json"]
-    },
-    "build": {
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production", "{projectRoot}/rollup.config.js", "{projectRoot}/tsconfig.bundle.json"]
-    }
-  },
-  "affected": {
-    "defaultBase": "main"
+  "workspaceLayout": {
+    "appsDir": "packages",
+    "libsDir": "packages"
   }
 }

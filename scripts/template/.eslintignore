@@ -2,9 +2,4 @@
 # References at https://eslint.org/docs/user-guide/configuring#eslintignore
 
 # Generated docs, bundles and type definitions.
-dist/
-docs/
-logs/
-notes/
-coverage/
 bin/

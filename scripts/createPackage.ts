@@ -11,7 +11,7 @@ const description = args[2] || ''
 
 // copy template dir
 const template = path.join(process.cwd(), 'scripts', 'template')
-const root = path.join(process.cwd(), 'pkg', name)
+const root = path.join(process.cwd(), 'packages', name)
 fs.mkdirSync(root, { recursive: true })
 fs.readdirSync(template).map((filename) => {
   const fpath = path.join(template, filename)
@@ -26,7 +26,6 @@ fs.readdirSync(template).map((filename) => {
       fs.copyFileSync(path.join(fpath, 'index.ts'), path.join(subdirdest, 'index.ts'))
       const libdir = path.join(subdirdest, 'lib')
       fs.mkdirSync(libdir, { recursive: true })
-      fs.copyFileSync(path.join(fpath, 'lib', 'test.test.ts'), path.join(libdir, 'test.test.ts'))
     }
   } else {
     fs.copyFileSync(fpath, path.join(root, filename))
@@ -36,7 +35,7 @@ fs.readdirSync(template).map((filename) => {
 // tsmono package.json
 const rootpkgpath = path.join(process.cwd(), 'package.json')
 const rootpkg = JSON.parse(fs.readFileSync(rootpkgpath, 'utf8'))
-rootpkg.workspaces.push('pkg/' + name)
+rootpkg.workspaces.push('packages/' + name)
 fs.writeFileSync(rootpkgpath, JSON.stringify(rootpkg, null, 2), 'utf8')
 
 // package.json
@@ -68,7 +67,7 @@ fs.writeFileSync(path.join(root, 'project.json'), project, 'utf8')
 const tsconfigpath = path.join(process.cwd(), 'tsconfig.json')
 const json = strip(fs.readFileSync(tsconfigpath, 'utf8'))
 const tsconfig = JSON.parse(json)
-tsconfig.compilerOptions.paths['@bemoje/' + name] = ['./pkg/' + name + '/src/index.ts']
+tsconfig.compilerOptions.paths['@bemoje/' + name] = ['./packages/' + name + '/src/index.ts']
 fs.writeFileSync(tsconfigpath, JSON.stringify(tsconfig, null, 2), 'utf8')
 
 // docs/html/index.html

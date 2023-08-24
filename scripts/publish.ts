@@ -1,8 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { arrEvery } from '../pkg/array/src/lib/arrEvery'
-import { execBatch } from '../pkg/node/src/lib/execBatch'
-import { IPackageDetails } from './util/IPackageDetails'
+import { execBatch } from '../packages/node/src/lib/execBatch'
 import { getPackages } from './util/getPackages'
 import { hashPackage } from './util/hashPackage'
 
@@ -14,35 +12,8 @@ const cwd = process.cwd()
 let names = process.argv.slice(3)
 const runAll = !names.length
 if (runAll) {
-  names = fs.readdirSync(path.join(cwd, 'pkg'))
+  names = fs.readdirSync(path.join(cwd, 'packages'))
 }
-
-const packages: IPackageDetails[] = getPackages()
-const order: string[] = []
-const numExternals = order.length
-const length = packages.length + numExternals
-
-while (order.length < length) {
-  const curLen = order.length
-  for (const { name, deps } of packages) {
-    if (order.includes(name)) continue
-
-    if (arrEvery(deps, (dep) => order.includes(dep))) {
-      const i = packages.findIndex((o) => o.name === name)
-      packages.splice(i, 1)
-      order.push(name)
-    }
-  }
-  if (curLen === order.length) {
-    console.error('Circular dependency detected')
-    const remains = packages.map(({ name, deps }) => ({ name, deps })).filter(({ name }) => !order.includes(name))
-    console.dir({ order, remains }, { depth: null })
-    process.exit(1)
-  }
-}
-names = order.filter((name) => names.includes(name))
-
-console.log({ publishing: names })
 
 // prepub
 execBatch(['npm run prepub' + (!runAll ? ' -p ' + names.join(',') : '')], () => process.exit())
@@ -55,9 +26,7 @@ const hashes = JSON.parse(fs.readFileSync(hashesPath, 'utf8'))
 const failed: string[] = []
 const installGlobally: string[] = []
 
-const newPackages = getPackages()
-const namePackages = names.map((n) => newPackages.find(({ name }) => n === name)) as IPackageDetails[]
-namePackages.forEach(({ name, rootdir, pkgpath, pkg }) => {
+getPackages().forEach(({ name, rootdir, pkgpath, pkg }) => {
   let hash = hashPackage(name)
   if (hashes[name] === hash) return
 
@@ -73,27 +42,26 @@ namePackages.forEach(({ name, rootdir, pkgpath, pkg }) => {
     version[1] = 0
     version[2] = 0
   }
+  pkg.version = version.join('.')
+  fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
 
   // Update version of CLIs.
   if (pkg.preferGlobal) {
-    const indexPath = path.join(rootdir, 'src', 'index.ts')
-    fs.writeFileSync(
-      indexPath,
-      fs.readFileSync(indexPath, 'utf8').replace(/version: '\d+\.\d+\.\d+'/g, `version: '${version.join('.')}'`),
-      'utf8',
-    )
-    execBatch(['nx run ' + name + ':build'])
+    const srcpath = path.join(process.cwd(), 'dist', 'packages', name, 'index.cjs.js')
+    const src = fs.readFileSync(srcpath, 'utf8').replace("('0.0.0')", `('${pkg.version}')`)
+    fs.writeFileSync(srcpath, src, 'utf8')
   }
 
-  pkg.version = version.join('.')
-  pkg.main = 'dist/index.cjs.js'
-  fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
+  const distpkgpath = path.join(process.cwd(), 'dist', 'packages', name, 'package.json')
+  const distpkgsrc = fs
+    .readFileSync(distpkgpath, 'utf8')
+    .replace(/"version"\: "\d+\.\d+\.\d+"/g, `"version": "${pkg.version}"`)
+  fs.writeFileSync(distpkgpath, distpkgsrc, 'utf8')
 
   let success = true
   execBatch(
     [
-      `cd ${rootdir}`,
-      'npm i',
+      `cd ${path.join(process.cwd(), 'dist', 'packages', name)}`,
       'npm publish --access public',
       //
     ],
@@ -105,13 +73,11 @@ namePackages.forEach(({ name, rootdir, pkgpath, pkg }) => {
     },
   )
 
-  pkg.main = 'src/index.ts'
-  fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
-
   if (success) hashes[name] = hashPackage(name)
   fs.writeFileSync(hashesPath, JSON.stringify(hashes, null, 2), 'utf8')
 
   if (pkg.preferGlobal) {
+    installGlobally.push('npm uninstall -g ' + pkg.name)
     installGlobally.push('npm i -g ' + pkg.name)
   }
 })
@@ -122,7 +88,6 @@ if (failed.length) process.exit()
 execBatch(
   [
     `cd ${cwd}`,
-    'npm run prepub' + (!runAll ? ' -p ' + names.join(',') : ''),
     ...installGlobally,
     'git add .',
     `git commit -m "publish new version (${type}) of packages: ${names.join(', ')}."`,

@@ -2,13 +2,30 @@
   "name": "{{NAME}}",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "pkg/{{NAME}}/src",
-  "projectType": "{{LIBRARY_OR_APPLICATION}}",
+  "projectType": "library",
   "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/{{NAME}}",
+        "main": "pkg/{{NAME}}/src/index.ts",
+        "tsConfig": "pkg/{{NAME}}/tsconfig.lib.json",
+        "assets": ["pkg/{{NAME}}/*.md"]
+      }
+    },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs {{NAME}} {args.ver} {args.tag}",
+      "dependsOn": ["build"]
+    },
     "lint": {
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["pkg/{{NAME}}/**/*.ts"]
+        "lintFilePatterns": [
+          "pkg/{{NAME}}/**/*.ts",
+          "pkg/{{NAME}}/package.json"
+        ]
       }
     },
     "test": {

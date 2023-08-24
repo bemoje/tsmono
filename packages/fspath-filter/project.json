@@ -1,0 +1,44 @@
+{
+  "name": "fspath-filter",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/fspath-filter/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/fspath-filter",
+        "main": "packages/fspath-filter/src/index.ts",
+        "tsConfig": "packages/fspath-filter/tsconfig.lib.json",
+        "assets": ["packages/fspath-filter/*.md"]
+      }
+    },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs fspath-filter {args.ver} {args.tag}",
+      "dependsOn": ["build"]
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/fspath-filter/**/*.ts", "packages/fspath-filter/package.json"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/fspath-filter/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}

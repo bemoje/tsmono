@@ -1,4 +1,0 @@
-{
-  "extends": "../../tsconfig.json",
-  "include": ["./src/**/*.ts", "docs/examples/FsPath.example.ts"]
-}

@@ -31,7 +31,7 @@ getPackages()
     }
   })
 
-// const pkgspath = path.join(process.cwd(), 'pkg')
+// const pkgspath = path.join(process.cwd(), 'packages')
 // const indexpath = path.join(pkgspath, 'index.ts')
 // const src = fs
 //   .readdirSync(pkgspath)

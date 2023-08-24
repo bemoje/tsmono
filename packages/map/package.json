@@ -1,0 +1,31 @@
+{
+  "name": "@bemoje/map",
+  "version": "0.1.1",
+  "description": "Map related tools/util.",
+  "main": "./src/index.js",
+  "scripts": {},
+  "author": {
+    "name": "Benjamin Møller Jensen",
+    "email": "bemoje@bemoje.net",
+    "url": "https://github.com/bemoje/"
+  },
+  "license": "MIT",
+  "keywords": [],
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bemoje/tsmono.git"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/user?u=40752770"
+  },
+  "bugs": {
+    "url": "https://github.com/bemoje/tsmono/issues"
+  },
+  "homepage": "https://github.com/bemoje/tsmono",
+  "type": "commonjs",
+  "typings": "./src/index.d.ts"
+}

@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { deleteDirectorySafeSync } from '../pkg/fs/src/lib/deleteDirectorySafeSync'
+import { deleteDirectorySafeSync } from '../packages/fs/src/lib/deleteDirectorySafeSync'
 import { getPackages } from './util/getPackages'
 
 const args = process.argv.slice(2)

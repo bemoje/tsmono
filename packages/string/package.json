@@ -1,0 +1,12 @@
+{
+  "name": "@bemoje/string",
+  "version": "0.2.1",
+  "dependencies": {
+    "@bemoje/sort": "latest",
+    "tslib": "^2.3.0"
+  },
+  "type": "commonjs",
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts",
+  "scripts": {}
+}

@@ -8,7 +8,7 @@ const name = args[0]
 if (!name) throw new Error('no name provided')
 
 // delete package dir
-fs.rmSync(path.join(process.cwd(), 'pkg', name), { recursive: true, force: true })
+fs.rmSync(path.join(process.cwd(), 'packages', name), { recursive: true, force: true })
 
 // delete docs dir
 const docsdir = path.join(process.cwd(), 'docs', name)
@@ -26,7 +26,7 @@ fs.writeFileSync(tsconfigpath, JSON.stringify(tsconfig, null, 2), 'utf8')
 // package.json
 const tsmonopkgpath = path.join(process.cwd(), 'package.json')
 const tsmonopkg = JSON.parse(fs.readFileSync(tsmonopkgpath, 'utf8'))
-tsmonopkg.workspaces = tsmonopkg.workspaces.filter((workspace: string) => workspace !== 'pkg/' + name)
+tsmonopkg.workspaces = tsmonopkg.workspaces.filter((workspace: string) => workspace !== 'packages/' + name)
 fs.writeFileSync(tsmonopkgpath, JSON.stringify(tsmonopkg, null, 2), 'utf8')
 
 // docs/html/index.html

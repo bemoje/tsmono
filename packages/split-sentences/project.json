@@ -1,0 +1,44 @@
+{
+  "name": "split-sentences",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/split-sentences/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/split-sentences",
+        "main": "packages/split-sentences/src/index.ts",
+        "tsConfig": "packages/split-sentences/tsconfig.lib.json",
+        "assets": ["packages/split-sentences/*.md"]
+      }
+    },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs split-sentences {args.ver} {args.tag}",
+      "dependsOn": ["build"]
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/split-sentences/**/*.ts", "packages/split-sentences/package.json"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/split-sentences/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}
