@@ -9,7 +9,7 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "ES2015",
-    "module": "CommonJS",
+    "module": "ESNext",
     "lib": ["ESNext", "DOM"],
     "types": ["node"],
     "skipLibCheck": true,

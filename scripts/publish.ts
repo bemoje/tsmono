@@ -48,8 +48,16 @@ getPackages().forEach(({ name, rootdir, pkgpath, pkg }) => {
   // Update version of CLIs.
   if (pkg.preferGlobal) {
     const srcpath = path.join(process.cwd(), 'dist', 'packages', name, 'index.cjs.js')
-    const src = fs.readFileSync(srcpath, 'utf8').replace("('0.0.0')", `('${pkg.version}')`)
-    fs.writeFileSync(srcpath, src, 'utf8')
+    if (fs.existsSync(srcpath)) {
+      const src = fs.readFileSync(srcpath, 'utf8').replace("('0.0.0')", `('${pkg.version}')`)
+      fs.writeFileSync(srcpath, src, 'utf8')
+    }
+
+    const esmpath = path.join(process.cwd(), 'dist', 'packages', name, 'index.esm.js')
+    if (fs.existsSync(esmpath)) {
+      const esm = fs.readFileSync(esmpath, 'utf8').replace("('0.0.0')", `('${pkg.version}')`)
+      fs.writeFileSync(esmpath, esm, 'utf8')
+    }
   }
 
   const distpkgpath = path.join(process.cwd(), 'dist', 'packages', name, 'package.json')
@@ -63,6 +71,7 @@ getPackages().forEach(({ name, rootdir, pkgpath, pkg }) => {
     [
       `cd ${path.join(process.cwd(), 'dist', 'packages', name)}`,
       'npm publish --access public',
+
       //
     ],
     () => {
@@ -85,6 +94,7 @@ console.log({ failed })
 if (failed.length) process.exit()
 
 // prepub
+
 execBatch(['npm run prepub' + (!runAll ? ' -p ' + names.join(',') : '')], () => process.exit())
 
 // prepub and commit

@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "module": "ES2015",
+    "module": "commonjs",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitOverride": false,
@@ -11,6 +11,7 @@
   },
   "files": [],
   "include": [],
+  "exclude": ["bin"],
   "references": [
     {
       "path": "./tsconfig.lib.json"

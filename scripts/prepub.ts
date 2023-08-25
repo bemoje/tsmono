@@ -11,7 +11,15 @@ const names = process.argv.slice(2)
 fixReadmes()
 fixDependencies()
 fixEntryPoints()
+
+getPackages().forEach(({ name, rootdir, pkgpath, pkg }) => {
+  execBatch(['cd ' + rootdir, 'npm update'], () => process.exit())
+})
+
 execBatch(['nx run-many -t "lint,test,build"' + (names.length ? ' -p ' + names.join(',') : '')])
+
+const a = ['#!/usr/bin/env node', "require('../index.cjs.js')"]
+
 docs()
 
 getPackages().forEach(({ name, pkg, pkgpath, rootdir, distdir }) => {

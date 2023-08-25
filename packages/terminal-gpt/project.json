@@ -14,7 +14,7 @@
         "assets": [],
         "project": "packages/terminal-gpt/package.json",
         "compiler": "swc",
-        "format": ["cjs"]
+        "format": ["cjs", "esm"]
       }
     },
     "publish": {
