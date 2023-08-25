@@ -11,7 +11,7 @@
         "outputPath": "dist/packages/terminal-gpt",
         "main": "packages/terminal-gpt/src/index.ts",
         "tsConfig": "packages/terminal-gpt/tsconfig.lib.json",
-        "assets": ["packages/terminal-gpt/src/bin"],
+        "assets": [],
         "project": "packages/terminal-gpt/package.json",
         "compiler": "swc",
         "format": ["cjs"]

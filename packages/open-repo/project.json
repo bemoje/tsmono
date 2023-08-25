@@ -11,7 +11,7 @@
         "outputPath": "dist/packages/open-repo",
         "main": "packages/open-repo/src/index.ts",
         "tsConfig": "packages/open-repo/tsconfig.lib.json",
-        "assets": ["packages/open-repo/src/bin"],
+        "assets": [],
         "project": "packages/open-repo/package.json",
         "compiler": "swc",
         "format": ["cjs"]

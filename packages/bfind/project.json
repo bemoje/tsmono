@@ -11,7 +11,7 @@
         "outputPath": "dist/packages/bfind",
         "main": "packages/bfind/src/index.ts",
         "tsConfig": "packages/bfind/tsconfig.lib.json",
-        "assets": ["packages/bfind/src/bin"],
+        "assets": [],
         "project": "packages/bfind/package.json",
         "compiler": "swc",
         "format": ["cjs"]

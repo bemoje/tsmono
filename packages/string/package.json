@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/string",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "dependencies": {
     "@bemoje/sort": "latest",
     "tslib": "^2.3.0"
@@ -8,5 +8,24 @@
   "type": "commonjs",
   "main": "./src/index.js",
   "typings": "./src/index.d.ts",
-  "scripts": {}
+  "scripts": {},
+  "author": {
+    "name": "Benjamin Møller Jensen",
+    "email": "bemoje@bemoje.net",
+    "url": "https://github.com/bemoje/"
+  },
+  "license": "MIT",
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bemoje/tsmono.git"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/user?u=40752770"
+  },
+  "bugs": {
+    "url": "https://github.com/bemoje/tsmono/issues"
+  },
+  "homepage": "https://github.com/bemoje/tsmono"
 }

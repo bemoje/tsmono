@@ -1,0 +1,157 @@
+
+
+<!doctype html>
+<html lang="en">
+<body>
+<p><a href="#res">Skip to response</a></p>
+<h2>SYSTEM MESSAGE</h2>
+<pre><code>You are a senior developer employed in a software company.
+
+My setup:
+- nodejs.
+- NX mono-repo.
+- Language: TypeScript.
+- Visual Studio Code.
+- git
+- Github
+
+Your response should be a markdown document. Any commands or code should be in the language I am using and it should be wrapped in markdown code blocks.
+</code></pre>
+<p>Time: 2023.08.24 21.07
+Temperature: 0.3</p>
+<h2>PROMPT</h2>
+<pre><code>NX is not putting my packages readme files into the dist folder. How do I add it?
+</code></pre>
+<h2>RESPONSE</h2>
+<p>By default, NX does not include the readme files of your packages in the <code>dist</code> folder. However, you can configure NX to copy the readme files to the <code>dist</code> folder during the build process. Here's how you can do it:</p>
+<ol>
+<li>
+<p>Open the <code>workspace.json</code> file in the root of your NX mono-repo.</p>
+</li>
+<li>
+<p>Find the <code>projects</code> section and locate the project for which you want to include the readme file in the <code>dist</code> folder.</p>
+</li>
+<li>
+<p>Inside the project configuration, add the following lines:</p>
+</li>
+</ol>
+<pre><code class="language-json">&quot;architect&quot;: {
+  &quot;build&quot;: {
+    &quot;options&quot;: {
+      &quot;assets&quot;: [
+        {
+          &quot;glob&quot;: &quot;README.md&quot;,
+          &quot;input&quot;: &quot;./&quot;,
+          &quot;output&quot;: &quot;./&quot;
+        }
+      ]
+    }
+  }
+}
+</code></pre>
+<p>This configuration specifies that the <code>README.md</code> file should be included as an asset during the build process.</p>
+<ol start="4">
+<li>
+<p>Save the <code>workspace.json</code> file.</p>
+</li>
+<li>
+<p>Run the build command for your project. For example, if your project is named <code>my-project</code>, you can run the following command:</p>
+</li>
+</ol>
+<pre><code class="language-bash">nx build my-project
+</code></pre>
+<p>After the build completes, you should find the <code>README.md</code> file in the <code>dist</code> folder of your project.</p>
+<p>Note: If you have multiple projects in your mono-repo and you want to include the readme files for all of them, you can add the above configuration to each project's configuration in the <code>workspace.json</code> file.</p>
+<p>I hope this helps! Let me know if you have any further questions.</p>
+<h2>PROMPT</h2>
+<pre><code>I only have an nx.json file in the package root directory. I dont have a workspace.json?
+</code></pre>
+<h2>RESPONSE</h2>
+<p>Apologies for the confusion. If you are using an older version of NX, you might have an <code>nx.json</code> file instead of <code>workspace.json</code>. The steps to include the readme files in the <code>dist</code> folder are similar, but the configuration is slightly different. Here's how you can do it:</p>
+<ol>
+<li>
+<p>Open the <code>nx.json</code> file in the root of your NX mono-repo.</p>
+</li>
+<li>
+<p>Find the <code>projects</code> section and locate the project for which you want to include the readme file in the <code>dist</code> folder.</p>
+</li>
+<li>
+<p>Inside the project configuration, add the following lines:</p>
+</li>
+</ol>
+<pre><code class="language-json">&quot;targets&quot;: {
+  &quot;build&quot;: {
+    &quot;options&quot;: {
+      &quot;assets&quot;: [
+        {
+          &quot;glob&quot;: &quot;README.md&quot;,
+          &quot;input&quot;: &quot;./&quot;,
+          &quot;output&quot;: &quot;./&quot;
+        }
+      ]
+    }
+  }
+}
+</code></pre>
+<p>This configuration specifies that the <code>README.md</code> file should be included as an asset during the build process.</p>
+<ol start="4">
+<li>
+<p>Save the <code>nx.json</code> file.</p>
+</li>
+<li>
+<p>Run the build command for your project. For example, if your project is named <code>my-project</code>, you can run the following command:</p>
+</li>
+</ol>
+<pre><code class="language-bash">nx build my-project
+</code></pre>
+<p>After the build completes, you should find the <code>README.md</code> file in the <code>dist</code> folder of your project.</p>
+<p>Note: If you have multiple projects in your mono-repo and you want to include the readme files for all of them, you can add the above configuration to each project's configuration in the <code>nx.json</code> file.</p>
+<p>I hope this helps! Let me know if you have any further questions.</p>
+<h2>PROMPT</h2>
+<pre><code>I am getting this error after I added it to the rollup build assets as you told me.
+
+&quot;The C:\Users\bemoj\repos\tsmono\packages\terminal-gpt\*.md asset path must start with the project source root: packages/terminal-gpt/src&quot;
+</code></pre>
+<h2>RESPONSE &lt;a name=&quot;res&quot;&gt;&lt;/a&gt;</h2>
+<p>Apologies for the confusion. It seems like the asset path you specified in the <code>glob</code> property does not start with the project source root. To resolve this issue, you need to update the asset path to start with the project source root. Here's how you can do it:</p>
+<ol>
+<li>
+<p>Open the <code>nx.json</code> file in the root of your NX mono-repo.</p>
+</li>
+<li>
+<p>Find the <code>projects</code> section and locate the project for which you want to include the readme file in the <code>dist</code> folder.</p>
+</li>
+<li>
+<p>Inside the project configuration, update the asset path to start with the project source root. For example, if your project source root is <code>packages/terminal-gpt/src</code>, you can update the asset configuration as follows:</p>
+</li>
+</ol>
+<pre><code class="language-json">&quot;targets&quot;: {
+  &quot;build&quot;: {
+    &quot;options&quot;: {
+      &quot;assets&quot;: [
+        {
+          &quot;glob&quot;: &quot;src/README.md&quot;,
+          &quot;input&quot;: &quot;./&quot;,
+          &quot;output&quot;: &quot;./&quot;
+        }
+      ]
+    }
+  }
+}
+</code></pre>
+<p>Make sure to update the <code>glob</code> property to include the correct path to your <code>README.md</code> file relative to the project source root.</p>
+<ol start="4">
+<li>
+<p>Save the <code>nx.json</code> file.</p>
+</li>
+<li>
+<p>Run the build command for your project. For example, if your project is named <code>my-project</code>, you can run the following command:</p>
+</li>
+</ol>
+<pre><code class="language-bash">nx build my-project
+</code></pre>
+<p>After the build completes, you should find the <code>README.md</code> file in the <code>dist</code> folder of your project.</p>
+<p>I apologize for any inconvenience caused. Let me know if you have any further questions.</p>
+
+</body>
+</html>

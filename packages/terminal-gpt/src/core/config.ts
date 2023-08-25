@@ -11,8 +11,8 @@ export const config = new Config('bemoje', 'terminal-gpt', {
   },
   preferGpt4: {
     description:
-      'Whether to use GPT-4 whenever possible. If your openai account does not have access to GPT-4, set this to false.',
-    default: true,
+      'Whether to use GPT-4 whenever possible. If your openai account does not have access to GPT-4, set this to false. Please note that the response time is much much higher for GPT-4.',
+    default: false,
     parse: parseBoolean,
     validate: validateBoolean,
   },

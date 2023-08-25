@@ -77,20 +77,25 @@ getPackages().forEach(({ name, rootdir, pkgpath, pkg }) => {
   fs.writeFileSync(hashesPath, JSON.stringify(hashes, null, 2), 'utf8')
 
   if (pkg.preferGlobal) {
-    installGlobally.push('npm uninstall -g ' + pkg.name)
-    installGlobally.push('npm i -g ' + pkg.name)
+    // installGlobally.push('npm uninstall -g ' + pkg.name)
+    installGlobally.push('npm i -g ' + pkg.name + '@^' + pkg.version)
   }
 })
 console.log({ failed })
 if (failed.length) process.exit()
+
+// prepub
+execBatch(['npm run prepub' + (!runAll ? ' -p ' + names.join(',') : '')], () => process.exit())
 
 // prepub and commit
 execBatch(
   [
     `cd ${cwd}`,
     ...installGlobally,
+    'npm update -g',
     'git add .',
     `git commit -m "publish new version (${type}) of packages: ${names.join(', ')}."`,
+    // 'git push -u origin main',
     //
   ],
   () => process.exit(),

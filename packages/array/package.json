@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/array",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "array related tools/util.",
   "main": "./src/index.js",
   "scripts": {},

@@ -23,6 +23,7 @@ export async function main() {
         'Important settings:',
         line('gpt config set editor "vscode -w"', 'set your text editor to be VSCode.'),
         line('gpt config set apiKey YOUR_KEY', 'set your OpenAI API key'),
+        line('gpt config set preferGpt4 true', 'whether to use gpt4 when possible.'),
         '',
         'Set these, too:',
         line('presets_terminalOutput', 'whether to output responses in the terminal'),
@@ -31,7 +32,7 @@ export async function main() {
         'Usage examples:',
         line('gpt help config', "display help for the 'config' command"),
         line('gpt config edit', 'edit all settings in your text-editor as JSON'),
-        line('gpt q How far is the moon?', "use the 'q' preset to prompt ChatGPT with its default behaviour"),
+        line('gpt q how far is the moon?', "use the 'q' preset to prompt ChatGPT with its default behaviour"),
         line('gpt tsdocf some/file/path.ts', "use the 'tsdocf' preset to generate TypeScript documentation for a file"),
         line('gpt preset add myPreset', "add a new preset named 'myPreset'"),
         line('gpt help q', "display help for the 'q' preset"),
@@ -44,6 +45,7 @@ export async function main() {
     program
       .command(preset)
       .description(red(settings['description']))
+      .summary('do this thing here')
       .argument(
         '[options]',
         [
