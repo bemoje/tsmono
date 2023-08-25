@@ -108,7 +108,7 @@ execBatch(
     'npm update -g',
     'git add .',
     `git commit -m "publish new version (${type}) of packages: ${names.join(', ')}."`,
-    // 'git push -u origin main',
+    'git push -u origin main',
     //
   ],
   () => process.exit(),

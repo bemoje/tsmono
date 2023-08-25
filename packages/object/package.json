@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/object",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Object related tools/util.",
   "main": "./src/index.js",
   "scripts": {},

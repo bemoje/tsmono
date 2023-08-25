@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/fs",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Tools for working with the local filesystem in nodejs.",
   "main": "./src/index.js",
   "scripts": {},

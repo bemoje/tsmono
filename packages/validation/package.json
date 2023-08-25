@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/validation",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "String validation functions.",
   "main": "./src/index.js",
   "scripts": {},

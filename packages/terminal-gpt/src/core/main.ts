@@ -45,7 +45,6 @@ export async function main() {
     program
       .command(preset)
       .description(red(settings['description']))
-      .summary('do this thing here')
       .argument(
         '[options]',
         [
