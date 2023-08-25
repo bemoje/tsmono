@@ -12,13 +12,7 @@ fixReadmes()
 fixDependencies()
 fixEntryPoints()
 
-getPackages().forEach(({ name, rootdir, pkgpath, pkg }) => {
-  execBatch(['cd ' + rootdir, 'npm update'], () => process.exit())
-})
-
 execBatch(['nx run-many -t "lint,test,build"' + (names.length ? ' -p ' + names.join(',') : '')])
-
-const a = ['#!/usr/bin/env node', "require('../index.cjs.js')"]
 
 docs()
 
@@ -29,9 +23,8 @@ getPackages().forEach(({ name, pkg, pkgpath, rootdir, distdir }) => {
     fs.copyFileSync(srcmd, distmd)
   }
 
-  const srcbin = path.join(rootdir, 'bin')
+  const binIndex = ['#!/usr/bin/env node', "require('../index.cjs.js')"].join('\n')
   const distbin = path.join(distdir, 'bin')
-  if (fs.existsSync(srcbin)) {
-    fs.copySync(srcbin, distbin)
-  }
+  fs.mkdirpSync(distbin)
+  fs.writeFileSync(path.join(distbin, 'index.js'), binIndex, 'utf8')
 })

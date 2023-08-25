@@ -94,6 +94,9 @@ console.log({ failed })
 if (failed.length) process.exit()
 
 // prepub
+getPackages().forEach(({ name, rootdir, pkgpath, pkg }) => {
+  execBatch(['cd ' + rootdir, 'npm update'], () => process.exit())
+})
 
 execBatch(['npm run prepub' + (!runAll ? ' -p ' + names.join(',') : '')], () => process.exit())
 

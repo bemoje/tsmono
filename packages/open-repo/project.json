@@ -14,7 +14,7 @@
         "assets": [],
         "project": "packages/open-repo/package.json",
         "compiler": "swc",
-        "format": ["cjs"]
+        "format": ["cjs", "esm"]
       }
     },
     "publish": {

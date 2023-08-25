@@ -14,7 +14,7 @@
         "assets": [],
         "project": "packages/bfind/package.json",
         "compiler": "swc",
-        "format": ["cjs"]
+        "format": ["cjs", "esm"]
       }
     },
     "publish": {
