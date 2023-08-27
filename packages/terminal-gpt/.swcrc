@@ -1,14 +1,14 @@
 {
   "jsc": {
-    "target": "es2017",
+    "target": "es2015",
     "parser": {
       "syntax": "typescript",
-      "decorators": true,
+      "decorators": false,
       "dynamicImport": true
     },
     "transform": {
-      "decoratorMetadata": true,
-      "legacyDecorator": true
+      "decoratorMetadata": false,
+      "legacyDecorator": false
     },
     "keepClassNames": true,
     "externalHelpers": true,
@@ -17,7 +17,7 @@
   "module": {
     "type": "es6",
     "strict": true,
-    "noInterop": true
+    "noInterop": false
   },
   "sourceMaps": true,
   "exclude": [

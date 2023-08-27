@@ -8,9 +8,14 @@ import { fixReadmes } from './util/fixReadmes'
 import { getPackages } from './util/getPackages'
 const names = process.argv.slice(2)
 
-fixReadmes()
-fixDependencies()
 fixEntryPoints()
+fixDependencies()
+fixReadmes()
+
+getPackages().forEach(({ name, rootdir, pkgpath, pkg }) => {
+  if (names.length && !names.includes(name)) return
+  execBatch(['cd ' + rootdir, 'npm update'], () => process.exit())
+})
 
 execBatch(['nx run-many -t "lint,test,build"' + (names.length ? ' -p ' + names.join(',') : '')])
 

@@ -71,7 +71,6 @@ getPackages().forEach(({ name, rootdir, pkgpath, pkg }) => {
     [
       `cd ${path.join(process.cwd(), 'dist', 'packages', name)}`,
       'npm publish --access public',
-
       //
     ],
     () => {
@@ -82,21 +81,19 @@ getPackages().forEach(({ name, rootdir, pkgpath, pkg }) => {
     },
   )
 
-  if (success) hashes[name] = hashPackage(name)
-  fs.writeFileSync(hashesPath, JSON.stringify(hashes, null, 2), 'utf8')
+  if (success) {
+    hashes[name] = hashPackage(name)
+    fs.writeFileSync(hashesPath, JSON.stringify(hashes, null, 2), 'utf8')
 
-  if (pkg.preferGlobal) {
-    // installGlobally.push('npm uninstall -g ' + pkg.name)
-    installGlobally.push('npm i -g ' + pkg.name + '@^' + pkg.version)
+    if (pkg.preferGlobal) {
+      installGlobally.push('npm i -g ' + pkg.name + '@^' + pkg.version)
+    }
   }
 })
 console.log({ failed })
 if (failed.length) process.exit()
 
 // prepub
-getPackages().forEach(({ name, rootdir, pkgpath, pkg }) => {
-  execBatch(['cd ' + rootdir, 'npm update'], () => process.exit())
-})
 
 execBatch(['npm run prepub' + (!runAll ? ' -p ' + names.join(',') : '')], () => process.exit())
 
