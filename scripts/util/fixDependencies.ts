@@ -4,6 +4,9 @@ import { execBatch } from '../../packages/node/src'
 import { getImportedExternal } from './getImportedExternal'
 import { getPackages } from './getPackages'
 
+const cwd = process.cwd()
+let rootpkg = () => JSON.parse(fs.readFileSync(path.join(cwd, 'package.json'), 'utf8'))
+
 export function fixDependencies() {
   // ensure all package.json files have the dependencies property
   getPackages().forEach(({ pkg, rootdir, name, pkgpath }) => {
@@ -26,7 +29,7 @@ export function fixDependencies() {
     imports.forEach((imp) => {
       if (!pkg.dependencies[imp]) {
         console.log(`${name} was missing dependency: ${imp}`)
-        execBatch([`cd ${rootdir}`, `npm install --save ${imp}${imp.includes('@bemoje/') ? '*' : ''}`])
+        execBatch([`cd ${cwd}`, `npm run install ${name} ${imp}`])
       }
     })
     Object.keys(pkg.dependencies).forEach((dep) => {
@@ -50,55 +53,79 @@ export function fixDependencies() {
   })
 
   // ensure all packages use same versions of dependencies
-  let rootpkg = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'package.json'), 'utf8'))
-  const map = new Map()
-  getPackages().forEach(({ pkg, rootdir, name, pkgpath }) => {
-    // deps
-    for (const dep of Object.keys(pkg.dependencies)) {
-      if (!map.has(dep)) map.set(dep, {})
-      const o = map.get(dep)
-      if (o[dep]) {
-        if (o[dep] !== pkg.dependencies[dep]) {
-          console.log(`${name} had different version of ${dep}: ${o[dep]} vs ${pkg.dependencies[dep]}`)
-          pkg.dependencies[dep] = o[dep]
-          fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
-          execBatch([`cd ${rootdir}`, `npm update ${dep}`])
-        }
-      } else {
-        if (rootpkg.dependencies[dep]) {
-          o[dep] = rootpkg.dependencies[dep]
-          if (pkg.dependencies[dep] !== rootpkg.dependencies[dep]) {
-            console.log(
-              `${name} had different version of ${dep}: ${pkg.dependencies[dep]} vs ${rootpkg.dependencies[dep]}`,
-            )
-            pkg.dependencies[dep] = rootpkg.dependencies[dep]
-            fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
-            execBatch([`cd ${rootdir}`, `npm update ${dep}`])
-          }
-        } else {
-          execBatch([`cd ${process.cwd}`, `npm install --save ${dep}`])
-          rootpkg = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'package.json'), 'utf8'))
-          pkg.dependencies[dep] = rootpkg.dependencies[dep]
-          o[dep] = pkg.dependencies[dep]
-
-          fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
-          execBatch([`cd ${rootdir}`, `npm update ${dep}`])
-        }
-      }
-    }
-    // dev
-    for (const dep of Object.keys(pkg.devDependencies)) {
-      if (!rootpkg.devDependencies[dep]) {
-        execBatch([`cd ${process.cwd}`, `npm install --save-dev ${dep}`])
-        rootpkg = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'package.json'), 'utf8'))
-      }
-    }
-    pkg.devDependencies = {}
-    fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
-  })
+  // const map = new Map()
+  // const dmap = new Map()
+  // getPackages().forEach(({ pkg, rootdir, name, pkgpath }) => {
+  //   // deps
+  //   for (const dep of Object.keys(pkg.dependencies)) {
+  //     if (!map.has(dep)) map.set(dep, {})
+  //     const o = map.get(dep)
+  //     if (o[dep]) {
+  //       if (o[dep] !== pkg.dependencies[dep]) {
+  //         console.log(`${name} had different version of ${dep}: ${o[dep]} vs ${pkg.dependencies[dep]}`)
+  //         pkg.dependencies[dep] = o[dep]
+  //         fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
+  //         execBatch([`cd ${rootdir}`, `npm update ${dep}`])
+  //       }
+  //     } else {
+  //       if (rootpkg().dependencies[dep]) {
+  //         o[dep] = rootpkg().dependencies[dep]
+  //         if (pkg.dependencies[dep] !== rootpkg().dependencies[dep]) {
+  //           console.log(
+  //             `${name} had different version of ${dep}: ${pkg.dependencies[dep]} vs ${rootpkg().dependencies[dep]}`,
+  //           )
+  //           pkg.dependencies[dep] = rootpkg().dependencies[dep]
+  //           fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
+  //           execBatch([`cd ${rootdir}`, `npm update ${dep}`])
+  //         }
+  //       } else {
+  //         execBatch([`cd ${cwd}`, `npm install --save ${dep}`])
+  //         pkg.dependencies[dep] = rootpkg().dependencies[dep]
+  //         o[dep] = pkg.dependencies[dep]
+  //         fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
+  //         execBatch([`cd ${rootdir}`, `npm update ${dep}`])
+  //       }
+  //     }
+  //     map.set(dep, o)
+  //   }
+  //   // dev
+  //   for (const dep of Object.keys(pkg.devDependencies)) {
+  //     if (!dmap.has(dep)) dmap.set(dep, {})
+  //     const o = dmap.get(dep)
+  //     if (o[dep]) {
+  //       if (o[dep] !== pkg.devDependencies[dep]) {
+  //         console.log(`${name} had different version of ${dep}: ${o[dep]} vs ${pkg.devDependencies[dep]}`)
+  //         pkg.devDependencies[dep] = o[dep]
+  //         fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
+  //         execBatch([`cd ${rootdir}`, `npm update ${dep}`])
+  //       }
+  //     } else {
+  //       if (rootpkg().devDependencies[dep]) {
+  //         o[dep] = rootpkg().devDependencies[dep]
+  //         if (pkg.devDependencies[dep] !== rootpkg().devDependencies[dep]) {
+  //           console.log(
+  //             `${name} had different version of ${dep}: ${pkg.devDependencies[dep]} vs ${
+  //               rootpkg().devDependencies[dep]
+  //             }`,
+  //           )
+  //           pkg.devDependencies[dep] = rootpkg().devDependencies[dep]
+  //           fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
+  //           execBatch([`cd ${rootdir}`, `npm update ${dep}`])
+  //         }
+  //       } else {
+  //         execBatch([`cd ${cwd}`, `npm install --save-dev ${dep}`])
+  //         pkg.devDependencies[dep] = rootpkg().devDependencies[dep]
+  //         o[dep] = pkg.devDependencies[dep]
+  //         fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
+  //         execBatch([`cd ${rootdir}`, `npm update ${dep}`])
+  //       }
+  //     }
+  //     dmap.set(dep, o)
+  //   }
+  // })
 
   // ensure all implicit dependencies are in nx.json
-  const nxJsonPath = path.join(process.cwd(), 'nx.json')
+  const nxJsonPath = path.join(cwd, 'nx.json')
   const nxJson = JSON.parse(fs.readFileSync(nxJsonPath, 'utf8'))
   getPackages().forEach(({ pkg, rootdir, name, pkgpath }) => {
     if (!nxJson.projects[name]) {

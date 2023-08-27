@@ -59,7 +59,6 @@ getPackages().forEach(({ name, rootdir, pkgpath, pkg }) => {
       fs.writeFileSync(esmpath, esm, 'utf8')
     }
   }
-
   const distpkgpath = path.join(process.cwd(), 'dist', 'packages', name, 'package.json')
   const distpkgsrc = fs
     .readFileSync(distpkgpath, 'utf8')
@@ -95,7 +94,10 @@ if (failed.length) process.exit()
 
 // prepub
 
-execBatch(['npm run prepub' + (!runAll ? ' -p ' + names.join(',') : '')], () => process.exit())
+execBatch(
+  ['npm run wipe-bemoje-modules', 'npm update @bemoje/*', 'npm run prepub' + (!runAll ? ' -p ' + names.join(',') : '')],
+  () => process.exit(),
+)
 
 // prepub and commit
 execBatch(
@@ -105,7 +107,7 @@ execBatch(
     'npm update -g',
     'git add .',
     `git commit -m "publish new version (${type}) of packages: ${names.join(', ')}."`,
-    'git push -u origin main',
+    // 'git push -u origin main',
     //
   ],
   () => process.exit(),

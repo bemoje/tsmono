@@ -13,9 +13,9 @@
       "tags": [],
       "implicitDependencies": [
         "number",
-        "sort",
         "string",
-        "validation"
+        "validation",
+        "sort"
       ],
       "npmScope": "bemoje",
       "projectType": "library"

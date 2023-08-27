@@ -2,9 +2,6 @@ import { Config, parseBoolean, parseDirectories, parseInteger } from '@bemoje/co
 import { getDiskDrivesWindows, getRootDir, isWindows } from '@bemoje/fs'
 import { wipeIndex } from './wipeIndex'
 
-// import { parseBoolean } from './core/parseBoolean'
-// import { parseDirectories } from './core/parseDirectories'
-// import { parseInteger } from './core/parseInteger'
 export const config = new Config('bemoje', 'bfind', {
   'print-scan-errors': {
     description: [
