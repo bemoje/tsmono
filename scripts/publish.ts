@@ -25,6 +25,7 @@ const hashes = JSON.parse(fs.readFileSync(hashesPath, 'utf8'))
 // npm publish
 const failed: string[] = []
 const installGlobally: string[] = []
+const successful: string[] = []
 
 getPackages().forEach(({ name, rootdir, pkgpath, pkg }) => {
   let hash = hashPackage(name)
@@ -87,17 +88,21 @@ getPackages().forEach(({ name, rootdir, pkgpath, pkg }) => {
     if (pkg.preferGlobal) {
       installGlobally.push('npm i -g ' + pkg.name + '@^' + pkg.version)
     }
+
+    successful.push(name)
   }
 })
 console.log({ failed })
 if (failed.length) process.exit()
 
-// prepub
+// update own modules in all packages
+execBatch(['npm run wipe-bemoje-modules', 'npm update @bemoje/*'], () => process.exit())
+getPackages().forEach(({ name, rootdir }) => {
+  execBatch([`cd ${rootdir}`, 'npm i'])
+})
 
-execBatch(
-  ['npm run wipe-bemoje-modules', 'npm update @bemoje/*', 'npm run prepub' + (!runAll ? ' -p ' + names.join(',') : '')],
-  () => process.exit(),
-)
+// prepub
+execBatch(['npm run prepub' + (!runAll ? ' -p ' + names.join(',') : '')], () => process.exit())
 
 // prepub and commit
 execBatch(
@@ -105,8 +110,9 @@ execBatch(
     `cd ${cwd}`,
     ...installGlobally,
     'npm update -g',
+    'npm audit fix',
     'git add .',
-    `git commit -m "publish new version (${type}) of packages: ${names.join(', ')}."`,
+    `git commit -m "published new versions (${type}) of packages: ${successful.join(', ')}."`,
     // 'git push -u origin main',
     //
   ],

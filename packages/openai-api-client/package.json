@@ -33,5 +33,7 @@
   "homepage": "https://github.com/bemoje/tsmono",
   "type": "commonjs",
   "typings": "./src/index.d.ts",
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/async-retry": "^1.4.5"
+  }
 }

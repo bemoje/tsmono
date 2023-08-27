@@ -37,6 +37,8 @@ const tsInstructions = [
   '- Visual Studio Code.',
   '- git',
   '- Github',
+  '',
+  'When your response is code or a step by step guide, do not explain too much, just provide the code or steps.',
 ]
 
 const typedocInstructionsFunction = [
@@ -47,7 +49,7 @@ const typedocInstructionsFunction = [
   '- All relevant TSDoc tags should be included.',
   '- When TSDoc block comments already exist, do not remove or replace any of its TSDoc tags, but please add any additional missing TSDoc tags that need to be documented. The description may also be expanded if it is not detailed enough.',
   '- This is TSDoc and not JSDoc, so many tags are not needed because the tsdoc parser will infer them. Do not include these.',
-  '- In your response, write out all the code you were given without any modifications, just adding in the TSDoc comments. This makes it easier to copy and paste afterwards.',
+  '- Respond with only the TSDoc comment.',
   '- Please be thorough and add as much documentation as you can, as long as it is relevant.',
   '- Do not write comments inside of a method or function body.',
   '- Do not insert types in braces or default values in brackets. This is TSDoc for TypeScript, so it is not needed.',

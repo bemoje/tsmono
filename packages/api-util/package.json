@@ -36,6 +36,8 @@
   "type": "commonjs",
   "typings": "./src/index.d.ts",
   "devDependencies": {
-    "@types/lodash": "^4.14.197"
+    "@types/async-retry": "^1.4.5",
+    "@types/lodash": "^4.14.197",
+    "@types/object-hash": "^3.0.3"
   }
 }
