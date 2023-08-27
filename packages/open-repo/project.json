@@ -13,7 +13,7 @@
         "tsConfig": "packages/open-repo/tsconfig.lib.json",
         "assets": [],
         "project": "packages/open-repo/package.json",
-        "compiler": "swc",
+        "compiler": "tsc",
         "format": ["cjs", "esm"]
       }
     },

@@ -5,13 +5,16 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nx/js:tsc",
+      "executor": "@nx/rollup:rollup",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/commander-config",
         "main": "packages/commander-config/src/index.ts",
         "tsConfig": "packages/commander-config/tsconfig.lib.json",
-        "assets": ["packages/commander-config/*.md"]
+        "assets": [],
+        "project": "packages/commander-config/package.json",
+        "compiler": "tsc",
+        "format": ["cjs", "esm"]
       }
     },
     "publish": {

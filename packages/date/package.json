@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/date",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Date related tools/util.",
   "main": "./src/index.js",
   "scripts": {},
@@ -27,5 +27,6 @@
   },
   "homepage": "https://github.com/bemoje/tsmono",
   "type": "commonjs",
-  "typings": "./src/index.d.ts"
+  "typings": "./src/index.d.ts",
+  "devDependencies": {}
 }

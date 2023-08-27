@@ -13,7 +13,7 @@
         "tsConfig": "packages/terminal-gpt/tsconfig.lib.json",
         "assets": [],
         "project": "packages/terminal-gpt/package.json",
-        "compiler": "swc",
+        "compiler": "tsc",
         "format": ["cjs", "esm"]
       }
     },

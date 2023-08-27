@@ -12,10 +12,10 @@ getPackages().forEach(({ name, rootdir }) => {
     deleteDirectorySafeSync(dir)
     console.log(`Deleted ${name}/node_modules/@bemoje`)
   }
-  if (fs.existsSync(plock)) {
-    fs.rmSync(plock, { force: true })
-    console.log(`Deleted ${name}/package-lock.json`)
-  }
+  // if (fs.existsSync(plock)) {
+  //   fs.rmSync(plock, { force: true })
+  //   console.log(`Deleted ${name}/package-lock.json`)
+  // }
 })
 if (args.includes('all')) {
   const dir = path.join(process.cwd(), 'node_modules', '@bemoje')
@@ -24,8 +24,8 @@ if (args.includes('all')) {
     deleteDirectorySafeSync(dir)
     console.log(`Deleted ${'tsmono'}/node_modules/@bemoje`)
   }
-  if (fs.existsSync(plock)) {
-    fs.rmSync(plock, { force: true })
-    console.log(`Deleted ${'tsmono'}/package-lock.json`)
-  }
+  // if (fs.existsSync(plock)) {
+  //   fs.rmSync(plock, { force: true })
+  //   console.log(`Deleted ${'tsmono'}/package-lock.json`)
+  // }
 }

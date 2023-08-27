@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/fs",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Tools for working with the local filesystem in nodejs.",
   "main": "./src/index.js",
   "scripts": {},
@@ -30,9 +30,7 @@
     "url": "https://github.com/bemoje/tsmono/issues"
   },
   "homepage": "https://github.com/bemoje/tsmono",
-  "devDependencies": {
-    "@types/extract-zip": "^2.0.1"
-  },
   "type": "commonjs",
-  "typings": "./src/index.d.ts"
+  "typings": "./src/index.d.ts",
+  "devDependencies": {}
 }

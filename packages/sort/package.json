@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/sort",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Sort comparators including deep recursive comparison of arrays.",
   "main": "./src/index.js",
   "scripts": {},
@@ -27,5 +27,6 @@
   },
   "homepage": "https://github.com/bemoje/tsmono",
   "type": "commonjs",
-  "typings": "./src/index.d.ts"
+  "typings": "./src/index.d.ts",
+  "devDependencies": {}
 }

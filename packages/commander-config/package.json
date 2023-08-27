@@ -1,8 +1,9 @@
 {
   "name": "@bemoje/commander-config",
-  "version": "0.2.5",
+  "version": "0.2.8",
   "description": "Easy setup of CLI config files when using the commander package.",
-  "main": "./src/index.js",
+  "main": "index.cjs.js",
+  "module": "index.esm.js",
   "scripts": {},
   "author": {
     "name": "Benjamin Møller Jensen",
@@ -32,5 +33,6 @@
   },
   "homepage": "https://github.com/bemoje/tsmono",
   "type": "commonjs",
-  "typings": "./src/index.d.ts"
+  "typings": "./src/index.d.ts",
+  "devDependencies": {}
 }

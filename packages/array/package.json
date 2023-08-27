@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/array",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "array related tools/util.",
   "main": "./src/index.js",
   "scripts": {},
@@ -13,10 +13,10 @@
   "keywords": [],
   "dependencies": {
     "@bemoje/number": "latest",
-    "@bemoje/sort": "latest",
     "@bemoje/string": "latest",
     "@bemoje/validation": "latest",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "@bemoje/sort": "latest"
   },
   "repository": {
     "type": "git",
@@ -31,5 +31,6 @@
   },
   "homepage": "https://github.com/bemoje/tsmono",
   "type": "commonjs",
-  "typings": "./src/index.d.ts"
+  "typings": "./src/index.d.ts",
+  "devDependencies": {}
 }

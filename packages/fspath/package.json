@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/fspath",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Nodejs filesystem paths made very convenient to use and navigate the path tree.",
   "main": "./src/index.js",
   "scripts": {},
@@ -28,5 +28,6 @@
   },
   "homepage": "https://github.com/bemoje/tsmono",
   "type": "commonjs",
-  "typings": "./src/index.d.ts"
+  "typings": "./src/index.d.ts",
+  "devDependencies": {}
 }
