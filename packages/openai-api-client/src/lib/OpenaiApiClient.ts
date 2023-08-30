@@ -3,13 +3,12 @@ import { randomIntBetween } from '@bemoje/number'
 import { objOmitKeysMutable } from '@bemoje/object'
 import fs from 'fs'
 import { encode } from 'gpt-3-encoder'
-import type * as openai from 'openai'
+import * as openai from 'openai'
 import { Configuration, OpenAIApi } from 'openai'
 import { openaiApiErrorCodes } from './data/openaiApiErrorCodes'
 import { IOpenaiApiClientApiDefaultsOptions } from './types/IOpenaiApiClientApiDefaultsOptions'
 import { IOpenaiApiClientOptions } from './types/IOpenaiApiClientOptions'
 import { IOpenaiChatRequestOptions } from './types/IOpenaiChatRequestOptions'
-import { IOpenaiCompletionRequestOptions } from './types/IOpenaiCompletionRequestOptions'
 import { IOpenaiTranscribeOptions } from './types/IOpenaiTranscribeOptions'
 import { IOpenaiTranscribeRequest } from './types/IOpenaiTranscribeRequest'
 export type * as openai from 'openai'
@@ -27,7 +26,6 @@ export class OpenaiApiClient extends AbstractApiClient {
    * Defaults for API requests. Can be overriden in individual method calls.
    */
   readonly apiDefaults: IOpenaiApiClientApiDefaultsOptions = {
-    completionModel: 'text-davinci-003',
     chat3_8Model: 'gpt-3.5-turbo',
     chat3_16Model: 'gpt-3.5-turbo-16k',
     chat4_8Model: 'gpt-4',
@@ -47,11 +45,11 @@ export class OpenaiApiClient extends AbstractApiClient {
   }
 
   /**
-   * Send a completion request to the openai api.
-   * @param options - The options to use.
+   * Returns a list of the currently available models, and provides basic information about each.
    */
-  async completion(options: IOpenaiCompletionRequestOptions): Promise<string> {
-    return await this._completion(...this.handleCompletionOptions(options))
+  async listModels(): Promise<openai.Model[]> {
+    const response = await this.client.listModels()
+    return response.data.data
   }
 
   /**
@@ -59,6 +57,7 @@ export class OpenaiApiClient extends AbstractApiClient {
    * @param options - The options to use.
    */
   async gpt3_8k(options: IOpenaiChatRequestOptions): Promise<string> {
+    options.model = options.model || this.apiDefaults.chat3_8Model
     return await this._chat(...this.handleChatOptions(options))
   }
 
@@ -67,7 +66,7 @@ export class OpenaiApiClient extends AbstractApiClient {
    * @param options - The options to use.
    */
   async gpt3_16k(options: IOpenaiChatRequestOptions): Promise<string> {
-    options.model = this.apiDefaults.chat3_16Model
+    options.model = options.model || this.apiDefaults.chat3_16Model
     return await this._chat(...this.handleChatOptions(options))
   }
 
@@ -76,7 +75,7 @@ export class OpenaiApiClient extends AbstractApiClient {
    * @param options - The options to use.
    */
   async gpt4_8k(options: IOpenaiChatRequestOptions): Promise<string> {
-    options.model = this.apiDefaults.chat4_8Model
+    options.model = options.model || this.apiDefaults.chat4_8Model
     return await this._chat(...this.handleChatOptions(options))
   }
 
@@ -86,35 +85,6 @@ export class OpenaiApiClient extends AbstractApiClient {
    */
   async transcribe(options: IOpenaiTranscribeOptions): Promise<string> {
     return await this._transcribe(...this.handleTranscribeOptions(options))
-  }
-
-  /**
-   * Handle completion options.
-   * @param options - The options to handle.
-   */
-  protected handleCompletionOptions(
-    options: IOpenaiCompletionRequestOptions,
-  ): [openai.CreateCompletionRequest, IAsyncRetryOptions, IResponseCacheOptions] {
-    options = this.deleteDefaultOrUndefinedOptions(options, {
-      presence_penalty: 0,
-      frequency_penalty: 0,
-      best_of: 1,
-    })
-    if (!options.model) options.model = this.apiDefaults.completionModel
-    if (options.instruction) options.prompt = options.instruction + '\n\n' + options.prompt
-    if (!options.max_tokens) {
-      const count = this.countTokens(options.prompt as string)
-      if (options.response_max_tokens) {
-        options.max_tokens = count + options.response_max_tokens
-      } else {
-        options.max_tokens = 4096 - count
-      }
-    }
-    options = objOmitKeysMutable<any>(options, 'retry', 'cache', 'instruction', 'response_max_tokens')
-    const request = options as openai.CreateCompletionRequest
-    const retry = this.handleRetryOptions(options.retry)
-    const cache = this.handleCacheOptions(options.cache)
-    return this.emit('request', [request, retry, cache])
   }
 
   /**
@@ -155,30 +125,6 @@ export class OpenaiApiClient extends AbstractApiClient {
   }
 
   /**
-   * Send completion request to the openai API.
-   * This is used by all the preset methods, the public methods: completion.
-   * @param request - The request object to send to the openai api.
-   * @param retry - The retry options.
-   * @param cache - The cache options.
-   */
-  protected async _completion(
-    request: openai.CreateCompletionRequest,
-    retry: IAsyncRetryOptions,
-    cache: IResponseCacheOptions,
-  ): Promise<string> {
-    return await this.sendRequest({
-      apiRequest: async () => {
-        const { data } = await this.client.createCompletion(request)
-        this.assertReponseDataComplete(data)
-        return this.parseChoices(data.choices).join(this.apiDefaults.choicesDelimiter)
-      },
-      args: [request],
-      retry,
-      cache,
-    })
-  }
-
-  /**
    * Send chat request to the openai API.
    * This is used by all the preset methods, the public methods: chat3_8, chat3_16, and chat4_8.
    * @param request - The request object to send to the openai api.
@@ -192,15 +138,16 @@ export class OpenaiApiClient extends AbstractApiClient {
   ): Promise<string> {
     return await this.sendRequest({
       apiRequest: async () => {
-        let data
+        let data: openai.CreateChatCompletionResponse
         try {
           const response = await this.client.createChatCompletion(request)
           data = response.data
-        } catch (error: any) {
+          this.assertReponseDataComplete(data as openai.CreateChatCompletionResponse)
+          return data.choices[0].message?.content?.trim() || ''
+        } catch (error: unknown) {
           this.handleApiError(error)
+          return ''
         }
-        this.assertReponseDataComplete(data as openai.CreateChatCompletionResponse)
-        return this.parseChoices((data as openai.CreateChatCompletionResponse).choices)[0]
       },
       args: [request],
       retry,
@@ -277,22 +224,6 @@ export class OpenaiApiClient extends AbstractApiClient {
       this.queue.concurrency += raiseAgainBy
       this.emit('concurrency', 'Trying to raise concurrency again to ' + this.queue.concurrency + '.')
     }, delay)
-  }
-
-  /**
-   * Extract the actual concent from the 'choices' object from the response data.
-   * @param choices - The choices object from the response data.
-   */
-  protected parseChoices(
-    choices: openai.CreateChatCompletionResponseChoicesInner[] | openai.CreateCompletionResponseChoicesInner[],
-  ): string[] {
-    return choices.map((choice) => {
-      if (Reflect.has(choice, 'text')) {
-        return Reflect.get(choice, 'text').trim()
-      } else if (Reflect.has(choice, 'message')) {
-        return Reflect.get(choice, 'message').content.trim()
-      }
-    })
   }
 
   /**

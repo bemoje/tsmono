@@ -15,8 +15,7 @@ export class Config {
   constructor(appAuthor: string, appName: string, definitions: Record<string, IConfigSetting>) {
     definitions = {
       editor: {
-        description:
-          'Application launch command for the editor to use for editing files, such as editing the user settings file.',
+        description: 'application launch command for your preferred text editor.',
         default: 'code -w',
         parse: parseString,
         validate: validateString,
@@ -54,6 +53,7 @@ export class Config {
       extension: '.json',
     })
     this.appdata.user.assign(JSON.parse(newJson) as Record<string, any>)
+    console.log('Configuration updated.')
   }
 
   initialize(program: Command) {
@@ -89,8 +89,10 @@ export class Config {
             console.error('Both setting and value must be provided.')
             process.exit()
           }
-          this.set(setting, value)
+          return this.set(setting, value)
         }
+        console.error(action + ' is not a valid action.')
+        process.exit()
       })
   }
 
@@ -105,7 +107,7 @@ export class Config {
 
   reset(setting?: string): void {
     if (!setting) {
-      fs.rmdirSync(this.appdata.directory, { recursive: true })
+      fs.rmSync(this.appdata.user.filepath)
       console.log('All app data deleted.')
       process.exit()
     }

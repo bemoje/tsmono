@@ -11,15 +11,19 @@ import { tsStripDeclSourceMapComments } from '../../packages/tscode/src/lib/tsSt
  * The source files are normalized so as to determine when to publish a new version to npm, so some things are ignored.
  */
 export function hashPackage(name: string): string {
-  const normalized = walkdir
-    .sync(path.join(process.cwd(), 'dist', 'packages', name))
+  const dirpath = path.join(process.cwd(), 'dist', 'packages', name)
+  if (!fs.existsSync(dirpath)) throw new Error(`package ${name} does not exist in dist/packages`)
+  const filepaths = walkdir
+    .sync(dirpath)
     .filter((p) => !p.endsWith('.map') && fs.statSync(p).isFile())
     .sort()
+  if (!filepaths) throw new Error(`package ${name} does not exist in dist/packages`)
+  const normalized = filepaths
     .map((fpath) => {
       let res = ''
 
       try {
-        res = fs.readFileSync(fpath, 'utf8')
+        res = fs.readFileSync(fpath, 'utf8') || ''
       } catch (error) {
         return 0
       }
@@ -32,27 +36,27 @@ export function hashPackage(name: string): string {
             delete parsed.devDependencies
             delete parsed.version
           }
-          res = JSON.stringify(parsed)
+          res = JSON.stringify(parsed) || ''
         } catch (error) {
           console.error('could not parse json file: ' + fpath + '\n' + error.message)
         }
       } else {
-        res = stripComments(res, {})
+        res = stripComments(res, {}) || ''
       }
 
       if (fpath.endsWith('.d.ts')) {
-        res = tsStripDeclSourceMapComments(res)
+        res = tsStripDeclSourceMapComments(res) || ''
       } else if (fpath.endsWith('.js')) {
         try {
-          res = UglifyJS.minify(res).code
+          res = UglifyJS.minify(res).code || ''
         } catch (error) {
           console.error('could not minify file: ' + fpath + '\n' + error.message)
         }
       } else {
       }
 
-      res = res.replace(/['"][0-9]+\.[0-9]+\.[0-9]+['"]/g, '"v"')
-      res = res.replace(/[\r\n\t\s]/g, '')
+      res = res.replace(/['"][0-9]+\.[0-9]+\.[0-9]+['"]/g, '') || ''
+      res = res.replace(/[\r\n\t\s]/g, '') || ''
 
       return res
     })

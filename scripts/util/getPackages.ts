@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { IPackageDetails } from './IPackageDetails'
+import { IPackageDetails } from '../types/IPackageDetails'
 import { pkgRepoDependencies } from './pkgRepoDependencies'
 
 export function getPackages(): IPackageDetails[] {

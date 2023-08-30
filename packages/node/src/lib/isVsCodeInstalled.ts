@@ -1,6 +1,10 @@
 import { execSync } from 'child_process'
 
-export function isVsCodeInstalled() {
+/**
+ * Returns whether Visual Studio Code is installed on the system.
+ * @example isVsCodeInstalled() //=> true
+ */
+export function isVsCodeInstalled(): boolean {
   try {
     const stdout = execSync('code --help').toString()
     return stdout.startsWith('Visual Studio Code') && stdout.includes('-w --wait')

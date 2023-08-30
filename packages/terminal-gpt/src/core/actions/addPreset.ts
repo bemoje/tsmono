@@ -1,4 +1,5 @@
 import { config } from '../config'
+import { presetDefaults } from '../presets/presetConfig'
 
 /**
  * Add a new preset to the user's configuration.
@@ -6,22 +7,23 @@ import { config } from '../config'
  *
  * @param name - The name of the preset to add.
  */
-export async function addPreset(name: string) {
-  if (config.appdata.user.get('presets').name) {
+export async function addPreset(name: string): Promise<void> {
+  const custom = config.appdata.user.get('presets')
+  const examples = config.appdata.user.get('presets_examples')
+
+  if (custom[name] || examples[name]) {
     return console.log(`Preset '${name}' already exists.`)
   }
   if (config.definitions[name]) {
     return console.log(`'${name}' is a reserved name since it is a name of a built-in command..`)
   }
-  const presets = config.appdata.user.get('presets')
-  presets[name] = {
-    description: '',
-    temperature: 0.5,
+  custom[name] = {
+    description: 'Describe your preset.',
     systemMessage: [],
-    markdownOutput: true,
-    maxExpectedResponseTokens: 1500,
-    openResponseIn: 'chrome',
   }
-  config.appdata.user.set('presets', presets)
+  for (const [key, o] of Object.entries(presetDefaults)) {
+    custom[key.replace('default_', '')] = o.default
+  }
+  config.appdata.user.set('presets', custom)
   await config.editConfigInEditor()
 }

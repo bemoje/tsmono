@@ -7,7 +7,6 @@ import { removePreset } from './core/actions/removePreset'
 import { config } from './core/config'
 import { emails } from './core/emails/emails'
 import { presets } from './core/presets/presets'
-import { IGptPreset } from './core/types/IGptPreset'
 
 /**
  * The main function of the application.
@@ -21,13 +20,13 @@ export async function main() {
     .description(
       [
         'Important settings:',
-        line('gpt config set editor "vscode -w"', 'set your text editor to be VSCode.'),
         line('gpt config set apiKey YOUR_KEY', 'set your OpenAI API key'),
-        line('gpt config set preferGpt4 true', 'whether to use gpt4 when possible.'),
+        line('gpt config set editor "code -w"', 'set your text editor to be VSCode.'),
+        line('gpt config set default_preferGpt4 false', 'whether to use gpt4 when possible.'),
         '',
         'Set these, too:',
-        line('presets_terminalOutput', 'whether to output responses in the terminal'),
-        line('presets_openResponseIn', 'where to open responses (default: chrome)'),
+        line('default_terminalOutput', 'whether to output responses in the terminal'),
+        line('default_openResponseIn', 'where to open responses (default: chrome)'),
         '',
         'Usage examples:',
         line('gpt help config', "display help for the 'config' command"),
@@ -41,7 +40,10 @@ export async function main() {
     .version('0.0.0')
 
   // Create CLI command for each preset defined in user settings
-  for (const [preset, settings] of Object.entries(config.appdata.user.get('presets') as Record<string, IGptPreset>)) {
+  for (const [preset, settings] of Object.entries({
+    ...(config.appdata.user.get('presets_examples') || {}),
+    ...(config.appdata.user.get('presets') || {}),
+  })) {
     program
       .command(preset)
       .description(red(settings['description']))

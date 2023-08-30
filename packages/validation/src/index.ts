@@ -1,5 +1,7 @@
 export * from './lib/assertion'
 export * from './lib/isConstructor'
+export * from './lib/isDefined'
+export * from './lib/isDefinedValue'
 export * from './lib/isHex'
 export * from './lib/isHexOrUnicode'
 export * from './lib/isIterable'
