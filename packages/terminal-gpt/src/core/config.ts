@@ -1,4 +1,4 @@
-import { Config, parseString, validateString } from '@bemoje/commander-config'
+import { Config, parseBoolean, parseString, validateBoolean, validateString } from '@bemoje/commander-config'
 import { presetsConfig } from './presets/presetConfig'
 // import { emailsConfig } from './emails/emailsConfig'
 
@@ -8,6 +8,12 @@ export const config = new Config('bemoje', 'terminal-gpt', {
     default: 'sk-',
     parse: parseString,
     validate: validateString,
+  },
+  tokenDetails: {
+    description: 'Display detailed information about token counts.',
+    default: false,
+    parse: parseBoolean,
+    validate: validateBoolean,
   },
   ...presetsConfig,
   // ...emailsConfig,

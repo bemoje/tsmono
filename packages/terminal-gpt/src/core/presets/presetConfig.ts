@@ -172,13 +172,13 @@ export const presetDefaults = {
 
 const presetExamples = {
   q: {
-    description: 'ask any question. This is the plain ChatGPT as this has the default configuration.',
+    description: 'Prompt the plain ChatGPT with everything at default settings.',
     systemMessage: [],
     temperature: 1,
   },
 
   EN: {
-    description: 'translate text to English language.',
+    description: 'Translate text to English language.',
     systemMessage: ['Translate the given text into English.'],
     openResponseIn: 'none',
     terminalOutput: true,
@@ -188,7 +188,7 @@ const presetExamples = {
   },
 
   DK: {
-    description: 'translate text to Danish language.',
+    description: 'Translate text to Danish language.',
     systemMessage: ['Translate the given text into Danish.'],
     openResponseIn: 'none',
     terminalOutput: true,
@@ -198,7 +198,7 @@ const presetExamples = {
   },
 
   refactor: {
-    description: 'refactor code.',
+    description: 'Refactor code.',
     temperature: 0,
     systemMessage: refactorInstructions,
     maxExpectedResponseTokens: 0,
@@ -206,19 +206,19 @@ const presetExamples = {
   },
 
   ts: {
-    description: 'get help with TypeScript.',
+    description: 'Get help with TypeScript.',
     temperature: 0.3,
     systemMessage: tsInstructions,
   },
 
   npm: {
-    description: 'get NPM package recommendations for a given problem.',
+    description: 'Get NPM package recommendations for a given problem.',
     temperature: 0.3,
     systemMessage: npmPackageInstructions,
   },
 
   tsdocf: {
-    description: 'generate TSDoc documentation for a function.',
+    description: 'Generate TSDoc documentation for a function.',
     temperature: 0,
     systemMessage: typedocInstructionsFunction,
     maxExpectedResponseTokens: 100,
@@ -226,14 +226,14 @@ const presetExamples = {
   },
 
   tsdocc: {
-    description: 'generate TSDoc documentation for a class.',
+    description: 'Generate TSDoc documentation for a class.',
     temperature: 0,
     systemMessage: typedocInstructionsClass,
     model: 'gpt-3.5-turbo-16k',
   },
 
   tstest: {
-    description: 'generate TypeScript unit tests.',
+    description: 'Generate TypeScript unit tests.',
     temperature: 0,
     systemMessage: tstestInstructions,
     model: 'gpt-3.5-turbo-16k',
@@ -244,7 +244,7 @@ export const presetsConfig = {
   ...presetDefaults,
 
   presets_examples: {
-    description: 'example presets. Remove any that are not wanted.',
+    description: 'Example presets. Remove any that are not wanted.',
     default: presetExamples,
     parse: parseJsonObject<IGptPreset>,
     validate: validatePreset,
@@ -252,7 +252,7 @@ export const presetsConfig = {
 
   presets: {
     description:
-      'your custom presets. These presets define what commands are available. Add as many presets as you like.',
+      'Your custom presets. These presets define what commands are available. Add as many presets as you like.',
     default: {},
     parse: parseJsonObject<IGptPreset>,
     validate: validatePreset,

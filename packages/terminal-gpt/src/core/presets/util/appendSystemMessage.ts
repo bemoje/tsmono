@@ -9,10 +9,7 @@ export function appendSystemMessage(settings: IGptPreset) {
   const systemMessage = settings.systemMessage.slice()
   if (settings.markdownOutput) {
     systemMessage.push('')
-    systemMessage.push(
-      'Your response should be a markdown document. ' +
-        'Any commands or code should be in the language I am using and it should be wrapped in markdown code blocks.',
-    )
+    systemMessage.push('Your response should be a well formatted markdown document.')
   }
   return systemMessage
 }

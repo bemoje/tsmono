@@ -101,7 +101,7 @@ getPackages().forEach(({ name, rootdir, pkgpath, pkg, distdir }) => {
 // update own modules
 console.log(green('Updating own modules in root...'))
 const updatebat = ['npm update @bemoje/*', 'npm audit --fix']
-execBatch(updatebat, console.error)
+execBatchSilently(updatebat, console.error)
 
 console.log(green('Updating own modules in all packages...'))
 getPackages().forEach(({ name, rootdir }) => {
@@ -120,7 +120,7 @@ console.log(green('Update global modules and git commit...'))
 execBatch([
   ...installGlobally,
   'npm update -g @bemoje/*',
-
+  'npm audit --fix',
   'git add .',
   successful.length
     ? `git commit -m "published new versions (${type}) of packages: ${successful.join(' || ') || 'none'}"`

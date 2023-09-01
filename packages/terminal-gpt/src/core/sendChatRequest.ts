@@ -1,3 +1,5 @@
+import { blue } from 'cli-color'
+import { config } from './config'
 import { getApiClient } from './getApiClient'
 import { ISendChatRequestOptions } from './types/ISendChatRequestOptions'
 
@@ -12,6 +14,7 @@ import { ISendChatRequestOptions } from './types/ISendChatRequestOptions'
  * @returns A promise that resolves to the response from the OpenAI API.
  */
 export async function sendChatRequest(options: ISendChatRequestOptions): Promise<string> {
+  const showTokenDetails = config.appdata.user.get('tokenDetails')
   const { request, settings } = options
   const { model, preferGpt4 } = settings
   const api = getApiClient()
@@ -44,8 +47,8 @@ export async function sendChatRequest(options: ISendChatRequestOptions): Promise
   // output token details to user
   const gpt_model =
     above_cutoff || options.is16k ? 'gpt-3.5-turbo-16k' : model ? model : preferGpt4 ? 'gpt4' : 'gpt-3.5-turbo'
-  console.log()
-  console.log({ ...tokenDetails, gpt_model })
+  if (showTokenDetails) console.log(tokenDetails)
+  console.log('Using GPT model: ' + blue(gpt_model))
   console.log('\nPlease wait for OpenAI to respond...\n')
 
   // sent request to openai (prefer gpt4 if not too many tokens)
@@ -59,6 +62,6 @@ export async function sendChatRequest(options: ISendChatRequestOptions): Promise
       : await api.gpt3_8k(request)
 
   const response_tokens = api.countTokens(response)
-  console.log({ response_tokens })
+  if (showTokenDetails) console.log({ response_tokens })
   return response
 }
