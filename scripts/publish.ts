@@ -112,7 +112,7 @@ execBatch(
     'npm update -g @bemoje/*',
     'npm audit --fix',
     'git add .',
-    `git commit -m "published new versions (${type}) of packages: ${successful.join(' || ')}"`,
+    `git commit -m "published new versions (${type}) of packages: ${successful.join(' || ') || 'none'}"`,
     // 'git push -u origin main',
     //
   ],
