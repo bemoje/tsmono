@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/set",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Set related tools/util.",
   "main": "./src/index.js",
   "scripts": {},

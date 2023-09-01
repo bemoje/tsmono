@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/log",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Logger utility for node-js.",
   "main": "index.cjs.js",
   "module": "index.esm.js",

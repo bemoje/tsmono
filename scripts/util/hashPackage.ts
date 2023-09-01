@@ -1,10 +1,8 @@
 import fs from 'fs'
 import path from 'path'
 import stripComments from 'strip-comments'
-import UglifyJS from 'uglify-js'
 import walkdir from 'walkdir'
 import { strHashToString } from '../../packages/string/src'
-import { tsStripDeclSourceMapComments } from '../../packages/tscode/src/lib/tsStripDeclSourceMapComments'
 
 /**
  * Hashes a package's dist-dir with the given name.
@@ -44,23 +42,11 @@ export function hashPackage(name: string): string {
         res = stripComments(res, {}) || ''
       }
 
-      if (fpath.endsWith('.d.ts')) {
-        res = tsStripDeclSourceMapComments(res) || ''
-      } else if (fpath.endsWith('.js')) {
-        try {
-          res = UglifyJS.minify(res).code || ''
-        } catch (error) {
-          console.error('could not minify file: ' + fpath + '\n' + error.message)
-        }
-      } else {
-      }
-
       res = res.replace(/['"][0-9]+\.[0-9]+\.[0-9]+['"]/g, '') || ''
-      res = res.replace(/[\r\n\t\s]/g, '') || ''
+      res = res.replace(/[\r\n\t\s,]/g, '') || ''
 
       return res
     })
     .join('\n')
-
   return strHashToString(normalized, 'sha256', 'base64url')
 }

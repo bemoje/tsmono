@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/number",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Number related tools/util.",
   "main": "./src/index.js",
   "scripts": {},
