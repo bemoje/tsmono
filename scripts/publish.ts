@@ -106,10 +106,8 @@ execBatchSilently(updatebat, console.error)
 console.log(green('Updating own modules in all packages...'))
 const dependentPackages = getPackages().filter(({ name, rootdir, pkg }) => {
   const deps = new Set([...Object.keys(pkg.dependencies)])
-  console.log(deps)
   for (let n of names) {
-    n = '@bemoje/' + n
-    if (deps.has(n)) return true
+    if (deps.has('@bemoje/' + n)) return true
   }
   return false
 })
