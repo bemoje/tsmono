@@ -12,7 +12,7 @@ export function getPackages(): IPackageDetails[] {
     .map((name) => {
       const rootdir = path.join(packages, name)
       const pkgpath = path.join(rootdir, 'package.json')
-      const pkg = JSON.parse(fs.readFileSync(pkgpath, 'utf8'))
+      const pkg = fs.existsSync(pkgpath) ? JSON.parse(fs.readFileSync(pkgpath, 'utf8')) : {}
       const deps = pkgRepoDependencies(pkg)
       const distdir = path.join(dist, name)
       return { name, rootdir, pkgpath, pkg, deps, distdir }

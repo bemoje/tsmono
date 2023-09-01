@@ -19,6 +19,8 @@ import { isLeapYear } from './isLeapYear'
  */
 export function numDaysInMonth(month: number, year?: number): number {
   assertValidDateMonth(month)
-  const DAYS_IN_MONTH = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
   return month === 2 && year !== undefined && isLeapYear(year) ? 29 : DAYS_IN_MONTH[month]
 }
+
+// The number of days there are in each month (except leap year).
+const DAYS_IN_MONTH = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]

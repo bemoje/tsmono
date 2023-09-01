@@ -1,9 +1,10 @@
 import { blackBright, green, red } from 'cli-color'
 import fs from 'fs'
 import path from 'path'
-import { prettyUncaughtException } from '../packages/node/src/lib/prettyUncaughtException'
+import { prettyUncaughtException } from '../packages/errors/src/lib/prettyUncaughtException'
+import { executeBatchScript } from '../packages/node/src/lib/virtual-script/executeBatchScript'
 import { docs } from './util/docs'
-import { execBatch, execBatchSilently } from './util/execBatch'
+import { execBatch } from './util/execBatch'
 import { getPackages } from './util/getPackages'
 import { hashPackage } from './util/hashPackage'
 
@@ -20,9 +21,10 @@ const runAll = !names.length
 if (runAll) {
   names = fs.readdirSync(path.join(cwd, 'packages')).filter((name) => !name.startsWith('.'))
 }
-
 // prepub
-execBatch(['npm run prepub' + (!runAll ? ' -p ' + names.join(',') : '')])
+executeBatchScript(['npm run prepub' + (!runAll ? ' -p ' + names.join(',') : '')], {
+  prependWithCall: true,
+})
 
 // hashes
 const hashesPath = path.join(process.cwd(), 'scripts', 'data', 'hashes.json')
@@ -84,7 +86,7 @@ getPackages().forEach(({ name, rootdir, pkgpath, pkg, distdir }) => {
       fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
       console.error(red('Could not publish ' + name + '. Reverting version to ' + original + '.'))
       process.exit()
-    },
+    }
   )
 
   // hash
@@ -101,7 +103,10 @@ getPackages().forEach(({ name, rootdir, pkgpath, pkg, distdir }) => {
 // update own modules
 console.log(green('Updating own modules in root...'))
 const updatebat = ['npm update @bemoje/*', 'npm audit --fix']
-execBatchSilently(updatebat, console.error)
+executeBatchScript(updatebat, {
+  silent: true,
+  prependWithCall: true,
+})
 
 console.log(green('Updating own modules in all packages...'))
 const dependentPackages = getPackages().filter(({ name, rootdir, pkg }) => {
@@ -114,24 +119,29 @@ const dependentPackages = getPackages().filter(({ name, rootdir, pkg }) => {
   return false
 })
 dependentPackages.forEach(({ name, rootdir }) => {
-  execBatchSilently([`cd ${rootdir}`, 'npm update @bemoje/*'], console.error)
+  executeBatchScript([`cd ${rootdir}`, 'npm update @bemoje/*'], {
+    silent: true,
+    prependWithCall: true,
+  })
   console.log(blackBright('- ' + name))
 })
 
 // prepub
-execBatch(['npm run prepub' + (!runAll ? ' -p ' + names.join(',') : '')])
+executeBatchScript(['npm run prepub' + (!runAll ? ' -p ' + names.join(',') : '')], {
+  prependWithCall: true,
+})
 
 // docs
 if (successful.length) docs()
 
 // update global modules and git commit
 console.log(green('Update global modules and git commit...'))
-execBatch([
-  ...installGlobally,
-  'git add .',
-  //
-])
+executeBatchScript([...installGlobally, 'git add .'], {
+  prependWithCall: true,
+})
+
 if (successful.length) {
-  execBatch([`git commit -m "published new versions (${type}) of packages: ${successful.join(' || ')}"`])
-  // 'git push -u origin main',
+  executeBatchScript([`git commit -m "published new versions (${type}) of packages: ${successful.join(' || ')}"`], {
+    prependWithCall: true,
+  })
 }

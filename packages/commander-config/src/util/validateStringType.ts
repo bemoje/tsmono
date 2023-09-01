@@ -1,5 +1,5 @@
-import { validationError } from './validationError'
+import { failValidation } from './failValidation'
 
 export function validateStringType(name: string, value: string) {
-  if (typeof value !== 'string') validationError(name, 'must be a string.')
+  if (typeof value !== 'string') failValidation(name, 'must be a string.')
 }

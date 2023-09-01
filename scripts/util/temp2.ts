@@ -1,4 +1,4 @@
-import { execBatch } from '../../packages/node/src/lib/execBatch'
+import { execBatch } from './execBatch'
 import { getPackages } from './getPackages'
 
 getPackages().forEach(({ name, rootdir }) => {

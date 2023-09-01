@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+import { prettyUncaughtException } from '@bemoje/errors'
 import { AppData, readJsonFileSync } from '@bemoje/fs'
-import { prettyUncaughtException } from '@bemoje/node'
 import { cyan, green } from 'cli-color'
 import { Command } from 'commander'
 import fs from 'fs'

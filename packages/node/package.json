@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/node",
-  "version": "0.1.21",
+  "version": "0.1.22",
   "description": "Node specific tools/util.",
   "main": "./src/index.js",
   "scripts": {},
@@ -12,9 +12,8 @@
   "license": "MIT",
   "keywords": [],
   "dependencies": {
-    "cli-color": "^2.0.3",
-    "@bemoje/validation": "latest",
-    "stacktrace-parser": "^0.1.10",
+    "@bemoje/errors": "latest",
+    "@bemoje/number": "latest",
     "tslib": "^2.3.0"
   },
   "repository": {

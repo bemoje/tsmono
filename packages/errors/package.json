@@ -1,0 +1,15 @@
+{
+  "name": "@bemoje/errors",
+  "version": "0.0.3",
+  "dependencies": {
+    "@bemoje/string": "latest",
+    "@bemoje/validation": "latest",
+    "cli-color": "^2.0.3",
+    "stacktrace-parser": "^0.1.10",
+    "tslib": "^2.3.0"
+  },
+  "type": "commonjs",
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts",
+  "devDependencies": {}
+}

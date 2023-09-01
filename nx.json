@@ -50,8 +50,8 @@
       "tags": [],
       "implicitDependencies": [
         "async",
+        "errors",
         "fs",
-        "node",
         "validation"
       ],
       "npmScope": "bemoje",
@@ -60,6 +60,15 @@
     "date": {
       "tags": [],
       "implicitDependencies": [],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "errors": {
+      "tags": [],
+      "implicitDependencies": [
+        "string",
+        "validation"
+      ],
       "npmScope": "bemoje",
       "projectType": "library"
     },
@@ -123,8 +132,8 @@
       "tags": [],
       "implicitDependencies": [
         "date",
+        "errors",
         "fs",
-        "node",
         "object",
         "string",
         "validation"
@@ -161,7 +170,8 @@
     "node": {
       "tags": [],
       "implicitDependencies": [
-        "validation"
+        "errors",
+        "number"
       ],
       "npmScope": "bemoje",
       "projectType": "library"

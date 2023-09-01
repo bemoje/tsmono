@@ -1,7 +1,7 @@
 import { blackBright, green } from 'cli-color'
 import fs from 'fs'
 import path from 'path'
-import { execBatch } from '../../packages/node/src/lib/execBatch'
+import { execBatch } from './execBatch'
 import { getImportedExternal } from './getImportedExternal'
 import { getPackages } from './getPackages'
 

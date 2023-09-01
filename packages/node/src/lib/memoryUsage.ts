@@ -1,30 +1,22 @@
-import { MemoryUsageResult } from './types/MemoryUsageResult'
+import { bytesToMegabytes, round } from '@bemoje/number'
 
 /**
- * @returns An object with the following properties:
- * - `processAllocationMB`: The amount of memory that Node.js has obtained from the system.
- * - `heapAllocationMB`: The amount of memory V8 has allocated for the heap. This is just the memory used by the heap itself, not including the memory used by the objects it contains.
- * - `heapUsedMB`: The amount of memory used by application data on the V8 heap.
- * - `extenalV8`: The amount of memory used by C++ objects bound to JavaScript objects managed by V8.
- * Returns an object about the process memory usage for: process allocation, heap allocation, heap, v8.
- * @example ```ts
- * memoryUsage().processAllocationMB;;
- * //=> {result in MB}
- * memoryUsage().heapAllocationMB;;
- * //=> {result in MB}
- * memoryUsage().heapUsedMB;;
- * //=> {result in MB}
- * memoryUsage().extenalV8;;
- * //=> {result in MB}
- * ```
+ * Returns the memory usage of the Node.js process with values converted from bytes to megabytes and rounded to the specified precision.
+ * @param precision - The number of decimal places to which the memory usage values should be rounded.
+ * @returns An object containing the memory usage of the Node.js process. The properties of the object are:
+ * - rss: Resident Set Size - the portion of the process's memory held in RAM.
+ * - heapTotal: Total size of the allocated heap.
+ * - heapUsed: Actual memory used during the execution of the process.
+ * - external: Memory used by C++ objects bound to JavaScript objects managed by V8.
+ * - arrayBuffers: Memory used by ArrayBuffers and SharedArrayBuffers, including all Node.js Buffers.
  */
-export function memoryUsage(): MemoryUsageResult {
-  const toIntMB = (n: number) => Math.floor(n * 0.000001)
-  const data = process.memoryUsage()
+export function memoryUsage(precision = 2): NodeJS.MemoryUsage {
+  const mem = process.memoryUsage()
   return {
-    processAllocationMB: toIntMB(data.rss),
-    heapAllocationMB: toIntMB(data.heapTotal),
-    heapUsedMB: toIntMB(data.heapUsed),
-    extenalV8: toIntMB(data.external),
+    rss: round(bytesToMegabytes(mem.rss), precision),
+    heapTotal: round(bytesToMegabytes(mem.heapTotal), precision),
+    heapUsed: round(bytesToMegabytes(mem.heapUsed), precision),
+    external: round(bytesToMegabytes(mem.external), precision),
+    arrayBuffers: round(bytesToMegabytes(mem.arrayBuffers), precision),
   }
 }

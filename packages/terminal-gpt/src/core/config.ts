@@ -1,6 +1,5 @@
 import { Config, parseBoolean, parseString, validateBoolean, validateString } from '@bemoje/commander-config'
 import { presetsConfig } from './presets/presetConfig'
-// import { emailsConfig } from './emails/emailsConfig'
 
 export const config = new Config('bemoje', 'terminal-gpt', {
   apiKey: {
@@ -10,11 +9,10 @@ export const config = new Config('bemoje', 'terminal-gpt', {
     validate: validateString,
   },
   tokenDetails: {
-    description: 'Display detailed information about token counts.',
+    description: 'Display detailed information about token counts for requests and responses from the OpenAI API.',
     default: false,
     parse: parseBoolean,
     validate: validateBoolean,
   },
   ...presetsConfig,
-  // ...emailsConfig,
 })

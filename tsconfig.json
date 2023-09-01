@@ -9,7 +9,7 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "ES2015",
-    "module": "commonjs",
+    "module": "ES2015",
     "lib": ["ESNext", "DOM"],
     "types": ["node"],
     "skipLibCheck": true,
@@ -59,7 +59,8 @@
       "@bemoje/trie-map": ["packages/trie-map/src/index.ts"],
       "@bemoje/tscode": ["packages/tscode/src/index.ts"],
       "@bemoje/tsdoc": ["packages/tsdoc/src/index.ts"],
-      "@bemoje/validation": ["packages/validation/src/index.ts"]
+      "@bemoje/validation": ["packages/validation/src/index.ts"],
+      "@bemoje/errors": ["packages/errors/src/index.ts"]
     }
   },
   "include": ["packages/**/*.ts"],

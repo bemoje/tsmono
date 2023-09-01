@@ -11,8 +11,8 @@ describe(parseError.name, () => {
     } catch (e: unknown) {
       expect(e).toBeInstanceOf(Error)
       const parsed = parseError(e as Error)
-      console.log(parsed)
-      expect(parsed.message).toBe('Error' + ': ' + message)
+      expect(parsed.type).toBe('Error')
+      expect(parsed.message).toBe(message)
       expect(parsed.stack.length).toBeGreaterThan(0)
       const frame = parsed.stack[0]
       const { call, file } = frame
@@ -23,18 +23,18 @@ describe(parseError.name, () => {
 
   it('works with cause property', () => {
     class MyError extends Error {
-      constructor(message: string, public cause?: unknown) {
+      constructor(message: string, public override cause?: unknown) {
         super(message)
       }
     }
-    const cause = { some: 'reason' }
+    const cause = 'THE_CAUSE'
     try {
       throw new MyError('An error occurred.', cause)
     } catch (e: unknown) {
       expect(e).toBeInstanceOf(Error)
       const parsed = parseError(e as Error)
-      console.log(parsed)
-      expect(parsed.message).toBe('MyError: An error occurred.')
+      expect(parsed.type).toBe('MyError')
+      expect(parsed.message).toBe('An error occurred.')
       expect(parsed.cause).toBe(cause)
     }
   })

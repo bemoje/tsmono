@@ -1,11 +1,17 @@
+import { regexEscapeString } from '@bemoje/string'
 import path from 'path'
 import * as stackTraceParser from 'stacktrace-parser'
-import { IParseErrorResult } from './types/IParseErrorResult'
+import { IParsedErrorResult } from './IParsedErrorResult'
 
-export function parseError(error: Error): IParseErrorResult {
+/**
+ * Parses an error into a more readable and useful format.
+ * @param error - The error to parse.
+ */
+export function parseError(error: Error): IParsedErrorResult {
   const recwd = new RegExp('^' + regexEscapeString(process.cwd() + path.sep), 'i')
-  const parsed: IParseErrorResult = {
-    message: Object.getPrototypeOf(error).constructor.name + ': ' + error.message,
+  const parsed: IParsedErrorResult = {
+    type: Object.getPrototypeOf(error).constructor.name,
+    message: error.message,
     stack: stackTraceParser.parse(error.stack || '').map((frame) => {
       return {
         file: `${(frame.file || '').replace(recwd, '').replace(/\\\\?/g, '/')}:${frame.lineNumber}:${frame.column}`,
@@ -15,8 +21,4 @@ export function parseError(error: Error): IParseErrorResult {
   }
   if (error.cause) parsed.cause = error.cause
   return parsed
-}
-
-function regexEscapeString(str: string): string {
-  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') // $& means the whole matched string
 }

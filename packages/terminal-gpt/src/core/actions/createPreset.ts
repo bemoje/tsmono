@@ -7,7 +7,7 @@ import { presetDefaults } from '../presets/presetConfig'
  *
  * @param name - The name of the preset to add.
  */
-export async function addPreset(name: string): Promise<void> {
+export async function createPreset(name: string): Promise<void> {
   const custom = config.appdata.user.get('presets')
   const examples = config.appdata.user.get('presets_examples')
 

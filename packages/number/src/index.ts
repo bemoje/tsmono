@@ -1,3 +1,5 @@
+export * from './lib/bytesToKilobytes'
+export * from './lib/bytesToMegabytes'
 export * from './lib/isEven'
 export * from './lib/isOdd'
 export * from './lib/NumberFormatter'

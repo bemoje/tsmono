@@ -1,6 +1,6 @@
 import { MS_IN_DAY, dateAdjustHoursBy, isoDateTimestampForFilename } from '@bemoje/date'
+import { prettyError } from '@bemoje/errors'
 import { appendLineToFile, cleanDirectorySync, createDirectorySync } from '@bemoje/fs'
-import { prettyError } from '@bemoje/node'
 import { objClonePrimitiveProperties } from '@bemoje/object'
 import { strRepeat } from '@bemoje/string'
 import { isObjectType, isPrimitive } from '@bemoje/validation'

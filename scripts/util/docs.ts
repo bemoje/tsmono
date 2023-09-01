@@ -3,8 +3,8 @@ import fs from 'fs'
 import path from 'path'
 import { snakeCase } from 'snake-case'
 import walkdir from 'walkdir'
-import { execBatch } from '../../packages/node/src'
 import { strReplaceAll } from '../../packages/string/src'
+import { execBatch } from './execBatch'
 import { getPackages } from './getPackages'
 
 export function docs() {

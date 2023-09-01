@@ -5,7 +5,7 @@ import { assertion, isValidNumber } from '@bemoje/validation'
  * Shifts with exponential notation to avoid floating-point issues.
  * @param number the number to round.
  * @param precision the number of decimal points.
- * @param func the rounding function to use.
+ * @param round the rounding function to use.
  * @returns The rounded number.
  * @throws if the given number is not finite or NaN.
  * @example ```ts
@@ -15,8 +15,10 @@ import { assertion, isValidNumber } from '@bemoje/validation'
  * //=> 1.24
  * ```
  */
-export function roundWith(number: number, precision: number, func: (n: number) => number = Math.round): number {
-  const pair1 = (assertion(number, isValidNumber) + 'e').split('e')
-  const pair2 = (func(+(pair1[0] + 'e' + (+pair1[1] + precision))) + 'e').split('e')
+export function roundWith(number: number, precision: number, round: (n: number) => number = Math.round): number {
+  assertion(number, isValidNumber)
+  assertion(precision, Number.isInteger)
+  const pair1 = (number + 'e').split('e')
+  const pair2 = (round(+(pair1[0] + 'e' + (+pair1[1] + precision))) + 'e').split('e')
   return +(pair2[0] + 'e' + (+pair2[1] - precision))
 }
