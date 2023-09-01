@@ -1,5 +1,5 @@
 import { execFileSync } from 'child_process'
-import { blackBright, magenta } from 'cli-color'
+import { magenta } from 'cli-color'
 import fs from 'fs'
 import path from 'path'
 
@@ -15,7 +15,7 @@ function _execBatch(silent: boolean, cmds: string[], onError?: () => void) {
   if (!cmds.length) return
   const bat: string[] = [`call cd ${process.cwd()}`, ...cmds.map((s) => 'call ' + s)]
   console.log(
-    blackBright('-------------------------\n') +
+    '\n' +
       magenta(
         bat
           .slice(1)
