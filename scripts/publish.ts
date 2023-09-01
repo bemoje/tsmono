@@ -4,6 +4,7 @@ import { execBatch } from '../packages/node/src/lib/execBatch'
 import { docs } from './util/docs'
 import { getPackages } from './util/getPackages'
 import { hashPackage } from './util/hashPackage'
+import { wipeBemojeNodeModules } from './util/wipeBemojeNodeModules'
 
 // args
 const type = process.argv[2]
@@ -93,12 +94,8 @@ getPackages().forEach(({ name, rootdir, pkgpath, pkg, distdir }) => {
 })
 
 // update own modules in all packages
-const updatebat = [`cd ${cwd}`, 'npm update @bemoje/*', 'npm audit --fix']
-getPackages().forEach(({ name, rootdir }) => {
-  updatebat.push(`cd ${rootdir}`)
-  updatebat.push('npm update @bemoje/*')
-})
-execBatch(updatebat, () => process.exit())
+wipeBemojeNodeModules([])
+execBatch(['npm update @bemoje/*'], () => process.exit())
 
 // prepub
 execBatch(['npm run prepub' + (!runAll ? ' -p ' + names.join(',') : '')], () => process.exit())
@@ -109,10 +106,9 @@ docs()
 // update global modules and git commit
 execBatch(
   [
-    `cd ${cwd}`,
     ...installGlobally,
-    'npm update -g',
-    'npm audit fix -g',
+    'npm update -g @bemoje/*',
+    'npm audit --fix',
     'git add .',
     `git commit -m "published new versions (${type}) of packages:\n${successful.join('\n')}"`,
     // 'git push -u origin main',
