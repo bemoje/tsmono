@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/split-sentences",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Split a text string into sentences.",
   "main": "./src/index.js",
   "scripts": {},

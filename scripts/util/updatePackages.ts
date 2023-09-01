@@ -10,9 +10,3 @@ export function updatePackages(
     fs.writeFileSync(pkgpath, JSON.stringify(result, null, 2), 'utf8')
   }
 }
-
-updatePackages(({ pkg }) => {
-  pkg.scripts.docsmd =
-    'rimraf docs/md && typedoc --out docs/md src/index.ts --readme none --plugin typedoc-plugin-markdown --theme markdown --entryDocument index.md --publicPath /docs/md'
-  return pkg
-})

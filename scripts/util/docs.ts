@@ -21,7 +21,7 @@ export function docs() {
 
   // create docs
   execBatch(['npm run tsdoc'])
-  // fs.rmSync(indexpath)
+  fs.rmSync(indexpath)
   // fs.mkdirSync(path.join(process.cwd(), 'docs'))
 
   // fix docs

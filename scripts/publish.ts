@@ -28,7 +28,7 @@ const failed: string[] = []
 const installGlobally: string[] = []
 const successful: string[] = []
 
-getPackages().forEach(({ name, rootdir, pkgpath, pkg }) => {
+getPackages().forEach(({ name, rootdir, pkgpath, pkg, distdir }) => {
   let hash = hashPackage(name)
   if (hashes[name] === hash) return
 
@@ -47,30 +47,31 @@ getPackages().forEach(({ name, rootdir, pkgpath, pkg }) => {
   pkg.version = version.join('.')
   fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
 
-  // Update version of CLIs.
+  // Update version of CLIs in dist directory.
   if (pkg.preferGlobal) {
-    const srcpath = path.join(process.cwd(), 'dist', 'packages', name, 'index.cjs.js')
+    const srcpath = path.join(distdir, 'index.cjs.js')
     if (fs.existsSync(srcpath)) {
       const src = fs.readFileSync(srcpath, 'utf8').replace("('0.0.0')", `('${pkg.version}')`)
       fs.writeFileSync(srcpath, src, 'utf8')
     }
 
-    const esmpath = path.join(process.cwd(), 'dist', 'packages', name, 'index.esm.js')
+    const esmpath = path.join(distdir, 'index.esm.js')
     if (fs.existsSync(esmpath)) {
       const esm = fs.readFileSync(esmpath, 'utf8').replace("('0.0.0')", `('${pkg.version}')`)
       fs.writeFileSync(esmpath, esm, 'utf8')
     }
   }
-  const distpkgpath = path.join(process.cwd(), 'dist', 'packages', name, 'package.json')
+  const distpkgpath = path.join(distdir, 'package.json')
   const distpkgsrc = fs
     .readFileSync(distpkgpath, 'utf8')
     .replace(/"version"\: "\d+\.\d+\.\d+"/g, `"version": "${pkg.version}"`)
   fs.writeFileSync(distpkgpath, distpkgsrc, 'utf8')
 
+  // npm update
   let success = true
   execBatch(
     [
-      `cd ${path.join(process.cwd(), 'dist', 'packages', name)}`,
+      `cd ${path.join(distdir)}`,
       'npm publish --access public',
       //
     ],
@@ -82,6 +83,7 @@ getPackages().forEach(({ name, rootdir, pkgpath, pkg }) => {
     },
   )
 
+  // hash
   if (success) {
     hashes[name] = hashPackage(name)
     fs.writeFileSync(hashesPath, JSON.stringify(hashes, null, 2), 'utf8')
@@ -97,9 +99,9 @@ console.log({ failed })
 if (failed.length) process.exit()
 
 // update own modules in all packages
-execBatch(['npm run wipe-bemoje-modules', 'npm update @bemoje/*'], () => process.exit())
+execBatch([`cd ${cwd}`, 'npm update @bemoje/*'], () => process.exit())
 getPackages().forEach(({ name, rootdir }) => {
-  execBatch([`cd ${rootdir}`, 'npm i'])
+  execBatch([`cd ${rootdir}`, 'npm update @bemoje/*'])
 })
 
 // prepub

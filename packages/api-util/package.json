@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/api-util",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Utilities for working woth APIs.",
   "main": "./src/index.js",
   "scripts": {},

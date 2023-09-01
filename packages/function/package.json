@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/function",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Function related tools/util.",
   "main": "./src/index.js",
   "scripts": {},

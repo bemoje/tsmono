@@ -30,7 +30,7 @@ export function fixDependencies() {
     imports.forEach((imp) => {
       if (!pkg.dependencies[imp]) {
         console.log(`${name} was missing dependency: ${imp}`)
-        execBatch([`cd ${cwd}`, `npm run pkg-i ${name} ${imp}`])
+        execBatch([`cd ${rootdir}`, `npm i ${imp}`])
       }
     })
     Object.keys(pkg.dependencies).forEach((dep) => {

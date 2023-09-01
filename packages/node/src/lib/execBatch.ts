@@ -5,7 +5,7 @@ import path from 'path'
 export function execBatch(cmds: string[], onError?: () => void) {
   // const bat = [`@echo off`, ...cmds.map((s) => 'call ' + s)]
   const bat = [...cmds.map((s) => 'call ' + s)]
-  console.log(bat.slice(1))
+  console.log(bat)
   const tempdir = process.env['TEMP']!
   const tempfile = path.join(tempdir, Date.now() + '.bat')
   fs.writeFileSync(tempfile, bat.join('\n'), 'utf8')

@@ -3,6 +3,7 @@ import path from 'path'
 import { Log } from './Log'
 import { LogLevel } from './types/LogLevel'
 
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const logDirpath = path.join(process.env['TEMP']!, 'test-logs')
 
 describe(Log.name, () => {

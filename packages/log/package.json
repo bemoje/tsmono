@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/log",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Logger utility for node-js.",
   "main": "index.cjs.js",
   "module": "index.esm.js",
@@ -15,9 +15,10 @@
   "dependencies": {
     "@bemoje/date": "latest",
     "@bemoje/fs": "latest",
+    "@bemoje/node": "latest",
+    "@bemoje/object": "latest",
     "@bemoje/string": "latest",
     "@bemoje/validation": "latest",
-    "@bemoje/object": "latest",
     "cli-color": "^2.0.3",
     "tslib": "^2.3.0"
   },
