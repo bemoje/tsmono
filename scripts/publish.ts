@@ -1,8 +1,8 @@
 import { green, red } from 'cli-color'
 import fs from 'fs'
 import path from 'path'
-import { execBatch, execBatchSilently } from '../packages/node/src/lib/execBatch'
 import { docs } from './util/docs'
+import { execBatch, execBatchSilently } from './util/execBatch'
 import { getPackages } from './util/getPackages'
 import { hashPackage } from './util/hashPackage'
 
@@ -113,7 +113,7 @@ console.log(green('Update global modules and git commit...'))
 execBatch([
   ...installGlobally,
   'npm update -g @bemoje/*',
-  'npm audit --fix',
+
   'git add .',
   successful.length
     ? `git commit -m "published new versions (${type}) of packages: ${successful.join(' || ') || 'none'}"`

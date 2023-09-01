@@ -1,7 +1,7 @@
 import { green } from 'cli-color'
 import fs from 'fs-extra'
 import path from 'path'
-import { execBatch } from '../packages/node/src/lib/execBatch'
+import { execBatch } from './util/execBatch'
 import { fixDependencies } from './util/fixDependencies'
 import { fixEntryPoints } from './util/fixEntryPoints'
 import { fixReadmes } from './util/fixReadmes'
@@ -12,7 +12,6 @@ const names = process.argv.slice(2)
 fixEntryPoints()
 fixDependencies()
 fixReadmes()
-// npmUpdate()
 
 execBatch(['nx run-many -t "lint,test,build"' + (names.length ? ' -p ' + names.join(',') : '')])
 

@@ -14,7 +14,6 @@ import { presets } from './core/presets/presets'
  */
 export async function main() {
   const line = (cmd: string, info: string) => '  ' + cmd + strRepeat(' ', Math.max(0, 35 - cmd.length)) + blue(info)
-
   const program = new Command()
     .name('gpt')
     .description(
@@ -33,7 +32,7 @@ export async function main() {
         line('gpt help q', "display help for the 'q' preset"),
         line('gpt config edit', 'edit all settings in your text-editor as JSON'),
         line('gpt q how far is the moon?', "use the 'q' preset to prompt ChatGPT with its default behaviour"),
-        line('gpt preset add myPreset', "add a new preset named 'myPreset'"),
+        line('gpt preset create myPreset', "create a new preset named 'myPreset'"),
       ].join('\n'),
     )
     .version('0.0.0')
