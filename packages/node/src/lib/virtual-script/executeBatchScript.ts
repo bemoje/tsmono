@@ -1,5 +1,6 @@
 import { prettyError } from '@bemoje/errors'
 import { execFileSync } from 'child_process'
+import { magenta } from 'cli-color'
 import fs from 'fs'
 import path from 'path'
 import { IExecuteBatchScriptOptions } from './IExecuteBatchScriptOptions'
@@ -40,7 +41,7 @@ import { executeBatchScriptOptionDefaults } from './executeBatchScriptOptionDefa
  */
 export function executeBatchScript(
   cmds: string[],
-  options: IExecuteBatchScriptOptions = {},
+  options: IExecuteBatchScriptOptions = {}
 ): IExecuteBatchScriptResult {
   // return empty result if no commands
   if (!cmds.length) return { stdout: [], stderr: [], error: undefined }
@@ -56,6 +57,19 @@ export function executeBatchScript(
     script.push(...cmds.map((s) => 'call ' + s))
   } else {
     script.push(...cmds)
+  }
+
+  if (!opt.silent && !opt.echo) {
+    console.log(
+      '\n' +
+        magenta(
+          script
+            .slice(1)
+            .map((l) => l.replace('call ', ''))
+            .join('\n')
+        ) +
+        '\n'
+    )
   }
 
   // write script to temporary file
@@ -78,7 +92,7 @@ export function executeBatchScript(
   const stderr: string[] = []
   let error: unknown
   try {
-    const rv = execFileSync(tempfile, opt.silent ? undefined : { stdio: 'inherit' })
+    const rv = execFileSync(tempfile, opt.silent ? {} : { stdio: 'inherit' })
     if (rv) stdout.push(...cleanOutput(rv.toString()))
   } catch (err: unknown) {
     error = err
