@@ -33,7 +33,6 @@ export async function main() {
         line('gpt help q', "display help for the 'q' preset"),
         line('gpt config edit', 'edit all settings in your text-editor as JSON'),
         line('gpt q how far is the moon?', "use the 'q' preset to prompt ChatGPT with its default behaviour"),
-        line('gpt tsdocf some/file/path.ts', "use the 'tsdocf' preset to generate TypeScript documentation for a file"),
         line('gpt preset add myPreset', "add a new preset named 'myPreset'"),
       ].join('\n'),
     )
@@ -53,7 +52,7 @@ export async function main() {
           'enter ´reply´ to reply to the last response received from ChatGPT.',
           'enter ´improve´ to ask ChatGPT to improve its last response.',
           'enter ´edit´ to open and edit your last prompt.',
-          'enter ´16k´ to use a 16k token model regardless of other settings.',
+          'enter ´16k´ to use a 16k token model overriding other settings.',
         ].join('\n'),
       )
       .argument('[prompt...]', 'Optional prompt. Omit to edit in your text-editor.', '')
