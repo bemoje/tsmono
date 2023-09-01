@@ -378,10 +378,5 @@
   "workspaceLayout": {
     "appsDir": "packages",
     "libsDir": "packages"
-  },
-  "pluginsConfig": {
-    "@nrwl/js": {
-      "analyzeSourceFiles": true
-    }
   }
 }

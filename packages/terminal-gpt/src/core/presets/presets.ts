@@ -31,6 +31,7 @@ export async function presets(preset: string, prompt?: string, is16k = false, is
   const userInput = await getUserPrompt(settings, systemMessage, promptPlaceholder, prompt)
   const { temperature, instruction, input } = userInput
   if (settings.terminalOutput) console.log(green('\n' + input + '\n'))
+
   // send request
   const request = createChatRequest(jsondir, isReply, temperature, instruction, input)
   const response = await sendChatRequest({

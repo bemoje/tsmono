@@ -12,7 +12,6 @@ import {
   validateStringType,
 } from '@bemoje/commander-config'
 import { getOS } from '@bemoje/fs'
-import { isDefined } from '@bemoje/validation'
 import { IGptPreset } from '../types/IGptPreset'
 
 const improveResponse = [
@@ -263,18 +262,22 @@ export const presetsConfig = {
 function validatePreset(name: string, presets: Record<string, IGptPreset>): void {
   for (const [setting, pre] of Object.entries(presets as Record<string, IGptPreset>)) {
     const id = name + '.' + setting
-    if (isDefined(pre.description)) validateString(id + '.description', pre.description)
-    if (isDefined(pre.systemMessage)) validateStringArray(id + '.systemMessage', pre.systemMessage)
-    if (isDefined(pre.preferGpt4)) validateBoolean(id + '.preferGpt4', pre.preferGpt4)
-    if (isDefined(pre.temperature)) validateNumber(id + '.temperature', pre.temperature)
-    if (isDefined(pre.terminalOutput)) validateBoolean(id + '.terminalOutput', pre.terminalOutput)
-    if (isDefined(pre.markdownOutput)) validateBoolean(id + '.markdownOutput', pre.markdownOutput)
-    if (isDefined(pre.openResponseIn)) validateString(id + '.openResponseIn', pre.openResponseIn)
-    if (isDefined(pre.maxExpectedResponseTokens))
+    if (isDef(pre.description)) validateString(id + '.description', pre.description)
+    if (isDef(pre.systemMessage)) validateStringArray(id + '.systemMessage', pre.systemMessage)
+    if (isDef(pre.preferGpt4)) validateBoolean(id + '.preferGpt4', pre.preferGpt4)
+    if (isDef(pre.temperature)) validateNumber(id + '.temperature', pre.temperature)
+    if (isDef(pre.terminalOutput)) validateBoolean(id + '.terminalOutput', pre.terminalOutput)
+    if (isDef(pre.markdownOutput)) validateBoolean(id + '.markdownOutput', pre.markdownOutput)
+    if (isDef(pre.openResponseIn)) validateString(id + '.openResponseIn', pre.openResponseIn)
+    if (isDef(pre.maxExpectedResponseTokens))
       validateInteger(id + '.maxExpectedResponseTokens', pre.maxExpectedResponseTokens)
-    if (isDefined(pre.inputTokensResponseTokensScalar))
+    if (isDef(pre.inputTokensResponseTokensScalar))
       validateNumber(id + '.inputTokensResponseTokensScalar', pre.inputTokensResponseTokensScalar)
-    if (isDefined(pre.improveResponse)) validateString(id + '.improveResponse', pre.improveResponse)
-    if (isDefined(pre.model)) validateString(id + '.model', pre.model)
+    if (isDef(pre.improveResponse)) validateString(id + '.improveResponse', pre.improveResponse)
+    if (isDef(pre.model)) validateString(id + '.model', pre.model)
   }
+}
+
+function isDef<T>(value: T | undefined): value is T {
+  return value !== undefined
 }

@@ -19,11 +19,11 @@ export function getImported(pkgroot: string): { imports: string[]; typeImports: 
       }
     })
   })
-  for (const imp of imports) {
-    if (typeImports.has(imp)) {
-      typeImports.delete(imp)
-    }
-  }
+  // for (const imp of imports) {
+  //   if (typeImports.has(imp)) {
+  //     typeImports.delete(imp)
+  //   }
+  // }
   const result = { imports: [...imports].sort(), typeImports: [...typeImports].sort() }
   return result
 }
