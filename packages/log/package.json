@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/log",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Logger utility for node-js.",
   "main": "./src/index.js",
   "scripts": {},
@@ -14,8 +14,10 @@
   "dependencies": {
     "@bemoje/date": "latest",
     "@bemoje/fs": "latest",
+    "@bemoje/node": "latest",
     "@bemoje/string": "latest",
     "@bemoje/validation": "latest",
+    "@bemoje/object": "latest",
     "cli-color": "^2.0.3",
     "tslib": "^2.3.0"
   },
@@ -33,5 +35,7 @@
   "homepage": "https://github.com/bemoje/tsmono",
   "type": "commonjs",
   "typings": "./src/index.d.ts",
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/jest": "^29.5.4"
+  }
 }

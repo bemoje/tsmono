@@ -1,7 +1,9 @@
-import { MS_IN_DAY, isoDateTimestampForFilename } from '@bemoje/date'
+import { MS_IN_DAY, dateAdjustHoursBy, isoDateTimestampForFilename } from '@bemoje/date'
 import { appendLineToFile, cleanDirectorySync, createDirectorySync } from '@bemoje/fs'
+import { parseError, prettyError } from '@bemoje/node'
+import { objClonePrimitiveProperties } from '@bemoje/object'
 import { strRepeat } from '@bemoje/string'
-import { isObject } from '@bemoje/validation'
+import { isObjectType, isPrimitive } from '@bemoje/validation'
 import type { Format } from 'cli-color'
 import { blackBright, green, red, yellow } from 'cli-color'
 import { EventEmitter } from 'events'
@@ -10,7 +12,6 @@ import path from 'path'
 import { ILogEmitterEventsOptions } from './types/ILogEmitterEventsOptions'
 import { ILogOptions } from './types/ILogOptions'
 import { LogLevel } from './types/LogLevel'
-import { ObjectKey } from './types/ObjectKey'
 
 /**
  * This class is a utility for logging messages to the console and/or a log file.
@@ -79,6 +80,11 @@ export class Log {
   protected logFilepath: string
 
   /**
+   * A negative or positive integer representing the timezone offset from UTC, in hours.
+   */
+  protected timezone: number
+
+  /**
    * Color format for debug messages when logged to console.
    */
   protected debugColor: Format
@@ -105,6 +111,7 @@ export class Log {
     consoleLogLevel: LogLevel.DEBUG,
     fileLogLevel: LogLevel.NONE,
     logDirpath: path.join(process.cwd(), 'logs'),
+    timezone: 0,
     deleteFilesOlderThan: 0,
     debugColor: blackBright,
     infoColor: green,
@@ -118,7 +125,6 @@ export class Log {
    */
   constructor(options: ILogOptions = {}) {
     // options
-    // const defaults = Object.getPrototypeOf(this).constructor.optionDefaults
     const defaults = Log.optionDefaults
     const _options = { ...defaults, ...options }
 
@@ -138,6 +144,8 @@ export class Log {
     this.infoToFile = this.debugToFile || this.fileLogLevel === LogLevel.INFO
     this.warnToFile = this.infoToFile || this.fileLogLevel === LogLevel.WARN
     this.errorToFile = this.warnToFile || this.fileLogLevel === LogLevel.ERROR
+
+    this.timezone = _options.timezone
 
     this.logDirpath = path.resolve(_options.logDirpath)
     if (this.fileLogLevel !== LogLevel.NONE) {
@@ -195,7 +203,7 @@ export class Log {
    */
   error<T>(message: T, depth?: number | null): T {
     if (this.errorToFile) this._logToFile(LogLevel.ERROR, message)
-    if (this.errorToConsole) this._logToConsole(LogLevel.ERROR, message, this.errorColor, depth)
+    if (this.errorToConsole) this._logToConsole(LogLevel.ERROR, prettyError(message), this.errorColor, depth)
     return message
   }
 
@@ -266,17 +274,21 @@ export class Log {
    * @param options Options for logging the events.
    */
   logEmitterEvents(emitter: EventEmitter, options: ILogEmitterEventsOptions = {}): void {
+    objClonePrimitiveProperties
     const { eventNamePrefix, debug, info, warn, error } = options
     const events = { debug, info, warn, error }
     for (const [level, names] of Object.entries(events)) {
       if (!names) continue
       for (const event of names) {
-        emitter.on(event, (info: string, data: any, origin: any) => {
+        emitter.on(event, (...args: unknown[]) => {
           const _level = level as 'debug' | 'info' | 'warn' | 'error'
           this[_level]({
-            type: eventNamePrefix,
-            info,
-            ...(isObject(data) ? data : data === undefined ? {} : { data }),
+            event: eventNamePrefix + '.' + event,
+            args: args.map((value: unknown) => {
+              if (isPrimitive(value)) return value
+              if (value instanceof Error) return parseError(value)
+              return objClonePrimitiveProperties(value as Record<string, unknown>)
+            }),
           })
         })
       }
@@ -289,7 +301,7 @@ export class Log {
    * @param message The message to print to console.
    */
   _logToFile<T>(loglevel: LogLevel, message: T): void {
-    const timestamp = new Date().toISOString()
+    const timestamp = new Date(dateAdjustHoursBy(Date.now(), this.timezone)).toISOString()
     const data = JSON.stringify({ message })
     const entry = `${loglevel.padEnd(5, ' ')}|${timestamp}|${data}`
     appendLineToFile(this.logFilepath, entry, false).catch((error) => {
@@ -308,7 +320,7 @@ export class Log {
   _logToConsole<T>(loglevel: LogLevel, message: T, color: Format, depth?: number | null): void {
     const toConsole =
       loglevel === LogLevel.WARN ? console.warn : loglevel === LogLevel.ERROR ? console.error : console.log
-    if (isObject(message)) {
+    if (isObjectType(message)) {
       toConsole(`[${color(loglevel)}]:`)
       if (depth !== undefined) console.dir(message, { depth })
       else toConsole(message)
@@ -336,23 +348,11 @@ export class Log {
       errorToFile: this.errorToFile,
       logDirpath: this.logDirpath,
       logFilepath: this.logFilepath,
+      timezone: this.timezone,
       debugColor: this.debugColor,
       infoColor: this.infoColor,
       warnColor: this.warnColor,
       errorColor: this.errorColor,
     }
   }
-}
-
-function objClonePrimitiveProperties<T extends Record<ObjectKey, any>>(o: T): T {
-  if (!isObject(o)) return o
-  const clone: Record<ObjectKey, any> = {}
-  for (const [key, value] of Object.entries(o)) {
-    if (isPrimitive(value)) clone[key] = value
-  }
-  return clone
-}
-
-function isPrimitive(value: any) {
-  return (typeof value !== 'object' && typeof value !== 'function') || value === null
 }

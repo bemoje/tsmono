@@ -6,26 +6,27 @@
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
-        // "@nx/enforce-module-boundaries": [
-        //   "warn",
-        //   {
-        //     "enforceBuildableLibDependency": true,
-        //     "allow": [],
-        //     "depConstraints": [
-        //       {
-        //         "sourceTag": "*",
-        //         "onlyDependOnLibsWithTags": ["*"]
-        //       }
-        //     ]
-        //   }
-        // ],
+        "@nx/enforce-module-boundaries": [
+          "warn",
+          {
+            "enforceBuildableLibDependency": true,
+            "allow": [],
+            "depConstraints": [
+              {
+                "sourceTag": "*",
+                "onlyDependOnLibsWithTags": ["*"]
+              }
+            ]
+          }
+        ],
         "semi": 0,
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-unused-locals": "off",
         "@typescript-eslint/no-unused-parameters": "off",
         "@typescript-eslint/no-unused-vars": "off",
         "@typescript-eslint/no-extra-semi": "off",
-        "@typescript-eslint/no-namespace": "off"
+        "@typescript-eslint/no-namespace": "off",
+        "@typescript-eslint/no-empty-function": "off"
       }
     },
     {

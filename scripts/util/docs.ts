@@ -13,7 +13,7 @@ export function docs() {
   // create index.ts (temp file)
   const src = fs
     .readdirSync(pkgspath)
-    .filter((name) => name !== 'index.ts' && name !== '.gitkeep')
+    .filter((name) => name !== 'index.ts' && !name.startsWith('.'))
     .map((name) => `export * as ${snakeCase(name)} from './${name}/src'`)
     .join('\n')
 
@@ -21,6 +21,7 @@ export function docs() {
 
   // create docs
   execBatch(['npm run tsdoc'])
+  // fs.rmSync(indexpath)
   // fs.mkdirSync(path.join(process.cwd(), 'docs'))
 
   // fix docs

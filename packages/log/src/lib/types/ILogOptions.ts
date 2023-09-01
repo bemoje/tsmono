@@ -23,6 +23,11 @@ export interface ILogOptions {
   deleteFilesOlderThan?: number
 
   /**
+   * A negative or positive integer representing the timezone offset from UTC, in hours.
+   */
+  timezone?: number
+
+  /**
    * Color format for debug messages when logged to console.
    */
   debugColor?: Format

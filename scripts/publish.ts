@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import { execBatch } from '../packages/node/src/lib/execBatch'
+import { docs } from './util/docs'
 import { getPackages } from './util/getPackages'
 import { hashPackage } from './util/hashPackage'
 
@@ -103,6 +104,7 @@ getPackages().forEach(({ name, rootdir }) => {
 
 // prepub
 execBatch(['npm run prepub' + (!runAll ? ' -p ' + names.join(',') : '')], () => process.exit())
+docs()
 
 // prepub and commit
 execBatch(

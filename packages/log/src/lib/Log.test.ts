@@ -196,7 +196,7 @@ describe('error', () => {
   it('should log an error message to the console with depth and return the message', () => {
     const logger = new Log({ logDirpath })
     const message = { prop1: 'value1', prop2: 'value2' }
-    const result = logger.error(message, 1)
+    const result = logger.error(message)
     expect(result).toBe(message)
   })
 
@@ -337,6 +337,7 @@ describe('getProperties', () => {
       errorToFile: false,
       logDirpath: expect.any(String),
       logFilepath: expect.any(String),
+      timezone: 0,
       debugColor: expect.any(Function),
       infoColor: expect.any(Function),
       warnColor: expect.any(Function),

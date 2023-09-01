@@ -123,8 +123,10 @@
       "implicitDependencies": [
         "date",
         "fs",
+        "node",
         "string",
-        "validation"
+        "validation",
+        "object"
       ],
       "npmScope": "bemoje",
       "projectType": "library"
@@ -375,5 +377,10 @@
   "workspaceLayout": {
     "appsDir": "packages",
     "libsDir": "packages"
+  },
+  "pluginsConfig": {
+    "@nrwl/js": {
+      "analyzeSourceFiles": true
+    }
   }
 }

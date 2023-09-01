@@ -62,5 +62,6 @@
       "@bemoje/validation": ["packages/validation/src/index.ts"]
     }
   },
-  "include": ["packages/index.ts"]
+  "include": ["packages/index.ts", "packages/**/*.ts", "dist/**/*.d.ts"],
+  "exclude": ["packages/**/*.test.ts"]
 }

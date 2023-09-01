@@ -1,8 +1,9 @@
 import fs from 'fs'
 import path from 'path'
-import { execBatch } from '../../packages/node/src'
+import { execBatch } from '../../packages/node/src/lib/execBatch'
 import { getImportedExternal } from './getImportedExternal'
 import { getPackages } from './getPackages'
+// import { wipeBemojeNodeModules } from './wipeBemojeNodeModules'
 
 const cwd = process.cwd()
 let rootpkg = () => JSON.parse(fs.readFileSync(path.join(cwd, 'package.json'), 'utf8'))
@@ -141,4 +142,6 @@ export function fixDependencies() {
       .map((dep) => dep.replace('@bemoje/', ''))
   })
   fs.writeFileSync(nxJsonPath, JSON.stringify(nxJson, null, 2), 'utf8')
+
+  // wipeBemojeNodeModules()
 }

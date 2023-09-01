@@ -1,11 +1,11 @@
 import fs from 'fs-extra'
 import path from 'path'
 import { execBatch } from '../packages/node/src/lib/execBatch'
-import { docs } from './util/docs'
 import { fixDependencies } from './util/fixDependencies'
 import { fixEntryPoints } from './util/fixEntryPoints'
 import { fixReadmes } from './util/fixReadmes'
 import { getPackages } from './util/getPackages'
+
 const names = process.argv.slice(2)
 
 fixEntryPoints()
@@ -14,8 +14,6 @@ fixReadmes()
 // npmUpdate()
 
 execBatch(['nx run-many -t "lint,test,build"' + (names.length ? ' -p ' + names.join(',') : '')])
-
-docs()
 
 getPackages().forEach(({ name, pkg, pkgpath, rootdir, distdir }) => {
   const srcmd = path.join(rootdir, 'README.md')
