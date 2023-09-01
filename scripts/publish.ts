@@ -1,7 +1,7 @@
 import { green, red } from 'cli-color'
 import fs from 'fs'
 import path from 'path'
-import { execBatch } from '../packages/node/src/lib/execBatch'
+import { execBatch, execBatchSilently } from '../packages/node/src/lib/execBatch'
 import { docs } from './util/docs'
 import { getPackages } from './util/getPackages'
 import { hashPackage } from './util/hashPackage'
@@ -18,7 +18,7 @@ if (runAll) {
 }
 
 // prepub
-execBatch(['npm run prepub' + (!runAll ? ' -p ' + names.join(',') : '')], () => process.exit())
+execBatch(['npm run prepub' + (!runAll ? ' -p ' + names.join(',') : '')])
 
 // hashes
 const hashesPath = path.join(process.cwd(), 'scripts', 'data', 'hashes.json')
@@ -95,32 +95,29 @@ getPackages().forEach(({ name, rootdir, pkgpath, pkg, distdir }) => {
 })
 
 // update own modules
-console.log(green('Updating own modules in all packages...'))
+console.log(green('Updating own modules in root and all packages...'))
 const updatebat = ['npm update @bemoje/*', 'npm audit --fix']
+execBatch(updatebat, console.error)
 getPackages().forEach(({ rootdir }) => {
-  updatebat.push(`cd ${rootdir}`, 'npm update @bemoje/*')
+  execBatchSilently([`cd ${rootdir}`, 'npm update @bemoje/*'], console.error)
 })
-execBatch(updatebat, () => process.exit())
 
 // prepub
-execBatch(['npm run prepub' + (!runAll ? ' -p ' + names.join(',') : '')], () => process.exit())
+execBatch(['npm run prepub' + (!runAll ? ' -p ' + names.join(',') : '')])
 
 // docs
 docs()
 
 // update global modules and git commit
 console.log(green('Update global modules and git commit...'))
-execBatch(
-  [
-    ...installGlobally,
-    'npm update -g @bemoje/*',
-    'npm audit --fix',
-    'git add .',
-    successful.length
-      ? `git commit -m "published new versions (${type}) of packages: ${successful.join(' || ') || 'none'}"`
-      : `git commit -m "minor changes in repository configuration."`,
-    // 'git push -u origin main',
-    //
-  ],
-  () => process.exit(),
-)
+execBatch([
+  ...installGlobally,
+  'npm update -g @bemoje/*',
+  'npm audit --fix',
+  'git add .',
+  successful.length
+    ? `git commit -m "published new versions (${type}) of packages: ${successful.join(' || ') || 'none'}"`
+    : `git commit -m "changes in repository configuration."`,
+  // 'git push -u origin main',
+  //
+])
