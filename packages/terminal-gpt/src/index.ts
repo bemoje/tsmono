@@ -1,12 +1,12 @@
 import { strRepeat } from '@bemoje/string'
-import { blue, cyan, red, yellow } from 'cli-color'
+import { blue, cyan, red } from 'cli-color'
 import { Command } from 'commander'
 import { addPreset } from './core/actions/addPreset'
 import { onCustomPreset } from './core/actions/onCustomPreset'
 import { removePreset } from './core/actions/removePreset'
 import { config } from './core/config'
-import { emails } from './core/emails/emails'
 import { presets } from './core/presets/presets'
+// import { emails } from './core/emails/emails'
 
 /**
  * The main function of the application.
@@ -62,12 +62,12 @@ export async function main() {
   }
 
   // Create CLI command for the emails feature.
-  program
-    .command('emails')
-    .description(yellow('Summarize Microsoft Outlook email thread. Simply copy and paste the contents.'))
-    .action(async () => {
-      await emails()
-    })
+  // program
+  //   .command('emails')
+  //   .description(yellow('Summarize Microsoft Outlook email thread. Simply copy and paste the contents.'))
+  //   .action(async () => {
+  //     await emails()
+  //   })
 
   // set up CLI commands for adding and removing presets
   program

@@ -133,7 +133,7 @@ export const presetDefaults = {
   default_openResponseIn: {
     description:
       'Application launch command for the program to open the returned response in. Enter "none" to disable. If your browser cannot render markdown, you can install one of the many Markdown Viewer extensions. For chrome, I can recommend "Markdown Viewer" (https://chrome.google.com/webstore/detail/markdown-viewer/ckkdlimhmcjmikdlpkmbgfkaikojcbjk). In the extension options, enable the "allow access to file URLs"-option.',
-    default: 'chrome',
+    default: 'start chrome',
     parse: parseString,
     validate: validateString,
   },

@@ -1,4 +1,4 @@
-import { green } from 'cli-color'
+import { blackBright, green } from 'cli-color'
 import fs from 'fs'
 import path from 'path'
 import { execBatch } from '../../packages/node/src/lib/execBatch'
@@ -10,8 +10,9 @@ let rootpkg = () => JSON.parse(fs.readFileSync(path.join(cwd, 'package.json'), '
 
 export function fixDependencies() {
   console.log(green('Fixing dependencies...'))
+  const status = (msg: string) => console.log(blackBright('- ' + msg))
 
-  // ensure all package.json files have the dependencies property
+  status('ensuring all package.json files have the dependencies property')
   getPackages().forEach(({ pkg, rootdir, name, pkgpath }) => {
     if (!pkg.dependencies) {
       pkg.dependencies = {}
@@ -22,7 +23,7 @@ export function fixDependencies() {
     fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
   })
 
-  // ensure all dependencies are installed
+  status('ensuring all dependencies are installed')
   const builtins = new Set(require('module').builtinModules)
   getPackages().forEach(({ pkg, rootdir, name, pkgpath }) => {
     const impext = getImportedExternal(rootdir)
@@ -43,7 +44,7 @@ export function fixDependencies() {
     })
   })
 
-  // ensure all own-dependencies are set to latest
+  status('ensuring all own-dependencies are set to latest')
   getPackages().forEach(({ pkg, rootdir, name, pkgpath }) => {
     for (const dep of Object.keys(pkg.dependencies)) {
       if (dep.startsWith('@bemoje') && pkg.dependencies[dep] !== 'latest') {
@@ -55,7 +56,7 @@ export function fixDependencies() {
     }
   })
 
-  // ensure all implicit dependencies are in nx.json
+  status('ensuring all implicit dependencies are updated in nx.json')
   const nxJsonPath = path.join(cwd, 'nx.json')
   const nxJson = JSON.parse(fs.readFileSync(nxJsonPath, 'utf8'))
   getPackages().forEach(({ pkg, rootdir, name, pkgpath }) => {

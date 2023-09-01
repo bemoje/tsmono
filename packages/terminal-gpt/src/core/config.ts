@@ -1,6 +1,6 @@
 import { Config, parseString, validateString } from '@bemoje/commander-config'
-import { emailsConfig } from './emails/emailsConfig'
 import { presetsConfig } from './presets/presetConfig'
+// import { emailsConfig } from './emails/emailsConfig'
 
 export const config = new Config('bemoje', 'terminal-gpt', {
   apiKey: {
@@ -10,5 +10,5 @@ export const config = new Config('bemoje', 'terminal-gpt', {
     validate: validateString,
   },
   ...presetsConfig,
-  ...emailsConfig,
+  // ...emailsConfig,
 })

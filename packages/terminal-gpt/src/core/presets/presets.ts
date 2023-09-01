@@ -23,7 +23,6 @@ import { saveInteraction } from './util/saveInteraction'
 export async function presets(preset: string, prompt?: string, is16k = false, isReply = false, isEdit = false) {
   // settings for the specific preset
   const settings: IGptPreset = getPresetSettings(preset)
-  // const { markdownOutput, openResponseIn, maxExpectedResponseTokens } = settings
   const { jsondir, textdir } = createDirectories(preset)
   // get user input
   const systemMessage = appendSystemMessage(settings)
@@ -34,20 +33,13 @@ export async function presets(preset: string, prompt?: string, is16k = false, is
 
   // send request
   const request = createChatRequest(jsondir, isReply, temperature, instruction, input)
-  const response = await sendChatRequest({
-    maxExpectedResponseTokens: settings.maxExpectedResponseTokens,
-    inputTokensResponseTokensScalar: settings.inputTokensResponseTokensScalar,
-    model: settings.model,
-    preferGpt4: settings.preferGpt4,
-    request,
-    is16k,
-  })
+  const response = await sendChatRequest({ settings, request, is16k })
   request.messages?.push({ role: 'assistant', content: response })
   if (settings.terminalOutput) console.log(cyan('\n' + response + '\n'))
   // save data
   const textPath = saveInteraction(jsondir, textdir, settings.markdownOutput, request)
   // user output
   if (settings.openResponseIn !== 'none') {
-    execSync(`start ${settings.openResponseIn} "${textPath}"`, { stdio: 'inherit' })
+    execSync(`${settings.openResponseIn} "${textPath}"`, { stdio: 'inherit' })
   }
 }

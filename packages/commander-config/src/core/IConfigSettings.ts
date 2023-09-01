@@ -1,5 +1,5 @@
-import { ConfigSetting } from './ConfigSetting'
+import { IConfigSetting } from './IConfigSetting'
 
 export interface IConfigSettings {
-  [key: string]: ConfigSetting
+  [key: string]: IConfigSetting
 }

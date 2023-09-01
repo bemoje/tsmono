@@ -1,4 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { AppData, readJsonFileSync } from '@bemoje/fs'
+import { prettyUncaughtException } from '@bemoje/node'
 import { cyan, green } from 'cli-color'
 import { Command } from 'commander'
 import fs from 'fs'
@@ -8,10 +10,29 @@ import { validateString } from '../util/validateString'
 import { IConfigSetting } from './IConfigSetting'
 import { IConfigSettings } from './IConfigSettings'
 
+// Enables pretty printing of uncaught exceptions.
+prettyUncaughtException()
+
+/**
+ * A utility class for managing user configuration settings when using the 'commander' package to create CLI's.
+ */
 export class Config {
+  /**
+   * An AppData instance that manages both an appdata file, a user config file and a log file.
+   */
   readonly appdata: AppData<Record<string, any>, Record<string, any>>
+
+  /**
+   * Objects that define each setting of the user config.
+   */
   readonly definitions: IConfigSettings
 
+  /**
+   * Creates a new Config instance.
+   * @param appAuthor - The name of the author of the application.
+   * @param appName - The name of the application.
+   * @param definitions - Objects that define each setting of the user config.
+   */
   constructor(appAuthor: string, appName: string, definitions: Record<string, IConfigSetting>) {
     definitions = {
       editor: {

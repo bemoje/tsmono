@@ -12,14 +12,16 @@ import { ISendChatRequestOptions } from './types/ISendChatRequestOptions'
  * @returns A promise that resolves to the response from the OpenAI API.
  */
 export async function sendChatRequest(options: ISendChatRequestOptions): Promise<string> {
-  const { request, model, preferGpt4 } = options
+  const { request, settings } = options
+  const { model, preferGpt4 } = settings
   const api = getApiClient()
-  const instruction_tokens = api.countTokens(JSON.stringify(request.messages![0]) || '')
-  const prompt_tokens = api.countTokens(JSON.stringify(request.messages!.slice(1)) || '')
+  if (!request.messages) throw new Error('request.messages is undefined')
+  const instruction_tokens = api.countTokens(JSON.stringify(request.messages[0]) || '')
+  const prompt_tokens = api.countTokens(JSON.stringify(request.messages.slice(1)) || '')
   const request_tokens = instruction_tokens + prompt_tokens
-  const inputTokensResponseTokensScalar = options.inputTokensResponseTokensScalar
+  const inputTokensResponseTokensScalar = settings.inputTokensResponseTokensScalar
   const maxExpectedResponseTokens =
-    options.maxExpectedResponseTokens + Math.floor(prompt_tokens * inputTokensResponseTokensScalar)
+    settings.maxExpectedResponseTokens + Math.floor(prompt_tokens * inputTokensResponseTokensScalar)
   const gpt_model_selection_cutoff_tokens = Math.max(0, 8000 - maxExpectedResponseTokens - prompt_tokens)
   const max_tokens = 16000 - maxExpectedResponseTokens
   const above_cutoff = request_tokens > gpt_model_selection_cutoff_tokens

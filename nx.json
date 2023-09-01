@@ -51,6 +51,7 @@
       "implicitDependencies": [
         "async",
         "fs",
+        "node",
         "validation"
       ],
       "npmScope": "bemoje",

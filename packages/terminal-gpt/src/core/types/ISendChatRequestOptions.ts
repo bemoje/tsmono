@@ -1,10 +1,8 @@
 import { IOpenaiChatRequestOptions } from '@bemoje/openai-api-client'
+import { IGptPreset } from './IGptPreset'
 
 export interface ISendChatRequestOptions {
-  maxExpectedResponseTokens: number
-  inputTokensResponseTokensScalar?: number
-  model?: string
-  preferGpt4?: boolean
+  settings: IGptPreset
   request: IOpenaiChatRequestOptions
   is16k?: boolean
 }

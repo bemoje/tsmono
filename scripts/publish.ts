@@ -1,10 +1,14 @@
-import { green, red } from 'cli-color'
+import { blackBright, green, red } from 'cli-color'
 import fs from 'fs'
 import path from 'path'
+import { prettyUncaughtException } from '../packages/node/src/lib/prettyUncaughtException'
 import { docs } from './util/docs'
 import { execBatch, execBatchSilently } from './util/execBatch'
 import { getPackages } from './util/getPackages'
 import { hashPackage } from './util/hashPackage'
+
+// Pretty print uncaught exceptions.
+prettyUncaughtException()
 
 // args
 const type = process.argv[2]
@@ -95,11 +99,14 @@ getPackages().forEach(({ name, rootdir, pkgpath, pkg, distdir }) => {
 })
 
 // update own modules
-console.log(green('Updating own modules in root and all packages...'))
+console.log(green('Updating own modules in root...'))
 const updatebat = ['npm update @bemoje/*', 'npm audit --fix']
 execBatch(updatebat, console.error)
-getPackages().forEach(({ rootdir }) => {
+
+console.log(green('Updating own modules in all packages...'))
+getPackages().forEach(({ name, rootdir }) => {
   execBatchSilently([`cd ${rootdir}`, 'npm update @bemoje/*'], console.error)
+  console.log(blackBright('- ' + name))
 })
 
 // prepub

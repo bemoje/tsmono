@@ -14,16 +14,18 @@ export function execBatchSilently(cmds: string[], onError?: () => void) {
 function _execBatch(silent: boolean, cmds: string[], onError?: () => void) {
   if (!cmds.length) return
   const bat: string[] = [`call cd ${process.cwd()}`, ...cmds.map((s) => 'call ' + s)]
-  console.log(
-    '\n' +
-      magenta(
-        bat
-          .slice(1)
-          .map((l) => l.replace('call ', ''))
-          .join('\n'),
-      ) +
-      '\n',
-  )
+  if (!silent) {
+    console.log(
+      '\n' +
+        magenta(
+          bat
+            .slice(1)
+            .map((l) => l.replace('call ', ''))
+            .join('\n'),
+        ) +
+        '\n',
+    )
+  }
   const tempdir = process.env['TEMP'] || process.env['TMP']
   if (!tempdir) throw new Error('Could not find TEMP or TMP environment variable.')
   const tempfile = path.join(tempdir, Date.now() + '.bat')
