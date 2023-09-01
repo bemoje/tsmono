@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { config } from './config'
 import { getApiClient } from './getApiClient'
 import { ISendChatRequestOptions } from './types/ISendChatRequestOptions'
 
@@ -14,7 +12,7 @@ import { ISendChatRequestOptions } from './types/ISendChatRequestOptions'
  * @returns A promise that resolves to the response from the OpenAI API.
  */
 export async function sendChatRequest(options: ISendChatRequestOptions): Promise<string> {
-  const { request, model } = options
+  const { request, model, preferGpt4 } = options
   const api = getApiClient()
   const instruction_tokens = api.countTokens(JSON.stringify(request.messages![0]) || '')
   const prompt_tokens = api.countTokens(JSON.stringify(request.messages!.slice(1)) || '')
@@ -43,13 +41,7 @@ export async function sendChatRequest(options: ISendChatRequestOptions): Promise
 
   // output token details to user
   const gpt_model =
-    above_cutoff || options.is16k
-      ? 'gpt-3.5-turbo-16k'
-      : model
-      ? model
-      : config.appdata.user.get('preferGpt4')
-      ? 'gpt4'
-      : 'gpt-3.5-turbo'
+    above_cutoff || options.is16k ? 'gpt-3.5-turbo-16k' : model ? model : preferGpt4 ? 'gpt4' : 'gpt-3.5-turbo'
   console.log()
   console.log({ ...tokenDetails, gpt_model })
   console.log('\nPlease wait for OpenAI to respond...\n')
@@ -60,7 +52,7 @@ export async function sendChatRequest(options: ISendChatRequestOptions): Promise
       ? await api.gpt3_16k(request)
       : model
       ? await api.gpt3_16k({ model, ...request })
-      : config.appdata.user.get('preferGpt4')
+      : preferGpt4
       ? await api.gpt4_8k(request)
       : await api.gpt3_8k(request)
 

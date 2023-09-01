@@ -15,5 +15,6 @@ export function getPresetSettings(presetName: string): IGptPreset {
     settings.inputTokensResponseTokensScalar = cfg.get('default_inputTokensResponseTokensScalar')
   if (!isDefined(settings.improveResponse)) settings.improveResponse = cfg.get('default_improveResponse')
   if (!isDefined(settings.model)) settings.model = cfg.get('default_model')
+  if (!isDefined(settings.preferGpt4)) settings.preferGpt4 = cfg.get('default_preferGpt4')
   return settings
 }

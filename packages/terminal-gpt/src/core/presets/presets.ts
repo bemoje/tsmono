@@ -37,6 +37,7 @@ export async function presets(preset: string, prompt?: string, is16k = false, is
     maxExpectedResponseTokens: settings.maxExpectedResponseTokens,
     inputTokensResponseTokensScalar: settings.inputTokensResponseTokensScalar,
     model: settings.model,
+    preferGpt4: settings.preferGpt4,
     request,
     is16k,
   })

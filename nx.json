@@ -123,7 +123,6 @@
       "implicitDependencies": [
         "date",
         "fs",
-        "node",
         "string",
         "validation",
         "object"
@@ -159,7 +158,9 @@
     },
     "node": {
       "tags": [],
-      "implicitDependencies": [],
+      "implicitDependencies": [
+        "validation"
+      ],
       "npmScope": "bemoje",
       "projectType": "library"
     },

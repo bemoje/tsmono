@@ -1,8 +1,9 @@
 {
   "name": "@bemoje/log",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Logger utility for node-js.",
-  "main": "./src/index.js",
+  "main": "index.cjs.js",
+  "module": "index.esm.js",
   "scripts": {},
   "author": {
     "name": "Benjamin Møller Jensen",
@@ -14,7 +15,6 @@
   "dependencies": {
     "@bemoje/date": "latest",
     "@bemoje/fs": "latest",
-    "@bemoje/node": "latest",
     "@bemoje/string": "latest",
     "@bemoje/validation": "latest",
     "@bemoje/object": "latest",

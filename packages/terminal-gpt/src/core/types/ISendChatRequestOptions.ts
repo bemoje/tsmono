@@ -4,6 +4,7 @@ export interface ISendChatRequestOptions {
   maxExpectedResponseTokens: number
   inputTokensResponseTokensScalar?: number
   model?: string
+  preferGpt4?: boolean
   request: IOpenaiChatRequestOptions
   is16k?: boolean
 }

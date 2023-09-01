@@ -1,3 +1,4 @@
+import { isPrimitive } from '@bemoje/validation'
 import { blackBright, bold, red, yellow } from 'cli-color'
 import path from 'path'
 import { parseError } from './parseError'
@@ -84,8 +85,4 @@ export class ExtensibleError extends Error {
       cause: this.cause,
     }
   }
-}
-
-function isPrimitive(value: unknown): value is null | undefined | bigint | boolean | number | string | symbol {
-  return (typeof value !== 'object' && typeof value !== 'function') || value === null
 }

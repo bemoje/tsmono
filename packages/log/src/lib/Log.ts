@@ -1,6 +1,6 @@
 import { MS_IN_DAY, dateAdjustHoursBy, isoDateTimestampForFilename } from '@bemoje/date'
 import { appendLineToFile, cleanDirectorySync, createDirectorySync } from '@bemoje/fs'
-import { parseError, prettyError } from '@bemoje/node'
+import { prettyError } from '@bemoje/node'
 import { objClonePrimitiveProperties } from '@bemoje/object'
 import { strRepeat } from '@bemoje/string'
 import { isObjectType, isPrimitive } from '@bemoje/validation'
@@ -286,7 +286,6 @@ export class Log {
             event: eventNamePrefix + '.' + event,
             args: args.map((value: unknown) => {
               if (isPrimitive(value)) return value
-              if (value instanceof Error) return parseError(value)
               return objClonePrimitiveProperties(value as Record<string, unknown>)
             }),
           })

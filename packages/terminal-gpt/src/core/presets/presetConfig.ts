@@ -112,7 +112,7 @@ export const presetDefaults = {
 
   default_temperature: {
     description: 'The temperature setting to use when using the OpenAI API.',
-    default: 1,
+    default: 0.5,
     parse: parseNumber,
     validate: validateNumber,
   },

@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/node",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Node specific tools/util.",
   "main": "./src/index.js",
   "scripts": {},
@@ -13,6 +13,7 @@
   "keywords": [],
   "dependencies": {
     "cli-color": "^2.0.3",
+    "@bemoje/validation": "latest",
     "stacktrace-parser": "^0.1.10",
     "tslib": "^2.3.0"
   },
