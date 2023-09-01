@@ -47,7 +47,7 @@ export function executeBatchScript(
   if (!cmds.length) return { stdout: [], stderr: [], error: undefined }
 
   // options
-  const opt = Object.assign(executeBatchScriptOptionDefaults, options)
+  const opt = Object.assign({}, executeBatchScriptOptionDefaults, options)
 
   // render script
   const script: string[] = []
