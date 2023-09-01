@@ -15,6 +15,7 @@ fixReadmes()
 
 execBatch(['nx run-many -t "lint,test,build"' + (names.length ? ' -p ' + names.join(',') : '')])
 
+console.log('Finalizing dist directories...')
 getPackages().forEach(({ name, pkg, pkgpath, rootdir, distdir }) => {
   const srcmd = path.join(rootdir, 'README.md')
   const distmd = path.join(distdir, 'README.md')

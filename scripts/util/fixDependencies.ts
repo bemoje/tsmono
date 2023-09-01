@@ -8,6 +8,8 @@ const cwd = process.cwd()
 let rootpkg = () => JSON.parse(fs.readFileSync(path.join(cwd, 'package.json'), 'utf8'))
 
 export function fixDependencies() {
+  console.log('Fixing dependencies...')
+
   // ensure all package.json files have the dependencies property
   getPackages().forEach(({ pkg, rootdir, name, pkgpath }) => {
     if (!pkg.dependencies) {

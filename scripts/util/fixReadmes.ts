@@ -3,6 +3,8 @@ import path from 'path'
 import { getPackages } from './getPackages'
 
 export function fixReadmes() {
+  console.log('Fixing readmes...')
+
   function readme(pkg: Record<string, any>): string {
     const shortname = pkg.name.replace('@bemoje/', '')
     return `# ${pkg.name}

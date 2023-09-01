@@ -7,6 +7,8 @@ import { strReplaceAll } from '../../packages/string/src'
 import { getPackages } from './getPackages'
 
 export function docs() {
+  console.log('Generating docs...')
+
   const pkgspath = path.join(process.cwd(), 'packages')
   const indexpath = path.join(pkgspath, 'index.ts')
 

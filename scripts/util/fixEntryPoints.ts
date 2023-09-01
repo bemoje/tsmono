@@ -4,6 +4,7 @@ import { getPackages } from './getPackages'
 import { walkTsFiles } from './walkTsFiles'
 
 export function fixEntryPoints() {
+  console.log('Fixing entry points...')
   getPackages()
     .filter(({ pkg }) => !pkg.bin)
     .forEach(({ pkg, rootdir, name, pkgpath }) => {

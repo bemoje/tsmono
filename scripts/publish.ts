@@ -27,6 +27,7 @@ const hashes = JSON.parse(fs.readFileSync(hashesPath, 'utf8'))
 const installGlobally: string[] = []
 const successful: string[] = []
 
+console.log('Publishing packages with changes to NPM...')
 getPackages().forEach(({ name, rootdir, pkgpath, pkg, distdir }) => {
   let hash = hashPackage(name)
   if (hashes[name] === hash) return
@@ -92,7 +93,8 @@ getPackages().forEach(({ name, rootdir, pkgpath, pkg, distdir }) => {
   successful.push(name + ' v.' + pkg.version)
 })
 
-// update own modules in all packages
+// update own modules
+console.log('Updating own modules in all packages...')
 const updatebat = ['npm update @bemoje/*', 'npm audit --fix']
 getPackages().forEach(({ rootdir }) => {
   updatebat.push(`cd ${rootdir}`, 'npm update @bemoje/*')
@@ -106,6 +108,7 @@ execBatch(['npm run prepub' + (!runAll ? ' -p ' + names.join(',') : '')], () => 
 docs()
 
 // update global modules and git commit
+console.log('Update global modules and git commit...')
 execBatch(
   [
     ...installGlobally,
