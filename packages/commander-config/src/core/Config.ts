@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { AppData, readJsonFileSync } from '@bemoje/fs'
 import { prettyUncaughtException } from '@bemoje/node'
 import { cyan, green } from 'cli-color'
@@ -44,7 +45,7 @@ export class Config {
       ...definitions,
     }
 
-    this.appdata = new AppData(appAuthor, appName, 'appdata')
+    this.appdata = new AppData<Record<string, any>, Record<string, any>>(appAuthor, appName, 'appdata')
 
     this.definitions = definitions as IConfigSettings
 
@@ -66,7 +67,10 @@ export class Config {
     })
   }
 
-  editConfigInEditor() {
+  /**
+   * Edits the user configuration in the editor.
+   */
+  editConfigInEditor(): void {
     const newJson = getUserInputFromEditorSync({
       appdataDirectory: this.appdata.directory,
       editor: this.appdata.user.data.editor,
@@ -77,7 +81,11 @@ export class Config {
     console.log('Configuration updated.')
   }
 
-  initialize(program: Command) {
+  /**
+   * Initializes the configuration settings.
+   * @param program - The Commander program instance.
+   */
+  initialize(program: Command): void {
     program
       .command('appdata')
       .description(cyan('Get the directory containing your app data.'))
@@ -117,6 +125,11 @@ export class Config {
       })
   }
 
+  /**
+   * Sets a configuration setting.
+   * @param setting - The name of the setting.
+   * @param value - The value to assign.
+   */
   set(setting: string, value: string): void {
     const definition = this.definitions[setting]
     if (!definition) {
@@ -126,6 +139,10 @@ export class Config {
     console.log(`The '${setting}' setting has been configured.`)
   }
 
+  /**
+   * Resets a configuration setting.
+   * @param setting - The name of the setting. If omitted, all settings are reset.
+   */
   reset(setting?: string): void {
     if (!setting) {
       fs.rmSync(this.appdata.user.filepath)

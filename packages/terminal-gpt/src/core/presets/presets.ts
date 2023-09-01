@@ -6,9 +6,9 @@ import type { IGptPreset } from '../types/IGptPreset'
 import { appendSystemMessage } from './util/appendSystemMessage'
 import { createChatRequest } from './util/createChatRequest'
 import { createDirectories } from './util/createDirectories'
-import { getPresetSettings } from './util/getPresetSettings'
 import { getPromptPlaceholder } from './util/getPromptPlaceholder'
 import { getUserPrompt } from './util/getUserPrompt'
+import { mergeSettingsWithDefaults } from './util/mergeSettingsWithDefaults'
 import { saveInteraction } from './util/saveInteraction'
 
 /**
@@ -22,7 +22,7 @@ import { saveInteraction } from './util/saveInteraction'
  */
 export async function presets(preset: string, prompt?: string, is16k = false, isReply = false, isEdit = false) {
   // settings for the specific preset
-  const settings: IGptPreset = getPresetSettings(preset)
+  const settings: IGptPreset = mergeSettingsWithDefaults(preset)
   const { jsondir, textdir } = createDirectories(preset)
   // get user input
   const systemMessage = appendSystemMessage(settings)

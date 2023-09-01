@@ -69,7 +69,7 @@ getPackages().forEach(({ name, rootdir, pkgpath, pkg, distdir }) => {
   const distpkgpath = path.join(distdir, 'package.json')
   const distpkgsrc = fs
     .readFileSync(distpkgpath, 'utf8')
-    .replace(/"version"\: "\d+\.\d+\.\d+"/g, `"version": "${pkg.version}"`)
+    .replace(/"version"\: "\d+\.\d+\.\d+"/, `"version": "${pkg.version}"`)
   fs.writeFileSync(distpkgpath, distpkgsrc, 'utf8')
 
   // npm update
@@ -106,8 +106,10 @@ execBatchSilently(updatebat, console.error)
 console.log(green('Updating own modules in all packages...'))
 const dependentPackages = getPackages().filter(({ name, rootdir, pkg }) => {
   const deps = new Set([...Object.keys(pkg.dependencies)])
-  for (let n of names) {
-    if (deps.has('@bemoje/' + n)) return true
+  for (let str of successful) {
+    if (deps.has('@bemoje/' + str.split(' ')[0])) {
+      return true
+    }
   }
   return false
 })
@@ -120,18 +122,16 @@ dependentPackages.forEach(({ name, rootdir }) => {
 execBatch(['npm run prepub' + (!runAll ? ' -p ' + names.join(',') : '')])
 
 // docs
-docs()
+if (successful.length) docs()
 
 // update global modules and git commit
 console.log(green('Update global modules and git commit...'))
 execBatch([
   ...installGlobally,
-  'npm update -g @bemoje/*',
-  'npm audit --fix',
   'git add .',
-  successful.length
-    ? `git commit -m "published new versions (${type}) of packages: ${successful.join(' || ') || 'none'}"`
-    : `git commit -m "changes in repository configuration."`,
-  // 'git push -u origin main',
   //
 ])
+if (successful.length) {
+  execBatch([`git commit -m "published new versions (${type}) of packages: ${successful.join(' || ')}"`])
+  // 'git push -u origin main',
+}

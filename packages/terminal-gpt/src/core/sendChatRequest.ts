@@ -18,6 +18,8 @@ export async function sendChatRequest(options: ISendChatRequestOptions): Promise
   const { request, settings } = options
   const { model, preferGpt4 } = settings
   const api = getApiClient()
+
+  // calculate token counts
   if (!request.messages) throw new Error('request.messages is undefined')
   const instruction_tokens = api.countTokens(JSON.stringify(request.messages[0]) || '')
   const prompt_tokens = api.countTokens(JSON.stringify(request.messages.slice(1)) || '')
