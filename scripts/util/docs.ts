@@ -1,3 +1,4 @@
+import { green } from 'cli-color'
 import fs from 'fs'
 import path from 'path'
 import { snakeCase } from 'snake-case'
@@ -7,7 +8,7 @@ import { strReplaceAll } from '../../packages/string/src'
 import { getPackages } from './getPackages'
 
 export function docs() {
-  console.log('Generating docs...')
+  console.log(green('Generating docs...'))
 
   const pkgspath = path.join(process.cwd(), 'packages')
   const indexpath = path.join(pkgspath, 'index.ts')

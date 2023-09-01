@@ -1,10 +1,11 @@
+import { green } from 'cli-color'
 import fs from 'fs'
 import path from 'path'
 import { getPackages } from './getPackages'
 import { walkTsFiles } from './walkTsFiles'
 
 export function fixEntryPoints() {
-  console.log('Fixing entry points...')
+  console.log(green('Fixing entry points...'))
   getPackages()
     .filter(({ pkg }) => !pkg.bin)
     .forEach(({ pkg, rootdir, name, pkgpath }) => {

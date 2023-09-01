@@ -1,9 +1,10 @@
+import { green } from 'cli-color'
 import fs from 'fs'
 import path from 'path'
 import { getPackages } from './getPackages'
 
 export function fixReadmes() {
-  console.log('Fixing readmes...')
+  console.log(green('Fixing readmes...'))
 
   function readme(pkg: Record<string, any>): string {
     const shortname = pkg.name.replace('@bemoje/', '')

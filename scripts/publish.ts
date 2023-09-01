@@ -1,3 +1,4 @@
+import { green, red } from 'cli-color'
 import fs from 'fs'
 import path from 'path'
 import { execBatch } from '../packages/node/src/lib/execBatch'
@@ -27,7 +28,7 @@ const hashes = JSON.parse(fs.readFileSync(hashesPath, 'utf8'))
 const installGlobally: string[] = []
 const successful: string[] = []
 
-console.log('Publishing packages with changes to NPM...')
+console.log(green('Publishing packages with changes to NPM...'))
 getPackages().forEach(({ name, rootdir, pkgpath, pkg, distdir }) => {
   let hash = hashPackage(name)
   if (hashes[name] === hash) return
@@ -77,7 +78,7 @@ getPackages().forEach(({ name, rootdir, pkgpath, pkg, distdir }) => {
     () => {
       pkg.version = original
       fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
-      console.log('Could not publish ' + name + '. Reverting version to ' + original + '.')
+      console.error(red('Could not publish ' + name + '. Reverting version to ' + original + '.'))
       process.exit()
     },
   )
@@ -94,7 +95,7 @@ getPackages().forEach(({ name, rootdir, pkgpath, pkg, distdir }) => {
 })
 
 // update own modules
-console.log('Updating own modules in all packages...')
+console.log(green('Updating own modules in all packages...'))
 const updatebat = ['npm update @bemoje/*', 'npm audit --fix']
 getPackages().forEach(({ rootdir }) => {
   updatebat.push(`cd ${rootdir}`, 'npm update @bemoje/*')
@@ -108,14 +109,16 @@ execBatch(['npm run prepub' + (!runAll ? ' -p ' + names.join(',') : '')], () => 
 docs()
 
 // update global modules and git commit
-console.log('Update global modules and git commit...')
+console.log(green('Update global modules and git commit...'))
 execBatch(
   [
     ...installGlobally,
     'npm update -g @bemoje/*',
     'npm audit --fix',
     'git add .',
-    `git commit -m "published new versions (${type}) of packages: ${successful.join(' || ') || 'none'}"`,
+    successful.length
+      ? `git commit -m "published new versions (${type}) of packages: ${successful.join(' || ') || 'none'}"`
+      : `git commit -m "minor changes in repository configuration."`,
     // 'git push -u origin main',
     //
   ],
