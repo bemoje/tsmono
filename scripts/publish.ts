@@ -24,7 +24,6 @@ const hashesPath = path.join(process.cwd(), 'scripts', 'data', 'hashes.json')
 const hashes = JSON.parse(fs.readFileSync(hashesPath, 'utf8'))
 
 // npm publish
-const failed: string[] = []
 const installGlobally: string[] = []
 const successful: string[] = []
 
@@ -68,7 +67,6 @@ getPackages().forEach(({ name, rootdir, pkgpath, pkg, distdir }) => {
   fs.writeFileSync(distpkgpath, distpkgsrc, 'utf8')
 
   // npm update
-  let success = true
   execBatch(
     [
       `cd ${path.join(distdir)}`,
@@ -76,47 +74,47 @@ getPackages().forEach(({ name, rootdir, pkgpath, pkg, distdir }) => {
       //
     ],
     () => {
-      success = false
-      failed.push(name)
       pkg.version = original
       fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
+      console.log('Could not publish ' + name + '. Reverting version to ' + original + '.')
+      process.exit()
     },
   )
 
   // hash
-  if (success) {
-    hashes[name] = hashPackage(name)
-    fs.writeFileSync(hashesPath, JSON.stringify(hashes, null, 2), 'utf8')
+  hashes[name] = hashPackage(name)
+  fs.writeFileSync(hashesPath, JSON.stringify(hashes, null, 2), 'utf8')
 
-    if (pkg.preferGlobal) {
-      installGlobally.push('npm i -g ' + pkg.name + '@^' + pkg.version)
-    }
-
-    successful.push(name)
+  if (pkg.preferGlobal) {
+    installGlobally.push('npm i -g ' + pkg.name + '@^' + pkg.version)
   }
+
+  successful.push(name + ': v.' + pkg.version)
 })
-console.log({ failed })
-if (failed.length) process.exit()
 
 // update own modules in all packages
-execBatch([`cd ${cwd}`, 'npm update @bemoje/*'], () => process.exit())
+const updatebat = [`cd ${cwd}`, 'npm update @bemoje/*', 'npm audit --fix']
 getPackages().forEach(({ name, rootdir }) => {
-  execBatch([`cd ${rootdir}`, 'npm update @bemoje/*'])
+  updatebat.push(`cd ${rootdir}`)
+  updatebat.push('npm update @bemoje/*')
 })
+execBatch(updatebat, () => process.exit())
 
 // prepub
 execBatch(['npm run prepub' + (!runAll ? ' -p ' + names.join(',') : '')], () => process.exit())
+
+// docs
 docs()
 
-// prepub and commit
+// update global modules and git commit
 execBatch(
   [
     `cd ${cwd}`,
     ...installGlobally,
     'npm update -g',
-    'npm audit fix',
+    'npm audit fix -g',
     'git add .',
-    `git commit -m "published new versions (${type}) of packages: ${successful.join(', ')}."`,
+    `git commit -m "published new versions (${type}) of packages:\n${successful.join('\n')}"`,
     // 'git push -u origin main',
     //
   ],

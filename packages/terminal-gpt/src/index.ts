@@ -21,20 +21,20 @@ export async function main() {
       [
         'Important settings:',
         line('gpt config set apiKey YOUR_KEY', 'set your OpenAI API key'),
-        line('gpt config set editor "code -w"', 'set your text editor to be VSCode.'),
-        line('gpt config set default_preferGpt4 false', 'whether to use gpt4 when possible.'),
+        line('gpt config set editor "code -w"', 'set your preferred text editor to VSCode.'),
         '',
         'Set these, too:',
+        line('default_preferGpt4', 'whether to use gpt4 when possible.'),
         line('default_terminalOutput', 'whether to output responses in the terminal'),
         line('default_openResponseIn', 'where to open responses (default: chrome)'),
         '',
         'Usage examples:',
         line('gpt help config', "display help for the 'config' command"),
+        line('gpt help q', "display help for the 'q' preset"),
         line('gpt config edit', 'edit all settings in your text-editor as JSON'),
         line('gpt q how far is the moon?', "use the 'q' preset to prompt ChatGPT with its default behaviour"),
         line('gpt tsdocf some/file/path.ts', "use the 'tsdocf' preset to generate TypeScript documentation for a file"),
         line('gpt preset add myPreset', "add a new preset named 'myPreset'"),
-        line('gpt help q', "display help for the 'q' preset"),
       ].join('\n'),
     )
     .version('0.0.0')
