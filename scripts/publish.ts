@@ -104,7 +104,15 @@ const updatebat = ['npm update @bemoje/*', 'npm audit --fix']
 execBatchSilently(updatebat, console.error)
 
 console.log(green('Updating own modules in all packages...'))
-getPackages().forEach(({ name, rootdir }) => {
+const dependentPackages = getPackages().filter(({ name, rootdir, pkg }) => {
+  const deps = new Set(Object.keys(pkg.dependencies))
+  for (let n of names) {
+    n = '@bemoje/' + n
+    if (deps.has(n)) return true
+  }
+  return false
+})
+dependentPackages.forEach(({ name, rootdir }) => {
   execBatchSilently([`cd ${rootdir}`, 'npm update @bemoje/*'], console.error)
   console.log(blackBright('- ' + name))
 })
