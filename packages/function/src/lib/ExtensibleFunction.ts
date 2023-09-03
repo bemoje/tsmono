@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 /**
  * A Function class that can be extended.
  * @example
@@ -14,8 +16,8 @@
  * }
  * ```
  */
-export class ExtensibleFunction extends Function {
-  constructor(name: string, f: (...args: any[]) => any) {
+export class ExtensibleFunction<F extends (...args: any[]) => any = (...args: any[]) => any> extends Function {
+  constructor(name: string, f: (this: any, ...args: Parameters<F>) => ReturnType<F>) {
     Object.defineProperty(f, 'name', { value: name })
     super(typeof f === 'string' ? f : f.toString())
     return Object.setPrototypeOf(f, new.target.prototype)

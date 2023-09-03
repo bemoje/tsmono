@@ -1,10 +1,13 @@
 {
   "name": "@bemoje/errors",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "dependencies": {
+    "@bemoje/function": "latest",
+    "@bemoje/object": "latest",
     "@bemoje/string": "latest",
     "@bemoje/validation": "latest",
     "cli-color": "^2.0.3",
+    "eventemitter3": "^5.0.1",
     "stacktrace-parser": "^0.1.10",
     "tslib": "^2.3.0"
   },

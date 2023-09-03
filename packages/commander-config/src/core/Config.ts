@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { prettyUncaughtException } from '@bemoje/errors'
 import { AppData, readJsonFileSync } from '@bemoje/fs'
 import { cyan, green } from 'cli-color'
 import { Command } from 'commander'
@@ -10,9 +9,6 @@ import { parseString } from '../util/parseString'
 import { validateString } from '../util/validateString'
 import { IConfigSetting } from './IConfigSetting'
 import { IConfigSettings } from './IConfigSettings'
-
-// Enables pretty printing of uncaught exceptions.
-prettyUncaughtException()
 
 /**
  * A utility class for managing user configuration settings when using the 'commander' package to create CLI's.
@@ -107,7 +103,7 @@ export class Config {
         [
           'The name of the setting. If reset is selected and this is omitted, ALL settings are reset.',
           ...Object.entries(this.definitions).map(([name, def]) => `${green(name)}: ${def.description}`),
-        ].join('\n'),
+        ].join('\n')
       )
       .argument('[value]', 'The value to assign.')
       .action((action?: string, setting?: string, value?: string) => {

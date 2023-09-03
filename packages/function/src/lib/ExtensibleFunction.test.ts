@@ -3,9 +3,9 @@ import { ExtensibleFunction } from './ExtensibleFunction'
 describe('ExtensibleFunction', () => {
   it('example', () => {
     class MyFunction<T> extends ExtensibleFunction {
-      constructor(f: (...args: any[]) => any) {
+      constructor(f: (...args: unknown[]) => unknown) {
         let self: MyFunction<T> | undefined = undefined
-        super(f.name, function anonymous(...args: any[]) {
+        super(f.name, function anonymous(...args: unknown[]) {
           // do something with self
           return f.call(self, ...args)
         })
@@ -16,7 +16,7 @@ describe('ExtensibleFunction', () => {
     expect(
       new MyFunction(function f(): boolean {
         return true
-      }) instanceof MyFunction,
+      }) instanceof MyFunction
     ).toBe(true)
   })
 })

@@ -10,4 +10,5 @@
  */
 export function iterableFirstElement<T>(iterable: Iterable<T>): T | undefined {
   for (const item of iterable) return item
+  return
 }

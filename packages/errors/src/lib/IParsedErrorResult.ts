@@ -5,22 +5,12 @@ import { IParsedErrorFrame } from './IParsedErrorFrame'
  */
 export interface IParsedErrorResult {
   /**
-   * The type of the error.
+   * The prettified stack trace of the error if it has one.
    */
-  type: string
+  stack: string
 
   /**
-   * The error message.
+   * The parsed stack trace of the error if there is a stack trace.
    */
-  message: string
-
-  /**
-   * The stack trace of the error.
-   */
-  stack: IParsedErrorFrame[]
-
-  /**
-   * The cause of the error, if any.
-   */
-  cause?: unknown
+  frames: IParsedErrorFrame[]
 }

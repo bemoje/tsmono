@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/log",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "Logger utility for node-js.",
   "main": "index.cjs.js",
   "module": "index.esm.js",
@@ -14,7 +14,6 @@
   "keywords": [],
   "dependencies": {
     "@bemoje/date": "latest",
-    "@bemoje/errors": "latest",
     "@bemoje/fs": "latest",
     "@bemoje/object": "latest",
     "@bemoje/string": "latest",

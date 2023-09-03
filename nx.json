@@ -50,7 +50,6 @@
       "tags": [],
       "implicitDependencies": [
         "async",
-        "errors",
         "fs",
         "validation"
       ],
@@ -66,6 +65,8 @@
     "errors": {
       "tags": [],
       "implicitDependencies": [
+        "function",
+        "object",
         "string",
         "validation"
       ],
@@ -117,6 +118,7 @@
       "tags": [],
       "implicitDependencies": [
         "async",
+        "object",
         "queue"
       ],
       "npmScope": "bemoje",
@@ -132,7 +134,6 @@
       "tags": [],
       "implicitDependencies": [
         "date",
-        "errors",
         "fs",
         "object",
         "string",
@@ -170,7 +171,6 @@
     "node": {
       "tags": [],
       "implicitDependencies": [
-        "errors",
         "number"
       ],
       "npmScope": "bemoje",

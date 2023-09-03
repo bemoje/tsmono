@@ -21,9 +21,9 @@ function _execBatch(silent: boolean, cmds: string[], onError?: () => void) {
           bat
             .slice(1)
             .map((l) => l.replace('call ', ''))
-            .join('\n'),
+            .join('\n')
         ) +
-        '\n',
+        '\n'
     )
   }
   const tempdir = process.env['TEMP'] || process.env['TMP']

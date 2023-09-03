@@ -1,15 +1,11 @@
 import { blackBright, green, red } from 'cli-color'
 import fs from 'fs'
 import path from 'path'
-import { prettyUncaughtException } from '../packages/errors/src/lib/prettyUncaughtException'
 import { executeBatchScript } from '../packages/node/src/lib/virtual-script/executeBatchScript'
 import { docs } from './util/docs'
 import { execBatch } from './util/execBatch'
 import { getPackages } from './util/getPackages'
 import { hashPackage } from './util/hashPackage'
-
-// Pretty print uncaught exceptions.
-prettyUncaughtException()
 
 // args
 const type = process.argv[2]

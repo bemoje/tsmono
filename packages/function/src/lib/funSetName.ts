@@ -11,6 +11,6 @@
  * ```
  */
 export function funSetName<T>(name: string, fun: T): T {
-  Object.defineProperty(fun, 'name', { value: name, configurable: true })
+  Object.defineProperty(fun, 'name', { value: name, configurable: true, writable: true, enumerable: false })
   return fun
 }

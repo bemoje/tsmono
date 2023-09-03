@@ -1,5 +1,4 @@
 import { MS_IN_DAY, dateAdjustHoursBy, isoDateTimestampForFilename } from '@bemoje/date'
-import { prettyError } from '@bemoje/errors'
 import { appendLineToFile, cleanDirectorySync, createDirectorySync } from '@bemoje/fs'
 import { objClonePrimitiveProperties } from '@bemoje/object'
 import { strRepeat } from '@bemoje/string'
@@ -203,7 +202,7 @@ export class Log {
    */
   error<T>(message: T, depth?: number | null): T {
     if (this.errorToFile) this._logToFile(LogLevel.ERROR, message)
-    if (this.errorToConsole) this._logToConsole(LogLevel.ERROR, prettyError(message), this.errorColor, depth)
+    if (this.errorToConsole) this._logToConsole(LogLevel.ERROR, message, this.errorColor, depth)
     return message
   }
 
