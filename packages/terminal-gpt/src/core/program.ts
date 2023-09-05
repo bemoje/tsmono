@@ -74,6 +74,8 @@ export function program() {
   program.parse()
 }
 
+program()
+
 function line(cmd: string, info: string) {
   return '  ' + cmd + strRepeat(' ', Math.max(0, 35 - cmd.length)) + blue(info)
 }
