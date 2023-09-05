@@ -1,10 +1,10 @@
-import { execFileSync } from 'child_process';
-import { magenta } from 'cli-color';
-import fs from 'fs';
-import path from 'path';
-import { IExecuteBatchScriptOptions } from './IExecuteBatchScriptOptions';
-import { IExecuteBatchScriptResult } from './IExecuteBatchScriptResult';
-import { executeBatchScriptOptionDefaults } from './executeBatchScriptOptionDefaults';
+import { execFileSync } from 'child_process'
+import { magenta } from 'cli-color'
+import fs from 'fs'
+import path from 'path'
+import { IExecuteBatchScriptOptions } from './IExecuteBatchScriptOptions'
+import { IExecuteBatchScriptResult } from './IExecuteBatchScriptResult'
+import { executeBatchScriptOptionDefaults } from './executeBatchScriptOptionDefaults'
 
 /**
  * Provide a virtual batch script in the form of a string array that represent the lines of the script.
@@ -83,7 +83,7 @@ export function executeBatchScript(
     return string
       .trim()
       .split(/\r*\n/)
-      .filter((line: string) => !!line);
+      .filter((line: string) => !!line)
   }
 
   // execute script
@@ -103,6 +103,6 @@ export function executeBatchScript(
   }
 
   // delete temp file and return result
-  if (fs.existsSync(tempfile)) fs.rmSync(tempfile)
+  if (fs.existsSync(tempfile)) fs.rmSync(tempfile, { force: true })
   return { stdout, stderr, error }
 }

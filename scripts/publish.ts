@@ -3,7 +3,6 @@ import fs from 'fs'
 import path from 'path'
 import { executeBatchScript } from '../packages/node/src/lib/virtual-script/executeBatchScript'
 import { docs } from './util/docs'
-import { execBatch } from './util/execBatch'
 import { getPackages } from './util/getPackages'
 import { hashPackage } from './util/hashPackage'
 
@@ -71,19 +70,29 @@ getPackages().forEach(({ name, rootdir, pkgpath, pkg, distdir }) => {
   fs.writeFileSync(distpkgpath, distpkgsrc, 'utf8')
 
   // npm update
-  execBatch(
-    [
-      `cd ${path.join(distdir)}`,
-      'npm publish --access public',
-      //
-    ],
-    () => {
-      pkg.version = original
-      fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
-      console.error(red('Could not publish ' + name + '. Reverting version to ' + original + '.'))
-      process.exit()
-    }
-  )
+  const { error } = executeBatchScript(['npm publish --access public'], {
+    prependWithCall: true,
+    cwd: distdir,
+  })
+  if (error) {
+    pkg.version = original
+    fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
+    console.error(red('Could not publish ' + name + '. Reverting version to ' + original + '.'))
+    process.exit()
+  }
+  // execBatch(
+  //   [
+  //     `cd ${path.join(distdir)}`,
+  //     'npm publish --access public',
+  //     //
+  //   ],
+  //   () => {
+  //     pkg.version = original
+  //     fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
+  //     console.error(red('Could not publish ' + name + '. Reverting version to ' + original + '.'))
+  //     process.exit()
+  //   }
+  // )
 
   // hash
   hashes[name] = hashPackage(name)
@@ -115,9 +124,10 @@ const dependentPackages = getPackages().filter(({ name, rootdir, pkg }) => {
   return false
 })
 dependentPackages.forEach(({ name, rootdir }) => {
-  executeBatchScript([`cd ${rootdir}`, 'npm update @bemoje/*'], {
+  executeBatchScript(['npm update @bemoje/*'], {
     silent: true,
     prependWithCall: true,
+    cwd: rootdir,
   })
   console.log(blackBright('- ' + name))
 })

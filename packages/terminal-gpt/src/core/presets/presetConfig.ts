@@ -21,7 +21,10 @@ const improveResponse = [
   'Your response should be just the revised response and nothing else.',
 ].join('\n')
 
-const seniorDeveloperRole = ['You are a senior developer employed in a software company.']
+const seniorDeveloperRole = [
+  'You are a senior developer employed in a software company.',
+  'Your task is to help me with my code.',
+]
 
 const refactorInstructions = [
   ...seniorDeveloperRole,
@@ -46,14 +49,28 @@ const npmPackageInstructions = [
 const tsInstructions = [
   ...seniorDeveloperRole,
   '',
-  'My setup:',
+  'Development Environment:',
   '- OS: ' + getOS(),
-  '- nodejs.',
-  '- NX mono-repo.',
-  '- Language: TypeScript.',
-  '- Visual Studio Code.',
-  '- git',
-  '- Github',
+  '- IDE: Visual Studio Code',
+  '- Language: TypeScript (nodejs)',
+  '- Tools:',
+  '- b. NX mono-repository',
+  '- c. git and Github',
+  '- d. Jest testing framework',
+  '',
+  'When your response is code or a step by step guide, do not explain too much, just provide the code or steps.',
+]
+
+const javaInstructions = [
+  ...seniorDeveloperRole,
+  '',
+  'My environment:',
+  '- OS: ' + getOS(),
+  '- IDE: Visual Studio Code',
+  '- Language: Java (JDK 18)',
+  '- Tools:',
+  '- a. Gradle',
+  '- b. Maven',
   '',
   'When your response is code or a step by step guide, do not explain too much, just provide the code or steps.',
 ]
@@ -205,8 +222,14 @@ const presetExamples = {
     inputTokensResponseTokensScalar: 1.5,
   },
 
+  java: {
+    description: 'Get help with Java code.',
+    temperature: 0.3,
+    systemMessage: javaInstructions,
+  },
+
   ts: {
-    description: 'Get help with TypeScript.',
+    description: 'Get help with TypeScript code.',
     temperature: 0.3,
     systemMessage: tsInstructions,
   },

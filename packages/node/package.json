@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/node",
-  "version": "0.1.25",
+  "version": "0.1.26",
   "description": "Node specific tools/util.",
   "main": "./src/index.js",
   "scripts": {},

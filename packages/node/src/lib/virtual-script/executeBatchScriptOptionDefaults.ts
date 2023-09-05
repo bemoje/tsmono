@@ -1,5 +1,7 @@
 import { IExecuteBatchScriptOptions } from './IExecuteBatchScriptOptions'
 
+const cwd = process.cwd()
+
 /**
  * The default optionsfor the `execBatch` function.
  * @see executeVirtualBatchScript
@@ -8,6 +10,6 @@ export const executeBatchScriptOptionDefaults: Required<IExecuteBatchScriptOptio
   silent: false,
   echo: false,
   prependWithCall: false,
-  cwd: process.cwd(),
+  cwd: cwd,
   tempdir: process.env['TEMP'] || process.env['TMP'] || '',
 }

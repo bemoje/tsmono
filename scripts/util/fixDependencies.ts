@@ -1,7 +1,7 @@
 import { blackBright, green } from 'cli-color'
 import fs from 'fs'
 import path from 'path'
-import { execBatch } from './execBatch'
+import { executeBatchScript } from '../../packages/node/src/lib/virtual-script/executeBatchScript'
 import { getImportedExternal } from './getImportedExternal'
 import { getPackages } from './getPackages'
 
@@ -33,13 +33,19 @@ export function fixDependencies() {
     imports.forEach((imp) => {
       if (!pkg.dependencies[imp]) {
         console.log(`${name} was missing dependency: ${imp}`)
-        execBatch([`cd ${rootdir}`, `npm i ${imp}`])
+        executeBatchScript([`npm i ${imp}`], {
+          prependWithCall: true,
+          cwd: rootdir,
+        })
       }
     })
     Object.keys(pkg.dependencies).forEach((dep) => {
       if (!imports.includes(dep) && dep !== 'tslib') {
         console.log(`${name} had unused dependency: ${dep}`)
-        execBatch([`cd ${rootdir}`, `npm uninstall ${dep}`])
+        executeBatchScript([`npm uninstall ${dep}`], {
+          prependWithCall: true,
+          cwd: rootdir,
+        })
       }
     })
   })
@@ -51,7 +57,10 @@ export function fixDependencies() {
         console.log(`${name} not using latest of: ${dep}`)
         pkg.dependencies[dep] = 'latest'
         fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
-        execBatch([`cd ${rootdir}`, `npm update ${dep}`])
+        executeBatchScript([`npm update ${dep}`], {
+          prependWithCall: true,
+          cwd: rootdir,
+        })
       }
     }
   })

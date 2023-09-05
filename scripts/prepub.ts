@@ -1,11 +1,12 @@
 import { green } from 'cli-color'
 import fs from 'fs-extra'
 import path from 'path'
-import { execBatch } from './util/execBatch'
+import { executeBatchScript } from '../packages/node/src/lib/virtual-script/executeBatchScript'
 import { fixDependencies } from './util/fixDependencies'
 import { fixEntryPoints } from './util/fixEntryPoints'
 import { fixReadmes } from './util/fixReadmes'
 import { getPackages } from './util/getPackages'
+// import { execBatch } from './util/execBatch'
 
 const names = process.argv.slice(2)
 
@@ -13,7 +14,11 @@ fixEntryPoints()
 fixDependencies()
 fixReadmes()
 
-execBatch(['nx run-many -t "lint,test,build"' + (names.length ? ' -p ' + names.join(',') : '')])
+executeBatchScript(['nx run-many -t "lint,test,build"' + (names.length ? ' -p ' + names.join(',') : '')], {
+  prependWithCall: true,
+  // silent: false,
+  // cwd: true,
+})
 
 console.log(green('Finalizing dist directories...'))
 getPackages().forEach(({ name, pkg, pkgpath, rootdir, distdir }) => {

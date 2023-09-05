@@ -112,12 +112,12 @@ export class Config {
         if (action === 'set') {
           if (!setting || !value) {
             console.error('Both setting and value must be provided.')
-            process.exit()
+            process.exit(1)
           }
           return this.set(setting, value)
         }
         console.error(action + ' is not a valid action.')
-        process.exit()
+        process.exit(1)
       })
   }
 
@@ -143,7 +143,7 @@ export class Config {
     if (!setting) {
       fs.rmSync(this.appdata.user.filepath)
       console.log('All app data deleted.')
-      process.exit()
+      process.exit(0)
     }
     const definition = this.definitions[setting]
     if (!definition) {

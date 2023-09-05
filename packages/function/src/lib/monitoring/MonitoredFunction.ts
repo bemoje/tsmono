@@ -30,28 +30,28 @@ export class MonitoredFunction<F extends (...args: any[]) => any = (...args: any
       if (!instance.enabled) {
         return fun.call(this, ...args)
       }
-      const event: FunctionCallEvent<F> = {
+      const e: FunctionCallEvent<F> = {
         id: MonitoredFunction.nextCallId++,
         args,
       }
-      events.emit('call', event)
+      events.emit('call', e)
       let retval
       const t0 = Date.now()
       if (events.listenerCount('error')) {
         try {
           retval = fun.call(this, ...args)
         } catch (err: unknown) {
-          event.tte = Date.now() - t0
-          event.error = err
-          events.emit('error', event as FunctionErrorEvent<F>)
+          e.tte = Date.now() - t0
+          e.error = err
+          events.emit('error', e as FunctionErrorEvent<F>)
           throw err
         }
       } else {
         retval = fun.call(this, ...args)
       }
-      event.tte = Date.now() - t0
-      event.retval = retval
-      events.emit('return', event as FunctionReturnEvent<F>)
+      e.tte = Date.now() - t0
+      e.retval = retval
+      events.emit('return', e as FunctionReturnEvent<F>)
       return retval
     })
     instance = this

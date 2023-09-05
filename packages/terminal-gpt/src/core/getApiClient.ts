@@ -22,9 +22,9 @@ export function getApiClient() {
     config.appdata.user.set('apiKey', apiKey)
   } else {
     console.error(
-      'No api key found. Please set your api key in the config: gpt config-set apiKey <your-api-key-OR-path-to-keyfile>',
+      'No api key found. Please set your api key in the config: gpt config-set apiKey <your-api-key-OR-path-to-keyfile>'
     )
-    process.exit()
+    process.exit(1)
   }
 
   const api = new OpenaiApiClient({
