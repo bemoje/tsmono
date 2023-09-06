@@ -1,5 +1,5 @@
 /**
- * The options object for the `execBatch` function.
+ * The options object for the `executeBatchScript` function.
  * @see executeBatchScriptDefaultOptions
  * @see executeBatchScript
  */

@@ -1,5 +1,5 @@
 /**
- * The returned object from the `execBatch` function.
+ * The returned object from the `executeBatchScript` function.
  * @see executeBatchScript
  */
 export interface IExecuteBatchScriptResult {

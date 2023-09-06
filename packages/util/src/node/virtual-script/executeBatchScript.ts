@@ -74,7 +74,7 @@ export function executeBatchScript(
 
   // write script to temporary file
   if (!opt.tempdir) throw new Error('Could neither find tempdir option, nor the TEMP or TMP environment variables.')
-  const tempsubdir = path.join(opt.tempdir, 'execBatch')
+  const tempsubdir = path.join(opt.tempdir, 'executeBatchScript')
   fs.mkdirSync(tempsubdir, { recursive: true })
   const tempfile = path.join(tempsubdir, Date.now() + '.bat')
   fs.writeFileSync(tempfile, script.join('\n'), 'utf8')
