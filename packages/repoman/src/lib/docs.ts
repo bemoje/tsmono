@@ -24,7 +24,7 @@ export function docs() {
   // create docs
   fs.rmSync(path.join(process.cwd(), 'docs'), { recursive: true, force: true })
 
-  executeBatchScript(['typedoc --out ./docs/ --entryPoints ./packages/index.ts'], {
+  executeBatchScript(['npx typedoc --out ./docs/ --entryPoints ./packages/index.ts'], {
     prependWithCall: true,
   })
 
