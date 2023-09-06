@@ -4,6 +4,7 @@
       "tags": [],
       "implicitDependencies": [
         "function",
+        "os",
         "queue"
       ],
       "npmScope": "bemoje",
