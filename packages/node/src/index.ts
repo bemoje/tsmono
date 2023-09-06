@@ -1,3 +1,4 @@
+export * from './lib/colors'
 export * from './lib/memoryUsage'
 export * from './lib/shellSpawnProgram'
 export * from './lib/streamToString'

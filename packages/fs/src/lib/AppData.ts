@@ -1,4 +1,4 @@
-import getAppDataPath from 'appdata-path'
+import { getAppDataPath } from '@bemoje/os'
 import path from 'path'
 import { JsonFile } from './JsonFile'
 import { LogFile } from './LogFile'
