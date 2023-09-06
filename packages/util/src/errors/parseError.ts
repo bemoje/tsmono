@@ -1,6 +1,6 @@
 import path from 'path'
 import colors from '../node/colors'
-import { regexEscapeString } from '../string/regex/regexEscapeString'
+import { regexEscapeString } from '../regex/regexEscapeString'
 import { isPlainObject } from '../validation/isPlainObject'
 import { isPrimitive } from '../validation/isPrimitive'
 import type { IParsedErrorFrame } from './IParsedErrorFrame'

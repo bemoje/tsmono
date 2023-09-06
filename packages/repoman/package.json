@@ -1,9 +1,17 @@
 {
-  "name": "@bemoje/html",
-  "version": "0.1.7",
-  "description": "HTML related tools/util.",
-  "main": "./src/index.js",
-  "scripts": {},
+  "name": "@bemoje/repoman",
+  "version": "0.0.2",
+  "bin": {
+    "rman": "./bin/index.js"
+  },
+  "preferGlobal": true,
+  "dependencies": {
+    "@bemoje/util": "latest"
+  },
+  "type": "commonjs",
+  "main": "./index.cjs",
+  "module": "./index.esm.js",
+  "typings": "./src/index.d.ts",
   "author": {
     "name": "Benjamin Møller Jensen",
     "email": "bemoje@bemoje.net",
@@ -11,9 +19,6 @@
   },
   "license": "MIT",
   "keywords": [],
-  "dependencies": {
-    "tslib": "^2.3.0"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bemoje/tsmono.git"
@@ -26,7 +31,5 @@
     "url": "https://github.com/bemoje/tsmono/issues"
   },
   "homepage": "https://github.com/bemoje/tsmono",
-  "type": "commonjs",
-  "typings": "./src/index.d.ts",
   "devDependencies": {}
 }

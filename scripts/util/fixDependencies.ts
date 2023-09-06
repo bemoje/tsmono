@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import colors from '../../packages/util/src/node/colors'
-import { executeBatchScript } from '../../packages/util/src/node/virtual-script/executeBatchScript'
+import { executeBatchScript } from '../../packages/util/src/node/executeBatchScript'
 import { getImportedAllNonRelative } from './getImportedAllNonRelative'
 import { getPackages } from './getPackages'
 const { gray, green } = colors

@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.cjs.js",
   "module": "index.esm.js",
+  "typings": "./src/index.d.ts",
   "bin": {
     "gpt": "./bin/index.js"
   },
@@ -36,6 +37,5 @@
   },
   "homepage": "https://github.com/bemoje/tsmono",
   "type": "commonjs",
-  "typings": "./src/index.d.ts",
   "devDependencies": {}
 }

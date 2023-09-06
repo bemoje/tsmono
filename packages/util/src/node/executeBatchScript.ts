@@ -1,10 +1,9 @@
 import { execFileSync } from 'child_process'
 import fs from 'fs'
 import path from 'path'
-import { colors } from '../colors'
-import { IExecuteBatchScriptOptions } from './IExecuteBatchScriptOptions'
-import { IExecuteBatchScriptResult } from './IExecuteBatchScriptResult'
-import { executeBatchScriptOptionDefaults } from './executeBatchScriptOptionDefaults'
+import { colors } from './colors'
+import { IExecuteBatchScriptOptions } from './types/IExecuteBatchScriptOptions'
+import { IExecuteBatchScriptResult } from './types/IExecuteBatchScriptResult'
 const { magenta } = colors
 
 /**
@@ -47,7 +46,7 @@ export function executeBatchScript(
   if (!cmds.length) return { stdout: [], stderr: [], error: undefined }
 
   // options
-  const opt = Object.assign({}, executeBatchScriptOptionDefaults, options)
+  const opt = Object.assign({}, defaults, options)
 
   // render script
   const script: string[] = []
@@ -106,4 +105,15 @@ export function executeBatchScript(
   // delete temp file and return result
   if (fs.existsSync(tempfile)) fs.rmSync(tempfile, { force: true })
   return { stdout, stderr, error }
+}
+
+/**
+ * The default optionsfor the `executeBatchScript` function.
+ */
+const defaults: Required<IExecuteBatchScriptOptions> = {
+  silent: false,
+  echo: false,
+  prependWithCall: false,
+  cwd: process.cwd(),
+  tempdir: process.env['TEMP'] || process.env['TMP'] || process.env['TMPDIR'] || path.parse(process.cwd()).root,
 }

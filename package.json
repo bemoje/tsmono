@@ -36,7 +36,6 @@
     "@bemoje/excel-util": "latest",
     "@bemoje/fswalk": "latest",
     "@bemoje/function": "latest",
-    "@bemoje/html": "latest",
     "@bemoje/markdown": "latest",
     "@bemoje/matrix": "latest",
     "@bemoje/monitoring": "latest",
@@ -59,7 +58,8 @@
     "@swc/helpers": "~0.5.0",
     "@types/eventemitter3": "^2.0.2",
     "eventemitter3": "^5.0.1",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "@bemoje/repoman": "latest"
   },
   "devDependencies": {
     "@nx/eslint-plugin": "^16.2.2",

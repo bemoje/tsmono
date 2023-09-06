@@ -1,5 +1,5 @@
 import path from 'path'
-import { regexEscapeString } from '../string/regex/regexEscapeString'
+import { regexEscapeString } from '../regex/regexEscapeString'
 
 /**
  * If the filepath is somewhere in the current working directory, it can be converted into a relative path.

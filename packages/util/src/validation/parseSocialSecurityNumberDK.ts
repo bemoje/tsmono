@@ -1,7 +1,7 @@
 import { getCentury } from '../date/getCentury'
 import { getCurrentYear } from '../date/getCurrentYear'
 import { isValidDate } from '../date/isValidDate'
-import { regexMatcherToValidater } from '../string/regex/regexMatcherToValidater'
+import { regexMatcherToValidater } from '../regex/regexMatcherToValidater'
 import { ParsedSocialSecurityNumberDK } from './types/ParsedSocialSecurityNumberDK'
 
 // Matches Danish social security numbers with or without the dash. Example: 151199-1512

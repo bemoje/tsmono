@@ -1,7 +1,7 @@
 import { EventEmitter } from 'events'
 import path from 'path'
 import { isWindows } from '../os/isWindows'
-import { regexEscapeString } from '../string/regex/regexEscapeString'
+import { regexEscapeString } from '../regex/regexEscapeString'
 import { IPathFilterIgnoreOptions } from './IPathFilterIgnoreOptions'
 
 /**

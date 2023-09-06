@@ -206,6 +206,14 @@
       "implicitDependencies": [],
       "npmScope": "bemoje",
       "projectType": "library"
+    },
+    "repoman": {
+      "tags": [],
+      "implicitDependencies": [
+        "util"
+      ],
+      "npmScope": "bemoje",
+      "projectType": "library"
     }
   },
   "$schema": "./node_modules/nx/schemas/nx-schema.json",

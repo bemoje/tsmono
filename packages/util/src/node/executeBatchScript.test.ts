@@ -1,7 +1,7 @@
 import { execFileSync } from 'child_process'
 import fs from 'fs'
-import { IExecuteBatchScriptOptions } from './IExecuteBatchScriptOptions'
 import { executeBatchScript } from './executeBatchScript'
+import { IExecuteBatchScriptOptions } from './types/IExecuteBatchScriptOptions'
 
 jest.mock('child_process')
 jest.mock('fs')

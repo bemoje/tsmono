@@ -1,4 +1,4 @@
-import { compareArray } from '../../sort/compareArray'
+import { compareArray } from '../sort/compareArray'
 import { strRemoveDuplicateChars } from '../string/strRemoveDuplicateChars'
 import { regexEscapeString } from './regexEscapeString'
 import { rexec } from './rexec'

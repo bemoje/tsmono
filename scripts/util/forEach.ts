@@ -1,4 +1,4 @@
-import { executeBatchScript } from '../../packages/util/src/node/virtual-script/executeBatchScript'
+import { executeBatchScript } from '../../packages/util/src/node/executeBatchScript'
 import { getPackages } from './getPackages'
 
 export function forEach(args: string[]) {

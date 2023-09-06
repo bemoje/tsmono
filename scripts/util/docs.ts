@@ -3,8 +3,8 @@ import path from 'path'
 import { snakeCase } from 'snake-case'
 import walkdir from 'walkdir'
 import colors from '../../packages/util/src/node/colors'
-import { executeBatchScript } from '../../packages/util/src/node/virtual-script/executeBatchScript'
-import { strReplaceAll } from '../../packages/util/src/string/string/strReplaceAll'
+import { executeBatchScript } from '../../packages/util/src/node/executeBatchScript'
+import { strReplaceAll } from '../../packages/util/src/string/strReplaceAll'
 import { getPackages } from './getPackages'
 
 export function docs() {

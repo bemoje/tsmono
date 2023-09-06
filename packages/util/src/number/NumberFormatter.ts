@@ -1,4 +1,4 @@
-import { strReplaceAll } from '../string/string/strReplaceAll'
+import { strReplaceAll } from '../string/strReplaceAll'
 import { assertion } from '../validation/assertion'
 import { isValidNumber } from '../validation/numbers/isValidNumber'
 import { round } from './round'

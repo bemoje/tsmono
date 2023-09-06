@@ -1,4 +1,4 @@
-import { strReplaceAll } from '../string/string/strReplaceAll'
+import { strReplaceAll } from '../string/strReplaceAll'
 
 /**
  * Converts a 2D array to a CSV string.

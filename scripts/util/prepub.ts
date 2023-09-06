@@ -1,7 +1,7 @@
 import fs from 'fs-extra'
 import path from 'path'
 import colors from '../../packages/util/src/node/colors'
-import { executeBatchScript } from '../../packages/util/src/node/virtual-script/executeBatchScript'
+import { executeBatchScript } from '../../packages/util/src/node/executeBatchScript'
 import { fixAll } from './fixAll'
 import { getPackages } from './getPackages'
 const { green } = colors
