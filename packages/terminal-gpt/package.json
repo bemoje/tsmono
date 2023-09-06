@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/terminal-gpt",
-  "version": "0.2.30",
+  "version": "0.2.31",
   "description": "",
   "main": "index.cjs.js",
   "module": "index.esm.js",

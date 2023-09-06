@@ -25,7 +25,9 @@ export function publish(args: string[] = []) {
   prepub(names)
 
   // hashes
-  const hashesPath = getAppDataPath('bemoje', 'repoman', 'hashes.json')
+  const appdata = getAppDataPath('bemoje', 'repoman')
+  fs.mkdirSync(appdata, { recursive: true })
+  const hashesPath = path.join(appdata, 'hashes.json')
   if (!fs.existsSync(hashesPath)) {
     fs.writeFileSync(hashesPath, '{}', 'utf8')
   }
