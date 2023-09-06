@@ -14,6 +14,12 @@ getPackages().forEach(({ rootdir, pkg, name }) => {
     if (transform) source = transform(source)
     fs.writeFileSync(dest(destfile), source, 'utf8')
   }
+  const readFile = (destfile: string) => {
+    return fs.readFileSync(src(destfile), 'utf8')
+  }
+  const readJsonFile = (destfile: string) => {
+    return JSON.parse(readFile(destfile))
+  }
   const removeFile = (destfile: string) => {
     if (!fs.existsSync(dest(destfile))) return
     fs.rmSync(dest(destfile))

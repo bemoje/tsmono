@@ -1,5 +1,5 @@
-import { getOS } from '@bemoje/fs'
 import { exec } from 'child_process'
+import { getOS } from './getOS'
 
 /**
  * LINUX ONLY: Returns whether a program is installed on the system.

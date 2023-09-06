@@ -11,8 +11,7 @@ import {
   validateStringArray,
   validateStringType,
 } from '@bemoje/commander-config'
-import { getOS } from '@bemoje/fs'
-import { isLinuxProgramInstalled } from '@bemoje/node'
+import { getOS, isLinuxProgramInstalled } from '@bemoje/os'
 import { IGptPreset } from '../types/IGptPreset'
 
 const improveResponse = [

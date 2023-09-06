@@ -28,6 +28,7 @@
       "@bemoje/binary": ["packages/binary/src/index.ts"],
       "@bemoje/commander-config": ["packages/commander-config/src/index.ts"],
       "@bemoje/date": ["packages/date/src/index.ts"],
+      "@bemoje/errors": ["packages/errors/src/index.ts"],
       "@bemoje/excel-util": ["packages/excel-util/src/index.ts"],
       "@bemoje/fs": ["packages/fs/src/index.ts"],
       "@bemoje/fspath": ["packages/fspath/src/index.ts"],
@@ -45,6 +46,7 @@
       "@bemoje/object": ["packages/object/src/index.ts"],
       "@bemoje/open-repo": ["packages/open-repo/src/index.ts"],
       "@bemoje/openai-api-client": ["packages/openai-api-client/src/index.ts"],
+      "@bemoje/os": ["packages/os/src/index.ts"],
       "@bemoje/pdf-util": ["packages/pdf-util/src/index.ts"],
       "@bemoje/queue": ["packages/queue/src/index.ts"],
       "@bemoje/set": ["packages/set/src/index.ts"],
@@ -59,8 +61,7 @@
       "@bemoje/trie-map": ["packages/trie-map/src/index.ts"],
       "@bemoje/tscode": ["packages/tscode/src/index.ts"],
       "@bemoje/tsdoc": ["packages/tsdoc/src/index.ts"],
-      "@bemoje/validation": ["packages/validation/src/index.ts"],
-      "@bemoje/errors": ["packages/errors/src/index.ts"]
+      "@bemoje/validation": ["packages/validation/src/index.ts"]
     }
   },
   "include": ["packages/**/*.ts"],

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { AppData, getOS, readJsonFileSync } from '@bemoje/fs'
-import { isVsCodeInstalled } from '@bemoje/node'
+import { AppData, readJsonFileSync } from '@bemoje/fs'
+import { getOS, isVsCodeInstalled } from '@bemoje/os'
 import { cyan, green } from 'cli-color'
 import { Command } from 'commander'
 import fs from 'fs'

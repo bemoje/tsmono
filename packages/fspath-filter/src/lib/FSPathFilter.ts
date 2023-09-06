@@ -1,4 +1,4 @@
-import { isWindows } from '@bemoje/fs'
+import { isWindows } from '@bemoje/os'
 import { regexEscapeString } from '@bemoje/string'
 import { EventEmitter } from 'events'
 import path from 'path'

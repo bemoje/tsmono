@@ -34,6 +34,7 @@
         "commander-config",
         "fs",
         "fspath-filter",
+        "os",
         "set",
         "trie-map"
       ],
@@ -51,7 +52,7 @@
       "implicitDependencies": [
         "async",
         "fs",
-        "node",
+        "os",
         "validation"
       ],
       "npmScope": "bemoje",
@@ -85,6 +86,7 @@
     "fs": {
       "tags": [],
       "implicitDependencies": [
+        "os",
         "string"
       ],
       "npmScope": "bemoje",
@@ -101,7 +103,7 @@
     "fspath-filter": {
       "tags": [],
       "implicitDependencies": [
-        "fs",
+        "os",
         "string"
       ],
       "npmScope": "bemoje",
@@ -172,7 +174,6 @@
     "node": {
       "tags": [],
       "implicitDependencies": [
-        "fs",
         "number"
       ],
       "npmScope": "bemoje",
@@ -282,8 +283,8 @@
         "commander-config",
         "date",
         "fs",
-        "node",
         "openai-api-client",
+        "os",
         "string"
       ],
       "npmScope": "bemoje",
@@ -327,6 +328,12 @@
         "date",
         "string"
       ],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "os": {
+      "tags": [],
+      "implicitDependencies": [],
       "npmScope": "bemoje",
       "projectType": "library"
     }

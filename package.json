@@ -27,6 +27,7 @@
   },
   "private": true,
   "dependencies": {
+    "@bemoje/os": "^0.0.1",
     "@types/eventemitter3": "^2.0.2",
     "eventemitter3": "^5.0.1",
     "tslib": "^2.3.0"
