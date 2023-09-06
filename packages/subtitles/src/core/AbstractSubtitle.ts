@@ -1,4 +1,4 @@
-import { TimeInterval } from '@bemoje/time'
+import { TimeInterval } from '@bemoje/util'
 
 /**
  * Abstract class represents a subtitle of no specific format.

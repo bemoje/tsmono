@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/pdf-util",
-  "version": "0.1.5",
+  "version": "0.1.8",
   "description": "PDF utilities for parsing, merging, splitting, and more.",
   "main": "./src/index.js",
   "scripts": {},
@@ -30,5 +30,7 @@
   "homepage": "https://github.com/bemoje/tsmono",
   "type": "commonjs",
   "typings": "./src/index.d.ts",
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/pdf-parse": "^1.1.1"
+  }
 }

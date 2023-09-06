@@ -1,7 +1,8 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
+import { colors } from '@bemoje/util'
 import { config } from './config'
 import { getApiClient } from './getApiClient'
 import { ISendChatRequestOptions } from './types/ISendChatRequestOptions'
+const { blue } = colors
 
 /**
  * Sends a chat request to the OpenAI API.
@@ -14,11 +15,19 @@ import { ISendChatRequestOptions } from './types/ISendChatRequestOptions'
  * @returns A promise that resolves to the response from the OpenAI API.
  */
 export async function sendChatRequest(options: ISendChatRequestOptions): Promise<string> {
-  const { maxExpectedResponseTokens, request } = options
+  const showTokenDetails = config.appdata.user.get('tokenDetails')
+  const { request, settings } = options
+  const { model, preferGpt4 } = settings
   const api = getApiClient()
-  const instruction_tokens = api.countTokens(JSON.stringify(request.messages![0]) || '')
-  const prompt_tokens = api.countTokens(JSON.stringify(request.messages!.slice(1)) || '')
+
+  // calculate token counts
+  if (!request.messages) throw new Error('request.messages is undefined')
+  const instruction_tokens = api.countTokens(JSON.stringify(request.messages[0]) || '')
+  const prompt_tokens = api.countTokens(JSON.stringify(request.messages.slice(1)) || '')
   const request_tokens = instruction_tokens + prompt_tokens
+  const inputTokensResponseTokensScalar = settings.inputTokensResponseTokensScalar
+  const maxExpectedResponseTokens =
+    settings.maxExpectedResponseTokens + Math.floor(prompt_tokens * inputTokensResponseTokensScalar)
   const gpt_model_selection_cutoff_tokens = Math.max(0, 8000 - maxExpectedResponseTokens - prompt_tokens)
   const max_tokens = 16000 - maxExpectedResponseTokens
   const above_cutoff = request_tokens > gpt_model_selection_cutoff_tokens
@@ -36,26 +45,26 @@ export async function sendChatRequest(options: ISendChatRequestOptions): Promise
     process.exit(0)
   }
 
+  if (model) request.model = model
+
   // output token details to user
   const gpt_model =
-    above_cutoff || options.is16k
-      ? 'gpt-3.5-turbo-16k'
-      : config.appdata.user.get('preferGpt4')
-      ? 'gpt4'
-      : 'gpt-3.5-turbo'
-  console.log()
-  console.log({ ...tokenDetails, gpt_model })
+    above_cutoff || options.is16k ? 'gpt-3.5-turbo-16k' : model ? model : preferGpt4 ? 'gpt4' : 'gpt-3.5-turbo'
+  if (showTokenDetails) console.log(tokenDetails)
+  console.log('Using GPT model: ' + blue(gpt_model))
   console.log('\nPlease wait for OpenAI to respond...\n')
 
   // sent request to openai (prefer gpt4 if not too many tokens)
   const response =
     above_cutoff || options.is16k
       ? await api.gpt3_16k(request)
-      : config.appdata.user.get('preferGpt4')
+      : model
+      ? await api.gpt3_16k({ model, ...request })
+      : preferGpt4
       ? await api.gpt4_8k(request)
       : await api.gpt3_8k(request)
 
   const response_tokens = api.countTokens(response)
-  console.log({ response_tokens })
+  if (showTokenDetails) console.log({ response_tokens })
   return response
 }

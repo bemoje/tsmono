@@ -21,8 +21,10 @@ export async function readExcelFile(filepath: string): Promise<Record<string, st
     const rows: string[][] = []
     worksheet.eachRow((cells: Row) => {
       const row: string[] = []
-      cells.eachCell((cell) => {
-        row.push(String(cell.value).trim())
+      cells.eachCell({ includeEmpty: true }, (cell) => {
+        let _cell = String(cell.value).trim()
+        if (_cell === 'null') _cell = ''
+        row.push(_cell)
       })
       rows.push(row)
     })

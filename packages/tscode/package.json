@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/tscode",
-  "version": "0.1.5",
+  "version": "0.1.9",
   "description": "Tools for parsing and editing TypeScript source code.",
   "main": "./src/index.js",
   "scripts": {},
@@ -12,9 +12,7 @@
   "license": "MIT",
   "keywords": [],
   "dependencies": {
-    "@bemoje/array": "latest",
-    "@bemoje/number": "latest",
-    "@bemoje/string": "latest",
+    "@bemoje/util": "latest",
     "tslib": "^2.3.0"
   },
   "repository": {

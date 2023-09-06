@@ -1,4 +1,4 @@
-import { arrFindLastIndexOf } from '@bemoje/array'
+import { arrFindLastIndexOf } from '@bemoje/util'
 
 /**
  * Extracts Jest test cases from a given TypeScript code string.

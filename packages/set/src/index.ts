@@ -1,6 +1,0 @@
-export * from './lib/setAddMany'
-export * from './lib/setDifference'
-export * from './lib/setIntersection'
-export * from './lib/setIsSuperset'
-export * from './lib/setSymmetricDifference'
-export * from './lib/setUnion'

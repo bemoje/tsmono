@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/tsdoc",
-  "version": "0.1.5",
+  "version": "0.1.9",
   "description": "Classes and tools for TSDoc parsing.",
   "main": "./src/index.js",
   "scripts": {},
@@ -12,9 +12,7 @@
   "license": "MIT",
   "keywords": [],
   "dependencies": {
-    "@bemoje/array": "latest",
-    "@bemoje/map": "latest",
-    "@bemoje/string": "latest",
+    "@bemoje/util": "latest",
     "tslib": "^2.3.0"
   },
   "repository": {

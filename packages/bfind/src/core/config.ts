@@ -1,5 +1,5 @@
 import { Config, parseBoolean, parseDirectories, parseInteger } from '@bemoje/commander-config'
-import { getDiskDrivesWindows, getRootDir, isWindows } from '@bemoje/fs'
+import { getDiskDrivesWindows, getRootDir, isWindows } from '@bemoje/util'
 import { wipeIndex } from './wipeIndex'
 
 export const config = new Config('bemoje', 'bfind', {
@@ -24,7 +24,7 @@ export const config = new Config('bemoje', 'bfind', {
     default: 35,
     parse: parseInteger,
   },
-  'rootdirs': {
+  rootdirs: {
     description: [
       'The root directories which should be indexed for search.',
       'Use semicolon as separator for multiple directories.',
@@ -36,7 +36,7 @@ export const config = new Config('bemoje', 'bfind', {
       return res
     },
   },
-  'ignore': {
+  ignore: {
     description:
       'Directories to ignore/skip when scanning (regex mode). Use semicolon as separator for multiple expressions.',
     default: [

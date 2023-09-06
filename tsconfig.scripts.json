@@ -3,5 +3,6 @@
     "esModuleInterop": true,
     "target": "ES2015"
   },
-  "include": ["packages/index.ts"]
+  "include": ["scripts/**/*.ts", "packages/**/*.ts"],
+  "exclude": ["packages/**/*.test.ts"]
 }

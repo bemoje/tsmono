@@ -1,4 +1,4 @@
-import { TimeInterval } from '@bemoje/time'
+import { TimeInterval } from '@bemoje/util'
 import { AbstractSubtitle } from '../core/AbstractSubtitle'
 
 /**

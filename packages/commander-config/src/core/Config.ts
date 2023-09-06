@@ -1,5 +1,6 @@
-import { AppData, readJsonFileSync } from '@bemoje/fs'
-import { cyan, green } from 'cli-color'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+import { AppData, colors, getOS, isVsCodeInstalled, readJsonFileSync } from '@bemoje/util'
 import { Command } from 'commander'
 import fs from 'fs'
 import { getUserInputFromEditorSync } from '../util/getUserInputFromEditorSync'
@@ -7,24 +8,46 @@ import { parseString } from '../util/parseString'
 import { validateString } from '../util/validateString'
 import { IConfigSetting } from './IConfigSetting'
 import { IConfigSettings } from './IConfigSettings'
+const { cyan, green } = colors
 
+/**
+ * A utility class for managing user configuration settings when using the 'commander' package to create CLI's.
+ */
 export class Config {
+  /**
+   * An AppData instance that manages both an appdata file, a user config file and a log file.
+   */
   readonly appdata: AppData<Record<string, any>, Record<string, any>>
+
+  /**
+   * Objects that define each setting of the user config.
+   */
   readonly definitions: IConfigSettings
 
+  /**
+   * Creates a new Config instance.
+   * @param appAuthor - The name of the author of the application.
+   * @param appName - The name of the application.
+   * @param definitions - Objects that define each setting of the user config.
+   */
   constructor(appAuthor: string, appName: string, definitions: Record<string, IConfigSetting>) {
     definitions = {
       editor: {
-        description:
-          'Application launch command for the editor to use for editing files, such as editing the user settings file.',
-        default: 'code -w',
+        description: 'application launch command for your preferred text editor.',
+        default: isVsCodeInstalled()
+          ? 'code -w'
+          : getOS() === 'windows'
+          ? 'notepad'
+          : getOS() === 'osx'
+          ? 'vi'
+          : 'nano',
         parse: parseString,
         validate: validateString,
       },
       ...definitions,
     }
 
-    this.appdata = new AppData(appAuthor, appName, 'appdata')
+    this.appdata = new AppData<Record<string, any>, Record<string, any>>(appAuthor, appName, 'appdata')
 
     this.definitions = definitions as IConfigSettings
 
@@ -46,7 +69,10 @@ export class Config {
     })
   }
 
-  editConfigInEditor() {
+  /**
+   * Edits the user configuration in the editor.
+   */
+  editConfigInEditor(): void {
     const newJson = getUserInputFromEditorSync({
       appdataDirectory: this.appdata.directory,
       editor: this.appdata.user.data.editor,
@@ -54,9 +80,14 @@ export class Config {
       extension: '.json',
     })
     this.appdata.user.assign(JSON.parse(newJson) as Record<string, any>)
+    console.log('Configuration updated.')
   }
 
-  initialize(program: Command) {
+  /**
+   * Initializes the configuration settings.
+   * @param program - The Commander program instance.
+   */
+  initialize(program: Command): void {
     program
       .command('appdata')
       .description(cyan('Get the directory containing your app data.'))
@@ -64,7 +95,7 @@ export class Config {
         console.log('APPDATA: ' + this.appdata.directory)
         console.log(options)
         if (options.wipe) {
-          fs.rmdirSync(this.appdata.directory, { recursive: true })
+          fs.rmSync(this.appdata.directory, { recursive: true, force: true })
           console.log('All app data deleted.')
         }
       })
@@ -78,7 +109,7 @@ export class Config {
         [
           'The name of the setting. If reset is selected and this is omitted, ALL settings are reset.',
           ...Object.entries(this.definitions).map(([name, def]) => `${green(name)}: ${def.description}`),
-        ].join('\n'),
+        ].join('\n')
       )
       .argument('[value]', 'The value to assign.')
       .action((action?: string, setting?: string, value?: string) => {
@@ -87,13 +118,20 @@ export class Config {
         if (action === 'set') {
           if (!setting || !value) {
             console.error('Both setting and value must be provided.')
-            process.exit()
+            process.exit(1)
           }
-          this.set(setting, value)
+          return this.set(setting, value)
         }
+        console.error(action + ' is not a valid action.')
+        process.exit(1)
       })
   }
 
+  /**
+   * Sets a configuration setting.
+   * @param setting - The name of the setting.
+   * @param value - The value to assign.
+   */
   set(setting: string, value: string): void {
     const definition = this.definitions[setting]
     if (!definition) {
@@ -103,11 +141,15 @@ export class Config {
     console.log(`The '${setting}' setting has been configured.`)
   }
 
+  /**
+   * Resets a configuration setting.
+   * @param setting - The name of the setting. If omitted, all settings are reset.
+   */
   reset(setting?: string): void {
     if (!setting) {
-      fs.rmdirSync(this.appdata.directory, { recursive: true })
+      fs.rmSync(this.appdata.user.filepath)
       console.log('All app data deleted.')
-      process.exit()
+      process.exit(0)
     }
     const definition = this.definitions[setting]
     if (!definition) {

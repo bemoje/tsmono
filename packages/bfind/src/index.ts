@@ -1,5 +1,5 @@
 import { TrieMap } from '@bemoje/trie-map'
-import { green, red, yellow } from 'cli-color'
+import { colors } from '@bemoje/util'
 import { Command } from 'commander'
 import fs from 'fs'
 import path from 'path'
@@ -9,6 +9,7 @@ import { buildIndex } from './core/buildIndex'
 import { config } from './core/config'
 import { printSearchResult } from './core/printSearchResult'
 import { search } from './core/search'
+const { green, red, yellow } = colors
 
 export const program = new Command()
   .name('bfind')
@@ -20,13 +21,13 @@ export const program = new Command()
       'Regex ignore patterns are configurable in CLI or the JSON config file.',
       'Each argument is a search term. If multiple terms are provided, ' +
         'they all must be present in the filepath to be considered a search hit.',
-    ].join(' '),
+    ].join(' ')
   )
   .version('0.0.0')
   .argument(
     '[search...]',
     'Each argument is a search term. If multiple terms are provided, ' +
-      'they all must be present in the filepath to be considered a search hit.',
+      'they all must be present in the filepath to be considered a search hit.'
   )
   .option('-s, --scan', 'Scan disk again and refresh the index.')
   .option('-a, --all', 'Force print all search results.')
@@ -45,7 +46,7 @@ export const program = new Command()
 
     const indexAge = Math.floor((Date.now() - fs.statSync(FILE_LIST_JSON_PATH).mtimeMs) / 1000 / 60 / 60 / 24)
     const color = indexAge > 7 ? red : indexAge > 3 ? yellow : green
-    console.log(`Index is ${color(indexAge)} days old.`)
+    console.log(`Index is ${color(indexAge.toString())} days old.`)
 
     const t1 = Date.now()
     const searchResult = search(keywords, PATHS, TRIE)

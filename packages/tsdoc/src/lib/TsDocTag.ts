@@ -1,4 +1,4 @@
-import { arrFindIndicesOf } from '@bemoje/array'
+import { arrFindIndicesOf } from '@bemoje/util'
 import { isNamedMultiTsDocTag } from './util/isNamedMultiTsDocTag'
 import { isNamedTsDocTag } from './util/isNamedTsDocTag'
 import { tsDocNormalizeTagName } from './util/tsDocNormalizeTagName'

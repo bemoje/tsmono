@@ -1,4 +1,4 @@
-import { rexec } from '@bemoje/string'
+import { rexec } from '@bemoje/util'
 
 /**
  * Strips JSDoc style types and default values from the provided code.

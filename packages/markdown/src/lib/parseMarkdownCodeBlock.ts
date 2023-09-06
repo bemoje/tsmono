@@ -1,4 +1,4 @@
-import { rexecFirstMatch } from '@bemoje/string'
+import { rexecFirstMatch } from '@bemoje/util'
 
 /**
  * Parse language and code content from a markdown code block.

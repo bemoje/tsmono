@@ -1,5 +1,5 @@
-import { validateError } from './validateError'
+import { failValidation } from './failValidation'
 
 export function validateBoolean(name: string, value: boolean) {
-  if (typeof value !== 'boolean') validateError(name, 'must be either true or false.')
+  if (typeof value !== 'boolean') failValidation(name, 'must be either true or false.')
 }

@@ -1,4 +1,4 @@
-import { regexEscapeString } from '@bemoje/string'
+import { regexEscapeString } from '@bemoje/util'
 import path from 'path'
 import walkdir from 'walkdir'
 import { convertFilter } from './core/convertFilter'
@@ -7,7 +7,7 @@ import { IWalkDirectoryOptions } from './types/IWalkDirectoryOptions'
 export async function findFile(
   dirpath: string,
   search: string,
-  options: IWalkDirectoryOptions = {},
+  options: IWalkDirectoryOptions = {}
 ): Promise<string | undefined> {
   search = search.replace(/\\|\//g, path.sep)
   const regSearch = new RegExp(regexEscapeString(search), 'i')

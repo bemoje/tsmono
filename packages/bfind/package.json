@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/bfind",
-  "version": "0.2.9",
+  "version": "0.2.21",
   "description": "CLI for very fast file search. File contents are not indexed - only file and directory names. Directories are highlighted in blue in search results. Search results are sorted by last modified date. Regex ignore patterns are configurable in CLI or the JSON config file. Each argument is a search term. If multiple terms are provided, they all must be present in the filepath to be considered a search hit.",
   "main": "./index.cjs.js",
   "module": "./index.esm.js",
@@ -18,12 +18,8 @@
   "keywords": [],
   "dependencies": {
     "@bemoje/commander-config": "latest",
-    "@bemoje/fs": "latest",
-    "@bemoje/fspath-filter": "latest",
-    "@bemoje/set": "latest",
     "@bemoje/trie-map": "latest",
-    "appdata-path": "^1.0.0",
-    "cli-color": "^2.0.3",
+    "@bemoje/util": "latest",
     "commander": "^11.0.0",
     "lodash": "^4.17.21",
     "tslib": "^2.3.0",

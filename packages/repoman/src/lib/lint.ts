@@ -1,0 +1,9 @@
+import { executeBatchScript } from '@bemoje/util'
+
+/**
+ * Lint all or some packages
+ * @param names - The names of the packages to lint. If empty, all packages will be linted.
+ */
+export function lint(names: string[] = []) {
+  executeBatchScript(['nx run-many -t lint' + (names.length ? ' -p ' + names.join(',') : '')])
+}

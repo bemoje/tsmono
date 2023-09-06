@@ -1,4 +1,4 @@
-import { strRemoveFirstAndLastLine, strTrimLinesRight } from '@bemoje/string'
+import { strRemoveFirstAndLastLine, strTrimLinesRight } from '@bemoje/util'
 import { isValidTsDocComment } from './isValidTsDocComment'
 
 /**

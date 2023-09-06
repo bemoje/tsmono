@@ -1,5 +1,5 @@
-import { cwdpath } from '@bemoje/fs'
 import { VTTSubtitles } from '@bemoje/subtitles'
+import { cwdpath } from '@bemoje/util'
 import { OpenaiApiClientExtended } from './OpenaiApiClientExtended'
 
 //
@@ -22,7 +22,7 @@ import { OpenaiApiClientExtended } from './OpenaiApiClientExtended'
     vtt.subtitles.map(async (sub: any) => {
       sub.text = await openai.proofreadEnglish(sub.text)
       return sub
-    }),
+    })
   )
 
   console.log('-----------------------')
