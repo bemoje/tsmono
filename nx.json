@@ -210,6 +210,7 @@
     "repoman": {
       "tags": [],
       "implicitDependencies": [
+        "tscode",
         "util"
       ],
       "npmScope": "bemoje",

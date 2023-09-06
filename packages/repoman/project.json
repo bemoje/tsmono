@@ -2,7 +2,7 @@
   "name": "repoman",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/repoman/src",
-  "projectType": "library",
+  "projectType": "application",
   "targets": {
     "build": {
       "executor": "@nx/rollup:rollup",
