@@ -12,36 +12,36 @@ const enabled =
   ((FORCE_COLOR != null && FORCE_COLOR !== '0') || (process.stdout && process.stdout.isTTY))
 
 // modifiers
-export const reset = init(0, 0)
-export const bold = init(1, 22)
-export const dim = init(2, 22)
-export const italic = init(3, 23)
-export const underline = init(4, 24)
-export const inverse = init(7, 27)
-export const hidden = init(8, 28)
-export const strikethrough = init(9, 29)
+const reset = init(0, 0)
+const bold = init(1, 22)
+const dim = init(2, 22)
+const italic = init(3, 23)
+const underline = init(4, 24)
+const inverse = init(7, 27)
+const hidden = init(8, 28)
+const strikethrough = init(9, 29)
 
 // colors
-export const black = init(30, 39)
-export const red = init(31, 39)
-export const green = init(32, 39)
-export const yellow = init(33, 39)
-export const blue = init(34, 39)
-export const magenta = init(35, 39)
-export const cyan = init(36, 39)
-export const white = init(37, 39)
-export const gray = init(90, 39)
-export const grey = init(90, 39)
+const black = init(30, 39)
+const red = init(31, 39)
+const green = init(32, 39)
+const yellow = init(33, 39)
+const blue = init(34, 39)
+const magenta = init(35, 39)
+const cyan = init(36, 39)
+const white = init(37, 39)
+const gray = init(90, 39)
+const grey = init(90, 39)
 
 // background colors
-export const bgBlack = init(40, 49)
-export const bgRed = init(41, 49)
-export const bgGreen = init(42, 49)
-export const bgYellow = init(43, 49)
-export const bgBlue = init(44, 49)
-export const bgMagenta = init(45, 49)
-export const bgCyan = init(46, 49)
-export const bgWhite = init(47, 49)
+const bgBlack = init(40, 49)
+const bgRed = init(41, 49)
+const bgGreen = init(42, 49)
+const bgYellow = init(43, 49)
+const bgBlue = init(44, 49)
+const bgMagenta = init(45, 49)
+const bgCyan = init(46, 49)
+const bgWhite = init(47, 49)
 
 function run(arr: any, str: string) {
   let beg = ''
@@ -107,7 +107,7 @@ function init(open: number, close: number) {
   }
 }
 
-export default {
+export const colors = {
   reset,
   bold,
   dim,
@@ -135,3 +135,5 @@ export default {
   bgCyan,
   bgWhite,
 }
+
+export default colors
