@@ -8,22 +8,6 @@
       "npmScope": "bemoje",
       "projectType": "library"
     },
-    "array": {
-      "tags": [],
-      "implicitDependencies": [
-        "util"
-      ],
-      "npmScope": "bemoje",
-      "projectType": "library"
-    },
-    "async": {
-      "tags": [],
-      "implicitDependencies": [
-        "util"
-      ],
-      "npmScope": "bemoje",
-      "projectType": "library"
-    },
     "bfind": {
       "tags": [],
       "implicitDependencies": [
@@ -50,12 +34,6 @@
       "npmScope": "bemoje",
       "projectType": "library"
     },
-    "date": {
-      "tags": [],
-      "implicitDependencies": [],
-      "npmScope": "bemoje",
-      "projectType": "library"
-    },
     "errors": {
       "tags": [],
       "implicitDependencies": [
@@ -65,14 +43,6 @@
       "projectType": "library"
     },
     "excel-util": {
-      "tags": [],
-      "implicitDependencies": [
-        "util"
-      ],
-      "npmScope": "bemoje",
-      "projectType": "library"
-    },
-    "fs": {
       "tags": [],
       "implicitDependencies": [
         "util"
@@ -104,14 +74,6 @@
       "npmScope": "bemoje",
       "projectType": "library"
     },
-    "function": {
-      "tags": [],
-      "implicitDependencies": [
-        "util"
-      ],
-      "npmScope": "bemoje",
-      "projectType": "library"
-    },
     "html": {
       "tags": [],
       "implicitDependencies": [],
@@ -123,12 +85,6 @@
       "implicitDependencies": [
         "util"
       ],
-      "npmScope": "bemoje",
-      "projectType": "library"
-    },
-    "map": {
-      "tags": [],
-      "implicitDependencies": [],
       "npmScope": "bemoje",
       "projectType": "library"
     },
@@ -149,30 +105,6 @@
     "nlp": {
       "tags": [],
       "implicitDependencies": [],
-      "npmScope": "bemoje",
-      "projectType": "library"
-    },
-    "node": {
-      "tags": [],
-      "implicitDependencies": [
-        "util"
-      ],
-      "npmScope": "bemoje",
-      "projectType": "library"
-    },
-    "number": {
-      "tags": [],
-      "implicitDependencies": [
-        "util"
-      ],
-      "npmScope": "bemoje",
-      "projectType": "library"
-    },
-    "object": {
-      "tags": [],
-      "implicitDependencies": [
-        "util"
-      ],
       "npmScope": "bemoje",
       "projectType": "library"
     },
@@ -199,21 +131,7 @@
       "npmScope": "bemoje",
       "projectType": "library"
     },
-    "queue": {
-      "tags": [],
-      "implicitDependencies": [
-        "util"
-      ],
-      "npmScope": "bemoje",
-      "projectType": "library"
-    },
     "set": {
-      "tags": [],
-      "implicitDependencies": [],
-      "npmScope": "bemoje",
-      "projectType": "library"
-    },
-    "sort": {
       "tags": [],
       "implicitDependencies": [],
       "npmScope": "bemoje",
@@ -230,14 +148,6 @@
     "split-sentences": {
       "tags": [],
       "implicitDependencies": [],
-      "npmScope": "bemoje",
-      "projectType": "library"
-    },
-    "string": {
-      "tags": [],
-      "implicitDependencies": [
-        "util"
-      ],
       "npmScope": "bemoje",
       "projectType": "library"
     },
@@ -265,12 +175,6 @@
       "npmScope": "bemoje",
       "projectType": "application"
     },
-    "time": {
-      "tags": [],
-      "implicitDependencies": [],
-      "npmScope": "bemoje",
-      "projectType": "library"
-    },
     "trie-map": {
       "tags": [],
       "implicitDependencies": [],
@@ -293,31 +197,9 @@
       "npmScope": "bemoje",
       "projectType": "library"
     },
-    "validation": {
-      "tags": [],
-      "implicitDependencies": [
-        "util"
-      ],
-      "npmScope": "bemoje",
-      "projectType": "library"
-    },
-    "os": {
-      "tags": [],
-      "implicitDependencies": [],
-      "npmScope": "bemoje",
-      "projectType": "library"
-    },
     "zip": {
       "tags": [],
       "implicitDependencies": [],
-      "npmScope": "bemoje",
-      "projectType": "library"
-    },
-    "monitoring": {
-      "tags": [],
-      "implicitDependencies": [
-        "util"
-      ],
       "npmScope": "bemoje",
       "projectType": "library"
     },

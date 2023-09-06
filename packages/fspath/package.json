@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/fspath",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Nodejs filesystem paths made very convenient to use and navigate the path tree.",
   "main": "./src/index.js",
   "scripts": {},

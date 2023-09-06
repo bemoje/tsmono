@@ -1,7 +1,0 @@
-export * from './lib/getAppDataPath'
-export * from './lib/getOS'
-export * from './lib/isLinux'
-export * from './lib/isLinuxProgramInstalled'
-export * from './lib/isOSX'
-export * from './lib/isVsCodeInstalled'
-export * from './lib/isWindows'

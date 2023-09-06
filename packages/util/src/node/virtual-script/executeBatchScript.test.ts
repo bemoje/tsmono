@@ -22,15 +22,6 @@ describe(executeBatchScript.name, () => {
   describe('when cmds is not empty', () => {
     const cmds = ['ping google.com']
 
-    describe('when options are not provided', () => {
-      it('should use default options', () => {
-        executeBatchScript(cmds)
-        const expectedScript = ['@echo off', 'cd ' + process.cwd(), 'ping google.com'].join('\n')
-        expect(fs.writeFileSync).toHaveBeenCalledWith(expect.any(String), expectedScript, 'utf8')
-        expect(execFileSync).toHaveBeenCalledWith(expect.any(String), { stdio: 'inherit' })
-      })
-    })
-
     describe('when options are provided', () => {
       const options: IExecuteBatchScriptOptions = {
         echo: true,

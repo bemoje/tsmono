@@ -1,4 +1,4 @@
-import EventEmitter from 'events'
+import { EventEmitter } from 'events'
 import { PriorityQueue } from './PriorityQueue'
 import type { IPromiseQueueOptions } from './types/IPromiseQueueOptions'
 import type { IQueue } from './types/IQueue'
@@ -14,7 +14,7 @@ import { PromiseQueueTask } from './types/PromiseQueueTask'
  */
 export class PromiseQueue<
   QueueType extends IQueue<() => Promise<unknown>, EnqueueOptionsType> = PriorityQueue,
-  EnqueueOptionsType extends IQueueAddOptions = IQueueAddOptions,
+  EnqueueOptionsType extends IQueueAddOptions = IQueueAddOptions
 > extends EventEmitter {
   /**
    * Whether to carry over the concurrency count from the previous interval.
@@ -89,7 +89,7 @@ export class PromiseQueue<
       throw new TypeError(
         `Expected 'intervalCap' to be a number from 1 and up, got '${
           options.intervalCap?.toString() ?? ''
-        }' (${typeof options.intervalCap})`,
+        }' (${typeof options.intervalCap})`
       )
     }
 
@@ -97,7 +97,7 @@ export class PromiseQueue<
       throw new TypeError(
         `Expected 'interval' to be a finite number >= 0, got '${
           options.interval?.toString() ?? ''
-        }' (${typeof options.interval})`,
+        }' (${typeof options.interval})`
       )
     }
 
@@ -126,7 +126,7 @@ export class PromiseQueue<
   set concurrency(newConcurrency: number) {
     if (!(typeof newConcurrency === 'number' && newConcurrency >= 1)) {
       throw new TypeError(
-        `Expected 'concurrency' to be a number from 1 and up, got '${newConcurrency}' (${typeof newConcurrency})`,
+        `Expected 'concurrency' to be a number from 1 and up, got '${newConcurrency}' (${typeof newConcurrency})`
       )
     }
     this._concurrency = newConcurrency
@@ -141,15 +141,15 @@ export class PromiseQueue<
    */
   async add<TaskResultType>(
     function_: PromiseQueueTask<TaskResultType>,
-    options: Exclude<EnqueueOptionsType, 'throwOnTimeout'>,
+    options: Exclude<EnqueueOptionsType, 'throwOnTimeout'>
   ): Promise<TaskResultType>
   async add<TaskResultType>(
     function_: PromiseQueueTask<TaskResultType>,
-    options?: Partial<EnqueueOptionsType>,
+    options?: Partial<EnqueueOptionsType>
   ): Promise<TaskResultType | void>
   async add<TaskResultType>(
     function_: PromiseQueueTask<TaskResultType>,
-    options: Partial<EnqueueOptionsType> = {},
+    options: Partial<EnqueueOptionsType> = {}
   ): Promise<TaskResultType | void> {
     options = { ...options }
     return new Promise((resolve, reject) => {
@@ -187,15 +187,15 @@ export class PromiseQueue<
    */
   async addAll<TaskResultsType>(
     functions: ReadonlyArray<PromiseQueueTask<TaskResultsType>>,
-    options?: Partial<Exclude<EnqueueOptionsType, 'throwOnTimeout'>>,
+    options?: Partial<Exclude<EnqueueOptionsType, 'throwOnTimeout'>>
   ): Promise<TaskResultsType[]>
   async addAll<TaskResultsType>(
     functions: ReadonlyArray<PromiseQueueTask<TaskResultsType>>,
-    options?: Partial<EnqueueOptionsType>,
+    options?: Partial<EnqueueOptionsType>
   ): Promise<Array<TaskResultsType | void>>
   async addAll<TaskResultsType>(
     functions: ReadonlyArray<PromiseQueueTask<TaskResultsType>>,
-    options?: Partial<EnqueueOptionsType>,
+    options?: Partial<EnqueueOptionsType>
   ): Promise<Array<TaskResultsType | void>> {
     return Promise.all(functions.map(async (function_) => this.add(function_, options)))
   }
@@ -311,7 +311,7 @@ export class PromiseQueue<
         () => {
           reject(new Error('The task was aborted.'))
         },
-        { once: true },
+        { once: true }
       )
     })
   }

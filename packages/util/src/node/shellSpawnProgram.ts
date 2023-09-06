@@ -1,4 +1,4 @@
-import childProcess from 'child_process'
+import { spawn } from 'child_process'
 
 /**
  * @param command - The program to execute.
@@ -11,9 +11,9 @@ export function shellSpawnProgram(command: string, ...args: string[]): Promise<s
     const noInherit = args.indexOf('--no-inherit')
     if (noInherit !== -1) {
       args.splice(noInherit, 1)
-      child = childProcess.spawn(command, args)
+      child = spawn(command, args)
     } else {
-      child = childProcess.spawn(command, args, { stdio: 'inherit' })
+      child = spawn(command, args, { stdio: 'inherit' })
     }
 
     child.on('error', (error) => {

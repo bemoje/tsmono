@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/sorted-array",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "description": "An array data structure for binary search, options for whether to allow duplicates. A sort comparator can be predefined for ease of use.",
   "main": "./src/index.js",
   "scripts": {},

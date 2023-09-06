@@ -1,12 +1,9 @@
 {
   "name": "@bemoje/util",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "type": "commonjs",
   "main": "./index.cjs",
   "module": "./index.js",
-  "devDependencies": {
-    "@types/node": "^20.5.9"
-  },
   "author": {
     "name": "Benjamin Møller Jensen",
     "email": "bemoje@bemoje.net",
@@ -26,5 +23,6 @@
     "url": "https://github.com/bemoje/tsmono/issues"
   },
   "homepage": "https://github.com/bemoje/tsmono",
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {}
 }
