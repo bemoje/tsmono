@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
-import { colors, executeBatchScript } from '../../packages/util/src'
+import colors from '../../packages/util/src/node/colors'
+import { executeBatchScript } from '../../packages/util/src/node/virtual-script/executeBatchScript'
 import { docs } from './docs'
 import { getPackages } from './getPackages'
 import { hashPackage } from './hashPackage'

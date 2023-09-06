@@ -1,5 +1,5 @@
-import { FSPathFilter } from '@bemoje/fspath-filter'
 import { TrieMap } from '@bemoje/trie-map'
+import { FSPathFilter } from '@bemoje/util'
 import fs from 'fs'
 import path from 'path'
 import walkdir from 'walkdir'

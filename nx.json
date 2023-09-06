@@ -12,8 +12,6 @@
       "tags": [],
       "implicitDependencies": [
         "commander-config",
-        "fspath-filter",
-        "set",
         "trie-map",
         "util"
       ],

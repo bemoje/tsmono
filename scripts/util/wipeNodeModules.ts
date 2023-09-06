@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { deleteDirectorySafeSync } from '../../packages/util/src'
+import { deleteDirectorySafeSync } from '../../packages/util/src/fs/deleteDirectorySafeSync'
 import { getPackages } from './getPackages'
 
 export function wipeNodeModules(args: string[]) {

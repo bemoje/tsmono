@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import { tsExtractImports } from '../../packages/tscode/src/lib/tsExtractImports'
-import { strUnwrap } from '../../packages/util/src'
+import { strUnwrap } from '../../packages/util/src/string/string/strUnwrap'
 import { walkTsFiles } from './walkTsFiles'
 
 export function getImported(pkgroot: string): { imports: string[]; typeImports: string[] } {

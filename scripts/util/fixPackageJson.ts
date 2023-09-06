@@ -1,4 +1,5 @@
-import { colors, updateJsonFileSync } from '../../packages/util/src'
+import { updateJsonFileSync } from '../../packages/util/src/fs/updateJsonFileSync'
+import colors from '../../packages/util/src/node/colors'
 import { getPackages } from './getPackages'
 
 export function fixPackageJson() {

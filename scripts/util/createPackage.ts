@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { executeBatchScript } from '../../packages/util/src'
+import { executeBatchScript } from '../../packages/util/src/node/virtual-script/executeBatchScript'
 import { fixPackageJson } from './fixPackageJson'
 
 const cwd = process.cwd()

@@ -1,6 +1,5 @@
-import { setUnion } from '@bemoje/set'
 import { TrieMap } from '@bemoje/trie-map'
-import { colors } from '@bemoje/util'
+import { colors, setUnion } from '@bemoje/util'
 import { words } from 'lodash'
 import { extractSearchKeys } from './extractSearchKeys'
 const { green } = colors
