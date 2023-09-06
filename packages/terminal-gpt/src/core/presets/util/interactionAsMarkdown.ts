@@ -1,4 +1,3 @@
-import { prettyIsoDateString } from '@bemoje/date'
 import { IGptInteraction } from '../../types/IGptInteraction'
 
 /**
@@ -30,16 +29,5 @@ export function interactionAsMarkdown(interaction: IGptInteraction): string {
       response
   }
 
-  return (
-    '[Skip to response](#res)\n' +
-    '## SYSTEM MESSAGE\n' +
-    '```\n' +
-    instruction +
-    '\n```' +
-    '\nTime: ' +
-    prettyIsoDateString(new Date(timestamp).toISOString(), ' ', 'minute') +
-    '\nTemperature: ' +
-    temperature +
-    conversation
-  )
+  return '[Skip to response](#res)\n' + '## SYSTEM MESSAGE\n' + '```\n' + instruction + '\n```\n' + conversation
 }

@@ -51,6 +51,7 @@
       "implicitDependencies": [
         "async",
         "fs",
+        "node",
         "validation"
       ],
       "npmScope": "bemoje",
@@ -171,6 +172,7 @@
     "node": {
       "tags": [],
       "implicitDependencies": [
+        "fs",
         "number"
       ],
       "npmScope": "bemoje",
@@ -280,6 +282,7 @@
         "commander-config",
         "date",
         "fs",
+        "node",
         "openai-api-client",
         "string"
       ],

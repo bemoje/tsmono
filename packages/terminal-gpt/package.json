@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/terminal-gpt",
-  "version": "0.2.25",
+  "version": "0.2.26",
   "description": "",
   "main": "index.cjs.js",
   "module": "index.esm.js",
@@ -21,6 +21,7 @@
     "@bemoje/commander-config": "latest",
     "@bemoje/date": "latest",
     "@bemoje/fs": "latest",
+    "@bemoje/node": "latest",
     "@bemoje/openai-api-client": "latest",
     "@bemoje/string": "latest",
     "cli-color": "^2.0.3",

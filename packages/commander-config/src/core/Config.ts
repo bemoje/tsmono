@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { AppData, readJsonFileSync } from '@bemoje/fs'
+import { AppData, getOS, readJsonFileSync } from '@bemoje/fs'
+import { isVsCodeInstalled } from '@bemoje/node'
 import { cyan, green } from 'cli-color'
 import { Command } from 'commander'
 import fs from 'fs'
@@ -34,7 +35,13 @@ export class Config {
     definitions = {
       editor: {
         description: 'application launch command for your preferred text editor.',
-        default: 'code -w',
+        default: isVsCodeInstalled()
+          ? 'code -w'
+          : getOS() === 'windows'
+          ? 'notepad'
+          : getOS() === 'osx'
+          ? 'vi'
+          : 'nano',
         parse: parseString,
         validate: validateString,
       },

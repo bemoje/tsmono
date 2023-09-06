@@ -30,7 +30,7 @@ const installGlobally: string[] = []
 const successful: string[] = []
 
 console.log(green('Publishing packages with changes to NPM...'))
-getPackages().forEach(({ name, rootdir, pkgpath, pkg, distdir }) => {
+getPackages().forEach(({ name, pkgpath, pkg, distdir }) => {
   let hash = hashPackage(name)
   if (hashes[name] === hash) return
 
@@ -80,19 +80,6 @@ getPackages().forEach(({ name, rootdir, pkgpath, pkg, distdir }) => {
     console.error(red('Could not publish ' + name + '. Reverting version to ' + original + '.'))
     process.exit()
   }
-  // execBatch(
-  //   [
-  //     `cd ${path.join(distdir)}`,
-  //     'npm publish --access public',
-  //     //
-  //   ],
-  //   () => {
-  //     pkg.version = original
-  //     fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
-  //     console.error(red('Could not publish ' + name + '. Reverting version to ' + original + '.'))
-  //     process.exit()
-  //   }
-  // )
 
   // hash
   hashes[name] = hashPackage(name)

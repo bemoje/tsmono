@@ -1,3 +1,4 @@
+export * from './lib/isLinuxProgramInstalled'
 export * from './lib/isVsCodeInstalled'
 export * from './lib/memoryUsage'
 export * from './lib/shellSpawnProgram'

@@ -12,12 +12,19 @@ import {
   validateStringType,
 } from '@bemoje/commander-config'
 import { getOS } from '@bemoje/fs'
+import { isLinuxProgramInstalled } from '@bemoje/node'
 import { IGptPreset } from '../types/IGptPreset'
 
 const improveResponse = [
   'Can you take a look at the provided instructions again?',
   'Go step-by-step through each one and verify that your previous response did in fact follow each instruction.',
   'If not every instruction was not followed exactly, please send a revised response where every instruction considered.',
+  'Your response should be just the revised response and nothing else.',
+].join('\n')
+
+const improveResponseNoInstructions = [
+  'Can you take a look at the provided instructions again?',
+  'Please go step-by-step through your thinking of your previous response and consider whether you answered my question in full and truthfully. If not, please send a revised response.',
   'Your response should be just the revised response and nothing else.',
 ].join('\n')
 
@@ -49,14 +56,14 @@ const npmPackageInstructions = [
 const tsInstructions = [
   ...seniorDeveloperRole,
   '',
-  'Development Environment:',
+  'My environment:',
   '- OS: ' + getOS(),
   '- IDE: Visual Studio Code',
   '- Language: TypeScript (nodejs)',
   '- Tools:',
-  '- b. NX mono-repository',
-  '- c. git and Github',
-  '- d. Jest testing framework',
+  '  - NX mono-repository',
+  '  - git and Github',
+  '  - Jest testing framework',
   '',
   'When your response is code or a step by step guide, do not explain too much, just provide the code or steps.',
 ]
@@ -69,8 +76,8 @@ const javaInstructions = [
   '- IDE: Visual Studio Code',
   '- Language: Java (JDK 18)',
   '- Tools:',
-  '- a. Gradle',
-  '- b. Maven',
+  '  - Gradle',
+  '  - Maven',
   '',
   'When your response is code or a step by step guide, do not explain too much, just provide the code or steps.',
 ]
@@ -149,8 +156,15 @@ export const presetDefaults = {
 
   default_openResponseIn: {
     description:
-      'Application launch command for the program to open the returned response in. Enter "none" to disable. If your browser cannot render markdown, you can install one of the many Markdown Viewer extensions. For chrome, I can recommend "Markdown Viewer" (https://chrome.google.com/webstore/detail/markdown-viewer/ckkdlimhmcjmikdlpkmbgfkaikojcbjk). In the extension options, enable the "allow access to file URLs"-option.',
-    default: 'start chrome',
+      'Application launch command for the program to open the returned response in. Enter "none" to disable. If your browser cannot render markdown, you can install one of the many Markdown Viewer extensions. For Google Chrome, I can recommend "Markdown Viewer" (https://chrome.google.com/webstore/detail/markdown-viewer/ckkdlimhmcjmikdlpkmbgfkaikojcbjk). In the extension options, enable the "allow access to file URLs"-option and you are all set.',
+    default:
+      getOS() === 'windows'
+        ? 'start msedge'
+        : getOS() === 'osx'
+        ? 'open -a "Safari"'
+        : isLinuxProgramInstalled('google-chrome')
+        ? 'google-chrome'
+        : 'firefox',
     parse: parseString,
     validate: validateString,
   },
@@ -192,6 +206,7 @@ const presetExamples = {
     description: 'Prompt the plain ChatGPT with everything at default settings.',
     systemMessage: [],
     temperature: 1,
+    improveReponse: improveResponseNoInstructions,
   },
 
   EN: {
@@ -202,6 +217,7 @@ const presetExamples = {
     markdownOutput: false,
     maxExpectedResponseTokens: 0,
     inputTokensResponseTokensScalar: 1.5,
+    improveResponse: 'Please verify whether your reponse was correct. If not, plaese send a revised response.',
   },
 
   DK: {
@@ -212,6 +228,7 @@ const presetExamples = {
     markdownOutput: false,
     maxExpectedResponseTokens: 0,
     inputTokensResponseTokensScalar: 1.5,
+    improveResponse: 'Please verify whether your reponse was correct. If not, plaese send a revised response.',
   },
 
   refactor: {
