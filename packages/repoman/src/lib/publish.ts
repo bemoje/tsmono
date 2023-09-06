@@ -2,6 +2,7 @@
 import { colors, executeBatchScript, getAppDataPath } from '@bemoje/util'
 import fs from 'fs'
 import path from 'path'
+import { deleteTmpDir } from './deleteTmpDir'
 import { docs } from './docs'
 import { getPackages } from './getPackages'
 import { hashPackage } from './hashPackage'
@@ -144,4 +145,6 @@ export function publish(args: string[] = []) {
       prependWithCall: true,
     })
   }
+
+  deleteTmpDir()
 }

@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/table",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "A 2D table data structure that validates structural integrity and has some useful methods.",
   "main": "./src/index.js",
   "scripts": {},

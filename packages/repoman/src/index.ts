@@ -19,7 +19,7 @@ import { wipeBemojeNodeModules } from './lib/wipeBemojeNodeModules'
 
 const cwd = process.cwd()
 const args = process.argv.slice(2)
-const cmd = args.shift()?.toLowerCase()
+const cmd = args.shift()?.toLowerCase().replace(/-/g, '')
 
 function main() {
   if (!cmd) return

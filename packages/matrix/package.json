@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/matrix",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "A 2-dimensional matrix data structure.",
   "main": "./src/index.js",
   "scripts": {},

@@ -23,6 +23,7 @@ export function docs() {
 
   // create docs
   fs.rmSync(path.join(process.cwd(), 'docs'), { recursive: true, force: true })
+
   executeBatchScript(['typedoc --out ./docs/ --entryPoints ./packages/index.ts'], {
     prependWithCall: true,
   })
@@ -31,10 +32,11 @@ export function docs() {
   fs.rmSync(indexpath, { force: true })
 
   // fix docs
-  const replace = getPackages().map(({ name }) => [snakeCase(name), name])
+  fs.mkdirSync(path.join(process.cwd(), 'docs'), { recursive: true })
   const paths = walkdir.sync(path.join(process.cwd(), 'docs'))
   const htmlFiles = paths.filter((filepath) => filepath.endsWith('.html'))
 
+  const replace = getPackages().map(({ name }) => [snakeCase(name), name])
   htmlFiles.forEach((filepath) => {
     let src = ''
     try {

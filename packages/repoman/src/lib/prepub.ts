@@ -1,6 +1,7 @@
 import { colors, executeBatchScript } from '@bemoje/util'
 import fs from 'fs-extra'
 import path from 'path'
+import { deleteTmpDir } from './deleteTmpDir'
 import { fixAll } from './fixAll'
 import { getPackages } from './getPackages'
 
@@ -29,4 +30,6 @@ export function prepub(names: string[] = []) {
       fs.writeFileSync(path.join(distbin, 'index.js'), binIndex, 'utf8')
     }
   })
+
+  deleteTmpDir()
 }
