@@ -1,14 +1,15 @@
+import { colors } from '@bemoje/node'
+import { TrieMap } from '@bemoje/trie-map'
+import { Command } from 'commander'
 import fs from 'fs'
 import path from 'path'
-import { buildIndex } from './core/buildIndex'
-import { Command } from 'commander'
-import { config } from './core/config'
 import { FILE_LIST_JSON_PATH } from './constants/FILE_LIST_JSON_PATH'
-import { green, red, yellow } from 'kleur'
+import { WORD_TRIE_JSON_PATH } from './constants/WORD_TRIE_JSON_PATH'
+import { buildIndex } from './core/buildIndex'
+import { config } from './core/config'
 import { printSearchResult } from './core/printSearchResult'
 import { search } from './core/search'
-import { TrieMap } from '@bemoje/trie-map'
-import { WORD_TRIE_JSON_PATH } from './constants/WORD_TRIE_JSON_PATH'
+const { green, red, yellow } = colors
 
 export const program = new Command()
   .name('bfind')
@@ -45,7 +46,7 @@ export const program = new Command()
 
     const indexAge = Math.floor((Date.now() - fs.statSync(FILE_LIST_JSON_PATH).mtimeMs) / 1000 / 60 / 60 / 24)
     const color = indexAge > 7 ? red : indexAge > 3 ? yellow : green
-    console.log(`Index is ${color(indexAge)} days old.`)
+    console.log(`Index is ${color(indexAge.toString())} days old.`)
 
     const t1 = Date.now()
     const searchResult = search(keywords, PATHS, TRIE)

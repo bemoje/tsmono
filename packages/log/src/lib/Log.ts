@@ -1,15 +1,16 @@
 import { MS_IN_DAY, dateAdjustHoursBy, isoDateTimestampForFilename } from '@bemoje/date'
 import { appendLineToFile, cleanDirectorySync, createDirectorySync } from '@bemoje/fs'
+import { colors } from '@bemoje/node'
 import { objClonePrimitiveProperties } from '@bemoje/object'
 import { strRepeat } from '@bemoje/string'
 import { isObjectType, isPrimitive } from '@bemoje/validation'
 import { EventEmitter } from 'events'
 import fs from 'fs'
-import kleur, { gray } from 'kleur'
 import path from 'path'
 import { ILogEmitterEventsOptions } from './types/ILogEmitterEventsOptions'
 import { ILogOptions } from './types/ILogOptions'
 import { LogLevel } from './types/LogLevel'
+const { gray, green, yellow, red } = colors
 
 /**
  * This class is a utility for logging messages to the console and/or a log file.
@@ -85,22 +86,22 @@ export class Log {
   /**
    * Color format for debug messages when logged to console.
    */
-  protected debugColor: typeof kleur.gray
+  protected debugColor: typeof gray
 
   /**
    * Color format for info messages when logged to console.
    */
-  protected infoColor: typeof kleur.gray
+  protected infoColor: typeof gray
 
   /**
    * Color format for warning messages when logged to console.
    */
-  protected warnColor: typeof kleur.gray
+  protected warnColor: typeof gray
 
   /**
    * Color format for error messages when logged to console.
    */
-  protected errorColor: typeof kleur.gray
+  protected errorColor: typeof gray
 
   /**
    * Default options for creating new instances.
@@ -111,10 +112,6 @@ export class Log {
     logDirpath: path.join(process.cwd(), 'logs'),
     timezone: 0,
     deleteFilesOlderThan: 0,
-    debugColor: kleur.gray,
-    infoColor: kleur.green,
-    warnColor: kleur.yellow,
-    errorColor: kleur.red,
   }
 
   /**
@@ -126,10 +123,10 @@ export class Log {
     const defaults = Log.optionDefaults
     const _options = { ...defaults, ...options }
 
-    this.debugColor = _options.debugColor
-    this.infoColor = _options.infoColor
-    this.warnColor = _options.warnColor
-    this.errorColor = _options.errorColor
+    this.debugColor = gray
+    this.infoColor = green
+    this.warnColor = yellow
+    this.errorColor = red
 
     this.consoleLogLevel = _options.consoleLogLevel
     this.debugToConsole = this.consoleLogLevel === LogLevel.DEBUG
@@ -310,11 +307,11 @@ export class Log {
    * Generic function for logging to console, used by the log-level specific functions.
    * @param loglevel The log level.
    * @param message The message to print to console.
-   * @param levelColor A 'kleur' module function to wrap the level-part of the string in color formatting.
-   * @param color A 'kleur' module function to wrap the output-part of the string in color formatting.
+   * @param levelColor A function to wrap the level-part of the string in color formatting.
+   * @param color A function to wrap the output-part of the string in color formatting.
    * @param depth The depth to which to print object properties.
    */
-  _logToConsole<T>(loglevel: LogLevel, message: T, color: typeof kleur.gray, depth?: number | null): void {
+  _logToConsole<T>(loglevel: LogLevel, message: T, color: typeof gray, depth?: number | null): void {
     const toConsole =
       loglevel === LogLevel.WARN ? console.warn : loglevel === LogLevel.ERROR ? console.error : console.log
     if (isObjectType(message)) {

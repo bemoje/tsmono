@@ -1,7 +1,8 @@
-import { blue } from 'kleur'
+import { colors } from '@bemoje/node'
 import { config } from './config'
 import { getApiClient } from './getApiClient'
 import { ISendChatRequestOptions } from './types/ISendChatRequestOptions'
+const { blue } = colors
 
 /**
  * Sends a chat request to the OpenAI API.

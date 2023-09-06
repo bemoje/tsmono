@@ -40,6 +40,7 @@
       "@bemoje/map": ["packages/map/src/index.ts"],
       "@bemoje/markdown": ["packages/markdown/src/index.ts"],
       "@bemoje/matrix": ["packages/matrix/src/index.ts"],
+      "@bemoje/monitoring": ["packages/monitoring/src/index.ts"],
       "@bemoje/nlp": ["packages/nlp/src/index.ts"],
       "@bemoje/node": ["packages/node/src/index.ts"],
       "@bemoje/number": ["packages/number/src/index.ts"],

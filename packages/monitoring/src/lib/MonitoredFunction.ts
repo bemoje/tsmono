@@ -1,6 +1,6 @@
+import { ExtensibleFunction } from '@bemoje/function'
 import { setNonEnumerable } from '@bemoje/object'
 import EventEmitter from 'eventemitter3'
-import { ExtensibleFunction } from '../ExtensibleFunction'
 import { FunctionCallEvent } from './FunctionCallEvent'
 import { FunctionErrorEvent } from './FunctionErrorEvent'
 import { FunctionReturnEvent } from './FunctionReturnEvent'

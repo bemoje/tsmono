@@ -1,8 +1,9 @@
 import * as fs from 'fs'
-import { gray, green } from 'kleur'
 import * as path from 'path'
 import { readJsonFileSync } from '../../packages/fs/src/lib/readJsonFileSync'
+import { colors } from '../../packages/node/src/lib/colors'
 import { getPackages } from './getPackages'
+const { gray, green } = colors
 
 export function fixTsConfigIncludes() {
   console.log(green('Fixing tsconfig includes...'))

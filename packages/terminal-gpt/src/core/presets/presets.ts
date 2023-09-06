@@ -1,15 +1,16 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
+import { colors } from '@bemoje/node'
+import { execSync } from 'child_process'
+import { sendChatRequest } from '../sendChatRequest'
+import type { IGptPreset } from '../types/IGptPreset'
 import { appendSystemMessage } from './util/appendSystemMessage'
 import { createChatRequest } from './util/createChatRequest'
 import { createDirectories } from './util/createDirectories'
-import { cyan, green } from 'kleur'
-import { execSync } from 'child_process'
 import { getPromptPlaceholder } from './util/getPromptPlaceholder'
 import { getUserPrompt } from './util/getUserPrompt'
-import type { IGptPreset } from '../types/IGptPreset'
 import { mergeSettingsWithDefaults } from './util/mergeSettingsWithDefaults'
 import { saveInteraction } from './util/saveInteraction'
-import { sendChatRequest } from '../sendChatRequest'
+const { cyan, green } = colors
 
 /**
  * This function handles the presets for the chat application.

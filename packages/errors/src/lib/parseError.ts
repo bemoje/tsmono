@@ -1,24 +1,27 @@
+import { colors } from '@bemoje/node'
 import { regexEscapeString } from '@bemoje/string'
 import { isPlainObject, isPrimitive } from '@bemoje/validation'
-import { bold, gray, red, yellow } from 'kleur'
 import path from 'path'
-import * as stackTraceParser from 'stacktrace-parser'
 import type { IParsedErrorFrame } from './IParsedErrorFrame'
 import { IParsedErrorResult } from './IParsedErrorResult'
+const { bold, gray, red, yellow } = colors
 
 /**
- * Parses an error into a more readable and useful format.
+ * Parses an error (nodejs) into a more readable and useful format.
  * @param error - The error to parse.
  */
 export function parseError(error: Error, noStackTraceColors = false): IParsedErrorResult {
-  // parse stack trace
+  const nodeRe = /^\s*at (?:((?:\[object object\])?[^\\/]+(?: \[as \S+\])?) )?\(?(.*?):(\d+)(?::(\d+))?\)?\s*$/i
   const recwd = new RegExp('^' + regexEscapeString(process.cwd() + path.sep), 'i')
-  const frames = stackTraceParser.parse(error.stack || '').map((frame) => {
-    return {
-      file: `${(frame.file || '').replace(recwd, '').replace(/\\\\?/g, '/')}:${frame.lineNumber}:${frame.column}`,
-      call: frame.methodName + (frame.arguments.length ? `(${frame.arguments.join(', ')})` : ''),
-    }
-  })
+  const frames = []
+  for (const line of (error.stack || '').split('\n')) {
+    const parts = nodeRe.exec(line)
+    if (!parts) continue
+    frames.push({
+      file: `${(parts[2] || '').replace(recwd, '').replace(/\\\\?/g, '/')}:${+parts[3]}:${parts[4] ? +parts[4] : null}`,
+      call: parts[1] || '<unknown>',
+    })
+  }
 
   // render stack trace
   const c = {

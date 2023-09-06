@@ -1,5 +1,6 @@
 export * from './lib/EventEmitter'
 export * from './lib/ExtendError'
+export * from './lib/ExtensibleError'
 export * from './lib/IParsedErrorFrame'
 export * from './lib/IParsedErrorResult'
 export * from './lib/parseError'

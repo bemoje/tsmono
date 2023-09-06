@@ -1,10 +1,11 @@
+import { execFileSync } from 'child_process'
 import fs from 'fs'
 import path from 'path'
-import { execFileSync } from 'child_process'
-import { executeBatchScriptOptionDefaults } from './executeBatchScriptOptionDefaults'
+import { colors } from '../colors'
 import { IExecuteBatchScriptOptions } from './IExecuteBatchScriptOptions'
 import { IExecuteBatchScriptResult } from './IExecuteBatchScriptResult'
-import { magenta } from 'kleur'
+import { executeBatchScriptOptionDefaults } from './executeBatchScriptOptionDefaults'
+const { magenta } = colors
 
 /**
  * Provide a virtual batch script in the form of a string array that represent the lines of the script.

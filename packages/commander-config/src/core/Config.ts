@@ -1,15 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import fs from 'fs'
 import { AppData, readJsonFileSync } from '@bemoje/fs'
-import { Command } from 'commander'
-import { cyan, green } from 'kleur'
+import { colors } from '@bemoje/node'
 import { getOS, isVsCodeInstalled } from '@bemoje/os'
+import { Command } from 'commander'
+import fs from 'fs'
 import { getUserInputFromEditorSync } from '../util/getUserInputFromEditorSync'
-import { IConfigSetting } from './IConfigSetting'
-import { IConfigSettings } from './IConfigSettings'
 import { parseString } from '../util/parseString'
 import { validateString } from '../util/validateString'
+import { IConfigSetting } from './IConfigSetting'
+import { IConfigSettings } from './IConfigSettings'
+const { cyan, green } = colors
 
 /**
  * A utility class for managing user configuration settings when using the 'commander' package to create CLI's.

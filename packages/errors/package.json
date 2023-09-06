@@ -1,14 +1,13 @@
 {
   "name": "@bemoje/errors",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "dependencies": {
     "@bemoje/function": "latest",
+    "@bemoje/node": "latest",
     "@bemoje/object": "latest",
     "@bemoje/string": "latest",
     "@bemoje/validation": "latest",
     "eventemitter3": "^5.0.1",
-    "kleur": "^4.1.5",
-    "stacktrace-parser": "^0.1.10",
     "tslib": "^2.3.0"
   },
   "type": "commonjs",

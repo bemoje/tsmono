@@ -1,7 +1,9 @@
 import fs from 'fs'
-import { gray, green } from 'kleur'
 import path from 'path'
+import { colors } from '../../packages/node/src/lib/colors'
 import { getPackages } from './getPackages'
+
+const { gray, green } = colors
 
 export function fixReadmes() {
   console.log(green('Fixing readmes...'))

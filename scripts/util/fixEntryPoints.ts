@@ -1,8 +1,9 @@
 import fs from 'fs'
-import { gray, green, red } from 'kleur'
 import path from 'path'
+import { colors } from '../../packages/node/src/lib/colors'
 import { getPackages } from './getPackages'
 import { walkTsFiles } from './walkTsFiles'
+const { gray, green, red } = colors
 
 export function fixEntryPoints() {
   console.log(green('Fixing entry points...'))

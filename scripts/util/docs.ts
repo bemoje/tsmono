@@ -1,11 +1,12 @@
 import fs from 'fs'
 import path from 'path'
-import walkdir from 'walkdir'
-import { executeBatchScript } from '../../packages/node/src/lib/virtual-script/executeBatchScript'
-import { getPackages } from './getPackages'
-import { green } from 'kleur'
 import { snakeCase } from 'snake-case'
+import walkdir from 'walkdir'
+import { colors } from '../../packages/node/src/lib/colors'
+import { executeBatchScript } from '../../packages/node/src/lib/virtual-script/executeBatchScript'
 import { strReplaceAll } from '../../packages/string/src'
+import { getPackages } from './getPackages'
+const { green } = colors
 
 export function docs() {
   console.log(green('Generating docs...'))

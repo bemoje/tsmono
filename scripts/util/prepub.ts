@@ -1,9 +1,10 @@
 import fs from 'fs-extra'
 import path from 'path'
+import { colors } from '../../packages/node/src/lib/colors'
 import { executeBatchScript } from '../../packages/node/src/lib/virtual-script/executeBatchScript'
 import { fixAll } from './fixAll'
 import { getPackages } from './getPackages'
-import { green } from 'kleur'
+const { green } = colors
 
 export function prepub(names: string[] = process.argv.slice(2)) {
   fixAll()

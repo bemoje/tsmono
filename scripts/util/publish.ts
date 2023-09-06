@@ -1,11 +1,12 @@
 import fs from 'fs'
-import { gray, green, red } from 'kleur'
 import path from 'path'
+import { colors } from '../../packages/node/src/lib/colors'
 import { executeBatchScript } from '../../packages/node/src/lib/virtual-script/executeBatchScript'
 import { docs } from './docs'
 import { getPackages } from './getPackages'
 import { hashPackage } from './hashPackage'
 import { prepub } from './prepub'
+const { gray, green, red } = colors
 
 export function publish(args: string[] = process.argv.slice(2)) {
   // args

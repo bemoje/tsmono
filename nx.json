@@ -35,6 +35,7 @@
         "commander-config",
         "fs",
         "fspath-filter",
+        "node",
         "os",
         "set",
         "trie-map"
@@ -53,6 +54,7 @@
       "implicitDependencies": [
         "async",
         "fs",
+        "node",
         "os",
         "validation"
       ],
@@ -69,6 +71,7 @@
       "tags": [],
       "implicitDependencies": [
         "function",
+        "node",
         "object",
         "string",
         "validation"
@@ -122,7 +125,6 @@
       "tags": [],
       "implicitDependencies": [
         "async",
-        "object",
         "queue"
       ],
       "npmScope": "bemoje",
@@ -139,6 +141,7 @@
       "implicitDependencies": [
         "date",
         "fs",
+        "node",
         "object",
         "string",
         "validation"
@@ -284,6 +287,7 @@
         "commander-config",
         "date",
         "fs",
+        "node",
         "openai-api-client",
         "os",
         "string"
@@ -341,6 +345,15 @@
     "zip": {
       "tags": [],
       "implicitDependencies": [],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "monitoring": {
+      "tags": [],
+      "implicitDependencies": [
+        "function",
+        "object"
+      ],
       "npmScope": "bemoje",
       "projectType": "library"
     }

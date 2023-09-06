@@ -1,4 +1,3 @@
-import type kleur from 'kleur'
 import { LogLevel } from './LogLevel'
 
 export interface ILogOptions {
@@ -26,24 +25,4 @@ export interface ILogOptions {
    * A negative or positive integer representing the timezone offset from UTC, in hours.
    */
   timezone?: number
-
-  /**
-   * Color format for debug messages when logged to console.
-   */
-  debugColor?: typeof kleur.gray
-
-  /**
-   * Color format for info messages when logged to console.
-   */
-  infoColor?: typeof kleur.gray
-
-  /**
-   * Color format for warning messages when logged to console.
-   */
-  warnColor?: typeof kleur.gray
-
-  /**
-   * Color format for error messages when logged to console.
-   */
-  errorColor?: typeof kleur.gray
 }

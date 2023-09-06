@@ -3,9 +3,10 @@ import { getPackages } from './getPackages'
 
 export function forEach(args: string[] = process.argv.slice(2)) {
   getPackages().forEach(({ rootdir }) => {
-    executeBatchScript(args, {
+    const { error } = executeBatchScript(args, {
       prependWithCall: true,
       cwd: rootdir,
     })
+    if (error) throw error
   })
 }

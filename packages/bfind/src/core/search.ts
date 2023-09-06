@@ -1,8 +1,9 @@
+import { colors } from '@bemoje/node'
 import { setUnion } from '@bemoje/set'
 import { TrieMap } from '@bemoje/trie-map'
-import { green } from 'kleur'
 import { words } from 'lodash'
 import { extractSearchKeys } from './extractSearchKeys'
+const { green } = colors
 export function search(searchString: string, PATHS: string[], TRIE: TrieMap<Set<number>>): Array<string> {
   const keywords: Set<string> = extractSearchKeys(searchString)
   console.log(

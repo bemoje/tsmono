@@ -1,7 +1,8 @@
+import { colors } from '@bemoje/node'
 import fs from 'fs'
-import { cyan, gray, red, yellow } from 'kleur'
 import { words } from 'lodash'
 import { config } from './config'
+const { cyan, gray, red, yellow } = colors
 
 export async function printSearchResult(fspaths: string[], search: string, printAll = false) {
   const origLen = fspaths.length

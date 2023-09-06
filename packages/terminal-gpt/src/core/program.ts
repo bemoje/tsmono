@@ -1,11 +1,12 @@
-import { blue, cyan, red } from 'kleur'
+import { colors } from '@bemoje/node'
+import { strRepeat } from '@bemoje/string'
 import { Command } from 'commander'
-import { config } from './config'
 import { createPreset } from './actions/createPreset'
 import { onCustomPreset } from './actions/onCustomPreset'
-import { presets } from './presets/presets'
 import { removePreset } from './actions/removePreset'
-import { strRepeat } from '@bemoje/string'
+import { config } from './config'
+import { presets } from './presets/presets'
+const { blue, cyan, red } = colors
 
 export function program() {
   // initialize the command-line interface and handles command execution.
