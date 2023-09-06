@@ -12,6 +12,7 @@
         "main": "packages/repoman/src/index.ts",
         "tsConfig": "packages/repoman/tsconfig.lib.json",
         "assets": [],
+        "external": ["fs", "path", "fs-extra"],
         "project": "packages/repoman/package.json",
         "compiler": "swc",
         "format": ["cjs", "esm"]

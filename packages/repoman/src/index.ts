@@ -1,3 +1,6 @@
+import { getAppDataPath } from '@bemoje/util'
+import fs from 'fs'
+import path from 'path'
 import { build } from './lib/build'
 import { createPackage } from './lib/createPackage'
 import { deletePackage } from './lib/deletePackage'
@@ -17,7 +20,16 @@ import { rehash } from './lib/rehash'
 import { test } from './lib/tests'
 import { wipeBemojeNodeModules } from './lib/wipeBemojeNodeModules'
 
-const cwd = process.cwd()
+const appdata = getAppDataPath('bemoje', 'repoman')
+fs.mkdirSync(appdata, { recursive: true })
+const fpath = path.join(appdata, 'repo.txt')
+if (!fs.existsSync(fpath)) {
+  fs.writeFileSync(fpath, process.cwd(), 'utf8')
+}
+console.log(fpath)
+const cwd = fs.readFileSync(fpath, 'utf8').trim()
+if (cwd !== process.cwd()) process.chdir(cwd)
+
 const args = process.argv.slice(2)
 const cmd = args.shift()?.toLowerCase().replace(/-/g, '')
 

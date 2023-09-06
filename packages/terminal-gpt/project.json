@@ -14,7 +14,7 @@
         "assets": [],
         "project": "packages/terminal-gpt/package.json",
         "compiler": "swc",
-        "external": [],
+        "external": ["fs", "child_process", "path"],
         "format": ["cjs", "esm"]
       }
     },
