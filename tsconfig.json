@@ -61,7 +61,8 @@
       "@bemoje/trie-map": ["packages/trie-map/src/index.ts"],
       "@bemoje/tscode": ["packages/tscode/src/index.ts"],
       "@bemoje/tsdoc": ["packages/tsdoc/src/index.ts"],
-      "@bemoje/validation": ["packages/validation/src/index.ts"]
+      "@bemoje/validation": ["packages/validation/src/index.ts"],
+      "@bemoje/zip": ["packages/zip/src/index.ts"]
     }
   },
   "include": ["packages/**/*.ts"],

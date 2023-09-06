@@ -1,5 +1,5 @@
 import path from 'path'
-import { execBatch } from '../../packages/node/src/lib/execBatch'
+import { executeBatchScript } from '../../packages/node/src/lib/virtual-script/executeBatchScript'
 import { getPackages } from './getPackages'
 
 export function npmUninstall() {
@@ -12,9 +12,9 @@ export function npmUninstall() {
   const rootdir = path.join(cwd, 'packages', target)
 
   for (const name of uninstall) {
-    execBatch([`cd ${rootdir}`, 'npm uninstall ' + name, 'npm uninstall @types/' + name])
+    executeBatchScript([`cd ${rootdir}`, 'npm uninstall ' + name, 'npm uninstall @types/' + name])
     if (getPackages().find(({ pkg }) => !!pkg.dependencies[name])) {
-      execBatch([`cd ${cwd}`, 'npm uninstall ' + name, 'npm uninstall @types/' + name])
+      executeBatchScript([`cd ${cwd}`, 'npm uninstall ' + name, 'npm uninstall @types/' + name])
     }
   }
 }

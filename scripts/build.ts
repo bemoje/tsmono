@@ -1,12 +1,3 @@
-import { executeBatchScript } from '../packages/node/src/lib/virtual-script/executeBatchScript'
-import { fixDependencies } from './util/fixDependencies'
-import { fixEntryPoints } from './util/fixEntryPoints'
-import { fixReadmes } from './util/fixReadmes'
+import { build } from './util/build'
 
-const names = process.argv.slice(2)
-
-fixEntryPoints()
-fixDependencies()
-fixReadmes()
-
-executeBatchScript(['nx run-many -t "build"' + (names.length ? ' -p ' + names.join(',') : '')])
+build()

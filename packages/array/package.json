@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/array",
-  "version": "0.2.8",
+  "version": "0.2.10",
   "description": "array related tools/util.",
   "main": "./src/index.js",
   "scripts": {},
@@ -13,10 +13,10 @@
   "keywords": [],
   "dependencies": {
     "@bemoje/number": "latest",
+    "@bemoje/sort": "latest",
     "@bemoje/string": "latest",
     "@bemoje/validation": "latest",
-    "tslib": "^2.3.0",
-    "@bemoje/sort": "latest"
+    "tslib": "^2.3.0"
   },
   "repository": {
     "type": "git",

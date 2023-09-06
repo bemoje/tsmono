@@ -1,11 +1,11 @@
-import { strRepeat } from '@bemoje/string'
-import { blue, cyan, red } from 'cli-color'
+import { blue, cyan, red } from 'kleur'
 import { Command } from 'commander'
+import { config } from './config'
 import { createPreset } from './actions/createPreset'
 import { onCustomPreset } from './actions/onCustomPreset'
-import { removePreset } from './actions/removePreset'
-import { config } from './config'
 import { presets } from './presets/presets'
+import { removePreset } from './actions/removePreset'
+import { strRepeat } from '@bemoje/string'
 
 export function program() {
   // initialize the command-line interface and handles command execution.

@@ -3,10 +3,9 @@ import { appendLineToFile, cleanDirectorySync, createDirectorySync } from '@bemo
 import { objClonePrimitiveProperties } from '@bemoje/object'
 import { strRepeat } from '@bemoje/string'
 import { isObjectType, isPrimitive } from '@bemoje/validation'
-import type { Format } from 'cli-color'
-import { blackBright, green, red, yellow } from 'cli-color'
 import { EventEmitter } from 'events'
 import fs from 'fs'
+import kleur, { gray } from 'kleur'
 import path from 'path'
 import { ILogEmitterEventsOptions } from './types/ILogEmitterEventsOptions'
 import { ILogOptions } from './types/ILogOptions'
@@ -86,22 +85,22 @@ export class Log {
   /**
    * Color format for debug messages when logged to console.
    */
-  protected debugColor: Format
+  protected debugColor: typeof kleur.gray
 
   /**
    * Color format for info messages when logged to console.
    */
-  protected infoColor: Format
+  protected infoColor: typeof kleur.gray
 
   /**
    * Color format for warning messages when logged to console.
    */
-  protected warnColor: Format
+  protected warnColor: typeof kleur.gray
 
   /**
    * Color format for error messages when logged to console.
    */
-  protected errorColor: Format
+  protected errorColor: typeof kleur.gray
 
   /**
    * Default options for creating new instances.
@@ -112,10 +111,10 @@ export class Log {
     logDirpath: path.join(process.cwd(), 'logs'),
     timezone: 0,
     deleteFilesOlderThan: 0,
-    debugColor: blackBright,
-    infoColor: green,
-    warnColor: yellow,
-    errorColor: red,
+    debugColor: kleur.gray,
+    infoColor: kleur.green,
+    warnColor: kleur.yellow,
+    errorColor: kleur.red,
   }
 
   /**
@@ -260,7 +259,7 @@ export class Log {
    * @param width The number of dashes per line.
    */
   dashline(numLines = 1, width = 80): void {
-    const string = blackBright(strRepeat('-', width))
+    const string = gray(strRepeat('-', width))
     for (let i = 0; i < numLines; i++) {
       console.log(string)
     }
@@ -311,11 +310,11 @@ export class Log {
    * Generic function for logging to console, used by the log-level specific functions.
    * @param loglevel The log level.
    * @param message The message to print to console.
-   * @param levelColor A 'cli-color' module function to wrap the level-part of the string in color formatting.
-   * @param color A 'cli-color' module function to wrap the output-part of the string in color formatting.
+   * @param levelColor A 'kleur' module function to wrap the level-part of the string in color formatting.
+   * @param color A 'kleur' module function to wrap the output-part of the string in color formatting.
    * @param depth The depth to which to print object properties.
    */
-  _logToConsole<T>(loglevel: LogLevel, message: T, color: Format, depth?: number | null): void {
+  _logToConsole<T>(loglevel: LogLevel, message: T, color: typeof kleur.gray, depth?: number | null): void {
     const toConsole =
       loglevel === LogLevel.WARN ? console.warn : loglevel === LogLevel.ERROR ? console.error : console.log
     if (isObjectType(message)) {

@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/terminal-gpt",
-  "version": "0.2.26",
+  "version": "0.2.27",
   "description": "",
   "main": "index.cjs.js",
   "module": "index.esm.js",
@@ -24,8 +24,8 @@
     "@bemoje/openai-api-client": "latest",
     "@bemoje/os": "latest",
     "@bemoje/string": "latest",
-    "cli-color": "^2.0.3",
     "commander": "^11.0.0",
+    "kleur": "^4.1.5",
     "tslib": "^2.3.0"
   },
   "repository": {

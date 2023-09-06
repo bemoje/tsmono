@@ -1,14 +1,25 @@
-import { green } from 'cli-color'
 import fs from 'fs'
+import { gray, green } from 'kleur'
 import path from 'path'
 import { getPackages } from './getPackages'
 
 export function fixReadmes() {
   console.log(green('Fixing readmes...'))
 
-  function readme(pkg: Record<string, any>): string {
-    const shortname = pkg.name.replace('@bemoje/', '')
-    return `# ${pkg.name}
+  getPackages().forEach(({ rootdir, pkg, name }) => {
+    const content = readme(pkg).trim()
+    const fpath = path.join(rootdir, 'README.md')
+    const cur = fs.existsSync(fpath) ? fs.readFileSync(fpath, 'utf8').trim() : ''
+    if (cur !== content) {
+      console.log(gray('- changes in ' + name))
+      fs.writeFileSync(fpath, content)
+    }
+  })
+}
+
+function readme(pkg: Record<string, any>): string {
+  const shortname = pkg.name.replace('@bemoje/', '')
+  return `# ${pkg.name}
 
 ${pkg.description || ''}
 
@@ -43,10 +54,4 @@ Contributors are welcome to open a [pull request](${`https://github.com/bemoje/t
 ## License
 Released under the [${pkg.license} License](./LICENSE).
 `
-  }
-
-  getPackages().forEach(({ rootdir, pkg, name }) => {
-    const content = readme(pkg)
-    fs.writeFileSync(path.join(rootdir, 'README.md'), content)
-  })
 }

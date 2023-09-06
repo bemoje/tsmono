@@ -3,6 +3,6 @@ export interface IPackageDetails {
   rootdir: string
   pkgpath: string
   pkg: Record<string, any>
-  deps: string[]
+  owndeps: string[]
   distdir: string
 }

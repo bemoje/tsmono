@@ -12,6 +12,6 @@ import fs from 'fs'
  * writeJsonFileSync('./data.json', data, true);
  * ```
  */
-export function writeJsonFileSync<T>(filepath: string, data: T, pretty = false): void {
-  fs.writeFileSync(filepath, JSON.stringify(data, null, pretty ? 2 : undefined))
+export function writeJsonFileSync<T>(filepath: string, data: T, pretty = false, indents = 2): void {
+  fs.writeFileSync(filepath, JSON.stringify(data, null, pretty ? indents : undefined))
 }

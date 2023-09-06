@@ -1,7 +1,7 @@
-import { execFileSync } from 'child_process'
-import { magenta } from 'cli-color'
 import * as fs from 'fs'
 import path from 'path'
+import { execFileSync } from 'child_process'
+import { magenta } from 'kleur'
 
 export function execBatch(cmds: string[], onError?: () => void) {
   _execBatch(false, cmds, onError)

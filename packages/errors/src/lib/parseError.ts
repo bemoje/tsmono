@@ -1,6 +1,6 @@
 import { regexEscapeString } from '@bemoje/string'
 import { isPlainObject, isPrimitive } from '@bemoje/validation'
-import { blackBright, bold, red, yellow } from 'cli-color'
+import { bold, gray, red, yellow } from 'kleur'
 import path from 'path'
 import * as stackTraceParser from 'stacktrace-parser'
 import type { IParsedErrorFrame } from './IParsedErrorFrame'
@@ -25,7 +25,7 @@ export function parseError(error: Error, noStackTraceColors = false): IParsedErr
     bold: noStackTraceColors ? (s: string) => s : bold,
     red: noStackTraceColors ? (s: string) => s : red,
     yellow: noStackTraceColors ? (s: string) => s : yellow,
-    blackBright: noStackTraceColors ? (s: string) => s : blackBright,
+    gray: noStackTraceColors ? (s: string) => s : gray,
   }
 
   // width of the first column = the longest frame.cell string
@@ -39,8 +39,8 @@ export function parseError(error: Error, noStackTraceColors = false): IParsedErr
     let s = '  '
     let fp: string
     if (frame.file.startsWith('node:')) {
-      s += c.blackBright(frame.call)
-      fp = c.blackBright(frame.file)
+      s += c.gray(frame.call)
+      fp = c.gray(frame.file)
     } else if (frame.file.includes('node_modules')) {
       s += frame.call
       const base = path.basename(frame.file.split(':')[0])
@@ -59,7 +59,7 @@ export function parseError(error: Error, noStackTraceColors = false): IParsedErr
   // other properties
   function jsonLineMapper(line: string) {
     const arr = line.split('": ')
-    arr[0] = c.blackBright(arr[0].replace('"', ''))
+    arr[0] = c.gray(arr[0].replace('"', ''))
     return arr.join(': ')
   }
   const ignore = ['name', 'message', 'frames', 'stack']

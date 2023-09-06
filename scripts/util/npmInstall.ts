@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { execBatch } from '../../packages/node/src/lib/execBatch'
+import { executeBatchScript } from '../../packages/node/src/lib/virtual-script/executeBatchScript'
 
 export function npmInstall() {
   const toInstall = process.argv.slice(2)
@@ -27,12 +27,12 @@ export function npmInstall() {
       }
     }
   }
-  execBatch(bat)
+  executeBatchScript(bat)
   const orootpkg = rootpkg()
   for (const name of toInstall) {
     const pkg = JSON.parse(fs.readFileSync(pkgpath, 'utf8'))
     pkg.dependencies[name] = orootpkg.dependencies[name]
     fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
-    execBatch([`cd ${rootdir}`, 'npm i'])
+    executeBatchScript([`cd ${rootdir}`, 'npm i'])
   }
 }

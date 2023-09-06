@@ -1,4 +1,3 @@
-import { executeBatchScript } from '../packages/node/src/lib/virtual-script/executeBatchScript'
-const names = process.argv.slice(2)
+import { lint } from './util/lint'
 
-executeBatchScript(['nx run-many -t lint' + (names.length ? ' -p ' + names.join(',') : '')])
+lint()

@@ -1,32 +1,27 @@
-import { blackBright, green } from 'cli-color'
 import fs from 'fs'
+import { gray, green } from 'kleur'
 import path from 'path'
 import { executeBatchScript } from '../../packages/node/src/lib/virtual-script/executeBatchScript'
-import { getImportedExternal } from './getImportedExternal'
+import { getImportedAllNonRelative } from './getImportedAllNonRelative'
 import { getPackages } from './getPackages'
 
 const cwd = process.cwd()
-let rootpkg = () => JSON.parse(fs.readFileSync(path.join(cwd, 'package.json'), 'utf8'))
 
 export function fixDependencies() {
   console.log(green('Fixing dependencies...'))
-  const status = (msg: string) => console.log(blackBright('- ' + msg))
+  const status = (msg: string) => console.log(gray('- ' + msg))
 
   status('ensuring all package.json files have the dependencies property')
   getPackages().forEach(({ pkg, rootdir, name, pkgpath }) => {
-    if (!pkg.dependencies) {
-      pkg.dependencies = {}
-    }
-    if (!pkg.devDependencies) {
-      pkg.devDependencies = {}
-    }
+    if (!pkg.dependencies) pkg.dependencies = {}
+    if (!pkg.devDependencies) pkg.devDependencies = {}
     fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
   })
 
   status('ensuring all dependencies are installed')
   const builtins = new Set(require('module').builtinModules)
   getPackages().forEach(({ pkg, rootdir, name, pkgpath }) => {
-    const impext = getImportedExternal(rootdir)
+    const impext = getImportedAllNonRelative(rootdir)
     const filter = (imp) => !builtins.has(imp)
 
     const imports = impext.imports.filter(filter)

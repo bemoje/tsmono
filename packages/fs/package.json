@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/fs",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "description": "Tools for working with the local filesystem in nodejs.",
   "main": "./src/index.js",
   "scripts": {},
@@ -15,7 +15,6 @@
     "@bemoje/os": "latest",
     "@bemoje/string": "latest",
     "appdata-path": "^1.0.0",
-    "extract-zip": "^2.0.1",
     "read-last-lines": "^1.8.0",
     "tslib": "^2.3.0"
   },

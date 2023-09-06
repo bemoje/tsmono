@@ -1,11 +1,11 @@
-import { green } from 'cli-color'
 import fs from 'fs'
 import path from 'path'
-import { snakeCase } from 'snake-case'
 import walkdir from 'walkdir'
 import { executeBatchScript } from '../../packages/node/src/lib/virtual-script/executeBatchScript'
-import { strReplaceAll } from '../../packages/string/src'
 import { getPackages } from './getPackages'
+import { green } from 'kleur'
+import { snakeCase } from 'snake-case'
+import { strReplaceAll } from '../../packages/string/src'
 
 export function docs() {
   console.log(green('Generating docs...'))

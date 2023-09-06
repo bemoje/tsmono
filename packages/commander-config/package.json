@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/commander-config",
-  "version": "0.2.18",
+  "version": "0.2.20",
   "description": "Easy setup of CLI config files when using the commander package.",
   "main": "index.cjs.js",
   "module": "index.esm.js",
@@ -17,8 +17,8 @@
     "@bemoje/fs": "latest",
     "@bemoje/os": "latest",
     "@bemoje/validation": "latest",
-    "cli-color": "^2.0.3",
     "commander": "^11.0.0",
+    "kleur": "^4.1.5",
     "tslib": "^2.3.0"
   },
   "repository": {

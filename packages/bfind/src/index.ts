@@ -1,14 +1,14 @@
-import { TrieMap } from '@bemoje/trie-map'
-import { green, red, yellow } from 'cli-color'
-import { Command } from 'commander'
 import fs from 'fs'
 import path from 'path'
-import { FILE_LIST_JSON_PATH } from './constants/FILE_LIST_JSON_PATH'
-import { WORD_TRIE_JSON_PATH } from './constants/WORD_TRIE_JSON_PATH'
 import { buildIndex } from './core/buildIndex'
+import { Command } from 'commander'
 import { config } from './core/config'
+import { FILE_LIST_JSON_PATH } from './constants/FILE_LIST_JSON_PATH'
+import { green, red, yellow } from 'kleur'
 import { printSearchResult } from './core/printSearchResult'
 import { search } from './core/search'
+import { TrieMap } from '@bemoje/trie-map'
+import { WORD_TRIE_JSON_PATH } from './constants/WORD_TRIE_JSON_PATH'
 
 export const program = new Command()
   .name('bfind')
@@ -20,13 +20,13 @@ export const program = new Command()
       'Regex ignore patterns are configurable in CLI or the JSON config file.',
       'Each argument is a search term. If multiple terms are provided, ' +
         'they all must be present in the filepath to be considered a search hit.',
-    ].join(' '),
+    ].join(' ')
   )
   .version('0.0.0')
   .argument(
     '[search...]',
     'Each argument is a search term. If multiple terms are provided, ' +
-      'they all must be present in the filepath to be considered a search hit.',
+      'they all must be present in the filepath to be considered a search hit.'
   )
   .option('-s, --scan', 'Scan disk again and refresh the index.')
   .option('-a, --all', 'Force print all search results.')

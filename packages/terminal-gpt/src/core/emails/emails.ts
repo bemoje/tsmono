@@ -1,5 +1,5 @@
 // import { strWrapIn } from '@bemoje/string';
-// import { blackBright, blueBright, bold, cyanBright, Format, greenBright, magentaBright, red, underline, yellowBright } from 'cli-color';
+// import { gray, blueBright, bold, cyanBright, Format, greenBright, magentaBright, red, underline, yellowBright } from 'kleur';
 // import { config } from '../config';
 // import { sendChatRequest } from '../sendChatRequest';
 // import { userInput } from '../userInput';
@@ -55,7 +55,7 @@
 //   response = response.replace(new RegExp(`, ${new Date().getFullYear()}: `, 'g'), ': ')
 
 //   // insert peoples names at the bottom
-//   const people = shortNames.map(([name, email]) => name + blackBright(' | ' + email.substring(email.indexOf('@') + 1)))
+//   const people = shortNames.map(([name, email]) => name + gray(' | ' + email.substring(email.indexOf('@') + 1)))
 //   response += '\n\n' + underline(bold('People')) + ':\n - ' + people.join('\n - ')
 
 //   // replace full names with shortened names

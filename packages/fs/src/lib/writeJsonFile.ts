@@ -13,6 +13,6 @@ import fs from 'fs'
  * await writeJsonFile('./data.json', data, true);
  * ```
  */
-export async function writeJsonFile<T>(filepath: string, data: T, pretty = false): Promise<void> {
-  await fs.promises.writeFile(filepath, JSON.stringify(data, null, pretty ? 2 : undefined))
+export async function writeJsonFile<T>(filepath: string, data: T, pretty = false, indents = 2): Promise<void> {
+  await fs.promises.writeFile(filepath, JSON.stringify(data, null, pretty ? indents : undefined))
 }

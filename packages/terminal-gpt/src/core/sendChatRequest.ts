@@ -1,4 +1,4 @@
-import { blue } from 'cli-color'
+import { blue } from 'kleur'
 import { config } from './config'
 import { getApiClient } from './getApiClient'
 import { ISendChatRequestOptions } from './types/ISendChatRequestOptions'

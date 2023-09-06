@@ -1,3 +1,4 @@
+export * from './lib/getAppDataPath'
 export * from './lib/getOS'
 export * from './lib/isLinux'
 export * from './lib/isLinuxProgramInstalled'

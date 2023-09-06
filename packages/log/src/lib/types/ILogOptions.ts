@@ -1,4 +1,4 @@
-import type { Format } from 'cli-color'
+import type kleur from 'kleur'
 import { LogLevel } from './LogLevel'
 
 export interface ILogOptions {
@@ -30,20 +30,20 @@ export interface ILogOptions {
   /**
    * Color format for debug messages when logged to console.
    */
-  debugColor?: Format
+  debugColor?: typeof kleur.gray
 
   /**
    * Color format for info messages when logged to console.
    */
-  infoColor?: Format
+  infoColor?: typeof kleur.gray
 
   /**
    * Color format for warning messages when logged to console.
    */
-  warnColor?: Format
+  warnColor?: typeof kleur.gray
 
   /**
    * Color format for error messages when logged to console.
    */
-  errorColor?: Format
+  errorColor?: typeof kleur.gray
 }

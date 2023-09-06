@@ -13,9 +13,9 @@
       "tags": [],
       "implicitDependencies": [
         "number",
+        "sort",
         "string",
-        "validation",
-        "sort"
+        "validation"
       ],
       "npmScope": "bemoje",
       "projectType": "library"
@@ -332,6 +332,12 @@
       "projectType": "library"
     },
     "os": {
+      "tags": [],
+      "implicitDependencies": [],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "zip": {
       "tags": [],
       "implicitDependencies": [],
       "npmScope": "bemoje",

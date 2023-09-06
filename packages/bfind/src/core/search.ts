@@ -1,6 +1,6 @@
 import { setUnion } from '@bemoje/set'
 import { TrieMap } from '@bemoje/trie-map'
-import { green } from 'cli-color'
+import { green } from 'kleur'
 import { words } from 'lodash'
 import { extractSearchKeys } from './extractSearchKeys'
 export function search(searchString: string, PATHS: string[], TRIE: TrieMap<Set<number>>): Array<string> {
@@ -9,7 +9,7 @@ export function search(searchString: string, PATHS: string[], TRIE: TrieMap<Set<
     'Search keys: ' +
       Array.from(keywords)
         .map((s) => green(s))
-        .join(', '),
+        .join(', ')
   )
 
   const indices: Array<Set<number>> = []
