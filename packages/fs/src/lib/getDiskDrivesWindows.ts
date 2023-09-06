@@ -1,4 +1,4 @@
-import { isWindows } from '@bemoje/os'
+import { isWindows } from '@bemoje/util'
 import { execSync } from 'child_process'
 import path from 'path'
 

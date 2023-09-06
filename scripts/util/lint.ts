@@ -1,5 +1,5 @@
-import { executeBatchScript } from '../../packages/node/src/lib/virtual-script/executeBatchScript'
+import { executeBatchScript } from '../../packages/util/src'
 
-export function lint(names: string[] = process.argv.slice(2)) {
+export function lint(names: string[] = []) {
   executeBatchScript(['nx run-many -t lint' + (names.length ? ' -p ' + names.join(',') : '')])
 }

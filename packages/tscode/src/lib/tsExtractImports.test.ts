@@ -1,4 +1,4 @@
-import { strTrimLinesLeft } from '@bemoje/string'
+import { strTrimLinesLeft } from '@bemoje/util'
 import { tsExtractImports } from './tsExtractImports'
 import { ITsExtractImportsResult } from './types/ITsExtractImportsResult'
 

@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import stripComments from 'strip-comments'
 import walkdir from 'walkdir'
-import { strHashToString } from '../../packages/string/src'
+import { strHashToString } from '../../packages/util/src'
 
 /**
  * Hashes a package's dist-dir with the given name.

@@ -1,4 +1,4 @@
-import { rexec } from '@bemoje/string'
+import { rexec } from '@bemoje/util'
 
 /**
  * Extracts contact information from a given email thread.

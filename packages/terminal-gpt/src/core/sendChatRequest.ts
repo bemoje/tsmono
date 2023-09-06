@@ -1,4 +1,4 @@
-import { colors } from '@bemoje/node'
+import { colors } from '@bemoje/util'
 import { config } from './config'
 import { getApiClient } from './getApiClient'
 import { ISendChatRequestOptions } from './types/ISendChatRequestOptions'

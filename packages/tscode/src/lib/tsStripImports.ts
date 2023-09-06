@@ -1,4 +1,4 @@
-import { numRange } from '@bemoje/number'
+import { numRange } from '@bemoje/util'
 import { tsExtractImports } from './tsExtractImports'
 
 /**

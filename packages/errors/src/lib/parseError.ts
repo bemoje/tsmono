@@ -1,6 +1,4 @@
-import { colors } from '@bemoje/node'
-import { regexEscapeString } from '@bemoje/string'
-import { isPlainObject, isPrimitive } from '@bemoje/validation'
+import { colors, isPlainObject, isPrimitive, regexEscapeString } from '@bemoje/util'
 import path from 'path'
 import type { IParsedErrorFrame } from './IParsedErrorFrame'
 import { IParsedErrorResult } from './IParsedErrorResult'

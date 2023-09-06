@@ -1,4 +1,4 @@
-import { randomIntBetween } from '@bemoje/number'
+import { randomIntBetween } from '@bemoje/util'
 import { bytesToInt } from './bytesToInt'
 import { intToBytes } from './intToBytes'
 
@@ -14,7 +14,7 @@ describe('intToBytes', () => {
   })
   it('throws when passed an int larger than 256^5', () => {
     expect(() => intToBytes(256 ** 5 + 1)).toThrowError(
-      `input must be less than or equal to 256^5. Got ${256 ** 5 + 1}`,
+      `input must be less than or equal to 256^5. Got ${256 ** 5 + 1}`
     )
   })
   it('does not throw when passed an int of exactly 256^5', () => {

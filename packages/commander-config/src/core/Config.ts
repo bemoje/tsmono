@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { AppData, readJsonFileSync } from '@bemoje/fs'
-import { colors } from '@bemoje/node'
-import { getOS, isVsCodeInstalled } from '@bemoje/os'
+import { AppData, colors, getOS, isVsCodeInstalled, readJsonFileSync } from '@bemoje/util'
 import { Command } from 'commander'
 import fs from 'fs'
 import { getUserInputFromEditorSync } from '../util/getUserInputFromEditorSync'
@@ -97,7 +95,7 @@ export class Config {
         console.log('APPDATA: ' + this.appdata.directory)
         console.log(options)
         if (options.wipe) {
-          fs.rmdirSync(this.appdata.directory, { recursive: true })
+          fs.rmSync(this.appdata.directory, { recursive: true, force: true })
           console.log('All app data deleted.')
         }
       })

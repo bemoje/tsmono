@@ -1,4 +1,4 @@
-import { IPromiseQueueOptions, IQueue, IQueueAddOptions } from '@bemoje/queue'
+import { IPromiseQueueOptions, IQueue, IQueueAddOptions } from '@bemoje/util'
 import type { Options as IAsyncRetryOptions } from 'async-retry'
 import { IApiResponseCacheOptions } from './IApiResponseCacheOptions'
 import { IResponseCacheOptions } from './IResponseCacheOptions'

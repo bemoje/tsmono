@@ -1,4 +1,4 @@
-import { compare } from '@bemoje/sort'
+import { compare } from '@bemoje/util'
 import { ISortedArrayOptions } from './ISortedArrayOptions'
 
 /**

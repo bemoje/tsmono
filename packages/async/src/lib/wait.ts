@@ -1,4 +1,4 @@
-import { assertion, isPositiveInteger } from '@bemoje/validation'
+import { assertion, isPositiveInteger } from '@bemoje/util'
 
 /**
  * This function waits for a specified number of seconds before resolving a promise.

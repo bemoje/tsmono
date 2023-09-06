@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { colors } from '../../packages/node/src/lib/colors'
+import { colors } from '../../packages/util/src'
 import { getPackages } from './getPackages'
 import { walkTsFiles } from './walkTsFiles'
 const { gray, green, red } = colors

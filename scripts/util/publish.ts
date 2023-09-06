@@ -1,14 +1,13 @@
 import fs from 'fs'
 import path from 'path'
-import { colors } from '../../packages/node/src/lib/colors'
-import { executeBatchScript } from '../../packages/node/src/lib/virtual-script/executeBatchScript'
+import { colors, executeBatchScript } from '../../packages/util/src'
 import { docs } from './docs'
 import { getPackages } from './getPackages'
 import { hashPackage } from './hashPackage'
 import { prepub } from './prepub'
 const { gray, green, red } = colors
 
-export function publish(args: string[] = process.argv.slice(2)) {
+export function publish(args: string[] = []) {
   // args
   const type = args[0]
   if (!type) throw new Error('no version upgrade type provided. Can be patch, minor or major.')

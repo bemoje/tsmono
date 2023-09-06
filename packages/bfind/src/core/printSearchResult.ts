@@ -1,4 +1,4 @@
-import { colors } from '@bemoje/node'
+import { colors } from '@bemoje/util'
 import fs from 'fs'
 import { words } from 'lodash'
 import { config } from './config'

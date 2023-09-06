@@ -1,4 +1,4 @@
-import { setNonEnumerable } from '@bemoje/object'
+import { setNonEnumerable } from '@bemoje/util'
 import type { IParsedErrorFrame } from './IParsedErrorFrame'
 import { parseError } from './parseError'
 

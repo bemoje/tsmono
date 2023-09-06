@@ -1,4 +1,4 @@
-import { Time, TimeInterval } from '@bemoje/time'
+import { Time, TimeInterval } from '@bemoje/util'
 import { SRTSubtitle } from './SRTSubtitle'
 import { SRTSubtitles } from './SRTSubtitles'
 

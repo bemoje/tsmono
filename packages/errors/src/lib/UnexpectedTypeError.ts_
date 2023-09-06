@@ -1,4 +1,4 @@
-// import { isPrimitive } from '@bemoje/validation'
+// import { isPrimitive } from '@bemoje/util'
 // import { ExtensibleError } from './ExtendError'
 
 // /**

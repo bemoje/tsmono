@@ -12,7 +12,7 @@
   "license": "MIT",
   "keywords": [],
   "dependencies": {
-    "@bemoje/string": "latest",
+    "@bemoje/util": "latest",
     "tslib": "^2.3.0",
     "walkdir": "^0.4.1"
   },

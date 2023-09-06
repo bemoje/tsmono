@@ -1,3 +1,2 @@
 import { lint } from './util/lint'
-
-lint()
+lint(process.argv.slice(2))

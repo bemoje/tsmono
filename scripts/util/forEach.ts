@@ -1,7 +1,7 @@
-import { executeBatchScript } from '../../packages/node/src/lib/virtual-script/executeBatchScript'
+import { executeBatchScript } from '../../packages/util/src'
 import { getPackages } from './getPackages'
 
-export function forEach(args: string[] = process.argv.slice(2)) {
+export function forEach(args: string[]) {
   getPackages().forEach(({ rootdir }) => {
     const { error } = executeBatchScript(args, {
       prependWithCall: true,

@@ -1,5 +1,4 @@
-import { funSetName } from '@bemoje/function'
-import { setNonEnumerable } from '@bemoje/object'
+import { funSetName, setNonEnumerable } from '@bemoje/util'
 import type { IParsedErrorFrame } from './IParsedErrorFrame'
 import { parseError } from './parseError'
 

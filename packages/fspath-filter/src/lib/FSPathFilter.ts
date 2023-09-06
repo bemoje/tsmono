@@ -1,5 +1,4 @@
-import { isWindows } from '@bemoje/os'
-import { regexEscapeString } from '@bemoje/string'
+import { isWindows, regexEscapeString } from '@bemoje/util'
 import { EventEmitter } from 'events'
 import path from 'path'
 import { IPathFilterIgnoreOptions } from './IPathFilterIgnoreOptions'

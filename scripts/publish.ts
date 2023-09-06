@@ -1,2 +1,2 @@
 import { publish } from './util/publish'
-publish()
+publish(process.argv.slice(2))

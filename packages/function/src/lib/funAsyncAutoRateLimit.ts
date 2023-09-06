@@ -1,10 +1,10 @@
-import { wait } from '@bemoje/async'
+import { wait } from '@bemoje/util'
 import { funAsyncRateLimit } from './funAsyncRateLimit'
 import { funSetName } from './funSetName'
 
 export function funAsyncAutoRateLimit<T>(
   concurrency: number,
-  func: (...args: any[]) => Promise<T>,
+  func: (...args: any[]) => Promise<T>
 ): (...args: any[]) => Promise<T> {
   let wasJustReduced = false
   const [queue, result] = funAsyncRateLimit(
@@ -26,7 +26,7 @@ export function funAsyncAutoRateLimit<T>(
         return await result(...args)
       }
     },
-    { concurrency },
+    { concurrency }
   )
   return funSetName(result.name, result)
 }

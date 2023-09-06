@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
-import { strUnwrap } from '../../packages/string/src/string/strUnwrap'
 import { tsExtractImports } from '../../packages/tscode/src/lib/tsExtractImports'
+import { strUnwrap } from '../../packages/util/src'
 import { walkTsFiles } from './walkTsFiles'
 
 export function getImported(pkgroot: string): { imports: string[]; typeImports: string[] } {
@@ -19,11 +19,6 @@ export function getImported(pkgroot: string): { imports: string[]; typeImports: 
       }
     })
   })
-  // for (const imp of imports) {
-  //   if (typeImports.has(imp)) {
-  //     typeImports.delete(imp)
-  //   }
-  // }
   const result = { imports: [...imports].sort(), typeImports: [...typeImports].sort() }
   return result
 }

@@ -8,5 +8,24 @@
   "type": "commonjs",
   "main": "./src/index.js",
   "typings": "./src/index.d.ts",
-  "devDependencies": {}
+  "devDependencies": {},
+  "author": {
+    "name": "Benjamin Møller Jensen",
+    "email": "bemoje@bemoje.net",
+    "url": "https://github.com/bemoje/"
+  },
+  "license": "MIT",
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bemoje/tsmono.git"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/user?u=40752770"
+  },
+  "bugs": {
+    "url": "https://github.com/bemoje/tsmono/issues"
+  },
+  "homepage": "https://github.com/bemoje/tsmono"
 }

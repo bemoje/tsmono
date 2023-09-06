@@ -1,4 +1,4 @@
-import { arrSortNumeric } from '@bemoje/array'
+import { arrSortNumeric } from '@bemoje/util'
 import { setUnion } from './setUnion'
 
 describe('setUnion', () => {
@@ -8,7 +8,7 @@ describe('setUnion', () => {
 
   it('handles many sets', () => {
     expect(Array.from(setUnion([new Set([1, 2, 3]), new Set([2, 3, 4]), new Set([3, 4, 5])]))).toStrictEqual(
-      arrSortNumeric([1, 2, 3, 4, 5]),
+      arrSortNumeric([1, 2, 3, 4, 5])
     )
   })
 

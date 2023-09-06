@@ -1,5 +1,4 @@
-import { arrShallowEquals } from '@bemoje/array'
-import { mapGetOrElse } from '@bemoje/map'
+import { arrShallowEquals, mapGetOrElse } from '@bemoje/util'
 import { TsDocTag } from './TsDocTag'
 import { TsDocOptions } from './types/TsDocOptions'
 import { isMultiTsDocTag } from './util/isMultiTsDocTag'

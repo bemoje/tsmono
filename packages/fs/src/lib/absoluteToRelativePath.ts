@@ -1,4 +1,4 @@
-import { regexEscapeString } from '@bemoje/string'
+import { regexEscapeString } from '@bemoje/util'
 import path from 'path'
 
 /**

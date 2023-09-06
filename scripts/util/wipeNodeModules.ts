@@ -1,10 +1,9 @@
 import fs from 'fs'
 import path from 'path'
-import { deleteDirectorySafeSync } from '../../packages/fs/src/lib/deleteDirectorySafeSync'
+import { deleteDirectorySafeSync } from '../../packages/util/src'
 import { getPackages } from './getPackages'
 
-export function wipeNodeModules() {
-  const args = process.argv.slice(2)
+export function wipeNodeModules(args: string[]) {
   getPackages().forEach(({ name, rootdir }) => {
     const dir = path.join(rootdir, 'node_modules')
     const plock = path.join(rootdir, 'package-lock.json')

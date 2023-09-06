@@ -1,4 +1,4 @@
-import { strRemoveEmptyLines, strTrimLines } from '@bemoje/string'
+import { strRemoveEmptyLines, strTrimLines } from '@bemoje/util'
 
 /**
  * Minifies the given TypeScript code by removing empty lines and trimming lines.

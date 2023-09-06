@@ -1,5 +1,6 @@
 import { fixDependencies } from './fixDependencies'
 import { fixEntryPoints } from './fixEntryPoints'
+import { fixPackageJson } from './fixPackageJson'
 import { fixReadmes } from './fixReadmes'
 import { fixTsConfigIncludes } from './fixTsconfigIncludes'
 
@@ -8,4 +9,5 @@ export function fixAll() {
   fixEntryPoints()
   fixDependencies()
   fixReadmes()
+  fixPackageJson()
 }

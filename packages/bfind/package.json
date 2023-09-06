@@ -18,12 +18,10 @@
   "keywords": [],
   "dependencies": {
     "@bemoje/commander-config": "latest",
-    "@bemoje/fs": "latest",
     "@bemoje/fspath-filter": "latest",
-    "@bemoje/node": "latest",
-    "@bemoje/os": "latest",
     "@bemoje/set": "latest",
     "@bemoje/trie-map": "latest",
+    "@bemoje/util": "latest",
     "commander": "^11.0.0",
     "lodash": "^4.17.21",
     "tslib": "^2.3.0",

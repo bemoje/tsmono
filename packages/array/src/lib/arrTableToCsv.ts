@@ -1,4 +1,4 @@
-import { strReplaceAll } from '@bemoje/string'
+import { strReplaceAll } from '@bemoje/util'
 
 /**
  * Converts a 2D array to a CSV string.

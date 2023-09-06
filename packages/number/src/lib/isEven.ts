@@ -1,4 +1,4 @@
-import { assertion } from '@bemoje/validation'
+import { assertion } from '@bemoje/util'
 
 /**
  * Checks if a number is even.

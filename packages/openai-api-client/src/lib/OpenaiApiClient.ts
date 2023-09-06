@@ -1,6 +1,5 @@
 import { AbstractApiClient, IAsyncRetryOptions, IResponseCacheOptions } from '@bemoje/api-util'
-import { randomIntBetween } from '@bemoje/number'
-import { objOmitKeysMutable } from '@bemoje/object'
+import { objOmitKeysMutable, randomIntBetween } from '@bemoje/util'
 import fs from 'fs'
 import { encode } from 'gpt-3-encoder'
 import * as openai from 'openai'
@@ -92,7 +91,7 @@ export class OpenaiApiClient extends AbstractApiClient {
    * @param options - The options to handle.
    */
   protected handleChatOptions(
-    options: IOpenaiChatRequestOptions,
+    options: IOpenaiChatRequestOptions
   ): [openai.CreateChatCompletionRequest, IAsyncRetryOptions, IResponseCacheOptions] {
     options = this.deleteDefaultOrUndefinedOptions(options, {
       presence_penalty: 0,
@@ -116,7 +115,7 @@ export class OpenaiApiClient extends AbstractApiClient {
    * @param options - The options to handle.
    */
   protected handleTranscribeOptions(
-    options: IOpenaiTranscribeOptions,
+    options: IOpenaiTranscribeOptions
   ): [IOpenaiTranscribeRequest, IAsyncRetryOptions, IResponseCacheOptions] {
     const request = options.request as IOpenaiTranscribeRequest
     const retry = this.handleRetryOptions(options.retry)
@@ -134,7 +133,7 @@ export class OpenaiApiClient extends AbstractApiClient {
   protected async _chat(
     request: openai.CreateChatCompletionRequest,
     retry: IAsyncRetryOptions,
-    cache: IResponseCacheOptions,
+    cache: IResponseCacheOptions
   ): Promise<string> {
     return await this.sendRequest({
       apiRequest: async () => {
@@ -164,7 +163,7 @@ export class OpenaiApiClient extends AbstractApiClient {
   protected async _transcribe(
     request: IOpenaiTranscribeRequest,
     retry: IAsyncRetryOptions,
-    cache: IResponseCacheOptions,
+    cache: IResponseCacheOptions
   ): Promise<string> {
     return await this.sendRequest({
       apiRequest: async () => {
@@ -175,7 +174,7 @@ export class OpenaiApiClient extends AbstractApiClient {
             undefined,
             request.format,
             undefined,
-            request.language,
+            request.language
           )
           return data.toString().trim()
         } catch (error: any) {
@@ -235,7 +234,7 @@ export class OpenaiApiClient extends AbstractApiClient {
    */
   protected deleteDefaultOrUndefinedOptions<T extends Record<string, any>>(
     options: T,
-    defaults: Record<string, any> = {},
+    defaults: Record<string, any> = {}
   ): T {
     options = Object.assign({}, options)
     defaults.temperature = 1
@@ -258,7 +257,7 @@ export class OpenaiApiClient extends AbstractApiClient {
    * Assert that the response data is complete by verifying that all returned choices have finish_reason: stop.
    */
   protected assertReponseDataComplete(
-    data: openai.CreateChatCompletionResponse | openai.CreateCompletionResponse,
+    data: openai.CreateChatCompletionResponse | openai.CreateCompletionResponse
   ): void {
     for (const choice of data.choices) {
       if (choice.finish_reason !== 'stop') {

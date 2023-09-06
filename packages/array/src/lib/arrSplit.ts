@@ -1,4 +1,4 @@
-import { assertion, isPositiveInteger } from '@bemoje/validation'
+import { assertion, isPositiveInteger } from '@bemoje/util'
 
 export function arrSplit<T>(array: T[], n: number): T[][] {
   assertion(n, isPositiveInteger)

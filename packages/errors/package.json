@@ -2,16 +2,31 @@
   "name": "@bemoje/errors",
   "version": "0.0.6",
   "dependencies": {
-    "@bemoje/function": "latest",
-    "@bemoje/node": "latest",
-    "@bemoje/object": "latest",
-    "@bemoje/string": "latest",
-    "@bemoje/validation": "latest",
+    "@bemoje/util": "latest",
     "eventemitter3": "^5.0.1",
     "tslib": "^2.3.0"
   },
   "type": "commonjs",
   "main": "./src/index.js",
   "typings": "./src/index.d.ts",
+  "author": {
+    "name": "Benjamin Møller Jensen",
+    "email": "bemoje@bemoje.net",
+    "url": "https://github.com/bemoje/"
+  },
+  "license": "MIT",
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bemoje/tsmono.git"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/user?u=40752770"
+  },
+  "bugs": {
+    "url": "https://github.com/bemoje/tsmono/issues"
+  },
+  "homepage": "https://github.com/bemoje/tsmono",
   "devDependencies": {}
 }

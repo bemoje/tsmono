@@ -1,4 +1,4 @@
-import { strPrependLines } from '@bemoje/string'
+import { strPrependLines } from '@bemoje/util'
 
 /**
  * Wraps a given string into a TSDoc block comment.

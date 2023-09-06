@@ -1,5 +1,5 @@
-import { prettyIsoDateString } from '@bemoje/date'
 import { IOpenaiChatRequestOptions } from '@bemoje/openai-api-client'
+import { prettyIsoDateString } from '@bemoje/util'
 import fs from 'fs'
 import path from 'path'
 import { IGptInteraction } from '../../types/IGptInteraction'
@@ -20,7 +20,7 @@ export function saveInteraction(
   jsondir: string,
   textdir: string,
   isMarkdown: boolean,
-  data: IOpenaiChatRequestOptions,
+  data: IOpenaiChatRequestOptions
 ): string {
   const timestamp = Date.now()
   const prettyTimestamp = prettyIsoDateString(new Date(timestamp).toISOString())

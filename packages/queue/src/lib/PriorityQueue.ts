@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { arrSortedInsertionIndex } from '@bemoje/array'
+import { arrSortedInsertionIndex } from '@bemoje/util'
 import { IPriorityQueueOptions } from './types/IPriorityQueueOptions'
 import { IQueue } from './types/IQueue'
 
@@ -40,7 +40,7 @@ export class PriorityQueue implements IQueue<() => Promise<unknown>, IPriorityQu
     const index = arrSortedInsertionIndex(
       this.queue,
       element,
-      (a: Readonly<IPriorityQueueOptions>, b: Readonly<IPriorityQueueOptions>) => b.priority! - a.priority!,
+      (a: Readonly<IPriorityQueueOptions>, b: Readonly<IPriorityQueueOptions>) => b.priority! - a.priority!
     )
     this.queue.splice(index, 0, element)
   }

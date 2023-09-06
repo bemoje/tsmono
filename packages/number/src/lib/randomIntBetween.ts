@@ -1,4 +1,4 @@
-import { assertion } from '@bemoje/validation'
+import { assertion } from '@bemoje/util'
 
 /**
  * Returns a random integer between min (inclusive) and max (inclusive).

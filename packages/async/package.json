@@ -12,7 +12,7 @@
   "license": "MIT",
   "keywords": [],
   "dependencies": {
-    "@bemoje/validation": "latest",
+    "@bemoje/util": "latest",
     "tslib": "^2.3.0"
   },
   "repository": {

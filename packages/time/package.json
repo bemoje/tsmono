@@ -10,13 +10,7 @@
     "url": "https://github.com/bemoje/"
   },
   "license": "MIT",
-  "keywords": [
-    "time",
-    "time interval",
-    "timespan",
-    "time period",
-    "time range"
-  ],
+  "keywords": [],
   "dependencies": {
     "tslib": "^2.3.0"
   },

@@ -1,5 +1,4 @@
-import { colors } from '@bemoje/node'
-import { strRepeat } from '@bemoje/string'
+import { colors, strRepeat } from '@bemoje/util'
 import { Command } from 'commander'
 import { createPreset } from './actions/createPreset'
 import { onCustomPreset } from './actions/onCustomPreset'

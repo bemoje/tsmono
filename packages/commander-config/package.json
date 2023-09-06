@@ -13,11 +13,7 @@
   "license": "MIT",
   "keywords": [],
   "dependencies": {
-    "@bemoje/async": "latest",
-    "@bemoje/fs": "latest",
-    "@bemoje/node": "latest",
-    "@bemoje/os": "latest",
-    "@bemoje/validation": "latest",
+    "@bemoje/util": "latest",
     "commander": "^11.0.0",
     "tslib": "^2.3.0"
   },

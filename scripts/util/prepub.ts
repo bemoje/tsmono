@@ -1,12 +1,11 @@
 import fs from 'fs-extra'
 import path from 'path'
-import { colors } from '../../packages/node/src/lib/colors'
-import { executeBatchScript } from '../../packages/node/src/lib/virtual-script/executeBatchScript'
+import { colors, executeBatchScript } from '../../packages/util/src'
 import { fixAll } from './fixAll'
 import { getPackages } from './getPackages'
 const { green } = colors
 
-export function prepub(names: string[] = process.argv.slice(2)) {
+export function prepub(names: string[] = []) {
   fixAll()
 
   executeBatchScript(['nx run-many -t "lint,test,build"' + (names.length ? ' -p ' + names.join(',') : '')], {

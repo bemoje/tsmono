@@ -1,5 +1,5 @@
 import { getUserInputFromEditor } from '@bemoje/commander-config'
-import { strWrapIn } from '@bemoje/string'
+import { strWrapIn } from '@bemoje/util'
 import { config } from './config'
 
 /**
@@ -18,7 +18,7 @@ export async function userInput(
   temperature: number,
   defaultSystemMessage: string[],
   previousInput = '',
-  extension = '.txt',
+  extension = '.txt'
 ): Promise<{ temperature: number; instruction: string; input: string }> {
   const delim = '---------------------------'
   const sdelim = strWrapIn(delim, '\n\r\n')

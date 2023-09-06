@@ -1,4 +1,4 @@
-import { absoluteToRelativePath, ensureValidWindowsPath } from '@bemoje/fs'
+import { absoluteToRelativePath, ensureValidWindowsPath } from '@bemoje/util'
 import fs from 'fs'
 import path from 'path'
 

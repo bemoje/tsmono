@@ -1,6 +1,5 @@
-import { funAsyncRateLimit } from '@bemoje/function'
-import type { IQueue, IQueueAddOptions } from '@bemoje/queue'
-import { IPromiseQueueOptions, PromiseQueue } from '@bemoje/queue'
+import type { IQueue, IQueueAddOptions } from '@bemoje/util'
+import { IPromiseQueueOptions, PromiseQueue, funAsyncRateLimit } from '@bemoje/util'
 import asyncRetry from 'async-retry'
 import EventEmitter from 'events'
 import { cloneDeep } from 'lodash'

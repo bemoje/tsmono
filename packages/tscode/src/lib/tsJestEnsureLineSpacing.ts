@@ -1,4 +1,4 @@
-import { strRemoveEmptyLines } from '@bemoje/string'
+import { strRemoveEmptyLines } from '@bemoje/util'
 
 export function tsJestEnsureLineSpacing(code: string): string {
   return strRemoveEmptyLines(code)

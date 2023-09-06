@@ -1,2 +1,2 @@
 import { forEach } from './util/forEach'
-forEach()
+forEach(process.argv.slice(2))

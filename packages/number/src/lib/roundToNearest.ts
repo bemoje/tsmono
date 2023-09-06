@@ -1,4 +1,4 @@
-import { assertion } from '@bemoje/validation'
+import { assertion } from '@bemoje/util'
 
 /**
  * Round a given number to a given nearest whole number.

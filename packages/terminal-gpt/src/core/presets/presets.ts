@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { colors } from '@bemoje/node'
+import { colors } from '@bemoje/util'
 import { execSync } from 'child_process'
 import { sendChatRequest } from '../sendChatRequest'
 import type { IGptPreset } from '../types/IGptPreset'

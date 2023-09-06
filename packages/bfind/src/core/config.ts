@@ -1,6 +1,5 @@
 import { Config, parseBoolean, parseDirectories, parseInteger } from '@bemoje/commander-config'
-import { getDiskDrivesWindows, getRootDir } from '@bemoje/fs'
-import { isWindows } from '@bemoje/os'
+import { getDiskDrivesWindows, getRootDir, isWindows } from '@bemoje/util'
 import { wipeIndex } from './wipeIndex'
 
 export const config = new Config('bemoje', 'bfind', {

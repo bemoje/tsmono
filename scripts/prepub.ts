@@ -1,3 +1,2 @@
 import { prepub } from './util/prepub'
-
-prepub()
+prepub(process.argv.slice(2))

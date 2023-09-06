@@ -1,5 +1,5 @@
-import { colors } from '@bemoje/node'
 import { TrieMap } from '@bemoje/trie-map'
+import { colors } from '@bemoje/util'
 import { Command } from 'commander'
 import fs from 'fs'
 import path from 'path'

@@ -1,4 +1,4 @@
-import { rexec } from '@bemoje/string'
+import { rexec } from '@bemoje/util'
 
 /**
  * Returns a map of the private and protected class properties and methods of the provided TypeScript code for a class.

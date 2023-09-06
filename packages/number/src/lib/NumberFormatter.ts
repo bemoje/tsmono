@@ -1,5 +1,4 @@
-import { strReplaceAll } from '@bemoje/string'
-import { assertion, isValidNumber } from '@bemoje/validation'
+import { assertion, isValidNumber, strReplaceAll } from '@bemoje/util'
 import { round } from './round'
 
 const locales: Map<string, [string, string]> = new Map([

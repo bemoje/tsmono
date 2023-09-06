@@ -1,4 +1,4 @@
-import { isConstructor, isPrototype } from '@bemoje/validation'
+import { isConstructor, isPrototype } from '@bemoje/util'
 
 /**
  * Iterate the prototype chain of a given object.

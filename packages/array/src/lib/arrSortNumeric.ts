@@ -1,4 +1,4 @@
-import { compareNumeric } from '@bemoje/sort'
+import { compareNumeric } from '@bemoje/util'
 
 /**
  * Sorts an array of numbers, bigints, or booleans in ascending order.

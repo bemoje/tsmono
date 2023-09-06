@@ -2,14 +2,11 @@ import fs from 'fs'
 import path from 'path'
 import { snakeCase } from 'snake-case'
 import walkdir from 'walkdir'
-import { colors } from '../../packages/node/src/lib/colors'
-import { executeBatchScript } from '../../packages/node/src/lib/virtual-script/executeBatchScript'
-import { strReplaceAll } from '../../packages/string/src'
+import { colors, executeBatchScript, strReplaceAll } from '../../packages/util/src'
 import { getPackages } from './getPackages'
-const { green } = colors
 
 export function docs() {
-  console.log(green('Generating docs...'))
+  console.log(colors.green('Generating docs...'))
 
   const pkgspath = path.join(process.cwd(), 'packages')
   const indexpath = path.join(pkgspath, 'index.ts')
@@ -24,9 +21,13 @@ export function docs() {
   fs.writeFileSync(indexpath, src)
 
   // create docs
-  executeBatchScript(['npm run tsdoc'], { prependWithCall: true })
+  fs.rmSync(path.join(process.cwd(), 'docs'), { recursive: true, force: true })
+  executeBatchScript(['typedoc --out ./docs/ --entryPoints ./packages/index.ts'], {
+    prependWithCall: true,
+  })
+
+  // remove temp index file
   fs.rmSync(indexpath, { force: true })
-  // fs.mkdirSync(path.join(process.cwd(), 'docs'))
 
   // fix docs
   const replace = getPackages().map(({ name }) => [snakeCase(name), name])

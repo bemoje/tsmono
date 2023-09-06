@@ -12,10 +12,7 @@
   "license": "MIT",
   "keywords": [],
   "dependencies": {
-    "@bemoje/number": "latest",
-    "@bemoje/sort": "latest",
-    "@bemoje/string": "latest",
-    "@bemoje/validation": "latest",
+    "@bemoje/util": "latest",
     "tslib": "^2.3.0"
   },
   "repository": {

@@ -13,8 +13,7 @@
   "keywords": [],
   "dependencies": {
     "@bemoje/api-util": "latest",
-    "@bemoje/number": "latest",
-    "@bemoje/object": "latest",
+    "@bemoje/util": "latest",
     "gpt-3-encoder": "^1.1.4",
     "openai": "^3.3.0",
     "tslib": "^2.3.0"

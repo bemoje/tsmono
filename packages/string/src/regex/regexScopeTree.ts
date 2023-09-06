@@ -1,4 +1,4 @@
-import { compareArray } from '@bemoje/sort'
+import { compareArray } from '@bemoje/util'
 import { strRemoveDuplicateChars } from '../string/strRemoveDuplicateChars'
 import { regexEscapeString } from './regexEscapeString'
 import { rexec } from './rexec'
@@ -20,7 +20,7 @@ import type { RexecYield } from './types/RexecYield'
  */
 export function regexScopeTree(
   left: string | RegExp,
-  right: string | RegExp,
+  right: string | RegExp
 ): (string: string, yieldOnlyRootNodes?: boolean) => Generator<RegexScopeTreeNode> {
   function parseParam(param: string | RegExp): [RegExp, RegExp] {
     const isString = typeof param === 'string'

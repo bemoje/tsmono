@@ -1,4 +1,4 @@
-import { bytesToMegabytes, round } from '@bemoje/number'
+import { bytesToMegabytes, round } from '@bemoje/util'
 
 /**
  * Returns the memory usage of the Node.js process with values converted from bytes to megabytes and rounded to the specified precision.

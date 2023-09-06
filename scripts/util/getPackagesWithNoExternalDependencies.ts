@@ -5,7 +5,6 @@ import { getPackages } from './getPackages'
 /**
  * No external and also no dependencies to other local packages that have.
  */
-
 export function getPackagesWithNoExternalDependencies() {
   const extDeps: Map<string, string> = new Map()
   const noExtDeps: Set<string> = new Set()

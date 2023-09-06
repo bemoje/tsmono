@@ -1,4 +1,4 @@
-import { assertion, isValidNumber } from '@bemoje/validation'
+import { assertion, isValidNumber } from '@bemoje/util'
 
 /**
  * Round a given number with a given precision and rounding function.

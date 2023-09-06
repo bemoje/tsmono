@@ -1,4 +1,4 @@
-import { arrIndicesOf } from '@bemoje/array'
+import { arrIndicesOf } from '@bemoje/util'
 
 /**
  * This function shortens a list of names by removing the last names,

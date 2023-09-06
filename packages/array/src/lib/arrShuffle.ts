@@ -1,4 +1,4 @@
-import { randomIntBetween } from '@bemoje/number'
+import { randomIntBetween } from '@bemoje/util'
 import { arrShallowEquals } from './arrShallowEquals'
 import { arrSwap } from './arrSwap'
 

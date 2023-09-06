@@ -1,7 +1,6 @@
 import * as fs from 'fs'
 import * as path from 'path'
-import { readJsonFileSync } from '../../packages/fs/src/lib/readJsonFileSync'
-import { colors } from '../../packages/node/src/lib/colors'
+import { colors, readJsonFileSync } from '../../packages/util/src'
 import { getPackages } from './getPackages'
 const { gray, green } = colors
 

@@ -1,2 +1,2 @@
 import { test } from './util/test'
-test()
+test(process.argv.slice(2))

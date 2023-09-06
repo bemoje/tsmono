@@ -1,4 +1,4 @@
-// import { strWrapIn } from '@bemoje/string';
+// import { strWrapIn } from '@bemoje/util';
 // import { gray, blueBright, bold, cyanBright, Format, greenBright, magentaBright, red, underline, yellowBright } from '';
 // import { config } from '../config';
 // import { sendChatRequest } from '../sendChatRequest';

@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "rootDirs": ["src", "../os/src"],
+    "rootDirs": ["src"],
     "module": "commonjs",
     "forceConsistentCasingInFileNames": true,
     "strict": true,

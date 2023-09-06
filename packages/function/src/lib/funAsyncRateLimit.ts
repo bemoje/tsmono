@@ -1,5 +1,5 @@
-import type { IPromiseQueueOptions, IQueue, IQueueAddOptions } from '@bemoje/queue'
-import { PromiseQueue } from '@bemoje/queue'
+import type { IPromiseQueueOptions, IQueue, IQueueAddOptions } from '@bemoje/util'
+import { PromiseQueue } from '@bemoje/util'
 import { funSetName } from './funSetName'
 
 /**
@@ -52,10 +52,10 @@ import { funSetName } from './funSetName'
  */
 export function funAsyncRateLimit<
   QueueType extends IQueue<() => Promise<unknown>, EnqueueOptionsType>,
-  EnqueueOptionsType extends IQueueAddOptions,
+  EnqueueOptionsType extends IQueueAddOptions
 >(
   fun: (...args: any[]) => any,
-  options: IPromiseQueueOptions<QueueType, EnqueueOptionsType> = {},
+  options: IPromiseQueueOptions<QueueType, EnqueueOptionsType> = {}
 ): [PromiseQueue<QueueType, EnqueueOptionsType>, (...args: any[]) => Promise<any>] {
   const queue = new PromiseQueue(options)
   const wrapped = funSetName(fun.name, async function (...args: any[]) {

@@ -1,5 +1,4 @@
-import { getCentury, getCurrentYear, isValidDate } from '@bemoje/date'
-import { regexMatcherToValidater } from '@bemoje/string'
+import { getCentury, getCurrentYear, isValidDate, regexMatcherToValidater } from '@bemoje/util'
 import { ParsedSocialSecurityNumberDK } from './types/ParsedSocialSecurityNumberDK'
 
 // Matches Danish social security numbers with or without the dash. Example: 151199-1512

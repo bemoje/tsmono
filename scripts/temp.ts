@@ -26,7 +26,7 @@ getPackages().forEach(({ rootdir, pkg, name }) => {
   }
   const removeDir = (dirname: string) => {
     if (!fs.existsSync(dest(dirname))) return
-    fs.rmdirSync(dest(dirname), { recursive: true })
+    fs.rmSync(dest(dirname), { recursive: true, force: true })
   }
   ///////////////////////////
 

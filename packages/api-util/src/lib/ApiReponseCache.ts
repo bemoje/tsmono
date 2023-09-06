@@ -1,4 +1,4 @@
-import { getAppDataPath } from '@bemoje/os'
+import { getAppDataPath } from '@bemoje/util'
 import EventEmitter from 'events'
 import * as fs from 'fs'
 import { Level } from 'level'
