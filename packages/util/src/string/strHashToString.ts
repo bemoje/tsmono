@@ -1,5 +1,6 @@
-import { Encoding } from 'crypto'
+import type { Encoding } from 'crypto'
 import { strHashToBuffer } from './strHashToBuffer'
+import type { TCryptoAlgorithm } from './types/TCryptoAlgorithm'
 
 /**
  * Hash a string into a buffer with a given algorithm
@@ -12,6 +13,10 @@ import { strHashToBuffer } from './strHashToBuffer'
  * //=> 2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824
  * ```
  */
-export function strHashToString(string: string, algorithm = 'sha256', encoding: Encoding = 'base64'): string {
+export function strHashToString(
+  string: string,
+  algorithm: TCryptoAlgorithm = 'sha256',
+  encoding: Encoding = 'base64'
+): string {
   return strHashToBuffer(string, algorithm).toString(encoding)
 }

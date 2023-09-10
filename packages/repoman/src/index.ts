@@ -13,11 +13,14 @@ import { fixReadmes } from './lib/fixReadmes'
 import { fixTsConfigIncludes } from './lib/fixTsConfigIncludes'
 import { forEach } from './lib/forEach'
 import { lint } from './lib/lint'
+import { openDocs } from './lib/openDocs'
 import { packageDependencies } from './lib/packageDependencies'
 import { prepub } from './lib/prepub'
 import { publish } from './lib/publish'
 import { rehash } from './lib/rehash'
+import { script } from './lib/script'
 import { test } from './lib/tests'
+import { ts } from './lib/ts'
 import { wipeBemojeNodeModules } from './lib/wipeBemojeNodeModules'
 
 const appdata = getAppDataPath('bemoje', 'repoman')
@@ -35,6 +38,8 @@ const cmd = args.shift()?.toLowerCase().replace(/-/g, '')
 
 function main() {
   if (!cmd) return
+  else if (cmd === 'ts'.toLowerCase()) ts(args)
+  else if (cmd === 'script'.toLowerCase()) script(args)
   else if (cmd === 'createPackage'.toLowerCase()) createPackage(args)
   else if (cmd === 'deletePackage'.toLowerCase()) deletePackage(args)
   else if (cmd === 'packageDependencies'.toLowerCase()) packageDependencies()
@@ -53,13 +58,8 @@ function main() {
   else if (cmd === 'docs'.toLowerCase()) docs()
   else if (cmd === 'prepub'.toLowerCase()) prepub(args)
   else if (cmd === 'publish'.toLowerCase()) publish(args)
+  else if (cmd === 'opendocs'.toLowerCase()) openDocs()
   else console.log('unknown command:', cmd)
 }
 
 main()
-
-/*
-"ts": "ts-node -P tsconfig.json",
-"script": "ts-node -P tsconfig.scripts.json",
-"opendocs": "start docs/modules.html"
-*/

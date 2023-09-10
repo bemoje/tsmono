@@ -113,6 +113,7 @@ export class Config {
       )
       .argument('[value]', 'The value to assign.')
       .action((action?: string, setting?: string, value?: string) => {
+        console.log({ action, setting, value })
         if (!action || action === 'edit') return this.editConfigInEditor()
         if (action === 'reset') return this.reset(setting)
         if (action === 'set') {

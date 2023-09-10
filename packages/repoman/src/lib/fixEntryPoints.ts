@@ -10,7 +10,7 @@ export function fixEntryPoints() {
 
   getPackages()
     .filter(({ pkg }) => !pkg.bin)
-    .forEach(({ pkg, rootdir, name, pkgpath }) => {
+    .forEach(({ rootdir, name }) => {
       const srcdir = path.join(rootdir, 'src')
       const fpaths = walkTsFiles(srcdir, (filepath) => !filepath.endsWith('index.ts'))
       const lines = fpaths.map((fpath) => {

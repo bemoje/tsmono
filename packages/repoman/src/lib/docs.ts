@@ -22,7 +22,9 @@ export function docs() {
   fs.writeFileSync(indexpath, src)
 
   // create docs
-  fs.rmSync(path.join(process.cwd(), 'docs'), { recursive: true, force: true })
+  const docspath = path.join(process.cwd(), 'docs')
+  fs.rmSync(docspath, { recursive: true, force: true })
+  fs.mkdirSync(docspath, { recursive: true })
 
   executeBatchScript(['npx typedoc --out ./docs/ --entryPoints ./packages/index.ts'], {
     prependWithCall: true,
@@ -32,8 +34,8 @@ export function docs() {
   fs.rmSync(indexpath, { force: true })
 
   // fix docs
-  fs.mkdirSync(path.join(process.cwd(), 'docs'), { recursive: true })
-  const paths = walkdir.sync(path.join(process.cwd(), 'docs'))
+  fs.mkdirSync(docspath, { recursive: true })
+  const paths = walkdir.sync(docspath)
   const htmlFiles = paths.filter((filepath) => filepath.endsWith('.html'))
 
   const replace = getPackages().map(({ name }) => [snakeCase(name), name])

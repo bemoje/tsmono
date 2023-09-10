@@ -1,6 +1,7 @@
 import {
   parseBoolean,
   parseInteger,
+  parseJsonArray,
   parseJsonObject,
   parseNumber,
   parseString,
@@ -52,6 +53,19 @@ const npmPackageInstructions = [
   '- Provide a TypeScript code example of how to use the package.',
 ]
 
+const ubuntuSoftwareInstructions = [
+  'You are a Linux kernel software developer who known everything about Linux and especially the Ubuntu distribution.',
+  '',
+  'You will be provided with a problem, feature or need of mine. For this I am hoping to discover the most suitable software package on the ´Snap´ or ´apt´ package managers for the given purpose or problem.',
+  '',
+  'Your task is to recommend the three best packages. It is important that the recommended software is also safe and trusted by others.',
+  '',
+  'For each recommended package:',
+  '- Describe in one sentence how the package fulfils my need.',
+  '- Provide a link to the package where I can ind more information, if possible.',
+  '- Provide a terminal command for performing a silent unattended installation of the package.',
+]
+
 const tsInstructions = [
   ...seniorDeveloperRole,
   '',
@@ -79,6 +93,14 @@ const javaInstructions = [
   '  - Maven',
   '',
   'When your response is code or a step by step guide, do not explain too much, just provide the code or steps.',
+]
+
+const ubuntuInstructions = [
+  'You are a Linux kernel software developer who known everything about Linux and especially the Ubuntu distribution.',
+  '',
+  'Your task is to help me with my problems and questions related to Ubuntu running in Oracle VirtualBox.',
+  '',
+  'When your response is bash commands, code or a step by step guide, do not explain too much, just provide the code or steps and not so much explanation.',
 ]
 
 const typedocInstructionsFunction = [
@@ -130,6 +152,13 @@ export const presetDefaults = {
     default: false,
     parse: parseBoolean,
     validate: validateBoolean,
+  },
+
+  default_systemMessage: {
+    description: 'The system message to instruct ChatGPT prior to the first prompt.',
+    default: [],
+    parse: parseJsonArray,
+    validate: validateStringArray,
   },
 
   default_temperature: {
@@ -232,7 +261,7 @@ const presetExamples = {
 
   refactor: {
     description: 'Refactor code.',
-    temperature: 0,
+    temperature: 0.1,
     systemMessage: refactorInstructions,
     maxExpectedResponseTokens: 0,
     inputTokensResponseTokensScalar: 1.5,
@@ -242,6 +271,19 @@ const presetExamples = {
     description: 'Get help with Java code.',
     temperature: 0.3,
     systemMessage: javaInstructions,
+  },
+
+  ub: {
+    description: 'Get help with Ubuntu, the Linux OS distribution.',
+    temperature: 0.2,
+    systemMessage: ubuntuInstructions,
+    markdownOutput: true,
+  },
+
+  ubsw: {
+    description: 'Get recommendations for Ubuntu software.',
+    temperature: 0.5,
+    systemMessage: ubuntuSoftwareInstructions,
   },
 
   ts: {

@@ -1,4 +1,5 @@
 import { strHashToBuffer } from './strHashToBuffer'
+import type { TCryptoAlgorithm } from './types/TCryptoAlgorithm'
 
 /**
  * Hash a string into an array of unsigned 32-bit integers.
@@ -12,6 +13,6 @@ import { strHashToBuffer } from './strHashToBuffer'
  * //=> Uint32Array(8) [3125670444,  245608543, 708569126, 2665658821, 1545475611, 1581426463, 1647510643, 613976979]
  * ```
  */
-export function strHashToUint32Array(string: string, algorithm = 'sha256'): Uint32Array {
+export function strHashToUint32Array(string: string, algorithm: TCryptoAlgorithm = 'sha256'): Uint32Array {
   return new Uint32Array(strHashToBuffer(string, algorithm).buffer)
 }

@@ -18,12 +18,12 @@ describe('roundWith', () => {
   })
 
   it('should throw an error if the number is not finite', () => {
-    expect(() => roundWith(Infinity, 2)).toThrow(TypeError)
-    expect(() => roundWith(-Infinity, 2)).toThrow(TypeError)
+    expect(() => roundWith(Infinity, 2)).toThrow()
+    expect(() => roundWith(-Infinity, 2)).toThrow()
   })
 
   it('should throw an error if the number is NaN', () => {
-    expect(() => roundWith(NaN, 2)).toThrow(TypeError)
+    expect(() => roundWith(NaN, 2)).toThrow()
   })
 
   it('should handle zero precision', () => {

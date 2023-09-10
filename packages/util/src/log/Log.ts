@@ -2,15 +2,13 @@ import { EventEmitter } from 'events'
 import fs from 'fs'
 import path from 'path'
 import { MS_IN_DAY } from '../date/constants/MS_IN_DAY'
-import { dateAdjustHoursBy } from '../date/dateAdjustHoursBy'
-import { isoDateTimestampForFilename } from '../date/isoDateTimestampForFilename'
+import { XtError } from '../errors/XtError'
 import { appendLineToFile } from '../fs/appendLineToFile'
 import { cleanDirectorySync } from '../fs/cleanDirectorySync'
 import { createDirectorySync } from '../fs/createDirectorySync'
 import { colors } from '../node/colors'
 import { objClonePrimitiveProperties } from '../object/objClonePrimitiveProperties'
 import { strRepeat } from '../string/strRepeat'
-import { isObjectType } from '../validation/isObjectType'
 import { isPrimitive } from '../validation/isPrimitive'
 import { ILogEmitterEventsOptions } from './types/ILogEmitterEventsOptions'
 import { ILogOptions } from './types/ILogOptions'
@@ -77,11 +75,6 @@ export class Log {
    * The directory path of the log file.
    */
   protected logDirpath: string
-
-  /**
-   * The filepath of the log file.
-   */
-  protected logFilepath: string
 
   /**
    * A negative or positive integer representing the timezone offset from UTC, in hours.
@@ -151,11 +144,18 @@ export class Log {
     if (this.fileLogLevel !== LogLevel.NONE) {
       createDirectorySync(this.logDirpath)
     }
-    this.logFilepath = path.join(this.logDirpath, isoDateTimestampForFilename() + '.txt')
 
     // initialize log file
     this.deleteLogFiles(_options.deleteFilesOlderThan)
-    if (this.fileLogLevel !== LogLevel.NONE) this.info('Log file created.')
+    if (this.fileLogLevel !== LogLevel.NONE) this.info({ message: 'Log file created.' })
+  }
+
+  /**
+   * The filepath of the log file.
+   */
+  get logFilepath(): string {
+    const d = new Date()
+    return path.join(this.logDirpath, `${d.getUTCFullYear()}-${1 + d.getUTCMonth()}-${d.getUTCDate()}.log`)
   }
 
   /**
@@ -167,69 +167,77 @@ export class Log {
 
   /**
    * Logs a debug message the console.
-   * @param message The message to print to console.
+   * @param data The message to print to console.
    * @param depth The depth to which to print object properties.
    */
-  debug<T>(message: T, depth?: number | null): T {
-    if (this.debugToFile) this._logToFile(LogLevel.DEBUG, message)
-    if (this.debugToConsole) this._logToConsole(LogLevel.DEBUG, message, this.debugColor, depth)
-    return message
+  debug<T extends Record<string, unknown>>(data: T, depth?: number): T {
+    if (this.debugToFile) this._logToFile(LogLevel.DEBUG, data)
+    if (this.debugToConsole) {
+      if (isPrimitive(data)) {
+        console.debug(gray(LogLevel.DEBUG) + ': ' + String(data))
+      } else {
+        console.debug(gray(LogLevel.DEBUG))
+        if (depth) console.dir(data, { depth })
+        else console.debug(data)
+      }
+    }
+    return data
   }
 
   /**
    * Logs an info message the console.
-   * @param message The message to print to console.
+   * @param data The message to print to console.
    * @param depth The depth to which to print object properties.
    */
-  info<T>(message: T, depth?: number | null): T {
-    if (this.infoToFile) this._logToFile(LogLevel.INFO, message)
-    if (this.infoToConsole) this._logToConsole(LogLevel.INFO, message, this.infoColor, depth)
-    return message
+  info<T extends Record<string, unknown>>(data: T): T {
+    if (this.infoToFile) this._logToFile(LogLevel.INFO, data)
+    if (this.infoToConsole) this._logToConsole(LogLevel.INFO, data, this.infoColor)
+    return data
   }
 
   /**
    * Logs a warning message to the console.
-   * @param message The message to print to console.
+   * @param data The message to print to console.
    */
-  warn<T>(message: T, depth?: number | null): T {
-    if (this.warnToFile) this._logToFile(LogLevel.WARN, message)
-    if (this.warnToConsole) this._logToConsole(LogLevel.WARN, message, this.warnColor, depth)
-    return message
+  warn<T extends Record<string, unknown>>(data: T): T {
+    if (this.warnToFile) this._logToFile(LogLevel.WARN, data)
+    if (this.warnToConsole) this._logToConsole(LogLevel.WARN, data, this.warnColor)
+    return data
   }
 
   /**
    * Logs a error message to the console.
-   * @param message The Error object or message to print to console.
+   * @param data The Error object or message to print to console.
    */
-  error<T>(message: T, depth?: number | null): T {
-    if (this.errorToFile) this._logToFile(LogLevel.ERROR, message)
-    if (this.errorToConsole) this._logToConsole(LogLevel.ERROR, message, this.errorColor, depth)
-    return message
+  error<T extends Record<string, unknown>>(data: T): T {
+    if (this.errorToFile) this._logToFile(LogLevel.ERROR, data)
+    if (this.errorToConsole) this._logToConsole(LogLevel.ERROR, data, this.errorColor)
+    return data
   }
 
-  /**
-   * Wrap an async function as a task, logging the start and end of the task.
-   * @param description The description of the task.
-   */
-  async task<T>(description: string, task: () => Promise<T>): Promise<T> {
-    this.info(`Began: ${description}.`)
-    const t0 = Date.now()
-    const returnValue = await task()
-    this.debug(`Ended: ${description}. (${((Date.now() - t0) / 1000).toString()} seconds)`)
-    return returnValue
-  }
+  // /**
+  //  * Wrap an async function as a task, logging the start and end of the task.
+  //  * @param description The description of the task.
+  //  */
+  // async task<T extends Record<string, unknown>>(description: string, task: () => Promise<T>): Promise<T> {
+  //   this.info(`Began: ${description}.`)
+  //   const t0 = Date.now()
+  //   const returnValue = await task()
+  //   this.debug(`Ended: ${description}. (${((Date.now() - t0) / 1000).toString()} seconds)`)
+  //   return returnValue
+  // }
 
-  /**
-   * Wrap a synchronous function as a task, logging the start and end of the task.
-   * @param description The description of the task.
-   */
-  taskSync<T>(description: string, task: () => T): T {
-    this.info(`Began: ${description}.`)
-    const t0 = Date.now()
-    const returnValue = task()
-    this.debug(`Ended: ${description}. (${((Date.now() - t0) / 1000).toString()} seconds)`)
-    return returnValue
-  }
+  // /**
+  //  * Wrap a synchronous function as a task, logging the start and end of the task.
+  //  * @param description The description of the task.
+  //  */
+  // taskSync<T extends Record<string, unknown>>(description: string, task: () => T): T {
+  //   this.info(`Began: ${description}.`)
+  //   const t0 = Date.now()
+  //   const returnValue = task()
+  //   this.debug(`Ended: ${description}. (${((Date.now() - t0) / 1000).toString()} seconds)`)
+  //   return returnValue
+  // }
 
   /**
    * Delete log files older than the specified number of days.
@@ -280,15 +288,10 @@ export class Log {
     for (const [level, names] of Object.entries(events)) {
       if (!names) continue
       for (const event of names) {
-        emitter.on(event, (...args: unknown[]) => {
+        emitter.on(event, (data: Record<string, unknown> | Error) => {
           const _level = level as 'debug' | 'info' | 'warn' | 'error'
-          this[_level]({
-            event: eventNamePrefix + '.' + event,
-            args: args.map((value: unknown) => {
-              if (isPrimitive(value)) return value
-              return objClonePrimitiveProperties(value as Record<string, unknown>)
-            }),
-          })
+          if (data instanceof Error) data = new XtError(data)
+          this[_level]({ event: eventNamePrefix ? eventNamePrefix + '.' + event : event, ...data })
         })
       }
     }
@@ -297,12 +300,13 @@ export class Log {
   /**
    * Write log entry to logfile
    * @param loglevel The log level.
-   * @param message The message to print to console.
+   * @param data The message to print to console.
    */
-  _logToFile<T>(loglevel: LogLevel, message: T): void {
-    const timestamp = new Date(dateAdjustHoursBy(Date.now(), this.timezone)).toISOString()
-    const data = JSON.stringify({ message })
-    const entry = `${loglevel.padEnd(5, ' ')}|${timestamp}|${data}`
+  _logToFile<T extends Record<string, unknown>>(loglevel: LogLevel, data: T): void {
+    const d = new Date()
+    const timestamp = `${d.getUTCHours()}.${1 + d.getUTCMinutes()}.${d.getUTCSeconds()}`
+    const level = loglevel.padEnd(5, ' ')
+    const entry = `${timestamp}|${level}|${JSON.stringify(data)}`
     appendLineToFile(this.logFilepath, entry, false).catch((error) => {
       console.error(error)
     })
@@ -311,23 +315,14 @@ export class Log {
   /**
    * Generic function for logging to console, used by the log-level specific functions.
    * @param loglevel The log level.
-   * @param message The message to print to console.
+   * @param data The message to print to console.
    * @param levelColor A function to wrap the level-part of the string in color formatting.
    * @param color A function to wrap the output-part of the string in color formatting.
-   * @param depth The depth to which to print object properties.
    */
-  _logToConsole<T>(loglevel: LogLevel, message: T, color: typeof gray, depth?: number | null): void {
-    const toConsole =
-      loglevel === LogLevel.WARN ? console.warn : loglevel === LogLevel.ERROR ? console.error : console.log
-    if (isObjectType(message)) {
-      toConsole(`[${color(loglevel)}]:`)
-      if (depth !== undefined) console.dir(message, { depth })
-      else toConsole(message)
-    } else {
-      let msg = message + ''
-      if (msg.includes('\n')) msg = '\n' + msg
-      toConsole(`[${color(loglevel)}]: ${color(msg) + ''}`)
-    }
+  _logToConsole<T extends Record<string, unknown>>(loglevel: LogLevel, data: T, color: typeof gray): void {
+    const log = loglevel === LogLevel.WARN ? console.warn : loglevel === LogLevel.ERROR ? console.error : console.log
+    log(color(loglevel))
+    log(data)
   }
 
   /**

@@ -1,6 +1,7 @@
 import { execFileSync } from 'child_process'
 import fs from 'fs'
 import path from 'path'
+import { XtError } from '../errors/XtError'
 import { colors } from './colors'
 import { IExecuteBatchScriptOptions } from './types/IExecuteBatchScriptOptions'
 import { IExecuteBatchScriptResult } from './types/IExecuteBatchScriptResult'
@@ -94,8 +95,8 @@ export function executeBatchScript(
     const rv = execFileSync(tempfile, opt.silent ? {} : { stdio: 'inherit' })
     if (rv) stdout.push(...cleanOutput(rv.toString()))
   } catch (err: unknown) {
-    error = err
-    if (!opt.silent) console.error(err)
+    error = new XtError(err)
+    if (!opt.silent) console.error(error)
     if (typeof err === 'object' && err !== null) {
       stdout.push(...cleanOutput((Reflect.get(err, 'stdout') ?? '').toString()))
       stderr.push(...cleanOutput((Reflect.get(err, 'stderr') ?? '').toString()))
@@ -115,5 +116,9 @@ const defaults: Required<IExecuteBatchScriptOptions> = {
   echo: false,
   prependWithCall: false,
   cwd: process.cwd(),
-  tempdir: process.env['TEMP'] || process.env['TMP'] || process.env['TMPDIR'] || path.parse(process.cwd()).root,
+  tempdir:
+    process.env['TEMP'] ||
+    process.env['TMP'] ||
+    process.env['TMPDIR'] ||
+    path.join(path.parse(process.cwd()).root, 'temp'),
 }
