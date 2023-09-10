@@ -1,7 +1,7 @@
 import { SERIALIZABLE_CLASSES } from './core/SERIALIZABLE_CLASSES'
 import { MAP_SENTINEL } from './sentinels/MAP_SENTINEL'
+import { OBJECT_SENTINEL } from './sentinels/OBJECT_SENTINEL'
 import { PRIMITIVE_SENTINEL } from './sentinels/PRIMITIVE_SENTINEL'
-import { SENTINEL } from './sentinels/SENTINEL'
 import { SET_SENTINEL } from './sentinels/SET_SENTINEL'
 
 /**
@@ -47,7 +47,7 @@ export function safeJsonStringify(value: unknown, indent = 0): string {
       }
       if (t === 'object') {
         if (typeof val['type'] === 'string' && SERIALIZABLE_CLASSES[val['type']]) {
-          return key === '' ? val : [SENTINEL, val['type'], val['id']].join('|')
+          return key === '' ? val : [OBJECT_SENTINEL, val['type'], val['id']].join('|')
         }
         if (cache.has(val)) {
           return '[Circular Reference]'

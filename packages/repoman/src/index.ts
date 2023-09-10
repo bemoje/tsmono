@@ -36,9 +36,9 @@ if (cwd !== process.cwd()) process.chdir(cwd)
 const args = process.argv.slice(2)
 const cmd = args.shift()?.toLowerCase().replace(/-/g, '')
 
-function main() {
+async function main() {
   if (!cmd) return
-  else if (cmd === 'ts'.toLowerCase()) ts(args)
+  else if (cmd === 'ts'.toLowerCase()) await ts(args)
   else if (cmd === 'script'.toLowerCase()) script(args)
   else if (cmd === 'createPackage'.toLowerCase()) createPackage(args)
   else if (cmd === 'deletePackage'.toLowerCase()) deletePackage(args)
@@ -62,4 +62,4 @@ function main() {
   else console.log('unknown command:', cmd)
 }
 
-main()
+main().catch((e) => console.error(e))

@@ -1,7 +1,7 @@
 import { SERIALIZABLE_CLASSES } from './core/SERIALIZABLE_CLASSES'
 import { regIsoDateString } from './core/regIsoDateString'
 import { MAP_SENTINEL } from './sentinels/MAP_SENTINEL'
-import { SENTINEL } from './sentinels/SENTINEL'
+import { OBJECT_SENTINEL } from './sentinels/OBJECT_SENTINEL'
 import { SET_SENTINEL } from './sentinels/SET_SENTINEL'
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -26,7 +26,7 @@ export function safeJsonParse(json: string, noRevivals = false): any {
     if (value == null) return value
     const t = typeof value
     if (t === 'string') {
-      if (!noRevivals && value.charAt(0) === SENTINEL) {
+      if (!noRevivals && value.charAt(0) === OBJECT_SENTINEL) {
         const [type, id] = value.substring(2).split('|')
         return SERIALIZABLE_CLASSES[type].getInstance(id)
       }

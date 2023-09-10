@@ -24,3 +24,4 @@ function example() {
   events.emit('info', { message: 'info', info: { a: 1, b: { c: 2 } } })
   events.emit('debug', { message: 'debug' })
 }
+example()
