@@ -7,6 +7,7 @@ function example() {
   const log = new Log({
     fileLogLevel: LogLevel.INFO,
     logDirpath: path.join(__dirname, 'logs'),
+    timezone: 2,
   })
 
   const events = new EventEmitter()
@@ -19,8 +20,11 @@ function example() {
     debug: ['debug'],
   })
 
-  events.emit('warn', { message: 'warn' })
+  events.emit('warn', { message: 'this is a warning for you' })
+  events.emit('debug', { message: 'some boring debugging info' })
   events.emit('error', new Error('this is an error'))
-  events.emit('info', { message: 'info', info: { a: 1, b: { c: 2 } } })
-  events.emit('debug', { message: 'debug' })
+  events.emit('warn', 'this is another warning for you')
+  events.emit('info', { message: 'here is info', info: { a: 1, b: { c: 2 } } })
 }
+
+// example()

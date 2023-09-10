@@ -1,4 +1,0 @@
-15.44.59|info |{"event":"sejt.info","message":"info","info":{"a":1,"b":{"c":2}}}
-15.44.59|error|{"event":"sejt.error"}
-15.44.59|warn |{"event":"sejt.warn","message":"warn"}
-15.44.59|info |{"message":"Log file created."}

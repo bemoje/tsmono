@@ -1,5 +1,5 @@
 import { findFile } from '@bemoje/fswalk'
-import { executeBatchScript } from '@bemoje/util'
+import { execSync } from 'child_process'
 import path from 'path'
 import { fixEntryPoints } from './fixEntryPoints'
 
@@ -15,5 +15,6 @@ export async function ts(args: string[]) {
     },
   })
   fixEntryPoints()
-  executeBatchScript(['ts-node -P tsconfig.json "' + fpath + '"'])
+  execSync('ts-node -P tsconfig.json ' + fpath + ' ', { stdio: 'inherit' })
+  // executeBatchScript(['ts-node -P tsconfig.json "' + fpath + '"'])
 }
