@@ -23,10 +23,10 @@ export function docs() {
 
   // create docs
   const docspath = path.join(process.cwd(), 'docs')
-  fs.rmSync(docspath, { recursive: true, force: true })
-  fs.mkdirSync(docspath, { recursive: true })
+  // fs.rmSync(docspath, { recursive: true, force: true })
+  // fs.mkdirSync(docspath, { recursive: true })
 
-  executeBatchScript(['npx typedoc --out ./docs/ --entryPoints ./packages/index.ts'], {
+  executeBatchScript(['npx rimraf docs', 'npx typedoc --out ./docs/ --entryPoints ./packages/index.ts'], {
     prependWithCall: true,
   })
 
@@ -34,7 +34,7 @@ export function docs() {
   fs.rmSync(indexpath, { force: true })
 
   // fix docs
-  fs.mkdirSync(docspath, { recursive: true })
+  // fs.mkdirSync(docspath, { recursive: true })
   const paths = walkdir.sync(docspath)
   const htmlFiles = paths.filter((filepath) => filepath.endsWith('.html'))
 
