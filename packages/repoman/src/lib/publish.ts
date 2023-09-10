@@ -82,6 +82,7 @@ export function publish(args: string[] = []) {
     const { error } = executeBatchScript(['npm publish --access public'], {
       prependWithCall: true,
       cwd: distdir,
+      silent: true,
     })
     if (error) {
       pkg.version = original
