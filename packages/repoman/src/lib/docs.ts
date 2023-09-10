@@ -23,7 +23,7 @@ export function docs() {
 
   // create docs
   const docspath = path.join(process.cwd(), 'docs')
-  executeBatchScript(['rimraf docs', 'npx typedoc --out ./docs/ --entryPoints ./packages/index.ts'], {
+  executeBatchScript(['npx rimraf docs', 'npx typedoc --out ./docs/ --entryPoints ./packages/index.ts'], {
     prependWithCall: true,
   })
 
