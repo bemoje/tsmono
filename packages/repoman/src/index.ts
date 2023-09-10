@@ -20,7 +20,7 @@ import { publish } from './lib/publish'
 import { rehash } from './lib/rehash'
 import { script } from './lib/script'
 import { test } from './lib/tests'
-import { ts } from './lib/ts'
+import { testdir, testfile, ts } from './lib/ts'
 import { wipeBemojeNodeModules } from './lib/wipeBemojeNodeModules'
 
 const appdata = getAppDataPath('bemoje', 'repoman')
@@ -29,7 +29,7 @@ const fpath = path.join(appdata, 'repo.txt')
 if (!fs.existsSync(fpath)) {
   fs.writeFileSync(fpath, process.cwd(), 'utf8')
 }
-console.log(fpath)
+// console.log(fpath)
 const cwd = fs.readFileSync(fpath, 'utf8').trim()
 if (cwd !== process.cwd()) process.chdir(cwd)
 
@@ -39,6 +39,8 @@ const cmd = args.shift()?.toLowerCase().replace(/-/g, '')
 async function main() {
   if (!cmd) return
   else if (cmd === 'ts'.toLowerCase()) await ts(args)
+  else if (cmd === 'testfile'.toLowerCase()) await testfile(args)
+  else if (cmd === 'testdir'.toLowerCase()) await testdir(args)
   else if (cmd === 'script'.toLowerCase()) script(args)
   else if (cmd === 'createPackage'.toLowerCase()) createPackage(args)
   else if (cmd === 'deletePackage'.toLowerCase()) deletePackage(args)

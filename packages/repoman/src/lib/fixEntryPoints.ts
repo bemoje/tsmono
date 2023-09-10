@@ -5,8 +5,8 @@ import { getPackages } from './getPackages'
 import { walkTsFiles } from './walkTsFiles'
 const { gray, green, red } = colors
 
-export function fixEntryPoints() {
-  console.log(green('Fixing entry points...'))
+export function fixEntryPoints(silent = false) {
+  if (!silent) console.log(green('Fixing entry points...'))
 
   getPackages()
     .filter(({ pkg }) => !pkg.bin)
