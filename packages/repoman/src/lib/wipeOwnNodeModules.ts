@@ -3,7 +3,7 @@ import fs from 'fs'
 import path from 'path'
 import { getPackages } from './getPackages'
 
-export function wipeBemojeNodeModules(args: string[]) {
+export function wipeOwnNodeModules(args: string[]) {
   getPackages().forEach(({ name, rootdir }) => {
     const dir = path.join(rootdir, 'node_modules', '@bemoje')
     const plock = path.join(rootdir, 'package-lock.json')

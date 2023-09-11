@@ -2,8 +2,7 @@ import { executeBatchScript } from '@bemoje/util'
 import fs from 'fs'
 import path from 'path'
 
-export function deletePackage(args: string[]) {
-  const name = args[0]
+export function deletePackage(name: string) {
   if (!name) throw new Error('No name provided')
 
   const cmds = [`npm uninstall @bemoje/${name}`, `nx g @nrwl/workspace:remove ${name}`]

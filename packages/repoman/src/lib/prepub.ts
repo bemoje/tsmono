@@ -15,7 +15,7 @@ export function prepub(names: string[] = []) {
   })
 
   console.log(green('Finalizing dist directories...'))
-  getPackages().forEach(({ name, pkg, pkgpath, rootdir, distdir }) => {
+  getPackages().forEach(({ pkg, rootdir, distdir }) => {
     const srcmd = path.join(rootdir, 'README.md')
     const distmd = path.join(distdir, 'README.md')
     if (fs.existsSync(srcmd)) {

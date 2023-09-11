@@ -29,5 +29,5 @@
     "./**/jest-setup.ts$",
     ".*.js$"
   ],
-  "minify": false
+  "minify": true
 }

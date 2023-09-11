@@ -210,12 +210,13 @@
     "repoman": {
       "tags": [],
       "implicitDependencies": [
+        "commander-config",
         "fswalk",
         "tscode",
         "util"
       ],
       "npmScope": "bemoje",
-      "projectType": "library"
+      "projectType": "application"
     }
   },
   "$schema": "./node_modules/nx/schemas/nx-schema.json",

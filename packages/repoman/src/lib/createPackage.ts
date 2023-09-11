@@ -4,8 +4,7 @@ import path from 'path'
 import { fixPackageJson } from './fixPackageJson'
 
 const cwd = process.cwd()
-export function createPackage(args: string[]) {
-  const name = args[0]
+export function createPackage(name: string) {
   if (!name) throw new Error('No name provided')
 
   const cmds = [

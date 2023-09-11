@@ -18,15 +18,17 @@ export async function ts(args: string[]) {
   if (!fpath) throw new Error('File not found: ' + search)
   const relative = absoluteToRelativePath(fpath).replace(/\\/g, '/')
   const command = 'node node_modules/ts-node/dist/bin.js -P tsconfig.json ' + relative
-  execSync(command, { stdio: 'inherit' })
+  try {
+    execSync(command, { stdio: 'inherit' })
+  } catch (error) {
+    if (!(error instanceof Error) || !error.message.includes('Command failed:')) {
+      throw error
+    }
+  }
 }
 
-export async function testfile(args: string[]) {
-  let coverage = false
-  if (args[0] === 'coverage') {
-    args.shift()
-    coverage = true
-  }
+export async function testfile(args: string[], options: { coverage?: boolean } = {}) {
+  const coverage = options.coverage === true
   const search = path.join(...args).replace(/\\/g, '/')
   console.log({ coverage, search })
   const fpath = await findFile(path.join(process.cwd(), 'packages'), search, {
@@ -44,12 +46,8 @@ export async function testfile(args: string[]) {
   execSync(command, { stdio: 'inherit' })
 }
 
-export async function testdir(args: string[]) {
-  let coverage = false
-  if (args[0] === 'coverage') {
-    args.shift()
-    coverage = true
-  }
+export async function testdir(args: string[], options: { coverage?: boolean } = {}) {
+  const coverage = options.coverage === true
   const search = path.join(...args).replace(/\\/g, '/')
   console.log({ coverage, search })
   const dpath = await findDirectory(path.join(process.cwd(), 'packages'), search, {

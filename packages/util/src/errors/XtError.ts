@@ -105,7 +105,7 @@ export class XtError extends Error {
       }
       result.push(s.trim())
     }
-    return result.join('\n')
+    return '\n' + result.join('\n') + '\n'
   }
 
   toJSON() {

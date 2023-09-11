@@ -306,3 +306,7 @@ export class Log {
     }
   }
 }
+
+process.on('uncaughtException', (error) => {
+  throw new XtError(error)
+})
