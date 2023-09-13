@@ -1,81 +1,118 @@
 import { colors, strWrapInAngleBrackets, strWrapInBrackets } from '@bemoje/util'
 import { Argument, Command, Option } from 'commander'
-const { dim, gray } = colors
+const { dim } = colors
 
-export interface ICreateCommandOptions {
+/**
+ * Create a command.
+ */
+export function createCommand(program: Command, options: ICommand): typeof program {
+  const command = program.command(options.command).summary(options.summary).action(options.action)
+  description(command, options)
+  aliases(command, options)
+  opts(command, options.options)
+  args(command, options.arguments)
+  return command
+}
+
+export interface ICommand {
   command: string
   aliases?: string[]
   summary: string
-  description?: string[]
-  examples?: string[]
-  arguments?: ICreateCommandOptionsArgument[]
-  options?: ICreateCommandOptionsOptions[]
+  details?: string[]
+  arguments?: ICommandArgument[]
+  options?: ICommandOptions[]
+  usage?: ICommandUsage[]
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   action: (...args: any[]) => void | Promise<void>
 }
 
-export interface ICreateCommandOptionsDefault {
-  value: unknown
+export interface ICommandUsage {
+  command: string
   description?: string
 }
 
-export interface ICreateCommandOptionsArgument {
+export interface ICommandArgument {
   name: string
   description: string
   isOptional?: boolean
   isRest?: boolean
-  default?: ICreateCommandOptionsDefault
+  isCommaDelimited?: boolean
+  default?: {
+    value: unknown
+    description?: string
+  }
   choices?: string[]
 }
 
-export interface ICreateCommandOptionsOptions {
+export interface ICommandOptions {
   name: string
   char?: string
   description: string
   argument?: string
   isOptional?: boolean
-  default?: ICreateCommandOptionsDefault
+  isCommaDelimited?: boolean
+  default?: {
+    value: unknown
+    description?: string
+  }
   choices?: string[]
   conflicts?: string[]
 }
 
-export function createCommand(program: Command, options: ICreateCommandOptions): typeof program {
-  const command = program.command(options.command).summary(options.summary)
+function description(command: Command, options: ICommand) {
+  const { details, summary, usage } = options
+  const toList = (a: string[]) => `\n${a.map((s) => dim('- ') + s).join('\n')}\n`
+  let result = 'Description: ' + summary
+  if (details) result += toList(details)
+  if (usage) {
+    const offset = Math.max(...usage.map((u) => u.command.length))
+    result += '\nExample Usage:'
+    result += toList(
+      usage.map((u) => {
+        return `${u.command.padEnd(offset, ' ')}  ${u.description}`
+      })
+    )
+  }
+  command.description(result)
+}
 
-  const bullets = options.description
-    ? '\n' + options.description.map((line) => dim('- ') + line).join('\n') + '\n'
-    : ''
-  const examples = options.examples
-    ? '\nExample Usage: \n' + options.examples.map((line) => dim('- ') + line).join('\n')
-    : ''
-  command.description('Description: ' + options.summary + bullets + examples)
+function aliases(command: Command, options: ICommand) {
+  if (!options.aliases) return
+  command.aliases(options.aliases)
+}
 
-  if (options.aliases) {
-    command.aliases(options.aliases)
+function args(command: Command, args?: ICommandArgument[]) {
+  if (!args) return
+  for (const arg of args) {
+    const { name, description, isOptional, isRest, isCommaDelimited, choices } = arg
+    const wrapper = isOptional ? strWrapInBrackets : strWrapInAngleBrackets
+    const _name = isRest ? '...' + name : name
+    const argument = new Argument(wrapper(_name), description)
+    if (isCommaDelimited) argument.argParser(parseCommaDelimited)
+    if (arg.default) argument.default(arg.default.value, arg.default.description)
+    if (choices) argument.choices(choices)
+    command.addArgument(argument)
   }
-  if (options.arguments) {
-    for (const opt of options.arguments) {
-      const { name, description, isOptional, isRest, choices } = opt
-      const wrapper = isOptional ? strWrapInBrackets : strWrapInAngleBrackets
-      const _name = isRest ? '...' + name : name
-      const argument = new Argument(wrapper(_name), description)
-      if (opt.default) argument.default(opt.default.value, opt.default.description)
-      if (choices) argument.choices(choices)
-      command.addArgument(argument)
-    }
+}
+
+function opts(command: Command, options?: ICommandOptions[]) {
+  if (!options) return
+  for (const opt of options) {
+    const { name, char, description, argument, isOptional, isCommaDelimited, choices, conflicts } = opt
+    const wrapper = isOptional ? strWrapInBrackets : strWrapInAngleBrackets
+    const _name = `-${char}, --${name}${argument ? ' ' + wrapper(argument) : ''}`
+    const option = new Option(_name, description)
+    if (isCommaDelimited) option.argParser(parseCommaDelimited)
+    if (opt.default) option.default(opt.default.value, opt.default.description)
+    if (choices) option.choices(choices)
+    if (conflicts) option.conflicts(conflicts)
+    command.addOption(option)
   }
-  if (options.options) {
-    for (const opt of options.options) {
-      const { name, char, description, argument, isOptional, choices, conflicts } = opt
-      const wrapper = isOptional ? strWrapInBrackets : strWrapInAngleBrackets
-      const _name = `-${char}, --${name}${argument ? ' ' + wrapper(argument) : ''}`
-      const option = new Option(_name, description)
-      if (opt.default) option.default(opt.default.value, opt.default.description)
-      if (choices) option.choices(choices)
-      if (conflicts) option.conflicts(conflicts)
-      command.addOption(option)
-    }
-  }
-  command.action(options.action)
-  return command
+}
+
+function parseCommaDelimited(string: string): string[] {
+  return string
+    .split(' ')
+    .map((s) => s.trim())
+    .filter((s) => s !== '')
 }

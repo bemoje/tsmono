@@ -46,77 +46,165 @@ const config = new Config('bemoje', 'repoman', {
   },
 })
 
-export const program = new Command().name('rman').description('Repo management tools.').version('0.0.0')
+export const program = new Command()
+  .name('rman')
+  .description('Tools for management of an NX mono-repo..')
+  .version('0.0.0')
 
 createCommand(program, {
   command: 'b',
   aliases: ['build'],
   summary: 'Run build for all or selected packages.',
-  description: ['Run build for all or selected packages.'],
-  examples: ['rman ts src lib index.ts'],
   arguments: [
     {
-      name: 'paths',
-      description: 'Path segments to search for.',
-      isOptional: false,
-      isRest: true,
+      name: 'packages',
+      description: 'Names of packages to include. If omitted, all packages are included.',
+      isOptional: true,
+      isCommaDelimited: true,
     },
   ],
-  action: ts,
+  usage: [
+    { command: 'rman build', description: 'Run build for all packages.' },
+    { command: 'rman build pack1,pack2', description: "Run build for packages 'pack1' and 'pack2'." },
+  ],
+  action: build,
 })
 
-program
-  .command('build')
-  .description('Run build for all or selected packages.')
-  .argument('[packages...]', 'Names of packages to build. If omitted, all packages are built.')
-  .action(build)
+createCommand(program, {
+  command: 't',
+  aliases: ['test'],
+  summary: 'Run tests for all or selected packages.',
+  arguments: [
+    {
+      name: 'packages',
+      description: 'Names of packages to include. If omitted, all packages are included.',
+      isOptional: true,
+      isCommaDelimited: true,
+    },
+  ],
+  usage: [
+    { command: 'rman test', description: 'Run tests for all packages.' },
+    { command: 'rman test pack1,pack2', description: "Run tests for packages 'pack1' and 'pack2'." },
+  ],
+  action: test,
+})
 
-program
-  .command('test')
-  .description('Run tests for all or selected packages.')
-  .argument('[packages...]', 'Names of packages to test. If omitted, all packages are tested.')
-  .action(test)
+createCommand(program, {
+  command: 'l',
+  aliases: ['lint'],
+  summary: 'Run lint for all or selected packages.',
+  arguments: [
+    {
+      name: 'packages',
+      description: 'Names of packages to include. If omitted, all packages are included.',
+      isOptional: true,
+      isCommaDelimited: true,
+    },
+  ],
+  usage: [
+    { command: 'rman lint', description: 'Run lint for all packages.' },
+    { command: 'rman lint pack1,pack2', description: "Run lint for packages 'pack1' and 'pack2'." },
+  ],
+  action: lint,
+})
 
-program
-  .command('lint')
-  .description('Run lint for all or selected packages.')
-  .argument('[packages...]', 'Names of packages to lint. If omitted, all packages are linted.')
-  .action(lint)
+createCommand(program, {
+  command: 'd',
+  aliases: ['docs'],
+  summary: 'Generate docs for all packages.',
+  usage: [{ command: 'rman docs', description: 'Generate docs for all packages.' }],
+  action: docs,
+})
 
-program.command('docs').description('Generate docs for entire monorepo.').action(docs)
+createCommand(program, {
+  command: 'pre',
+  aliases: ['precommit', 'prepub', 'pre-publish'],
+  summary: 'Run lint, test, build, docs and fixall for specified or all packages.',
+  arguments: [
+    {
+      name: 'packages',
+      description: 'Names of packages to include. If omitted, all packages are included.',
+      isOptional: true,
+      isCommaDelimited: true,
+    },
+  ],
+  usage: [
+    { command: 'rman precommit', description: 'Run precommit for all packages.' },
+    { command: 'rman precommit pack1,pack2', description: "Run precommit for packages 'pack1' and 'pack2'." },
+  ],
+  action: prepub,
+})
 
-program
-  .command('pre')
-  .aliases(['pre-commit', 'precommit', 'prepub', 'pre-publish'])
-  .description('Run lint, test, build and docs for specified or all packages.')
-  .argument('[packages...]', 'Names of packages to include. If omitted, all packages are included.')
-  .action(prepub)
+createCommand(program, {
+  command: 'pub',
+  aliases: ['publish', 'npmpublish', 'npm-publish'],
+  summary: 'Publish all or selected packages to NPM.',
+  details: [
+    'First executes precommit, then publishes all packages whose builds have changed, then git commits.',
+    'All package dist directories are hashed every time they are published.',
+    'Even if specific packages are selected, if other packages that they depend on have changes, they are published as well.',
+  ],
+  arguments: [
+    {
+      name: 'level',
+      description: 'The semver level to bump.',
+      choices: ['major', 'minor', 'patch'],
+    },
+    {
+      name: 'packages',
+      description: 'Names of packages to include. If omitted, all packages are included.',
+      isOptional: true,
+      isCommaDelimited: true,
+    },
+  ],
+  usage: [
+    { command: 'rman publish patch', description: 'Publish new version (patch) of all packages with changes.' },
+    {
+      command: 'rman publish minor pack1,pack2',
+      description:
+        "Publish new version (minor) of packages 'pack1', 'pack2' and their dependencies if they have changes.",
+    },
+  ],
+  action: publish,
+})
 
-program
-  .command('pub')
-  .aliases(['publish', 'npm-publish'])
-  .description('Run prepub and then automatically publish all packages whose dist directories have changed.')
-  .argument('<level>', 'The semver level to bump. Accepted values: "major", "minor", "patch"')
-  .argument('[packages...]', 'Names of packages to include. If omitted, all packages are included.')
-  .action(publish)
-
-program
-  .command('rh')
-  .aliases(['rehash', 're-hash'])
-  .description('Rehash the files in dist directories. This determines when to publish new versions of packages.')
-  .action(rehash)
+createCommand(program, {
+  command: 'rh',
+  aliases: ['rehash', 're-hash'],
+  summary: 'Rehash all or selected packages.',
+  details: [
+    'The files in the dist directories for each package are hashed when published to npm.',
+    'When using the publish command, the hash determines if there were changes and thereby determines whether a package needs to get published or not.',
+    'Hashing a package means that if its dist directory has not changed before the next publish, it will not get published.',
+  ],
+  arguments: [
+    {
+      name: 'packages',
+      description: 'Names of packages to include. If omitted, all packages are included.',
+      isOptional: true,
+      isCommaDelimited: true,
+    },
+  ],
+  usage: [
+    { command: 'rman rehash', description: 'Rehash all packages.' },
+    { command: 'rman rehash pack1,pack2', description: "Rehash packages 'pack1' and 'pack2'." },
+  ],
+  action: rehash,
+})
 
 createCommand(program, {
   command: 'ts',
   aliases: ['typescript'],
   summary: 'Run a .ts file.',
-  description: [
+  details: [
     'Provide a full path or partial path search terms.',
     'Path segments are joined to a single search string.',
-    'The first filepath found to exact-match anywhere in the string, is the file that is run.',
-    'The search root directory is ./packages',
+    'The first filepath found in any package to match, is the file that is run.',
   ],
-  examples: ['rman ts src lib index.ts'],
+  usage: [
+    { command: 'rman ts somefile.ts', description: "Find and run filepath containing 'somefile.ts'." },
+    { command: 'rman ts src index.ts', description: "Find and run filepath containing 'src/index.ts'." },
+  ],
   arguments: [
     {
       name: 'paths',

@@ -1,12 +1,13 @@
 import { pkgRepoDependencies } from './pkgRepoDependencies'
 
-export function pkgRepoDependenciesRecursive(pkg: Record<string, any>): string[] {
-  function recurse(pkg: Record<string, any>, deps: string[]): string[] {
-    const newDeps = pkgRepoDependencies(pkg)
-    if (newDeps.length === 0) {
-      return deps
+export function pkgRepoDependenciesRecursive(...packageNames: string[]): string[] {
+  const result = new Set<string>()
+  function recurse(name: string) {
+    result.add(name)
+    for (const dep of pkgRepoDependencies(name)) {
+      if (!result.has(dep)) recurse(dep)
     }
-    return recurse(pkg, deps.concat(newDeps))
   }
-  return [...new Set(recurse(pkg, []))]
+  packageNames.forEach(recurse)
+  return [...result]
 }

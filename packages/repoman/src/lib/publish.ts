@@ -1,69 +1,46 @@
 /* eslint-disable no-useless-escape */
-import { colors, executeBatchScript, getAppDataPath } from '@bemoje/util'
+import { colors, executeBatchScript, writeJsonFileSync } from '@bemoje/util'
 import fs from 'fs'
 import path from 'path'
-import { deleteTmpDir } from './deleteTmpDir'
+import { PackageHashes } from './PackageHashes'
 import { docs } from './docs'
 import { getPackages } from './getPackages'
-import { hashPackage } from './hashPackage'
+import { pkgRepoDependenciesRecursive } from './pkgRepoDependenciesRecursive'
 import { prepub } from './prepub'
+import { semverVersionBump } from './util/semverVersionBump'
 const { gray, green, red } = colors
 
-export function publish(type: string, names: string[] = []) {
-  // args
-  // const type = args[0]
-  if (!type) throw new Error('no version upgrade type provided. Can be patch, minor or major.')
-
-  const cwd = process.cwd()
-  // let names = args.slice(1)
-  const runAll = !names.length
-  if (runAll) {
-    names = fs.readdirSync(path.join(cwd, 'packages')).filter((name) => !name.startsWith('.'))
+export function publish(level: string, packages: string[]) {
+  if (packages) {
+    packages = pkgRepoDependenciesRecursive(...packages)
+  } else {
+    packages = fs.readdirSync(path.join(process.cwd(), 'packages')).filter((name) => !name.startsWith('.'))
   }
-  process.argv.splice(2, 1)
 
   // prepub
-  prepub(names)
+  prepub(packages)
 
   // hashes
-  const appdata = getAppDataPath('bemoje', 'repoman')
-  fs.mkdirSync(appdata, { recursive: true })
-  const hashesPath = path.join(appdata, 'hashes.json')
-  if (!fs.existsSync(hashesPath)) {
-    fs.writeFileSync(hashesPath, '{}', 'utf8')
-  }
-  const hashes = JSON.parse(fs.readFileSync(hashesPath, 'utf8'))
+  const hashes = new PackageHashes()
 
   // npm publish
   const installGlobally: string[] = []
   const successful: string[] = []
 
   console.log(green('Publishing packages with changes to NPM...'))
-  getPackages().forEach(({ name, pkgpath, pkg, distdir }) => {
-    const hash = hashPackage(name)
-    if (hashes[name] === hash) return
-
-    const original = pkg.version + ''
-    const version = pkg.version.split('.').map(Number)
-    if (type === 'patch') {
-      version[2] += 1
-    } else if (type === 'minor') {
-      version[1] += 1
-      version[2] = 0
-    } else if (type === 'major') {
-      version[0] += 1
-      version[1] = 0
-      version[2] = 0
-    }
-    pkg.version = version.join('.')
-    fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
+  getPackages(packages).forEach(({ name, pkgpath, pkg, distdir }) => {
+    if (hashes.currentHash(name) === hashes.hash(name)) return
+    console.log(gray('- ' + name))
+    const original = String(pkg.version)
+    pkg.version = semverVersionBump(original, level as 'major' | 'minor' | 'patch')
+    writeJsonFileSync(pkgpath, pkg, true, 2)
 
     // Update version of CLIs in dist directory.
     if (pkg.preferGlobal) {
-      const srcpath = path.join(distdir, 'index.cjs.js')
-      if (fs.existsSync(srcpath)) {
-        const src = fs.readFileSync(srcpath, 'utf8').replace("('0.0.0')", `('${pkg.version}')`)
-        fs.writeFileSync(srcpath, src, 'utf8')
+      const cjspath = path.join(distdir, 'index.cjs.js')
+      if (fs.existsSync(cjspath)) {
+        const cjs = fs.readFileSync(cjspath, 'utf8').replace("('0.0.0')", `('${pkg.version}')`)
+        fs.writeFileSync(cjspath, cjs, 'utf8')
       }
 
       const esmpath = path.join(distdir, 'index.esm.js')
@@ -86,15 +63,15 @@ export function publish(type: string, names: string[] = []) {
     })
     if (error) {
       pkg.version = original
-      fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
+      writeJsonFileSync(pkgpath, pkg, true, 2)
       console.error(red('Could not publish ' + name + '. Reverting version to ' + original + '.'))
       process.exit()
     }
 
     // hash
-    hashes[name] = hashPackage(name)
-    fs.writeFileSync(hashesPath, JSON.stringify(hashes, null, 2), 'utf8')
+    hashes.updateHash(name)
 
+    // install CLIs globally
     if (pkg.preferGlobal) {
       installGlobally.push('npm i -g ' + pkg.name + '@^' + pkg.version)
     }
@@ -102,38 +79,30 @@ export function publish(type: string, names: string[] = []) {
     successful.push(name + ' v.' + pkg.version)
   })
 
-  // update own modules
-  console.log(green('Updating own modules in root...'))
-  const updatebat = ['npm update @bemoje/*', 'npm audit --fix']
-  executeBatchScript(updatebat, {
+  if (!successful.length) return
+
+  // install updated modules
+  console.log(green('Installing the updated modules in affected packages.'))
+  console.log(gray('- monorepo root'))
+  executeBatchScript(['npm update @bemoje/*', 'npm audit --fix'], {
     silent: true,
     prependWithCall: true,
   })
 
-  console.log(green('Updating own modules in all packages...'))
-  const dependentPackages = getPackages().filter(({ name, rootdir, pkg }) => {
-    const deps = new Set([...Object.keys(pkg.dependencies)])
-    for (const str of successful) {
-      if (deps.has('@bemoje/' + str.split(' ')[0])) {
-        return true
-      }
-    }
-    return false
-  })
-  dependentPackages.forEach(({ name, rootdir }) => {
+  getPackages(packages).forEach(({ name, rootdir }) => {
+    console.log(gray('- ' + name))
     executeBatchScript(['npm update @bemoje/*'], {
       silent: true,
       prependWithCall: true,
       cwd: rootdir,
     })
-    console.log(gray('- ' + name))
   })
 
   // prepub
-  prepub(names)
+  prepub(packages)
 
   // docs
-  if (successful.length) docs()
+  docs()
 
   // update global modules and git commit
   console.log(green('Update global modules and git commit...'))
@@ -141,11 +110,7 @@ export function publish(type: string, names: string[] = []) {
     prependWithCall: true,
   })
 
-  if (successful.length) {
-    executeBatchScript([`git commit -m "published new versions (${type}) of packages: ${successful.join(' || ')}"`], {
-      prependWithCall: true,
-    })
-  }
-
-  deleteTmpDir()
+  executeBatchScript([`git commit -m "published new versions (${level}) of packages: ${successful.join(' || ')}"`], {
+    prependWithCall: true,
+  })
 }
