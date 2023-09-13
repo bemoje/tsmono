@@ -1,8 +1,9 @@
 import { Config, parseString, validateString } from '@bemoje/commander-config'
-import { colors, getAppDataPath, strWrapInAngleBrackets, strWrapInBrackets } from '@bemoje/util'
-import { Argument, Command, Option } from 'commander'
+import { colors, getAppDataPath } from '@bemoje/util'
+import { Command } from 'commander'
 import fs from 'fs'
 import path from 'path'
+import { createCommand } from './createCommand'
 import { build } from './lib/build'
 import { createPackage } from './lib/createPackage'
 import { deletePackage } from './lib/deletePackage'
@@ -47,6 +48,23 @@ const config = new Config('bemoje', 'repoman', {
 
 export const program = new Command().name('rman').description('Repo management tools.').version('0.0.0')
 
+createCommand(program, {
+  command: 'b',
+  aliases: ['build'],
+  summary: 'Run build for all or selected packages.',
+  description: ['Run build for all or selected packages.'],
+  examples: ['rman ts src lib index.ts'],
+  arguments: [
+    {
+      name: 'paths',
+      description: 'Path segments to search for.',
+      isOptional: false,
+      isRest: true,
+    },
+  ],
+  action: ts,
+})
+
 program
   .command('build')
   .description('Run build for all or selected packages.')
@@ -88,88 +106,17 @@ program
   .description('Rehash the files in dist directories. This determines when to publish new versions of packages.')
   .action(rehash)
 
-const prettyDescription = (header: string, ...lines: string[]): string => {
-  const bullets = lines.map((line) => dim('- ') + gray(line)).join('\n')
-  return 'Description: ' + header + '\n' + bullets + '\n'
-}
-
-interface ICreateCommandOptions {
-  command: string
-  aliases?: string[]
-  summary: string
-  description?: string[]
-  arguments?: ICreateCommandOptionsArgument[]
-  options?: ICreateCommandOptionsOptions[]
-  action: (...args: any[]) => void | Promise<void>
-}
-interface ICreateCommandOptionsDefault {
-  value: unknown
-  description?: string
-}
-interface ICreateCommandOptionsArgument {
-  name: string
-  description: string
-  isOptional?: boolean
-  isRest?: boolean
-  default?: ICreateCommandOptionsDefault
-  choices?: string[]
-}
-interface ICreateCommandOptionsOptions {
-  name: string
-  char?: string
-  description: string
-  argument?: string
-  isOptional?: boolean
-  default?: ICreateCommandOptionsDefault
-  choices?: string[]
-  conflicts?: string[]
-}
-function createCommand(program: Command, options: ICreateCommandOptions): typeof program {
-  const command = program.command(options.command).summary(options.summary)
-  if (options.aliases) {
-    command.aliases(options.aliases)
-  }
-  if (options.description) {
-    const bullets = options.description.map((line) => dim('- ') + gray(line)).join('\n')
-    command.description('Description: ' + options.summary + '\n' + bullets + '\n')
-  }
-  if (options.arguments) {
-    for (const opt of options.arguments) {
-      const { name, description, isOptional, isRest, choices } = opt
-      const wrapper = isOptional ? strWrapInBrackets : strWrapInAngleBrackets
-      const _name = isRest ? '...' + name : name
-      const argument = new Argument(wrapper(_name), description)
-      if (opt.default) argument.default(opt.default.value, opt.default.description)
-      if (choices) argument.choices(choices)
-      command.addArgument(argument)
-    }
-  }
-  if (options.options) {
-    for (const opt of options.options) {
-      const { name, char, description, argument, isOptional, choices, conflicts } = opt
-      const wrapper = isOptional ? strWrapInBrackets : strWrapInAngleBrackets
-      const _name = `-${char}, --${name}${argument ? ' ' + wrapper(argument) : ''}`
-      const option = new Option(_name, description)
-      if (opt.default) option.default(opt.default.value, opt.default.description)
-      if (choices) option.choices(choices)
-      if (conflicts) option.conflicts(conflicts)
-      command.addOption(option)
-    }
-  }
-  return command
-}
-
 createCommand(program, {
   command: 'ts',
   aliases: ['typescript'],
   summary: 'Run a .ts file.',
   description: [
     'Provide a full path or partial path search terms.',
-    'The search root directory is ./packages.',
-    'The path segments are joined to a single search string.',
+    'Path segments are joined to a single search string.',
     'The first filepath found to exact-match anywhere in the string, is the file that is run.',
-    'Example: "rman ts src lib index.ts"',
+    'The search root directory is ./packages',
   ],
+  examples: ['rman ts src lib index.ts'],
   arguments: [
     {
       name: 'paths',
@@ -180,20 +127,6 @@ createCommand(program, {
   ],
   action: ts,
 })
-
-// program
-//   .command('ts')
-//   .aliases(['typescript'])
-//   .summary('Find and run a .ts file.')
-//   .description(
-//     prettyDescription(
-//       'Find and run a .ts file.',
-//       'The search starts in ./packages.',
-//       'The path segments are joined to a single search string. The first filepath found to exact-match anywhere in the string, is the file that is run.'
-//     )
-//   )
-//   .argument('<paths...>', 'Path segments to search for.')
-//   .action(ts)
 
 program
   .command('tf')
