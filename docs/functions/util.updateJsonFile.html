@@ -50,16 +50,19 @@ The indentation of the original JSON file is preserved.</p>
 <h5><span class="tsd-kind-parameter">o</span>: <span class="tsd-signature-type ">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type ">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type ">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4></li></ul></li></ul></li>
 <li>
-<h5><code class="tsd-tag ts-flagOptional">Optional</code> <span class="tsd-kind-parameter">defaultJson</span>: <span class="tsd-signature-type">string</span></h5></li></ul></div>
+<h5><code class="tsd-tag ts-flagOptional">Optional</code> <span class="tsd-kind-parameter">defaultJson</span>: <span class="tsd-signature-type">string</span></h5>
+<div class="tsd-comment tsd-typography"><p>The default JSON string to use if the file cannot be read.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
 <div class="tsd-comment tsd-typography">
-<h4>Throws</h4><p>If the file cannot be read or written to.</p>
+<h4>Throws</h4><p>if defaultJson is not provded and the file cannot be read.</p>
 
 <h4>Example</h4><pre><code class="language-ts"><span class="hl-8">await</span><span class="hl-4"> </span><span class="hl-3">updateJsonFileSync</span><span class="hl-4">(</span><span class="hl-5">&#39;./package.json&#39;</span><span class="hl-4">, (</span><span class="hl-7">json</span><span class="hl-4">) </span><span class="hl-1">=&gt;</span><span class="hl-4"> {</span><br/><span class="hl-4">  </span><span class="hl-7">json</span><span class="hl-4">.</span><span class="hl-7">version</span><span class="hl-4"> = </span><span class="hl-5">&#39;1.0.1&#39;</span><span class="hl-4">;</span><br/><span class="hl-4">  </span><span class="hl-8">return</span><span class="hl-4"> </span><span class="hl-7">json</span><span class="hl-4">;</span><br/><span class="hl-4">});</span>
 </code><button>Copy</button></pre>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/bemoje/tsmono/blob/8fd107c8/packages/util/src/fs/updateJsonFile.ts#L22">packages/util/src/fs/updateJsonFile.ts:22</a></li></ul></aside></li></ul></section></div>
+<li>Defined in <a href="https://github.com/bemoje/tsmono/blob/7c7cf2b8/packages/util/src/fs/updateJsonFile.ts#L22">packages/util/src/fs/updateJsonFile.ts:22</a></li></ul></aside></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -485,6 +488,10 @@ The indentation of the original JSON file is preserved.</p>
 <li><a href="util.toJson.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>to<wbr/>Json</span></a></li>
 <li><a href="util.trimArrayBytesLeft.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>trim<wbr/>Array<wbr/>Bytes<wbr/>Left</span></a></li>
 <li><a href="util.trimArrayBytesRight.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>trim<wbr/>Array<wbr/>Bytes<wbr/>Right</span></a></li>
+<li><a href="util.updateFile.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>update<wbr/>File</span></a></li>
+<li><a href="util.updateFileSafe.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>update<wbr/>File<wbr/>Safe</span></a></li>
+<li><a href="util.updateFileSafeSync.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>update<wbr/>File<wbr/>Safe<wbr/>Sync</span></a></li>
+<li><a href="util.updateFileSync.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>update<wbr/>File<wbr/>Sync</span></a></li>
 <li><a href="util.updateJsonFile.html" class="current"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>update<wbr/>Json<wbr/>File</span></a></li>
 <li><a href="util.updateJsonFileSync.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>update<wbr/>Json<wbr/>File<wbr/>Sync</span></a></li>
 <li><a href="util.wait.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>wait</span></a></li>

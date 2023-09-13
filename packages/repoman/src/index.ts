@@ -149,6 +149,8 @@ createCommand(program, {
       name: 'level',
       description: 'The semver level to bump.',
       choices: ['major', 'minor', 'patch'],
+      isOptional: true,
+      default: { value: 'patch' },
     },
     {
       name: 'packages',
