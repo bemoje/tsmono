@@ -6,6 +6,7 @@ import { PackageHashes } from './PackageHashes'
 import { docs } from './docs'
 import { getPackages } from './getPackages'
 import { pkgRepoDependenciesRecursive } from './pkgRepoDependenciesRecursive'
+import { pkgRepoDirectDependents } from './pkgRepoDirectDependents'
 import { prepub } from './prepub'
 import { semverVersionBump } from './util/semverVersionBump'
 const { gray, green, red } = colors
@@ -82,14 +83,13 @@ export function publish(level: string, packages: string[]) {
   if (!successful.length) return
 
   // install updated modules
-  console.log(green('Installing the updated modules in affected packages.'))
+  console.log(green('Installing the updated modules in affected packages...'))
   console.log(gray('- monorepo root'))
   executeBatchScript(['npm update @bemoje/*', 'npm audit --fix'], {
     silent: true,
     prependWithCall: true,
   })
-
-  getPackages(packages).forEach(({ name, rootdir }) => {
+  getPackages(pkgRepoDirectDependents(...packages)).forEach(({ name, rootdir }) => {
     console.log(gray('- ' + name))
     executeBatchScript(['npm update @bemoje/*'], {
       silent: true,
@@ -98,19 +98,20 @@ export function publish(level: string, packages: string[]) {
     })
   })
 
-  // prepub
   prepub(packages)
 
-  // docs
   docs()
 
-  // update global modules and git commit
-  console.log(green('Update global modules and git commit...'))
-  executeBatchScript([...installGlobally, 'git add .'], {
-    prependWithCall: true,
-  })
+  if (installGlobally.length) {
+    console.log(green('Install CLI packages globally...'))
+    executeBatchScript([...installGlobally], {
+      prependWithCall: true,
+    })
+  }
 
-  executeBatchScript([`git commit -m "published new versions (${level}) of packages: ${successful.join(' || ')}"`], {
-    prependWithCall: true,
-  })
+  console.log(green('git commit...'))
+  executeBatchScript(
+    ['git add .', `git commit -m "published new versions (${level}) of packages: ${successful.join(' || ')}"`],
+    {}
+  )
 }
