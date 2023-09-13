@@ -48,9 +48,8 @@ export function publish(level: string, packages: string[] = []) {
   getPackages(_packages).forEach(({ name, pkgpath, pkg, distdir }) => {
     console.log(gray('- ' + name))
 
-    console.log(gray('  - ' + 'Check if package has changed since last publish.'))
     if (hashes.currentHash(name) === hashes.hash(name)) {
-      console.log(gray('    - ' + 'No changes. Skipping.'))
+      console.log(gray('  - ' + 'No changes.'))
       return
     }
 
@@ -70,9 +69,13 @@ export function publish(level: string, packages: string[] = []) {
     }
 
     console.log(gray('    - ' + 'Update package.json version in dist directory.'))
-    updateFileSync(path.join(distdir, 'package.json'), (src) => {
-      return src.replace(/"version"\: "\d+\.\d+\.\d+"/, `"version": "${pkg.version}"`)
-    })
+    updateFileSync(
+      path.join(distdir, 'package.json'),
+      (src) => {
+        return src.replace(/"version"\: "\d+\.\d+\.\d+"/, `"version": "${pkg.version}"`)
+      },
+      JSON.stringify(pkg, null, 2)
+    )
 
     console.log(gray('  - ' + 'npm update'))
     const { error } = executeBatchScript(['npm publish --access public'], {
@@ -104,6 +107,12 @@ export function publish(level: string, packages: string[] = []) {
 
   if (!successful.length) return
 
+  console.log(green('Run prepublish...'))
+  prepub(packages)
+
+  // docs
+  docs()
+
   // install updated modules
   console.log(green('Installing the updated modules in affected packages...'))
   console.log(gray('- monorepo root'))
@@ -117,12 +126,6 @@ export function publish(level: string, packages: string[] = []) {
       cwd: rootdir,
     })
   })
-
-  console.log(green('Run prepublish...'))
-  prepub(packages)
-
-  // docs
-  docs()
 
   if (installGlobally.length) {
     console.log(green('Install CLI packages globally: ' + installGlobally.join(', ')))
