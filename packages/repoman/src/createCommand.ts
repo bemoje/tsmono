@@ -9,8 +9,8 @@ export function createCommand(program: Command, options: ICommand): typeof progr
   const command = program.command(options.command).summary(options.summary).action(options.action)
   description(command, options)
   aliases(command, options)
-  opts(command, options.options)
   args(command, options.arguments)
+  opts(command, options.options)
   return command
 }
 
@@ -86,7 +86,7 @@ function args(command: Command, args?: ICommandArgument[]) {
   for (const arg of args) {
     const { name, description, isOptional, isRest, isCommaDelimited, choices } = arg
     const wrapper = isOptional ? strWrapInBrackets : strWrapInAngleBrackets
-    const _name = isRest ? '...' + name : name
+    const _name = isRest ? name + '...' : name
     const argument = new Argument(wrapper(_name), description)
     if (isCommaDelimited) argument.argParser(parseCommaDelimited)
     if (arg.default) argument.default(arg.default.value, arg.default.description)

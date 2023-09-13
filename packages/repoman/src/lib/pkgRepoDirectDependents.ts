@@ -13,3 +13,5 @@ export function pkgRepoDirectDependents(...packages: string[]): string[] {
   })
   return [...result]
 }
+
+console.log('asd')

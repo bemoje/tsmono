@@ -4,7 +4,9 @@ import { execSync } from 'child_process'
 import path from 'path'
 
 export async function ts(args: string[]): Promise<void> {
-  const search = path.join(...args).replace(/\\/g, '/')
+  console.log({ args })
+
+  const search = args.join('/')
   console.log({ search })
   const fpath = await findFile(path.join(process.cwd(), 'packages'), search, {
     filter: (fullpath: string, stat) => {

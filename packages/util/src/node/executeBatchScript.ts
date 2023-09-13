@@ -92,7 +92,7 @@ export function executeBatchScript(
   const stderr: string[] = []
   let error: unknown
   try {
-    const rv = execFileSync(tempfile, opt.silent ? {} : { stdio: 'inherit' })
+    const rv = execFileSync(tempfile, opt.silent ? { stdio: 'ignore' } : { stdio: 'inherit' })
     if (rv) stdout.push(...cleanOutput(rv.toString()))
   } catch (err: unknown) {
     error = new XtError(err)
