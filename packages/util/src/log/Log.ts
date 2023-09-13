@@ -7,7 +7,6 @@ import { appendLineToFileSync } from '../fs/appendLineToFileSync'
 import { cleanDirectorySync } from '../fs/cleanDirectorySync'
 import { createDirectorySync } from '../fs/createDirectorySync'
 import { colors } from '../node/colors'
-import { objClonePrimitiveProperties } from '../object/objClonePrimitiveProperties'
 import { safeJsonStringify } from '../serialize/safeJsonStringify'
 import { strRepeat } from '../string/strRepeat'
 import { isPrimitive } from '../validation/isPrimitive'
@@ -247,7 +246,6 @@ export class Log {
    * @param options Options for logging the events.
    */
   logEmitterEvents(emitter: EventEmitter, options: ILogEmitterEventsOptions = {}): void {
-    objClonePrimitiveProperties
     const { eventNamePrefix, debug, info, warn, error } = options
     const events = { debug, info, warn, error }
     for (const [level, names] of Object.entries(events)) {

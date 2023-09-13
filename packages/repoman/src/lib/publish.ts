@@ -9,13 +9,13 @@ import { hashPackage } from './hashPackage'
 import { prepub } from './prepub'
 const { gray, green, red } = colors
 
-export function publish(args: string[] = []) {
+export function publish(type: string, names: string[] = []) {
   // args
-  const type = args[0]
+  // const type = args[0]
   if (!type) throw new Error('no version upgrade type provided. Can be patch, minor or major.')
 
   const cwd = process.cwd()
-  let names = args.slice(1)
+  // let names = args.slice(1)
   const runAll = !names.length
   if (runAll) {
     names = fs.readdirSync(path.join(cwd, 'packages')).filter((name) => !name.startsWith('.'))

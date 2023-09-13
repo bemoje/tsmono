@@ -40,3 +40,5 @@ function example() {
   console.log('---------------')
   console.log('The person name is ' + new Person('Bob').getName())
 }
+
+example()

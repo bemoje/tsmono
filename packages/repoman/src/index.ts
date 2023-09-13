@@ -1,6 +1,6 @@
 import { Config, parseString, validateString } from '@bemoje/commander-config'
-import { colors, getAppDataPath } from '@bemoje/util'
-import { Command } from 'commander'
+import { colors, getAppDataPath, strWrapInAngleBrackets, strWrapInBrackets } from '@bemoje/util'
+import { Argument, Command, Option } from 'commander'
 import fs from 'fs'
 import path from 'path'
 import { build } from './lib/build'
@@ -25,7 +25,7 @@ import { rehash } from './lib/rehash'
 import { script } from './lib/script'
 import { test } from './lib/tests'
 import { testdir, testfile, ts } from './lib/ts'
-const { red, blue, dim, bold, magenta, green, gray } = colors
+const { dim, green, gray } = colors
 
 const appdata = getAppDataPath('bemoje', 'repoman')
 fs.mkdirSync(appdata, { recursive: true })
@@ -35,66 +35,6 @@ if (!fs.existsSync(fpath)) {
 }
 const cwd = fs.readFileSync(fpath, 'utf8').trim()
 if (cwd !== process.cwd()) process.chdir(cwd)
-
-const args = process.argv.slice(2)
-const cmd = args.shift()?.toLowerCase().replace(/-/g, '')
-
-const help = () => {
-  const lines = fs.readFileSync(__filename, 'utf8').split(/\r*\n/)
-  const filtered = lines.filter((line) => line.includes('else if ' + '(cmd ==='))
-  const cmds = filtered.map((line) => {
-    const i1 = line.indexOf("'")
-    const i2 = line.lastIndexOf("'")
-    const cmd = line.substring(i1 + 1, i2)
-    return cmd
-  })
-
-  console.log('\n\n' + bold(blue('Commands:\n')) + cmds.map((s) => dim('- ') + s).join('\n') + '\n\n')
-}
-
-const editDefaultCwd = () => {
-  console.log({ defaultCwdConfigFile: fpath })
-}
-
-const unknownCommand = () => {
-  console.log('\n' + magenta('\nUnknown command: ') + "'" + red(bold(String(cmd))) + "'")
-  help()
-}
-
-// async function main() {
-//   if (!cmd) help()
-//   else if (cmd === 'help'.toLowerCase()) help()
-//   else if (cmd === 'editDefaultCwd'.toLowerCase()) editDefaultCwd()
-//   else if (cmd === 'ts'.toLowerCase()) await ts(args)
-//   else if (cmd === 'testfile'.toLowerCase()) await testfile(args)
-//   else if (cmd === 'testdir'.toLowerCase()) await testdir(args)
-//   else if (cmd === 'script'.toLowerCase()) script(args)
-//   else if (cmd === 'createPackage'.toLowerCase()) createPackage(args)
-//   else if (cmd === 'deletePackage'.toLowerCase()) deletePackage(args)
-//   else if (cmd === 'packageDependencies'.toLowerCase()) packageDependencies()
-//   else if (cmd === 'rehash'.toLowerCase()) rehash()
-//   else if (cmd === 'fixReadmes'.toLowerCase()) fixReadmes()
-//   else if (cmd === 'fixTsConfigIncludes'.toLowerCase()) fixTsConfigIncludes()
-//   else if (cmd === 'fixDependencies'.toLowerCase()) fixDependencies()
-//   else if (cmd === 'fixEntryPoints'.toLowerCase()) fixEntryPoints()
-//   else if (cmd === 'fixPackageJson'.toLowerCase()) fixPackageJson()
-//   else if (cmd === 'fixAll'.toLowerCase()) fixAll()
-//   else if (cmd === 'forEach'.toLowerCase()) forEach(args)
-//   else if (cmd === 'forOne'.toLowerCase()) forOne(args)
-//   else if (cmd === 'wipeNodeModules'.toLowerCase()) wipeNodeModules(args)
-//   else if (cmd === 'wipeOwnNodeModules'.toLowerCase()) wipeOwnNodeModules(args)
-//   else if (cmd === 'lint'.toLowerCase()) lint(args)
-//   else if (cmd === 'test'.toLowerCase()) test(args)
-//   else if (cmd === 'build'.toLowerCase()) build(args)
-//   else if (cmd === 'docs'.toLowerCase()) docs()
-//   else if (cmd === 'prepub'.toLowerCase()) prepub(args)
-//   else if (cmd === 'publish'.toLowerCase()) publish(args)
-//   else if (cmd === 'openDocs'.toLowerCase()) openDocs()
-//   else if (cmd === 'openCoverage'.toLowerCase()) openCoverage()
-//   else unknownCommand()
-// }
-
-// main().catch((e) => console.error(e))
 
 const config = new Config('bemoje', 'repoman', {
   repoRootDirectory: {
@@ -109,27 +49,23 @@ export const program = new Command().name('rman').description('Repo management t
 
 program
   .command('build')
-  .description('Run builds for specified or all packages.')
+  .description('Run build for all or selected packages.')
   .argument('[packages...]', 'Names of packages to build. If omitted, all packages are built.')
   .action(build)
 
 program
   .command('test')
-  .description('Run tests for specified or all packages.')
+  .description('Run tests for all or selected packages.')
   .argument('[packages...]', 'Names of packages to test. If omitted, all packages are tested.')
   .action(test)
 
 program
   .command('lint')
-  .description('Run lint for specified or all packages.')
+  .description('Run lint for all or selected packages.')
   .argument('[packages...]', 'Names of packages to lint. If omitted, all packages are linted.')
   .action(lint)
 
-program
-  .command('docs')
-  .description('Generate docs for specified or all packages.')
-  .argument('[packages...]', 'Names of packages to include. If omitted, all packages are included.')
-  .action(docs)
+program.command('docs').description('Generate docs for entire monorepo.').action(docs)
 
 program
   .command('pre')
@@ -140,7 +76,7 @@ program
 
 program
   .command('pub')
-  .aliases(['npm-publish'])
+  .aliases(['publish', 'npm-publish'])
   .description('Run prepub and then automatically publish all packages whose dist directories have changed.')
   .argument('<level>', 'The semver level to bump. Accepted values: "major", "minor", "patch"')
   .argument('[packages...]', 'Names of packages to include. If omitted, all packages are included.')
@@ -157,24 +93,112 @@ const prettyDescription = (header: string, ...lines: string[]): string => {
   return 'Description: ' + header + '\n' + bullets + '\n'
 }
 
-program
-  .command('ts')
-  .aliases(['typescript'])
-  .summary('Find and run a .ts file.')
-  .description(
-    prettyDescription(
-      'Find and run a .ts file.',
-      'The search starts in ./packages.',
-      'The path segments are joined to a single search string. The first filepath found to exact-match anywhere in the string, is the file that is run.'
-    )
-  )
-  .argument('<paths...>', 'Path segments to search for.')
-  .action(ts)
+interface ICreateCommandOptions {
+  command: string
+  aliases?: string[]
+  summary: string
+  description?: string[]
+  arguments?: ICreateCommandOptionsArgument[]
+  options?: ICreateCommandOptionsOptions[]
+  action: (...args: any[]) => void | Promise<void>
+}
+interface ICreateCommandOptionsDefault {
+  value: unknown
+  description?: string
+}
+interface ICreateCommandOptionsArgument {
+  name: string
+  description: string
+  isOptional?: boolean
+  isRest?: boolean
+  default?: ICreateCommandOptionsDefault
+  choices?: string[]
+}
+interface ICreateCommandOptionsOptions {
+  name: string
+  char?: string
+  description: string
+  argument?: string
+  isOptional?: boolean
+  default?: ICreateCommandOptionsDefault
+  choices?: string[]
+  conflicts?: string[]
+}
+function createCommand(program: Command, options: ICreateCommandOptions): typeof program {
+  const command = program.command(options.command).summary(options.summary)
+  if (options.aliases) {
+    command.aliases(options.aliases)
+  }
+  if (options.description) {
+    const bullets = options.description.map((line) => dim('- ') + gray(line)).join('\n')
+    command.description('Description: ' + options.summary + '\n' + bullets + '\n')
+  }
+  if (options.arguments) {
+    for (const opt of options.arguments) {
+      const { name, description, isOptional, isRest, choices } = opt
+      const wrapper = isOptional ? strWrapInBrackets : strWrapInAngleBrackets
+      const _name = isRest ? '...' + name : name
+      const argument = new Argument(wrapper(_name), description)
+      if (opt.default) argument.default(opt.default.value, opt.default.description)
+      if (choices) argument.choices(choices)
+      command.addArgument(argument)
+    }
+  }
+  if (options.options) {
+    for (const opt of options.options) {
+      const { name, char, description, argument, isOptional, choices, conflicts } = opt
+      const wrapper = isOptional ? strWrapInBrackets : strWrapInAngleBrackets
+      const _name = `-${char}, --${name}${argument ? ' ' + wrapper(argument) : ''}`
+      const option = new Option(_name, description)
+      if (opt.default) option.default(opt.default.value, opt.default.description)
+      if (choices) option.choices(choices)
+      if (conflicts) option.conflicts(conflicts)
+      command.addOption(option)
+    }
+  }
+  return command
+}
+
+createCommand(program, {
+  command: 'ts',
+  aliases: ['typescript'],
+  summary: 'Run a .ts file.',
+  description: [
+    'Provide a full path or partial path search terms.',
+    'The search root directory is ./packages.',
+    'The path segments are joined to a single search string.',
+    'The first filepath found to exact-match anywhere in the string, is the file that is run.',
+    'Example: "rman ts src lib index.ts"',
+  ],
+  arguments: [
+    {
+      name: 'paths',
+      description: 'Path segments to search for.',
+      isOptional: false,
+      isRest: true,
+    },
+  ],
+  action: ts,
+})
+
+// program
+//   .command('ts')
+//   .aliases(['typescript'])
+//   .summary('Find and run a .ts file.')
+//   .description(
+//     prettyDescription(
+//       'Find and run a .ts file.',
+//       'The search starts in ./packages.',
+//       'The path segments are joined to a single search string. The first filepath found to exact-match anywhere in the string, is the file that is run.'
+//     )
+//   )
+//   .argument('<paths...>', 'Path segments to search for.')
+//   .action(ts)
 
 program
   .command('tf')
   .aliases(['test-file', 'testfile'])
-  .summary('Find and run a .test.ts.')
+  .summary('Find and run a .test.ts. file.')
   .description(
     'Find and run a .test.ts file. The search starts in ./packages. The path segments are joined as acts as a single search string that must exact-matche somewhere in the full path string.'
   )
