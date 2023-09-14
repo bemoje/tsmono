@@ -113,7 +113,6 @@ export function publish(level: string, packages: string[] = []) {
     })
   }
 
-  console.log(green('git commit...'))
   execute('git add .')
   execute(`git commit -m "published new versions (${level}) of packages: ${successful.join(', ')}"`)
 }

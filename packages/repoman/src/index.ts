@@ -223,7 +223,7 @@ program
   .aliases(['test-file', 'testfile'])
   .summary('Find and run a .test.ts. file.')
   .description(
-    'Find and run a .test.ts file. The search starts in ./packages. The path segments are joined as acts as a single search string that must exact-matche somewhere in the full path string.'
+    'Find and run a .test.ts file. The search starts in ./packages. The path segments are joined and act as a single search string that must exact-matche somewhere in the full path string.'
   )
   .option('-c, --coverage', 'Whether to emit coverage.')
   .argument('<paths...>', 'Path segments to search for.')
