@@ -1,9 +1,7 @@
-import { executeBatchScript } from '@bemoje/util'
+import { execute } from '@bemoje/util'
 import { deleteTmpDir } from './deleteTmpDir'
-import { fixAll } from './fixAll'
 
 export function build(names?: string[]) {
-  fixAll()
-  executeBatchScript(['nx run-many -t "build"' + (names ? ' -p ' + names.join(',') : '')])
+  execute('nx run-many -t "lint,test,build"' + (names ? ' -p ' + names.join(',') : ''))
   deleteTmpDir()
 }

@@ -112,7 +112,7 @@
         "commander-config"
       ],
       "npmScope": "bemoje",
-      "projectType": "library"
+      "projectType": "application"
     },
     "openai-api-client": {
       "tags": [],

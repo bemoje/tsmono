@@ -1,5 +1,5 @@
-import { executeBatchScript } from '@bemoje/util'
+import { execute } from '@bemoje/util'
 
 export function openCoverage() {
-  executeBatchScript(['start coverage/lcov-report/index.html"'])
+  execute('start coverage/lcov-report/index.html')
 }

@@ -1,4 +1,4 @@
-import { colors, executeBatchScript } from '@bemoje/util'
+import { colors, execute } from '@bemoje/util'
 import fs from 'fs-extra'
 import path from 'path'
 import { deleteTmpDir } from './deleteTmpDir'
@@ -10,9 +10,7 @@ const { green } = colors
 export function prepub(names: string[] = []) {
   fixAll()
 
-  executeBatchScript(['nx run-many -t "lint,test,build"' + (names.length ? ' -p ' + names.join(',') : '')], {
-    prependWithCall: true,
-  })
+  execute('nx run-many -t "lint,test,build"' + (names.length ? ' -p ' + names.join(',') : ''))
 
   console.log(green('Finalizing dist directories...'))
   getPackages().forEach(({ pkg, rootdir, distdir }) => {

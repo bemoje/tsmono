@@ -18,7 +18,7 @@ export interface IExecuteCommandOptions {
   /**
    * Output is piped directly to stdout. No edtiting of the output. Defaults to false.
    */
-  directOutput?: boolean
+  fadedOutput?: boolean
 
   /**
    * The working directory to execute the batch script in.

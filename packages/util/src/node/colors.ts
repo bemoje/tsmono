@@ -1,7 +1,3 @@
-/**
- * This is a fork of the 'kleur' npm package.
- */
-
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const { FORCE_COLOR, NODE_DISABLE_COLORS, NO_COLOR, TERM } = process.env
 

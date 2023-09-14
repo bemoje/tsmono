@@ -1,5 +1,5 @@
-import { executeBatchScript } from '@bemoje/util'
+import { execute } from '@bemoje/util'
 
 export function openDocs() {
-  executeBatchScript(['start docs/modules.html"'])
+  execute('start docs/modules.html')
 }

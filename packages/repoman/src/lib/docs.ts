@@ -1,5 +1,5 @@
 /* eslint-disable no-useless-escape */
-import { colors, executeBatchScript, strReplaceAll } from '@bemoje/util'
+import { colors, execute, strReplaceAll } from '@bemoje/util'
 import fs from 'fs'
 import path from 'path'
 import { snakeCase } from 'snake-case'
@@ -22,15 +22,14 @@ export function docs() {
   fs.writeFileSync(indexpath, src)
 
   // create docs
-  const docspath = path.join(process.cwd(), 'docs')
-  executeBatchScript(['npx rimraf docs', 'npx typedoc --out ./docs/ --entryPoints ./packages/index.ts'], {
-    prependWithCall: true,
-  })
+  execute('npx rimraf docs')
+  execute('npx typedoc --out ./docs/ --entryPoints ./packages/index.ts')
 
   // remove temp index file
   fs.rmSync(indexpath, { force: true })
 
   // fix docs
+  const docspath = path.join(process.cwd(), 'docs')
   const paths = walkdir.sync(docspath)
   const htmlFiles = paths.filter((filepath) => filepath.endsWith('.html'))
 

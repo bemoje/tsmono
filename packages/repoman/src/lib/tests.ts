@@ -1,5 +1,5 @@
-import { executeBatchScript } from '@bemoje/util'
+import { execute } from '@bemoje/util'
 
 export function test(names: string[] = []) {
-  executeBatchScript(['nx run-many -t test' + (names.length ? ' -p ' + names.join(',') : '')])
+  execute('nx run-many -t test' + (names.length ? ' -p ' + names.join(',') : ''))
 }

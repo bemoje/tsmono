@@ -1,8 +1,8 @@
 /* eslint-disable no-useless-escape */
-import { colors, executeBatchScript, updateFileSafeSync, updateFileSync, writeJsonFileSync } from '@bemoje/util'
-import fs from 'fs'
+import { colors, execute, updateFileSafeSync, updateFileSync, writeJsonFileSync } from '@bemoje/util'
 import path from 'path'
 import { PackageHashes } from './PackageHashes'
+import { allPackageNames } from './allPackageNames'
 import { docs } from './docs'
 import { getPackages } from './getPackages'
 import { pkgRepoDependenciesRecursive } from './pkgRepoDependenciesRecursive'
@@ -10,26 +10,6 @@ import { pkgRepoDirectDependents } from './pkgRepoDirectDependents'
 import { prepub } from './prepub'
 import { semverVersionBump } from './util/semverVersionBump'
 const { gray, green, red } = colors
-
-export function allPackageNames() {
-  const ppath = path.join(process.cwd(), 'packages')
-  return fs.readdirSync(ppath).filter((name) => {
-    const fpath = path.join(ppath, name)
-    return fs.statSync(fpath).isDirectory()
-  })
-}
-
-export function allPackageRoots() {
-  const ppath = path.join(process.cwd(), 'packages')
-  return fs
-    .readdirSync(ppath)
-    .map((name) => {
-      return path.join(ppath, name)
-    })
-    .filter((fpath) => {
-      return fs.statSync(fpath).isDirectory()
-    })
-}
 
 export function publish(level: string, packages: string[] = []) {
   const _packages = packages.length ? pkgRepoDependenciesRecursive(...packages) : allPackageNames()
@@ -77,19 +57,19 @@ export function publish(level: string, packages: string[] = []) {
       JSON.stringify(pkg, null, 2)
     )
 
-    console.log(gray('  - ' + 'npm update'))
-    const { error } = executeBatchScript(['npm publish --access public'], {
-      prependWithCall: true,
-      cwd: distdir,
-      silent: true,
-    })
-    if (error) {
+    try {
+      console.log(gray('  - ' + 'npm update'))
+      execute('npm publish --access public', {
+        cwd: distdir,
+        noEcho: true,
+        silent: true,
+      })
+      console.log(gray('    - ' + 'Successfully published ' + pkg.name + '@' + pkg.version))
+    } catch (error) {
       console.error('    - ' + red('Could not publish ' + name + '. Reverting version to ' + original + '.'))
       pkg.version = original
       writeJsonFileSync(pkgpath, pkg, true, 2)
       return
-    } else {
-      console.log(gray('    - ' + 'Successfully published ' + pkg.name + '@' + pkg.version))
     }
 
     console.log(gray('  - ' + 'Update hash'))
@@ -116,12 +96,14 @@ export function publish(level: string, packages: string[] = []) {
   // install updated modules
   console.log(green('Installing the updated modules in affected packages...'))
   console.log(gray('- monorepo root'))
-  executeBatchScript(['npm update @bemoje/*'], {
+  execute('npm update @bemoje/*', {
+    noEcho: true,
     silent: true,
   })
   getPackages(pkgRepoDirectDependents(..._packages)).forEach(({ name, rootdir }) => {
     console.log(gray('- ' + name))
-    executeBatchScript(['npm update @bemoje/*'], {
+    execute('npm update @bemoje/*', {
+      noEcho: true,
       silent: true,
       cwd: rootdir,
     })
@@ -129,17 +111,12 @@ export function publish(level: string, packages: string[] = []) {
 
   if (installGlobally.length) {
     console.log(green('Install CLI packages globally: ' + installGlobally.join(', ')))
-    executeBatchScript([...installGlobally], {
-      prependWithCall: true,
+    execute(installGlobally, {
       silent: true,
     })
   }
 
   console.log(green('git commit...'))
-  executeBatchScript(
-    ['git add .', `git commit -m "published new versions (${level}) of packages: ${successful.join(', ')}"`],
-    {
-      prependWithCall: true,
-    }
-  )
+  execute('git add .')
+  execute(`git commit -m "published new versions (${level}) of packages: ${successful.join(', ')}"`)
 }

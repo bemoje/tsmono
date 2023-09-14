@@ -59,13 +59,13 @@ export function executeBatchScript(
     script.push(...cmds)
   }
 
-  if (!opt.silent && !opt.echo) {
+  if (!opt.silent && opt.echo) {
     console.log(
-      '\n' +
+      'Running Batch: \n' +
         magenta(
           script
             .slice(1)
-            .map((l) => l.replace('call ', ''))
+            .map((l) => '  ' + l)
             .join('\n')
         ) +
         '\n'
