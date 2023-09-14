@@ -17,7 +17,6 @@ import { packageDependencies } from './lib/packageDependencies'
 import { prepub } from './lib/prepub'
 import { publish } from './lib/publish'
 import { rehash } from './lib/rehash'
-import { script } from './lib/script'
 import { test } from './lib/tests'
 import { testdir, testfile, ts } from './lib/ts'
 const { dim, green, gray } = colors
@@ -156,9 +155,54 @@ createCommand(program, {
 })
 
 createCommand(program, {
+  command: 'e',
+  aliases: ['foreach', 'each', 'fe'],
+  summary: 'Execute command for each package with their root dirs as cwd.',
+  usage: [
+    {
+      command: 'rman foreach npm install',
+      description: "Run 'npm install' in the root directory of each package.",
+    },
+    {
+      command: 'rman foreach -p pack1,pack2 npm install',
+      description: "Run 'npm install' for only the 'pack1' and 'pack2' packages.",
+    },
+    {
+      command: 'rman foreach -i pack1,pack2 npm install',
+      description: "Run 'npm install' for all packages except for the 'pack1' and 'pack2' packages.",
+    },
+  ],
+  arguments: [
+    {
+      name: 'command',
+      description: 'The command to run. Args are concatenated so no need to wrap in quotes.',
+      isOptional: false,
+      isRest: true,
+    },
+  ],
+  options: [
+    {
+      name: 'packages',
+      char: 'p',
+      description: 'Names of packages to include.',
+      argument: 'names',
+      isCommaDelimited: true,
+    },
+    {
+      name: 'ignore',
+      char: 'i',
+      description: 'Names of packages to ignore.',
+      argument: 'names',
+      isCommaDelimited: true,
+    },
+  ],
+  action: forEach,
+})
+
+createCommand(program, {
   command: 'pre',
   aliases: ['precommit', 'prepub', 'pre-publish'],
-  summary: 'Run lint, test, build, docs and fixall for specified or all packages.',
+  summary: 'Run lint, test, build, docs and fix.',
   arguments: [
     {
       name: 'packages',
@@ -254,95 +298,158 @@ createCommand(program, {
       isRest: true,
     },
   ],
+  options: [
+    {
+      name: 'script',
+      char: 's',
+      description: 'Search in ./scripts instead of ./packages.',
+    },
+  ],
   action: ts,
 })
 
-program
-  .command('tf')
-  .aliases(['test-file', 'testfile'])
-  .summary('Find and run a .test.ts. file.')
-  .description(
-    'Find and run a .test.ts file. The search starts in ./packages. The path segments are joined and act as a single search string that must exact-matche somewhere in the full path string.'
-  )
-  .option('-c, --coverage', 'Whether to emit coverage.')
-  .argument('<paths...>', 'Path segments to search for.')
-  .action(testfile)
+createCommand(program, {
+  command: 'tf',
+  aliases: ['testfile'],
+  summary: 'Find and run a .test.ts. file.',
+  details: [
+    'Provide a full path or partial path search terms.',
+    'Path segments are joined to a single search string.',
+    'The first filepath found in any package to match is selected.',
+  ],
+  usage: [
+    { command: 'rman testfile file.test.ts', description: "Find and run filepath containing 'file.test.ts'." },
+    {
+      command: 'rman testfile tests file.test.ts',
+      description: "Find and run filepath containing 'tests/file.test.ts'.",
+    },
+  ],
+  arguments: [
+    {
+      name: 'paths',
+      description: 'Path segments to search for.',
+      isOptional: false,
+      isRest: true,
+    },
+  ],
+  options: [
+    {
+      name: 'coverage',
+      char: 'c',
+      description: 'Whether to emit coverage.',
+    },
+  ],
+  action: testfile,
+})
 
-program
-  .command('td')
-  .aliases(['test-dir', 'testdir'])
-  .description('Find directory and run all its .test.ts files - in ./packages')
-  .option('-c, --coverage', 'Whether to emit coverage.')
-  .argument('<paths...>', 'Path segments to search for.')
-  .action(testdir)
+createCommand(program, {
+  command: 'td',
+  aliases: ['testdir'],
+  summary: 'Find and run all tests in a directory.',
+  details: [
+    'Provide a full path or partial path search terms.',
+    'Path segments are joined to a single search string.',
+    'The first directory path found in any package to match is selected.',
+  ],
+  usage: [
+    {
+      command: 'rman testdir my-package tests',
+      description: "Find and run tests in directory containing 'my-package/tests'.",
+    },
+  ],
+  arguments: [
+    {
+      name: 'paths',
+      description: 'Path segments to search for.',
+      isOptional: false,
+      isRest: true,
+    },
+  ],
+  options: [
+    {
+      name: 'coverage',
+      char: 'c',
+      description: 'Whether to emit coverage.',
+    },
+  ],
+  action: testdir,
+})
 
-program
-  .command('rs')
-  .aliases(['run-script', 'script', 'runscript'])
-  .description('Run a typescript file under ./scripts')
-  .argument('<paths...>', 'Path segments to search for.')
-  .action(script)
+createCommand(program, {
+  command: 'cp',
+  aliases: ['create-package', 'createpackage'],
+  summary: 'Create a package.',
+  arguments: [
+    {
+      name: 'name',
+      description: 'The name of the package.',
+    },
+  ],
+  usage: [{ command: 'rman create-package pack1', description: 'Create a new package named pack1.' }],
+  action: createPackage,
+})
 
-program
-  .command('cp')
-  .aliases(['create-package', 'createpackage'])
-  .description('Create a new library package.')
-  .argument('<name>', 'Dirpath segments to search.')
-  .action(createPackage)
+createCommand(program, {
+  command: 'dp',
+  aliases: ['delete-package', 'deletepackage'],
+  summary: 'Delete a package.',
+  arguments: [
+    {
+      name: 'name',
+      description: 'The name of the package.',
+    },
+  ],
+  usage: [{ command: 'rman delete-package pack1', description: 'Delete the package named pack1.' }],
+  action: deletePackage,
+})
 
-program
-  .command('dp')
-  .aliases(['delete-package', 'deletepackage'])
-  .description('Delete a package.')
-  .argument('<name>', 'Dirpath segments to search.')
-  .action(deletePackage)
+createCommand(program, {
+  command: 'pd',
+  aliases: ['deps', 'package-deps', 'packagedeps'],
+  summary: 'Print useful details about package dependencies.',
+  usage: [{ command: 'rman deps', description: 'Print dependency information.' }],
+  action: packageDependencies,
+})
 
-program
-  .command('e')
-  .aliases(['each', 'foreach'])
-  .summary('Execute command for each package with their root dirs as cwd.')
-  .option('-p, --packages [names]', 'Names of packages to include.')
-  .option('-i, --ignore [names]', 'Names of packages to exclude.')
-  .argument('<command...>', 'The command to run. Args are concatenated so no need to wrap in quotes.')
-  .action(forEach)
+createCommand(program, {
+  command: 'od',
+  aliases: ['open-docs'],
+  summary: 'Open the docs website in the browser.',
+  usage: [{ command: 'rman open-docs', description: 'Open docs website.' }],
+  action: openDocs,
+})
 
-program
-  .command('pd')
-  .aliases(['deps', 'package-deps', 'packagedeps'])
-  .description('Show information about package dependencies.')
-  .action(packageDependencies)
+createCommand(program, {
+  command: 'oc',
+  aliases: ['open-coverage'],
+  summary: 'Open the coverage report in the browser.',
+  usage: [{ command: 'rman open-coverage', description: 'Open coverage report.' }],
+  action: openCoverage,
+})
 
-program
-  .command('wom')
-  .aliases(['wipe-own-modules', 'wipeownmodules'])
-  .description('Delete node_modules of your own @scope - in all packages.')
-  .option('-l, --package-lock', 'Delete the package-lock.json files, too.')
-  .option('-r, --root', 'Perform these actions in the root directory of the monorepo, too.')
-  .action((options = {}) => {
-    console.log({ options })
-    // { packageLock: true, root: true }
-    // wipeOwnNodeModules()
-  })
+// program
+//   .command('wom')
+//   .aliases(['wipe-own-modules', 'wipeownmodules'])
+//   .description('Delete node_modules of your own @scope - in all packages.')
+//   .option('-l, --package-lock', 'Delete the package-lock.json files, too.')
+//   .option('-r, --root', 'Perform these actions in the root directory of the monorepo, too.')
+//   .action((options = {}) => {
+//     console.log({ options })
+//     // { packageLock: true, root: true }
+//     // wipeOwnNodeModules()
+//   })
 
-program
-  .command('wam')
-  .aliases(['wipe-all-modules', 'wipeallmodules'])
-  .description('Delete node_modules of your own @scope - in all packages.')
-  .option('-l, --package-lock', 'Delete the package-lock.json files, too.')
-  .option('-r, --root', 'Perform these actions in the root directory of the monorepo, too.')
-  .action((options = {}) => {
-    console.log({ options })
-    // { packageLock: true, root: true }
-    // wipeOwnNodeModules()
-  })
-
-program.command('od').aliases(['open-docs']).description('Open the docs website in the browser.').action(openDocs)
-
-program
-  .command('oc')
-  .aliases(['open-coverage'])
-  .description('Open the test coverage results website in the browser.')
-  .action(openCoverage)
+// program
+//   .command('wam')
+//   .aliases(['wipe-all-modules', 'wipeallmodules'])
+//   .description('Delete node_modules of your own @scope - in all packages.')
+//   .option('-l, --package-lock', 'Delete the package-lock.json files, too.')
+//   .option('-r, --root', 'Perform these actions in the root directory of the monorepo, too.')
+//   .action((options = {}) => {
+//     console.log({ options })
+//     // { packageLock: true, root: true }
+//     // wipeOwnNodeModules()
+//   })
 
 program.configureHelp({
   subcommandTerm: (cmd) => `${cmd.name().padEnd(3, ' ')}${cmd.alias() ? '|' + cmd.alias() : ''}`,

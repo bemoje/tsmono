@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/repoman",
-  "version": "0.0.32",
+  "version": "0.0.34",
   "bin": {
     "rman": "./bin/index.js"
   },

@@ -8,7 +8,7 @@ import { parseString } from '../util/parseString'
 import { validateString } from '../util/validateString'
 import { IConfigSetting } from './IConfigSetting'
 import { IConfigSettings } from './IConfigSettings'
-const { cyan, green } = colors
+const { green } = colors
 
 /**
  * A utility class for managing user configuration settings when using the 'commander' package to create CLI's.
@@ -90,7 +90,7 @@ export class Config {
   initialize(program: Command): void {
     program
       .command('appdata')
-      .description(cyan('Get the directory containing your app data.'))
+      .description('Get the directory containing your app data.')
       .action((options: { wipe?: boolean } = {}) => {
         console.log('APPDATA: ' + this.appdata.directory)
         console.log(options)
@@ -102,7 +102,7 @@ export class Config {
 
     program
       .command('config')
-      .description(cyan(['User configuration settings.'].join('\r')))
+      .description(['User configuration settings.'].join('\r'))
       .argument('[action]', 'The action to perform. Accepted values are: edit, reset, set.')
       .argument(
         '[setting]',

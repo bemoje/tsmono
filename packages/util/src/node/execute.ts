@@ -29,7 +29,7 @@ export function execute(commands: string[] | string, options: IExecuteCommandOpt
     const relative = absoluteToRelativePath(cwd)
       .replace(/\\/g, '/')
       .replace(path.basename(cwd), bold(magenta(path.basename(cwd))))
-    const out = `Running ${green(command)}${cwd === process.cwd() ? '' : ' in ' + bold(magenta(relative))}`
+    const out = `${green(command)}${cwd === process.cwd() ? '' : ' in ' + bold(magenta(relative))}`
     console.log(silent && fadedOutput ? '  ' + dim(out) : out)
   }
 

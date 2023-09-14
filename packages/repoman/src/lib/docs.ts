@@ -6,6 +6,7 @@ import { snakeCase } from 'snake-case'
 import walkdir from 'walkdir'
 import { getPackages } from './getPackages'
 
+let retry = false
 export function docs() {
   console.log(colors.green('Generating docs...'))
 
@@ -51,11 +52,17 @@ export function docs() {
     fs.writeFileSync(filepath, src, 'utf8')
   })
 
-  htmlFiles.forEach((filepath) => {
-    const orig = filepath + ''
-    for (const [from, to] of replace) {
-      filepath = strReplaceAll(filepath, from, to)
-    }
-    fs.renameSync(orig, filepath)
-  })
+  try {
+    htmlFiles.forEach((filepath) => {
+      const orig = filepath + ''
+      for (const [from, to] of replace) {
+        filepath = strReplaceAll(filepath, from, to)
+      }
+      fs.renameSync(orig, filepath)
+    })
+  } catch (error) {
+    if (retry) throw error
+    retry = true
+    docs()
+  }
 }

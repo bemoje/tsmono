@@ -3,10 +3,10 @@ import { absoluteToRelativePath } from '@bemoje/util'
 import { execSync } from 'child_process'
 import path from 'path'
 
-export async function ts(args: string[]): Promise<void> {
+export async function ts(args: string[], options: { script?: boolean } = {}): Promise<void> {
   const search = args.join('/')
   console.log({ search })
-  const fpath = await findFile(path.join(process.cwd(), 'packages'), search, {
+  const fpath = await findFile(path.join(process.cwd(), options.script ? 'scripts' : 'packages'), search, {
     filter: (fullpath: string, stat) => {
       if (stat.isDirectory()) {
         if (fullpath.includes('node_modules')) return false
@@ -17,7 +17,8 @@ export async function ts(args: string[]): Promise<void> {
   })
   if (!fpath) throw new Error('File not found: ' + search)
   const relative = absoluteToRelativePath(fpath).replace(/\\/g, '/')
-  const command = 'node node_modules/ts-node/dist/bin.js -P tsconfig.json ' + relative
+  const command =
+    'node node_modules/ts-node/dist/bin.js -P tsconfig' + (options.script ? '.scripts' : '') + '.json ' + relative
   try {
     execSync(command, { stdio: 'inherit' })
   } catch (error) {
@@ -37,7 +38,7 @@ export async function testfile(args: string[], options: { coverage?: boolean } =
         if (fullpath.includes('node_modules')) return false
         return true
       }
-      return fullpath.endsWith('.test.ts')
+      return fullpath.endsWith('.test.ts') || fullpath.endsWith('.spec.ts')
     },
   })
   if (!fpath) throw new Error('File not found: ' + search)

@@ -10,7 +10,7 @@ export function forEach(args: string[], options: IForEachOptions = {}) {
   getPackages(packages).forEach(({ name, rootdir }) => {
     // if (packages && !packages.includes(name)) return
     if (ignore && ignore.includes(name)) return
-    execute(command, { ...options, cwd: rootdir })
+    execute(command, { cwd: rootdir })
   })
 }
 
