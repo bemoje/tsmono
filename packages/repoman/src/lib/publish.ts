@@ -87,10 +87,7 @@ export function publish(level: string, packages: string[] = []) {
 
   if (!successful.length) return
 
-  console.log(green('Run prepublish...'))
   prepub(packages)
-
-  // docs
   docs()
 
   // install updated modules
