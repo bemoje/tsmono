@@ -7,8 +7,8 @@ export function forEach(args: string[], options: IForEachOptions = {}) {
   const packages = options.packages?.split(',').map((s) => s.trim())
   const ignore = options.ignore?.split(',').map((s) => s.trim())
   console.log()
-  getPackages().forEach(({ name, rootdir }) => {
-    if (packages && !packages.includes(name)) return
+  getPackages(packages).forEach(({ name, rootdir }) => {
+    // if (packages && !packages.includes(name)) return
     if (ignore && ignore.includes(name)) return
     execute(command, { ...options, cwd: rootdir })
   })

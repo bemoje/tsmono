@@ -26,13 +26,9 @@ export function publish(level: string, packages: string[] = []) {
 
   console.log(green('Publishing packages with changes to NPM...'))
   getPackages(_packages).forEach(({ name, pkgpath, pkg, distdir }) => {
+    if (hashes.currentHash(name) === hashes.hash(name)) return
+
     console.log(gray('- ' + name))
-
-    if (hashes.currentHash(name) === hashes.hash(name)) {
-      console.log(gray('  - ' + 'No changes.'))
-      return
-    }
-
     console.log(gray('  - ' + 'Bump semver version'))
     const original = String(pkg.version)
     pkg.version = semverVersionBump(original, level as 'major' | 'minor' | 'patch')
@@ -88,22 +84,30 @@ export function publish(level: string, packages: string[] = []) {
   if (!successful.length) return
 
   prepub(packages)
-  docs()
+
+  if (!packages.length) docs()
 
   // install updated modules
   console.log(green('Installing the updated modules in affected packages...'))
   console.log(gray('- monorepo root'))
   execute('npm update @bemoje/*', {
-    noEcho: true,
+    // noEcho: true,
     silent: true,
+    fadedOutput: true,
   })
-  getPackages(pkgRepoDirectDependents(..._packages)).forEach(({ name, rootdir }) => {
+  getPackages(pkgRepoDirectDependents(..._packages)).forEach(({ name, rootdir, pkg }) => {
     console.log(gray('- ' + name))
-    execute('npm update @bemoje/*', {
-      noEcho: true,
-      silent: true,
-      cwd: rootdir,
-    })
+    for (const s of successful) {
+      const npmName = s.substring(0, s.lastIndexOf('@'))
+      if (pkg.dependencies[npmName]) {
+        execute('npm update ' + npmName, {
+          // noEcho: true,
+          silent: true,
+          cwd: rootdir,
+          fadedOutput: true,
+        })
+      }
+    }
   })
 
   if (installGlobally.length) {
@@ -113,6 +117,8 @@ export function publish(level: string, packages: string[] = []) {
     })
   }
 
-  execute('git add .')
-  execute(`git commit -m "published new versions (${level}) of packages: ${successful.join(', ')}"`)
+  execute('git add .', { fadedOutput: true })
+  execute(`git commit -m "published new versions (${level}) of packages: ${successful.join(', ')}"`, {
+    fadedOutput: true,
+  })
 }

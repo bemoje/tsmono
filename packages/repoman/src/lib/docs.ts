@@ -23,7 +23,7 @@ export function docs() {
 
   // create docs
   execute('npx rimraf docs')
-  execute('npx typedoc --out ./docs/ --entryPoints ./packages/index.ts')
+  execute('npx typedoc --out ./docs/ --entryPoints ./packages/index.ts', { fadedOutput: true })
 
   // remove temp index file
   fs.rmSync(indexpath, { force: true })

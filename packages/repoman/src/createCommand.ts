@@ -1,12 +1,15 @@
 import { colors, strWrapInAngleBrackets, strWrapInBrackets } from '@bemoje/util'
 import { Argument, Command, Option } from 'commander'
-const { dim } = colors
-
+const { dim, green, cyan } = colors
+let i = 0
 /**
  * Create a command.
  */
 export function createCommand(program: Command, options: ICommand): typeof program {
-  const command = program.command(options.command).summary(options.summary).action(options.action)
+  const command = program
+    .command(options.command)
+    .summary((i++ % 2 === 0 ? cyan : green)(options.summary))
+    .action(options.action)
   description(command, options)
   aliases(command, options)
   args(command, options.arguments)
@@ -64,6 +67,7 @@ function description(command: Command, options: ICommand) {
   const toList = (a: string[]) => `\n${a.map((s) => dim('- ') + s).join('\n')}\n`
   let result = 'Description: ' + summary
   if (details) result += toList(details)
+  else result += '\n'
   if (usage) {
     const offset = Math.max(...usage.map((u) => u.command.length))
     result += '\nExample Usage:'

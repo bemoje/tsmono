@@ -9,13 +9,7 @@ import { createPackage } from './lib/createPackage'
 import { deletePackage } from './lib/deletePackage'
 import { docs } from './lib/docs'
 import { fixAll } from './lib/fixAll'
-import { fixDependencies } from './lib/fixDependencies'
-import { fixEntryPoints } from './lib/fixEntryPoints'
-import { fixPackageJson } from './lib/fixPackageJson'
-import { fixReadmes } from './lib/fixReadmes'
-import { fixTsConfigIncludes } from './lib/fixTsConfigIncludes'
 import { forEach } from './lib/forEach'
-import { forOne } from './lib/forOne'
 import { lint } from './lib/lint'
 import { openCoverage } from './lib/openCoverage'
 import { openDocs } from './lib/openDocs'
@@ -114,6 +108,51 @@ createCommand(program, {
   summary: 'Generate docs for all packages.',
   usage: [{ command: 'rman docs', description: 'Generate docs for all packages.' }],
   action: docs,
+})
+
+createCommand(program, {
+  command: 'f',
+  aliases: ['fix'],
+  summary: 'Run fix-commands.',
+  options: [
+    {
+      name: 'readmes',
+      char: 'r',
+      description: 'Generate/update readme files in all packages.',
+      isOptional: true,
+    },
+    {
+      name: 'includes',
+      char: 'i',
+      description:
+        'Fix tsconfig.json files in all packages. The "includes" array sometimes gets changed automatically. This changes them back.',
+      isOptional: true,
+    },
+    {
+      name: 'deps',
+      char: 'd',
+      description:
+        'Installs missing and uninstalls unused packages. Scans all source files and their imports and ensures package.json files are up to date.',
+      isOptional: true,
+    },
+    {
+      name: 'entrypoints',
+      char: 'e',
+      description: 'Re-generate all index.ts entrypoints in all packages.',
+      isOptional: true,
+    },
+    {
+      name: 'package-jsons',
+      char: 'p',
+      description: 'Ensure that various meta data is added to all package.json files.',
+      isOptional: true,
+    },
+  ],
+  usage: [
+    { command: 'rman fix', description: 'Run all commands.' },
+    { command: 'rman fix --readmes --deps', description: 'Run the readmes and deps commands.' },
+  ],
+  action: fixAll,
 })
 
 createCommand(program, {
@@ -259,68 +298,19 @@ program
   .action(deletePackage)
 
 program
-  .command('fe')
-  .aliases(['for-each', 'execforeach'])
-  .description(green('Execute a shell command with each package root as cwd.'))
+  .command('e')
+  .aliases(['each', 'foreach'])
+  .summary('Execute command for each package with their root dirs as cwd.')
   .option('-p, --packages [names]', 'Names of packages to include.')
   .option('-i, --ignore [names]', 'Names of packages to exclude.')
   .argument('<command...>', 'The command to run. Args are concatenated so no need to wrap in quotes.')
   .action(forEach)
 
 program
-  .command('fo')
-  .aliases(['for-one', 'execforone'])
-  .summary('Execute shell command with package root as cwd.')
-  .description('long text')
-  .argument('<package>', 'The name of the package.')
-  .argument('<command...>', 'The command to run. Args are concatenated so no need to wrap in quotes.')
-  .action(forOne)
-
-program
   .command('pd')
   .aliases(['deps', 'package-deps', 'packagedeps'])
   .description('Show information about package dependencies.')
   .action(packageDependencies)
-
-program
-  .command('fr')
-  .aliases(['fix-readmes', 'fixreadmes'])
-  .description('Generate/update readme files in all packages.')
-  .action(fixReadmes)
-
-program
-  .command('fi')
-  .aliases(['fix-includes', 'fixincludes'])
-  .description(
-    'Fix tsconfig.json files in all packages. The "includes" array sometimes gets changed automatically. This changes them back.'
-  )
-  .action(fixTsConfigIncludes)
-
-program
-  .command('fd')
-  .aliases(['fix-deps', 'fixdeps'])
-  .description(
-    'Installs missing and uninstalls unused packages. Scans all source files and their imports and ensures package.json files are up to date.'
-  )
-  .action(fixDependencies)
-
-program
-  .command('fep')
-  .aliases(['fix-entry-points', 'fixentrypoints'])
-  .description('Re-generate all index.ts entrypoints in all packages.')
-  .action(fixEntryPoints)
-
-program
-  .command('fpj')
-  .aliases(['fix-package-jsons', 'fixpackagejsons'])
-  .description('Ensure that various meta data is added to all package.json files.')
-  .action(fixPackageJson)
-
-program
-  .command('fa')
-  .aliases(['fix', 'fix-all', 'fixall'])
-  .description('Run all fix-commands: readmes, tsconfigs, deps, entrypoints, package-jsons')
-  .action(fixAll)
 
 program
   .command('wom')
@@ -353,6 +343,10 @@ program
   .aliases(['open-coverage'])
   .description('Open the test coverage results website in the browser.')
   .action(openCoverage)
+
+program.configureHelp({
+  subcommandTerm: (cmd) => `${cmd.name().padEnd(3, ' ')}${cmd.alias() ? '|' + cmd.alias() : ''}`,
+})
 
 config.initialize(program)
 
