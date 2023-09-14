@@ -4,17 +4,15 @@ import { getPackages } from './getPackages'
 export function forEach(args: string[], options: IForEachOptions = {}) {
   console.log({ args, options })
   const command = args.join(' ')
-  const packages = options.packages?.split(',').map((s) => s.trim())
-  const ignore = options.ignore?.split(',').map((s) => s.trim())
   console.log()
-  getPackages(packages).forEach(({ name, rootdir }) => {
+  getPackages(options.packages).forEach(({ name, rootdir }) => {
     // if (packages && !packages.includes(name)) return
-    if (ignore && ignore.includes(name)) return
+    if (options.ignore && options.ignore.includes(name)) return
     execute(command, { cwd: rootdir })
   })
 }
 
 export interface IForEachOptions extends Omit<IExecuteCommandOptions, 'cwd'> {
-  packages?: string
-  ignore?: string
+  packages?: string[]
+  ignore?: string[]
 }
