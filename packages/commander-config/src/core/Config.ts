@@ -39,8 +39,8 @@ export class Config {
           : getOS() === 'windows'
           ? 'notepad'
           : getOS() === 'osx'
-          ? 'vi'
-          : 'nano',
+          ? 'open vi'
+          : 'xdg-open',
         parse: parseString,
         validate: validateString,
       },

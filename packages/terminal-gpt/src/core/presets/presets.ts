@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { colors } from '@bemoje/util'
 import { execSync } from 'child_process'
 import { sendChatRequest } from '../sendChatRequest'
@@ -41,6 +40,7 @@ export async function presets(preset: string, prompt?: string, is16k = false, is
   const textPath = saveInteraction(jsondir, textdir, settings.markdownOutput, request)
   // user output
   if (settings.openResponseIn !== 'none') {
+    // await open(textPath)
     execSync(`${settings.openResponseIn} "${textPath}"`, { stdio: 'inherit' })
   }
 }

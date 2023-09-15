@@ -12,7 +12,7 @@ import {
   validateStringArray,
   validateStringType,
 } from '@bemoje/commander-config'
-import { getOS, isLinuxProgramInstalled } from '@bemoje/util'
+import { getOS, openInDefaultBrowserCommand } from '@bemoje/util'
 import { IGptPreset } from '../types/IGptPreset'
 
 const improveResponse = [
@@ -185,14 +185,7 @@ export const presetDefaults = {
   default_openResponseIn: {
     description:
       'Application launch command for the program to open the returned response in. Enter "none" to disable. If your browser cannot render markdown, you can install one of the many Markdown Viewer extensions. For Google Chrome, I can recommend "Markdown Viewer" (https://chrome.google.com/webstore/detail/markdown-viewer/ckkdlimhmcjmikdlpkmbgfkaikojcbjk). In the extension options, enable the "allow access to file URLs"-option and you are all set.',
-    default:
-      getOS() === 'windows'
-        ? 'start msedge'
-        : getOS() === 'osx'
-        ? 'open -a "Safari"'
-        : isLinuxProgramInstalled('google-chrome')
-        ? 'google-chrome'
-        : 'firefox',
+    default: openInDefaultBrowserCommand,
     parse: parseString,
     validate: validateString,
   },
