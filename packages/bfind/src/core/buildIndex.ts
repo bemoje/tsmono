@@ -1,12 +1,12 @@
-import { TrieMap } from '@bemoje/trie-map';
-import { FSPathFilter } from '@bemoje/util';
-import fs from 'fs';
-import path from 'path';
-import walkdir from 'walkdir';
-import { FILE_LIST_JSON_PATH } from '../constants/FILE_LIST_JSON_PATH';
-import { WORD_TRIE_JSON_PATH } from '../constants/WORD_TRIE_JSON_PATH';
-import { config } from './config';
-import { extractSearchKeys } from './extractSearchKeys';
+import { TrieMap } from '@bemoje/trie-map'
+import { FSPathFilter } from '@bemoje/util'
+import fs from 'fs'
+import path from 'path'
+import walkdir from 'walkdir'
+import { FILE_LIST_JSON_PATH } from '../constants/FILE_LIST_JSON_PATH'
+import { WORD_TRIE_JSON_PATH } from '../constants/WORD_TRIE_JSON_PATH'
+import { config } from './config'
+import { extractSearchKeys } from './extractSearchKeys'
 
 export async function buildIndex(): Promise<void> {
   const rootdirs: Array<string> = config.appdata.user.get('rootdirs')
@@ -58,7 +58,7 @@ export async function buildIndex(): Promise<void> {
         const index = ++nextIndex
         filepath = filepath.toLowerCase()
         PATHS[index] = filepath
-        const searchWords = extractSearchKeys(path.basename(filepath))
+        const searchWords = extractSearchKeys(path.basename(filepath), stat.isDirectory())
         for (const word of searchWords) {
           count.keywordsIndexed++
           for (let j = 0; j < word.length - 2; j++) {

@@ -6,7 +6,7 @@ const { cyan, gray, red, yellow } = colors
 
 export async function printSearchResult(fspaths: string[], search: string, printAll = false) {
   const origLen = fspaths.length
-  let pathstat: [fs.Stats, string][]
+  let pathstat: [fs.Stats, string][] = []
   for (const fspath of fspaths) {
     if (fs.existsSync(fspath)) {
       try {

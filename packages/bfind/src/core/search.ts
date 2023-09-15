@@ -4,7 +4,8 @@ import { words } from 'lodash'
 import { extractSearchKeys } from './extractSearchKeys'
 const { green } = colors
 export function search(searchString: string, PATHS: string[], TRIE: TrieMap<Set<number>>): Array<string> {
-  const keywords: Set<string> = extractSearchKeys(searchString)
+  const isDir = !searchString.includes('.')
+  const keywords: Set<string> = extractSearchKeys(searchString, isDir)
   console.log(
     'Search keys: ' +
       Array.from(keywords)
