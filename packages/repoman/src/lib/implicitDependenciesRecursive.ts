@@ -7,7 +7,7 @@ export function implicitDependenciesRecursive(...packageNames: string[]): string
 }
 
 function recurseOne(packageName: string): Set<string> {
-  const result = new Set<string>()
+  const result = new Set<string>([packageName])
   function recurse(name: string) {
     for (const dep of implicitDependencies(name)) {
       if (!result.has(dep)) {

@@ -191,7 +191,7 @@ export const presetDefaults = {
   },
 
   default_maxExpectedResponseTokens: {
-    description: 'The expected size of responses in tokens. One token is approximately equivalent to one character.',
+    description: 'The expected size of responses in tokens. One token is approximately equivalent to 1 character.',
     default: 2500,
     parse: parseInteger,
     validate: validateInteger,
