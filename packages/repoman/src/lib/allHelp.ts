@@ -31,6 +31,7 @@ export function allHelp(program: Command) {
       .replace(/^Description:/gm, colors.cyan('Description:'))
       .replace(/^Example Usage:/gm, colors.cyan('Example Usage:'))
       .replace(/^Options:/gm, colors.cyan('Options:'))
+      .replace(/^Aliases:/gm, colors.cyan('Aliases:'))
       .replace(/^Arguments:/gm, colors.cyan('Arguments:'))
       .replace(/^- /gm, colors.gray('- '))
       .replace(/\r*\n\r*\n/g, '\n')

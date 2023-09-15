@@ -487,10 +487,12 @@ createCommand(program, {
   },
 })
 
+config.initialize(program)
+
 program.configureHelp({
   subcommandTerm: (cmd) => `${cmd.alias() ? cmd.alias().padEnd(3, ' ') + '|' : ''}${cmd.name()}`,
 })
 
-config.initialize(program)
+process.chdir(config.appdata.user.get('repoRootDirectory'))
 
 program.parse()

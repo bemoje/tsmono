@@ -68,9 +68,10 @@ export interface ICommandOptions {
 }
 
 function description(command: Command, options: ICommand) {
-  const { details, summary, usage } = options
+  const { details, summary, usage, aliases } = options
   const toList = (a: string[]) => `\n${a.map((s) => gray(dim('- ')) + s).join('\n')}\n`
-  let result = 'Description: ' + summary
+  let result = aliases ? 'Aliases: ' + [aliases[0], options.command, ...aliases.slice(1)].join('|') + '\n\n' : ''
+  result += 'Description: ' + summary
   if (details) result += toList(details)
   else result += '\n'
   if (usage) {
