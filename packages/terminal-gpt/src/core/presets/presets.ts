@@ -39,9 +39,6 @@ export async function presets(preset: string, prompt?: string, is16k = false, is
   // save data
   const textPath = saveInteraction(jsondir, textdir, settings.markdownOutput, request)
   // user output
-  if (settings.openResponseIn !== 'none') {
-    // await open(textPath)
-
-    execSync(`${settings.openResponseIn} "${textPath}${isLinux() ? ' &' : ''}"`, { stdio: 'inherit' })
-  }
+  if (settings.openResponseIn === 'none') return
+  execSync(`${settings.openResponseIn} "${textPath}${isLinux() ? ' &' : ''}"`, { stdio: 'inherit' })
 }

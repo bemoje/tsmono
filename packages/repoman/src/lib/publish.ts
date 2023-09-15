@@ -26,7 +26,7 @@ export function publish(level: string, packages?: string[]) {
 
   console.log(green('Publishing packages with changes to NPM...'))
   getPackages(_packages).forEach(({ name, pkgpath, pkg, distdir }) => {
-    if (hashes.currentHash(name) === hashes.hash(name)) return
+    // if (hashes.currentHash(name) === hashes.hash(name)) return
 
     console.log(gray('- ') + magenta(name))
     console.log(gray('  - ' + 'Bump semver version'))

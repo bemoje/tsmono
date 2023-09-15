@@ -1,6 +1,6 @@
 # @bemoje/terminal-gpt
 
-
+GPT in the terminal
 
 ![npm (scoped)](https://img.shields.io/npm/v/%40bemoje/trie-map)
 ![npm bundle size (scoped)](https://img.shields.io/bundlephobia/minzip/%40bemoje/terminal-gpt)
