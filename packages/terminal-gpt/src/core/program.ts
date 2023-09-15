@@ -41,8 +41,8 @@ export function program() {
   ].join('\n')
 
   // create commands for using each preset defined in user settings.
-  const examples = config.data.user.get('presets_examples') || {}
-  const custom = config.data.user.get('presets') || {}
+  const examples = config.userconfig.get('presets_examples') || {}
+  const custom = config.userconfig.get('presets') || {}
   for (const [preset, settings] of Object.entries({ ...examples, ...custom })) {
     program
       .command(preset)

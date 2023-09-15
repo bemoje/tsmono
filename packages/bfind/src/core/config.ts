@@ -1,4 +1,12 @@
-import { Config, parseBoolean, parseDirectories, parseInteger } from '@bemoje/commander-config'
+import {
+  Config,
+  parseBoolean,
+  parseDirectories,
+  parseInteger,
+  validateBoolean,
+  validateInteger,
+  validateStringArray,
+} from '@bemoje/commander-config'
 import { getDiskDrivesWindows, getRootDir, isWindows } from '@bemoje/util'
 import { wipeIndex } from './wipeIndex'
 
@@ -7,27 +15,31 @@ export const config = new Config('bemoje', 'bfind', {
     description: [
       'Whether to print errors when scans of files or directories fail.',
       'Reasons could be permission denied or other errors.',
+      'This is disabled by default because it can be noisy.',
     ].join(' '),
-    default: true,
+    default: false,
     parse: parseBoolean,
+    validate: validateBoolean,
   },
   'print-scan-ignored': {
     description: [
       'Whether to print when files or directories are skipped during scan.',
-      'This is controlled by the user settings for what to ignore/skip.',
+      'The user config controls what to ignore/skip.',
     ].join(' '),
     default: true,
     parse: parseBoolean,
+    validate: validateBoolean,
   },
   'max-results': {
-    description: ['The maximum number of search results to display.'].join(' '),
+    description: ['The maximum number of search results to display. Set to zero to disable.'].join(' '),
     default: 35,
     parse: parseInteger,
+    validate: validateInteger,
   },
   rootdirs: {
     description: [
       'The root directories which should be indexed for search.',
-      'Use semicolon as separator for multiple directories.',
+      'Use comma as separator for multiple directories.',
     ].join(' '),
     default: isWindows() ? getDiskDrivesWindows() : [getRootDir()],
     parse: (string: string) => {
@@ -35,6 +47,7 @@ export const config = new Config('bemoje', 'bfind', {
       wipeIndex()
       return res
     },
+    validate: validateStringArray,
   },
   ignore: {
     description:
@@ -57,9 +70,10 @@ export const config = new Config('bemoje', 'bfind', {
       '\\/\\.',
     ],
     parse: (string: string): string[] => {
-      const arr = string.split(';').map((d) => d.trim())
+      const arr = string.split(',').map((d) => d.trim())
       wipeIndex()
       return arr
     },
+    validate: validateStringArray,
   },
 })

@@ -8,8 +8,8 @@ import { presetDefaults } from '../presets/presetConfig'
  * @param name - The name of the preset to add.
  */
 export async function createPreset(name: string): Promise<void> {
-  const custom = config.data.user.get('presets')
-  const examples = config.data.user.get('presets_examples')
+  const custom = config.userconfig.get('presets')
+  const examples = config.userconfig.get('presets_examples')
 
   if (custom[name] || examples[name]) {
     return console.log(`Preset '${name}' already exists.`)
@@ -24,6 +24,6 @@ export async function createPreset(name: string): Promise<void> {
   for (const [key, o] of Object.entries(presetDefaults)) {
     custom[key.replace('default_', '')] = o.default
   }
-  config.data.user.set('presets', custom)
+  config.userconfig.set('presets', custom)
   await config.editConfigInEditor()
 }

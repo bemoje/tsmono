@@ -29,7 +29,7 @@ export async function onCustomPreset(
   const isImprove = options.includes('improve')
   if (isImprove) {
     isReply = true
-    _prompt = _prompt.replace('improve', config.data.user.get('default_improveResponse')).trim()
+    _prompt = _prompt.replace('improve', config.userconfig.get('default_improveResponse')).trim()
   }
 
   return [_prompt, is16k, isReply, isEdit]

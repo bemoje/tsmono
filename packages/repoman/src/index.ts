@@ -500,6 +500,6 @@ program.configureHelp({
   subcommandTerm: (cmd) => `${cmd.alias() ? cmd.alias().padEnd(3, ' ') + '|' : ''}${cmd.name()}`,
 })
 
-process.chdir(config.data.user.get('repoRootDirectory'))
+process.chdir(config.userconfig.get('repoRootDirectory'))
 
 program.parse()

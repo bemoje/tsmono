@@ -12,14 +12,14 @@ import { config } from './config'
  * @returns An instance of the OpenAI API client.
  */
 export function getApiClient() {
-  const apiKey = config.data.user.get('apiKey').startsWith('sk-')
-    ? config.data.user.get('apiKey')
-    : fs.existsSync(config.data.user.get('apiKey'))
-    ? fs.readFileSync(config.data.user.get('apiKey'), 'utf8').trim()
+  const apiKey = config.userconfig.get('apiKey').startsWith('sk-')
+    ? config.userconfig.get('apiKey')
+    : fs.existsSync(config.userconfig.get('apiKey'))
+    ? fs.readFileSync(config.userconfig.get('apiKey'), 'utf8').trim()
     : ''
 
   if (apiKey.startsWith('sk-')) {
-    config.data.user.set('apiKey', apiKey)
+    config.userconfig.set('apiKey', apiKey)
   } else {
     console.error(
       'No api key found. Please set your api key in the config: gpt config-set apiKey <your-api-key-OR-path-to-keyfile>'
