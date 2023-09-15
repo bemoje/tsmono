@@ -6,11 +6,16 @@ const { cyan, gray, red, yellow } = colors
 
 export async function printSearchResult(fspaths: string[], search: string, printAll = false) {
   const origLen = fspaths.length
-  let pathstat: [fs.Stats, string][] = await Promise.all(
-    fspaths.map(async (fspath) => {
-      return [await fs.promises.stat(fspath), fspath]
-    })
-  )
+  let pathstat: [fs.Stats, string][]
+  for (const fspath of fspaths) {
+    if (fs.existsSync(fspath)) {
+      try {
+        pathstat.push([await fs.promises.stat(fspath), fspath])
+      } catch (error) {
+        continue
+      }
+    }
+  }
   pathstat.sort((a, b) => a[0].mtimeMs - b[0].mtimeMs)
   if (!printAll && fspaths.length > config.appdata.user.get('max-results')) {
     pathstat = pathstat.slice(pathstat.length - config.appdata.user.get('max-results'))
