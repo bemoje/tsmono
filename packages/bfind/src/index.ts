@@ -6,8 +6,8 @@ import { FILE_LIST_JSON_PATH } from './constants/FILE_LIST_JSON_PATH'
 import { WORD_TRIE_JSON_PATH } from './constants/WORD_TRIE_JSON_PATH'
 import { buildIndex } from './core/buildIndex'
 import { config } from './core/config'
+import { displayResults } from './core/displayResults'
 import { extractSearchKeys } from './core/extractSearchKeys'
-import { printSearchResult } from './core/printSearchResult'
 import { search } from './core/search'
 const { green, red, yellow } = colors
 
@@ -50,7 +50,7 @@ export const program = new Command()
     const executionTime = Date.now() - t1 + ' ms'
 
     const t2 = Date.now()
-    await printSearchResult(searchResult, keywords, options.all)
+    await displayResults(searchResult, keywords, options.all)
     const sortAndPrintTime = Date.now() - t2 + ' ms'
 
     const indexAge = Math.floor((Date.now() - fs.statSync(FILE_LIST_JSON_PATH).mtimeMs) / 1000 / 60 / 60 / 24)
