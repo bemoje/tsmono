@@ -34,16 +34,6 @@ export function publish(level: string, packages?: string[]) {
     pkg.version = semverVersionBump(original, level as 'major' | 'minor' | 'patch')
     writeJsonFileSync(pkgpath, pkg, true, 2)
 
-    if (pkg.preferGlobal) {
-      console.log(gray('    - ' + 'Update version of CLIs in dist directory.'))
-      updateFileSafeSync(path.join(distdir, 'index.cjs.js'), (src) => {
-        return src.replace(/\((\'|\")0\.0\.0(\'|\")\)/, `('${pkg.version}')`)
-      })
-      updateFileSafeSync(path.join(distdir, 'index.esm.js'), (src) => {
-        return src.replace(/\((\'|\")0\.0\.0(\'|\")\)/, `('${pkg.version}')`)
-      })
-    }
-
     console.log(gray('    - ' + 'Update package.json version in dist directory.'))
     updateFileSync(
       path.join(distdir, 'package.json'),
@@ -52,6 +42,17 @@ export function publish(level: string, packages?: string[]) {
       },
       JSON.stringify(pkg, null, 2)
     )
+
+    if (pkg.preferGlobal) {
+      console.log(gray('    - ' + 'Update version of CLIs in dist directory.'))
+      const regVersion = /\((\'|\")0\.0\.0(\'|\")\)/
+      updateFileSafeSync(path.join(distdir, 'index.cjs.js'), (src) => {
+        return src.replace(regVersion, `('${pkg.version}')`)
+      })
+      updateFileSafeSync(path.join(distdir, 'index.esm.js'), (src) => {
+        return src.replace(regVersion, `('${pkg.version}')`)
+      })
+    }
 
     try {
       console.log(gray('  - ' + 'npm update'))
@@ -81,7 +82,10 @@ export function publish(level: string, packages?: string[]) {
     successful.push(pkg.name + '@' + pkg.version)
   })
 
-  if (!successful.length) return
+  if (!successful.length) {
+    console.log(red('\nNo changes found. Nothing was published. Exiting...\n'))
+    return
+  }
 
   if (!packages) docs()
 

@@ -1,6 +1,6 @@
 import { colors, strWrapInAngleBrackets, strWrapInBrackets } from '@bemoje/util'
 import { Argument, Command, Option } from 'commander'
-const { dim, green, cyan } = colors
+const { dim, green, cyan, gray } = colors
 let i = 0
 /**
  * Create a command.
@@ -69,7 +69,7 @@ export interface ICommandOptions {
 
 function description(command: Command, options: ICommand) {
   const { details, summary, usage } = options
-  const toList = (a: string[]) => `\n${a.map((s) => dim('- ') + s).join('\n')}\n`
+  const toList = (a: string[]) => `\n${a.map((s) => gray(dim('- ')) + s).join('\n')}\n`
   let result = 'Description: ' + summary
   if (details) result += toList(details)
   else result += '\n'
