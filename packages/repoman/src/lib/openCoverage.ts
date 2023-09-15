@@ -1,5 +1,7 @@
-import { execute } from '@bemoje/util'
+import { execute, isWindows } from '@bemoje/util'
 
 export function openCoverage() {
-  execute('start coverage/lcov-report/index.html')
+  const url = 'coverage/lcov-report/index.html'
+  if (isWindows()) execute(`start ${url}`)
+  else execute(`xdg-open ${url}`)
 }

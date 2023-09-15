@@ -1,10 +1,11 @@
 import { readJsonFileSync } from '@bemoje/util'
 import path from 'path'
+import { IPackageJson } from './types/IPackageJson'
 
-export function pkgRepoDependencies(pkg: Record<string, unknown> | string): string[] {
-  let _pkg: Record<string, unknown>
+export function implicitDependencies(pkg: IPackageJson | string): string[] {
+  let _pkg: IPackageJson
   if (typeof pkg === 'string') {
-    _pkg = readJsonFileSync(path.join(process.cwd(), 'packages', pkg, 'package.json')) as Record<string, unknown>
+    _pkg = readJsonFileSync(path.join(process.cwd(), 'packages', pkg, 'package.json')) as IPackageJson
   } else {
     _pkg = pkg
   }

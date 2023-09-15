@@ -27,14 +27,14 @@ export function fixDependencies() {
 
     const imports = impext.imports.filter(filter)
     imports.forEach((imp) => {
-      if (!pkg.dependencies[imp]) {
+      if (!(pkg.dependencies || {})[imp]) {
         console.log(`${name} was missing dependency: ${imp}`)
         execute(`npm i ${imp}`, {
           cwd: rootdir,
         })
       }
     })
-    Object.keys(pkg.dependencies).forEach((dep) => {
+    Object.keys(pkg.dependencies || {}).forEach((dep) => {
       if (!imports.includes(dep) && dep !== 'tslib') {
         console.log(`${name} had unused dependency: ${dep}`)
         execute(`npm uninstall ${dep}`, {
@@ -46,6 +46,7 @@ export function fixDependencies() {
 
   status('ensuring all own-dependencies are set to latest')
   getPackages().forEach(({ pkg, rootdir, name, pkgpath }) => {
+    if (!pkg.dependencies) return
     for (const dep of Object.keys(pkg.dependencies)) {
       if (dep.startsWith('@bemoje') && pkg.dependencies[dep] !== 'latest') {
         console.log(`${name} not using latest of: ${dep}`)
@@ -76,7 +77,7 @@ export function fixDependencies() {
       const project: Record<string, unknown> = readJsonFileSync(path.join(rootdir, 'project.json'))
       if (!project.projectType) throw new Error('Could not find projectType in project.json for package: ' + name)
       nxProject.projectType = project.projectType
-      nxProject.implicitDependencies = Object.keys(pkg.dependencies)
+      nxProject.implicitDependencies = Object.keys(pkg.dependencies || {})
         .filter((dep) => dep.startsWith('@bemoje'))
         .map((dep) => dep.replace('@bemoje/', ''))
     })

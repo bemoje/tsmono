@@ -1,18 +1,18 @@
 /* eslint-disable no-useless-escape */
 import { colors, execute, updateFileSafeSync, updateFileSync, writeJsonFileSync } from '@bemoje/util'
 import path from 'path'
-import { PackageHashes } from './PackageHashes'
 import { allPackageNames } from './allPackageNames'
 import { docs } from './docs'
 import { getPackages } from './getPackages'
-import { pkgRepoDependenciesRecursive } from './pkgRepoDependenciesRecursive'
-import { pkgRepoDirectDependents } from './pkgRepoDirectDependents'
+import { implicitDependenciesRecursive } from './implicitDependenciesRecursive'
 import { prepub } from './prepub'
+import { updateImplicitDependencies } from './updateImplicitDependencies'
+import { PackageHashes } from './util/PackageHashes'
 import { semverVersionBump } from './util/semverVersionBump'
 const { gray, green, red } = colors
 
-export function publish(level: string, packages: string[] = []) {
-  const _packages = packages.length ? pkgRepoDependenciesRecursive(...packages) : allPackageNames()
+export function publish(level: string, packages?: string[]) {
+  const _packages = packages ? implicitDependenciesRecursive(...packages) : allPackageNames()
 
   // prepub
   prepub(packages)
@@ -83,32 +83,24 @@ export function publish(level: string, packages: string[] = []) {
 
   if (!successful.length) return
 
-  prepub(packages)
-
-  if (!packages.length) docs()
+  if (!packages) docs()
 
   // install updated modules
   console.log(green('Installing the updated modules in affected packages...'))
   console.log(gray('- monorepo root'))
-  execute('npm update @bemoje/*', {
-    // noEcho: true,
-    silent: true,
-    fadedOutput: true,
-  })
-  getPackages(pkgRepoDirectDependents(..._packages)).forEach(({ name, rootdir, pkg }) => {
-    console.log(gray('- ' + name))
-    for (const s of successful) {
-      const npmName = s.substring(0, s.lastIndexOf('@'))
-      if (pkg.dependencies[npmName]) {
-        execute('npm update ' + npmName, {
-          // noEcho: true,
-          silent: true,
-          cwd: rootdir,
-          fadedOutput: true,
-        })
-      }
-    }
-  })
+  const npmNames = successful.map((s) => s.substring(0, s.lastIndexOf('@')))
+  if (npmNames.length) {
+    execute('npm update ' + npmNames.join(' '), {
+      // noEcho: true,
+      silent: true,
+      fadedOutput: true,
+    })
+  }
+
+  console.log(green('Ensuring latest version of implicit dependencies are installed in all packages.'))
+  updateImplicitDependencies()
+
+  prepub(packages)
 
   if (installGlobally.length) {
     console.log(green('Install CLI packages globally: ' + installGlobally.join(', ')))

@@ -1,5 +1,5 @@
 import { Config, parseString, validateString } from '@bemoje/commander-config'
-import { colors, getAppDataPath } from '@bemoje/util'
+import { getAppDataPath } from '@bemoje/util'
 import { Command } from 'commander'
 import fs from 'fs'
 import path from 'path'
@@ -17,9 +17,10 @@ import { packageDependencies } from './lib/packageDependencies'
 import { prepub } from './lib/prepub'
 import { publish } from './lib/publish'
 import { rehash } from './lib/rehash'
+import { testdir } from './lib/testdir'
+import { testfile } from './lib/testfile'
 import { test } from './lib/tests'
-import { testdir, testfile, ts } from './lib/ts'
-const { dim, green, gray } = colors
+import { ts } from './lib/ts'
 
 const appdata = getAppDataPath('bemoje', 'repoman')
 fs.mkdirSync(appdata, { recursive: true })

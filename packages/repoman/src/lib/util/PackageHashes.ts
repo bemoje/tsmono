@@ -1,7 +1,7 @@
 import { getAppDataPath } from '@bemoje/util'
 import fs from 'fs'
 import path from 'path'
-import { hashPackage } from './hashPackage'
+import { hashPackage } from '../hashPackage'
 
 export class PackageHashes {
   readonly hashesPath: string

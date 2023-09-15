@@ -6,11 +6,11 @@ export function createPackage(name: string) {
   if (!name) throw new Error('No name provided')
 
   execute(
-    `call nx g library ${name} --directory packages/${name} --name ${name} --importPath "@bemoje/${name}" --bundler rollup --testEnvironment node --unitTestRunner jest --compiler tsc`
+    `nx g library ${name} --directory packages/${name} --name ${name} --importPath "@bemoje/${name}" --bundler rollup --testEnvironment node --unitTestRunner jest --compiler tsc`
   )
-  execute(`call nx build ${name}`)
-  execute(`call cd dist/packages/${name}`)
-  execute(`call npm publish --access public`)
+  execute(`nx build ${name}`)
+  execute(`cd dist/packages/${name}`)
+  execute(`npm publish --access public`)
 
   fixPackageJson()
 
