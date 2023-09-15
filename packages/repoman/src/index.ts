@@ -1,9 +1,7 @@
 import { Config, parseString, validateString } from '@bemoje/commander-config'
-import { colors, execute, getAppDataPath } from '@bemoje/util'
 import { Command } from 'commander'
-import fs from 'fs'
-import path from 'path'
 import { createCommand } from './createCommand'
+import { allHelp } from './lib/allHelp'
 import { build } from './lib/build'
 import { createPackage } from './lib/createPackage'
 import { deletePackage } from './lib/deletePackage'
@@ -21,15 +19,7 @@ import { testdir } from './lib/testdir'
 import { testfile } from './lib/testfile'
 import { test } from './lib/tests'
 import { ts } from './lib/ts'
-
-const appdata = getAppDataPath('bemoje', 'repoman')
-fs.mkdirSync(appdata, { recursive: true })
-const fpath = path.join(appdata, 'repo.txt')
-if (!fs.existsSync(fpath)) {
-  fs.writeFileSync(fpath, process.cwd(), 'utf8')
-}
-const cwd = fs.readFileSync(fpath, 'utf8').trim()
-if (cwd !== process.cwd()) process.chdir(cwd)
+import { wipeNodeModules } from './lib/wipeNodeModules'
 
 const config = new Config('bemoje', 'repoman', {
   repoRootDirectory: {
@@ -254,6 +244,53 @@ createCommand(program, {
 })
 
 createCommand(program, {
+  command: 'wnm',
+  aliases: ['wipe-modules'],
+  summary: 'Clear node_modules.',
+  usage: [
+    {
+      command: 'rman wipe-modules -l -r',
+      description: 'Delete all node_modules in all packages and repo root, including all package-lock.json files.',
+    },
+    {
+      command: 'rman wipe-modules my-package -l',
+      description: "Delete all node_modules and package-lock.json in the package, 'my-package'",
+    },
+    {
+      command: 'rman wipe-modules -s bemoje',
+      description: 'Delete @bemoje scoped node_modules in all packages.',
+    },
+  ],
+  arguments: [
+    {
+      name: 'packages',
+      description: 'Names of packages to include. If omitted, all packages are included.',
+      isOptional: true,
+      isCommaDelimited: true,
+    },
+  ],
+  options: [
+    {
+      name: 'scope',
+      char: 's',
+      description: 'Delete only node_modules within a given scope, which could also be your own.',
+      argument: 'scope',
+    },
+    {
+      name: 'package-lock',
+      char: 'l',
+      description: 'Delete the package-lock.json files, too.',
+    },
+    {
+      name: 'root',
+      char: 'r',
+      description: 'Perform these actions in the root directory of the monorepo, too.',
+    },
+  ],
+  action: wipeNodeModules,
+})
+
+createCommand(program, {
   command: 'rh',
   aliases: ['rehash', 're-hash'],
   summary: 'Rehash all or selected packages.',
@@ -430,85 +467,14 @@ createCommand(program, {
 createCommand(program, {
   command: 'all-help',
   summary: 'Print help for every command.',
-  usage: [{ command: 'rman extended-help' }],
+  usage: [{ command: 'rman all-help' }],
   action: () => {
-    const APPDATADIR = getAppDataPath('bemoje', 'repoman')
-    const helpfilepath = path.join(APPDATADIR, 'help.txt')
-    const version = execute(`rman --version`, { noEcho: true, silent: true }).trim()
-    if (fs.existsSync(helpfilepath)) {
-      const lines = fs.readFileSync(helpfilepath, 'utf8').split('\n')
-      const helpVersion = lines.shift() as unknown as string
-      console.log({ version, helpVersion })
-      if (version === helpVersion) {
-        console.log(lines.join('\n'))
-        return
-      }
-      fs.rmSync(helpfilepath)
-    }
-    const helps: string[] = [version]
-    const log = (s: string) => {
-      console.log(s)
-      helps.push(s)
-    }
-    program.commands.forEach((cmd) => {
-      const aliases = cmd.aliases()
-      if (!aliases) return
-      const alias = aliases[0]
-      if (!alias) return
-      log('\n\n' + colors.bold(colors.magenta('rman ' + alias)))
-      log(colors.gray(colors.dim('---------------------------------------------')))
-      let help = execute(`rman help ${alias}`, { noEcho: true, silent: true })
-      help = help
-        .replace(/^Usage:/gm, colors.cyan('Usage:'))
-        .replace(/^Description:/gm, colors.cyan('Description:'))
-        .replace(/^Example Usage:/gm, colors.cyan('Example Usage:'))
-        .replace(/^Options:/gm, colors.cyan('Options:'))
-        .replace(/\r*\n\r*\n/g, '\n')
-      log(help)
-    })
-
-    log('\n\n' + colors.green(colors.bold('rman')))
-    log(colors.gray(colors.dim('---------------------------------------------')))
-    const help = execute(`rman help`, { noEcho: true, silent: true })
-    log(
-      help
-        .replace(/^Usage:/gm, colors.cyan('Usage:'))
-        .replace(/^Description:/gm, colors.cyan('Description:'))
-        .replace(/^Commands:/gm, colors.cyan('Commands:'))
-        .replace(/^Options:/gm, colors.cyan('Options:'))
-        .replace(/\r*\n\r*\n/g, '\n')
-    )
-    console.log()
-    fs.writeFileSync(helpfilepath, helps.join('\n'), 'utf8')
+    allHelp(program)
   },
 })
 
-// program
-//   .command('wom')
-//   .aliases(['wipe-own-modules', 'wipeownmodules'])
-//   .description('Delete node_modules of your own @scope - in all packages.')
-//   .option('-l, --package-lock', 'Delete the package-lock.json files, too.')
-//   .option('-r, --root', 'Perform these actions in the root directory of the monorepo, too.')
-//   .action((options = {}) => {
-//     console.log({ options })
-//     // { packageLock: true, root: true }
-//     // wipeOwnNodeModules()
-//   })
-
-// program
-//   .command('wam')
-//   .aliases(['wipe-all-modules', 'wipeallmodules'])
-//   .description('Delete node_modules of your own @scope - in all packages.')
-//   .option('-l, --package-lock', 'Delete the package-lock.json files, too.')
-//   .option('-r, --root', 'Perform these actions in the root directory of the monorepo, too.')
-//   .action((options = {}) => {
-//     console.log({ options })
-//     // { packageLock: true, root: true }
-//     // wipeOwnNodeModules()
-//   })
-
 program.configureHelp({
-  subcommandTerm: (cmd) => `${cmd.name().padEnd(3, ' ')}${cmd.alias() ? '|' + cmd.alias() : ''}`,
+  subcommandTerm: (cmd) => `${cmd.alias() ? cmd.alias().padEnd(3, ' ') + '|' : ''}${cmd.name()}`,
 })
 
 config.initialize(program)
