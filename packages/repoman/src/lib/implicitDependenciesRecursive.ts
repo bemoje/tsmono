@@ -19,6 +19,5 @@ function recurseOne(packageName: string): Set<string> {
     }
   }
   recurse(packageName)
-  result.delete(packageName)
   return result
 }

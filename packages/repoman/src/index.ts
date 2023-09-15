@@ -263,6 +263,13 @@ createCommand(program, {
         "Publish new version (minor) of packages 'pack1', 'pack2' and their dependencies if they have changes.",
     },
   ],
+  options: [
+    {
+      name: 'ignoreHash',
+      char: 'i',
+      description: 'Ignore hashes so publish even if the hash determines it is not necessary.',
+    },
+  ],
   action: publish,
 })
 

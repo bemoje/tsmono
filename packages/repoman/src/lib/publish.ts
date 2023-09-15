@@ -11,7 +11,7 @@ import { PackageHashes } from './util/PackageHashes'
 import { semverVersionBump } from './util/semverVersionBump'
 const { gray, green, red, magenta } = colors
 
-export function publish(level: string, packages?: string[]) {
+export function publish(level: string, packages?: string[], options: { ignoreHash?: boolean } = {}) {
   const _packages = packages ? implicitDependenciesRecursive(...packages) : allPackageNames()
 
   // prepub
@@ -26,7 +26,7 @@ export function publish(level: string, packages?: string[]) {
 
   console.log(green('Publishing packages with changes to NPM...'))
   getPackages(_packages).forEach(({ name, pkgpath, pkg, distdir }) => {
-    if (hashes.currentHash(name) === hashes.hash(name)) return
+    if (!options.ignoreHash && hashes.currentHash(name) === hashes.hash(name)) return
 
     console.log(gray('- ') + magenta(name))
     console.log(gray('  - ' + 'Bump semver version'))
