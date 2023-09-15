@@ -9,7 +9,7 @@ import { prepub } from './prepub'
 import { updateImplicitDependencies } from './updateImplicitDependencies'
 import { PackageHashes } from './util/PackageHashes'
 import { semverVersionBump } from './util/semverVersionBump'
-const { gray, green, red } = colors
+const { gray, green, red, magenta } = colors
 
 export function publish(level: string, packages?: string[]) {
   const _packages = packages ? implicitDependenciesRecursive(...packages) : allPackageNames()
@@ -28,7 +28,7 @@ export function publish(level: string, packages?: string[]) {
   getPackages(_packages).forEach(({ name, pkgpath, pkg, distdir }) => {
     if (hashes.currentHash(name) === hashes.hash(name)) return
 
-    console.log(gray('- ' + name))
+    console.log(gray('- ') + magenta(name))
     console.log(gray('  - ' + 'Bump semver version'))
     const original = String(pkg.version)
     pkg.version = semverVersionBump(original, level as 'major' | 'minor' | 'patch')
@@ -37,10 +37,10 @@ export function publish(level: string, packages?: string[]) {
     if (pkg.preferGlobal) {
       console.log(gray('    - ' + 'Update version of CLIs in dist directory.'))
       updateFileSafeSync(path.join(distdir, 'index.cjs.js'), (src) => {
-        return src.replace(/('0.0.0')/, `('${pkg.version}')`)
+        return src.replace(/\((\'|\")0\.0\.0(\'|\")\)/, `('${pkg.version}')`)
       })
       updateFileSafeSync(path.join(distdir, 'index.esm.js'), (src) => {
-        return src.replace(/('0.0.0')/, `('${pkg.version}')`)
+        return src.replace(/\((\'|\")0\.0\.0(\'|\")\)/, `('${pkg.version}')`)
       })
     }
 
