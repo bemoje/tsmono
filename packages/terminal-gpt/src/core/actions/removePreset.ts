@@ -6,8 +6,8 @@ import { config } from '../config'
  * @param name - The name of the preset to remove.
  */
 export async function removePreset(name: string): Promise<void> {
-  const custom = config.appdata.user.get('presets')
-  const examples = config.appdata.user.get('presets_examples')
+  const custom = config.data.user.get('presets')
+  const examples = config.data.user.get('presets_examples')
 
   if (!custom[name] && !examples[name]) {
     return console.log(`Preset '${name}' does not exist.`)
@@ -15,10 +15,10 @@ export async function removePreset(name: string): Promise<void> {
 
   if (custom[name]) {
     delete custom[name]
-    config.appdata.user.set('presets', custom)
+    config.data.user.set('presets', custom)
   }
   if (examples[name]) {
     delete examples[name]
-    config.appdata.user.set('presets_examples', examples)
+    config.data.user.set('presets_examples', examples)
   }
 }

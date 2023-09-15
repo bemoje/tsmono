@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { AppData, colors, getOS, isVsCodeInstalled, readJsonFileSync } from '@bemoje/util'
+import { AppData, colors, isOSX, isVsCodeInstalled, isWindows, readJsonFileSync } from '@bemoje/util'
 import { Command } from 'commander'
 import fs from 'fs'
 import { getUserInputFromEditorSync } from '../util/getUserInputFromEditorSync'
@@ -17,7 +17,7 @@ export class Config {
   /**
    * An AppData instance that manages both an appdata file, a user config file and a log file.
    */
-  readonly appdata: AppData<Record<string, any>, Record<string, any>>
+  readonly data: AppData<Record<string, any>, Record<string, any>>
 
   /**
    * Objects that define each setting of the user config.
@@ -34,34 +34,25 @@ export class Config {
     definitions = {
       editor: {
         description: 'application launch command for your preferred text editor.',
-        default: isVsCodeInstalled()
-          ? 'code -w'
-          : getOS() === 'windows'
-          ? 'notepad'
-          : getOS() === 'osx'
-          ? 'open vi'
-          : 'xdg-open',
+        default: isVsCodeInstalled() ? 'code -w' : isWindows() ? 'notepad' : isOSX() ? 'open vi' : 'xdg-open',
         parse: parseString,
         validate: validateString,
       },
       ...definitions,
     }
 
-    this.appdata = new AppData<Record<string, any>, Record<string, any>>(appAuthor, appName, 'appdata')
+    this.data = new AppData<Record<string, any>, Record<string, any>>(appAuthor, appName, 'appdata')
 
     this.definitions = definitions as IConfigSettings
 
-    const currentUserConfig = readJsonFileSync(this.appdata.user.filepath) as Record<string, any>
-    this.appdata.user.assign(currentUserConfig)
-
-    const currentAppData = readJsonFileSync(this.appdata.app.filepath) as Record<string, any>
-    this.appdata.app.assign(currentAppData)
+    this.userconfig.assign(readJsonFileSync(this.userconfig.filepath))
+    this.appdata.assign(readJsonFileSync(this.appdata.filepath))
 
     for (const [name, options] of Object.entries(definitions)) {
-      this.appdata.user.getOrElse(name, () => options.default)
+      this.userconfig.getOrElse(name, () => options.default)
     }
 
-    this.appdata.user.on('set', (time, k: string, v: Record<string, any>) => {
+    this.userconfig.on('set', (time, k: string, v: Record<string, any>) => {
       if (this.definitions[k]) {
         const validate = this.definitions[k].validate
         if (validate) validate(k, v)
@@ -69,17 +60,25 @@ export class Config {
     })
   }
 
+  get userconfig(): Record<string, any> {
+    return this.data.user
+  }
+
+  get appdata(): Record<string, any> {
+    return this.data.app
+  }
+
   /**
    * Edits the user configuration in the editor.
    */
   editConfigInEditor(): void {
     const newJson = getUserInputFromEditorSync({
-      appdataDirectory: this.appdata.directory,
-      editor: this.appdata.user.data.editor,
-      currentContent: JSON.stringify(this.appdata.user.data, null, 2),
+      appdataDirectory: this.data.directory,
+      editor: this.userconfig.get('editor'),
+      currentContent: JSON.stringify(this.userconfig.data, null, 2),
       extension: '.json',
     })
-    this.appdata.user.assign(JSON.parse(newJson) as Record<string, any>)
+    this.userconfig.assign(JSON.parse(newJson) as Record<string, any>)
     console.log('Configuration updated.')
   }
 
@@ -92,10 +91,10 @@ export class Config {
       .command('appdata')
       .description('Get the directory containing your app data.')
       .action((options: { wipe?: boolean } = {}) => {
-        console.log('APPDATA: ' + this.appdata.directory)
+        console.log('APPDATA: ' + this.data.directory)
         console.log(options)
         if (options.wipe) {
-          fs.rmSync(this.appdata.directory, { recursive: true, force: true })
+          fs.rmSync(this.data.directory, { recursive: true, force: true })
           console.log('All app data deleted.')
         }
       })
@@ -138,7 +137,7 @@ export class Config {
     if (!definition) {
       return console.log(`The '${setting}' setting not recognized.`)
     }
-    this.appdata.user.set(setting, definition.parse(value || JSON.stringify(this)))
+    this.userconfig.set(setting, definition.parse(value || JSON.stringify(this)))
     console.log(`The '${setting}' setting has been configured.`)
   }
 
@@ -148,7 +147,7 @@ export class Config {
    */
   reset(setting?: string): void {
     if (!setting) {
-      fs.rmSync(this.appdata.user.filepath)
+      fs.rmSync(this.userconfig.filepath)
       console.log('All app data deleted.')
       process.exit(0)
     }
@@ -156,8 +155,8 @@ export class Config {
     if (!definition) {
       return console.log(`The '${setting}' setting not recognized.`)
     }
-    if (this.appdata.user.get(setting) !== definition.default) {
-      this.appdata.user.set(setting, definition.default)
+    if (this.userconfig.get(setting) !== definition.default) {
+      this.userconfig.set(setting, definition.default)
       console.log(`The '${setting}' setting has been reset to its default value.`)
     }
   }

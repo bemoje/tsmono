@@ -41,8 +41,8 @@ export const program = new Command()
   .version('0.0.0')
   .argument('[search]', 'A full or partial directory name of the repository to find and open.')
   .action((search = '') => {
-    const dirnames = fs.readdirSync(config.appdata.user.get('rootdir')).filter((dirname) => {
-      return fs.statSync(path.join(config.appdata.user.get('rootdir'), dirname)).isDirectory()
+    const dirnames = fs.readdirSync(config.data.user.get('rootdir')).filter((dirname) => {
+      return fs.statSync(path.join(config.data.user.get('rootdir'), dirname)).isDirectory()
     })
     if (!search) {
       console.log(dirnames.reduce((acc, dirname, i) => acc + '\n' + i + '.' + dirname, ''))
@@ -57,7 +57,7 @@ export const program = new Command()
           process.exit()
         }
         const dirname = dirnames[Number(string)]
-        exec('code ' + path.join(config.appdata.user.get('rootdir'), dirname))
+        exec('code ' + path.join(config.data.user.get('rootdir'), dirname))
         rl.close()
       })
       return
@@ -67,13 +67,13 @@ export const program = new Command()
     let found = false
     dirnames.forEach((dirname) => {
       if (found) return
-      const fullpath = path.join(config.appdata.user.get('rootdir'), dirname)
+      const fullpath = path.join(config.data.user.get('rootdir'), dirname)
       if (!dirname.toLowerCase().includes(search.toLowerCase())) {
         return false
       }
       console.log('Opening repository: ', dirname)
 
-      exec(`${config.appdata.user.get('IDE')} ${fullpath}`)
+      exec(`${config.data.user.get('IDE')} ${fullpath}`)
       found = true
       return true
     })

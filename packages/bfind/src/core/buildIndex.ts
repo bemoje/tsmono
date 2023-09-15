@@ -9,16 +9,16 @@ import { config } from './config'
 import { extractSearchKeys } from './extractSearchKeys'
 
 export async function buildIndex(): Promise<void> {
-  const rootdirs: Array<string> = config.appdata.user.get('rootdirs')
+  const rootdirs: Array<string> = config.data.user.get('rootdirs')
   const PATHS: string[] = []
   const TRIE: TrieMap<SerializableSet<number>> = new TrieMap()
 
   const pathFilter = new FSPathFilter()
   pathFilter.isCaseInsensitive = true
-  config.appdata.user.get('ignore').forEach((reg: string) => {
+  config.data.user.get('ignore').forEach((reg: string) => {
     pathFilter.ignoreDirpathRegex(new RegExp(reg.replace(/\/|\\/g, path.sep), 'i'))
   })
-  if (config.appdata.user.get('print-scan-ignored')) {
+  if (config.data.user.get('print-scan-ignored')) {
     pathFilter.on('invalid', (type, fspath) => {
       console.log(`Ignoring ${type}: ${fspath}`)
     })
@@ -38,7 +38,6 @@ export async function buildIndex(): Promise<void> {
         find_links: false,
         no_return: true,
         filter: (dirpath: string, files: string[]) => {
-          // dirpath = dirpath.toLowerCase()
           if (!pathFilter.validateDirpath(dirpath)) {
             return []
           }
@@ -57,13 +56,12 @@ export async function buildIndex(): Promise<void> {
 
       emitter.on('path', function (filepath, stat) {
         const index = ++nextIndex
-        // filepath = filepath.toLowerCase()
         PATHS[index] = filepath
         const searchWords = extractSearchKeys(path.basename(filepath), stat.isDirectory())
         for (const word of searchWords) {
           count.keywordsIndexed++
           for (let j = 0; j < word.length - 2; j++) {
-            const key = Array.from(word.substring(j))
+            const key = [...word.substring(j)]
             const indices = TRIE.get(key)
             if (indices) {
               if (!indices.has(index)) {
@@ -84,13 +82,13 @@ export async function buildIndex(): Promise<void> {
       })
 
       emitter.on('error', (error) => {
-        if (config.appdata.user.get('print-scan-errors')) {
+        if (config.data.user.get('print-scan-errors')) {
           console.log(error.message)
         }
       })
 
       emitter.on('fail', (path, error) => {
-        if (config.appdata.user.get('print-scan-errors')) {
+        if (config.data.user.get('print-scan-errors')) {
           console.log('Could not index path: ' + path)
         }
       })
@@ -113,6 +111,6 @@ class SerializableSet<T> extends Set<T> {
     super(...args)
   }
   toJSON() {
-    return Array.from(this)
+    return [...this]
   }
 }

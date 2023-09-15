@@ -23,14 +23,14 @@ export async function userInput(
   const delim = '---------------------------'
   const sdelim = strWrapIn(delim, '\n\r\n')
   const userInput = await getUserInputFromEditor({
-    appdataDirectory: config.appdata.directory,
-    editor: config.appdata.user.get('editor'),
+    appdataDirectory: config.data.directory,
+    editor: config.data.user.get('editor'),
     currentContent: defaultSystemMessage.join('\n') + sdelim + 'Temperature: ' + temperature + sdelim + previousInput,
     extension,
   })
   const [instruction, temp, input] = userInput.split(delim).map((s) => s.trim())
   if (!input.trim()) {
-    config.appdata.user.set('ts_lastInput', '')
+    config.data.user.set('ts_lastInput', '')
     console.log('No input provided. Exiting...')
     process.exit(0)
   }

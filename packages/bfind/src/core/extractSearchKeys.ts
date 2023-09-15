@@ -12,7 +12,6 @@ export function extractSearchKeys(searchString: string, isDir?: boolean): Set<st
   const split = words(searchString.toLowerCase())
   if (!isDir) split[split.length - 1] = '.' + split[split.length - 1]
   for (let word of split) {
-    // word = word.toLowerCase()
     if (reg5Digits.test(word)) continue
     word = word.substring(0, 9)
     result.add(word)

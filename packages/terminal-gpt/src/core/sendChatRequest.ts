@@ -15,7 +15,7 @@ const { blue } = colors
  * @returns A promise that resolves to the response from the OpenAI API.
  */
 export async function sendChatRequest(options: ISendChatRequestOptions): Promise<string> {
-  const showTokenDetails = config.appdata.user.get('tokenDetails')
+  const showTokenDetails = config.data.user.get('tokenDetails')
   const { request, settings } = options
   const { model, preferGpt4 } = settings
   const api = getApiClient()

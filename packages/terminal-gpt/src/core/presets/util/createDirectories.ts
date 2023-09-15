@@ -8,7 +8,7 @@ import { config } from '../../config'
  * @returns - The directories.
  */
 export function createDirectories(preset: string) {
-  const filedir = path.join(config.appdata.directory, preset)
+  const filedir = path.join(config.data.directory, preset)
   const jsondir = path.join(filedir, 'json')
   const textdir = path.join(filedir, 'text')
   fs.mkdirSync(jsondir, { recursive: true })

@@ -16,11 +16,10 @@ export async function printSearchResult(fspaths: string[], keywords: Set<string>
     }
   }
   pathstat.sort((a, b) => a[0].mtimeMs - b[0].mtimeMs)
-  if (!printAll && fspaths.length > config.appdata.user.get('max-results')) {
-    pathstat = pathstat.slice(pathstat.length - config.appdata.user.get('max-results'))
+  if (!printAll && fspaths.length > config.data.user.get('max-results')) {
+    pathstat = pathstat.slice(pathstat.length - config.data.user.get('max-results'))
   }
 
-  console.log()
   for (let i = 0; i < pathstat.length; i++) {
     const stat = pathstat[i][0]
     const fspath = [...keywords].reduce((p: string, kw: string) => {
@@ -34,8 +33,8 @@ export async function printSearchResult(fspaths: string[], keywords: Set<string>
       console.log(fspath + gray(' (' + daysOld + ' days)'))
     }
   }
-  if (!printAll && origLen > config.appdata.user.get('max-results')) {
-    console.log(yellow((origLen - config.appdata.user.get('max-results')).toString() + ' results not shown.'))
+  if (!printAll && origLen > config.data.user.get('max-results')) {
+    console.log(yellow((origLen - config.data.user.get('max-results')).toString() + ' results not shown.'))
   }
   console.log()
 }
