@@ -39,6 +39,6 @@ export function packageDependencies(name?: string) {
 
     console.log('\n\n' + name + ': implicit dependency tree:')
     console.log('----------------------------------')
-    console.log(new Set(implicitDependencyTree(name)))
+    console.log(implicitDependencyTree(name))
   }
 }
