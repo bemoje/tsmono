@@ -33,7 +33,7 @@ export function execute(commands: string[] | string, options: IExecuteCommandOpt
     console.log(silent && fadedOutput ? '  ' + dim(out) : out)
   }
 
-  const buffer = execSync(command, { stdio: silent ? 'ignore' : fadedOutput ? 'pipe' : 'inherit', cwd })
+  const buffer = execSync(command, { stdio: silent || fadedOutput ? 'pipe' : 'inherit', cwd })
   const string = buffer && buffer.toString ? buffer.toString().trim() : ''
   if (!silent) {
     const out = string

@@ -1,5 +1,5 @@
 import { Config, parseString, validateString } from '@bemoje/commander-config'
-import { getAppDataPath } from '@bemoje/util'
+import { colors, execute, getAppDataPath } from '@bemoje/util'
 import { Command } from 'commander'
 import fs from 'fs'
 import path from 'path'
@@ -233,7 +233,6 @@ createCommand(program, {
       name: 'level',
       description: 'The semver level to bump.',
       choices: ['major', 'minor', 'patch'],
-      isOptional: true,
       default: { value: 'patch' },
     },
     {
@@ -457,5 +456,20 @@ program.configureHelp({
 })
 
 config.initialize(program)
+
+program.commands.forEach((cmd) => {
+  const aliases = cmd.aliases()
+  if (!aliases) return
+  const alias = aliases[0]
+  if (!alias) return
+  console.log('\n\n' + colors.bold(colors.green(alias)))
+  const help = execute(`rman help ${alias}`, { noEcho: true, fadedOutput: false })
+  help
+    .replace(/^Usage:/gm, colors.yellow('Usage:'))
+    .replace(/^Description:/gm, colors.yellow('Description:'))
+    .replace(/^Example Usage:/gm, colors.yellow('Example Usage:'))
+    .replace(/^Options:/gm, colors.yellow('Options:'))
+    .replace(/\r*\n\r*\n/g, '\n')
+})
 
 program.parse()
