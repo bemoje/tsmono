@@ -7,6 +7,7 @@ import { FILE_LIST_JSON_PATH } from './constants/FILE_LIST_JSON_PATH'
 import { WORD_TRIE_JSON_PATH } from './constants/WORD_TRIE_JSON_PATH'
 import { buildIndex } from './core/buildIndex'
 import { config } from './core/config'
+import { extractSearchKeys } from './core/extractSearchKeys'
 import { printSearchResult } from './core/printSearchResult'
 import { search } from './core/search'
 const { green, red, yellow } = colors
@@ -35,11 +36,13 @@ export const program = new Command()
     process.on('uncaughtException', (error: any) => {
       if (config.appdata.user.get('print-scan-errors')) console.error(error.message)
     })
-    const keywords = args.join(' ').trim()
+    const searchString = args.join(' ').trim()
+    const isDir = !searchString.includes('.')
+    const keywords = extractSearchKeys(searchString, isDir)
 
     const indexExists = fs.existsSync(WORD_TRIE_JSON_PATH) && fs.existsSync(FILE_LIST_JSON_PATH)
     if (!indexExists || options.scan) await buildIndex()
-    if (!options.scan && !keywords.length) return console.log('No search terms provided.')
+    if (!options.scan && !keywords.size) return console.log('No search terms provided.')
 
     const PATHS: string[] = JSON.parse(await fs.promises.readFile(FILE_LIST_JSON_PATH, 'utf8'))
     const TRIE: TrieMap<Set<number>> = TrieMap.fromJSON(await fs.promises.readFile(WORD_TRIE_JSON_PATH, 'utf8'))

@@ -14,6 +14,7 @@ export async function buildIndex(): Promise<void> {
   const TRIE: TrieMap<SerializableSet<number>> = new TrieMap()
 
   const pathFilter = new FSPathFilter()
+  pathFilter.isCaseInsensitive = true
   config.appdata.user.get('ignore').forEach((reg: string) => {
     pathFilter.ignoreDirpathRegex(new RegExp(reg.replace(/\/|\\/g, path.sep), 'i'))
   })
@@ -37,7 +38,7 @@ export async function buildIndex(): Promise<void> {
         find_links: false,
         no_return: true,
         filter: (dirpath: string, files: string[]) => {
-          dirpath = dirpath.toLowerCase()
+          // dirpath = dirpath.toLowerCase()
           if (!pathFilter.validateDirpath(dirpath)) {
             return []
           }
@@ -56,7 +57,7 @@ export async function buildIndex(): Promise<void> {
 
       emitter.on('path', function (filepath, stat) {
         const index = ++nextIndex
-        filepath = filepath.toLowerCase()
+        // filepath = filepath.toLowerCase()
         PATHS[index] = filepath
         const searchWords = extractSearchKeys(path.basename(filepath), stat.isDirectory())
         for (const word of searchWords) {

@@ -157,7 +157,7 @@ export class FSPathFilter extends EventEmitter {
    * Performs the configured dirpath filtering.
    */
   public validateDirpath(dirpath: string): boolean {
-    dirpath = dirpath.toLowerCase().replace(/(\\|\/)+/g, path.sep)
+    dirpath = dirpath.replace(/(\\|\/)+/g, path.sep)
     for (const fn of this.dirpathFilters) {
       if (!fn(dirpath)) {
         this.emit('invalid', 'dirpath', dirpath)

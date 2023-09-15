@@ -1,17 +1,12 @@
 import { TrieMap } from '@bemoje/trie-map'
 import { colors, setUnion } from '@bemoje/util'
-import { words } from 'lodash'
-import { extractSearchKeys } from './extractSearchKeys'
 const { green } = colors
-export function search(searchString: string, PATHS: string[], TRIE: TrieMap<Set<number>>): Array<string> {
-  const isDir = !searchString.includes('.')
-  const keywords: Set<string> = extractSearchKeys(searchString, isDir)
-  console.log(
-    'Search keys: ' +
-      Array.from(keywords)
-        .map((s) => green(s))
-        .join(', ')
-  )
+
+export function search(keywords: Set<string>, PATHS: string[], TRIE: TrieMap<Set<number>>): Array<string> {
+  const kws = Array.from(keywords)
+    .map((s) => green(s))
+    .join(', ')
+  console.log('Search keys: ' + kws)
 
   const indices: Array<Set<number>> = []
   for (const keyword of keywords) {
@@ -25,19 +20,18 @@ export function search(searchString: string, PATHS: string[], TRIE: TrieMap<Set<
   }
 
   const union: Array<number> = Array.from(setUnion(indices))
-  const searchWords = words(searchString)
   const filepaths: string[] = []
   for (const i of union) {
-    const filepath = PATHS[i]
+    const filepath = PATHS[i].toLowerCase()
     let hasAllKeywords = true
-    for (const kw of searchWords) {
+    for (const kw of keywords) {
       if (!filepath.includes(kw)) {
         hasAllKeywords = false
         break
       }
     }
     if (!hasAllKeywords) continue
-    filepaths.push(filepath.replace(/\\+/g, '/'))
+    filepaths.push(PATHS[i].replace(/\\+/g, '/'))
   }
 
   return filepaths
