@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/util",
-  "version": "0.0.28",
+  "version": "0.0.29",
   "type": "commonjs",
   "main": "./index.cjs",
   "module": "./index.js",

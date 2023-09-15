@@ -12,7 +12,7 @@ import { semverVersionBump } from './util/semverVersionBump'
 const { gray, green, red, magenta } = colors
 
 export function publish(level: string, packages?: string[], options: { ignoreHash?: boolean } = {}) {
-  const _packages = packages ? implicitDependenciesRecursive(...packages) : allPackageNames()
+  const _packages = packages ? [...packages, ...implicitDependenciesRecursive(...packages)] : allPackageNames()
 
   // prepub
   prepub(packages)
