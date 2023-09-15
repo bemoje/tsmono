@@ -5,7 +5,7 @@ import path from 'path'
 
 export async function ts(args: string[], options: { script?: boolean } = {}): Promise<void> {
   const search = args.join('/')
-  console.log({ search })
+  console.log({ search, options })
   const fpath = await findFile(path.join(process.cwd(), options.script ? 'scripts' : 'packages'), search, {
     filter: (fullpath: string, stat) => {
       if (stat.isDirectory()) {
@@ -17,6 +17,7 @@ export async function ts(args: string[], options: { script?: boolean } = {}): Pr
   })
   if (!fpath) throw new Error('File not found: ' + search)
   const relative = absoluteToRelativePath(fpath).replace(/\\/g, '/')
+  console.log({ found: relative })
   const command =
     'node node_modules/ts-node/dist/bin.js -P tsconfig' + (options.script ? '.scripts' : '') + '.json ' + relative
   try {

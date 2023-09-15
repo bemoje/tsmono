@@ -15,7 +15,7 @@ import { packageDependencies } from './lib/packageDependencies'
 import { prepub } from './lib/prepub'
 import { publish } from './lib/publish'
 import { rehash } from './lib/rehash'
-import { testdir } from './lib/testdir'
+import { rmandev } from './lib/rmandev'
 import { testfile } from './lib/testfile'
 import { test } from './lib/tests'
 import { ts } from './lib/ts'
@@ -64,6 +64,13 @@ createCommand(program, {
       description: 'Names of packages to include. If omitted, all packages are included.',
       isOptional: true,
       isCommaDelimited: true,
+    },
+  ],
+  options: [
+    {
+      name: 'coverage',
+      char: 'c',
+      description: 'Whether to emit coverage.',
     },
   ],
   usage: [
@@ -188,6 +195,22 @@ createCommand(program, {
     },
   ],
   action: forEach,
+})
+
+createCommand(program, {
+  command: 'dev',
+  aliases: ['rman-dev'],
+  summary: 'Run rman in dev mode',
+
+  arguments: [
+    {
+      name: 'paths',
+      description: 'Path segments to search for.',
+      isOptional: false,
+      isRest: true,
+    },
+  ],
+  action: rmandev,
 })
 
 createCommand(program, {
@@ -371,45 +394,17 @@ createCommand(program, {
   ],
   options: [
     {
+      name: 'dir',
+      char: 'd',
+      description: 'Test all files in the directory where the file is found.',
+    },
+    {
       name: 'coverage',
       char: 'c',
       description: 'Whether to emit coverage.',
     },
   ],
   action: testfile,
-})
-
-createCommand(program, {
-  command: 'td',
-  aliases: ['testdir'],
-  summary: 'Find and run all tests in a directory.',
-  details: [
-    'Provide a full path or partial path search terms.',
-    'Path segments are joined to a single search string.',
-    'The first directory path found in any package to match is selected.',
-  ],
-  usage: [
-    {
-      command: 'rman testdir my-package tests',
-      description: "Find and run tests in directory containing 'my-package/tests'.",
-    },
-  ],
-  arguments: [
-    {
-      name: 'paths',
-      description: 'Path segments to search for.',
-      isOptional: false,
-      isRest: true,
-    },
-  ],
-  options: [
-    {
-      name: 'coverage',
-      char: 'c',
-      description: 'Whether to emit coverage.',
-    },
-  ],
-  action: testdir,
 })
 
 createCommand(program, {
@@ -461,6 +456,12 @@ createCommand(program, {
   aliases: ['open-coverage'],
   summary: 'Open the coverage report in the browser.',
   usage: [{ command: 'rman open-coverage', description: 'Open coverage report.' }],
+  arguments: [
+    {
+      name: 'package',
+      description: 'The name of the package.',
+    },
+  ],
   action: openCoverage,
 })
 

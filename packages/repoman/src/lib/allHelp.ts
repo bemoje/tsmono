@@ -23,13 +23,9 @@ export function allHelp(program: Command) {
     helps.push(s)
   }
   program.commands.forEach((cmd) => {
-    const aliases = cmd.aliases()
-    if (!aliases) return
-    const alias = aliases[0]
-    if (!alias) return
-    log('\n\n' + colors.bold(colors.magenta('rman ' + alias)))
+    log('\n\n' + colors.bold(colors.magenta('rman ' + cmd.name())))
     log(colors.gray(colors.dim('---------------------------------------------')))
-    let help = execute(`rman help ${alias}`, { noEcho: true, silent: true })
+    let help = execute(`rman help ${cmd.name()}`, { noEcho: true, silent: true })
     help = help
       .replace(/^Usage:/gm, colors.cyan('Usage:'))
       .replace(/^Description:/gm, colors.cyan('Description:'))
