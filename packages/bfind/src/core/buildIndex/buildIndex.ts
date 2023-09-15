@@ -7,7 +7,7 @@ import { FILE_LIST_PATH } from '../../constants/FILE_LIST_PATH'
 import { WORD_TRIE_PATH } from '../../constants/WORD_TRIE_PATH'
 import { SerializableSet } from '../../util/SerializableSet'
 import { config } from '../config'
-import { normalizeKeys } from '../search/normalizeKeys'
+import { normalizeKeys } from '../normalizeKeys'
 
 export async function buildIndex(): Promise<void> {
   const PATHS: string[] = []

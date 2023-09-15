@@ -11,8 +11,6 @@ export const program = new Command()
       'Directories are highlighted in blue in search results.',
       'Search results are sorted by last modified date.',
       'Regex ignore patterns are configurable in CLI or the JSON config file.',
-      'Each argument is a search term. If multiple terms are provided, ' +
-        'they ALL must be present in the path to be considered a search hit.',
     ].join(' ')
   )
   .version('0.0.0')
@@ -20,12 +18,8 @@ export const program = new Command()
 program
   .command('search')
   .aliases(['s'])
-  .summary('Search files')
-  .argument(
-    '[searchKeys...]',
-    'Each argument is a search term. If multiple terms are provided, ' +
-      'they ALL must be present in the path to be considered a search hit.'
-  )
+  .summary('Search the filesystem.')
+  .argument('[searchKeys...]', 'Each argument is a search term where they ALL must match.')
   .option('-a, --print-all', 'Print all search results.')
   .action(search)
 

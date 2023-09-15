@@ -1,4 +1,3 @@
-import { colors } from '@bemoje/util'
 import { words } from 'lodash'
 
 /**
@@ -21,6 +20,5 @@ export function normalizeKeys(searchString: string, isDir?: boolean): Set<string
       result.add(word.substring(0, 15))
     }
   }
-  console.log('\nSearch keys: ' + [...result].map((s) => colors.green(s)).join(', '))
   return result
 }
