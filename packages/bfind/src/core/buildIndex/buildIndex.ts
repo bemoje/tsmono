@@ -1,27 +1,27 @@
 import { TrieMap } from '@bemoje/trie-map'
 import { FSPathFilter } from '@bemoje/util'
-import fs from 'fs'
+import fsp from 'fs/promises'
 import path from 'path'
 import walkdir from 'walkdir'
-import { FILE_LIST_JSON_PATH } from '../constants/FILE_LIST_JSON_PATH'
-import { WORD_TRIE_JSON_PATH } from '../constants/WORD_TRIE_JSON_PATH'
-import { SerializableSet } from './SerializableSet'
-import { config } from './config'
-import { extractSearchKeys } from './extractSearchKeys'
+import { FILE_LIST_PATH } from '../../constants/FILE_LIST_PATH'
+import { WORD_TRIE_PATH } from '../../constants/WORD_TRIE_PATH'
+import { SerializableSet } from '../../util/SerializableSet'
+import { config } from '../config'
+import { normalizeKeys } from '../search/normalizeKeys'
 
 export async function buildIndex(): Promise<void> {
   const PATHS: string[] = []
   const TRIE: TrieMap<SerializableSet<number>> = new TrieMap()
 
-  const pathFilter = new FSPathFilter()
-  pathFilter.isCaseInsensitive = true
+  const pfilter = new FSPathFilter()
+  pfilter.isCaseInsensitive = true
 
   config.userconfig.get('ignore').forEach((reg: string) => {
-    pathFilter.ignoreDirpathRegex(new RegExp(reg.replace(/\/|\\/g, path.sep), 'i'))
+    pfilter.ignoreDirpathRegex(new RegExp(reg.replace(/\/|\\/g, path.sep), 'i'))
   })
 
   if (config.userconfig.get('print-scan-ignored')) {
-    pathFilter.on('invalid', (type, fspath) => {
+    pfilter.on('invalid', (type, fspath) => {
       console.log(`Ignoring ${type}: ${fspath}`)
     })
   }
@@ -39,10 +39,10 @@ export async function buildIndex(): Promise<void> {
         find_links: false,
         no_return: true,
         filter: (dirpath: string, files: string[]) => {
-          if (!pathFilter.validateDirpath(dirpath)) return []
+          if (!pfilter.validateDirpath(dirpath)) return []
           return files.filter((filename) => {
-            if (!pathFilter.validateFilename(filename)) return false
-            if (!pathFilter.validateFilepath(path.join(dirpath, filename))) return false
+            if (!pfilter.validateFilename(filename)) return false
+            if (!pfilter.validateFilepath(path.join(dirpath, filename))) return false
             return true
           })
         },
@@ -51,7 +51,7 @@ export async function buildIndex(): Promise<void> {
       walker.on('path', function (filepath, stat) {
         const index = nextIndex++
         PATHS[index] = filepath
-        const searchWords = extractSearchKeys(path.basename(filepath), stat.isDirectory())
+        const searchWords = normalizeKeys(path.basename(filepath), stat.isDirectory())
         for (const word of searchWords) {
           stats.keywordsIndexed++
           for (let j = 0; j < word.length - 2; j++) {
@@ -85,12 +85,11 @@ export async function buildIndex(): Promise<void> {
 
   const t0 = Date.now()
   await Promise.all(config.userconfig.get('rootdirs').map(walkDirectory))
-  await fs.promises.mkdir(path.dirname(WORD_TRIE_JSON_PATH), { recursive: true })
-  await fs.promises.writeFile(WORD_TRIE_JSON_PATH, TRIE.toJson(false), 'utf8')
-  await fs.promises.writeFile(FILE_LIST_JSON_PATH, JSON.stringify(PATHS), 'utf8')
-  const trieSize = (await fs.promises.stat(WORD_TRIE_JSON_PATH)).size
-  const pathsSize = (await fs.promises.stat(FILE_LIST_JSON_PATH)).size
-  const indexSizeMB = (trieSize + pathsSize) / 1024 / 1024
+  await fsp.mkdir(path.dirname(WORD_TRIE_PATH), { recursive: true })
+  await fsp.writeFile(WORD_TRIE_PATH, TRIE.toJson(false), 'utf8')
+  await fsp.writeFile(FILE_LIST_PATH, JSON.stringify(PATHS), 'utf8')
+  const trieSize = (await fsp.stat(WORD_TRIE_PATH)).size
+  const pathsSize = (await fsp.stat(FILE_LIST_PATH)).size
   console.log('Indexing completed in ' + Math.floor((Date.now() - t0) / 1000) + ' seconds.')
-  console.log({ ...stats, indexSizeMB: Math.round(indexSizeMB) })
+  console.log({ ...stats, indexSizeMB: Math.round((trieSize + pathsSize) / 1024 / 1024) })
 }

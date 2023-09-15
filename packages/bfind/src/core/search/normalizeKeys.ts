@@ -1,3 +1,4 @@
+import { colors } from '@bemoje/util'
 import { words } from 'lodash'
 
 /**
@@ -5,16 +6,21 @@ import { words } from 'lodash'
  * Used for both raw user search string input with multiple search terms in a single string and it is also used for
  * generating search keywords from a filepath. Each word is also normalized to lower case and max word length cutoff.
  */
-export function extractSearchKeys(searchString: string, isDir?: boolean): Set<string> {
+export function normalizeKeys(searchString: string, isDir?: boolean): Set<string> {
   // ignore words with 5 or more digits (e.g. 12345)
   const reg5Digits = /[0-9].*[0-9].*[0-9].*[0-9].*[0-9]/
   const result: Set<string> = new Set()
   const split = words(searchString.toLowerCase())
   if (!isDir) split[split.length - 1] = '.' + split[split.length - 1]
-  for (let word of split) {
+  for (const word of split) {
     if (reg5Digits.test(word)) continue
-    word = word.substring(0, 9)
-    result.add(word)
+    if (word.length > 16) {
+      result.add(word.substring(0, 8))
+      result.add(word.substring(word.length - 8, word.length))
+    } else {
+      result.add(word.substring(0, 15))
+    }
   }
+  console.log('\nSearch keys: ' + [...result].map((s) => colors.green(s)).join(', '))
   return result
 }
