@@ -1,4 +1,4 @@
-import { colors } from '@bemoje/util'
+import { colors, isLinux } from '@bemoje/util'
 import { execSync } from 'child_process'
 import { sendChatRequest } from '../sendChatRequest'
 import type { IGptPreset } from '../types/IGptPreset'
@@ -41,6 +41,7 @@ export async function presets(preset: string, prompt?: string, is16k = false, is
   // user output
   if (settings.openResponseIn !== 'none') {
     // await open(textPath)
-    execSync(`${settings.openResponseIn} "${textPath}"`, { stdio: 'inherit' })
+
+    execSync(`${settings.openResponseIn} "${textPath}${isLinux() ? ' &' : ''}"`, { stdio: 'inherit' })
   }
 }
