@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/repoman",
-  "version": "0.0.41",
+  "version": "0.0.42",
   "bin": {
     "rman": "./bin/index.js"
   },
@@ -8,6 +8,7 @@
   "dependencies": {
     "@bemoje/commander-config": "latest",
     "@bemoje/fswalk": "latest",
+    "@bemoje/trie-map": "latest",
     "@bemoje/tscode": "latest",
     "@bemoje/util": "latest",
     "commander": "^11.0.0",

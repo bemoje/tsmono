@@ -9,9 +9,9 @@ export function implicitDependenciesRecursive(...packageNames: string[]): string
 function recurseOne(packageName: string): Set<string> {
   const result = new Set<string>()
   function recurse(name: string) {
-    result.add(name)
     for (const dep of implicitDependencies(name)) {
       if (!result.has(dep)) {
+        result.add(name)
         recurse(dep)
       } else if (dep === packageName) {
         console.error(`Circular dependency detected: ${[...result, dep].join(' -> ')}`)

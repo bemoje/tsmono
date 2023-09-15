@@ -206,7 +206,7 @@ createCommand(program, {
     {
       name: 'paths',
       description: 'Path segments to search for.',
-      isOptional: false,
+      isOptional: true,
       isRest: true,
     },
   ],
@@ -439,7 +439,20 @@ createCommand(program, {
   command: 'pd',
   aliases: ['deps', 'package-deps', 'packagedeps'],
   summary: 'Print useful details about package dependencies.',
-  usage: [{ command: 'rman deps', description: 'Print dependency information.' }],
+  usage: [
+    { command: 'rman deps', description: 'Print dependency information.' },
+    {
+      command: 'rman deps my-package',
+      description: "Print additional dependency information about the package, 'my-package'.",
+    },
+  ],
+  arguments: [
+    {
+      name: 'package',
+      description: 'The name of the package.',
+      isOptional: true,
+    },
+  ],
   action: packageDependencies,
 })
 
