@@ -46,5 +46,5 @@ export function execute(commands: string[] | string, options: IExecuteCommandOpt
       console.log(out)
     }
   }
-  return string
+  return string || ''
 }
