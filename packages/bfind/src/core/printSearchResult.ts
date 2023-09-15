@@ -4,7 +4,7 @@ import { config } from './config'
 const { cyan, gray, red, yellow } = colors
 
 export async function printSearchResult(fspaths: string[], keywords: Set<string>, printAll = false) {
-  const tstat = new Timer()
+  const tstat = new Timer('Stat')
   let pathstat: [fs.Stats, string][] = []
   for (const fspath of fspaths) {
     try {
@@ -13,13 +13,13 @@ export async function printSearchResult(fspaths: string[], keywords: Set<string>
       continue
     }
   }
-  console.log('Stat: ' + tstat.toString())
+  tstat.print()
 
-  const tsort = new Timer()
+  const tsort = new Timer('Sort')
   pathstat.sort((a, b) => a[0].mtimeMs - b[0].mtimeMs)
-  console.log('Sort: ' + tsort.toString())
+  tsort.print()
 
-  const tprint = new Timer()
+  const tprint = new Timer('Print')
   const maxResults = config.userconfig.get('max-results')
   if (!printAll && fspaths.length > maxResults) {
     pathstat = pathstat.slice(pathstat.length - maxResults)
@@ -29,15 +29,15 @@ export async function printSearchResult(fspaths: string[], keywords: Set<string>
     const fspath = [...keywords].reduce((p: string, kw: string) => {
       return p.replace(new RegExp(kw, 'gi'), red(kw))
     }, pathstat[i][1])
-    const daysOld = Math.floor((new Date().getTime() - stat.mtimeMs) / 1000 / 60 / 60 / 24)
+    const sinceModified = Math.floor((new Date().getTime() - stat.mtimeMs) / 1000 / 60 / 60 / 24)
     if (stat.isDirectory()) {
-      console.log(cyan(fspath) + gray(' (' + daysOld + ' days)'))
+      console.log(cyan(fspath) + gray(' (' + sinceModified + ' days)'))
     } else {
-      console.log(fspath + gray(' (' + daysOld + ' days)'))
+      console.log(fspath + gray(' (' + sinceModified + ' days)'))
     }
   }
   if (!printAll && fspaths.length > maxResults) {
     console.log(yellow((fspaths.length - maxResults).toString() + ' results not shown.'))
   }
-  console.log('Print: ' + tprint.toString())
+  tprint.print()
 }
