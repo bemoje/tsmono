@@ -7,14 +7,14 @@ import { config } from '../config'
 import { normalizeKeys } from '../normalizeKeys'
 import { IBuildIndexStats } from './IBuildIndexStats'
 
-export function walkDirectory(
+export async function walkDirectory(
   dirpath: string,
   filter: FSPathFilter,
   stats: IBuildIndexStats,
   PATHS: string[],
   TRIE: TrieMap<SerializableSet<number>>
 ): Promise<void> {
-  return new Promise((resolve, reject) => {
+  return await new Promise((resolve, reject) => {
     const walker = walkdir(dirpath, {
       find_links: false,
       no_return: true,

@@ -21,6 +21,7 @@
     "@bemoje/trie-map": "latest",
     "@bemoje/util": "latest",
     "commander": "^11.0.0",
+    "glob-to-regexp": "^0.4.1",
     "lodash": "^4.17.21",
     "tslib": "^2.3.0",
     "walkdir": "^0.4.1"

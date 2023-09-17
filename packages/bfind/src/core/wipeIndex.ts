@@ -1,8 +1,6 @@
-import fs from 'fs'
-import { FILE_LIST_PATH } from '../constants/FILE_LIST_PATH'
-import { WORD_TRIE_PATH } from '../constants/WORD_TRIE_PATH'
+import { deleteDirectorySafeSync } from '@bemoje/util'
+import { INDEX_DATA_DIRPATH } from '../constants/INDEX_DATA_DIRPATH'
 
 export function wipeIndex(): void {
-  fs.rmSync(FILE_LIST_PATH, { force: true })
-  fs.rmSync(WORD_TRIE_PATH, { force: true })
+  deleteDirectorySafeSync(INDEX_DATA_DIRPATH)
 }

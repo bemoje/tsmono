@@ -3,11 +3,12 @@ import {
   parseBoolean,
   parseDirectories,
   parseInteger,
+  parseJson,
   validateBoolean,
   validateInteger,
   validateStringArray,
 } from '@bemoje/commander-config'
-import { getDiskDrivesWindows, getRootDir, isWindows } from '@bemoje/util'
+import { getDiskDrivesWindows, getRootDir, isLinux, isOSX, isWindows } from '@bemoje/util'
 import { wipeIndex } from './wipeIndex'
 
 export const config = new Config('bemoje', 'bfind', {
@@ -39,9 +40,15 @@ export const config = new Config('bemoje', 'bfind', {
   rootdirs: {
     description: [
       'The root directories which should be indexed for search.',
-      'Use comma as separator for multiple directories.',
+      'Use comma-separated values to specify multiple directories.',
     ].join(' '),
-    default: isWindows() ? getDiskDrivesWindows() : [getRootDir()],
+    default: isWindows()
+      ? getDiskDrivesWindows()
+      : isLinux()
+      ? ['/media', '/usr', '/home', '/opt']
+      : isOSX()
+      ? ['/Users', '/Applications']
+      : [getRootDir()],
     parse: (string: string) => {
       const res = parseDirectories(string)
       wipeIndex()
@@ -50,30 +57,45 @@ export const config = new Config('bemoje', 'bfind', {
     validate: validateStringArray,
   },
   ignore: {
-    description:
-      'Directories to ignore/skip when scanning (regex mode). Use semicolon as separator for multiple expressions.',
+    description: [
+      'Path glob patterns to ignore when indexing.',
+      'Input a valid JSON string array. You might prefer to use "bfind config" to edit this in a text editor.',
+    ].join(' '),
     default: [
-      '^\\w:\\/\\$recycle\\.bin',
-      '^\\w:\\/windows',
-      '^\\w:\\/Program Files',
-      '^\\w:\\/ProgramData',
-      '^\\w:\\/Documents and Settings',
-      '^\\w:\\/System Volume Information',
-      '^\\w:\\/Recovery',
-      '^\\w:\\/Users\\/All Users',
-      '^\\w:\\/Users\\/Public',
-      '^\\w:\\/Users\\/Default( User)?',
-      '^\\w:\\/Users\\/\\w+\\/Documents\\/My',
-      '\\/node_modules$',
-      '\\/AppData$',
-      '\\/Application Data$',
-      '\\/\\.',
+      '*/node_modules',
+      '*/.*',
+      '*/coverage',
+      '*/docs',
+      '*/doc',
+      '*/cache',
+      '*/dist',
+      ...(!isWindows()
+        ? []
+        : [
+            '*:/$recycle.bin',
+            '*:/Windows',
+            '*:/Drivers',
+            '*:/Program Files',
+            '*:/Program Files (x86)',
+            '*:/ProgramData',
+            '*:/Documents and Settings',
+            '*:/System Volume Information',
+            '*:/Recovery',
+            '*:/Users/*/AppData',
+            '*:/Users/*/Application Data',
+          ]),
     ],
-    parse: (string: string): string[] => {
-      const arr = string.split(',').map((d) => d.trim())
+    parse: (json: string) => {
+      const arr = parseJson(json)
       wipeIndex()
       return arr
     },
     validate: validateStringArray,
+  },
+  'case-insensitive': {
+    description: ['Whether to ignore case when indexing.'].join(' '),
+    default: isWindows(),
+    parse: parseBoolean,
+    validate: validateBoolean,
   },
 })
