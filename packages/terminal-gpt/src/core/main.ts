@@ -76,5 +76,3 @@ export function main() {
     return '  ' + cmd + strRepeat(' ', Math.max(0, 35 - cmd.length)) + colors.blue(info)
   }
 }
-
-main()

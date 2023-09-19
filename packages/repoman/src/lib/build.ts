@@ -17,14 +17,14 @@ export function build(names?: string[]) {
     }
 
     if (pkg.preferGlobal) {
-      if (fs.existsSync(path.join(rootdir, 'bin'))) {
-        fs.copySync(path.join(rootdir, 'bin'), path.join(distdir, 'bin'))
-      } else {
-        const binIndex = ['#!/usr/bin/env node', "require('../index.cjs.js')"].join('\n')
-        const distbin = path.join(distdir, 'bin')
-        createDirectorySync(distbin)
-        fs.writeFileSync(path.join(distbin, 'index.js'), binIndex, 'utf8')
-      }
+      // if (fs.existsSync(path.join(rootdir, 'bin'))) {
+      //   fs.copySync(path.join(rootdir, 'bin'), path.join(distdir, 'bin'))
+      // } else {
+      // }
+      const binIndex = ['#!/usr/bin/env node', "require('../index.cjs.js').main();"].join('\n')
+      const distbin = path.join(distdir, 'bin')
+      createDirectorySync(distbin)
+      fs.writeFileSync(path.join(distbin, 'index.js'), binIndex, 'utf8')
     }
   })
 

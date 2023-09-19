@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { config } from '..'
+import { config } from '../core/config'
 import { findRepo } from './findRepo'
 import { promptUserForIndex } from './promptUserForIndex'
 
