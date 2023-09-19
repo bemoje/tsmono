@@ -1,5 +1,5 @@
-import { colors, execute } from '@bemoje/util'
-import fs from 'fs'
+import { colors, createDirectorySync, execute } from '@bemoje/util'
+import fs from 'fs-extra'
 import path from 'path'
 import { deleteTmpDir } from './deleteTmpDir'
 import { getPackages } from './getPackages'
@@ -17,12 +17,14 @@ export function build(names?: string[]) {
     }
 
     if (pkg.preferGlobal) {
-      const binIndex = ['#!/usr/bin/env node', "require('../index.cjs.js')"].join('\n')
-      const distbin = path.join(distdir, 'bin')
-      if (!fs.existsSync(distbin)) {
-        fs.mkdirSync(distbin)
+      if (fs.existsSync(path.join(rootdir, 'bin'))) {
+        fs.copySync(path.join(rootdir, 'bin'), path.join(distdir, 'bin'))
+      } else {
+        const binIndex = ['#!/usr/bin/env node', "require('../index.cjs.js')"].join('\n')
+        const distbin = path.join(distdir, 'bin')
+        createDirectorySync(distbin)
+        fs.writeFileSync(path.join(distbin, 'index.js'), binIndex, 'utf8')
       }
-      fs.writeFileSync(path.join(distbin, 'index.js'), binIndex, 'utf8')
     }
   })
 

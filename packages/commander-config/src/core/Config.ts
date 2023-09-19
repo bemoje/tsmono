@@ -4,8 +4,8 @@ import { AppData, colors, isOSX, isVsCodeInstalled, isWindows, readJsonFileSync 
 import { Command } from 'commander'
 import fs from 'fs'
 import { getUserInputFromEditorSync } from '../util/getUserInputFromEditorSync'
-import { parseString } from '../util/parseString'
-import { validateString } from '../util/validateString'
+import { parseString } from '../util/parse/parseString'
+import { validateString } from '../util/validate/validateString'
 import { IConfigSetting } from './IConfigSetting'
 import { IConfigSettings } from './IConfigSettings'
 const { green } = colors

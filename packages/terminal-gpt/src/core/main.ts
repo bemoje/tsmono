@@ -5,9 +5,8 @@ import { onCustomPreset } from './actions/onCustomPreset'
 import { removePreset } from './actions/removePreset'
 import { config } from './config'
 import { presets } from './presets/presets'
-const { blue, cyan, red } = colors
 
-export function program() {
+export function main() {
   // initialize the command-line interface and handles command execution.
   const program = new Command().name('gpt').version('0.0.0')
 
@@ -46,7 +45,7 @@ export function program() {
   for (const [preset, settings] of Object.entries({ ...examples, ...custom })) {
     program
       .command(preset)
-      .description(red(settings['description']))
+      .description(colors.red(settings['description']))
       .argument('[options]', universalCommandOptions)
       .argument('[prompt...]', 'Optional prompt. Omit to edit in your text-editor.', '')
       .action(async (opts: string[], prompt: string[]) => {
@@ -58,7 +57,7 @@ export function program() {
   // commands for managing presets
   program
     .command('preset')
-    .description(cyan('Remove or create a new preset in the config file.'))
+    .description(colors.cyan('Remove or create a new preset in the config file.'))
     .argument('<action>', "Action to perform on a preset. Can be 'create' and 'remove'.")
     .argument('<name>', 'The name of the preset.')
     .action(async (action: string, name: string) => {
@@ -72,10 +71,10 @@ export function program() {
   // launch
   config.initialize(program)
   program.parse()
+
+  function line(cmd: string, info: string) {
+    return '  ' + cmd + strRepeat(' ', Math.max(0, 35 - cmd.length)) + colors.blue(info)
+  }
 }
 
-program()
-
-function line(cmd: string, info: string) {
-  return '  ' + cmd + strRepeat(' ', Math.max(0, 35 - cmd.length)) + blue(info)
-}
+main()

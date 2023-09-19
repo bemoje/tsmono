@@ -1,7 +1,6 @@
 export function parseJson(json: string): Record<string | number, unknown> {
   try {
-    const arr = JSON.parse(json)
-    return arr
+    return JSON.parse(json)
   } catch (error) {
     console.error('Invalid JSON string array.')
     process.exit(1)

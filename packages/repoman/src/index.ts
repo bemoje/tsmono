@@ -1,6 +1,5 @@
-import { Config, parseString, validateString } from '@bemoje/commander-config'
+import { Config, createCommand, parseString, validateString } from '@bemoje/commander-config'
 import { Command } from 'commander'
-import { createCommand } from './createCommand'
 import { allHelp } from './lib/allHelp'
 import { build } from './lib/build'
 import { createPackage } from './lib/createPackage'

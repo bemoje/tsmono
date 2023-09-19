@@ -1,10 +1,10 @@
 import {
   Config,
   parseBoolean,
-  parseDirectories,
   parseInteger,
-  parseJson,
+  parseJsonArray,
   validateBoolean,
+  validateDirpaths,
   validateInteger,
   validateStringArray,
 } from '@bemoje/commander-config'
@@ -18,7 +18,7 @@ export const config = new Config('bemoje', 'bfind', {
       'Reasons could be permission denied or other errors.',
       'This is disabled by default because it can be noisy.',
     ].join(' '),
-    default: false,
+    default: true,
     parse: parseBoolean,
     validate: validateBoolean,
   },
@@ -33,60 +33,75 @@ export const config = new Config('bemoje', 'bfind', {
   },
   'max-results': {
     description: ['The maximum number of search results to display. Set to zero to disable.'].join(' '),
-    default: 35,
+    default: 50,
     parse: parseInteger,
     validate: validateInteger,
   },
   rootdirs: {
     description: [
       'The root directories which should be indexed for search.',
-      'Use comma-separated values to specify multiple directories.',
+      'Input a valid JSON string array. You might prefer to use "bfind config" to edit this in a text editor.',
     ].join(' '),
     default: isWindows()
       ? getDiskDrivesWindows()
       : isLinux()
-      ? ['/media', '/usr', '/home', '/opt']
+      ? ['/media', '/usr', '/home']
       : isOSX()
       ? ['/Users', '/Applications']
       : [getRootDir()],
     parse: (string: string) => {
-      const res = parseDirectories(string)
+      const res = parseJsonArray(string)
       wipeIndex()
       return res
     },
-    validate: validateStringArray,
+    validate: validateDirpaths,
   },
   ignore: {
     description: [
-      'Path glob patterns to ignore when indexing.',
+      'Directory path regex to ignore when indexing.',
       'Input a valid JSON string array. You might prefer to use "bfind config" to edit this in a text editor.',
     ].join(' '),
     default: [
-      '*/node_modules',
-      '*/.*',
-      '*/coverage',
-      '*/docs',
-      '*/doc',
-      '*/cache',
-      '*/dist',
+      '\\/\\.',
+      '\\/node_modules$',
+      '\\/coverage$',
+      '\\/docs$',
+      '\\/doc$',
+      '\\/cache$',
+      '\\/dist$',
       ...(!isWindows()
         ? []
         : [
-            '*:/$recycle.bin',
-            '*:/Windows',
-            '*:/Drivers',
-            '*:/Program Files',
-            '*:/Program Files (x86)',
-            '*:/ProgramData',
-            '*:/Documents and Settings',
-            '*:/System Volume Information',
-            '*:/Recovery',
-            '*:/Users/*/AppData',
-            '*:/Users/*/Application Data',
+            '^\\w://\\$recycle\\.bin',
+            '^\\w://Windows',
+            '^\\w://Program Files',
+            '^\\w://ProgramData',
+            '^\\w://Documents and Settings',
+            '^\\w://System Volume Information',
+            '^\\w://Recovery',
+            '^\\w://Users\\/All Users',
+            '^\\w://Users\\/Public',
+            '^\\w://Users\\/Default( User)?',
+            '^\\w://Users\\/\\w+\\/Documents\\/My',
+            '^\\w://Users\\/\\.*\\/AppData$',
+            '^\\w://Users\\/\\.*\\/Application Data$',
           ]),
     ],
     parse: (json: string) => {
-      const arr = parseJson(json)
+      const arr = parseJsonArray(json)
+      wipeIndex()
+      return arr
+    },
+    validate: validateStringArray,
+  },
+  'ignore-files': {
+    description: [
+      'File path regex to ignore when indexing.',
+      'Input a valid JSON string array. You might prefer to use "bfind config" to edit this in a text editor.',
+    ].join(' '),
+    default: [],
+    parse: (json: string) => {
+      const arr = parseJsonArray(json)
       wipeIndex()
       return arr
     },
@@ -95,7 +110,11 @@ export const config = new Config('bemoje', 'bfind', {
   'case-insensitive': {
     description: ['Whether to ignore case when indexing.'].join(' '),
     default: isWindows(),
-    parse: parseBoolean,
+    parse: (string: string) => {
+      const bool = parseBoolean(string)
+      wipeIndex()
+      return bool
+    },
     validate: validateBoolean,
   },
 })

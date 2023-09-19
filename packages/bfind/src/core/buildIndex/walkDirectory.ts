@@ -1,5 +1,5 @@
 import { TrieMap } from '@bemoje/trie-map'
-import { FSPathFilter } from '@bemoje/util'
+import { colors, FSPathFilter } from '@bemoje/util'
 import path from 'path'
 import walkdir from 'walkdir'
 import { SerializableSet } from '../../util/SerializableSet'
@@ -21,9 +21,7 @@ export async function walkDirectory(
       filter: (dirpath: string, files: string[]) => {
         if (!filter.validateDirpath(dirpath)) return []
         return files.filter((filename) => {
-          if (!filter.validateFilename(filename)) return false
-          if (!filter.validateFilepath(path.join(dirpath, filename))) return false
-          return true
+          return filter.validateFilepath(path.join(dirpath, filename))
         })
       },
     })
@@ -48,6 +46,7 @@ export async function walkDirectory(
           }
         }
       }
+      if (index % 25000 === 0 && index) console.log(colors.cyan(index + ' files indexed.'))
     })
 
     walker.on('end', () => resolve())

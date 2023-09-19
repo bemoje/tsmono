@@ -1,9 +1,9 @@
 import globToRegexp from 'glob-to-regexp'
-import path from 'path'
 import { config } from '../core/config'
+import { normalizePathSep } from './normalizePathSep'
 
 export function globToRegex(glob: string): RegExp {
-  const regex = globToRegexp(glob.replace(/(\\|\/)+/g, path.sep))
+  const regex = globToRegexp(normalizePathSep(glob), { extended: true })
   const insensitive = config.userconfig.get('case-insensitive')
   return new RegExp(regex.source, insensitive ? 'i' : '')
 }

@@ -1,3 +1,4 @@
+import { gracefulProcessExit } from '@bemoje/commander-config'
 import { Command } from 'commander'
 import { buildIndex } from './core/buildIndex/buildIndex'
 import { config } from './core/config'
@@ -29,7 +30,7 @@ config.initialize(program)
 
 process.on('uncaughtException', (error: unknown) => {
   if (config.userconfig.get('print-scan-errors')) {
-    console.error(error['message'] ? error['message'] : error)
+    gracefulProcessExit(error['message'] ? error['message'] : error)
   }
 })
 

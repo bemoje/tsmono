@@ -109,7 +109,8 @@
     "open-repo": {
       "tags": [],
       "implicitDependencies": [
-        "commander-config"
+        "commander-config",
+        "util"
       ],
       "npmScope": "bemoje",
       "projectType": "application"
