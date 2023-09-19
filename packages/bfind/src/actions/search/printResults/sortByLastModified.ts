@@ -1,6 +1,6 @@
 import fs from 'fs'
 import fsp from 'fs/promises'
-import { config } from '../../config'
+import { config } from '../../../core/config'
 
 export async function sortByLastModified(filepaths: string[], printAllResults: boolean): Promise<[fs.Stats, string][]> {
   const stats: [fs.Stats, string][] = []

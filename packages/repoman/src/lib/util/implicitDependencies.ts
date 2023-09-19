@@ -1,6 +1,6 @@
 import { readJsonFileSync } from '@bemoje/util'
 import path from 'path'
-import { IPackageJson } from './types/IPackageJson'
+import { IPackageJson } from '../types/IPackageJson'
 
 export function implicitDependencies(pkg: IPackageJson | string): string[] {
   let _pkg: IPackageJson

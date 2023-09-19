@@ -1,5 +1,5 @@
 import { setUnion } from '@bemoje/util'
-import { config } from '../config'
+import { config } from '../../core/config'
 
 export function lookupFilepaths(keywords: Set<string>, indices: Array<Set<number>>, PATHS: string[]): Array<string> {
   const filepaths: string[] = []

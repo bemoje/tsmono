@@ -1,7 +1,7 @@
 import { execute } from '@bemoje/util'
 import fs from 'fs'
 import path from 'path'
-import { getPackages } from './getPackages'
+import { getPackages } from '../util/getPackages'
 
 export function deletePackage(name: string) {
   if (!name) throw new Error('No name provided')

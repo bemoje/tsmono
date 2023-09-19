@@ -1,5 +1,5 @@
 import { colors } from '@bemoje/util'
-import { config } from '../../config'
+import { config } from '../../../core/config'
 
 export function printTrimAmount(filepaths: string[], printAllResults: boolean) {
   if (!printAllResults) {

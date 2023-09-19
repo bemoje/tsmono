@@ -1,5 +1,5 @@
 import { allPackageNames } from './allPackageNames'
-import { PackageDataView } from './util/PackageDataView'
+import { PackageDataView } from './PackageDataView'
 
 export function getPackages(names?: string[]): PackageDataView[] {
   return allPackageNames()

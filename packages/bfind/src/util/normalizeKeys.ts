@@ -1,5 +1,5 @@
 import { words } from 'lodash'
-import { config } from './config'
+import { config } from '../core/config'
 
 /**
  * Splits a string to constituent words and also splits camelCase into different words.

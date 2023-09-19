@@ -1,11 +1,16 @@
 import { TrieMap } from '@bemoje/trie-map'
 import { colors, FSPathFilter } from '@bemoje/util'
+import fs from 'fs'
 import path from 'path'
 import walkdir from 'walkdir'
+import { config } from '../../core/config'
+import { normalizeKeys } from '../../util/normalizeKeys'
+import { normalizePathSep } from '../../util/normalizePathSep'
 import { SerializableSet } from '../../util/SerializableSet'
-import { config } from '../config'
-import { normalizeKeys } from '../normalizeKeys'
 import { IBuildIndexStats } from './IBuildIndexStats'
+
+path
+fs
 
 export async function walkDirectory(
   dirpath: string,
@@ -14,19 +19,22 @@ export async function walkDirectory(
   PATHS: string[],
   TRIE: TrieMap<SerializableSet<number>>
 ): Promise<void> {
+  const re = /\\+/g
   return await new Promise((resolve, reject) => {
     const walker = walkdir(dirpath, {
       find_links: false,
       no_return: true,
       filter: (dirpath: string, files: string[]) => {
+        dirpath = dirpath.replace(re, '/')
         if (!filter.validateDirpath(dirpath)) return []
         return files.filter((filename) => {
-          return filter.validateFilepath(path.join(dirpath, filename))
+          return filter.validateFilepath(dirpath + '/' + filename)
         })
       },
     })
 
-    walker.on('path', function (filepath, stat) {
+    walker.on('path', (filepath, stat) => {
+      filepath = dirpath.replace(re, '/')
       const index = stats.filesIndexed++
       PATHS[index] = filepath
       const searchWords = normalizeKeys(path.basename(filepath), stat.isDirectory())
@@ -56,7 +64,7 @@ export async function walkDirectory(
     }
 
     if (config.userconfig.get('print-scan-errors')) {
-      walker.on('fail', (path, error) => console.log('Could not index path: ' + path))
+      walker.on('fail', (path, error) => console.log('Could not index path: ' + normalizePathSep(path)))
     }
   })
 }

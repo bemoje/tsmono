@@ -1,8 +1,8 @@
-import { fixDependencies } from './fixDependencies'
-import { fixEntryPoints } from './fixEntryPoints'
-import { fixPackageJson } from './fixPackageJson'
-import { fixReadmes } from './fixReadmes'
-import { fixTsConfigIncludes } from './fixTsConfigIncludes'
+import { fixDependencies } from '../util/fixDependencies'
+import { fixEntryPoints } from '../util/fixEntryPoints'
+import { fixPackageJson } from '../util/fixPackageJson'
+import { fixReadmes } from '../util/fixReadmes'
+import { fixTsConfigIncludes } from '../util/fixTsConfigIncludes'
 
 export function fixAll(
   options: {

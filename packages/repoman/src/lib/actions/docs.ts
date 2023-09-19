@@ -4,7 +4,7 @@ import fs from 'fs'
 import path from 'path'
 import { snakeCase } from 'snake-case'
 import walkdir from 'walkdir'
-import { getPackages } from './getPackages'
+import { getPackages } from '../util/getPackages'
 
 let retry = false
 export function docs() {

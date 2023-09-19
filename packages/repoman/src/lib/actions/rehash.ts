@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
-import { getPackages } from './getPackages'
-import { hashPackage } from './hashPackage'
+import { getPackages } from '../util/getPackages'
+import { hashPackage } from '../util/hashPackage'
 
 export function rehash(packages?: string[]) {
   const hashesPath = path.join(process.cwd(), 'scripts', 'data', 'hashes.json')

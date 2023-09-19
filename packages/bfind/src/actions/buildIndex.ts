@@ -1,11 +1,11 @@
 import { TrieMap } from '@bemoje/trie-map'
-import { SerializableSet } from '../../util/SerializableSet'
-import { config } from '../config'
-import { IBuildIndexStats } from './IBuildIndexStats'
-import { createPathFilter } from './createPathFilter'
-import { printStats } from './printStats'
-import { saveIndex } from './saveIndex'
-import { walkDirectory } from './walkDirectory'
+import { config } from '../core/config'
+import { SerializableSet } from '../util/SerializableSet'
+import { IBuildIndexStats } from './buildIndex/IBuildIndexStats'
+import { createPathFilter } from './buildIndex/createPathFilter'
+import { printStats } from './buildIndex/printStats'
+import { saveIndex } from './buildIndex/saveIndex'
+import { walkDirectory } from './buildIndex/walkDirectory'
 
 export async function buildIndex(): Promise<void> {
   // stats

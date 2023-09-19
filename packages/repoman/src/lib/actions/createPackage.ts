@@ -1,6 +1,6 @@
 import { execute, updateJsonFileSync } from '@bemoje/util'
 import path from 'path'
-import { fixPackageJson } from './fixPackageJson'
+import { fixPackageJson } from '../util/fixPackageJson'
 
 export function createPackage(name: string) {
   if (!name) throw new Error('No name provided')

@@ -1,4 +1,4 @@
-import { getPackages } from '../getPackages'
+import { getPackages } from './getPackages'
 
 export function packageVersionsMap(): Map<string, string> {
   const versions = new Map<string, string>()

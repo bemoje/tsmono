@@ -1,6 +1,6 @@
 import { execute } from '@bemoje/util'
 import { getPackages } from './getPackages'
-import { packageVersionsMap } from './util/packageVersionsMap'
+import { packageVersionsMap } from './packageVersionsMap'
 
 export async function updateImplicitDependencies(names?: string[]) {
   const versions = packageVersionsMap()

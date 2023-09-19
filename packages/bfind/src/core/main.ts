@@ -1,8 +1,8 @@
 import { gracefulProcessExit } from '@bemoje/commander-config'
 import { Command } from 'commander'
-import { buildIndex } from './buildIndex/buildIndex'
+import { buildIndex } from '../actions/buildIndex'
+import { search } from '../actions/search'
 import { config } from './config'
-import { search } from './search/search'
 
 export function main() {
   const program = new Command()

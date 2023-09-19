@@ -1,5 +1,5 @@
 import { execute, IExecuteCommandOptions } from '@bemoje/util'
-import { getPackages } from './getPackages'
+import { getPackages } from '../util/getPackages'
 
 export function forEach(args: string[], options: IForEachOptions = {}) {
   console.log({ args, options })

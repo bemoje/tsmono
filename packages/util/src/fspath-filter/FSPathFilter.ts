@@ -1,5 +1,4 @@
 import { EventEmitter } from 'events'
-import path from 'path'
 import { isWindows } from '../os/isWindows'
 import { regexEscapeString } from '../regex/regexEscapeString'
 import { IPathFilterIgnoreOptions } from './IPathFilterIgnoreOptions'
@@ -44,7 +43,7 @@ export class FSPathFilter extends EventEmitter {
    */
   public ignoreFilepath(ignore: string, options?: IPathFilterIgnoreOptions): FSPathFilter {
     options = Object.assign(FSPathFilter.ignoreOptionDefaults, options)
-    ignore = ignore.replace(/(\\|\/)+/g, path.sep)
+    // ignore = ignore.replace(/(\\|\/)+/g, path.sep)
     if (this.isCaseInsensitive) ignore = ignore.toLowerCase()
     const escaped = this.handleOptions(regexEscapeString(ignore), options)
     this.filepathRegex.push(new RegExp(escaped, this.isCaseInsensitive ? 'i' : ''))
@@ -56,7 +55,7 @@ export class FSPathFilter extends EventEmitter {
    */
   public ignoreDirpath(ignore: string, options?: IPathFilterIgnoreOptions): FSPathFilter {
     options = Object.assign(FSPathFilter.ignoreOptionDefaults, options)
-    ignore = ignore.replace(/(\\|\/)+/g, path.sep)
+    // ignore = ignore.replace(/(\\|\/)+/g, path.sep)
     if (this.isCaseInsensitive) ignore = ignore.toLowerCase()
     const escaped = this.handleOptions(regexEscapeString(ignore), options)
     this.dirpathRegex.push(new RegExp(escaped, this.isCaseInsensitive ? 'i' : ''))
@@ -68,7 +67,7 @@ export class FSPathFilter extends EventEmitter {
    */
   public ignoreFilename(ignore: string, options?: IPathFilterIgnoreOptions): FSPathFilter {
     options = Object.assign(FSPathFilter.ignoreOptionDefaults, options)
-    ignore = ignore.replace(/(\\|\/)+/g, path.sep)
+    // ignore = ignore.replace(/(\\|\/)+/g, path.sep)
     if (this.isCaseInsensitive) ignore = ignore.toLowerCase()
     const escaped = this.handleOptions(regexEscapeString(ignore), options)
     this.filenameRegex.push(new RegExp(escaped, this.isCaseInsensitive ? 'i' : ''))
@@ -157,7 +156,7 @@ export class FSPathFilter extends EventEmitter {
    * Performs the configured dirpath filtering.
    */
   public validateDirpath(dirpath: string): boolean {
-    dirpath = dirpath.replace(/(\\|\/)+/g, path.sep)
+    // dirpath = dirpath.replace(/(\\|\/)+/g, path.sep)
     for (const fn of this.dirpathFilters) {
       if (!fn(dirpath)) {
         this.emit('invalid', 'dirpath', dirpath)

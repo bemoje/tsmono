@@ -1,8 +1,8 @@
 import { colors, createDirectorySync, execute } from '@bemoje/util'
 import fs from 'fs-extra'
 import path from 'path'
-import { deleteTmpDir } from './deleteTmpDir'
-import { getPackages } from './getPackages'
+import { deleteTmpDir } from '../util/deleteTmpDir'
+import { getPackages } from '../util/getPackages'
 
 export function build(names?: string[]) {
   execute('nx run-many -t build' + (names ? ' -p ' + names.join(',') : ''))

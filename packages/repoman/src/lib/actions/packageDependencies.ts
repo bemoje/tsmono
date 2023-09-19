@@ -1,11 +1,11 @@
-import { getPackagesWithExternalDependencies } from './getPackagesWithExternalDependencies'
-import { getPackagesWithNoExternalDependencies } from './getPackagesWithNoExternalDependencies'
-import { implicitDependencies } from './implicitDependencies'
-import { implicitDependenciesRecursive } from './implicitDependenciesRecursive'
-import { implicitDependencyTree } from './implicitDependencyTree'
-import { implicitDependents } from './implicitDependents'
-import { implicitDependentsRecursive } from './implicitDependentsRecursive'
-import { packageVersionsMap } from './util/packageVersionsMap'
+import { getPackagesWithExternalDependencies } from '../util/getPackagesWithExternalDependencies'
+import { getPackagesWithNoExternalDependencies } from '../util/getPackagesWithNoExternalDependencies'
+import { implicitDependencies } from '../util/implicitDependencies'
+import { implicitDependenciesRecursive } from '../util/implicitDependenciesRecursive'
+import { implicitDependencyTree } from '../util/implicitDependencyTree'
+import { implicitDependents } from '../util/implicitDependents'
+import { implicitDependentsRecursive } from '../util/implicitDependentsRecursive'
+import { packageVersionsMap } from '../util/packageVersionsMap'
 
 export function packageDependencies(name?: string) {
   console.log('\n\npackage versions:')

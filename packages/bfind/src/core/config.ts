@@ -9,7 +9,7 @@ import {
   validateStringArray,
 } from '@bemoje/commander-config'
 import { getDiskDrivesWindows, getRootDir, isLinux, isOSX, isWindows } from '@bemoje/util'
-import { wipeIndex } from './wipeIndex'
+import { wipeIndex } from '../util/wipeIndex'
 
 export const config = new Config('bemoje', 'bfind', {
   'print-scan-errors': {
@@ -72,17 +72,17 @@ export const config = new Config('bemoje', 'bfind', {
       ...(!isWindows()
         ? []
         : [
-            '^\\w://\\$recycle\\.bin',
-            '^\\w://Windows',
-            '^\\w://Program Files',
-            '^\\w://ProgramData',
-            '^\\w://Documents and Settings',
-            '^\\w://System Volume Information',
-            '^\\w://Recovery',
-            '^\\w://Users\\/All Users',
-            '^\\w://Users\\/Public',
-            '^\\w://Users\\/Default( User)?',
-            '^\\w://Users\\/\\w+\\/Documents\\/My',
+            '^\\w://\\$recycle\\.bin$',
+            '^\\w://Windows$',
+            '^\\w://Program Files$',
+            '^\\w://ProgramData$',
+            '^\\w://Documents and Settings$',
+            '^\\w://System Volume Information$',
+            '^\\w://Recovery$',
+            '^\\w://Users\\/All Users$',
+            '^\\w://Users\\/Public$',
+            '^\\w://Users\\/Default( User)?$',
+            '^\\w://Users\\/\\w+\\/Documents\\/My$',
             '^\\w://Users\\/\\.*\\/AppData$',
             '^\\w://Users\\/\\.*\\/Application Data$',
           ]),

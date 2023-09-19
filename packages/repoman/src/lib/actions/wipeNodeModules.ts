@@ -1,7 +1,7 @@
 import { deleteDirectorySafeSync } from '@bemoje/util'
 import fs from 'fs'
 import path from 'path'
-import { getPackages } from './getPackages'
+import { getPackages } from '../util/getPackages'
 
 export function wipeNodeModules(
   packages: string[],
