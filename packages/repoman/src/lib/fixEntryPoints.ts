@@ -12,7 +12,10 @@ export function fixEntryPoints(silent = false) {
     // .filter(({ pkg }) => !pkg.bin)
     .forEach(({ rootdir, name }) => {
       const srcdir = path.join(rootdir, 'src')
-      const fpaths = walkTsFiles(srcdir, (filepath) => !filepath.endsWith('index.ts'))
+      const fpaths = walkTsFiles(
+        srcdir,
+        (filepath) => !filepath.endsWith('index.ts') && !filepath.endsWith('src' + path.sep + 'main.ts')
+      )
       const lines = fpaths.map((fpath) => {
         const relative = fpath.replace(srcdir, '').replace(/\.ts$/i, '').replace(/\\/g, '/')
         return `export * from '.${relative}'`
