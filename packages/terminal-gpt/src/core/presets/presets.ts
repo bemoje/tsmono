@@ -1,7 +1,7 @@
 import { colors, isLinux } from '@bemoje/util'
 import { execSync } from 'child_process'
-import { sendChatRequest } from '../sendChatRequest'
 import type { IGptPreset } from '../types/IGptPreset'
+import { sendChatRequest } from '../util/sendChatRequest'
 import { appendSystemMessage } from './util/appendSystemMessage'
 import { createChatRequest } from './util/createChatRequest'
 import { createDirectories } from './util/createDirectories'

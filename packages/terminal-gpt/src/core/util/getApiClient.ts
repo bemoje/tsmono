@@ -1,6 +1,6 @@
 import { OpenaiApiClient } from '@bemoje/openai-api-client'
 import fs from 'fs'
-import { config } from './config'
+import { config } from '../config'
 
 /**
  * This function is used to get an instance of the OpenAI API client.

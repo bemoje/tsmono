@@ -1,7 +1,7 @@
 import { colors } from '@bemoje/util'
-import { config } from './config'
+import { config } from '../config'
+import { ISendChatRequestOptions } from '../types/ISendChatRequestOptions'
 import { getApiClient } from './getApiClient'
-import { ISendChatRequestOptions } from './types/ISendChatRequestOptions'
 const { blue } = colors
 
 /**

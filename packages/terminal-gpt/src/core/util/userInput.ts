@@ -1,6 +1,6 @@
 import { getUserInputFromEditor } from '@bemoje/commander-config'
 import { strWrapIn } from '@bemoje/util'
-import { config } from './config'
+import { config } from '../config'
 
 /**
  * This function is used to get user input from the editor.
