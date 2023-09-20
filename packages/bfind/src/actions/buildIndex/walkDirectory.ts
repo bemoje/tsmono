@@ -1,7 +1,5 @@
 import { TrieMap } from '@bemoje/trie-map'
-import { colors, FSPathFilter } from '@bemoje/util'
-import fs from 'fs'
-import path from 'path'
+import { arrLast, colors, FSPathFilter, isWindows } from '@bemoje/util'
 import walkdir from 'walkdir'
 import { config } from '../../core/config'
 import { normalizeKeys } from '../../util/normalizeKeys'
@@ -9,39 +7,51 @@ import { normalizePathSep } from '../../util/normalizePathSep'
 import { SerializableSet } from '../../util/SerializableSet'
 import { IBuildIndexStats } from './IBuildIndexStats'
 
-path
-fs
-
-export async function walkDirectory(
+export function walkDirectory(
   dirpath: string,
   filter: FSPathFilter,
   stats: IBuildIndexStats,
   PATHS: string[],
   TRIE: TrieMap<SerializableSet<number>>
 ): Promise<void> {
-  const re = /\\+/g
-  return await new Promise((resolve, reject) => {
+  const DIRTRIE = new TrieMap<number>()
+  const isWin = isWindows()
+  const regexReplace = /\\+/g
+  const regexSplit = isWin ? /\\+/ : /\//
+  if (isWin) dirpath = dirpath.replace(regexReplace, '/')
+
+  return new Promise((resolve, reject) => {
     const walker = walkdir(dirpath, {
       find_links: false,
       no_return: true,
-      filter: (dirpath: string, files: string[]) => {
-        dirpath = dirpath.replace(re, '/')
-        if (!filter.validateDirpath(dirpath)) return []
+      filter: (dpath: string, files: string[]) => {
+        if (isWin) dpath = dpath.replace(regexReplace, '/')
+        if (!filter.validateDirpath(dpath)) return []
         return files.filter((filename) => {
-          return filter.validateFilepath(dirpath + '/' + filename)
+          return filter.validateFilepath(dpath + '/' + filename)
         })
       },
     })
 
-    walker.on('path', (filepath, stat) => {
-      filepath = dirpath.replace(re, '/')
+    walker.on('path', (fspath, stat) => {
+      const isDir = stat.isDirectory()
+      const arrFspath = fspath.split(regexSplit)
+      const basename = arrLast(arrFspath)
       const index = stats.filesIndexed++
-      PATHS[index] = filepath
-      const searchWords = normalizeKeys(path.basename(filepath), stat.isDirectory())
+      if (isDir) {
+        DIRTRIE.set(arrFspath, index)
+        if (isWin) fspath = fspath = arrFspath.join('/')
+      } else {
+        const ext = basename.substring(basename.lastIndexOf('.')).toLowerCase()
+        stats.fileTypes[ext] = (stats.fileTypes[ext] || 0) + 1
+        fspath = DIRTRIE.get(arrFspath.slice(0, arrFspath.length - 1)) + '/' + basename
+      }
+      PATHS[index] = fspath
+      const searchWords = normalizeKeys(basename, isDir)
       for (const word of searchWords) {
         stats.keywordsIndexed++
-        for (let j = 0; j < word.length - 2; j++) {
-          const key = [...word.substring(j)]
+        for (let j = 0; j < word.length - 1; j++) {
+          const key = word.substring(j) as unknown as string[]
           const indices = TRIE.get(key)
           if (indices) {
             if (!indices.has(index)) {

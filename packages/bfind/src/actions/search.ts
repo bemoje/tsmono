@@ -9,8 +9,8 @@ import { printSearchKeys } from './search/printSearchKeys'
 export async function search(keys: string[], options: ISearchOptions = {}): Promise<void> {
   const normalized = normalizeSearchKeys(keys)
   printSearchKeys(normalized)
-  const { PATHS, TRIE } = await loadIndex()
+  const { FILEPATHS, TRIE } = await loadIndex()
   const indices = lookupIndices(normalized, TRIE)
-  const results = lookupFilepaths(normalized, indices, PATHS)
+  const results = lookupFilepaths(normalized, indices, FILEPATHS)
   await printResults(results, normalized, options)
 }

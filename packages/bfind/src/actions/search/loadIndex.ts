@@ -9,7 +9,7 @@ export async function loadIndex() {
   if (!fs.existsSync(WORD_TRIE_FILEPATH) || !fs.existsSync(FILE_LIST_FILEPATH)) {
     gracefulProcessExit('Index not found. Run `bfind index` to build the index.')
   }
-  const PATHS: string[] = JSON.parse(await fsp.readFile(FILE_LIST_FILEPATH, 'utf8'))
+  const FILEPATHS: string[] = JSON.parse(await fsp.readFile(FILE_LIST_FILEPATH, 'utf8'))
   const TRIE: TrieMap<Set<number>> = TrieMap.fromJSON(await fsp.readFile(WORD_TRIE_FILEPATH, 'utf8'))
-  return { PATHS, TRIE }
+  return { FILEPATHS, TRIE }
 }

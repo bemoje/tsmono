@@ -1,4 +1,5 @@
 import { TrieMap } from '@bemoje/trie-map'
+import fs from 'fs'
 import { config } from '../core/config'
 import { SerializableSet } from '../util/SerializableSet'
 import { IBuildIndexStats } from './buildIndex/IBuildIndexStats'
@@ -14,24 +15,26 @@ export async function buildIndex(): Promise<void> {
     filesIndexed: 0,
     keywordsIndexed: 0,
     fileRefsIndexed: 0,
+    fileTypes: {},
   }
 
   // data
-  const PATHS: string[] = []
-  const TRIE: TrieMap<SerializableSet<number>> = new TrieMap()
+  const FILEPATHS: string[] = []
+  const TRIE = new TrieMap<SerializableSet<number>>()
   const filter = createPathFilter()
 
   // walk directories
   const directories = config.userconfig.get('rootdirs')
   await Promise.all(
     directories.map((dirpath) => {
-      return walkDirectory(dirpath, filter, stats, PATHS, TRIE)
+      if (!fs.existsSync(dirpath)) return Promise.resolve()
+      return walkDirectory(dirpath, filter, stats, FILEPATHS, TRIE)
     })
   )
 
-  // print stats
-  printStats(t0, stats)
-
   // write to disk
-  saveIndex(PATHS, TRIE)
+  await saveIndex(FILEPATHS, TRIE)
+
+  // print stats
+  await printStats(t0, stats)
 }

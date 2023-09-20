@@ -6,16 +6,19 @@ export function createPathFilter(): FSPathFilter {
   const filter = new FSPathFilter()
   filter.isCaseInsensitive = config.userconfig.get('case-insensitive')
 
-  config.userconfig.get('ignore').forEach((reg: string) => {
+  config.userconfig.get('ignore-dirpaths').forEach((reg: string) => {
     const regex = new RegExp(reg, filter.isCaseInsensitive ? 'i' : '')
-    console.log(regex)
+    // console.log(regex)
     filter.ignoreDirpathRegex(regex)
   })
 
-  config.userconfig.get('ignore-files').forEach((reg: string) => {
+  config.userconfig.get('ignore-filepaths').forEach((reg: string) => {
     const regex = new RegExp(reg, filter.isCaseInsensitive ? 'i' : '')
     filter.ignoreFilepathRegex(regex)
   })
+
+  const extensions = config.userconfig.get('ignore-file-extensions')
+  filter.ignoreFilepathRegex(new RegExp('\\.(' + extensions.join('|') + ')$', 'i'))
 
   if (config.userconfig.get('print-scan-ignored')) {
     filter.on('invalid', (type, fspath) => {

@@ -1,4 +1,3 @@
-import { words } from 'lodash'
 import { config } from '../core/config'
 
 /**
@@ -8,18 +7,19 @@ import { config } from '../core/config'
  */
 export function normalizeKeys(searchString: string, isDir: boolean): Set<string> {
   // ignore words with 5 or more digits (e.g. 12345)
-  const reg5Digits = /[0-9].*[0-9].*[0-9].*[0-9].*[0-9]/
+  // const reg5Digits = /[0-9].*[0-9].*[0-9].*[0-9].*[0-9].*[0-9]/
   const result: Set<string> = new Set()
   const insensitive = config.userconfig.get('case-insensitive') as boolean
-  const split = words(insensitive ? searchString.toLowerCase() : searchString)
+  // const split = words(insensitive ? searchString.toLowerCase() : searchString, /[^- _./\\]+/g)
+  const split = (insensitive ? searchString.toLowerCase() : searchString).split(/[- _./\\]+/).filter((s) => !!s.trim())
   if (!isDir) split[split.length - 1] = '.' + split[split.length - 1]
   for (const word of split) {
-    if (reg5Digits.test(word)) continue
-    if (word.length > 16) {
-      result.add(word.substring(0, 8))
-      result.add(word.substring(word.length - 8, word.length))
+    // if (reg5Digits.test(word)) continue
+    if (word.length > 18) {
+      result.add(word.substring(0, 9))
+      result.add(word.substring(word.length - 9))
     } else {
-      result.add(word.substring(0, 15))
+      result.add(word)
     }
   }
   return result
