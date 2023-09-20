@@ -18,7 +18,7 @@
 <h1>Function createFileExtensionFilter</h1></div>
 <section class="tsd-panel">
 <ul class="tsd-signatures">
-<li class="tsd-signature tsd-anchor-link" id="createFileExtensionFilter"><span class="tsd-kind-call-signature">create<wbr/>File<wbr/>Extension<wbr/>Filter</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span><span class="tsd-kind-parameter">fileExtensions</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">filepath</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><a href="#createFileExtensionFilter" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></li>
+<li class="tsd-signature tsd-anchor-link" id="createFileExtensionFilter"><span class="tsd-kind-call-signature">create<wbr/>File<wbr/>Extension<wbr/>Filter</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">fileExtensions</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">filepath</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><a href="#createFileExtensionFilter" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Takes a list of file extensions and returns a filter function that returns true if a filepath/filename passed to it contains one of the given file extensions.</p>
 </div>
@@ -26,7 +26,7 @@
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li>
-<h5><code class="tsd-tag ts-flagRest">Rest</code> <span class="tsd-signature-symbol">...</span><span class="tsd-kind-parameter">fileExtensions</span>: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+<h5><span class="tsd-kind-parameter">fileExtensions</span>: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
 <div class="tsd-comment tsd-typography"><p>file extensions</p>
 </div>
 <div class="tsd-comment tsd-typography"></div></li></ul></div>
@@ -46,11 +46,11 @@
 <div class="tsd-comment tsd-typography">
 <h4>Remarks</h4><p>If no file extensions are provided, the filter will always return true.</p>
 
-<h4>Example</h4><pre><code class="language-ts"><span class="hl-3">createFileExtensionFilter</span><span class="hl-4">(</span><span class="hl-5">&#39;.ts&#39;</span><span class="hl-4">, </span><span class="hl-5">&#39;.tsx&#39;</span><span class="hl-4">)(</span><span class="hl-5">&#39;index.ts&#39;</span><span class="hl-4">);;</span><br/><span class="hl-2">//=&gt; true</span><br/><span class="hl-3">createFileExtensionFilter</span><span class="hl-4">(</span><span class="hl-5">&#39;.ts&#39;</span><span class="hl-4">, </span><span class="hl-5">&#39;.tsx&#39;</span><span class="hl-4">)(</span><span class="hl-5">&#39;index.js&#39;</span><span class="hl-4">);;</span><br/><span class="hl-2">//=&gt; false</span>
+<h4>Example</h4><pre><code class="language-ts"><span class="hl-3">createFileExtensionFilter</span><span class="hl-4">([</span><span class="hl-5">&#39;.ts&#39;</span><span class="hl-4">, </span><span class="hl-5">&#39;.tsx&#39;</span><span class="hl-4">])(</span><span class="hl-5">&#39;index.ts&#39;</span><span class="hl-4">);</span><br/><span class="hl-2">//=&gt; true</span><br/><span class="hl-3">createFileExtensionFilter</span><span class="hl-4">([</span><span class="hl-5">&#39;.ts&#39;</span><span class="hl-4">, </span><span class="hl-5">&#39;.tsx&#39;</span><span class="hl-4">])(</span><span class="hl-5">&#39;index.js&#39;</span><span class="hl-4">);</span><br/><span class="hl-2">//=&gt; false</span>
 </code><button>Copy</button></pre>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/bemoje/tsmono/blob/ff45fa9a/packages/util/src/fs/createFileExtensionFilter.ts#L16">packages/util/src/fs/createFileExtensionFilter.ts:16</a></li></ul></aside></li></ul></section></div>
+<li>Defined in <a href="https://github.com/bemoje/tsmono/blob/e2e129da/packages/util/src/fs/createFileExtensionFilter.ts#L16">packages/util/src/fs/createFileExtensionFilter.ts:16</a></li></ul></aside></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
