@@ -9,13 +9,8 @@ export function main() {
     .description('Description: Tools for management of an NX mono-repo.\n')
     .version('0.0.0')
 
-  for (const command of commands) {
-    createCommand(program, command)
-  }
-
+  commands.forEach((options) => createCommand(program, options))
   config.initialize(program)
-
   process.chdir(config.userconfig.get('repoRootDirectory'))
-
   program.parse()
 }

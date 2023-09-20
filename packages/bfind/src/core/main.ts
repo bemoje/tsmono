@@ -1,4 +1,4 @@
-import { createCommand, gracefulProcessExit } from '@bemoje/commander-config'
+import { createCommand } from '@bemoje/commander-config'
 import { Command } from 'commander'
 import { buildIndex } from '../actions/buildIndex'
 import { search } from '../actions/search'
@@ -82,12 +82,6 @@ export function main() {
   })
 
   config.initialize(program)
-
-  process.on('uncaughtException', (error: unknown) => {
-    if (config.userconfig.get('print-scan-errors')) {
-      gracefulProcessExit(error['message'] ? error['message'] : error)
-    }
-  })
 
   program.parse()
 }

@@ -134,13 +134,12 @@ export class Config {
       command: 'all-help',
       aliases: ['H'],
       summary: 'Print help for every command.',
-      usage: [{ command: 'rman all-help' }],
       action: () => {
         allHelp(program)
       },
     })
 
-    const longestCommand = Math.max(...program.commands.map((cmd) => cmd.alias().length))
+    const longestCommand = Math.max(...program.commands.map((cmd) => cmd.alias().length)) + 1
     program.configureHelp({
       subcommandTerm: (cmd) => `${cmd.alias() ? cmd.alias().padEnd(longestCommand, ' ') + '|' : ''}${cmd.name()}`,
     })

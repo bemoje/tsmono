@@ -5,11 +5,6 @@ let i = 0
  * Create a command.
  */
 export function createCommand(program: Command, options: ICommand): typeof program {
-  // if (options.aliases && options.aliases.length) {
-  //   const alias0 = options.command
-  //   options.command = options.aliases.shift() as string
-  //   options.aliases.unshift(alias0)
-  // }
   const command = program
     .command(options.command)
     .summary((i++ % 2 === 0 ? colors.cyan : colors.green)(options.summary))

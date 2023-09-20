@@ -1,3 +1,4 @@
+import { gracefulProcessExit } from '@bemoje/commander-config'
 import { TrieMap } from '@bemoje/trie-map'
 import fs from 'fs'
 import { config } from '../core/config'
@@ -9,6 +10,13 @@ import { saveIndex } from './buildIndex/saveIndex'
 import { walkDirectory } from './buildIndex/walkDirectory'
 
 export async function buildIndex(): Promise<void> {
+  // graceful exit on error
+  process.on('uncaughtException', (error: unknown) => {
+    if (config.userconfig.get('print-scan-errors')) {
+      gracefulProcessExit(error['message'] ? error['message'] : error)
+    }
+  })
+
   // stats
   const stats: IBuildIndexStats = {
     filesIndexed: 0,
