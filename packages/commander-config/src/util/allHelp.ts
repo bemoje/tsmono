@@ -26,7 +26,7 @@ export function allHelp(program: Command) {
   program.commands.forEach((cmd) => {
     log('\n\n' + colors.bold(colors.magenta(program.name() + ' ' + cmd.name())))
     log(colors.gray(colors.dim('---------------------------------------------')))
-    let help = execute(`rman help ${cmd.name()}`, { noEcho: true, silent: true })
+    let help = execute(`${program.name()} help ${cmd.name()}`, { noEcho: true, silent: true })
     help = help
       .replace(/^Usage:/gm, colors.cyan('Usage:'))
       .replace(/^Description:/gm, colors.cyan('Description:'))
@@ -38,9 +38,9 @@ export function allHelp(program: Command) {
       .replace(/\r*\n\r*\n/g, '\n')
     log(help)
   })
-  log('\n\n' + colors.green(colors.bold('rman')))
+  log('\n\n' + colors.green(colors.bold(program.name())))
   log(colors.gray(colors.dim('---------------------------------------------')))
-  const help = execute(`rman help`, { noEcho: true, silent: true })
+  const help = execute(`${program.name()} help`, { noEcho: true, silent: true })
   log(
     help
       .replace(/^Usage:/gm, colors.cyan('Usage:'))
