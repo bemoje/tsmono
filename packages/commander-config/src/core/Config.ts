@@ -127,6 +127,11 @@ export class Config {
         console.error(action + ' is not a valid action.')
         process.exit(1)
       })
+
+    const longestCommand = Math.max(...program.commands.map((cmd) => cmd.alias().length)) + 1
+    program.configureHelp({
+      subcommandTerm: (cmd) => `${cmd.alias() ? cmd.alias().padEnd(longestCommand, ' ') + '|' : ''}${cmd.name()}`,
+    })
   }
 
   /**

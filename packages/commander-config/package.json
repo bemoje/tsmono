@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/commander-config",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "description": "Easy setup of CLI config files when using the commander package.",
   "main": "index.cjs.js",
   "module": "index.esm.js",

@@ -16,6 +16,7 @@ export function main() {
 
   createCommand(program, {
     command: 'all-help',
+    aliases: ['H'],
     summary: 'Print help for every command.',
     usage: [{ command: 'rman all-help' }],
     action: () => {
@@ -25,9 +26,11 @@ export function main() {
 
   config.initialize(program)
 
-  program.configureHelp({
-    subcommandTerm: (cmd) => `${cmd.alias() ? cmd.alias().padEnd(3, ' ') + '|' : ''}${cmd.name()}`,
-  })
+  // program.commands.find((cmd) => cmd.name() === 'help')?.alias('h')
+
+  // program.configureHelp({
+  //   subcommandTerm: (cmd) => `${cmd.alias() ? cmd.alias().padEnd(3, ' ') + '|' : ''}${cmd.name()}`,
+  // })
 
   process.chdir(config.userconfig.get('repoRootDirectory'))
 

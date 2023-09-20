@@ -81,25 +81,7 @@ export function main() {
     action: buildIndex,
   })
 
-  // program.command('index').aliases(['i']).summary('Rebuild the index.').action(buildIndex)
-
-  // program
-  //   .command('search')
-  //   .aliases(['s'])
-  //   .summary('Search the filesystem.')
-  //   .argument('[searchKeys...]', 'Each argument is a search term where they ALL must match.')
-  //   .option('-d, --dir <dir>', 'Limit search to a given directory. Overrides the --cwd option.')
-  //   .option('-p, --pipe', 'Output only filepaths, no colors or other information.')
-  //   .option('-c, --cwd', 'Search only the current working directory.')
-  //   .option('-e, --extensions <exts>', 'Include only files with these extensions (comma separated).')
-  //   .action(search)
-
   config.initialize(program)
-
-  const longestCommand = Math.max(...program.commands.map((cmd) => cmd.alias().length)) + 1
-  program.configureHelp({
-    subcommandTerm: (cmd) => `${cmd.alias() ? cmd.alias().padEnd(longestCommand, ' ') + '|' : ''}${cmd.name()}`,
-  })
 
   process.on('uncaughtException', (error: unknown) => {
     if (config.userconfig.get('print-scan-errors')) {
