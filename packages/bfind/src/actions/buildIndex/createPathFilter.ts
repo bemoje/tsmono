@@ -1,4 +1,4 @@
-import { FSPathFilter } from '@bemoje/util'
+import { FSPathFilter, normalizeFileExtension } from '@bemoje/util'
 import { config } from '../../core/config'
 import { normalizePathSep } from '../../util/normalizePathSep'
 
@@ -8,7 +8,6 @@ export function createPathFilter(): FSPathFilter {
 
   config.userconfig.get('ignore-dirpaths').forEach((reg: string) => {
     const regex = new RegExp(reg, filter.isCaseInsensitive ? 'i' : '')
-    // console.log(regex)
     filter.ignoreDirpathRegex(regex)
   })
 
@@ -17,8 +16,15 @@ export function createPathFilter(): FSPathFilter {
     filter.ignoreFilepathRegex(regex)
   })
 
-  const extensions = config.userconfig.get('ignore-file-extensions')
-  filter.ignoreFilepathRegex(new RegExp('\\.(' + extensions.join('|') + ')$', 'i'))
+  const extensions = config.userconfig
+    .get('ignore-file-extensions')
+    .map(normalizeFileExtension)
+    .filter((ext) => ext.length > 1)
+    .map((ext) => ext.slice(1))
+    .sort()
+    .join('|')
+  const regex = new RegExp('\\.(' + extensions + ')$', 'i')
+  filter.ignoreFilenameRegex(regex)
 
   if (config.userconfig.get('print-scan-ignored')) {
     filter.on('invalid', (type, fspath) => {
@@ -27,11 +33,3 @@ export function createPathFilter(): FSPathFilter {
   }
   return filter
 }
-
-// const test = (string: string) => {
-//   console.log()
-//   console.log(string)
-//   console.log(new RegExp(string))
-// }
-
-// test('\\..ts$')

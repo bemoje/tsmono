@@ -9,6 +9,8 @@ import {
   validateStringArray,
 } from '@bemoje/commander-config'
 import { getDiskDrivesWindows, getRootDir, isLinux, isOSX, isWindows } from '@bemoje/util'
+import fs from 'fs'
+import path from 'path'
 import { wipeIndex } from '../util/wipeIndex'
 
 export const config = new Config('bemoje', 'bfind', {
@@ -33,7 +35,7 @@ export const config = new Config('bemoje', 'bfind', {
   },
   'max-results': {
     description: ['The maximum number of search results to display. Set to zero to disable.'].join(' '),
-    default: 50,
+    default: 25,
     parse: parseInteger,
     validate: validateInteger,
   },
@@ -42,13 +44,7 @@ export const config = new Config('bemoje', 'bfind', {
       'The root directories which should be indexed for search.',
       'Input a valid JSON string array. You might prefer to use "bfind config" to edit this in a text editor.',
     ].join(' '),
-    default: isWindows()
-      ? getDiskDrivesWindows()
-      : isLinux()
-      ? ['/media', '/usr', '/home']
-      : isOSX()
-      ? ['/Users', '/Applications']
-      : [getRootDir()],
+    default: rootdirsDefault(),
     parse: (string: string) => {
       const res = parseJsonArray(string)
       wipeIndex()
@@ -73,17 +69,10 @@ export const config = new Config('bemoje', 'bfind', {
         ? []
         : [
             '^\\w:\\/\\$Recycle\\.Bin$',
-            '^\\w:\\/Windows\\/[^sS]',
-            // '^\\w:/Windows\\/System32\\/.',
-            // '^\\w:/Program Files',
+            // '^\\w:\\/Windows\\/[^sS]',
             '^\\w:\\/ProgramData$',
-            // '^\\w:/Documents and Settings$',
             '^\\w:\\/System Volume Information$',
             '^\\w:\\/Recovery$',
-            // '^\\w:/Users\\/All Users$',
-            // '^\\w:/Users\\/Public$',
-            // '^\\w:/Users\\/Default',
-            // '^\\w:/Users\\/\\w+\\/Documents\\/My \\w+$',
             '^\\w:\\/Users\\/\\w+\\/AppData$',
             '^\\w:\\/Users\\/\\w+\\/Application Data$',
           ]),
@@ -114,53 +103,57 @@ export const config = new Config('bemoje', 'bfind', {
       'Input a valid JSON string array. You might prefer to use "bfind config" to edit this in a text editor.',
     ].join(' '),
     default: [
-      'tfm',
-      'vf',
-      'peak',
-      'reapeaks',
-      'rpp-bak',
-      'htf',
-      'pfb',
-      'cdf-ms',
-      'mkii',
-      'manifest',
-      'lbx',
-      'eps',
-      'pyc',
-      'tikz',
-      'pfm',
-      'mui',
-      'mkiv',
-      'jar',
-      'unity3d',
-      'cat',
-      'mf',
-      'xrm-ms',
-      'sty',
-      'rst',
-      'enc',
-      'pak',
-      'sip',
-      'tff',
-      'ttf',
-      'tga',
-      'etl',
-      'bin',
-      'inf',
-      'bak',
-      'inf_loc',
-      'fd',
-      'tlpobj',
-      'afm',
-      'dtx',
-      'ini',
-      'otf',
-      'ins',
-      'def',
-      'dat',
-      'map',
-      'ldf',
-      'cls',
+      '.tfm',
+      '.vf',
+      '.peak',
+      '.reapeaks',
+      '.rpp-bak',
+      '.htf',
+      '.pfb',
+      '.cdf-ms',
+      '.mkii',
+      '.manifest',
+      '.lbx',
+      '.eps',
+      '.pyc',
+      '.tikz',
+      '.pfm',
+      '.pyi',
+      '.mui',
+      '.mkiv',
+      '.jar',
+      '.unity3d',
+      '.cat',
+      '.mf',
+      '.xrm-ms',
+      '.sty',
+      '.rst',
+      '.enc',
+      '.pak',
+      '.sip',
+      '.tff',
+      '.ttf',
+      '.mum',
+      '.tga',
+      '.wmf',
+      '.etl',
+      '.bin',
+      '.dll',
+      '.inf',
+      '.bak',
+      '.inf_loc',
+      '.fd',
+      '.tlpobj',
+      '.afm',
+      '.dtx',
+      '.ini',
+      '.otf',
+      '.ins',
+      '.def',
+      '.dat',
+      '.map',
+      '.ldf',
+      '.cls',
     ],
     parse: (json: string) => {
       const arr = parseJsonArray(json)
@@ -180,3 +173,18 @@ export const config = new Config('bemoje', 'bfind', {
     validate: validateBoolean,
   },
 })
+
+function rootdirsDefault() {
+  if (isWindows()) {
+    const drives = getDiskDrivesWindows()
+    const sys = drives.find((d) => fs.existsSync(path.join(d, 'Windows', 'System32')))
+    const result = new Set(drives)
+    result.delete(sys)
+    result.add(path.join(sys, 'Program Files'))
+    result.add(path.join(sys, 'Program Files (x86)'))
+    result.add(path.join(sys, 'Windows'))
+    result.add(path.join(sys, 'Users', process.env.USERNAME || void 0))
+    return Array.from(result)
+  }
+  return isLinux() ? ['/media', '/usr', '/home'] : isOSX() ? ['/Users', '/Applications'] : [getRootDir()]
+}

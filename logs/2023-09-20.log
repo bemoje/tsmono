@@ -1,6 +1,0 @@
-01:48:47|INFO |{"message":"Log file created."}
-01:48:47|DEBUG|["\u0003","This is a debug message"]
-01:48:47|INFO |{"message":"Log file created."}
-01:48:47|INFO |["\u0003","This is an info message"]
-01:48:47|WARN |["\u0003","This is a warning message"]
-01:48:47|ERROR|["\u0003","This is an error message"]

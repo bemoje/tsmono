@@ -1,15 +1,15 @@
 import { TrieMap } from '@bemoje/trie-map'
 
 export function lookupIndices(keywords: Set<string>, TRIE: TrieMap<Set<number>>): Array<Set<number>> {
-  const indices: Array<Set<number>> = []
-  for (const kwset of keywords) {
+  const sets: Array<Set<number>> = []
+  for (const kw of keywords) {
     const set: Set<number> = new Set()
-    TRIE.getValues([...kwset]).forEach((indices: Set<number>) => {
+    for (const indices of TRIE.values(Array.from(kw))) {
       for (const i of indices) {
         set.add(i)
       }
-    })
-    indices.push(set)
+    }
+    sets.push(set)
   }
-  return indices
+  return sets
 }

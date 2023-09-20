@@ -1,28 +1,21 @@
-import { ISearchOptions } from '../../../actions/search/ISearchOptions'
-import { config } from '../../../core/config'
+import { isWindows } from '@bemoje/util'
 import { appendLastModified } from './appendLastModified'
 import { colorMatchingParts } from './colorMatchingParts'
 import { printIndexAge } from './printIndexAge'
 import { printTrimAmount } from './printTrimAmount'
 import { sortByLastModified } from './sortByLastModified'
 
-export async function printResults(filepaths: string[], keywords: Set<string>, options: ISearchOptions) {
-  // if (options.ignore) {
-  //   const regex = globToRegex(normalizePathSep(options.ignore))
-  //   filepaths = filepaths.filter((p) => !regex.test(p))
-  // }
-  // if (options.include) {
-  //   const regex = globToRegex(normalizePathSep(options.include))
-  //   filepaths = filepaths.filter((p) => regex.test(p))
-  // }
-  if (options.printAllResults || filepaths.length <= config.userconfig.get('max-results')) {
-    options.printAllResults = true
+export async function printResults(filepaths: string[], keywords: Set<string>) {
+  const _filepaths = filepaths.slice()
+  if (filepaths.length > 5000) {
+    filepaths = filepaths.slice(0, 5000)
   }
-  const statsPaths = await sortByLastModified(filepaths, options.printAllResults)
+  const statsPaths = await sortByLastModified(filepaths)
   for (const [stat, fpath] of statsPaths) {
     const filepath = colorMatchingParts(fpath, keywords)
-    console.log(appendLastModified(stat, filepath))
+    const out = appendLastModified(stat, filepath)
+    console.log(isWindows() ? out.replace(/\//g, '\\') : out)
   }
-  printTrimAmount(filepaths, options.printAllResults)
+  printTrimAmount(_filepaths)
   printIndexAge()
 }

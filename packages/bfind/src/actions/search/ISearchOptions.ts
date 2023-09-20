@@ -1,5 +1,6 @@
 export interface ISearchOptions {
-  include?: string
-  ignore?: string
-  printAllResults?: boolean
+  pipe?: boolean
+  cwd?: boolean
+  dir?: string
+  extensions?: string
 }

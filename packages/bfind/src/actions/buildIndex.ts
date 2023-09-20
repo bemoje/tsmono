@@ -10,7 +10,6 @@ import { walkDirectory } from './buildIndex/walkDirectory'
 
 export async function buildIndex(): Promise<void> {
   // stats
-  const t0 = Date.now()
   const stats: IBuildIndexStats = {
     filesIndexed: 0,
     keywordsIndexed: 0,
@@ -19,15 +18,15 @@ export async function buildIndex(): Promise<void> {
   }
 
   // data
+  const t0 = Date.now()
   const FILEPATHS: string[] = []
   const TRIE = new TrieMap<SerializableSet<number>>()
   const filter = createPathFilter()
+  const rootdirs = config.userconfig.get('rootdirs').filter((p) => fs.existsSync(p))
 
   // walk directories
-  const directories = config.userconfig.get('rootdirs')
   await Promise.all(
-    directories.map((dirpath) => {
-      if (!fs.existsSync(dirpath)) return Promise.resolve()
+    rootdirs.map((dirpath) => {
       return walkDirectory(dirpath, filter, stats, FILEPATHS, TRIE)
     })
   )
