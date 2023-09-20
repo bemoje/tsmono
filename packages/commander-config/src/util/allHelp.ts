@@ -52,5 +52,6 @@ export function allHelp(program: Command) {
       .replace(/\r*\n\r*\n/g, '\n')
   )
   log('')
+  fs.mkdirSync(APPDATADIR, { recursive: true })
   fs.writeFileSync(helpfilepath, helps.join('\n'), 'utf8')
 }
