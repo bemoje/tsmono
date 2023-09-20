@@ -89,6 +89,7 @@ export class Config {
   initialize(program: Command): void {
     program
       .command('appdata')
+      .aliases(['D'])
       .description('Get the directory containing your app data.')
       .action((options: { wipe?: boolean } = {}) => {
         console.log('APPDATA: ' + this.data.directory)
@@ -101,6 +102,7 @@ export class Config {
 
     program
       .command('config')
+      .aliases(['C'])
       .description(['User configuration settings.'].join('\r'))
       .argument('[action]', 'The action to perform. Accepted values are: edit, reset, set.')
       .argument(

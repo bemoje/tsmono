@@ -20,7 +20,7 @@ export async function search(keys: string[], options: ISearchOptions = {}): Prom
   let results = lookupFilepaths(keyset, indices, FILEPATHS)
 
   if (options.extensions) {
-    const exts = options.extensions.split(' ').map(normalizeFileExtension)
+    const exts = options.extensions.map(normalizeFileExtension)
     results = results.filter((fpath) => {
       return exts.includes(path.extname(fpath))
     })
