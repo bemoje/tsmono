@@ -5,6 +5,7 @@ import path from 'path'
 
 export function allHelp(program: Command) {
   const APPDATADIR = getAppDataPath('bemoje', program.name())
+  fs.mkdirSync(APPDATADIR, { recursive: true })
   const helpfilepath = path.join(APPDATADIR, 'help.txt')
   const version = execute(program.name() + ` --version`, { noEcho: true, silent: true }).trim()
   if (fs.existsSync(helpfilepath)) {
