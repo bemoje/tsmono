@@ -1,6 +1,7 @@
 export * from './core/Config'
 export * from './core/IConfigSetting'
 export * from './core/IConfigSettings'
+export * from './util/allHelp'
 export * from './util/createCommand'
 export * from './util/failValidation'
 export * from './util/getUserInputFromEditor'

@@ -3,6 +3,8 @@
 import { AppData, colors, isOSX, isVsCodeInstalled, isWindows, readJsonFileSync } from '@bemoje/util'
 import { Command } from 'commander'
 import fs from 'fs'
+import { allHelp } from '../util/allHelp'
+import { createCommand } from '../util/createCommand'
 import { getUserInputFromEditorSync } from '../util/getUserInputFromEditorSync'
 import { parseString } from '../util/parse/parseString'
 import { validateString } from '../util/validate/validateString'
@@ -128,7 +130,17 @@ export class Config {
         process.exit(1)
       })
 
-    const longestCommand = Math.max(...program.commands.map((cmd) => cmd.alias().length)) + 1
+    createCommand(program, {
+      command: 'all-help',
+      aliases: ['H'],
+      summary: 'Print help for every command.',
+      usage: [{ command: 'rman all-help' }],
+      action: () => {
+        allHelp(program)
+      },
+    })
+
+    const longestCommand = Math.max(...program.commands.map((cmd) => cmd.alias().length))
     program.configureHelp({
       subcommandTerm: (cmd) => `${cmd.alias() ? cmd.alias().padEnd(longestCommand, ' ') + '|' : ''}${cmd.name()}`,
     })

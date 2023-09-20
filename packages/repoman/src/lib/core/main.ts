@@ -1,6 +1,5 @@
 import { createCommand } from '@bemoje/commander-config'
 import { Command } from 'commander'
-import { allHelp } from '../actions/allHelp'
 import { commands } from './commands'
 import { config } from './config'
 
@@ -14,23 +13,7 @@ export function main() {
     createCommand(program, command)
   }
 
-  createCommand(program, {
-    command: 'all-help',
-    aliases: ['H'],
-    summary: 'Print help for every command.',
-    usage: [{ command: 'rman all-help' }],
-    action: () => {
-      allHelp(program)
-    },
-  })
-
   config.initialize(program)
-
-  // program.commands.find((cmd) => cmd.name() === 'help')?.alias('h')
-
-  // program.configureHelp({
-  //   subcommandTerm: (cmd) => `${cmd.alias() ? cmd.alias().padEnd(3, ' ') + '|' : ''}${cmd.name()}`,
-  // })
 
   process.chdir(config.userconfig.get('repoRootDirectory'))
 
