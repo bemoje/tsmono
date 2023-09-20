@@ -60,6 +60,7 @@ export function main() {
   // commands for managing presets
   program
     .command('preset')
+    .aliases(['p'])
     .description(colors.cyan('Remove or create a new preset in the config file.'))
     .argument('<action>', "Action to perform on a preset. Can be 'create' and 'remove'.")
     .argument('<name>', 'The name of the preset.')

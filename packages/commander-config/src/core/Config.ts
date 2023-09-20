@@ -139,10 +139,14 @@ export class Config {
       },
     })
 
-    const longestCommand = Math.max(...program.commands.map((cmd) => cmd.alias().length)) + 1
-    program.configureHelp({
-      subcommandTerm: (cmd) => `${cmd.alias() ? cmd.alias().padEnd(longestCommand, ' ') + '|' : ''}${cmd.name()}`,
-    })
+    try {
+      const longestCommand = Math.max(...program.commands.map((cmd) => cmd.alias().length)) + 1
+      program.configureHelp({
+        subcommandTerm: (cmd) => `${cmd.alias() ? cmd.alias().padEnd(longestCommand, ' ') + '|' : ''}${cmd.name()}`,
+      })
+    } catch (error) {
+      //
+    }
   }
 
   /**
