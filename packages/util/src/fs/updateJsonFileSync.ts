@@ -1,6 +1,7 @@
 import fs from 'fs'
 import { getJsonIndentation } from './getJsonIndentation'
 import { writeJsonFileSync } from './writeJsonFileSync'
+import { writePrettyJsonFileSync } from './writePrettyJsonFileSync'
 
 /**
  * Updates a JSON file synchronously based on a provided update function.
@@ -34,5 +35,9 @@ export function updateJsonFileSync(
   const result: Record<string, unknown> = update(JSON.parse(json))
   if (!result) return
   const indents = getJsonIndentation(json)
-  writeJsonFileSync(filepath, result, !!indents, indents)
+  if (indents) {
+    writePrettyJsonFileSync(filepath, result, indents)
+  } else {
+    writeJsonFileSync(filepath, result)
+  }
 }

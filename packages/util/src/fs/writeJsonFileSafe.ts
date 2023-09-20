@@ -1,14 +1,14 @@
 import { JsonReplacerReviver } from './types/JsonReplacerReviver'
-import { writeFile } from './writeFile'
+import { writeFileSafe } from './writeFileSafe'
 
 /**
- * Writes data to a JSON file asynchronously.
+ * Writes data to a JSON file asynchronously. If the file does not exist, it will be created.
  *
  * @param filepath - The path to the JSON file.
  * @param data - The data to write to the file.
  * @param replacer - A function that alters the behavior of the stringification process.
  * @returns A promise that resolves when the file has been written.
  */
-export async function writeJsonFile<T>(filepath: string, data: T, replacer?: JsonReplacerReviver): Promise<void> {
-  await writeFile(filepath, JSON.stringify(data, replacer))
+export async function writeJsonFileSafe<T>(filepath: string, data: T, replacer?: JsonReplacerReviver): Promise<void> {
+  await writeFileSafe(filepath, JSON.stringify(data, replacer))
 }

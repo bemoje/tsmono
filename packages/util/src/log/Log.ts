@@ -280,7 +280,7 @@ export class Log {
       .padStart(2, '0')}:${d.getUTCSeconds().toString().padStart(2, '0')}`
     const level = loglevel.toUpperCase().padEnd(5, ' ')
     const entry = `${timestamp}|${level}|${safeJsonStringify(data)}`
-    appendLineToFileSync(this.logFilepath, entry, false)
+    appendLineToFileSync(this.logFilepath, entry)
   }
 
   /**

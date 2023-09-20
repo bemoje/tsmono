@@ -1,4 +1,5 @@
 import fs from 'fs'
+import os from 'os'
 import path from 'path'
 
 /**
@@ -7,7 +8,7 @@ import path from 'path'
  * @param callback - The callback to execute with the temporary file path. The callback can return a promise and the temporary file will not be deleted until the promise has resolved or rejected.
  */
 export function tempFile(fileExtension: string, callback: (fpath: string) => void | Promise<void>): void {
-  const dir = path.join(process.env['TEMP']!, 'bemoje', 'temp')
+  const dir = path.join(os.tmpdir(), 'bemoje', 'temp')
   const fpath = path.join(dir, Date.now() + fileExtension)
   fs.mkdirSync(dir, { recursive: true })
   const prom = callback(fpath)
