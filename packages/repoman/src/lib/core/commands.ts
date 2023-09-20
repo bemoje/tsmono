@@ -19,8 +19,8 @@ import { wipeNodeModules } from '../actions/wipeNodeModules'
 
 export const commands = [
   {
-    command: 'b',
-    aliases: ['build'],
+    command: 'build',
+    aliases: ['b'],
     summary: 'Run build for all or selected packages.',
     arguments: [
       {
@@ -38,8 +38,8 @@ export const commands = [
   },
 
   {
-    command: 't',
-    aliases: ['test'],
+    command: 'test',
+    aliases: ['t'],
     summary: 'Run tests for all or selected packages.',
     arguments: [
       {
@@ -64,8 +64,8 @@ export const commands = [
   },
 
   {
-    command: 'l',
-    aliases: ['lint'],
+    command: 'lint',
+    aliases: ['l'],
     summary: 'Run lint for all or selected packages.',
     arguments: [
       {
@@ -83,16 +83,16 @@ export const commands = [
   },
 
   {
-    command: 'd',
-    aliases: ['docs'],
+    command: 'docs',
+    aliases: ['d'],
     summary: 'Generate docs for all packages.',
     usage: [{ command: 'rman docs', description: 'Generate docs for all packages.' }],
     action: docs,
   },
 
   {
-    command: 'f',
-    aliases: ['fix'],
+    command: 'fix',
+    aliases: ['f'],
     summary: 'Run fix-commands.',
     options: [
       {
@@ -136,8 +136,8 @@ export const commands = [
   },
 
   {
-    command: 'e',
-    aliases: ['foreach', 'each', 'fe'],
+    command: 'foreach',
+    aliases: ['fe', 'each'],
     summary: 'Execute command for each package with their root dirs as cwd.',
     usage: [
       {
@@ -182,7 +182,7 @@ export const commands = [
 
   {
     command: 'dev',
-    aliases: ['rman-dev'],
+    aliases: ['D'],
     summary: 'Run rman in dev mode',
 
     arguments: [
@@ -197,8 +197,8 @@ export const commands = [
   },
 
   {
-    command: 'pre',
-    aliases: ['precommit', 'prepub', 'pre-publish'],
+    command: 'precommit',
+    aliases: ['pre', 'prepub', 'pre-publish'],
     summary: 'Run lint, test, build, docs and fix.',
     arguments: [
       {
@@ -216,8 +216,8 @@ export const commands = [
   },
 
   {
-    command: 'pub',
-    aliases: ['publish', 'npmpublish', 'npm-publish'],
+    command: 'publish',
+    aliases: ['pub', 'npmpublish', 'npm-publish'],
     summary: 'Publish all or selected packages to NPM.',
     details: [
       'First executes precommit, then publishes all packages whose builds have changed, then git commits.',
@@ -257,8 +257,8 @@ export const commands = [
   },
 
   {
-    command: 'wnm',
-    aliases: ['wipe-modules'],
+    command: 'wipe-modules',
+    aliases: ['wm'],
     summary: 'Clear node_modules.',
     usage: [
       {
@@ -304,8 +304,8 @@ export const commands = [
   },
 
   {
-    command: 'rh',
-    aliases: ['rehash', 're-hash'],
+    command: 'rehash',
+    aliases: ['rh', 're-hash'],
     summary: 'Rehash all or selected packages.',
     details: [
       'The files in the dist directories for each package are hashed when published to npm.',
@@ -328,8 +328,8 @@ export const commands = [
   },
 
   {
-    command: 'ts',
-    aliases: ['typescript'],
+    command: 'runts',
+    aliases: ['ts'],
     summary: 'Run a .ts file.',
     details: [
       'Provide a full path or partial path search terms.',
@@ -359,8 +359,8 @@ export const commands = [
   },
 
   {
-    command: 'tf',
-    aliases: ['testfile'],
+    command: 'testfile',
+    aliases: ['tf'],
     summary: 'Find and run a .test.ts. file.',
     details: [
       'Provide a full path or partial path search terms.',
@@ -398,8 +398,8 @@ export const commands = [
   },
 
   {
-    command: 'cp',
-    aliases: ['create-package', 'createpackage'],
+    command: 'create-package',
+    aliases: ['cp', 'createpackage'],
     summary: 'Create a package.',
     arguments: [
       {
@@ -412,8 +412,8 @@ export const commands = [
   },
 
   {
-    command: 'dp',
-    aliases: ['delete-package', 'deletepackage'],
+    command: 'delete-package',
+    aliases: ['dp', 'deletepackage'],
     summary: 'Delete a package.',
     arguments: [
       {
@@ -426,8 +426,8 @@ export const commands = [
   },
 
   {
-    command: 'pd',
-    aliases: ['deps', 'package-deps', 'packagedeps'],
+    command: 'deps',
+    aliases: ['pd', 'package-deps', 'packagedeps'],
     summary: 'Print useful details about package dependencies.',
     usage: [
       { command: 'rman deps', description: 'Print dependency information.' },
@@ -447,16 +447,16 @@ export const commands = [
   },
 
   {
-    command: 'od',
-    aliases: ['open-docs'],
+    command: 'opendocs',
+    aliases: ['od'],
     summary: 'Open the docs website in the browser.',
     usage: [{ command: 'rman open-docs', description: 'Open docs website.' }],
     action: openDocs,
   },
 
   {
-    command: 'oc',
-    aliases: ['open-coverage'],
+    command: 'opencov',
+    aliases: ['oc'],
     summary: 'Open the coverage report in the browser.',
     usage: [{ command: 'rman open-coverage', description: 'Open coverage report.' }],
     arguments: [

@@ -94,12 +94,12 @@ export function main() {
   //   .option('-e, --extensions <exts>', 'Include only files with these extensions (comma separated).')
   //   .action(search)
 
+  config.initialize(program)
+
   const longestCommand = Math.max(...program.commands.map((cmd) => cmd.alias().length)) + 1
   program.configureHelp({
     subcommandTerm: (cmd) => `${cmd.alias() ? cmd.alias().padEnd(longestCommand, ' ') + '|' : ''}${cmd.name()}`,
   })
-
-  config.initialize(program)
 
   process.on('uncaughtException', (error: unknown) => {
     if (config.userconfig.get('print-scan-errors')) {
