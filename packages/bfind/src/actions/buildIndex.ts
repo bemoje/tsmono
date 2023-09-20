@@ -2,7 +2,6 @@ import { gracefulProcessExit } from '@bemoje/commander-config'
 import { TrieMap } from '@bemoje/trie-map'
 import fs from 'fs'
 import { config } from '../core/config'
-import { SerializableSet } from '../util/SerializableSet'
 import { IBuildIndexStats } from './buildIndex/IBuildIndexStats'
 import { createPathFilter } from './buildIndex/createPathFilter'
 import { printStats } from './buildIndex/printStats'
@@ -28,14 +27,17 @@ export async function buildIndex(): Promise<void> {
   // data
   const t0 = Date.now()
   const FILEPATHS: string[] = []
-  const TRIE = new TrieMap<SerializableSet<number>>()
+  const TRIE = new TrieMap<Set<number>>()
   const filter = createPathFilter()
-  const rootdirs = config.userconfig.get('rootdirs').filter((p) => fs.existsSync(p))
+  const rootdirs = config.userconfig
+    .get('rootdirs')
+    .filter((p) => fs.existsSync(p))
+    .sort()
 
   // walk directories
   await Promise.all(
-    rootdirs.map((dirpath) => {
-      return walkDirectory(dirpath, filter, stats, FILEPATHS, TRIE)
+    rootdirs.map((rootdir) => {
+      return walkDirectory(rootdir, filter, stats, FILEPATHS, TRIE)
     })
   )
 

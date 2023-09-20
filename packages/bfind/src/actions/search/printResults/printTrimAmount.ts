@@ -3,5 +3,6 @@ import { config } from '../../../core/config'
 
 export function printTrimAmount(filepaths: string[]) {
   const trimAmount = filepaths.length - config.userconfig.get('max-results')
+  if (trimAmount <= 0) return
   console.log(colors.yellow(`${trimAmount.toString()} results not shown.`))
 }

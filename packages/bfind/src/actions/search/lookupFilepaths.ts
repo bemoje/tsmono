@@ -1,7 +1,7 @@
 import { setUnion } from '@bemoje/util'
 import { config } from '../../core/config'
 
-export function lookupFilepaths(keywords: Set<string>, indices: Array<Set<number>>, PATHS: string[]): Array<string> {
+export function lookupFilepaths(keywords: string[], indices: Array<Set<number>>, PATHS: string[]): Array<string> {
   const isInsensitive = config.userconfig.get('case-insensitive') as boolean
   const filepaths: string[] = []
   for (const i of setUnion(indices)) {

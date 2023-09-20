@@ -5,9 +5,8 @@ import path from 'path'
 import { FILE_LIST_FILEPATH } from '../../constants/FILE_LIST_FILEPATH'
 import { INDEX_DATA_DIRPATH } from '../../constants/INDEX_DATA_DIRPATH'
 import { WORD_TRIE_DIRPATH } from '../../constants/WORD_TRIE_DIRPATH'
-import { SerializableSet } from '../../util/SerializableSet'
 
-export async function saveIndex(FILEPATHS: string[], TRIE: TrieMap<SerializableSet<number>>): Promise<void> {
+export async function saveIndex(FILEPATHS: string[], TRIE: TrieMap<Set<number>>): Promise<void> {
   await createDirectory(INDEX_DATA_DIRPATH)
   await deleteDirectorySafe(WORD_TRIE_DIRPATH)
   await createDirectory(WORD_TRIE_DIRPATH)

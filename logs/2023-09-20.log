@@ -10,3 +10,15 @@
 12:11:17|INFO |["\u0003","This is an info message"]
 12:11:17|WARN |["\u0003","This is a warning message"]
 12:11:17|ERROR|["\u0003","This is an error message"]
+18:45:58|INFO |{"message":"Log file created."}
+18:45:58|DEBUG|["\u0003","This is a debug message"]
+18:45:58|INFO |{"message":"Log file created."}
+18:45:58|INFO |["\u0003","This is an info message"]
+18:45:58|WARN |["\u0003","This is a warning message"]
+18:45:58|ERROR|["\u0003","This is an error message"]
+18:48:45|INFO |{"message":"Log file created."}
+18:48:45|DEBUG|["\u0003","This is a debug message"]
+18:48:45|INFO |{"message":"Log file created."}
+18:48:45|INFO |["\u0003","This is an info message"]
+18:48:45|WARN |["\u0003","This is a warning message"]
+18:48:45|ERROR|["\u0003","This is an error message"]

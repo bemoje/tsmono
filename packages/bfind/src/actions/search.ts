@@ -1,5 +1,6 @@
-import { normalizeFileExtension } from '@bemoje/util'
-import path from 'path'
+import { filterByDirectory } from './search/filter/filterByDirectory'
+import { filterByExtension } from './search/filter/filterByExtension'
+import { filterByFileContents } from './search/filter/filterByFileContents'
 import { ISearchOptions } from './search/ISearchOptions'
 import { loadIndexPaths } from './search/loadIndexPaths'
 import { loadIndexTrie } from './search/loadIndexTrie'
@@ -7,36 +8,19 @@ import { lookupFilepaths } from './search/lookupFilepaths'
 import { lookupIndices } from './search/lookupIndices'
 import { normalizeSearchKeys } from './search/normalizeSearchKeys'
 import { printResults } from './search/printResults/printResults'
+import { printResultsUnformatted } from './search/printResults/printResultsUnformatted'
 
 export async function search(keys: string[], options: ISearchOptions = {}): Promise<void> {
   if (!options.pipe && Object.keys(options).length) console.log(options)
 
-  const keyset = new Set(keys)
   const normalized = normalizeSearchKeys(keys)
-
   const [FILEPATHS, TRIE] = await Promise.all([loadIndexPaths(), loadIndexTrie(normalized)])
-
   const indices = lookupIndices(normalized, TRIE)
-  let results = lookupFilepaths(keyset, indices, FILEPATHS)
+  let results = lookupFilepaths(keys, indices, FILEPATHS)
 
-  if (options.extensions) {
-    const exts = options.extensions.map(normalizeFileExtension)
-    results = results.filter((fpath) => {
-      return exts.includes(path.extname(fpath))
-    })
-  }
-
-  if (options.dir || options.cwd) {
-    const dir = path.resolve(options.dir || process.cwd())
-    results = results.filter((fpath) => {
-      return path.normalize(fpath).startsWith(dir)
-    })
-  }
-
-  if (options.pipe) {
-    for (const p of results) console.log(p)
-    return
-  }
-
-  await printResults(results, keyset)
+  if (options.extensions) results = filterByExtension(results, options)
+  if (options.dir || options.cwd) results = filterByDirectory(results, options)
+  if (options.fterms) return filterByFileContents(results, options)
+  if (options.pipe) return printResultsUnformatted(results)
+  await printResults(results, keys)
 }

@@ -42,6 +42,13 @@ export function main() {
     ],
     options: [
       {
+        name: 'fterms',
+        char: 'f',
+        description: 'Search inside every file in the search result. Provide search terms (comma-delimited).',
+        argument: 'fsterms',
+        isCommaDelimited: true,
+      },
+      {
         name: 'dir',
         char: 'd',
         description: 'Limit search to a given directory. Overrides the --cwd option.',

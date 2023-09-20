@@ -20,6 +20,7 @@
  * ```
  */
 export function normalizeFileExtension(ext: string): string {
+  ext = ext.toLowerCase()
   if (ext === '' || ext === '.') return ''
   if (/[<>"|?*:]/g.test(ext)) {
     throw new Error(`Illegal characters in file extension: ${ext}  |  Illegal characters are: <>"|?:*`)
