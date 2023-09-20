@@ -1,5 +1,6 @@
 import { gracefulProcessExit } from '@bemoje/commander-config'
 import { TrieMap } from '@bemoje/trie-map'
+import { asyncTasksLimit } from '@bemoje/util'
 import fs from 'fs'
 import { config } from '../core/config'
 import { IBuildIndexStats } from './buildIndex/IBuildIndexStats'
@@ -16,7 +17,11 @@ export async function buildIndex(): Promise<void> {
     }
   })
 
-  // stats
+  // data
+  const t0 = Date.now()
+  const FILEPATHS: string[] = []
+  const TRIE = new TrieMap<Set<number>>()
+  const filter = createPathFilter()
   const stats: IBuildIndexStats = {
     filesIndexed: 0,
     keywordsIndexed: 0,
@@ -24,20 +29,17 @@ export async function buildIndex(): Promise<void> {
     fileTypes: {},
   }
 
-  // data
-  const t0 = Date.now()
-  const FILEPATHS: string[] = []
-  const TRIE = new TrieMap<Set<number>>()
-  const filter = createPathFilter()
+  // search root
   const rootdirs = config.userconfig
     .get('rootdirs')
     .filter((p) => fs.existsSync(p))
     .sort()
 
-  // walk directories
-  await Promise.all(
-    rootdirs.map((rootdir) => {
-      return walkDirectory(rootdir, filter, stats, FILEPATHS, TRIE)
+  // walk filesystem with concurrncy limit
+  await asyncTasksLimit(
+    3,
+    rootdirs.map((fpath) => async () => {
+      await walkDirectory(fpath, filter, stats, FILEPATHS, TRIE)
     })
   )
 

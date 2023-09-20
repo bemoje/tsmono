@@ -10,17 +10,25 @@ import { normalizeSearchKeys } from './search/normalizeSearchKeys'
 import { printResults } from './search/printResults/printResults'
 import { printResultsUnformatted } from './search/printResults/printResultsUnformatted'
 
-export async function search(keys: string[], options: ISearchOptions = {}): Promise<void> {
-  if (!options.pipe && Object.keys(options).length) console.log(options)
+export async function search(keys: string[], o: ISearchOptions = {}): Promise<void> {
+  // print options
+  if (!o.pipe && Object.keys(o).length) console.log(o)
 
+  // load data
   const normalized = normalizeSearchKeys(keys)
-  const [FILEPATHS, TRIE] = await Promise.all([loadIndexPaths(), loadIndexTrie(normalized)])
+  const TRIE = await loadIndexTrie(normalized)
+  const FILEPATHS = await loadIndexPaths()
+
+  // search index
   const indices = lookupIndices(normalized, TRIE)
   let results = lookupFilepaths(keys, indices, FILEPATHS)
 
-  if (options.extensions) results = filterByExtension(results, options)
-  if (options.dir || options.cwd) results = filterByDirectory(results, options)
-  if (options.fterms) return filterByFileContents(results, options)
-  if (options.pipe) return printResultsUnformatted(results)
+  // filter result
+  if (o.extensions) results = filterByExtension(results, o)
+  if (o.dir || o.cwd) results = filterByDirectory(results, o)
+  if (o.fterms) results = await filterByFileContents(results, o)
+
+  // print result
+  if (o.pipe) return printResultsUnformatted(results)
   await printResults(results, keys)
 }

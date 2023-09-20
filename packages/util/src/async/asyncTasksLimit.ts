@@ -23,7 +23,7 @@
 export async function asyncTasksLimit<T>(
   concurrency: number,
   tasks: Array<() => Promise<any>>,
-  callback?: (value: T, index: number) => void,
+  callback?: (value: T, index: number) => void
 ): Promise<T[]> {
   const promises = new Set()
   const returnValues: T[] = []

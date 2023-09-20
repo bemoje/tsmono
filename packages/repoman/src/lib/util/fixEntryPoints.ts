@@ -14,7 +14,7 @@ export function fixEntryPoints(silent = false) {
       const srcdir = path.join(rootdir, 'src')
       const fpaths = walkTsFiles(
         srcdir,
-        (filepath) => !filepath.endsWith('index.ts') && !filepath.endsWith('src' + path.sep + 'main.ts')
+        (filepath) => !filepath.endsWith('index.ts') && path.dirname(filepath) !== srcdir
       )
       const lines = fpaths.map((fpath) => {
         const relative = fpath.replace(srcdir, '').replace(/\.ts$/i, '').replace(/\\/g, '/')
