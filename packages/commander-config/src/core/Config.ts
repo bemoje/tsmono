@@ -111,7 +111,7 @@ export class Config {
         '[setting]',
         [
           'The name of the setting. If reset is selected and this is omitted, ALL settings are reset.',
-          ...Object.entries(this.definitions).map(([name, def]) => `${green(name)}: ${def.description}`),
+          ...Object.entries(this.definitions).map(([name, def]) => `\n${green(name)}: ${def.description}`),
         ].join('\n')
       )
       .argument('[value]', 'The value to assign.')

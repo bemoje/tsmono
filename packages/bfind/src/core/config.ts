@@ -9,42 +9,21 @@ import {
   validateStringArray,
 } from '@bemoje/commander-config'
 import { getDiskDrivesWindows, getRootDir, isLinux, isOSX, isWindows } from '@bemoje/util'
-import fs from 'fs'
-import path from 'path'
 import { wipeIndex } from '../util/wipeIndex'
 
 export const config = new Config('bemoje', 'bfind', {
-  'print-scan-errors': {
-    description: [
-      'Whether to print errors when scans of files or directories fail.',
-      'Reasons could be permission denied or other errors.',
-      'This is disabled by default because it can be noisy.',
-    ].join(' '),
-    default: false,
-    parse: parseBoolean,
-    validate: validateBoolean,
-  },
-  'print-scan-ignored': {
-    description: [
-      'Whether to print when files or directories are skipped during scan.',
-      'The user config controls what to ignore/skip.',
-    ].join(' '),
-    default: false,
-    parse: parseBoolean,
-    validate: validateBoolean,
-  },
-  'max-results': {
-    description: ['The maximum number of search results to display. Set to zero to disable.'].join(' '),
-    default: 25,
-    parse: parseInteger,
-    validate: validateInteger,
-  },
   rootdirs: {
     description: [
       'The root directories which should be indexed for search.',
       'Input a valid JSON string array. You might prefer to use "bfind config" to edit this in a text editor.',
     ].join(' '),
-    default: rootdirsDefault(),
+    default: isWindows()
+      ? getDiskDrivesWindows()
+      : isLinux()
+      ? ['/media', '/usr', '/home']
+      : isOSX()
+      ? ['/Users', '/Applications']
+      : [getRootDir()],
     parse: (string: string) => {
       const res = parseJsonArray(string)
       wipeIndex()
@@ -52,6 +31,7 @@ export const config = new Config('bemoje', 'bfind', {
     },
     validate: validateDirpaths,
   },
+
   'ignore-dirpaths': {
     description: [
       'Directory path regex to ignore when indexing.',
@@ -84,6 +64,7 @@ export const config = new Config('bemoje', 'bfind', {
     },
     validate: validateStringArray,
   },
+
   'ignore-filepaths': {
     description: [
       'File path regex to ignore when indexing.',
@@ -97,6 +78,7 @@ export const config = new Config('bemoje', 'bfind', {
     },
     validate: validateStringArray,
   },
+
   'ignore-file-extensions': {
     description: [
       'File extensions to ignore when indexing.',
@@ -162,6 +144,7 @@ export const config = new Config('bemoje', 'bfind', {
     },
     validate: validateStringArray,
   },
+
   'case-insensitive': {
     description: ['Whether to ignore case when indexing.'].join(' '),
     default: isWindows(),
@@ -172,19 +155,32 @@ export const config = new Config('bemoje', 'bfind', {
     },
     validate: validateBoolean,
   },
-})
 
-function rootdirsDefault() {
-  if (isWindows()) {
-    const drives = getDiskDrivesWindows()
-    const sys = drives.find((d) => fs.existsSync(path.join(d, 'Windows', 'System32')))
-    const result = new Set(drives)
-    result.delete(sys)
-    result.add(path.join(sys, 'Program Files'))
-    result.add(path.join(sys, 'Program Files (x86)'))
-    result.add(path.join(sys, 'Windows'))
-    result.add(path.join(sys, 'Users', process.env.USERNAME || void 0))
-    return Array.from(result)
-  }
-  return isLinux() ? ['/media', '/usr', '/home'] : isOSX() ? ['/Users', '/Applications'] : [getRootDir()]
-}
+  'print-scan-errors': {
+    description: [
+      'Whether to print errors when scans of files or directories fail.',
+      'Reasons could be permission denied or other errors.',
+      'This is disabled by default because it can be noisy.',
+    ].join(' '),
+    default: false,
+    parse: parseBoolean,
+    validate: validateBoolean,
+  },
+
+  'print-scan-ignored': {
+    description: [
+      'Whether to print when files or directories are skipped during scan.',
+      'The user config controls what to ignore/skip.',
+    ].join(' '),
+    default: false,
+    parse: parseBoolean,
+    validate: validateBoolean,
+  },
+
+  'max-results': {
+    description: ['The maximum number of search results to display. Set to zero to disable.'].join(' '),
+    default: 25,
+    parse: parseInteger,
+    validate: validateInteger,
+  },
+})
