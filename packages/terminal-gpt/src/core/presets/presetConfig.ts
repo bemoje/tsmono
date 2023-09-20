@@ -15,6 +15,11 @@ import {
 import { getOS, openInDefaultBrowserCommand } from '@bemoje/util'
 import { IGptPreset } from '../types/IGptPreset'
 
+const seniorDeveloperRole = [
+  'You are a senior developer employed in a software company.',
+  'Your task is to help me with my code.',
+]
+
 const improveResponse = [
   'Can you take a look at the provided instructions again?',
   'Go step-by-step through each one and verify that your previous response did in fact follow each instruction.',
@@ -27,11 +32,6 @@ const improveResponseNoInstructions = [
   'Please go step-by-step through your thinking of your previous response and consider whether you answered my question in full and truthfully. If not, please send a revised response.',
   'Your response should be just the revised response and nothing else.',
 ].join('\n')
-
-const seniorDeveloperRole = [
-  'You are a senior developer employed in a software company.',
-  'Your task is to help me with my code.',
-]
 
 const refactorInstructions = [
   ...seniorDeveloperRole,

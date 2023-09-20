@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/terminal-gpt",
-  "version": "0.2.40",
+  "version": "0.2.41",
   "description": "GPT in the terminal",
   "main": "index.cjs.js",
   "module": "index.esm.js",

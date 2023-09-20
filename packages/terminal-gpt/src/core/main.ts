@@ -6,6 +6,9 @@ import { removePreset } from './actions/removePreset'
 import { config } from './config'
 import { presets } from './presets/presets'
 
+/**
+ * Runs the program
+ */
 export function main() {
   // initialize the command-line interface and handles command execution.
   const program = new Command().name('gpt').version('0.0.0')
