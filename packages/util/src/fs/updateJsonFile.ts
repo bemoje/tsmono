@@ -1,7 +1,6 @@
 import { readFile } from 'fs/promises'
 import { getJsonIndentation } from './getJsonIndentation'
 import { writeJsonFile } from './writeJsonFile'
-import { writePrettyJsonFile } from './writePrettyJsonFile'
 
 /**
  * Updates a JSON file asynchronously based on a provided update function.
@@ -34,10 +33,5 @@ export async function updateJsonFile(
   }
   const result: Record<string, unknown> = await update(JSON.parse(json))
   if (!result) return
-  const indents = getJsonIndentation(json)
-  if (indents) {
-    await writePrettyJsonFile(filepath, result, indents)
-  } else {
-    await writeJsonFile(filepath, result)
-  }
+  await writeJsonFile(filepath, result, getJsonIndentation(json))
 }

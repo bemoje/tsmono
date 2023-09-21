@@ -1,5 +1,4 @@
 import { JsonReplacerReviver } from './types/JsonReplacerReviver'
-import { writeFileSync } from './writeFileSync'
 
 /**
  * Writes data to a JSON file synchronously with pretty formatting.
@@ -14,5 +13,5 @@ export function writePrettyJsonFileSync<T>(
   indents = 2,
   replacer?: JsonReplacerReviver
 ): void {
-  writeFileSync(filepath, JSON.stringify(data, replacer, indents))
+  writePrettyJsonFileSync(filepath, data, indents, replacer)
 }

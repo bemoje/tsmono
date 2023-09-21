@@ -1,5 +1,5 @@
 import { JsonReplacerReviver } from './types/JsonReplacerReviver'
-import { writeFile } from './writeFile'
+import { writeJsonFile } from './writeJsonFile'
 
 /**
  * Writes data to a JSON file asynchronously with pretty formatting.
@@ -15,5 +15,5 @@ export async function writePrettyJsonFile<T>(
   indents = 2,
   replacer?: JsonReplacerReviver
 ): Promise<void> {
-  await writeFile(filepath, JSON.stringify(data, replacer, indents))
+  await writeJsonFile(filepath, data, indents, replacer)
 }

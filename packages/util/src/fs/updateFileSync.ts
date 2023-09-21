@@ -1,4 +1,5 @@
-import fs from 'fs'
+import { readFileSync } from './readFileSync'
+import { writeFileSync } from './writeFileSync'
 
 /**
  * Updates a text file synchronously based on a provided update function.
@@ -16,12 +17,12 @@ import fs from 'fs'
 export function updateFileSync(filepath: string, update: (src: string) => string, defaultContent?: string): void {
   let src: string
   try {
-    src = fs.readFileSync(filepath, 'utf8')
+    src = readFileSync(filepath)
   } catch (error) {
     if (!defaultContent) throw error
     src = defaultContent
   }
-  const result: string = update(src)
-  if (!result) return
-  fs.writeFileSync(filepath, result, 'utf8')
+  const retval = update(src)
+  if (!retval) return
+  writeFileSync(filepath, retval)
 }

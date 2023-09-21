@@ -1,4 +1,5 @@
-import { readFile, writeFile } from 'fs/promises'
+import { readFile } from './readFile'
+import { writeFile } from './writeFile'
 
 /**
  * Updates a text file asynchronously based on a provided update function.
@@ -22,12 +23,12 @@ export async function updateFileSafe(
 ): Promise<void> {
   let src: string
   try {
-    src = await readFile(filepath, 'utf8')
+    src = await readFile(filepath)
   } catch (error) {
     if (!defaultContent) return
     src = defaultContent
   }
-  const result: string = await update(src)
-  if (!result) return
-  await writeFile(filepath, result, 'utf8')
+  const retval = await update(src)
+  if (!retval) return
+  await writeFile(filepath, retval)
 }
