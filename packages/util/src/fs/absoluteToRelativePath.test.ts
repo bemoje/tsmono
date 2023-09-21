@@ -8,4 +8,11 @@ describe('absoluteToRelativePath', () => {
     const result = absoluteToRelativePath(filepath)
     expect(result).toEqual(expected)
   })
+
+  it('should return static reference when input is already root of cwd', () => {
+    const filepath = process.cwd()
+    const expected = './'
+    const result = absoluteToRelativePath(filepath)
+    expect(result).toEqual(expected)
+  })
 })

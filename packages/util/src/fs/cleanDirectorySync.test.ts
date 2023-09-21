@@ -6,7 +6,7 @@ import { cleanDirectorySync } from './cleanDirectorySync'
 jest.mock('fs', () => ({
   readdirSync: jest.fn(),
   statSync: jest.fn(),
-  unlinkSync: jest.fn(),
+  rmSync: jest.fn(),
 }))
 
 describe(cleanDirectorySync.name, () => {
@@ -32,8 +32,8 @@ describe(cleanDirectorySync.name, () => {
     // Call the function
     cleanDirectorySync('path/to/directory', mockPredicate)
 
-    // Verify that fs.unlinkSync was called only for file2.txt
-    expect((fs.unlinkSync as jest.Mock).mock.calls).toEqual([[path.join('path/to/directory', 'file2.txt')]])
+    // Verify that fs.rmSync was called only for file2.txt
+    expect((fs.rmSync as jest.Mock).mock.calls).toEqual([[path.join('path/to/directory', 'file2.txt')]])
   })
 
   it('should not remove any files if the predicate returns false for all files', () => {
@@ -51,7 +51,7 @@ describe(cleanDirectorySync.name, () => {
     // Call the function
     cleanDirectorySync('path/to/directory', mockPredicate)
 
-    // Verify that fs.unlinkSync was not called
-    expect((fs.unlinkSync as jest.Mock).mock.calls).toEqual([])
+    // Verify that fs.rmSync was not called
+    expect((fs.rmSync as jest.Mock).mock.calls).toEqual([])
   })
 })

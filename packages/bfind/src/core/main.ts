@@ -21,3 +21,17 @@ export function main() {
   config.initialize(program)
   program.parse()
 }
+
+/*
+const subprocess = spawn(
+  'node',
+  ['--max-old-space-size=4096', 'C:/Users/bemoj/AppData/Roaming/npm/node_modules/@bemoje/bfind/bin/index.js', 'index'],
+  {
+    // const subprocess = spawn('bfind.cmd', ['i'], {
+    detached: true,
+    stdio: 'ignore',
+  }
+)
+
+subprocess.unref()
+*/

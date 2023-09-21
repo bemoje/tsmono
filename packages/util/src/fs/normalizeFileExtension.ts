@@ -20,11 +20,9 @@
  * ```
  */
 export function normalizeFileExtension(ext: string): string {
+  if (!ext) return ext
+  if (/[<>"|?*:]/.test(ext) || ext === '.') throw new Error(`Illegal characters in file extension: ${ext}`)
   ext = ext.toLowerCase()
-  if (ext === '' || ext === '.') return ''
-  if (/[<>"|?*:]/g.test(ext)) {
-    throw new Error(`Illegal characters in file extension: ${ext}  |  Illegal characters are: <>"|?:*`)
-  }
-  if (!ext.includes('.')) return '.' + ext
+  if (!ext.startsWith('.')) ext = '.' + ext
   return ext.substring(ext.lastIndexOf('.'))
 }

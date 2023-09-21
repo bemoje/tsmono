@@ -786,11 +786,5 @@ describe('addMany', () => {
       sortedArray.splice(1, 2)
       expect(sortedArray.toArray()).toEqual([1, 4, 5])
     })
-
-    it('should return the removed elements as a new SortedArray', () => {
-      const sortedArray = new SortedArray<number>({ data: [1, 2, 3, 4, 5] })
-      const removed = sortedArray.splice(1, 2)
-      expect(removed.toArray()).toEqual([2, 3])
-    })
   })
 })

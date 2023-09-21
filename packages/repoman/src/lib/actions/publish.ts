@@ -1,5 +1,5 @@
 /* eslint-disable no-useless-escape */
-import { colors, execute, updateFileSafeSync, updateFileSync, writeJsonFileSync } from '@bemoje/util'
+import { colors, execute, updateFileSafeSync, updateFileSync, writePrettyJsonFileSync } from '@bemoje/util'
 import path from 'path'
 import { PackageHashes } from '../util/PackageHashes'
 import { allPackageNames } from '../util/allPackageNames'
@@ -32,7 +32,7 @@ export function publish(level: string, packages?: string[], options: { ignoreHas
     console.log(gray('  - ' + 'Bump semver version'))
     const original = String(pkg.version)
     pkg.version = semverVersionBump(original, level as 'major' | 'minor' | 'patch')
-    writeJsonFileSync(pkgpath, pkg, true, 2)
+    writePrettyJsonFileSync(pkgpath, pkg)
 
     console.log(gray('    - ' + 'Update package.json version in dist directory.'))
     updateFileSync(
@@ -65,7 +65,7 @@ export function publish(level: string, packages?: string[], options: { ignoreHas
     } catch (error) {
       console.error('    - ' + red('Could not publish ' + name + '. Reverting version to ' + original + '.'))
       pkg.version = original
-      writeJsonFileSync(pkgpath, pkg, true, 2)
+      writePrettyJsonFileSync(pkgpath, pkg)
       return
     }
 

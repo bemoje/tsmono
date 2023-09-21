@@ -56,7 +56,7 @@ export class SortedArray<T> extends Array {
    * @param element - The element to add.
    * @returns The sorted array instance.
    */
-  public add(element: T): SortedArray<T> {
+  public add(element: T): this {
     if (this.length === 0) {
       super.push(element)
       return this
@@ -72,7 +72,7 @@ export class SortedArray<T> extends Array {
    * @param elements - The elements to add.
    * @returns The sorted array instance.
    */
-  public addMany(...elements: T[]): SortedArray<T> {
+  public addMany(...elements: T[]): this {
     if (elements.length === 0) return this
     for (const e of elements) {
       this.add(e)
@@ -84,7 +84,7 @@ export class SortedArray<T> extends Array {
    * Remove all duplicate elements in the sorted array, leaving only unique values. Equality is determined by the compare function.
    * @returns The sorted array instance.
    */
-  public unique(): SortedArray<T> {
+  public unique(): this {
     let len = this.length
     if (len <= 1) return this
     for (let prev, curr, i = 1; i < len; i++) {
@@ -274,7 +274,7 @@ export class SortedArray<T> extends Array {
    * @param deleteCount - The number of elements to remove from the array.
    * @returns A new SortedArray instance containing the removed elements.
    */
-  override splice(start: number, deleteCount?: number): SortedArray<T> {
-    return super.splice(start, deleteCount) as SortedArray<T>
+  override splice(start: number, deleteCount?: number): Array<T> {
+    return super.splice(start, deleteCount)
   }
 }

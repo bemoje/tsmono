@@ -1,5 +1,5 @@
 import { TrieMap } from '@bemoje/trie-map'
-import { createDirectory, deleteDirectorySafe } from '@bemoje/util'
+import { createDirectory, deleteFsoSafe } from '@bemoje/util'
 import fsp from 'fs/promises'
 import path from 'path'
 import { FILE_LIST_FILEPATH } from '../../constants/FILE_LIST_FILEPATH'
@@ -8,7 +8,7 @@ import { WORD_TRIE_DIRPATH } from '../../constants/WORD_TRIE_DIRPATH'
 
 export async function saveIndex(FILEPATHS: string[], TRIE: TrieMap<Set<number>>): Promise<void> {
   await createDirectory(INDEX_DATA_DIRPATH)
-  await deleteDirectorySafe(WORD_TRIE_DIRPATH)
+  await deleteFsoSafe(WORD_TRIE_DIRPATH)
   await createDirectory(WORD_TRIE_DIRPATH)
   for (const [key, value] of Object.entries(TRIE.root)) {
     await fsp.writeFile(

@@ -19,6 +19,6 @@ export function cleanDirectorySync(dirpath: string, predicate: (filepath: string
   for (const filename of fs.readdirSync(dirpath)) {
     const filepath = path.join(dirpath, filename)
     const stat = fs.statSync(filepath)
-    if (predicate(filepath, stat)) fs.unlinkSync(filepath)
+    if (predicate(filepath, stat)) fs.rmSync(filepath)
   }
 }
