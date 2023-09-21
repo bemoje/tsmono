@@ -1,4 +1,5 @@
 import fsp from 'fs/promises'
+import path from 'path'
 import { createDirectory } from './createDirectory'
 
 /**
@@ -10,6 +11,6 @@ import { createDirectory } from './createDirectory'
  * @returns A promise that resolves when the file has been written.
  */
 export async function writeFileSafe(filepath: string, data: string, encoding: BufferEncoding = 'utf8'): Promise<void> {
-  await createDirectory(filepath)
+  await createDirectory(path.dirname(filepath))
   await fsp.writeFile(filepath, data, encoding)
 }

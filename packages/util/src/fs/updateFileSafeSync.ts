@@ -1,5 +1,5 @@
 import { readFileSync } from './readFileSync'
-import { writeFileSync } from './writeFileSync'
+import { writeFileSafeSync } from './writeFileSafeSync'
 
 /**
  * Updates a text file synchronously based on a provided update function.
@@ -26,5 +26,5 @@ export function updateFileSafeSync(filepath: string, update: (src: string) => st
   }
   const retval = update(src)
   if (!retval) return
-  writeFileSync(filepath, retval)
+  writeFileSafeSync(filepath, retval)
 }

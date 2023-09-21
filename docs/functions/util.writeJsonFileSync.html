@@ -18,7 +18,7 @@
 <h1>Function writeJsonFileSync</h1></div>
 <section class="tsd-panel">
 <ul class="tsd-signatures">
-<li class="tsd-signature tsd-anchor-link" id="writeJsonFileSync"><span class="tsd-kind-call-signature">write<wbr/>Json<wbr/>File<wbr/>Sync</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type tsd-kind-type-parameter">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">filepath</span>, <span class="tsd-kind-parameter">data</span>, <span class="tsd-kind-parameter">replacer</span><span class="tsd-signature-symbol">?</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#writeJsonFileSync" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></li>
+<li class="tsd-signature tsd-anchor-link" id="writeJsonFileSync"><span class="tsd-kind-call-signature">write<wbr/>Json<wbr/>File<wbr/>Sync</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type tsd-kind-type-parameter">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">filepath</span>, <span class="tsd-kind-parameter">data</span>, <span class="tsd-kind-parameter">indents</span><span class="tsd-signature-symbol">?</span>, <span class="tsd-kind-parameter">replacer</span><span class="tsd-signature-symbol">?</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#writeJsonFileSync" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Writes data to a JSON file synchronously.</p>
 </div>
@@ -41,6 +41,8 @@
 </div>
 <div class="tsd-comment tsd-typography"></div></li>
 <li>
+<h5><code class="tsd-tag ts-flagOptional">Optional</code> <span class="tsd-kind-parameter">indents</span>: <span class="tsd-signature-type">number</span></h5></li>
+<li>
 <h5><code class="tsd-tag ts-flagOptional">Optional</code> <span class="tsd-kind-parameter">replacer</span>: <a href="../types/util.JsonReplacerReviver.html" class="tsd-signature-type tsd-kind-type-alias">JsonReplacerReviver</a></h5>
 <div class="tsd-comment tsd-typography"><p>A function that alters the behavior of the stringification process.</p>
 </div>
@@ -48,7 +50,7 @@
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/bemoje/tsmono/blob/4350097e/packages/util/src/fs/writeJsonFileSync.ts#L11">packages/util/src/fs/writeJsonFileSync.ts:11</a></li></ul></aside></li></ul></section></div>
+<li>Defined in <a href="https://github.com/bemoje/tsmono/blob/1bcff7c9/packages/util/src/fs/writeJsonFileSync.ts#L11">packages/util/src/fs/writeJsonFileSync.ts:11</a></li></ul></aside></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -397,7 +399,6 @@
 <li><a href="util.readJsonFileSafe.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>read<wbr/>Json<wbr/>File<wbr/>Safe</span></a></li>
 <li><a href="util.readJsonFileSafeSync.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>read<wbr/>Json<wbr/>File<wbr/>Safe<wbr/>Sync</span></a></li>
 <li><a href="util.readJsonFileSync.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>read<wbr/>Json<wbr/>File<wbr/>Sync</span></a></li>
-<li><a href="util.readPackageJson.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>read<wbr/>Package<wbr/>Json</span></a></li>
 <li><a href="util.readdirNames.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>readdir<wbr/>Names</span></a></li>
 <li><a href="util.readdirNamesSync.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>readdir<wbr/>Names<wbr/>Sync</span></a></li>
 <li><a href="util.readdirPaths.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>readdir<wbr/>Paths</span></a></li>

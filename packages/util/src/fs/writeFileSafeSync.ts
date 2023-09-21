@@ -1,4 +1,5 @@
 import fs from 'fs'
+import path from 'path'
 import { createDirectorySync } from './createDirectorySync'
 
 /**
@@ -9,6 +10,6 @@ import { createDirectorySync } from './createDirectorySync'
  * @param encoding - The encoding to use when writing the file.
  */
 export function writeFileSafeSync(filepath: string, data: string, encoding: BufferEncoding = 'utf8'): void {
-  createDirectorySync(filepath)
+  createDirectorySync(path.dirname(filepath))
   fs.writeFileSync(filepath, data, encoding)
 }
