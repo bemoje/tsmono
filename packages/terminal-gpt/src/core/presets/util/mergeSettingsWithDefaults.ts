@@ -6,7 +6,7 @@ import type { IGptPreset } from '../../types/IGptPreset'
  * @param presetName - The name of the preset.
  */
 export function mergeSettingsWithDefaults(presetName: string): IGptPreset {
-  const cfg = config.appdata.user
+  const cfg = config.data.user
   const res: IGptPreset = cfg.get('presets')[presetName] || cfg.get('presets_examples')[presetName]
   const isDef = <T>(value: T | undefined): value is T => value !== undefined
   if (!isDef(res.temperature)) res.temperature = cfg.get('default_temperature')

@@ -10,9 +10,9 @@ import { writeJsonFileSync } from './writeJsonFileSync'
  *
  * @param filepath - The path to the JSON file to update.
  * @param update - The function to update the JSON object. Takes the current JSON object as a parameter and should return the updated JSON object.
- * @throws If the file cannot be read or written to.
- * @example
- * ```ts
+ * @param defaultJson - The default JSON string to use if the file cannot be read.
+ * @throws if defaultJson is not provded and the file cannot be read.
+ * @example ```ts
  * updateJsonFileSync('./package.json', (json) => {
  *   json.version = '1.0.1';
  *   return json;
@@ -33,6 +33,5 @@ export function updateJsonFileSync(
   }
   const result: Record<string, unknown> = update(JSON.parse(json))
   if (!result) return
-  const indents = getJsonIndentation(json)
-  writeJsonFileSync(filepath, result, !!indents, indents)
+  writeJsonFileSync(filepath, result, getJsonIndentation(json))
 }

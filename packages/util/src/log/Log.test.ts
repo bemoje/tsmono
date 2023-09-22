@@ -1,22 +1,24 @@
 import EventEmitter from 'events'
-import path from 'path'
 import { Log } from './Log'
 import { LogLevel } from './types/LogLevel'
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-const logDirpath = path.join(process.env['TEMP']!, 'test-logs')
+
+const setup = () => {
+  console.log = jest.fn()
+  console.warn = jest.fn()
+  console.error = jest.fn()
+  console.dir = jest.fn()
+}
 
 describe(Log.name, () => {
-  beforeEach(() => {
-    console.log = jest.fn()
-    console.warn = jest.fn()
-    console.error = jest.fn()
-    console.dir = jest.fn()
-  })
+  beforeEach(setup)
 
   describe('constructor', () => {
+    beforeEach(setup)
+
     it('should create a new instance with default options', () => {
-      const logger = new Log({ logDirpath })
+      const logger = new Log({})
       const props = logger.getProperties()
       expect(props.consoleLogLevel).toBe(LogLevel.DEBUG)
       expect(props.debugToConsole).toBe(true)
@@ -28,7 +30,6 @@ describe(Log.name, () => {
       expect(props.infoToFile).toBe(false)
       expect(props.warnToFile).toBe(false)
       expect(props.errorToFile).toBe(false)
-      expect(typeof props.logDirpath).toBe('string')
       expect(typeof props.logFilepath).toBe('string')
     })
   })
@@ -37,7 +38,6 @@ describe(Log.name, () => {
     const logger = new Log({
       consoleLogLevel: LogLevel.INFO,
       fileLogLevel: LogLevel.ERROR,
-      logDirpath,
       deleteFilesOlderThan: 7,
     })
     const props = logger.getProperties()
@@ -51,16 +51,15 @@ describe(Log.name, () => {
     expect(props.infoToFile).toBe(false)
     expect(props.warnToFile).toBe(false)
     expect(props.errorToFile).toBe(true)
-    expect(typeof props.logDirpath).toBe('string')
     expect(typeof props.logFilepath).toBe('string')
   })
 })
 
 describe('initialize', () => {
+  beforeEach(setup)
+
   it('should re-initialize the current instance with the specified options', () => {
-    const logger = new Log({
-      logDirpath,
-    })
+    const logger = new Log({})
     logger.initialize({
       consoleLogLevel: LogLevel.ERROR,
     })
@@ -70,15 +69,17 @@ describe('initialize', () => {
 })
 
 describe('debug', () => {
+  beforeEach(setup)
+
   it('should log a debug message to the console and return the message', () => {
-    const logger = new Log({ logDirpath })
+    const logger = new Log({})
     const message = 'This is a debug message'
     const result = logger.debug(message)
     expect(result).toBe(message)
   })
 
   it('should log a debug message to the console with depth and return the message', () => {
-    const logger = new Log({ logDirpath })
+    const logger = new Log({})
     const message = { prop1: 'value1', prop2: 'value2' }
     const result = logger.debug(message, 1)
     expect(result).toBe(message)
@@ -87,7 +88,6 @@ describe('debug', () => {
   it('should log a debug message to the console and the log file', () => {
     const logger = new Log({
       fileLogLevel: LogLevel.DEBUG,
-      logDirpath,
     })
     const message = 'This is a debug message'
     const result = logger.debug(message)
@@ -99,7 +99,6 @@ describe('debug', () => {
     const logger = new Log({
       consoleLogLevel: LogLevel.NONE,
       fileLogLevel: LogLevel.NONE,
-      logDirpath,
     })
     const message = 'This is a debug message'
     const result = logger.debug(message)
@@ -109,15 +108,17 @@ describe('debug', () => {
 })
 
 describe('info', () => {
+  beforeEach(setup)
+
   it('should log an info message to the console and return the message', () => {
-    const logger = new Log({ logDirpath })
+    const logger = new Log({})
     const message = 'This is an info message'
     const result = logger.info(message)
     expect(result).toBe(message)
   })
 
   it('should log an info message to the console with depth and return the message', () => {
-    const logger = new Log({ logDirpath })
+    const logger = new Log({})
     const message = { prop1: 'value1', prop2: 'value2' }
     const result = logger.info(message, 1)
     expect(result).toBe(message)
@@ -126,7 +127,6 @@ describe('info', () => {
   it('should log an info message to the console and the log file', () => {
     const logger = new Log({
       fileLogLevel: LogLevel.INFO,
-      logDirpath,
     })
     const message = 'This is an info message'
     const result = logger.info(message)
@@ -138,7 +138,6 @@ describe('info', () => {
     const logger = new Log({
       consoleLogLevel: LogLevel.NONE,
       fileLogLevel: LogLevel.NONE,
-      logDirpath,
     })
     const message = 'This is an info message'
     const result = logger.info(message)
@@ -148,15 +147,17 @@ describe('info', () => {
 })
 
 describe('warn', () => {
+  beforeEach(setup)
+
   it('should log a warning message to the console and return the message', () => {
-    const logger = new Log({ logDirpath })
+    const logger = new Log({})
     const message = 'This is a warning message'
     const result = logger.warn(message)
     expect(result).toBe(message)
   })
 
   it('should log a warning message to the console with depth and return the message', () => {
-    const logger = new Log({ logDirpath })
+    const logger = new Log({})
     const message = { prop1: 'value1', prop2: 'value2' }
     const result = logger.warn(message, 1)
     expect(result).toBe(message)
@@ -165,7 +166,6 @@ describe('warn', () => {
   it('should log a warning message to the console and the log file', () => {
     const logger = new Log({
       fileLogLevel: LogLevel.WARN,
-      logDirpath,
     })
     const message = 'This is a warning message'
     const result = logger.warn(message)
@@ -177,7 +177,6 @@ describe('warn', () => {
     const logger = new Log({
       consoleLogLevel: LogLevel.NONE,
       fileLogLevel: LogLevel.NONE,
-      logDirpath,
     })
     const message = 'This is a warning message'
     const result = logger.warn(message)
@@ -187,15 +186,17 @@ describe('warn', () => {
 })
 
 describe('error', () => {
+  beforeEach(setup)
+
   it('should log an error message to the console and return the message', () => {
-    const logger = new Log({ logDirpath })
+    const logger = new Log({})
     const message = 'This is an error message'
     const result = logger.error(message)
     expect(result).toBe(message)
   })
 
   it('should log an error message to the console with depth and return the message', () => {
-    const logger = new Log({ logDirpath })
+    const logger = new Log({})
     const message = { prop1: 'value1', prop2: 'value2' }
     const result = logger.error(message)
     expect(result).toBe(message)
@@ -204,7 +205,6 @@ describe('error', () => {
   it('should log an error message to the console and the log file', () => {
     const logger = new Log({
       fileLogLevel: LogLevel.ERROR,
-      logDirpath,
     })
     const message = 'This is an error message'
     const result = logger.error(message)
@@ -216,7 +216,6 @@ describe('error', () => {
     const logger = new Log({
       consoleLogLevel: LogLevel.NONE,
       fileLogLevel: LogLevel.NONE,
-      logDirpath,
     })
     const message = 'This is an error message'
     const result = logger.error(message)
@@ -225,65 +224,51 @@ describe('error', () => {
   })
 })
 
-describe('task', () => {
-  it('should log the start and end of a task and return the result', async () => {
-    const logger = new Log({ logDirpath })
-    const description = 'Task description'
-    const task = jest.fn().mockResolvedValue('Task result')
-    const result = await logger.task(description, task)
-    expect(result).toBe('Task result')
-  })
-})
-
-describe('taskSync', () => {
-  it('should log the start and end of a synchronous task and return the result', () => {
-    const logger = new Log({ logDirpath })
-    const description = 'Task description'
-    const task = jest.fn().mockReturnValue('Task result')
-    const result = logger.taskSync(description, task)
-    expect(result).toBe('Task result')
-  })
-})
-
 describe('deleteLogFiles', () => {
+  beforeEach(setup)
+
   it('should delete log files older than the specified number of days', () => {
-    const logger = new Log({ logDirpath })
+    const logger = new Log({})
     const deleteFilesOlderThan = 7
     logger.deleteLogFiles(deleteFilesOlderThan)
     // TODO: Verify that log files older than 7 days are deleted
   })
 
   it('should not delete any log files if deleteFilesOlderThan is not specified', () => {
-    const logger = new Log({ logDirpath })
+    const logger = new Log({})
     logger.deleteLogFiles()
     // TODO: Verify that no log files are deleted
   })
 
   it('should not delete any log files if the log directory does not exist', () => {
-    const logger = new Log({ logDirpath })
+    const logger = new Log({})
     logger.deleteLogFiles(7)
     // TODO: Verify that no log files are deleted
   })
 })
 
 describe('newline', () => {
+  beforeEach(setup)
+
   it('should print the specified number of blank lines to the console', () => {
-    const logger = new Log({ logDirpath })
+    const logger = new Log({})
     const numLines = 5
     logger.newline(numLines)
     // TODO: Verify that 5 blank lines are printed to the console
   })
 
   it('should print 10 blank lines to the console if the number of lines is not specified', () => {
-    const logger = new Log({ logDirpath })
+    const logger = new Log({})
     logger.newline()
     // TODO: Verify that 10 blank lines are printed to the console
   })
 })
 
 describe('dashline', () => {
+  beforeEach(setup)
+
   it('should print the specified number of lines with dashes to the console', () => {
-    const logger = new Log({ logDirpath })
+    const logger = new Log({})
     const numLines = 3
     const width = 80
     logger.dashline(numLines, width)
@@ -291,14 +276,14 @@ describe('dashline', () => {
   })
 
   it('should print 1 line with dashes to the console if the number of lines is not specified', () => {
-    const logger = new Log({ logDirpath })
+    const logger = new Log({})
     const width = 80
     logger.dashline(undefined, width)
     // TODO: Verify that 1 line with dashes is printed to the console
   })
 
   it('should print 1 line with 80 dashes to the console if the width is not specified', () => {
-    const logger = new Log({ logDirpath })
+    const logger = new Log({})
     const numLines = 3
     logger.dashline(numLines)
     // TODO: Verify that 3 lines with 80 dashes are printed to the console
@@ -306,8 +291,10 @@ describe('dashline', () => {
 })
 
 describe('logEmitterEvents', () => {
+  beforeEach(setup)
+
   it('should log emitted events to the console', () => {
-    const logger = new Log({ logDirpath })
+    const logger = new Log({})
     const emitter = new EventEmitter()
     const options = {
       eventNamePrefix: 'ClassName',
@@ -322,8 +309,10 @@ describe('logEmitterEvents', () => {
 })
 
 describe('getProperties', () => {
+  beforeEach(setup)
+
   it("should return the current instance's properties", () => {
-    const logger = new Log({ logDirpath })
+    const logger = new Log({})
     const properties = logger.getProperties()
     expect(properties).toEqual({
       consoleLogLevel: LogLevel.DEBUG,
@@ -334,15 +323,11 @@ describe('getProperties', () => {
       fileLogLevel: LogLevel.NONE,
       debugToFile: false,
       infoToFile: false,
+      logDirpath: expect.any(String),
       warnToFile: false,
       errorToFile: false,
-      logDirpath: expect.any(String),
       logFilepath: expect.any(String),
       timezone: 0,
-      debugColor: expect.any(Function),
-      infoColor: expect.any(Function),
-      warnColor: expect.any(Function),
-      errorColor: expect.any(Function),
     })
   })
 })

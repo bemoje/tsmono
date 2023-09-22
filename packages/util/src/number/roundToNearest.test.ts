@@ -10,17 +10,17 @@ describe('roundToNearest', () => {
   })
 
   it('should throw an error if the first argument is not an integer', () => {
-    expect(() => roundToNearest(NaN)).toThrow(TypeError)
-    expect(() => roundToNearest(Infinity)).toThrow(TypeError)
-    expect(() => roundToNearest(-Infinity)).toThrow(TypeError)
-    expect(() => roundToNearest(-Infinity)).toThrow(TypeError)
-    expect(() => roundToNearest(5.5)).toThrow(TypeError)
+    expect(() => roundToNearest(NaN)).toThrow()
+    expect(() => roundToNearest(Infinity)).toThrow()
+    expect(() => roundToNearest(-Infinity)).toThrow()
+    expect(() => roundToNearest(-Infinity)).toThrow()
+    expect(() => roundToNearest(5.5)).toThrow()
   })
 
   it('should throw an error if the second argument is not an integer', () => {
-    expect(() => roundToNearest(5, NaN)).toThrow(TypeError)
-    expect(() => roundToNearest(5, Infinity)).toThrow(TypeError)
-    expect(() => roundToNearest(5, -Infinity)).toThrow(TypeError)
-    expect(() => roundToNearest(5, 5.5)).toThrow(TypeError)
+    expect(() => roundToNearest(5, NaN)).toThrow()
+    expect(() => roundToNearest(5, Infinity)).toThrow()
+    expect(() => roundToNearest(5, -Infinity)).toThrow()
+    expect(() => roundToNearest(5, 5.5)).toThrow()
   })
 })

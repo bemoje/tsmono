@@ -10,7 +10,7 @@ export function appendSystemMessage(settings: IGptPreset) {
   if (settings.markdownOutput) {
     systemMessage.push('')
     systemMessage.push(
-      'Your response should be a well formatted markdown document. If you are responding with a lot of data, please set it up nicely in markdown tables.'
+      'Your response should be a well formatted markdown document. All code must be wrapped in markdown code blocks.'
     )
   }
   return systemMessage

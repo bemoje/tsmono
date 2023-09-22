@@ -109,10 +109,11 @@
     "open-repo": {
       "tags": [],
       "implicitDependencies": [
-        "commander-config"
+        "commander-config",
+        "util"
       ],
       "npmScope": "bemoje",
-      "projectType": "library"
+      "projectType": "application"
     },
     "openai-api-client": {
       "tags": [],
@@ -210,11 +211,14 @@
     "repoman": {
       "tags": [],
       "implicitDependencies": [
+        "commander-config",
+        "fswalk",
+        "trie-map",
         "tscode",
         "util"
       ],
       "npmScope": "bemoje",
-      "projectType": "library"
+      "projectType": "application"
     }
   },
   "$schema": "./node_modules/nx/schemas/nx-schema.json",

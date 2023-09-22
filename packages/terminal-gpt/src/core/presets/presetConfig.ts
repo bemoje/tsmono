@@ -1,6 +1,7 @@
 import {
   parseBoolean,
   parseInteger,
+  parseJsonArray,
   parseJsonObject,
   parseNumber,
   parseString,
@@ -11,8 +12,13 @@ import {
   validateStringArray,
   validateStringType,
 } from '@bemoje/commander-config'
-import { getOS, isLinuxProgramInstalled } from '@bemoje/util'
+import { getOS, openInDefaultBrowserCommand } from '@bemoje/util'
 import { IGptPreset } from '../types/IGptPreset'
+
+const seniorDeveloperRole = [
+  'You are a senior developer employed in a software company.',
+  'Your task is to help me with my code.',
+]
 
 const improveResponse = [
   'Can you take a look at the provided instructions again?',
@@ -26,11 +32,6 @@ const improveResponseNoInstructions = [
   'Please go step-by-step through your thinking of your previous response and consider whether you answered my question in full and truthfully. If not, please send a revised response.',
   'Your response should be just the revised response and nothing else.',
 ].join('\n')
-
-const seniorDeveloperRole = [
-  'You are a senior developer employed in a software company.',
-  'Your task is to help me with my code.',
-]
 
 const refactorInstructions = [
   ...seniorDeveloperRole,
@@ -50,6 +51,19 @@ const npmPackageInstructions = [
   '- Describe in one sentence how the package solves the problem.',
   '- Provide a link to the package on NPM.',
   '- Provide a TypeScript code example of how to use the package.',
+]
+
+const ubuntuSoftwareInstructions = [
+  'You are a Linux kernel software developer who known everything about Linux and especially the Ubuntu distribution.',
+  '',
+  'You will be provided with a problem, feature or need of mine. For this I am hoping to discover the most suitable software package on the ´Snap´ or ´apt´ package managers for the given purpose or problem.',
+  '',
+  'Your task is to recommend the three best packages. It is important that the recommended software is also safe and trusted by others.',
+  '',
+  'For each recommended package:',
+  '- Describe in one sentence how the package fulfils my need.',
+  '- Provide a link to the package where I can ind more information, if possible.',
+  '- Provide a terminal command for performing a silent unattended installation of the package.',
 ]
 
 const tsInstructions = [
@@ -79,6 +93,14 @@ const javaInstructions = [
   '  - Maven',
   '',
   'When your response is code or a step by step guide, do not explain too much, just provide the code or steps.',
+]
+
+const ubuntuInstructions = [
+  'You are a Linux kernel software developer who known everything about Linux and especially the Ubuntu distribution.',
+  '',
+  'Your task is to help me with my problems and questions related to Ubuntu running in Oracle VirtualBox.',
+  '',
+  'When your response is bash commands, code or a step by step guide, do not explain too much, just provide the code or steps and not so much explanation.',
 ]
 
 const typedocInstructionsFunction = [
@@ -132,6 +154,13 @@ export const presetDefaults = {
     validate: validateBoolean,
   },
 
+  default_systemMessage: {
+    description: 'The system message to instruct ChatGPT prior to the first prompt.',
+    default: [],
+    parse: parseJsonArray,
+    validate: validateStringArray,
+  },
+
   default_temperature: {
     description: 'The temperature setting to use when using the OpenAI API.',
     default: 0.5,
@@ -156,20 +185,13 @@ export const presetDefaults = {
   default_openResponseIn: {
     description:
       'Application launch command for the program to open the returned response in. Enter "none" to disable. If your browser cannot render markdown, you can install one of the many Markdown Viewer extensions. For Google Chrome, I can recommend "Markdown Viewer" (https://chrome.google.com/webstore/detail/markdown-viewer/ckkdlimhmcjmikdlpkmbgfkaikojcbjk). In the extension options, enable the "allow access to file URLs"-option and you are all set.',
-    default:
-      getOS() === 'windows'
-        ? 'start msedge'
-        : getOS() === 'osx'
-        ? 'open -a "Safari"'
-        : isLinuxProgramInstalled('google-chrome')
-        ? 'google-chrome'
-        : 'firefox',
+    default: openInDefaultBrowserCommand,
     parse: parseString,
     validate: validateString,
   },
 
   default_maxExpectedResponseTokens: {
-    description: 'The expected size of responses in tokens. One token is approximately equivalent to one character.',
+    description: 'The expected size of responses in tokens. One token is approximately equivalent to 1 character.',
     default: 2500,
     parse: parseInteger,
     validate: validateInteger,
@@ -232,7 +254,7 @@ const presetExamples = {
 
   refactor: {
     description: 'Refactor code.',
-    temperature: 0,
+    temperature: 0.1,
     systemMessage: refactorInstructions,
     maxExpectedResponseTokens: 0,
     inputTokensResponseTokensScalar: 1.5,
@@ -242,6 +264,19 @@ const presetExamples = {
     description: 'Get help with Java code.',
     temperature: 0.3,
     systemMessage: javaInstructions,
+  },
+
+  ub: {
+    description: 'Get help with Ubuntu, the Linux OS distribution.',
+    temperature: 0.2,
+    systemMessage: ubuntuInstructions,
+    markdownOutput: true,
+  },
+
+  ubsw: {
+    description: 'Get recommendations for Ubuntu software.',
+    temperature: 0.5,
+    systemMessage: ubuntuSoftwareInstructions,
   },
 
   ts: {

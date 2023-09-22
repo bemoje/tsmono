@@ -1,4 +1,5 @@
 import { MonitoredFunction } from './MonitoredFunction'
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 export function monitorMethod<O extends Record<string | number | symbol, any>, F extends (...args: any[]) => any>(
   object: O,

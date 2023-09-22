@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/fswalk",
-  "version": "0.1.9",
+  "version": "0.1.11",
   "description": "Various utilities related to filesystem traversal",
   "main": "./src/index.js",
   "scripts": {},

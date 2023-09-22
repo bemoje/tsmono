@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import { absoluteToRelativePath } from '../../fs/absoluteToRelativePath'
-import { ensureValidWindowsPath } from '../../fs/ensureValidWindowsPath'
+import { assertValidWindowsPath } from '../../fs/assertValidWindowsPath'
 
 /**
  * Abstract extension of the native String class, representing a path to a filesystem object, such as directory or file.
@@ -27,8 +27,12 @@ export abstract class AbstractFsPath extends String {
     super(path.normalize(absolute))
   }
 
+  override valueOf(): string {
+    return String(this)
+  }
+
   get absolute(): string {
-    return super.toString()
+    return String(this)
   }
 
   /**
@@ -92,7 +96,7 @@ export abstract class AbstractFsPath extends String {
    * @param extendedMaxLength If true, we are assuming the OS configuration allows paths to be up to 32767 characters long.
    */
   isValidWindowsPath(extendedMaxLength = false): boolean {
-    return ensureValidWindowsPath(this.absolute, { extendedMaxLength })
+    return assertValidWindowsPath(this.absolute, { extendedMaxLength })
   }
 
   /**

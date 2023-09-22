@@ -3,6 +3,7 @@ import fs from 'fs'
 import path from 'path'
 import { readJsonFileSync } from './readJsonFileSync'
 import { writeJsonFileSync } from './writeJsonFileSync'
+import { writePrettyJsonFileSync } from './writePrettyJsonFileSync'
 
 function deepClone(obj: any): any | string {
   if (typeof obj !== 'object' || obj === null) return obj
@@ -54,7 +55,7 @@ export class JsonFile<T extends Record<string, any>> extends EventEmitter {
     if (fs.existsSync(this.filepath)) {
       this.loadFile()
     } else {
-      writeJsonFileSync(this.filepath, this.#data, this.prettyPrint)
+      this.saveFile()
     }
   }
 
@@ -155,7 +156,11 @@ export class JsonFile<T extends Record<string, any>> extends EventEmitter {
    * Saves the data to the JSON file.
    */
   saveFile(): void {
-    writeJsonFileSync(this.filepath, this.#data, this.prettyPrint)
+    if (this.prettyPrint) {
+      writePrettyJsonFileSync(this.filepath, this.#data)
+    } else {
+      writeJsonFileSync(this.filepath, this.#data)
+    }
   }
 
   /**

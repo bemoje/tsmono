@@ -7,20 +7,16 @@ import { normalizeFileExtension } from './normalizeFileExtension'
  * @returns A function that takes a filepath and returns true if the filepath has one of the specified file extensions, false otherwise.
  * @param fileExtensions file extensions
  * @example ```ts
- * createFileExtensionFilter('.ts', '.tsx')('index.ts');;
+ * createFileExtensionFilter(['.ts', '.tsx'])('index.ts');
  * //=> true
- * createFileExtensionFilter('.ts', '.tsx')('index.js');;
+ * createFileExtensionFilter(['.ts', '.tsx'])('index.js');
  * //=> false
  * ```
  */
-export function createFileExtensionFilter(...fileExtensions: string[]): (filepath: string) => boolean {
-  if (!fileExtensions.length) return () => true
+export function createFileExtensionFilter(fileExtensions: string[]): (filepath: string) => boolean {
+  if (!fileExtensions.length) return (() => true) as (filepath: string) => boolean
+  const set = new Set<string>(fileExtensions.map(normalizeFileExtension))
   return (filepath: string) => {
-    for (const ext of fileExtensions.map(normalizeFileExtension)) {
-      if (path.extname(filepath) === ext) {
-        return true
-      }
-    }
-    return false
+    return set.has(path.extname(filepath))
   }
 }

@@ -2,7 +2,7 @@
 import fs from 'fs'
 import path from 'path'
 import { IGptPreset } from '../../types/IGptPreset'
-import { userInput } from '../../userInput'
+import { userInput } from '../../util/userInput'
 
 /**
  * This function gets the prompt data.
@@ -16,7 +16,7 @@ export async function getUserPrompt(
   settings: IGptPreset,
   systemMessage: string[],
   placeholder: string,
-  prompt?: string,
+  prompt?: string
 ) {
   const result = prompt
     ? { temperature: settings.temperature!, instruction: systemMessage.join('\n').trim(), input: prompt }

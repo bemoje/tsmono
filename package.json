@@ -57,10 +57,12 @@
     "@bemoje/zip": "latest",
     "@swc/helpers": "~0.5.0",
     "@types/eventemitter3": "^2.0.2",
+    "default-browser": "^5.1.0",
     "eventemitter3": "^5.0.1",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
+    "@bemoje/repoman": "latest",
     "@nx/eslint-plugin": "^16.2.2",
     "@nx/jest": "16.7.4",
     "@nx/js": "16.7.4",
@@ -74,6 +76,7 @@
     "@types/jest": "^29.4.0",
     "@types/node": "18.7.1",
     "@types/prettier": "^2.7.3",
+    "@types/rimraf": "^4.0.5",
     "@types/snake-case": "^1.1.2",
     "@types/strip-comments": "^2.0.1",
     "@types/typescript": "^2.0.0",
@@ -89,6 +92,7 @@
     "nx": "16.6.0",
     "nx-cloud": "latest",
     "prettier": "^2.6.2",
+    "rimraf": "^5.0.1",
     "snake-case": "^3.0.4",
     "strip-comments": "^2.0.1",
     "ts-jest": "^29.1.0",

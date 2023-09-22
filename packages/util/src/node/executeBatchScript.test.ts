@@ -35,7 +35,7 @@ describe(executeBatchScript.name, () => {
         executeBatchScript(cmds, options)
         const expectedScript = ['cd path\\to\\cwd', 'call ping google.com'].join('\n')
         expect(fs.writeFileSync).toHaveBeenCalledWith(expect.any(String), expectedScript, 'utf8')
-        expect(execFileSync).toHaveBeenCalledWith(expect.any(String), {})
+        expect(execFileSync).toHaveBeenCalledWith(expect.any(String), { stdio: 'ignore' })
       })
     })
   })

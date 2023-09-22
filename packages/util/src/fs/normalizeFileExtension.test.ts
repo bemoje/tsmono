@@ -9,7 +9,7 @@ describe('normalizeFileExtension', () => {
     expect(normalizeFileExtension('.test.js')).toBe('.js')
     expect(normalizeFileExtension('..js')).toBe('.js')
     expect(normalizeFileExtension('')).toBe('')
-    expect(normalizeFileExtension('.')).toBe('')
+    expect(() => normalizeFileExtension('.')).toThrowError()
     expect(() => normalizeFileExtension('.>s')).toThrowError()
   })
 })

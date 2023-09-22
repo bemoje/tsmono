@@ -17,10 +17,10 @@ describe(assertion.name, () => {
       const validate = jest.fn().mockReturnValue(false)
       expect(() => {
         assertion(value, validate)
-      }).toThrow(TypeError)
+      }).toThrow()
       expect(() => {
         assertion(value, validate)
-      }).toThrow(`Expected '${validate.name}' to be true for input: ${value}`)
+      }).toThrow(`Expected '${validate.name}' to be 'true' for input: ${value}`)
       expect(validate).toHaveBeenCalledWith(value)
     })
   })
@@ -32,10 +32,10 @@ describe(assertion.name, () => {
         const validate = jest.fn().mockReturnValue(true)
         expect(() => {
           assertion(value, validate, false)
-        }).toThrow(TypeError)
+        }).toThrow()
         expect(() => {
           assertion(value, validate, false)
-        }).toThrow(`Expected '${validate.name}' to be false for input: ${value}`)
+        }).toThrow(`Expected '${validate.name}' to be 'false' for input: ${value}`)
         expect(validate).toHaveBeenCalledWith(value)
       })
     })

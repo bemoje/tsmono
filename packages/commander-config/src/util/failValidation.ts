@@ -1,4 +1,10 @@
-export function failValidation(name: string, msg: string) {
-  console.error('Error: The ' + name + ' setting ' + msg)
-  process.exit(1)
+import { colors } from '@bemoje/util'
+import { gracefulProcessExit } from './gracefulProcessExit'
+
+export function failValidation(settingName: string, reason: string, value?: unknown) {
+  console.error(colors.red('Error: Invalid setting'))
+  console.error('Name: ' + settingName)
+  console.error('Reason: ' + reason)
+  if (value) console.error('Value: ' + value)
+  gracefulProcessExit()
 }

@@ -599,10 +599,8 @@ export class TrieMap<T> {
   }
 
   protected validatePrefixInput(prefix: string[]): string[] {
-    for (let i = 0; i < prefix.length; i++) {
-      if (prefix[i] === SENTINEL) {
-        throw Error('Illegal prefix key. Single character string of CharCode 0 is reserved')
-      }
+    if (prefix.includes(SENTINEL)) {
+      throw Error('Illegal prefix key. Single character string of CharCode 0 is reserved')
     }
     return prefix
   }

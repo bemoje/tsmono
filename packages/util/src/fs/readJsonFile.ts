@@ -1,16 +1,14 @@
-import fs from 'fs'
+import { readFile } from './readFile'
+import { JsonReplacerReviver } from './types/JsonReplacerReviver'
 
 /**
- * Reads a JSON file from the given filepath and returns its content as a Promise.
- * The Promise will resolve with the parsed JSON content as an object of type T.
- * @template T The expected return type of the JSON object.
- * @param filepath The path to the JSON file to read.
- * @returns A Promise that resolves with the parsed JSON content as an object of type T.
- * @throws Will throw an error if reading the file fails for any reason.
- * @example ```ts
- * const data: MyType = await readJsonFile<MyType>('path/to/myfile.json');
- * ```
+ * Reads a JSON file asynchronously and returns the parsed JSON data.
+ *
+ * @param filepath - The path to the JSON file.
+ * @param reviver - A function that transforms the results. This function is called for each item.
+ * @returns A promise that resolves with the parsed JSON data.
  */
-export async function readJsonFile<T>(filepath: string): Promise<T> {
-  return JSON.parse(await fs.promises.readFile(filepath, 'utf8'))
+export async function readJsonFile<T>(filepath: string, reviver?: JsonReplacerReviver): Promise<T> {
+  const json = await readFile(filepath)
+  return JSON.parse(json, reviver)
 }

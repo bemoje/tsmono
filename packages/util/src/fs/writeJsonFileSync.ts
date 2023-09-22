@@ -1,17 +1,18 @@
-import fs from 'fs'
+import { JsonReplacerReviver } from './types/JsonReplacerReviver'
+import { writeFileSync } from './writeFileSync'
 
 /**
- * Writes a JSON object to a file synchronously.
- * @typeParam T - The type of the JSON object.
- * @param filepath - The path of the file where the JSON object will be written.
- * @param data - The JSON object that will be written to the file.
- * @param pretty - If true, the JSON object will be formatted with indentation and line breaks. Default is false.
- * @throws If the file cannot be written.
- * @example ```ts
- * const data = { name: 'John', age: 30 };
- * writeJsonFileSync('./data.json', data, true);
- * ```
+ * Writes data to a JSON file synchronously.
+ *
+ * @param filepath - The path to the JSON file.
+ * @param data - The data to write to the file.
+ * @param replacer - A function that alters the behavior of the stringification process.
  */
-export function writeJsonFileSync<T>(filepath: string, data: T, pretty = false, indents = 2): void {
-  fs.writeFileSync(filepath, JSON.stringify(data, null, pretty ? indents : undefined))
+export function writeJsonFileSync<T>(
+  filepath: string,
+  data: T,
+  indents?: number,
+  replacer?: JsonReplacerReviver
+): void {
+  writeFileSync(filepath, JSON.stringify(data, replacer, indents))
 }

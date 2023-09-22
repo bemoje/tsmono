@@ -1,8 +1,7 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { colors } from '@bemoje/util'
+import { colors, isLinux } from '@bemoje/util'
 import { execSync } from 'child_process'
-import { sendChatRequest } from '../sendChatRequest'
 import type { IGptPreset } from '../types/IGptPreset'
+import { sendChatRequest } from '../util/sendChatRequest'
 import { appendSystemMessage } from './util/appendSystemMessage'
 import { createChatRequest } from './util/createChatRequest'
 import { createDirectories } from './util/createDirectories'
@@ -40,7 +39,6 @@ export async function presets(preset: string, prompt?: string, is16k = false, is
   // save data
   const textPath = saveInteraction(jsondir, textdir, settings.markdownOutput, request)
   // user output
-  if (settings.openResponseIn !== 'none') {
-    execSync(`${settings.openResponseIn} "${textPath}"`, { stdio: 'inherit' })
-  }
+  if (settings.openResponseIn === 'none') return
+  execSync(`${settings.openResponseIn} "${textPath}${isLinux() ? ' &' : ''}"`, { stdio: 'inherit' })
 }

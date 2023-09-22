@@ -10,7 +10,7 @@ import { config } from '../config'
  */
 export async function onCustomPreset(
   opts: string[] = [],
-  prompt: string[] = [],
+  prompt: string[] = []
 ): Promise<[string, boolean, boolean, boolean]> {
   if (typeof opts === 'string') opts = [opts]
   if (typeof prompt === 'string') prompt = [prompt]
@@ -29,7 +29,7 @@ export async function onCustomPreset(
   const isImprove = options.includes('improve')
   if (isImprove) {
     isReply = true
-    _prompt = _prompt.replace('improve', config.appdata.user.get('default_improveResponse')).trim()
+    _prompt = _prompt.replace('improve', config.userconfig.get('default_improveResponse')).trim()
   }
 
   return [_prompt, is16k, isReply, isEdit]
