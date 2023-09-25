@@ -1,5 +1,5 @@
 import path from 'path'
-import { getAppDataPath } from '../os/getAppDataPath'
+import { getAppDataPath } from '../path/getAppDataPath'
 import { JsonFile } from './JsonFile'
 import { LogFile } from './LogFile'
 import { ILogFileData } from './types/ILogFileData'

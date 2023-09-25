@@ -1,5 +1,7 @@
+import fs from 'fs'
+import path from 'path'
 import { createDirectorySync } from './createDirectorySync'
-import { deleteFsoSafeSync } from './deleteFsoSafeSync'
+import { deleteFsoSync } from './deleteFsoSync'
 
 /**
  * Synchronously wipes a directory safely by deleting it and then recreating it.
@@ -8,6 +10,11 @@ import { deleteFsoSafeSync } from './deleteFsoSafeSync'
  * @param dirpath - The path of the directory to wipe.
  */
 export function wipeDirectorySafeSync(dirpath: string): void {
-  deleteFsoSafeSync(dirpath)
-  createDirectorySync(dirpath)
+  if (!fs.existsSync(dirpath)) {
+    createDirectorySync(dirpath)
+    return
+  }
+  for (const filename of fs.readdirSync(dirpath)) {
+    deleteFsoSync(path.join(dirpath, filename))
+  }
 }

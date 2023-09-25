@@ -1,4 +1,5 @@
-import { createDirectory } from './createDirectory'
+import fs from 'fs'
+import path from 'path'
 import { deleteFso } from './deleteFso'
 
 /**
@@ -8,6 +9,7 @@ import { deleteFso } from './deleteFso'
  * @returns A promise that resolves when the directory has been wiped.
  */
 export async function wipeDirectory(dirpath: string): Promise<void> {
-  await deleteFso(dirpath)
-  await createDirectory(dirpath)
+  for (const filename of await fs.promises.readdir(dirpath)) {
+    await deleteFso(path.join(dirpath, filename))
+  }
 }

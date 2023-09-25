@@ -1,5 +1,7 @@
+import fs from 'fs'
+import path from 'path'
 import { createDirectory } from './createDirectory'
-import { deleteFsoSafe } from './deleteFsoSafe'
+import { deleteFso } from './deleteFso'
 
 /**
  * Asynchronously wipes a directory safely by deleting it and then recreating it.
@@ -9,6 +11,11 @@ import { deleteFsoSafe } from './deleteFsoSafe'
  * @returns A promise that resolves when the directory has been wiped.
  */
 export async function wipeDirectorySafe(dirpath: string): Promise<void> {
-  await deleteFsoSafe(dirpath)
-  await createDirectory(dirpath)
+  if (!fs.existsSync(dirpath)) {
+    await createDirectory(dirpath)
+    return
+  }
+  for (const filename of await fs.promises.readdir(dirpath)) {
+    await deleteFso(path.join(dirpath, filename))
+  }
 }

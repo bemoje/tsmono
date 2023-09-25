@@ -1,6 +1,5 @@
 import fs from 'fs'
 import path from 'path'
-import { assertValidWindowsPath } from '../../fs/assertValidWindowsPath'
 import { pathAbsoluteToRelativeCwd } from '../../path/pathAbsoluteToRelativeCwd'
 import { pathRoot } from '../../path/pathRoot'
 
@@ -90,14 +89,6 @@ export abstract class AbstractFsPath extends String {
    */
   async stat(): Promise<fs.Stats> {
     return fs.promises.stat(this.absolute)
-  }
-
-  /**
-   * Returns whether the path is valid on Windows.
-   * @param extendedMaxLength If true, we are assuming the OS configuration allows paths to be up to 32767 characters long.
-   */
-  isValidWindowsPath(extendedMaxLength = false): boolean {
-    return assertValidWindowsPath(this.absolute, { extendedMaxLength })
   }
 
   /**

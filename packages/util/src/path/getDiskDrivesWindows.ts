@@ -1,9 +1,15 @@
 import { execSync } from 'child_process'
 import path from 'path'
-import { isWindows } from '../os/isWindows'
 
+/**
+ * This function retrieves information about the disk drives on a Windows system.
+ * It uses the Windows Management Instrumentation (WMI) to query the system for this information.
+ *
+ * @example
+ * getDiskDrivesWindows()
+ * //=> [ 'C:\\', 'G:\\' ]
+ */
 export function getDiskDrivesWindows(): string[] {
-  if (!isWindows()) throw new Error('This function is only available on Windows.')
   return execSync('wmic logicaldisk get name')
     .toString()
     .split('\n')

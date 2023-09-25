@@ -1,5 +1,5 @@
-import fsp from 'fs/promises'
 import path from 'path'
+import { readdirNames } from './readdirNames'
 
 /**
  * Asynchronously reads the paths of all files in a directory.
@@ -8,5 +8,5 @@ import path from 'path'
  * @returns A promise that resolves with an array of the paths of all files in the directory.
  */
 export async function readdirPaths(dirpath: string): Promise<string[]> {
-  return (await fsp.readdir(dirpath)).map((name) => path.join(dirpath, name))
+  return (await readdirNames(dirpath)).map((name) => path.join(dirpath, name))
 }

@@ -1,6 +1,7 @@
 import type { Stats } from 'fs'
-import fs from 'fs'
-import path from 'path'
+import { createDirectorySync } from './createDirectorySync'
+import { deleteFsoSync } from './deleteFsoSync'
+import { readdirStatsSafeSync } from './readdirStatsSafeSync'
 
 /**
  * Synchronously cleans a directory by removing files that satisfy a given predicate.
@@ -16,9 +17,12 @@ import path from 'path'
  * ```
  */
 export function cleanDirectorySync(dirpath: string, predicate: (filepath: string, stat: Stats) => boolean): void {
-  for (const filename of fs.readdirSync(dirpath)) {
-    const filepath = path.join(dirpath, filename)
-    const stat = fs.statSync(filepath)
-    if (predicate(filepath, stat)) fs.rmSync(filepath)
+  const pathstats = readdirStatsSafeSync(dirpath)
+  if (!pathstats) {
+    createDirectorySync(dirpath)
+    return
+  }
+  for (const [filepath, stat] of pathstats) {
+    if (predicate(filepath, stat)) deleteFsoSync(filepath)
   }
 }

@@ -1,6 +1,6 @@
 import os from 'os'
 import path from 'path'
-import { getOS } from './getOS'
+import { getOS } from '../os/getOS'
 
 export function getAppDataPath(appName?: string, ...subdirs: string[]) {
   let appDataPath = process.env['APPDATA']

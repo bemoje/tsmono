@@ -11,7 +11,6 @@ import fs from 'fs'
  * deleteFso('/path/to/directory');
  * ```
  */
-export async function deleteFso(dirpath: string): Promise<string> {
+export async function deleteFso(dirpath: string): Promise<void> {
   await fs.promises.rm(dirpath, { recursive: true, force: true })
-  return dirpath
 }

@@ -1,5 +1,5 @@
 import { readFile } from './readFile'
-import { writeFile } from './writeFile'
+import { writeFileSafe } from './writeFileSafe'
 
 /**
  * Updates a text file asynchronously based on a provided update function.
@@ -29,5 +29,5 @@ export async function updateFile(
   }
   const retval = await update(src)
   if (!retval) return
-  await writeFile(filepath, retval)
+  await writeFileSafe(filepath, retval)
 }

@@ -1,4 +1,5 @@
-import { createDirectorySync } from './createDirectorySync'
+import fs from 'fs'
+import path from 'path'
 import { deleteFsoSync } from './deleteFsoSync'
 
 /**
@@ -7,6 +8,7 @@ import { deleteFsoSync } from './deleteFsoSync'
  * @param dirpath - The path of the directory to wipe.
  */
 export function wipeDirectorySync(dirpath: string): void {
-  deleteFsoSync(dirpath)
-  createDirectorySync(dirpath)
+  for (const filename of fs.readdirSync(dirpath)) {
+    deleteFsoSync(path.join(dirpath, filename))
+  }
 }

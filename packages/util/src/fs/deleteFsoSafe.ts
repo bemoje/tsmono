@@ -12,11 +12,10 @@ import fs from 'fs'
  * //=> undefined
  * ```
  */
-export async function deleteFsoSafe(dirpath: string): Promise<string> {
+export async function deleteFsoSafe(dirpath: string): Promise<void> {
   try {
     await fs.promises.rm(dirpath, { recursive: true, force: true })
   } catch (error) {
     //
   }
-  return dirpath
 }

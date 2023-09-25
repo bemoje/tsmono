@@ -1,5 +1,5 @@
-import fs from 'fs'
 import path from 'path'
+import { readdirNamesSync } from './readdirNamesSync'
 
 /**
  * Synchronously reads the paths of all files in a directory.
@@ -8,5 +8,5 @@ import path from 'path'
  * @returns An array of the paths of all files in the directory.
  */
 export function readdirPathsSync(dirpath: string): string[] {
-  return fs.readdirSync(dirpath).map((name) => path.join(dirpath, name))
+  return readdirNamesSync(dirpath).map((name) => path.join(dirpath, name))
 }
