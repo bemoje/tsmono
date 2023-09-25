@@ -8,7 +8,7 @@ import {
   validateInteger,
   validateStringArray,
 } from '@bemoje/commander-config'
-import { getDiskDrivesWindows, getRootDir, isLinux, isOSX, isWindows } from '@bemoje/util'
+import { getDiskDrivesWindows, isLinux, isOSX, isWindows, pathRoot } from '@bemoje/util'
 import { wipeIndex } from '../util/wipeIndex'
 
 export const config = new Config('bemoje', 'bfind', {
@@ -23,7 +23,7 @@ export const config = new Config('bemoje', 'bfind', {
       ? ['/media', '/usr', '/home']
       : isOSX()
       ? ['/Users', '/Applications']
-      : [getRootDir()],
+      : [pathRoot(process.cwd())],
     parse: (string: string) => {
       const res = parseJsonArray(string)
       wipeIndex()

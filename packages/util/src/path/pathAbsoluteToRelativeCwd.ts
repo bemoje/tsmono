@@ -9,11 +9,11 @@ import { regexEscapeString } from '../regex/regexEscapeString'
  * @returns The relative path.
  * @param absolute the absolute filepath to convert.
  * @example ```ts
- * absoluteToRelativePath(__filename)
- * //=> 'src/absoluteToRelativePath.ts'
+ * pathAbsoluteToRelativeCwd(__filename)
+ * //=> 'src/pathAbsoluteToRelativeCwd.ts'
  * ```
  */
-export function absoluteToRelativePath(absolute: string, workingDirectory = process.cwd()): string {
+export function pathAbsoluteToRelativeCwd(absolute: string, workingDirectory = process.cwd()): string {
   absolute = path.normalize(absolute)
   if (absolute === workingDirectory) return './'
   return absolute.replace(new RegExp(regexEscapeString(path.normalize(workingDirectory) + path.sep), 'i'), '')

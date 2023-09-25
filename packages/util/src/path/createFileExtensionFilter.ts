@@ -1,5 +1,5 @@
-import path from 'path'
-import { normalizeFileExtension } from './normalizeFileExtension'
+import { normalizeFileExtension } from '../path/normalizeFileExtension'
+import { pathExtname } from './pathExtname'
 
 /**
  * Takes a list of file extensions and returns a filter function that returns true if a filepath/filename passed to it contains one of the given file extensions.
@@ -17,6 +17,6 @@ export function createFileExtensionFilter(fileExtensions: string[]): (filepath: 
   if (!fileExtensions.length) return (() => true) as (filepath: string) => boolean
   const set = new Set<string>(fileExtensions.map(normalizeFileExtension))
   return (filepath: string) => {
-    return set.has(path.extname(filepath))
+    return set.has(normalizeFileExtension(pathExtname(filepath)))
   }
 }

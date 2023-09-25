@@ -1,6 +1,6 @@
 import { execSync } from 'child_process'
 import path from 'path'
-import { absoluteToRelativePath } from '../fs/absoluteToRelativePath'
+import { pathAbsoluteToRelativeCwd } from '../path/pathAbsoluteToRelativeCwd'
 import colors from './colors'
 import { IExecuteCommandOptions } from './types/IExecuteCommandOptions'
 const { magenta, dim, bold, green } = colors
@@ -26,7 +26,7 @@ export function execute(commands: string[] | string, options: IExecuteCommandOpt
   const noEcho = options.noEcho ?? false
 
   if (!noEcho) {
-    const relative = absoluteToRelativePath(cwd)
+    const relative = pathAbsoluteToRelativeCwd(cwd)
       .replace(/\\/g, '/')
       .replace(path.basename(cwd), bold(magenta(path.basename(cwd))))
     const out = `${green(command)}${cwd === process.cwd() ? '' : ' in ' + bold(magenta(relative))}`

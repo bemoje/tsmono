@@ -1,5 +1,6 @@
 import fs from 'fs'
 import path from 'path'
+import { pathExtname } from '../path/pathExtname'
 import { AbstractFsPath } from './core/AbstractFsPath'
 import { BlockDevicePath } from './core/BlockDevicePath'
 import { CharacterDevicePath } from './core/CharacterDevicePath'
@@ -135,7 +136,7 @@ export class FilePath extends AbstractFsPath {
    * @returns The file extension, including the leading dot.
    */
   get extension(): string {
-    return path.extname(this.filepath)
+    return pathExtname(this.filepath)
   }
 
   /**

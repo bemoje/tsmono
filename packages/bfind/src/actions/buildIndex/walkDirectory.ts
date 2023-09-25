@@ -1,5 +1,5 @@
 import { TrieMap } from '@bemoje/trie-map'
-import { colors, FSPathFilter, isWindows, memoryUsage, round } from '@bemoje/util'
+import { colors, FSPathFilter, isWindows, memoryUsage, pathExtname, round } from '@bemoje/util'
 import path from 'path'
 import walkdir from 'walkdir'
 import { config } from '../../core/config'
@@ -39,7 +39,7 @@ export function walkDirectory(
     walker.on('path', (fspath, stat) => {
       if (isWin) fspath = fspath.replace(regexReplace, '/')
       if (stat.isFile()) {
-        const ext = path.extname(fspath).toLowerCase()
+        const ext = pathExtname(fspath).toLowerCase()
         if (!ext) return
         stats.fileTypes[ext] = (stats.fileTypes[ext] || 0) + 1
       }

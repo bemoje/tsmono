@@ -1,4 +1,4 @@
-import { IEnsureValidWindowsPathOptions } from './types/IEnsureValidWindowsPathOptions'
+import { IEnsureValidWindowsPathOptions } from '../fs/types/IEnsureValidWindowsPathOptions'
 
 /**
  * Check whether a provided windows filesystem path string is valid according to:
