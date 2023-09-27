@@ -1,6 +1,6 @@
-import { deleteFsoSafe, wait } from '@bemoje/util'
+import { removeFile, wait } from '@bemoje/util'
 import { execSync } from 'child_process'
-import fsp from 'fs/promises'
+import fsp from 'fs-extra'
 import path from 'path'
 import { IGetUserInputFromEditorOptions } from './IGetUserInputFromEditorOptions'
 
@@ -13,6 +13,6 @@ export async function getUserInputFromEditor(options: IGetUserInputFromEditorOpt
   execSync(`${editor} ${tempfile}`, { stdio: 'inherit' })
   await wait(100)
   const userInput = await fsp.readFile(tempfile, 'utf8')
-  await deleteFsoSafe(tempdir)
+  await removeFile(tempdir)
   return userInput
 }

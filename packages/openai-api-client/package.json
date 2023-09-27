@@ -14,6 +14,7 @@
   "dependencies": {
     "@bemoje/api-util": "latest",
     "@bemoje/util": "latest",
+    "fs-extra": "^11.1.1",
     "gpt-3-encoder": "^1.1.4",
     "openai": "^3.3.0",
     "tslib": "^2.3.0"
@@ -33,6 +34,7 @@
   "type": "commonjs",
   "typings": "./src/index.d.ts",
   "devDependencies": {
-    "@types/async-retry": "^1.4.5"
+    "@types/async-retry": "^1.4.5",
+    "@types/fs-extra": "^11.0.2"
   }
 }

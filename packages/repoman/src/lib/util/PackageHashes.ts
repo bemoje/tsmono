@@ -1,5 +1,5 @@
 import { getAppDataPath } from '@bemoje/util'
-import fs from 'fs'
+import fs from 'fs-extra'
 import path from 'path'
 import { hashPackage } from './hashPackage'
 

@@ -1,5 +1,5 @@
 import { colors, readJsonFileSync } from '@bemoje/util'
-import * as fs from 'fs'
+import fs from 'fs-extra'
 import * as path from 'path'
 import { getPackages } from './getPackages'
 const { gray, green } = colors

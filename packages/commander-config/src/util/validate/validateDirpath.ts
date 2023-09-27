@@ -1,4 +1,4 @@
-import fs from 'fs'
+import fs from 'fs-extra'
 import { failValidation } from '../failValidation'
 
 export function validateDirpath(name: string, value: string): void {

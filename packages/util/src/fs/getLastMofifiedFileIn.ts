@@ -1,8 +1,8 @@
-import fs from 'fs'
+import fs from 'fs-extra'
 import path from 'path'
 
 export async function getLastMofifiedFileIn(dirpath: string): Promise<string> {
-  const children = await fs.promises.readdir(dirpath)
+  const children = await fs.readdir(dirpath)
   const filtered = children
     .map((fname: string) => {
       const fpath = path.join(dirpath, fname)

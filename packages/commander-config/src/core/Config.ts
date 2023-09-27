@@ -2,7 +2,7 @@
 
 import { AppData, colors, isOSX, isVsCodeInstalled, isWindows, readJsonFileSync } from '@bemoje/util'
 import { Command } from 'commander'
-import fs from 'fs'
+import fs from 'fs-extra'
 import { allHelp } from '../util/allHelp'
 import { createCommand } from '../util/createCommand'
 import { getUserInputFromEditorSync } from '../util/getUserInputFromEditorSync'

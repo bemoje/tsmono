@@ -1,24 +1,98 @@
 import path from 'path'
-import { pathIsAbsolute } from './pathIsAbsolute'
+import { pathIsAbsolute, pathIsAbsolutePosix, pathIsAbsoluteWindows } from './pathIsAbsolute'
 
 describe(pathIsAbsolute.name, () => {
-  it('should return true for absolute paths', function () {
-    expect(pathIsAbsolute(__dirname)).toBe(true)
-    expect(pathIsAbsolute(__filename)).toBe(true)
-    expect(pathIsAbsolute(path.join(process.cwd()))).toBe(true)
-    expect(pathIsAbsolute(path.resolve(process.cwd(), 'README.md'))).toBe(true)
-    expect(pathIsAbsolute('/foo/a/b/c/d')).toBe(true)
-    expect(pathIsAbsolute('/foo')).toBe(true)
+  let paths = [
+    '/dir/file.txt.',
+    '/dir/file.txt',
+    '/dir/.',
+    '/dir/',
+    '/dir',
+    '/file.txt.',
+    '/file.txt',
+    '/.',
+    '/',
+    'C:/dir/file.txt.',
+    'C:/dir/file.txt',
+    'C:/dir/.',
+    'C:/dir/',
+    'C:/dir',
+    'C:/file.txt.',
+    'C:/file.txt',
+    'C:/.',
+    'C:/',
+    'C://dir/file.txt.',
+    'C://dir/file.txt',
+    'C://dir/.',
+    'C://dir/',
+    'C://dir',
+    'C://file.txt.',
+    'C://file.txt',
+    'C://.',
+    'C://',
+    '//server/share/file.txt.',
+    '//server/share/file.txt',
+    '//server/share/.',
+    '//server/share/',
+    '//server/share',
+    '//server/file.txt.',
+    '//server/.',
+    '//server/',
+    '//server',
+    '//file.txt.',
+    '//file.txt',
+    '//.',
+    '//',
+    '.',
+    './',
+    'abc/def/file.txt.',
+    'abc/def/file.txt',
+    'abc/def/.',
+    'abc/def/',
+    'abc/def',
+    'abc/file.txt.',
+    'abc/file.txt',
+    'abc/.',
+    'abc/',
+    'abc',
+    'file.txt.',
+    'file.txt',
+    './abc/def/file.txt.',
+    './abc/def/file.txt',
+    './abc/def/.',
+    './abc/def/',
+    './abc/def',
+    './abc/file.txt.',
+    './abc/file.txt',
+    './abc/.',
+    './abc/',
+    './abc',
+    './file.txt.',
+    './file.txt',
+  ]
+  paths = paths.concat(paths.map((p) => p.replace(/\//g, '\\')))
+
+  describe('POSIX', () => {
+    for (const fspath of paths) {
+      it('should return same as the native path module for: ' + fspath, () => {
+        expect(pathIsAbsolutePosix(fspath)).toBe(path.posix.isAbsolute(fspath))
+      })
+    }
   })
 
-  it('should return false for relative paths', function () {
-    expect(pathIsAbsolute('a/b/c.js')).toBe(false)
-    expect(pathIsAbsolute('./foo')).toBe(false)
-    expect(pathIsAbsolute(path.relative(process.cwd(), 'README.md'))).toBe(false)
+  describe('WIN32', () => {
+    for (const fspath of paths) {
+      it('should return same as the native path module for: ' + fspath, () => {
+        expect(pathIsAbsoluteWindows(fspath)).toBe(path.win32.isAbsolute(fspath))
+      })
+    }
   })
 
-  it('should work with glob patterns', function () {
-    expect(pathIsAbsolute(path.join(process.cwd(), 'pages/*.txt'))).toBe(true)
-    expect(pathIsAbsolute('pages/*.txt')).toBe(false)
+  describe('OS', () => {
+    for (const fspath of paths) {
+      it('should return same as the native path module for: ' + fspath, () => {
+        expect(pathIsAbsolute(fspath)).toBe(path.isAbsolute(fspath))
+      })
+    }
   })
 })

@@ -1,8 +1,8 @@
-import fs from 'fs'
+import fs from 'fs-extra'
 import path from 'path'
 
 export function convertFilter(
-  filter: (fullpath: string, stat: fs.Stats) => boolean,
+  filter: (fullpath: string, stat: fs.Stats) => boolean
 ): (directory: string, files: string[]) => string[] | Promise<string[]> {
   return (directory: string, files: string[]): string[] => {
     return files.filter((filename: string) => {

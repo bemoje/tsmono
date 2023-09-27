@@ -1,5 +1,5 @@
 import { arrSum, bytesToMegabytes, round } from '@bemoje/util'
-import fsp from 'fs/promises'
+import fsp from 'fs-extra'
 import path from 'path'
 import { FILE_LIST_FILEPATH } from '../../constants/FILE_LIST_FILEPATH'
 import { WORD_TRIE_DIRPATH } from '../../constants/WORD_TRIE_DIRPATH'

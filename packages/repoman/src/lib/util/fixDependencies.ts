@@ -1,5 +1,5 @@
 import { colors, execute, readJsonFileSync, updateJsonFileSync } from '@bemoje/util'
-import fs from 'fs'
+import fs from 'fs-extra'
 import path from 'path'
 import { getImportedAllNonRelative } from './getImportedAllNonRelative'
 import { getPackages } from './getPackages'

@@ -1,5 +1,5 @@
 import { colors } from '@bemoje/util'
-import fs from 'fs'
+import fs from 'fs-extra'
 
 export function appendLastModified(stat: fs.Stats, filepath: string): string {
   const sinceModified = (Date.now() - stat.mtimeMs) / 1000 / 60 / 60 / 24

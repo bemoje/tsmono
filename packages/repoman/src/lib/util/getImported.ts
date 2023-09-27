@@ -1,6 +1,6 @@
 import { tsExtractImports } from '@bemoje/tscode'
 import { strUnwrap } from '@bemoje/util'
-import fs from 'fs'
+import fs from 'fs-extra'
 import path from 'path'
 import { walkTsFiles } from './walkTsFiles'
 

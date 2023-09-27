@@ -1,7 +1,7 @@
 import { gracefulProcessExit } from '@bemoje/commander-config'
 import { TrieMap } from '@bemoje/trie-map'
 import { asyncTasksLimit } from '@bemoje/util'
-import fs from 'fs'
+import fs from 'fs-extra'
 import { config } from '../core/config'
 import { IBuildIndexStats } from './buildIndex/IBuildIndexStats'
 import { createPathFilter } from './buildIndex/createPathFilter'

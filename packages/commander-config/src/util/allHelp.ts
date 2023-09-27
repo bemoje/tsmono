@@ -1,6 +1,6 @@
 import { colors, execute, getAppDataPath } from '@bemoje/util'
 import type { Command } from 'commander'
-import fs from 'fs'
+import fs from 'fs-extra'
 import path from 'path'
 
 export function allHelp(program: Command) {

@@ -1,5 +1,4 @@
-import fs from 'fs'
-import fsp from 'fs/promises'
+import { default as fs, default as fsp } from 'fs-extra'
 import { config } from '../../../core/config'
 
 export async function sortByLastModified(filepaths: string[]): Promise<[fs.Stats, string][]> {

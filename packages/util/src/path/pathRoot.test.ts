@@ -1,26 +1,98 @@
-import { pathRoot } from './pathRoot'
+import path from 'path'
+import { pathRoot, pathRootPosix, pathRootWindows } from './pathRoot'
 
 describe(pathRoot.name, () => {
-  it('should return the root directory of a file path', function () {
-    expect(pathRoot('\\\\server\\share\\abc')).toBe('\\\\server\\share\\')
-    expect(pathRoot('\\\\server foo\\some folder\\base-file.js')).toBe('\\\\server foo\\some folder\\')
-    expect(pathRoot('\\\\?\\UNC\\server\\share')).toBe('\\\\?\\UNC\\')
-    expect(pathRoot('foo/bar/baz.js')).toBe('')
-    expect(pathRoot('c:\\foo\\bar\\baz.js')).toBe('c:\\')
-    expect(pathRoot('\\\\slslslsl\\admin$\\system32')).toBe('\\\\slslslsl\\admin$\\')
-    expect(pathRoot('/foo/bar/baz.js')).toBe('/')
+  let paths = [
+    '/dir/file.txt.',
+    '/dir/file.txt',
+    '/dir/.',
+    '/dir/',
+    '/dir',
+    '/file.txt.',
+    '/file.txt',
+    '/.',
+    '/',
+    'C:/dir/file.txt.',
+    'C:/dir/file.txt',
+    'C:/dir/.',
+    'C:/dir/',
+    'C:/dir',
+    'C:/file.txt.',
+    'C:/file.txt',
+    'C:/.',
+    'C:/',
+    'C://dir/file.txt.',
+    'C://dir/file.txt',
+    'C://dir/.',
+    'C://dir/',
+    'C://dir',
+    'C://file.txt.',
+    'C://file.txt',
+    'C://.',
+    'C://',
+    '//server/share/file.txt.',
+    '//server/share/file.txt',
+    '//server/share/.',
+    '//server/share/',
+    '//server/share',
+    '//server/file.txt.',
+    '//server/.',
+    '//server/',
+    '//server',
+    '//file.txt.',
+    '//file.txt',
+    '//.',
+    '//',
+    '.',
+    './',
+    'abc/def/file.txt.',
+    'abc/def/file.txt',
+    'abc/def/.',
+    'abc/def/',
+    'abc/def',
+    'abc/file.txt.',
+    'abc/file.txt',
+    'abc/.',
+    'abc/',
+    'abc',
+    'file.txt.',
+    'file.txt',
+    './abc/def/file.txt.',
+    './abc/def/file.txt',
+    './abc/def/.',
+    './abc/def/',
+    './abc/def',
+    './abc/file.txt.',
+    './abc/file.txt',
+    './abc/.',
+    './abc/',
+    './abc',
+    './file.txt.',
+    './file.txt',
+  ]
+  paths = paths.concat(paths.map((p) => p.replace(/\//g, '\\')))
+
+  describe('POSIX', () => {
+    for (const fspath of paths) {
+      it('should return same as the native path module for: ' + fspath, () => {
+        expect(pathRootPosix(fspath)).toBe(path.posix.parse(fspath).root)
+      })
+    }
   })
 
-  it('should return an empty string if no match is found', () => {
-    expect(pathRoot('')).toBe('')
-    expect(pathRoot('file.txt')).toBe('')
-    expect(pathRoot('dir/file.txt')).toBe('')
+  describe('WIN32', () => {
+    for (const fspath of paths) {
+      it('should return same as the native path module for: ' + fspath, () => {
+        expect(pathRootWindows(fspath)).toBe(path.win32.parse(fspath).root)
+      })
+    }
   })
 
-  it('should return the root of the filepath', () => {
-    expect(pathRoot('/')).toBe('/')
-    expect(pathRoot('/dir/file.txt')).toBe('/')
-    expect(pathRoot('C:/dir/file.txt')).toBe('C:/')
-    expect(pathRoot('//server/share/dir/file.txt')).toBe('//server/share/')
+  describe('OS', () => {
+    for (const fspath of paths) {
+      it('should return same as the native path module for: ' + fspath, () => {
+        expect(pathRoot(fspath)).toBe(path.parse(fspath).root)
+      })
+    }
   })
 })

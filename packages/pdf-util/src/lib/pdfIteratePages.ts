@@ -1,6 +1,6 @@
-import fs from 'fs'
-import pdf from 'pdf-parse'
+import fs from 'fs-extra'
 import { PDFDocument } from 'pdf-lib'
+import pdf from 'pdf-parse'
 
 /**
  * Parse text content of each page in a PDF file. Array indices correspond to page numbers.

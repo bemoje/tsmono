@@ -1,5 +1,5 @@
 import { TrieMap } from '@bemoje/trie-map'
-import fs from 'fs'
+import fs from 'fs-extra'
 import path from 'path'
 import { WORD_TRIE_DIRPATH } from '../../constants/WORD_TRIE_DIRPATH'
 

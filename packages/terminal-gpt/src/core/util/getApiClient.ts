@@ -1,5 +1,5 @@
 import { OpenaiApiClient } from '@bemoje/openai-api-client'
-import fs from 'fs'
+import fs from 'fs-extra'
 import { config } from '../config'
 
 /**

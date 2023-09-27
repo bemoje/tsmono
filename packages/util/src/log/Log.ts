@@ -1,11 +1,11 @@
 import { EventEmitter } from 'events'
-import fs from 'fs'
+import fs from 'fs-extra'
 import path from 'path'
 import { MS_IN_DAY } from '../date/constants/MS_IN_DAY'
 import { XtError } from '../errors/XtError'
-import { appendLineToFileSync } from '../fs/appendLineToFileSync'
-import { cleanDirectorySync } from '../fs/cleanDirectorySync'
-import { createDirectorySync } from '../fs/createDirectorySync'
+import { appendFileLineSync } from '../fs/appendFileLine/appendFileLineSync'
+import { createDirectorySync } from '../fs/createDirectory/createDirectorySync'
+import { emptyDirectorySync } from '../fs/emptyDirectory/emptyDirectorySync'
 import { colors } from '../node/colors'
 import { safeJsonStringify } from '../serialize/safeJsonStringify'
 import { strRepeat } from '../string/strRepeat'
@@ -210,7 +210,7 @@ export class Log {
   deleteLogFiles(deleteFilesOlderThan = 0): void {
     if (deleteFilesOlderThan === 0) return
     if (!fs.existsSync(this.logDirpath)) return
-    cleanDirectorySync(this.logDirpath, (_, stat) => {
+    emptyDirectorySync(this.logDirpath, (stat) => {
       const ageMs = Date.now() - stat.ctimeMs
       const ageDays = ageMs / MS_IN_DAY
       return ageDays > deleteFilesOlderThan
@@ -280,7 +280,7 @@ export class Log {
       .padStart(2, '0')}:${d.getUTCSeconds().toString().padStart(2, '0')}`
     const level = loglevel.toUpperCase().padEnd(5, ' ')
     const entry = `${timestamp}|${level}|${safeJsonStringify(data)}`
-    appendLineToFileSync(this.logFilepath, entry)
+    appendFileLineSync(this.logFilepath, entry)
   }
 
   /**

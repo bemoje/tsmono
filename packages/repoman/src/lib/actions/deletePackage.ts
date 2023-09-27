@@ -1,5 +1,5 @@
 import { execute } from '@bemoje/util'
-import fs from 'fs'
+import fs from 'fs-extra'
 import path from 'path'
 import { getPackages } from '../util/getPackages'
 

@@ -1,4 +1,4 @@
-import fs from 'fs'
+import fs from 'fs-extra'
 import { WalkOptions } from 'walkdir'
 
 export interface IWalkDirectoryOptions extends Omit<WalkOptions, 'filter' | 'no_return'> {

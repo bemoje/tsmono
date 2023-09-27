@@ -1,5 +1,5 @@
 import { strHashToString } from '@bemoje/util'
-import fs from 'fs'
+import fs from 'fs-extra'
 import path from 'path'
 import stripComments from 'strip-comments'
 import walkdir from 'walkdir'

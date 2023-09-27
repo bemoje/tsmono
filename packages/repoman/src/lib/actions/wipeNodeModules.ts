@@ -1,5 +1,5 @@
-import { deleteFsoSafeSync } from '@bemoje/util'
-import fs from 'fs'
+import { removeFileSync } from '@bemoje/util'
+import fs from 'fs-extra'
 import path from 'path'
 import { getPackages } from '../util/getPackages'
 
@@ -15,7 +15,7 @@ export function wipeNodeModules(
       const dir = path.join(rootdir, 'node_modules', scope)
       const plock = path.join(rootdir, 'package-lock.json')
       if (fs.existsSync(dir)) {
-        deleteFsoSafeSync(dir)
+        removeFileSync(dir)
         console.log(`Deleted ${name}/node_modules/` + options.scope)
       }
 
@@ -28,7 +28,7 @@ export function wipeNodeModules(
       const dir = path.join(process.cwd(), 'node_modules', scope)
       const plock = path.join(process.cwd(), 'package-lock.json')
       if (fs.existsSync(dir)) {
-        deleteFsoSafeSync(dir)
+        removeFileSync(dir)
         console.log(`Deleted ${'tsmono'}/node_modules/` + scope)
       }
       if (options.packageLock && fs.existsSync(plock)) {
@@ -41,7 +41,7 @@ export function wipeNodeModules(
       const dir = path.join(rootdir, 'node_modules')
       const plock = path.join(rootdir, 'package-lock.json')
       if (fs.existsSync(dir)) {
-        deleteFsoSafeSync(dir)
+        removeFileSync(dir)
         console.log(`Deleted ${name}/node_modules/`)
       }
       if (options.packageLock && fs.existsSync(plock)) {
@@ -54,7 +54,7 @@ export function wipeNodeModules(
       const dir = path.join(process.cwd(), 'node_modules')
       const plock = path.join(process.cwd(), 'package-lock.json')
       if (fs.existsSync(dir)) {
-        deleteFsoSafeSync(dir)
+        removeFileSync(dir)
         console.log(`Deleted ${'tsmono'}/node_modules`)
       }
       if (options.packageLock && fs.existsSync(plock)) {

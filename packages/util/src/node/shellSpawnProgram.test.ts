@@ -7,7 +7,7 @@ describe(shellSpawnProgram.name, () => {
   })
 
   it('should recive multiple stdout outputs', async () => {
-    const cmd = await shellSpawnProgram('ping', 'google.com', '--no-inherit')
-    expect(cmd).toBe('ping google.com')
+    const cmd = await shellSpawnProgram('ping', 'localhost', '--no-inherit')
+    expect(cmd).toBe('ping localhost')
   })
 })

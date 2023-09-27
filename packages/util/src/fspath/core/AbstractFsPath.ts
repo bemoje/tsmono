@@ -1,4 +1,4 @@
-import fs from 'fs'
+import fs from 'fs-extra'
 import path from 'path'
 import { pathAbsoluteToRelativeCwd } from '../../path/pathAbsoluteToRelativeCwd'
 import { pathRoot } from '../../path/pathRoot'
@@ -88,7 +88,7 @@ export abstract class AbstractFsPath extends String {
    * Get fs.Stats asynchronously
    */
   async stat(): Promise<fs.Stats> {
-    return fs.promises.stat(this.absolute)
+    return fs.stat(this.absolute)
   }
 
   /**

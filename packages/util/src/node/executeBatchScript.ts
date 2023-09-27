@@ -1,5 +1,5 @@
 import { execFileSync } from 'child_process'
-import fs from 'fs'
+import fs from 'fs-extra'
 import path from 'path'
 import { XtError } from '../errors/XtError'
 import { colors } from './colors'
