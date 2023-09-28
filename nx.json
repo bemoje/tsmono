@@ -219,6 +219,14 @@
       ],
       "npmScope": "bemoje",
       "projectType": "application"
+    },
+    "dlfiles": {
+      "tags": [],
+      "implicitDependencies": [
+        "util"
+      ],
+      "npmScope": "bemoje",
+      "projectType": "library"
     }
   },
   "$schema": "./node_modules/nx/schemas/nx-schema.json",

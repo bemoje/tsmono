@@ -24,6 +24,7 @@
       "@bemoje/api-util": ["packages/api-util/src/index.ts"],
       "@bemoje/bfind": ["packages/bfind/src/index.ts"],
       "@bemoje/commander-config": ["packages/commander-config/src/index.ts"],
+      "@bemoje/dlfiles": ["packages/dlfiles/src/index.ts"],
       "@bemoje/excel-util": ["packages/excel-util/src/index.ts"],
       "@bemoje/fswalk": ["packages/fswalk/src/index.ts"],
       "@bemoje/markdown": ["packages/markdown/src/index.ts"],

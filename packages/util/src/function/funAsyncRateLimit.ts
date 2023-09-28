@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { PromiseQueue } from '../queue/PromiseQueue'
 import { IPromiseQueueOptions } from '../queue/types/IPromiseQueueOptions'
 import { IQueue } from '../queue/types/IQueue'
