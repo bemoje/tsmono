@@ -5,7 +5,7 @@ export type { IFunAsyncRateLimitOptions }
 /**
  * Options for @see downloadFiles
  */
-export interface IDownloadFilesOptions extends IFunAsyncRateLimitOptions {
+export interface IDownloadFilesOptions {
   /**
    * The URLs and file-extensions of the files to download.
    */
@@ -31,6 +31,12 @@ export interface IDownloadFilesOptions extends IFunAsyncRateLimitOptions {
   defaultExt?: string
 
   /**
+   * Whether to prefix the downloaded files with a zero-padded index.
+   * If the filename cannot be derived from the URO, the filename will be a timestamp integer.
+   */
+  noPrefix?: boolean
+
+  /**
    * Optionally pass an EventEmitter to receive events:
    * - queue(PromiseQueue)
    * - start({ url, filepath })
@@ -42,4 +48,9 @@ export interface IDownloadFilesOptions extends IFunAsyncRateLimitOptions {
    * If emitter is passed, errors (not failed downlaods) are emitted instead of thrown.
    */
   emitter?: EventEmitter
+
+  /**
+   * Options for the internal PromiseQueue.
+   */
+  queue?: Omit<IFunAsyncRateLimitOptions, 'autoStart' | 'throwOnTimeout'>
 }
