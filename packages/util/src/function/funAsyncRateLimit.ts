@@ -4,11 +4,12 @@ import { IPromiseQueueOptions } from '../queue/types/IPromiseQueueOptions'
 import { IQueue } from '../queue/types/IQueue'
 import { IQueueAddOptions } from '../queue/types/IQueueAddOptions'
 import { funSetName } from './funSetName'
+import { IFunAsyncRateLimitOptions } from './types/IFunAsyncRateLimitOptions'
 
 /**
  * Function call rate limiter / concurrency control.
- * @param fun Function to be rate limited.
- * @param options Options for the rate limiter.
+ * @param func Function to be rate limited.
+ * @param options - @see IFunAsyncRateLimitOptions
  * @example ```ts
  * const [queue, waitSecondsLimited] = funAsyncRateLimit(waitSeconds, {
  *   // Whether the task must finish in the given interval or will be carried over into the next interval count.
@@ -57,13 +58,13 @@ export function funAsyncRateLimit<
   QueueType extends IQueue<() => Promise<unknown>, EnqueueOptionsType>,
   EnqueueOptionsType extends IQueueAddOptions
 >(
-  fun: (...args: any[]) => any,
-  options: IPromiseQueueOptions<QueueType, EnqueueOptionsType> = {}
-): [PromiseQueue<QueueType, EnqueueOptionsType>, (...args: any[]) => Promise<any>] {
-  const queue = new PromiseQueue(options)
-  const wrapped = funSetName(fun.name, async function (...args: any[]) {
-    return await queue.add(async () => {
-      return await fun.call(queue, ...args)
+  func: (...args: any[]) => any,
+  options?: IFunAsyncRateLimitOptions
+): [queue: PromiseQueue<QueueType, EnqueueOptionsType>, wrapped: (...args: any[]) => Promise<any>] {
+  const queue = new PromiseQueue(options as IPromiseQueueOptions<QueueType, EnqueueOptionsType>)
+  const wrapped = funSetName(func.name, function (...args: any[]) {
+    return queue.add(async () => {
+      return await func.call(queue, ...args)
     })
   })
   return [queue, wrapped]
