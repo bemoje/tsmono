@@ -83,14 +83,20 @@ describe('TrieMap', () => {
 
     it('invalid characters - sentinel', () => {
       expect(() => {
-        trie.get([String.fromCharCode(0)])
-      }).toThrowError('Illegal prefix key. Single character string of CharCode 0 is reserved')
-      expect(() => {
         trie.set([String.fromCharCode(0)], true)
-      }).toThrowError('Illegal prefix key. Single character string of CharCode 0 is reserved')
-      expect(() => {
-        trie.has([String.fromCharCode(0)])
-      }).toThrowError('Illegal prefix key. Single character string of CharCode 0 is reserved')
+      }).not.toThrow()
+    })
+
+    it('Should find a new sentiel if it attepted used as path key.', () => {
+      const SENTINEL = String.fromCharCode(0)
+      const words = ['hello', 'helli', 'he' + SENTINEL + 'llo']
+      trie.set(Array.from(words[0]), '')
+      trie.set(Array.from(words[1]), '')
+      expect(trie.toJSON().SENTINEL).toBe(SENTINEL)
+      trie.set(Array.from(words[2]), '')
+      expect(trie.toJSON().SENTINEL).not.toBe(SENTINEL)
+      expect(trie.toJSON().SENTINEL).toBe(String.fromCharCode(1))
+      expect(trie.get(Array.from(words[1]))).toBe('')
     })
   })
 

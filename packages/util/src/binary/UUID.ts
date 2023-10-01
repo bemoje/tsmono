@@ -1,4 +1,4 @@
-import { type Encoding } from 'crypto'
+import type { Encoding } from 'crypto'
 import { convertEncoding } from './convertEncoding'
 import { randomString } from './randomString'
 

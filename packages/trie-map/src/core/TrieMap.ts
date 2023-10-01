@@ -1,5 +1,4 @@
-const SENTINEL = String.fromCharCode(0)
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * Class for a fast trie map.
  */
@@ -16,8 +15,9 @@ export class TrieMap<T> {
    * ```
    */
   public static fromJSON<T>(json: string): TrieMap<T> {
-    const instance: TrieMap<T> = new this()
-    instance.root = JSON.parse(json).root
+    const { root, SENTINEL } = JSON.parse(json)
+    const instance: TrieMap<T> = new this({ SENTINEL })
+    instance.root = root
     return instance
   }
 
@@ -32,15 +32,20 @@ export class TrieMap<T> {
    * ]);
    * ```
    */
-  public static fromIterable<T>(iterable: Iterable<[string[], T]>): TrieMap<T> {
-    const instance: TrieMap<T> = new this()
+  public static fromIterable<T>(iterable: Iterable<[string[], T]>, options?: { SENTINEL?: string }): TrieMap<T> {
+    const instance: TrieMap<T> = new this(options)
     return instance.load(iterable)
   }
 
   /**
    * The TrieMap data structure root.
    */
-  public root: Record<string, any>
+  root: Record<string, any>
+
+  /**
+   * The sentinel character used as key for the values in the TrieMap.
+   */
+  #SENTINEL: string
 
   /**
    * Creates a new TrieMap instance.
@@ -49,7 +54,8 @@ export class TrieMap<T> {
    * const trie = new TrieMap();
    * ```
    */
-  public constructor() {
+  public constructor(options?: { SENTINEL?: string }) {
+    this.#SENTINEL = options?.SENTINEL || String.fromCharCode(0)
     this.root = Object.create(null)
   }
 
@@ -65,15 +71,32 @@ export class TrieMap<T> {
    * ```
    */
   public get count(): number {
+    return this.countFrom([])
+  }
+
+  /**
+   * Returns the number of values in the TrieMap from a given prefix.
+   * @example
+   * ```js
+   * const trie = new TrieMap();
+   * trie.
+   *   .set(['some1', 'path'], 'value')
+   *   .set(['some2', 'path'], 'value')
+   *   .countFrom(['some1']);
+   * //=> 1
+   * ```
+   */
+  public countFrom(prefix: string[]): number {
     let c = 0
-    this.forEach([], () => {
+    this.forEachNode(prefix, () => {
       c++
     })
     return c
   }
 
   /**
-   * Deletes all entries from the TrieMap
+   * Deletes all entries from the TrieMap.
+   * Also deletes every property key to which its value is a value in the TrieMap.
    * @returns this/self (chainable)
    * @example
    * ```js
@@ -84,7 +107,10 @@ export class TrieMap<T> {
    * //=> 0
    * ```
    */
-  public clear(): TrieMap<T> {
+  public clear(): this {
+    this.forEachNode([], (node) => {
+      Reflect.deleteProperty(node, this.#SENTINEL)
+    })
     this.root = Object.create(null)
     return this
   }
@@ -121,7 +147,7 @@ export class TrieMap<T> {
    * ```
    */
   public set(prefix: string[], value: T): TrieMap<T> {
-    this.setNodeValue(this.setNode(this.validatePrefixInput(prefix)), value)
+    this.setNode(prefix)[this.#SENTINEL] = value
     return this
   }
 
@@ -144,9 +170,9 @@ export class TrieMap<T> {
    * ```
    */
   public update(prefix: string[], f: (value: T) => T): TrieMap<T> {
-    const node = this.getNode(this.validatePrefixInput(prefix))
+    const node = this.getNode(prefix)
     if (node) {
-      this.updateNodeValue(node, f)
+      node[this.#SENTINEL] = f(node[this.#SENTINEL])
     }
     return this
   }
@@ -163,9 +189,9 @@ export class TrieMap<T> {
    * ```
    */
   public get(prefix: string[]): T | undefined {
-    const node = this.getNode(this.validatePrefixInput(prefix))
+    const node = this.getNode(prefix)
     if (!node) return
-    return this.getNodeValue(node)
+    return node[this.#SENTINEL]
   }
 
   /**
@@ -201,8 +227,8 @@ export class TrieMap<T> {
    * ```
    */
   public has(prefix: string[]): boolean {
-    const node = this.getNode(this.validatePrefixInput(prefix))
-    return !!node && this.hasNodeValue(node)
+    const node = this.getNode(prefix)
+    return !!node && this.#SENTINEL in node
   }
 
   /**
@@ -222,14 +248,15 @@ export class TrieMap<T> {
    * ```
    */
   public delete(prefix: string[]): boolean {
-    prefix = this.validatePrefixInput(prefix)
     let node = this.root
     let toPrune = null
     let pruneKey = null
     let parent
+    let key
     for (let i = 0; i < prefix.length; i++) {
+      key = this.ensureKeyNotSentinel(prefix[i])
       parent = node
-      node = node[prefix[i]]
+      node = node[key]
       // Prefix does not exist
       if (node === undefined) {
         return false
@@ -244,17 +271,17 @@ export class TrieMap<T> {
       } else {
         if (numKeys < 2) {
           toPrune = parent
-          pruneKey = prefix[i]
+          pruneKey = key
         }
       }
     }
-    if (!this.hasNodeValue(node)) {
+    if (!(this.#SENTINEL in node)) {
       return false
     }
     if (toPrune && pruneKey) {
       Reflect.deleteProperty(toPrune, pruneKey)
     } else {
-      Reflect.deleteProperty(node, SENTINEL)
+      Reflect.deleteProperty(node, this.#SENTINEL)
     }
     return true
   }
@@ -302,28 +329,9 @@ export class TrieMap<T> {
    * ```
    */
   public forEach(prefix: string[], f: (value: T, prefix: string[]) => void | boolean): TrieMap<T> {
-    prefix = this.validatePrefixInput(prefix.slice())
-    const value = this.get(prefix)
-    if (value !== undefined) {
-      f(value, prefix.slice())
-    }
-    let endRecursion = false
-    ;(function recurse(node) {
-      for (const key in node) {
-        prefix.push(key)
-        const value = node[key][SENTINEL]
-        if (value !== undefined && !endRecursion) {
-          if (f(value, prefix.slice())) {
-            endRecursion = true
-          }
-        }
-        if (key !== SENTINEL && !endRecursion) {
-          recurse(node[key])
-        }
-        prefix.pop()
-      }
-    })(this.getNode(prefix) || {})
-    return this
+    return this.forEachNode(prefix, (node, prefix) => {
+      return f(node[this.#SENTINEL], prefix)
+    })
   }
 
   /**
@@ -345,25 +353,9 @@ export class TrieMap<T> {
    * ```
    */
   public updateAll(prefix: string[], f: (value: T, prefix?: string[]) => T): TrieMap<T> {
-    prefix = this.validatePrefixInput(prefix.slice())
-    const value = this.get(prefix)
-    if (value !== undefined) {
-      this.set(prefix, f(value, prefix))
-    }
-    ;(function recurse(node) {
-      for (const key in node) {
-        prefix.push(key)
-        const value = node[key][SENTINEL]
-        if (value !== undefined) {
-          node[key][SENTINEL] = f(value, prefix.slice())
-        }
-        if (key !== SENTINEL) {
-          recurse(node[key])
-        }
-        prefix.pop()
-      }
-    })(this.getNode(prefix) || {})
-    return this
+    return this.forEachNode(prefix, (node, pre) => {
+      node[this.#SENTINEL] = f(node[this.#SENTINEL], pre)
+    })
   }
 
   /**
@@ -438,7 +430,7 @@ export class TrieMap<T> {
    */
   public *keys(prefix: string[] = []): Iterable<string[]> {
     const res: string[][] = []
-    this.forEach(prefix, (_, pre) => {
+    this.forEachNode(prefix, (_, pre) => {
       res.push(pre)
     })
     yield* res
@@ -559,10 +551,56 @@ export class TrieMap<T> {
     return JSON.stringify(this, null, pretty ? 2 : void 0)
   }
 
+  /**
+   * Used internally by JSON.stringify.
+   */
+  toJSON() {
+    return { root: this.root, SENTINEL: this.#SENTINEL }
+  }
+
+  /**
+   * Visits only nodes that have a value.
+   */
+  protected forEachNode(
+    prefix: string[],
+    f: (node: Record<string, any>, prefix: string[]) => void | boolean
+  ): TrieMap<T> {
+    prefix = prefix.slice()
+    const node = this.getNode(prefix)
+    if (!node) return this
+    if (node[this.#SENTINEL] !== undefined) {
+      if (f(node, prefix.slice())) {
+        return this
+      }
+    }
+    let endRecursion = false
+    const SENTINEL = this.#SENTINEL
+    ;(function recurse(node) {
+      for (const key in node) {
+        if (node[key][SENTINEL] !== undefined && !endRecursion) {
+          if (f(node[key], prefix.concat(key))) {
+            endRecursion = true
+          }
+        }
+        if (key !== SENTINEL && !endRecursion) {
+          prefix.push(key)
+          recurse(node[key])
+          prefix.pop()
+        }
+      }
+    })(node)
+    return this
+  }
+
   protected setNode(prefix: string[]): Record<string, any> {
     let node = this.root
     for (let i = 0; i < prefix.length; i++) {
-      node = node[prefix[i]] || (node[prefix[i]] = Object.create(null))
+      const key = prefix[i]
+      if (node[key] === undefined) {
+        this.ensureKeyNotSentinel(key)
+        node[key] = Object.create(null)
+      }
+      node = node[key]
     }
     return node
   }
@@ -578,31 +616,58 @@ export class TrieMap<T> {
     return node
   }
 
-  protected setNodeValue(node: Record<string, any>, value: T): void {
-    node[SENTINEL] = value
-  }
-
-  protected updateNodeValue(node: Record<string, any>, f: (value: T) => T): void {
-    node[SENTINEL] = f(node[SENTINEL])
-  }
-
-  protected getNodeValue(node: Record<string, any>): T | undefined {
-    return node[SENTINEL]
-  }
-
-  protected deleteNodeValue(node: Record<string, any>): boolean {
-    return Reflect.deleteProperty(node, SENTINEL)
-  }
-
-  protected hasNodeValue(node: Record<string, any>): boolean {
-    return Object.hasOwn(node, SENTINEL)
-  }
-
-  protected validatePrefixInput(prefix: string[]): string[] {
-    if (prefix.includes(SENTINEL)) {
-      throw Error('Illegal prefix key. Single character string of CharCode 0 is reserved')
+  /**
+   * Checks if the current key is the same as the used sentinel chatacter.
+   * If it is, it will brute force find a new sentinel character and since all operatons are syncrhonous,
+   * the operation from which this method was called, can continue its operation as if nothing happened.
+   */
+  protected ensureKeyNotSentinel(key: string): string {
+    if (key === this.#SENTINEL) {
+      this.findNewSentiel()
     }
-    return prefix
+    return key
+  }
+
+  /**
+   * Brute force scans for a new sentinel character that isn't currently being used.
+   */
+  protected findNewSentiel(): void {
+    // find all single-characters used as keys in the data structure
+    const singleCharKeys = new Set()
+    const prefix = []
+    const SENTINEL = this.#SENTINEL
+    ;(function recurse(node) {
+      for (const key in node) {
+        if (key.length === 1) {
+          singleCharKeys.add(key.charCodeAt(0))
+        }
+        if (key !== SENTINEL) {
+          prefix.push(key)
+          recurse(node[key])
+          prefix.pop()
+        }
+      }
+    })(this.root)
+
+    // find a new sentinel character that isn't currently being used
+    let sentinelCharCode = this.#SENTINEL.charCodeAt(0)
+    singleCharKeys.add(sentinelCharCode)
+    for (let i = 0; i < 255 * 255; i++) {
+      // skip common
+      if (i === 40) i = 500
+      if (!singleCharKeys.has(i)) {
+        sentinelCharCode = i
+        break
+      }
+    }
+
+    // Update all nodes to use the new sentinel character
+    const newSentiel = String.fromCharCode(sentinelCharCode)
+    this.forEachNode([], (node) => {
+      node[newSentiel] = node[this.#SENTINEL]
+      Reflect.deleteProperty(node, this.#SENTINEL)
+    })
+    this.#SENTINEL = newSentiel
   }
 }
 
