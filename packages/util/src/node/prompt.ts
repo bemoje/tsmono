@@ -14,7 +14,11 @@ export async function prompt(question: string, callback?: (input: string) => str
   while (!answer) {
     answer = await new Promise((resolve) => {
       rl.question(question, (input: string) => {
-        resolve(!callback || callback(input) ? input : '')
+        if (!callback) {
+          resolve(input)
+        } else {
+          resolve(callback(input))
+        }
       })
     })
   }

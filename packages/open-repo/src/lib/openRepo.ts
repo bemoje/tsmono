@@ -18,5 +18,6 @@ export async function openRepo(search?: string) {
     if (dirname) return openRepoInIde(rootdir, IDE, dirname)
   }
   const dirname = await promptUser(dirnames)
-  openRepoInIde(rootdir, IDE, dirname)
+  console.log({ dirname })
+  return openRepoInIde(rootdir, IDE, dirname)
 }
