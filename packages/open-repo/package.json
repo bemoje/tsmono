@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/open-repo",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "CLI-shorthand to opening a local repository in your IDE.",
   "main": "index.cjs.js",
   "module": "index.esm.js",
