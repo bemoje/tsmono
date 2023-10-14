@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/util",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "type": "commonjs",
   "main": "./index.cjs",
   "module": "./index.js",
@@ -24,7 +24,6 @@
   },
   "homepage": "https://github.com/bemoje/tsmono",
   "dependencies": {
-    "eventemitter3": "^5.0.1",
     "fs-extra": "^11.1.1"
   },
   "devDependencies": {

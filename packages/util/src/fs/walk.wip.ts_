@@ -101,16 +101,10 @@ async function walk(root = process.cwd()) {
 
   await queue.onIdle()
 
-  let d = 0
-  let f = 0
   const t1 = Date.now()
-  trie.forEach([], (value, key) => {
-    d++
-    f += Object.keys(value).length
-  })
-  console.log({ d, f })
+  trie.set(['asd', String.fromCharCode(0)], SCANFAIL)
   console.log('done', Date.now() - t1, 'ms')
 }
 
-const root = path.join('G:', 'My Drive')
+const root = path.join('C:', 'Users', 'bemoj')
 walk(root).catch(console.error)

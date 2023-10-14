@@ -13,7 +13,7 @@ export async function tryCatch<R>(fn: () => R | Promise<R>): Promise<[Error | un
   try {
     const result = fn()
     if (result instanceof Promise) {
-      return handlePromise(result)
+      return await handlePromise(result)
     }
     return [undefined, result]
   } catch (error) {

@@ -1,20 +1,22 @@
-import fs from 'fs-extra'
-import path from 'path'
+import { readDirectoryStatsSafe } from '@bemoje/util'
 import { config } from '../core/config'
-import { findRepo } from './findRepo'
-import { promptUserForIndex } from './promptUserForIndex'
+import { getRepo } from './getRepo'
+import { openRepoInIde } from './openRepoInIde'
+import { promptUser } from './promptUser'
 
 export async function openRepo(search?: string) {
   const rootdir = config.userconfig.get('rootdir')
   const IDE = config.userconfig.get('IDE')
 
-  const dirnames = (await fs.promises.readdir(rootdir)).filter((dirname) => {
-    return fs.statSync(path.join(rootdir, dirname)).isDirectory()
-  })
+  const dirnames = (await readDirectoryStatsSafe(rootdir))
+    .filter((stat) => stat.isDirectory())
+    .sort((a, b) => a.birthtimeMs - b.birthtimeMs)
+    .map((stat) => stat.name)
 
   if (search) {
-    findRepo(rootdir, IDE, dirnames, search)
-  } else {
-    await promptUserForIndex(rootdir, IDE, dirnames)
+    const dirname = getRepo(dirnames, search)
+    if (dirname) return openRepoInIde(rootdir, IDE, dirname)
   }
+  const dirname = await promptUser(dirnames)
+  openRepoInIde(rootdir, IDE, dirname)
 }
