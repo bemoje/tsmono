@@ -1,4 +1,4 @@
-import { assertion } from '../validation/assertion'
+import { assertThat } from '../validation/assertThat'
 import { isPositiveInteger } from '../validation/numbers/isPositiveInteger'
 
 /**
@@ -7,7 +7,7 @@ import { isPositiveInteger } from '../validation/numbers/isPositiveInteger'
  */
 export function wait(ms = 0): Promise<void> {
   return new Promise((resolve) => {
-    assertion(ms, isPositiveInteger)
+    assertThat(ms, isPositiveInteger)
     setTimeout(resolve, ms)
   })
 }

@@ -1,5 +1,5 @@
 import { strReplaceAll } from '../string/strReplaceAll'
-import { assertion } from '../validation/assertion'
+import { assertThat } from '../validation/assertThat'
 import { isValidNumber } from '../validation/numbers/isValidNumber'
 import { round } from './round'
 
@@ -59,7 +59,7 @@ export class NumberFormatter {
    * Format a number to a string.
    */
   format(number: number): string {
-    assertion(number, isValidNumber)
+    assertThat(number, isValidNumber)
     const negative = number >= 0 ? '' : '-'
     const split = Math.abs(round(number, this.precision)).toString().split('.')
     const decimals = this.precision ? this.decimalSeparator + (split[1] || '').padEnd(this.precision, '0') : ''
@@ -84,7 +84,7 @@ export class NumberFormatter {
       .map((s) => parseInt(s))
       .join('.')
     const n = Number(string)
-    assertion(n, isValidNumber)
+    assertThat(n, isValidNumber)
     return n
   }
 }

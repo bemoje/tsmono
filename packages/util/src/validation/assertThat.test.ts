@@ -1,11 +1,11 @@
-import { assertion } from './assertion'
+import { assertThat } from './assertThat'
 
-describe(assertion.name, () => {
+describe(assertThat.name, () => {
   describe('when the validation function returns true', () => {
     it('should return the value', () => {
       const value = 5
       const validate = jest.fn().mockReturnValue(true)
-      const result = assertion(value, validate)
+      const result = assertThat(value, validate)
       expect(result).toBe(value)
       expect(validate).toHaveBeenCalledWith(value)
     })
@@ -16,10 +16,10 @@ describe(assertion.name, () => {
       const value = 5
       const validate = jest.fn().mockReturnValue(false)
       expect(() => {
-        assertion(value, validate)
+        assertThat(value, validate)
       }).toThrow()
       expect(() => {
-        assertion(value, validate)
+        assertThat(value, validate)
       }).toThrow(`Expected '${validate.name}' to be 'true' for input: ${value}`)
       expect(validate).toHaveBeenCalledWith(value)
     })
@@ -31,10 +31,10 @@ describe(assertion.name, () => {
         const value = 5
         const validate = jest.fn().mockReturnValue(true)
         expect(() => {
-          assertion(value, validate, false)
+          assertThat(value, validate, false)
         }).toThrow()
         expect(() => {
-          assertion(value, validate, false)
+          assertThat(value, validate, false)
         }).toThrow(`Expected '${validate.name}' to be 'false' for input: ${value}`)
         expect(validate).toHaveBeenCalledWith(value)
       })
@@ -44,7 +44,7 @@ describe(assertion.name, () => {
       it('should return the value', () => {
         const value = 5
         const validate = jest.fn().mockReturnValue(false)
-        const result = assertion(value, validate, false)
+        const result = assertThat(value, validate, false)
         expect(result).toBe(value)
         expect(validate).toHaveBeenCalledWith(value)
       })

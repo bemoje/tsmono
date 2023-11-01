@@ -1,18 +1,13 @@
 {
-  "name": "@bemoje/b",
-  "version": "0.0.2",
+  "name": "@bemoje/mongo",
+  "version": "0.0.1",
   "dependencies": {
-    "@bemoje/trie-map": "latest",
-    "@bemoje/util": "latest",
-    "commander": "^11.1.0"
+    "mongoose": "^7.6.3"
   },
   "type": "commonjs",
   "main": "./index.cjs",
   "module": "./index.js",
-  "bin": {
-    "b": "bin/index.js"
-  },
-  "preferGlobal": true,
+  "devDependencies": {},
   "author": {
     "name": "Benjamin Møller Jensen",
     "email": "bemoje@bemoje.net",
@@ -31,6 +26,5 @@
   "bugs": {
     "url": "https://github.com/bemoje/tsmono/issues"
   },
-  "homepage": "https://github.com/bemoje/tsmono",
-  "devDependencies": {}
+  "homepage": "https://github.com/bemoje/tsmono"
 }

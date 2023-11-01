@@ -22,6 +22,7 @@
     "forceConsistentCasingInFileNames": true,
     "paths": {
       "@bemoje/api-util": ["packages/api-util/src/index.ts"],
+      "@bemoje/b": ["packages/b/src/index.ts"],
       "@bemoje/bfind": ["packages/bfind/src/index.ts"],
       "@bemoje/commander-config": ["packages/commander-config/src/index.ts"],
       "@bemoje/dlfiles": ["packages/dlfiles/src/index.ts"],
@@ -29,6 +30,7 @@
       "@bemoje/fswalk": ["packages/fswalk/src/index.ts"],
       "@bemoje/markdown": ["packages/markdown/src/index.ts"],
       "@bemoje/matrix": ["packages/matrix/src/index.ts"],
+      "@bemoje/mongo": ["packages/mongo/src/index.ts"],
       "@bemoje/open-repo": ["packages/open-repo/src/index.ts"],
       "@bemoje/openai-api-client": ["packages/openai-api-client/src/index.ts"],
       "@bemoje/pdf-util": ["packages/pdf-util/src/index.ts"],

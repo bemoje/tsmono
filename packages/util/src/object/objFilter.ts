@@ -15,7 +15,7 @@
 export function objFilter<T>(
   object: Record<string, T>,
   callback: (value: T, key: string) => boolean,
-  getKeys: (obj: typeof object) => Iterable<string> = Object.keys,
+  getKeys: (obj: typeof object) => Iterable<string> = Object.keys
 ): Record<string, T> {
   const result: Record<string, T> = {}
   for (const key of getKeys(object)) {

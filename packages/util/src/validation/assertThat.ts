@@ -6,14 +6,14 @@ import { XtInvalidError } from '../errors/XtInvalidError'
  * @example ```ts
  * const isPositive = (n: number) => n >= 0
  *
- * assertion(-5, isPositive)
+ * assertThat(-5, isPositive)
  * //=> throws ValidationError: Expected 'isPositive' to be 'true' for input: '-5'
  *
- * assertion(5, isPositive, false)
+ * assertThat(5, isPositive, false)
  * //=> throws ValidationError: Expected 'isPositive' to be 'false' for input: '5'
  * ```
  */
-export function assertion<T>(value: T, validate: (value: T) => boolean, expectation = true): T {
+export function assertThat<T>(value: T, validate: (value: T) => boolean, expectation = true): T {
   if (validate(value) === expectation) return value
   throw new XtInvalidError(value, validate, expectation)
 }
