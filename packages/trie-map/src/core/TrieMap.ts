@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * Class for a fast trie map.
  */
@@ -32,7 +31,10 @@ export class TrieMap<T> {
    * ]);
    * ```
    */
-  public static fromIterable<T>(iterable: Iterable<[string[], T]>, options?: { SENTINEL?: string }): TrieMap<T> {
+  public static fromIterable<T = unknown>(
+    iterable: Iterable<[string[], T]>,
+    options?: { SENTINEL?: string }
+  ): TrieMap<T> {
     const instance: TrieMap<T> = new this(options)
     return instance.load(iterable)
   }
@@ -40,7 +42,7 @@ export class TrieMap<T> {
   /**
    * The TrieMap data structure root.
    */
-  root: Record<string, any>
+  root: Record<string, NodeValue>
 
   /**
    * The sentinel character used as key for the values in the TrieMap.
@@ -563,7 +565,7 @@ export class TrieMap<T> {
    */
   protected forEachNode(
     prefix: string[],
-    f: (node: Record<string, any>, prefix: string[]) => void | boolean
+    f: (node: Record<string, NodeValue>, prefix: string[]) => void | boolean
   ): TrieMap<T> {
     prefix = prefix.slice()
     const node = this.getNode(prefix)
@@ -592,7 +594,7 @@ export class TrieMap<T> {
     return this
   }
 
-  protected setNode(prefix: string[]): Record<string, any> {
+  protected setNode(prefix: string[]): Record<string, NodeValue> {
     let node = this.root
     for (let i = 0; i < prefix.length; i++) {
       const key = prefix[i]
@@ -605,7 +607,7 @@ export class TrieMap<T> {
     return node
   }
 
-  protected getNode(prefix: string[]): Record<string, any> | undefined {
+  protected getNode(prefix: string[]): Record<string, NodeValue> | undefined {
     let node = this.root
     for (let i = 0; i < prefix.length; i++) {
       node = node[prefix[i]]
@@ -672,3 +674,6 @@ export class TrieMap<T> {
 }
 
 export default TrieMap
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type NodeValue = any

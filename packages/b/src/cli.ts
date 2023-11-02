@@ -1,2 +1,2 @@
 import { main } from './core/main'
-main()
+main().catch(console.error)

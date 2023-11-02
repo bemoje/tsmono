@@ -1,30 +1,37 @@
 import { prompt } from '@bemoje/util'
+import { execSync } from 'child_process'
 import { BCommand } from './BCommand'
 import { trie } from './trie'
 
+function execInherit(command: string): Promise<string> {
+  return new Promise((resolve, reject) => {
+    try {
+      const buffer = execSync(command, { stdio: 'inherit' })
+      const string = buffer && buffer.toString ? buffer.toString().trim() : ''
+      resolve(string)
+    } catch (error) {
+      const oError = error instanceof Error ? error : new Error(String(error))
+      reject(oError)
+    }
+  })
+}
+
 export async function main() {
   const program = new BCommand('b')
+  program
     .summary("bemoje's cli tools")
     .argument('[search...]', 'command search string')
-    .action((search, options, self) => {
+    .action(async (search: string[], options, self) => {
       if (search.length === 0) return self.help()
       // console.log({ search })
-
-      // shortcut
-      const shortcutResult = trie.get(['shortcuts', search[0]])
-      if (shortcutResult) {
-        console.log(shortcutResult.cmdpath + ' ' + search.slice(1).join(' '))
-        shortcutResult.parse([undefined, undefined, ...search.slice(1)], options)
-        return
-      }
 
       // multiple kws, try match nearest child
       if (search.length > 1) {
         const kw = search[0]
         for (const cmd of self.commands) {
           if ((cmd.aliases()[0] || cmd.name()) === kw) {
-            console.log(cmd.cmdpath + ' ' + search.slice(1).join(' '))
-            cmd.parse([undefined, undefined, ...search.slice(2)], options)
+            console.log(program.cmdpath + ' ' + search.slice(1).join(' '))
+            cmd.parse(search.slice(2), { from: 'user' })
             return
           }
         }
@@ -49,12 +56,12 @@ export async function main() {
       // console.log({ matches })
       const ranked = [...matches.entries()].sort((a, b) => b[1].size - a[1].size)
       const winner = ranked[0]
-      // console.log({ winner })
       if (winner) {
+        console.log({ search, match: winner[0] })
         const target = trie.get(winner[0].split(' '))
         if (target) {
-          const args = [undefined, undefined, ...search.slice(1)]
-          target.parse(args, options)
+          const args = search.slice(1)
+          target.parse(args, { from: 'user' })
         }
         return
       }
@@ -72,8 +79,8 @@ export async function main() {
     // .option('-a, --auth [token]', 'github access token', 'MY_TOKEN')
     .argument('[repo]', 'repository name')
     .action(async (repo, options, self) => {
-      if (!repo) repo = await prompt('repo: ', (input) => input.trim() || '')
-      await self.exec('bCreateRepo ' + repo)
+      if (!repo) repo = await prompt('repo: ')
+      await execInherit(`bCreateRepo ${repo}`)
       // const { user, auth } = options
       // if (!repo || !user || !auth) return self.help()
       // console.log('created ' + user + 's github repo: ' + repo)
@@ -85,16 +92,23 @@ export async function main() {
     .option('-a, --auth [token]', 'github access token', 'MY_TOKEN')
     .argument('[repo]', 'repository name')
     .action(async (repo, options, self) => {
-      if (!repo) repo = await prompt('repo: ', (input) => input.trim() || '')
-      await self.exec('bDeleteRepo ' + repo)
+      if (!repo) repo = await prompt('repo: ')
+      await execInherit(`bDeleteRepo ${repo}`)
       // const { user, auth } = options
       // if (!repo || !user || !auth) return self.help()
       // console.log('deleted ' + user + 's github repo: ' + repo)
       // console.log('deleted local repo: ' + repo)
     })
 
-  new BCommand('b git') //
-    .summary('git commands')
+  const bgit = new BCommand('b git') //
+    .description('git commands for you')
+    .arg('cmd')
+    .argOptional()
+    .setVariadic(true)
+    .getParentCommand()
+    .action(async (options, self) => {
+      console.log({ options, self })
+    })
 
   new BCommand('b git commit')
     .option('-a, --add <path>', 'files to add to staged', '.')
@@ -106,9 +120,8 @@ export async function main() {
       } else {
         msg = message.join(' ').trim()
       }
-      // execSync('bCommit' + (msg ? ' ' + msg : ''), { stdio: 'inherit' })
-      await self.exec('git add ' + options.add)
-      await self.exec('git commit -m "' + msg + '"')
+      await execInherit(`git add ${options.add}`)
+      await execInherit(`git commit -m "${msg}"`)
     })
 
   new BCommand('b git push')
@@ -125,39 +138,49 @@ export async function main() {
 
       let origin = ''
       if (!options.origin) {
-        origin = await prompt('origin: ', (input) => input.trim() || '')
+        origin = await prompt('origin: ')
       }
       origin = origin ? ' -u origin ' + origin : ''
 
-      await self.exec('git add ' + options.add)
-      await self.exec('git commit -m "' + msg + '"')
-      await self.exec('git push' + origin)
+      await execInherit(`git add ${options.add}`)
+      await execInherit(`git commit -m "${msg}"`)
+      await execInherit(`git push${origin}`)
     })
 
   new BCommand('b git checkout') //
     .argument('[branch]', 'branch name')
     .action(async (branch, options, self) => {
-      if (!branch) branch = await prompt('branch: ', (input) => input.trim() || '')
-      await self.exec('bCheckout ' + branch)
+      if (!branch) branch = await prompt('branch: ')
+      await execInherit(`bCheckout ${branch}`)
     })
 
   new BCommand('b git branch') //
     .summary('git branch commands')
 
   new BCommand('b git branch list') //
-    .summary('list local branches')
-    .action(async (options, self) => {
-      await self.exec('git branch')
+    .summary('list branches')
+    .option('-r, --remotes', 'list only remote branches')
+    .option('-l, --local', 'list only local branches')
+    .argument('[...args]')
+    .action(async (args, options = {}, self) => {
+      if (options.remotes) {
+        await execInherit(`git branch -r`)
+      } else if (options.local) {
+        await execInherit(`git branch`)
+      } else {
+        await execInherit(`git branch --all`)
+      }
     })
 
   new BCommand('b git branch delete')
     .argument('[branches...]', 'branches to delete')
-    .action(async (branches: string[], options, self) => {
+    .action(async (branches: string[], options, self: BCommand) => {
       if (!branches.length) {
-        branches = (await prompt('branches: ', (input) => input.trim() || '')).split(' ')
+        // branches = (await prompt('branches: ')).split(' ')
+        console.log({ wizard: self.wizard() })
       }
       for (const branch of branches) {
-        await self.exec('git branch -D ' + branch)
+        await execInherit(`git branch -D ${branch}`)
       }
     })
 
@@ -176,3 +199,15 @@ export async function main() {
 
   program.parse()
 }
+
+// const program = new BCommand('blah')
+// program.showHelpAfterError(true)
+// program.showSuggestionAfterError(true)
+// program.configureHelp({
+//   helpWidth: 140,
+//   sortSubcommands: true,
+//   sortOptions: true,
+//   showGlobalOptions: true,
+// })
+// program.helpInformation()
+// program.parse()

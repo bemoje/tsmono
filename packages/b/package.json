@@ -4,7 +4,8 @@
   "dependencies": {
     "@bemoje/trie-map": "latest",
     "@bemoje/util": "latest",
-    "commander": "^11.1.0"
+    "commander": "^11.1.0",
+    "prompts": "^2.4.2"
   },
   "type": "commonjs",
   "main": "./index.cjs",
@@ -32,5 +33,7 @@
     "url": "https://github.com/bemoje/tsmono/issues"
   },
   "homepage": "https://github.com/bemoje/tsmono",
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/prompts": "^2.4.7"
+  }
 }

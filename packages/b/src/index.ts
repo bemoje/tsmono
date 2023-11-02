@@ -1,3 +1,5 @@
+export * from './core/BArgument'
 export * from './core/BCommand'
 export * from './core/main'
+export * from './core/PromptBuilder'
 export * from './core/trie'
