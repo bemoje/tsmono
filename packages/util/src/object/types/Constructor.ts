@@ -4,4 +4,4 @@
  * @param {...any[]} args - The arguments to pass to the constructor function.
  * @returns {T} - The created object.
  */
-export type Constructor<T = Record<string, any>> = new (...args: any[]) => T
+export type Constructor<T = any> = new (...args: any[]) => T

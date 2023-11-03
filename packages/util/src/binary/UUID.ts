@@ -10,7 +10,7 @@ import { randomString } from './randomString'
  * @param encoding - The encoding to use for the output string. Default is 'binary'.
  * @returns A UUID as a string.
  */
-export function UUID(bits = 128, encoding: Encoding = 'base64url') {
+export function UUID(bits = 128, encoding: Encoding = 'base64url'): string {
   if (bits < 32) throw new Error('UUID must be at least 32 bits.')
   const timestamp = convertEncoding(Date.now().toString(16), { from: 'hex', to: encoding })
   const id = randomString(bits - 32, encoding)

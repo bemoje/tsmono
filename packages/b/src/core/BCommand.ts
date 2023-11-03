@@ -1,6 +1,7 @@
 import { arrSome, colors } from '@bemoje/util'
-import { Command, Help } from 'commander'
-import { BArgument, ValidInputPrimitiveTypes } from './BArgument'
+import { Command, Help, Option } from 'commander'
+import { BArgument } from './BArgument'
+import { ValidInputPrimitiveTypes } from './ValidInputPrimitiveTypes'
 import { trie } from './trie'
 
 class BHelp extends Help {
@@ -10,6 +11,9 @@ class BHelp extends Help {
     this.showGlobalOptions = true
     this.sortOptions = false
     this.sortSubcommands = false
+    const o = new Option('-h, --help', 'display help for command')
+    o.attributeName
+    o.long
   }
 
   override commandUsage(cmd: BCommand): string {
@@ -189,6 +193,7 @@ class NodeCommand extends BCommand {
     this.arg('cmd') //
       .argOptional()
       .setVariadic(true)
+      .setPromptType('autocomplete')
       .getParentCommand()
     this.action(async (options, self) => {
       console.log({ options, self })

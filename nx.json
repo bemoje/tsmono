@@ -231,6 +231,7 @@
     "b": {
       "tags": [],
       "implicitDependencies": [
+        "commander-config",
         "trie-map",
         "util"
       ],

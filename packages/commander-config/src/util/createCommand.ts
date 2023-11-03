@@ -1,5 +1,6 @@
-import { colors, strWrapInAngleBrackets, strWrapInBrackets } from '@bemoje/util'
+import { Constructor, colors, strWrapInAngleBrackets, strWrapInBrackets } from '@bemoje/util'
 import { Argument, Command, Option } from 'commander'
+import PromptType from 'prompts'
 let i = 0
 /**
  * Create a command.
@@ -18,8 +19,8 @@ export function createCommand(program: Command, options: ICommand): typeof progr
 
 export interface ICommand {
   command: string
-  aliases?: string[]
   summary: string
+  aliases?: string[]
   details?: string[]
   arguments?: ICommandArgument[]
   options?: ICommandOptions[]
@@ -33,32 +34,43 @@ export interface ICommandUsage {
   description?: string
 }
 
-export interface ICommandArgument {
+export interface IUserPrompt {
+  type: 'auto' | PromptType
+}
+
+export interface ICommandArgument<T = any> {
   name: string
   description: string
+  type?: Constructor
   isOptional?: boolean
   isRest?: boolean
   isCommaDelimited?: boolean
   default?: {
-    value: unknown
+    value: string
     description?: string
   }
+  prompt?: IUserPrompt
   choices?: string[]
+  parser?: (value: string, self?: Argument) => T
+  validators?: Array<(value: T, self: Argument) => boolean | string>
 }
 
 export interface ICommandOptions {
   name: string
-  char?: string
   description: string
+  short?: string
   argument?: string
-  isOptional?: boolean
+  isOptional?: boolean // deprecated
+  isRequired?: boolean
   isCommaDelimited?: boolean
   default?: {
-    value: unknown
+    value: string
     description?: string
   }
   choices?: string[]
   conflicts?: string[]
+  argChoices?: string[]
+  argumentParser?: <T>(value: string, self: Option) => T
 }
 
 function description(command: Command, options: ICommand) {
@@ -102,9 +114,9 @@ function args(command: Command, args?: ICommandArgument[]) {
 function opts(command: Command, options?: ICommandOptions[]) {
   if (!options) return
   for (const opt of options) {
-    const { name, char, description, argument, isOptional, isCommaDelimited, choices, conflicts } = opt
-    const wrapper = isOptional ? strWrapInBrackets : strWrapInAngleBrackets
-    const _name = `-${char}, --${name}${argument ? ' ' + wrapper(argument) : ''}`
+    const { name, short, description, argument, isRequired, isCommaDelimited, choices, conflicts } = opt
+    const wrapper = isRequired ? strWrapInAngleBrackets : strWrapInBrackets
+    const _name = `-${short}, --${name}${argument ? ' ' + wrapper(argument) : ''}`
     const option = new Option(_name, description)
     if (isCommaDelimited) option.argParser(parseCommaDelimited)
     if (opt.default) option.default(opt.default.value, opt.default.description)
