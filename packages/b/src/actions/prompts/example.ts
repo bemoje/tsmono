@@ -11,6 +11,7 @@ commandSearchPrompt(CLI_LIST, {
   },
 })
   .then((res) => {
+    console.log(res)
     execInherit([res.selected, res.args].join(' ')) //
       .then(console.log)
       .catch(console.error)
