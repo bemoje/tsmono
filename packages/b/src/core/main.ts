@@ -1,4 +1,6 @@
 import { execInherit, prompt } from '@bemoje/util'
+import { commandSearchPrompt } from '../actions/prompts/commandSearchPrompt/commandSearchPrompt'
+import { CLI_LIST } from '../cli/list'
 import { BCommand } from './BCommand'
 import { trie } from './trie'
 
@@ -8,7 +10,18 @@ export async function main() {
     .summary("bemoje's cli tools")
     .argument('[search...]', 'command search string')
     .action(async (search: string[], options, self) => {
-      if (search.length === 0) return self.help()
+      console.log({ search })
+      if (search.length === 0) {
+        const res = await commandSearchPrompt(CLI_LIST, {
+          defaultValue: 'b',
+          maxResults: 15,
+          filtering: {
+            startsWith: true,
+            includes: true,
+          },
+        })
+        execInherit([res.selected, res.args].join(' '))
+      }
       // console.log({ search })
 
       // multiple kws, try match nearest child
