@@ -14,5 +14,6 @@ commandSearchPrompt(CLI_LIST, {
     execInherit([res.selected, res.args].join(' ')) //
       .then(console.log)
       .catch(console.error)
+    //
   })
   .catch(console.error)

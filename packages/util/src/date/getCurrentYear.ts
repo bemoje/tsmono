@@ -41,5 +41,5 @@ getMonth.UTC = function getMonthUTC(date = new Date()): number {
   return date.getUTCMonth() + 1
 }
 
-console.log({ year: getYear(), month: getMonth() })
-console.log({ yearUTC: getYear.UTC(), monthUTC: getMonth.UTC() })
+// console.log({ year: getYear(), month: getMonth() })
+// console.log({ yearUTC: getYear.UTC(), monthUTC: getMonth.UTC() })
