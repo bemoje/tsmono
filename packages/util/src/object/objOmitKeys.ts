@@ -1,5 +1,5 @@
+import { ObjectKey } from '../types/ObjectKey'
 import { objFilter } from './objFilter'
-import { ObjectKey } from './types/ObjectKey'
 
 /**
  * Deletes specified keys from an object. This function takes an object and an array of keys to be deleted from the object. It returns a new object with the specified keys removed.

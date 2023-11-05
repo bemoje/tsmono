@@ -7,7 +7,7 @@ import { getPackages } from '../util/getPackages'
 export function build(names?: string[]) {
   execute('nx run-many -t build' + (names ? ' -p ' + names.join(',') : ''))
 
-  console.log(colors.green('Finalizing dist directories...'))
+  console.log(colors.magenta('Finalizing dist directories...'))
   getPackages(names).forEach(({ pkg, rootdir, distdir }) => {
     const srcmd = path.join(rootdir, 'README.md')
     const distmd = path.join(distdir, 'README.md')

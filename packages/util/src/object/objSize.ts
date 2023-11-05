@@ -1,4 +1,4 @@
-import { ObjectKey } from './types/ObjectKey'
+import { ObjectKey } from '../types/ObjectKey'
 
 /**
  * Calculates and returns the size of the given object.

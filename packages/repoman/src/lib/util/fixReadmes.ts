@@ -3,7 +3,7 @@ import fs from 'fs-extra'
 import path from 'path'
 import { getPackages } from './getPackages'
 
-const { gray, green } = colors
+const { gray, magenta: green } = colors
 
 export function fixReadmes() {
   console.log(green('Fixing readmes...'))

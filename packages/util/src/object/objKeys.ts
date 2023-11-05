@@ -1,4 +1,4 @@
-import { ObjectKey } from './types/ObjectKey'
+import { ObjectKey } from '../types/ObjectKey'
 
 /**
  * Returns an iterable of all the keys in the given object.

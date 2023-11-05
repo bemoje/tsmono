@@ -2,7 +2,7 @@ import { colors, updateJsonFileSync } from '@bemoje/util'
 import { getPackages } from './getPackages'
 
 export function fixPackageJson() {
-  console.log(colors.green('Fixing package jsons...'))
+  console.log(colors.magenta('Fixing package jsons...'))
 
   getPackages().forEach(({ pkgpath }) => {
     updateJsonFileSync(pkgpath, (pkg) => {

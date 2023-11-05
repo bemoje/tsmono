@@ -3,7 +3,7 @@ import fs from 'fs-extra'
 import path from 'path'
 import { getImportedAllNonRelative } from './getImportedAllNonRelative'
 import { getPackages } from './getPackages'
-const { gray, green } = colors
+const { gray, magenta: green } = colors
 
 const cwd = process.cwd()
 

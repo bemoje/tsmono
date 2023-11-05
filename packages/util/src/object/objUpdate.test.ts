@@ -1,5 +1,5 @@
+import { ObjectKey } from '../types/ObjectKey'
 import { objUpdate } from './objUpdate'
-import { ObjectKey } from './types/ObjectKey'
 
 describe('objUpdate', () => {
   it('should update the value of a specific key in an object', () => {

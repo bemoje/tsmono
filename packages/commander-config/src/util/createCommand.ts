@@ -8,7 +8,7 @@ let i = 0
 export function createCommand(program: Command, options: ICommand): typeof program {
   const command = program
     .command(options.command)
-    .summary((i++ % 2 === 0 ? colors.cyan : colors.green)(options.summary))
+    .summary((i++ % 2 === 0 ? colors.cyan : colors.magenta)(options.summary))
     .action(options.action)
   description(command, options)
   aliases(command, options)

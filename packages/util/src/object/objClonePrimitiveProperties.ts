@@ -1,5 +1,5 @@
-import { ObjectKey } from './types/ObjectKey'
-import { TPrimitive } from './types/TPrimitive'
+import { ObjectKey } from '../types/ObjectKey'
+import { TPrimitive } from '../types/TPrimitive'
 
 /**
  * Creates a shallow clone of an object, but replaces all non-primitive values with a string representation of the value's type.

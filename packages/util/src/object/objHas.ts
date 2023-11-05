@@ -1,4 +1,4 @@
-import { ObjectKey } from './types/ObjectKey'
+import { ObjectKey } from '../types/ObjectKey'
 
 /**
  * Checks if an object has a specific key.

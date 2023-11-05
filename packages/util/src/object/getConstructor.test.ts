@@ -1,5 +1,5 @@
+import { ConstructorOf } from '../types/ConstructorOf'
 import { getConstructor } from './getConstructor'
-import { ConstructorOf } from './types/ConstructorOf'
 
 describe('getConstructor', () => {
   it('should return the constructor of a given object', () => {

@@ -21,8 +21,8 @@ class BHelp extends Help {
     const name = cmd.name()
     return super
       .commandUsage(cmd)
-      .replace(prefix, colors.green(colors.dim(prefix)))
-      .replace(name, colors.green(colors.bold(name)))
+      .replace(prefix, colors.magenta(colors.dim(prefix)))
+      .replace(name, colors.magenta(colors.bold(name)))
   }
 
   override formatHelp(cmd: Command, helper: Help): string {
@@ -37,14 +37,14 @@ class BHelp extends Help {
             .aliases()
             .filter((s) => !!s.trim())
             .concat(cmd.name())
-            .map(colors.green)
+            .map(colors.magenta)
             .join(colors.gray('|'))
         )
     )
 
     let result = lines
       .join('\n')
-      .replace('[cmd]', '[' + '' + colors.green('cmd') + '' + ']')
+      .replace('[cmd]', '[' + '' + colors.magenta('cmd') + '' + ']')
       .replace('[opt]', '[' + '' + colors.blue('opt') + '' + ']')
       .replace(/\[command\]/gi, '[' + '' + colors.red('cmd') + '' + ']')
       .replace(/\[options\]/gi, '[' + '' + colors.blue('opt') + '' + ']')

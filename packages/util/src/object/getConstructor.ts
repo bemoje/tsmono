@@ -1,4 +1,4 @@
-import { ConstructorOf } from './types/ConstructorOf'
+import { ConstructorOf } from '../types/ConstructorOf'
 
 /**
  * Returns the constructor of the given object.

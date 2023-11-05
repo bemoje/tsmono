@@ -3,7 +3,7 @@ import path from 'path'
 import { pathAbsoluteToRelativeCwd } from '../path/pathAbsoluteToRelativeCwd'
 import colors from './colors'
 import { IExecuteCommandOptions } from './types/IExecuteCommandOptions'
-const { magenta, dim, bold, green } = colors
+const { magenta: magenta, dim, bold, magenta: green } = colors
 
 /**
  * Execute one or multiple shell commands.

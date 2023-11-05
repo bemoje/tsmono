@@ -400,7 +400,7 @@ export type inactive = 'on' | 'off' | 'yes' | 'no'
 /**
  * Filter function. Defaults to sort by title property. suggest should always return a promise. Filters using title by default
  */
-export type suggest<T> = (input: T, choices: Choice[]) => Promise<boolean>
+export type suggest<T> = (input: T, choices: Choice[]) => Promise<Choice[]>
 
 /**
  * By default, prompts uses process.stdin for receiving input and process.stdout for writing output. If you need to use different streams, for instance process.stderr, you can set these with the stdin and stdout properties.

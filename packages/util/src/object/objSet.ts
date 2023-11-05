@@ -1,4 +1,4 @@
-import { ObjectKey } from './types/ObjectKey'
+import { ObjectKey } from '../types/ObjectKey'
 
 /**
  * Sets a value for a key in an object and returns the value.

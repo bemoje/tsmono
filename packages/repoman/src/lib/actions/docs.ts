@@ -8,7 +8,7 @@ import { getPackages } from '../util/getPackages'
 
 let retry = false
 export function docs() {
-  console.log(colors.green('Generating docs...'))
+  console.log(colors.magenta('Generating docs...'))
 
   const pkgspath = path.join(process.cwd(), 'packages')
   const indexpath = path.join(pkgspath, 'index.ts')

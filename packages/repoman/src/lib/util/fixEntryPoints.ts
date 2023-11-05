@@ -3,7 +3,7 @@ import fs from 'fs-extra'
 import path from 'path'
 import { getPackages } from './getPackages'
 import { walkTsFiles } from './walkTsFiles'
-const { gray, green, red } = colors
+const { gray, magenta: green, red } = colors
 
 export function fixEntryPoints(silent = false) {
   if (!silent) console.log(green('Fixing entry points...'))

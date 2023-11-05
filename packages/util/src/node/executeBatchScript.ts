@@ -5,7 +5,7 @@ import { XtError } from '../errors/XtError'
 import { colors } from './colors'
 import { IExecuteBatchScriptOptions } from './types/IExecuteBatchScriptOptions'
 import { IExecuteBatchScriptResult } from './types/IExecuteBatchScriptResult'
-const { magenta } = colors
+const { magenta: magenta } = colors
 
 /**
  * Provide a virtual batch script in the form of a string array that represent the lines of the script.

@@ -38,7 +38,7 @@ export function allHelp(program: Command) {
       .replace(/\r*\n\r*\n/g, '\n')
     log(help)
   })
-  log('\n\n' + colors.green(colors.bold(program.name())))
+  log('\n\n' + colors.magenta(colors.bold(program.name())))
   log(colors.gray(colors.dim('---------------------------------------------')))
   const help = execute(`${program.name()} help`, { noEcho: true, silent: true })
   log(

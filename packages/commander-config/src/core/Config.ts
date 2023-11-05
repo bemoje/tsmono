@@ -10,7 +10,7 @@ import { parseString } from '../util/parse/parseString'
 import { validateString } from '../util/validate/validateString'
 import { IConfigSetting } from './IConfigSetting'
 import { IConfigSettings } from './IConfigSettings'
-const { green } = colors
+const { magenta: green } = colors
 
 /**
  * A utility class for managing user configuration settings when using the 'commander' package to create CLI's.

@@ -1,4 +1,4 @@
-import { ObjectKey } from './types/ObjectKey'
+import { ObjectKey } from '../types/ObjectKey'
 
 /**
  * Updates the property descriptors of the specified properties on the given object.

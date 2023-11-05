@@ -2,7 +2,7 @@ import { colors, readJsonFileSync } from '@bemoje/util'
 import fs from 'fs-extra'
 import * as path from 'path'
 import { getPackages } from './getPackages'
-const { gray, green } = colors
+const { gray, magenta: green } = colors
 
 export function fixTsConfigIncludes() {
   console.log(green('Fixing tsconfig includes...'))

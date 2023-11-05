@@ -9,7 +9,7 @@ import { getPromptPlaceholder } from './util/getPromptPlaceholder'
 import { getUserPrompt } from './util/getUserPrompt'
 import { mergeSettingsWithDefaults } from './util/mergeSettingsWithDefaults'
 import { saveInteraction } from './util/saveInteraction'
-const { cyan, green } = colors
+const { cyan, magenta: green } = colors
 
 /**
  * This function handles the presets for the chat application.

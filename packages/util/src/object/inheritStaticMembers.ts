@@ -1,4 +1,4 @@
-import type { Constructor } from './types/Constructor'
+import type { Constructor } from '../types/Constructor'
 
 /**
  * Copies static members from a source constructor to a target constructor, excluding specified keys.

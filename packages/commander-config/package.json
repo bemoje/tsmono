@@ -16,6 +16,7 @@
     "@bemoje/util": "latest",
     "commander": "^11.0.0",
     "fs-extra": "^11.1.1",
+    "prompts": "^2.4.2",
     "tslib": "^2.3.0"
   },
   "repository": {
