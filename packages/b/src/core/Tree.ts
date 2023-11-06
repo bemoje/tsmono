@@ -1,5 +1,4 @@
-import prompts from 'prompts'
-import { arrLast, assertThat, TNonEmptyString } from '@bemoje/util'
+import { arrLast, TNonEmptyString } from '@bemoje/util'
 import { CLI_LIST } from '../cli/list'
 import { Command } from 'commander'
 import { TrieMap } from '@bemoje/trie-map'
@@ -14,20 +13,15 @@ export class CommandTreeBase {
   protected readonly command: Command
   protected parent?: CommandTreeNode
 
-  constructor(pathString: TNonEmptyString) {
-    this.prefixString = pathString
-    this.prefixArray = pathString.split(' ')
+  constructor(prefixString: TNonEmptyString) {
+    this.prefixString = prefixString
+    this.prefixArray = prefixString.split(' ')
     this.command = new Command(arrLast(this.prefixArray))
 
     this.initializeTreeNode()
     this.initializeParentCommand()
     this.initializeCommandHelp()
     this.initializePropertyAccesses()
-  }
-
-  static fromUnknownPathString(pathString: string): CommandTreeNode {
-    assertThat(pathString, isNonEmptyString)
-    return new CommandTreeNode(pathString)
   }
 
   get isCommand(): boolean {
@@ -46,6 +40,10 @@ export class CommandTreeBase {
     return this.command.name()
   }
 
+  get parentPrefixArray() {
+    return this.prefixArray.slice(0, -1)
+  }
+
   get tree(): TrieMap<CommandTreeBase> {
     return CommandTreeRoot.tree
   }
@@ -60,7 +58,7 @@ export class CommandTreeBase {
 
   protected initializeParentCommand() {
     if (this.isRoot) return
-    this.parent = this.tree.getStrict(this.prefixArray.slice(0, -1))
+    this.parent = this.tree.getStrict(this.parentPrefixArray)
     this.parent.command.command(this.name, { noHelp: this.isNode })
   }
 
@@ -106,8 +104,8 @@ export class CommandTreeBase {
  * class
  */
 export class CommandTreeCommand extends CommandTreeBase {
-  constructor(name: TNonEmptyString) {
-    super(name)
+  constructor(prefixString: TNonEmptyString) {
+    super(prefixString)
   }
 
   override get isCommand() {
@@ -119,8 +117,8 @@ export class CommandTreeCommand extends CommandTreeBase {
  * class
  */
 export class CommandTreeNode extends CommandTreeBase {
-  constructor(pathString: TNonEmptyString) {
-    super(pathString)
+  constructor(prefixString: TNonEmptyString) {
+    super(prefixString)
   }
 
   override get isNode(): boolean {
@@ -151,11 +149,12 @@ export class CommandTreeRoot extends CommandTreeNode {
         .flat()
         .filter((str) => !!str)
     )
-    const nodePrefixes = Array.from(nodePrefixesSet)
+    const nodePrefixes = Array.from(nodePrefixesSet).sort((a, b) => a.length - b.length)
     const commandPrefixes = prefixArrays.map((arr) => arr.join(' ')).filter((str) => !nodePrefixesSet.has(str))
-    const rootPrefix = nodePrefixes[0]
+    const rootPrefix = nodePrefixes.shift()
+    if (!rootPrefix) throw new Error('rootPrefix not found')
 
-    console.log({ rootPrefix, nodePrefixes, commandPrefixes })
+    // console.log({ rootPrefix, nodePrefixes, commandPrefixes })
 
     super(rootPrefix)
 
@@ -172,17 +171,8 @@ export class CommandTreeRoot extends CommandTreeNode {
   }
 }
 
-/**
- *
- */
-export function isNonEmptyString<S extends string = string>(string: S): string is TNonEmptyString<S> {
-  return string.length > 0
-}
-
 const tree = new CommandTreeRoot(CLI_LIST)
 
-const arr = tree.tree
-  .toArray()
-  .map(([path, node]) => [path.join(' '), { type: node.constructor.name, name: node.name }])
+const arr = tree.tree.toArray().map(([path, node]) => [path.join(' '), node.constructor.name])
 const o = Object.fromEntries(arr)
 console.log(o)

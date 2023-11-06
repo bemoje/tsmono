@@ -701,13 +701,13 @@ export type TTrieMapNodeYield<T> = [node: TTrieMapNode<T>, prefix: string[]]
 export type TTrieMapEntry<T> = [prefix: string[], value: T]
 export type TTrieMapYield<T> = [value: T, prefix: string[]]
 
-const t = new TrieMap<boolean>()
+// const t = new TrieMap<boolean>()
 
-// t.set([].map(String), true)
-t.set([1, 1, 1].map(String), true)
-t.set([1, 1, 2].map(String), true)
-t.set([1, 1, 3].map(String), true)
-t.set([1, 2, 1].map(String), true)
+// // t.set([].map(String), true)
+// t.set([1, 1, 1].map(String), true)
+// t.set([1, 1, 2].map(String), true)
+// t.set([1, 1, 3].map(String), true)
+// t.set([1, 2, 1].map(String), true)
 
-console.log([...t.iterateNodesBFS([])].map((e) => e[1]))
-console.log([...t.iterateNodesDFS([])].map((e) => e[1]))
+// console.log([...t.iterateNodesBFS([])].map((e) => e[1]))
+// console.log([...t.iterateNodesDFS([])].map((e) => e[1]))
