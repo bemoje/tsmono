@@ -20,7 +20,8 @@ export async function main() {
             includes: true,
           },
         })
-        execInherit([res.selected, res.args].join(' '))
+        await execInherit([res.selected, res.args].join(' '))
+        return
       }
       // console.log({ search })
 
@@ -119,7 +120,6 @@ export async function main() {
       } else {
         msg = message.join(' ').trim()
       }
-      console.log('I RAN')
       await execInherit(`git add ${options.add}`)
       await execInherit(`git commit -m "${msg}"`)
     })

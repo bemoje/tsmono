@@ -16,7 +16,10 @@ describe('TrieMap', () => {
   })
 
   it('(static method) fromJSON', () => {
-    expect(TrieMap.fromJSON(trie.set(['a'], 'value').toJson()).count).toBe(1)
+    trie.set(['a'], 'value')
+    const json = JSON.stringify(trie)
+    console.log(json)
+    expect(TrieMap.fromJSON(json).count).toBe(1)
   })
 
   it('(getter) count', () => {
@@ -79,24 +82,6 @@ describe('TrieMap', () => {
       expect(() => {
         trie.get(['a'])
       }).not.toThrowError()
-    })
-
-    it('invalid characters - sentinel', () => {
-      expect(() => {
-        trie.set([String.fromCharCode(0)], true)
-      }).not.toThrow()
-    })
-
-    it('Should find a new sentiel if it attepted used as path key.', () => {
-      const SENTINEL = String.fromCharCode(0)
-      const words = ['hello', 'helli', 'he' + SENTINEL + 'llo']
-      trie.set(Array.from(words[0]), '')
-      trie.set(Array.from(words[1]), '')
-      expect(trie.toJSON().SENTINEL).toBe(SENTINEL)
-      trie.set(Array.from(words[2]), '')
-      expect(trie.toJSON().SENTINEL).not.toBe(SENTINEL)
-      expect(trie.toJSON().SENTINEL).toBe(String.fromCharCode(1))
-      expect(trie.get(Array.from(words[1]))).toBe('')
     })
   })
 

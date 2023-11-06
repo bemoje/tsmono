@@ -13,7 +13,12 @@ import { XtInvalidError } from '../errors/XtInvalidError'
  * //=> throws ValidationError: Expected 'isPositive' to be 'false' for input: '5'
  * ```
  */
-export function assertThat<T>(value: T, validate: (value: T) => boolean, expectation = true): T {
-  if (validate(value) === expectation) return value
+export function assertThat<T>(
+  value: T,
+  validate: (value: T, ...args: unknown[]) => boolean,
+  expectation = true,
+  ...args: unknown[]
+): T {
+  if (validate(value, ...args) === expectation) return value
   throw new XtInvalidError(value, validate, expectation)
 }
