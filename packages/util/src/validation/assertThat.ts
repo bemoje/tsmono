@@ -1,4 +1,4 @@
-import { XtInvalidError } from '../errors/XtInvalidError'
+import { XtInvalidError } from '../errors/XtInvalidError';
 
 /**
  * Type assertion that syntactically reads like prose.
@@ -15,7 +15,7 @@ import { XtInvalidError } from '../errors/XtInvalidError'
  */
 export function assertThat<T>(
   value: T,
-  validate: (value: T, ...args: unknown[]) => boolean,
+  validate: (value: T, ...args: any[]) => boolean,
   expectation = true,
   ...args: unknown[]
 ): T {

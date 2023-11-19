@@ -161,7 +161,10 @@ describe('TrieMap', () => {
       res.push([prefix, value])
       return
     })
-    expect(res.sort()).toStrictEqual([[['a'], 'a']])
+    expect(res.sort()).toStrictEqual([
+      [['a'], 'a'],
+      [['b'], 'a'],
+    ])
   })
 
   it('(method) updateAll', () => {

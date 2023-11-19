@@ -1,0 +1,17 @@
+import fs from 'fs-extra'
+import path from 'path'
+import { execSync } from 'child_process'
+import { getTempDataPath } from '@bemoje/util'
+import { IGetUserInputFromEditorOptions } from './IGetUserInputFromEditorOptions'
+
+export function getUserInputFromEditorSync(options: IGetUserInputFromEditorOptions): string {
+  const { editor, content: currentContent } = options
+  const tempdir = getTempDataPath('CommanderConfig', 'edit-user-config')
+  fs.mkdirSync(tempdir, { recursive: true })
+  const tempfile = path.join(tempdir, Date.now() + (options.extension || '.txt'))
+  fs.writeFileSync(tempfile, currentContent, 'utf8')
+  execSync(`${editor} ${tempfile}`, { stdio: 'inherit' })
+  const userInput = fs.readFileSync(tempfile, 'utf8')
+  fs.rmSync(tempfile)
+  return userInput
+}

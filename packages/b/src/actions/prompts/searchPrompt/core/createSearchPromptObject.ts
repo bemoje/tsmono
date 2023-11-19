@@ -148,7 +148,10 @@ async function search(
       const metaChoice = meta.get(choice)
       if (!metaChoice) return
       const parsed = metaChoice.parsed
-      const has = someCmdStartsWithEveryKw(latestData.keywords, parsed)
+      let has = someCmdStartsWithEveryKw(latestData.keywords, parsed)
+      if (!has && latestData.keywords.length === 1) {
+        has = someCmdStartsWithEveryKw(latestData.keywords[0].split(''), parsed)
+      }
       if (has) {
         latestData.result.push(choice)
       } else {

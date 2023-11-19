@@ -6,6 +6,9 @@
     "@bemoje/trie-map": "latest",
     "@bemoje/util": "latest",
     "commander": "^11.1.0",
+    "fs-extra": "^11.1.1",
+    "lookpath": "^1.2.2",
+    "node-json-db": "^2.3.0",
     "prompts": "^2.4.2"
   },
   "type": "commonjs",

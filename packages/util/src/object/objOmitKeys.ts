@@ -1,3 +1,4 @@
+import { Any } from '../types/Any'
 import { ObjectKey } from '../types/ObjectKey'
 import { objFilter } from './objFilter'
 
@@ -13,6 +14,8 @@ import { objFilter } from './objFilter'
  * //=> { b: 2 }
  * ```
  */
-export function objOmitKeys<K extends ObjectKey, V>(obj: Record<K, V>, ...keys: string[]): Record<K, V> {
-  return objFilter<any>(obj, (_, key: string) => !keys.includes(key)) as Record<K, V>
+export function objOmitKeys<O extends Record<ObjectKey, Any>>(obj: O, ...keys: ObjectKey[]) {
+  return objFilter<O>(obj, (_, key) => {
+    return !keys.includes(key)
+  })
 }

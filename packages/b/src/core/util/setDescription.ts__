@@ -1,0 +1,28 @@
+import { Command } from 'commander'
+
+export function setDescription(
+  cmd: Command,
+  cb: (string | string[] | string[][]) | ((cmd: Command) => string | string[] | string[][])
+) {
+  const formatted = formatDescription(typeof cb === 'function' ? cb(cmd) : cb)
+  const i = formatted.indexOf('\n')
+  cmd.summary(formatted.substring(0, i === -1 ? undefined : i))
+  cmd.description(formatted)
+  return cmd
+}
+
+function formatDescription(...des: (string | string[] | string[][])[]): string {
+  if (!Array.isArray(des)) return des
+  return des
+    .map((s) => {
+      if (!Array.isArray(s)) return s
+      return s
+        .map((s) => {
+          if (!Array.isArray(s)) return s
+          return s.join('\n') + '\n'
+        })
+        .join('\n')
+    })
+    .join('\n')
+    .trim()
+}

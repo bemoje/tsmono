@@ -1,5 +1,6 @@
 const SENTINEL = Symbol('SENTINEL')
-const SENTINEL_STRING = '🔥'
+// const SENTINEL_STRING = '🔥'
+const SENTINEL_STRING = String.fromCharCode(0)
 
 /**
  * Class for a fast trie map.
@@ -25,7 +26,7 @@ export class TrieMap<T> {
         node[SENTINEL] = revive(node[SENTINEL_STRING])
         delete node[SENTINEL_STRING]
       },
-      SENTINEL_STRING
+      { sentinel: SENTINEL_STRING }
     )
     return instance
   }
@@ -231,7 +232,7 @@ export class TrieMap<T> {
    */
   has(prefix: string[]): boolean {
     const node = this.getNode(prefix)
-    return !!node && SENTINEL in node
+    return !!node && Object.hasOwn(node, SENTINEL)
   }
 
   /**
@@ -265,43 +266,6 @@ export class TrieMap<T> {
     if (!parent) return true
     Reflect.deleteProperty(parent, key)
     return true
-
-    // let node = this.root
-    // let toPrune = null
-    // let pruneKey = null
-    // let parent
-    // let key
-    // for (let i = 0; i < prefix.length; i++) {
-    //   key = prefix[i]
-    //   parent = node
-    //   node = node[key]
-    //   // Prefix does not exist
-    //   if (node === undefined) {
-    //     return false
-    //   }
-    //   // Keeping track of a potential branch to prune
-    //   const numKeys = Object.keys(node).length
-    //   if (toPrune !== null) {
-    //     if (numKeys > 1) {
-    //       toPrune = null
-    //       pruneKey = null
-    //     }
-    //   } else {
-    //     if (numKeys < 2) {
-    //       toPrune = parent
-    //       pruneKey = key
-    //     }
-    //   }
-    // }
-    // if (!(Object.hasOwn(node, SENTINEL))) {
-    //   return false
-    // }
-    // if (toPrune && pruneKey) {
-    //   Reflect.deleteProperty(toPrune, pruneKey)
-    // } else {
-    //   Reflect.deleteProperty(node, SENTINEL)
-    // }
-    // return true
   }
 
   /**
@@ -346,10 +310,18 @@ export class TrieMap<T> {
    * // totalSourceFiles (2 + 6) is now = 8
    * ```
    */
-  forEach(prefix: string[], f: (value: T, prefix: string[]) => void | boolean): TrieMap<T> {
-    return this.forEachNode(prefix, (node, prefix) => {
-      return f(node[SENTINEL], prefix)
-    })
+  forEach(
+    prefix: string[],
+    f: (value: T, prefix: string[]) => void | boolean,
+    options?: { onlyValues?: boolean }
+  ): TrieMap<T> {
+    return this.forEachNode(
+      prefix,
+      (node, prefix) => {
+        return f(node[SENTINEL], prefix)
+      },
+      options
+    )
   }
 
   /**
@@ -423,8 +395,28 @@ export class TrieMap<T> {
    */
   getValues(prefix: string[]): Array<T> {
     const result: Array<T> = []
-    this.forEach(prefix, (value: T) => {
-      result.push(value)
+    this.forEachNode(
+      prefix,
+      (node) => {
+        result.push(node[SENTINEL])
+      },
+      { onlyValues: true }
+    )
+    return result
+  }
+
+  getKeys(prefix: string[]): Array<string[]> {
+    const result: Array<string[]> = []
+    this.forEachNode(prefix, (_, prefix) => {
+      result.push(prefix)
+    })
+    return result
+  }
+
+  getEntries(prefix: string[]): TTrieMapEntry<T>[] {
+    const result: TTrieMapEntry<T>[] = []
+    this.forEachNode(prefix, (node, prefix) => {
+      result.push([prefix, node[SENTINEL]])
     })
     return result
   }
@@ -446,12 +438,10 @@ export class TrieMap<T> {
    * // ]
    * ```
    */
-  *keys(prefix: string[] = []): Iterable<string[]> {
-    const res: string[][] = []
-    this.forEachNode(prefix, (_, pre) => {
-      res.push(pre)
-    })
-    yield* res
+  *keys(prefix: string[] = []): Generator<string[]> {
+    for (const entry of this.iterateNodesDFS(prefix)) {
+      yield entry[1]
+    }
   }
 
   /**
@@ -467,12 +457,10 @@ export class TrieMap<T> {
    * //=> [2, 2, 8]
    * ```
    */
-  *values(prefix: string[] = []): Iterable<T> {
-    const res: T[] = []
-    this.forEach(prefix, (value: T) => {
-      res.push(value)
-    })
-    yield* res
+  *values(prefix: string[] = []): Generator<T> {
+    for (const entry of this.iterateDFS(prefix)) {
+      yield entry[0]
+    }
   }
 
   /**
@@ -492,12 +480,10 @@ export class TrieMap<T> {
    * // ]
    * ```
    */
-  *entries(prefix: string[] = []): Iterable<[string[], T]> {
-    const res: Array<[string[], T]> = []
-    this.forEach(prefix, (value, pre) => {
-      res.push([pre, value])
-    })
-    yield* res
+  *entries(prefix: string[] = []): Generator<TTrieMapEntry<T>> {
+    for (const entry of this.iterateDFS(prefix)) {
+      yield [entry[1], entry[0]]
+    }
   }
 
   /**
@@ -517,7 +503,7 @@ export class TrieMap<T> {
    * // ]
    * ```
    */
-  *[Symbol.iterator](prefix?: string[]): Iterable<[string[], T]> {
+  *[Symbol.iterator](prefix?: string[]): Generator<TTrieMapEntry<T>> {
     yield* this.entries(prefix)
   }
 
@@ -538,8 +524,8 @@ export class TrieMap<T> {
    * // ]
    * ```
    */
-  toArray(prefix: string[] = []): Array<[string[], T]> {
-    return [...this.entries(prefix)]
+  toArray(prefix: string[] = []): TTrieMapEntry<T>[] {
+    return this.getEntries(prefix)
   }
 
   /**
@@ -584,11 +570,13 @@ export class TrieMap<T> {
   protected forEachNode(
     prefix: string[],
     f: (node: TTrieMapNode<T>, prefix: string[]) => void | boolean,
-    sentinel: string | symbol = SENTINEL
+    options: { onlyValues?: boolean; sentinel?: string | symbol } = {}
   ): TrieMap<T> {
-    prefix = prefix.slice()
     const node = this.getNode(prefix)
     if (!node) return this
+    const onlyValues = options.onlyValues
+    const empty: string[] = []
+    const sentinel = options.sentinel || SENTINEL
     if (Object.hasOwn(node, sentinel)) {
       if (f(node, prefix.slice())) {
         return this
@@ -596,10 +584,12 @@ export class TrieMap<T> {
     }
     let endRecursion = false
     function recurse(node: TTrieMapNode<T>) {
+      if (endRecursion) return
       for (const key in node) {
-        if (Object.hasOwn(node[key], sentinel) && !endRecursion) {
-          if (f(node[key], prefix.concat(key))) {
+        if (Object.hasOwn(node[key], sentinel)) {
+          if (f(node[key], onlyValues ? empty : prefix.concat(key))) {
             endRecursion = true
+            return
           }
         }
         prefix.push(key)
@@ -621,7 +611,19 @@ export class TrieMap<T> {
     }
   }
 
-  *iterateNodesDFS(prefix: string[]): Generator<TTrieMapNodeYield<T>> {
+  protected *iterateDFS(prefix: string[]): Generator<TTrieMapYield<T>> {
+    for (const entry of this.iterateNodesDFS(prefix)) {
+      yield [entry[0][SENTINEL], entry[1]]
+    }
+  }
+
+  protected *iterateBFS(prefix: string[]): Generator<TTrieMapYield<T>> {
+    for (const entry of this.iterateNodesBFS(prefix)) {
+      yield [entry[0][SENTINEL], entry[1]]
+    }
+  }
+
+  protected *iterateNodesDFS(prefix: string[]): Generator<TTrieMapNodeYield<T>> {
     const node = this.getNode(prefix)
     if (!node) return
     prefix = prefix.slice()
@@ -636,7 +638,7 @@ export class TrieMap<T> {
     yield* recurse(node, prefix)
   }
 
-  *iterateNodesBFS(prefix: string[]): Generator<TTrieMapNodeYield<T>> {
+  protected *iterateNodesBFS(prefix: string[]): Generator<TTrieMapNodeYield<T>> {
     const node = this.getNode(prefix)
     if (!node) return
     prefix = prefix.slice()

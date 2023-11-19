@@ -1,11 +1,11 @@
-import { ConstructorOf } from '../types/ConstructorOf'
 import { getConstructor } from './getConstructor'
+import { TConstructorOf } from '../types/TConstructorOf'
 
 describe('getConstructor', () => {
   it('should return the constructor of a given object', () => {
     class TestClass {}
     const instance = new TestClass()
-    const constructor: ConstructorOf<TestClass> = getConstructor(instance)
+    const constructor: TConstructorOf<TestClass> = getConstructor(instance)
     expect(constructor.name).toBe('TestClass')
   })
 

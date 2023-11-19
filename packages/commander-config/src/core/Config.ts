@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { AppData, colors, isOSX, isVsCodeInstalled, isWindows, readJsonFileSync } from '@bemoje/util'
-import { Command } from 'commander'
 import fs from 'fs-extra'
 import { allHelp } from '../util/allHelp'
+import { AppData, colors, isOSX, isVsCodeInstalled, isWindows, readJsonFileSync } from '@bemoje/util'
+import { Command } from 'commander'
 import { createCommand } from '../util/createCommand'
 import { getUserInputFromEditorSync } from '../util/getUserInputFromEditorSync'
-import { parseString } from '../util/parse/parseString'
-import { validateString } from '../util/validate/validateString'
 import { IConfigSetting } from './IConfigSetting'
 import { IConfigSettings } from './IConfigSettings'
+import { parseString } from '../util/parse/parseString'
+import { validateString } from '../util/validate/validateString'
 const { magenta: green } = colors
 
 /**

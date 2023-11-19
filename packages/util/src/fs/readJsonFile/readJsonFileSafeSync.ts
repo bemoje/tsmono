@@ -8,7 +8,7 @@ import { IReadJsonFileOptions } from '../types/IReadJsonFileOptions'
  * @param filepath - The path to the JSON file.
  * @param options - Options for reading the JSON file.
  */
-export function readJsonFileSafeSync<T>(filepath: string, options: IReadJsonFileOptions): T | undefined {
+export function readJsonFileSafeSync<T>(filepath: string, options?: IReadJsonFileOptions): T | undefined {
   try {
     return fs.readJsonSync(filepath, options) as T
   } catch (error) {
