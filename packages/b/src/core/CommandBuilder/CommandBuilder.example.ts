@@ -1,4 +1,3 @@
-import { BHelp } from './BHelp'
 import { CommandBuilder } from './CommandBuilder'
 import { parseBoolean } from '../../parsers/parseBoolean'
 import { parseInteger } from '../../parsers/parseInteger'
@@ -11,7 +10,7 @@ const cli = new CommandBuilder('cli', (cli) => {
     a.description('Your name')
   })
 
-  cli.argument('<friends>', (a) => {
+  cli.argument('[friends]', (a) => {
     a.description('Comma-delimited list of friends')
     a.setParser.delimitedStrings(',')
   })
@@ -26,6 +25,8 @@ const cli = new CommandBuilder('cli', (cli) => {
     o.description('Your age in years.')
     o.parser.integer()
   })
+
+  cli.command('someSubCommand', (cmd) => cmd.description('A subcommand'))
 
   cli.config<string>({
     key: 'name',
@@ -52,6 +53,21 @@ const cli = new CommandBuilder('cli', (cli) => {
     parse: parseBoolean,
     validate: null,
   })
+
+  cli.preset('adult', {
+    summary: 'Age is 18',
+    presets: [],
+    args: [],
+    options: { age: 18 },
+  })
+  cli.preset('old', {
+    summary: 'Age is 35',
+    presets: [],
+    args: [],
+    options: { age: 35 },
+  })
+
+  console.log({ filepath: cli.filepath })
 })
 
 const main = cli.exportMain()

@@ -1,8 +1,9 @@
 import { createMixedTypeArrayValidator } from './createMixedTypeArrayValidator'
-import { PrimitiveValueValidators } from './PrimitiveValueValidators'
+import { isBoolean } from '../validators/isBoolean'
+import { isString } from '../validators/isString'
 
 describe(createMixedTypeArrayValidator.name, () => {
-  const isValid = createMixedTypeArrayValidator([PrimitiveValueValidators.string, PrimitiveValueValidators.boolean])
+  const isValid = createMixedTypeArrayValidator([isString, isBoolean])
 
   it('should return true for valid arrays', () => {
     expect(isValid(['a', true])).toBe(true)

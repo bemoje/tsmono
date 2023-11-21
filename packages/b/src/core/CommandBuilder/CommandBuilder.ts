@@ -2,17 +2,18 @@ import EventEmitter from 'events'
 import os from 'os'
 import path from 'path'
 import { actionWrapper } from './actionWrapper'
-import { addConfigCommands } from './addConfigCommands'
+import { addDefaultGlobalOptions } from './addDefaultGlobalOptions'
+import { Any, JsonValue } from '@bemoje/util'
 import { ArgumentBuilder } from './ArgumentBuilder'
 import { autoAssignMissingOptionFlags } from '../util/autoAssignMissingOptionFlags'
-import { autoAssignSubCommandAliases } from '../util/autoAssignSubCommandAliases'
+import { autoAssignSubCommandAliasesRecursive } from '../util/autoAssignSubCommandAliasesRecursive'
 import { Command, Option, OptionValues } from 'commander'
 import { CommandBuilderBase } from './CommandBuilderBase'
 import { ConfigFile } from './ConfigFile'
-import { forEachChildRecursive } from '../util/forEachChildRecursive'
-import { initializeHelp } from './initializeHelp'
-import { JsonValue } from '@bemoje/util'
+import { initializeHelp } from '../util/initializeHelp'
+import { IPreset } from '../../cli/bFindIn/lib/core/preset/IPreset'
 import { OptionBuilder } from './OptionBuilder'
+import { parseArgs } from '../util/parseArgs'
 import { parseOptions } from '../util/parseOptions'
 import { prefixArray } from '../util/prefixArray'
 import { realizeLazyProperty } from '../util/realizeLazyProperty'
@@ -23,58 +24,24 @@ import { walkAncestors } from '../util/walkAncestors'
  * Wrapper around the @see Command class, for more intuitive construction.
  */
 export class CommandBuilder extends CommandBuilderBase {
-  static commandToBuilderMap = new WeakMap<Command, CommandBuilder>()
-
+  static readonly commandToBuilderMap = new WeakMap<Command, CommandBuilder>()
   readonly argParsers: TStringParser<JsonValue>[] = []
   readonly optParsers: Record<string, TStringParser<JsonValue>> = {}
   readonly subcommands: CommandBuilder[] = []
   readonly globalOptions = new Set<Option>()
   readonly ignoreGlobalOptions = new Set<Option>()
-  actionHandler: (this: CommandBuilder, args: JsonValue[], opts: OptionValues, cmdb: CommandBuilder) => Promise<void>
+  readonly selectedPresets: string[] = []
+  isPreset = false
 
   constructor(name: string, callback?: (cmd: CommandBuilder) => void, parent: CommandBuilder | null = null) {
     super(name, parent)
     CommandBuilder.commandToBuilderMap.set(this.$, this)
-
-    if (!parent)
-      this.globalOption('-Q, --quiet', (o) => {
-        o.description(
-          'Minimuze output. In stdout, any confirmation, status or other unnecessary messages are muted. This is useful when piping.'
-        )
-      })
-    if (!parent)
-      this.globalOption('-S, --silent', (o) => {
-        o.description('Mute stderr and enable --quiet.')
-        o.$.implies({ quiet: true })
-      })
-    if (!parent)
-      this.globalOption('-DR, --dry-run', (o) => {
-        o.description(
-          'Simulate command without making changes. If the command does not perform any mutable actions, this flag has no effect.'
-        )
-        o.$.implies({ quiet: true })
-      })
-    if (!parent)
-      this.globalOption('-T, --trace', (o) => {
-        o.description(
-          'Output debugging information while only simulating actually running the command (enables --dry-run.)'
-        )
-        o.implies({ dryRun: true })
-      })
-    if (!parent)
-      this.globalOption('-D, --debug', (o) => {
-        o.description('Output debugging information. (enables --dry-run.)')
-        o.description('Output debugging output.')
-      })
-
-    this.actionHandler = async () => this.$.help()
-    this.$.action(actionWrapper.call(this))
-
+    initializeHelp(this)
+    this.$.action(actionWrapper(this))
     if (callback) callback(this)
-
+    addDefaultGlobalOptions(this)
     autoAssignMissingOptionFlags(this)
-    initializeHelp.call(this)
-    if (!parent) forEachChildRecursive(this, autoAssignSubCommandAliases, { includeSelf: true })
+    autoAssignSubCommandAliasesRecursive(this)
   }
 
   get events() {
@@ -91,30 +58,19 @@ export class CommandBuilder extends CommandBuilderBase {
     return Array.from(globals)
   }
 
+  getAllOptions(): Option[] {
+    return this.$.options.concat(this.getGlobalOptions())
+  }
+
   get filepath() {
     return path.join(os.homedir(), 'config', 'cli', prefixArray(this).join('-')) + '.json'
   }
   get db() {
     return realizeLazyProperty(this, 'db', new ConfigFile(this))
   }
-  get isConfigInitialized() {
-    return Object.hasOwn(this, 'userconfig')
-  }
-  get userconfig() {
-    addConfigCommands(this)
-    return realizeLazyProperty(this, 'userconfig', this.db.config)
-  }
 
   get argsParsed() {
-    return this.$.args.map((arg, i) => {
-      const lastIndex = this.$.registeredArguments.length - 1
-      const prev = i === 0 ? '' : this.$.args[i - 1]
-      const parserIndex = i > lastIndex ? lastIndex : i
-      const parse = this.argParsers[parserIndex]
-      if (typeof parse !== 'function') return arg
-      const retval = parse(arg, prev)
-      return retval
-    })
+    return parseArgs(this, this.$.args)
   }
   get optsParsed() {
     return parseOptions(this, this.$.opts())
@@ -141,7 +97,7 @@ export class CommandBuilder extends CommandBuilderBase {
     const ins = new OptionBuilder(flags)
     this.$.addOption(ins.$)
     if (cb) cb(ins, this)
-    if (ins.customArgParser) this.optParsers[this.$.name()] = ins.customArgParser
+    if (ins.customArgParser) this.optParsers[ins.$.name()] = ins.customArgParser
     return this
   }
   globalOption(flags: string, cb?: (opt: OptionBuilder, cmd: CommandBuilder) => void): this {
@@ -149,7 +105,7 @@ export class CommandBuilder extends CommandBuilderBase {
     this.globalOptions.add(ins.$)
     this.$.addOption(ins.$)
     if (cb) cb(ins, this)
-    if (ins.customArgParser) this.optParsers[this.$.name()] = ins.customArgParser
+    if (ins.customArgParser) this.optParsers[ins.$.name()] = ins.customArgParser
     return this
   }
   command(name: string, cb?: (cmd: CommandBuilder) => void): this {
@@ -161,10 +117,13 @@ export class CommandBuilder extends CommandBuilderBase {
     return this
   }
   config<O extends JsonValue>(entry: IConfigEntry<O>) {
-    this.userconfig.definitions[entry.key] = entry
+    this.db.config.definitions[entry.key] = entry
     return this
   }
-
+  preset<O extends OptionValues>(name: string, preset: IPreset<O>) {
+    this.db.presets.definitions[name] = preset
+    return this
+  }
   exportCommand(): Command {
     return this.$
   }
@@ -178,9 +137,6 @@ export class CommandBuilder extends CommandBuilderBase {
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type Any = any
-
 export type TConfigValidator<O extends JsonValue = JsonValue> = (value: O) => boolean
 
 export type TConfigParser<O extends JsonValue> = (value: string) => O
@@ -192,15 +148,3 @@ export interface IConfigEntry<O extends JsonValue = JsonValue> {
   parse: TStringParser<O | null>
   validate: TConfigValidator<O> | null
 }
-
-// interface IPreset {
-//   name: string
-//   summary: string
-//   args: string[]
-//   options: Record<string, string>
-// }
-
-// interface IPresets {
-//   defaults: IPreset
-//   [name: string]: IPreset
-// }

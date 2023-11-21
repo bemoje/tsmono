@@ -15,6 +15,7 @@ import { ObjectKey } from '../types/ObjectKey'
  */
 export function objOmitKeysMutable<O extends Record<ObjectKey, Any>>(obj: O, ...keys: ObjectKey[]) {
   for (const key of keys) {
+    if (!Object.hasOwn(obj, key)) continue
     Reflect.deleteProperty(obj, key)
   }
   return obj

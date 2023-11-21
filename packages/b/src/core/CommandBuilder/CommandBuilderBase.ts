@@ -1,16 +1,19 @@
-import { Command, ParseOptions } from 'commander'
+import { Command, OptionValues, ParseOptions } from 'commander'
 import { CommandBuilder } from './CommandBuilder'
+import { JsonValue } from '@bemoje/util'
 
 export class CommandBuilderBase {
   readonly name: string
   readonly parent: CommandBuilder | null
   readonly $: Command
+  actionHandler: (this: CommandBuilder, args: JsonValue[], opts: OptionValues, cb: CommandBuilder) => Promise<void>
 
   constructor(name: string, parent: CommandBuilder | null = null) {
     this.name = name
     this.parent = parent
     this.$ = new Command(name)
     if (parent) parent.$.addCommand(this.$)
+    this.actionHandler = async () => this.$.help()
   }
 
   get registeredArguments() {

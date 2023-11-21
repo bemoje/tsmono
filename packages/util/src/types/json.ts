@@ -22,6 +22,11 @@ export type JsonObject<P extends JsonRawPrimitive = JsonRawPrimitive> = DeepObje
 export type JsonArray<P extends JsonRawPrimitive = JsonRawPrimitive> = DeepArray<P, string>
 
 /**
+ * Return-type of parsed JSON array.
+ */
+export type JsonArrayOrObject<P extends JsonRawPrimitive = JsonRawPrimitive> = JsonArray<P> | JsonObject<P>
+
+/**
  * Any JSON value. Any JSON.parse() return value.
  */
 export type JsonValue<P extends JsonRawPrimitive = JsonRawPrimitive> = P | JsonObject<P> | JsonArray<P>

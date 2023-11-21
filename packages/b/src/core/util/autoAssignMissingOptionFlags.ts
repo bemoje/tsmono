@@ -15,12 +15,13 @@ import { setOptionShortName } from './setOptionShortName'
  * If there are 64 options for the command and no more alphanumeric characters are available,
  * the option is not assigned a short name.
  */
-export function autoAssignMissingOptionFlags(cmd: Command | CommandBuilder) {
-  const taken = getOptionNames(cmd, { short: true, trimDashes: true })
+export function autoAssignMissingOptionFlags(cb: CommandBuilder) {
+  if (cb.isPreset) return
+  const taken = getOptionNames(cb, { short: true, trimDashes: true })
   const failed = new Set<Option>()
 
   // assign letter from option name
-  cmd.options.forEach((opt) => {
+  cb.options.forEach((opt) => {
     if (!opt.long) opt.long = opt.name()
     if (opt.short) return
     if (opt.hidden) return

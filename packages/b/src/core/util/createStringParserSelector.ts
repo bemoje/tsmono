@@ -1,6 +1,6 @@
-import { ArgumentBuilder } from './ArgumentBuilder'
+import { ArgumentBuilder } from '../CommandBuilder/ArgumentBuilder'
 import { createTypedListParser } from '../../parsers/createTypedListParser'
-import { OptionBuilder } from './OptionBuilder'
+import { OptionBuilder } from '../CommandBuilder/OptionBuilder'
 import { parseInteger } from '../../parsers/parseInteger'
 import { parseNumber } from '../../parsers/parseNumber'
 import { parseString } from '../../parsers/parseString'

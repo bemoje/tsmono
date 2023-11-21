@@ -1,4 +1,5 @@
-import { createStringParserSelector } from './createStringParserSelector'
+import { Any } from '@bemoje/util'
+import { createStringParserSelector } from '../util/createStringParserSelector'
 import { Option, OptionValues } from 'commander'
 import { TStringParser } from '../../parsers/TStringParser'
 
@@ -8,7 +9,7 @@ import { TStringParser } from '../../parsers/TStringParser'
  */
 export class OptionBuilder {
   $: Option
-  customArgParser?: TStringParser<any>
+  customArgParser?: TStringParser<Any>
   constructor(flags: string) {
     this.$ = new Option(flags)
   }
@@ -119,13 +120,4 @@ export class OptionBuilder {
   getDefaultValueDescription(): string | undefined {
     return this.$.defaultValueDescription
   }
-  // config(parent: CommandBuilder): this {
-  //   parent.configEntry({
-  //     key: 'school',
-  //     description: 'your school',
-  //     defaultValue: 'AU',
-  //     parser: (string:string) => string,
-  //   })
-  //   return this
-  // }
 }

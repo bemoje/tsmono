@@ -1,5 +1,5 @@
 import { Argument } from 'commander'
-import { createStringParserSelector } from './createStringParserSelector'
+import { createStringParserSelector } from '../util/createStringParserSelector'
 import { parseString } from '../../parsers/parseString'
 import { TStringParser } from '../../parsers/TStringParser'
 

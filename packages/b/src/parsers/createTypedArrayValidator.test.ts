@@ -1,8 +1,9 @@
 import { createTypedArrayValidator } from './createTypedArrayValidator'
-import { PrimitiveValueValidators } from './PrimitiveValueValidators'
+import { isBoolean } from '../validators/isBoolean'
+import { isString } from '../validators/isString'
 
 describe(createTypedArrayValidator.name, () => {
-  const isValid = createTypedArrayValidator([PrimitiveValueValidators.string, PrimitiveValueValidators.boolean])
+  const isValid = createTypedArrayValidator([isString, isBoolean])
 
   it('should return true for valid arrays', () => {
     expect(isValid(['a', true])).toBe(true)

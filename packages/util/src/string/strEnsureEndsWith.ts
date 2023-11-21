@@ -3,10 +3,10 @@
  * @param string The string to be processed.
  * @param endsWith The substring that the string should end with.
  * @example ```ts
- * strEnsureEndsWith('Hello', ' World');
- * //=> 'Hello World'
- * strEnsureEndsWith('Hello World', ' World');
- * //=> 'Hello World'
+ * strEnsureEndsWith('52', ' kg');
+ * //=> '52 kg'
+ * strEnsureEndsWith('52 kg', ' kg');
+ * //=> '52 kg'
  * ```
  */
 export function strEnsureEndsWith(string: string, endsWith: string): string {
