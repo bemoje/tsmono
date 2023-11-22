@@ -24,26 +24,16 @@ const cli = new CommandBuilder('cli', (cli) => {
   cli.option('-a, --age [years]', (o) => {
     o.description('Your age in years.')
     o.parser.integer()
-  })
-
-  cli.command('someSubCommand', (cmd) => cmd.description('A subcommand'))
-
-  cli.config<string>({
-    key: 'name',
-    description: 'your name',
-    defaultValue: null,
-    parse: parseString,
-    validate: null,
-  })
-
-  cli.config<number>({
-    key: 'age',
-    description: 'your age',
-    defaultValue: null,
-    parse: parseInteger,
-    validate: function isAdult(age: number) {
+    o.validator.custom(function isAdult(age: number) {
       return age >= 18
-    },
+    })
+  })
+
+  cli.command('hello', (cmd) => {
+    cmd.description('prints hello')
+    cmd.action(async () => {
+      console.log('hello')
+    })
   })
 
   cli.config<boolean>({

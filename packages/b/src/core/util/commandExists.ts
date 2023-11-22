@@ -5,5 +5,5 @@ import { lookpath } from 'lookpath'
  * @param command The command to check for.
  */
 export async function commandExists(command: string): Promise<boolean> {
-  return (await lookpath(command)) === undefined
+  return (await lookpath(command)) !== undefined
 }

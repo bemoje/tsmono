@@ -35,7 +35,7 @@ async function getPresetArgsAndOpts(
   cb: CommandBuilder
 ): Promise<{ presetArgs: string[][]; presetOpts: OptionValues[] }> {
   if (cb.isPreset) return { presetArgs: [], presetOpts: [{}] }
-  const presets = (await cb.db.presets.get()) as IPresets
+  const presets = (await cb.db.presets.getAll()) as IPresets
   const order = new Set<string>()
   for (const name of ['defaults', ...cb.selectedPresets]) {
     for (const n of presets[name].presets.concat(name)) {

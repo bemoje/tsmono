@@ -44,6 +44,6 @@ export class ArgumentBuilder {
     return this.$.argChoices
   }
   get setParser() {
-    return createStringParserSelector.call(this)
+    return createStringParserSelector(this)
   }
 }

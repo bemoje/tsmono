@@ -3,6 +3,7 @@ import os from 'os'
 import path from 'path'
 import { actionWrapper } from './actionWrapper'
 import { addDefaultGlobalOptions } from './addDefaultGlobalOptions'
+import { addPresetsCommands } from './addPresetsCommands'
 import { Any, JsonValue } from '@bemoje/util'
 import { ArgumentBuilder } from './ArgumentBuilder'
 import { autoAssignMissingOptionFlags } from '../util/autoAssignMissingOptionFlags'
@@ -27,19 +28,23 @@ export class CommandBuilder extends CommandBuilderBase {
   static readonly commandToBuilderMap = new WeakMap<Command, CommandBuilder>()
   readonly argParsers: TStringParser<JsonValue>[] = []
   readonly optParsers: Record<string, TStringParser<JsonValue>> = {}
+  readonly optValidators: Record<string, TConfigValidator<JsonValue>> = {}
   readonly subcommands: CommandBuilder[] = []
   readonly globalOptions = new Set<Option>()
   readonly ignoreGlobalOptions = new Set<Option>()
   readonly selectedPresets: string[] = []
   isPreset = false
+  isPresetRelatedCommand = false
+  isConfig = false
 
   constructor(name: string, callback?: (cmd: CommandBuilder) => void, parent: CommandBuilder | null = null) {
     super(name, parent)
     CommandBuilder.commandToBuilderMap.set(this.$, this)
     initializeHelp(this)
     this.$.action(actionWrapper(this))
-    if (callback) callback(this)
     addDefaultGlobalOptions(this)
+    if (callback) callback(this)
+    addPresetsCommands(this)
     autoAssignMissingOptionFlags(this)
     autoAssignSubCommandAliasesRecursive(this)
   }
@@ -95,17 +100,18 @@ export class CommandBuilder extends CommandBuilderBase {
   }
   option(flags: string, cb?: (opt: OptionBuilder, cmd: CommandBuilder) => void): this {
     const ins = new OptionBuilder(flags)
-    this.$.addOption(ins.$)
-    if (cb) cb(ins, this)
-    if (ins.customArgParser) this.optParsers[ins.$.name()] = ins.customArgParser
-    return this
+    return this.configureOption(ins, cb)
   }
   globalOption(flags: string, cb?: (opt: OptionBuilder, cmd: CommandBuilder) => void): this {
     const ins = new OptionBuilder(flags)
     this.globalOptions.add(ins.$)
+    return this.configureOption(ins, cb)
+  }
+  protected configureOption(ins: OptionBuilder, cb?: (opt: OptionBuilder, cmd: CommandBuilder) => void): this {
     this.$.addOption(ins.$)
     if (cb) cb(ins, this)
-    if (ins.customArgParser) this.optParsers[ins.$.name()] = ins.customArgParser
+    if (ins.customArgParser) this.optParsers[ins.$.attributeName()] = ins.customArgParser
+    if (ins.customArgValidator) this.optValidators[ins.$.attributeName()] = ins.customArgValidator
     return this
   }
   command(name: string, cb?: (cmd: CommandBuilder) => void): this {
@@ -137,7 +143,7 @@ export class CommandBuilder extends CommandBuilderBase {
   }
 }
 
-export type TConfigValidator<O extends JsonValue = JsonValue> = (value: O) => boolean
+export type TConfigValidator<O extends JsonValue = JsonValue> = (value: O) => boolean | string
 
 export type TConfigParser<O extends JsonValue> = (value: string) => O
 

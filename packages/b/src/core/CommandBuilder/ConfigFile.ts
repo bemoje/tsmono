@@ -7,20 +7,25 @@ import {
   isObject,
   JsonObject,
   JsonValue,
+  promptUserEditJsonInTextEditor,
+  promptUserEditJsonInTextEditorSync,
   readJsonFile,
+  readJsonFileSafeSync,
   readJsonFileSync,
   writeJsonFile,
+  writeJsonFileSafeSync,
   XtError,
 } from '@bemoje/util'
 import { CommandBuilder, IConfigEntry } from './CommandBuilder'
 import { Config, JsonDB } from 'node-json-db'
-import { defaultOpenInEditorCommand } from '../util/defaultOpenInEditorCommand'
-import { getUserInputFromEditorSync } from '../util/getUserInputFromEditorSync'
+import { defaultOpenInEditorCommand } from '../../../../util/src/os/defaultOpenInEditorCommand'
 import { IPreset, IPresets } from '../../cli/bFindIn/lib/core/preset/IPreset'
 import { isString } from '../../validators/isString'
 import { OptionValues } from 'commander'
+import { parseCommaDelimitedString } from '../../parsers/parseCommaDelimitedString'
 import { parseString } from '../../parsers/parseString'
 import { realizeLazyProperty } from '../util/realizeLazyProperty'
+import { validateOptions } from '../util/validateOptions'
 
 export class JsonConfigFileError extends XtError {}
 
@@ -41,9 +46,7 @@ export class ConfigFile {
     return value
   }
   get presets() {
-    const value = realizeLazyProperty(this, 'presets', new PresetsSection(this, 'presets'))
-    addPresetsCommands(this.parent)
-    return value
+    return realizeLazyProperty(this, 'presets', new PresetsSection(this, 'presets'))
   }
 }
 
@@ -71,9 +74,9 @@ export class Section {
     const parsed = await readJsonFile(filepath)
     await writeJsonFile(filepath, parsed, { spaces: 2 })
   }
-  async delete(key?: string) {
+  async delete(key?: string, save = true) {
     await this.db.delete(this.prefix(key))
-    await this.save()
+    if (save) await this.save()
   }
   getSync<T = unknown>(key?: string): T {
     const filepath = this.parent.parent.filepath
@@ -102,6 +105,15 @@ export class ConfigSection extends Section {
         defaultValue: defaultOpenInEditorCommand(),
         parse: parseString,
         validate: null,
+      }
+      this.definitions['disabledBuiltinPresets'] = {
+        key: 'disabledBuiltinPresets',
+        description: 'List of disabled builtin presets.',
+        defaultValue: [],
+        parse: parseCommaDelimitedString,
+        validate: function isStringArray(value: string[]) {
+          return value.every((v) => isString(v))
+        },
       }
     }
   }
@@ -164,14 +176,8 @@ export class ConfigSection extends Section {
   async edit() {
     await this.initialize()
     const original = (await this.get()) as JsonObject
-    const json = JSON.stringify(original, null, 2)
-    const userInput = getUserInputFromEditorSync({
-      editor: await this.get('editor'),
-      content: json,
-      extension: '.json',
-    })
-    if (!userInput || userInput === json) return
-    const parsed = JSON.parse(userInput) as JsonObject
+    const editor = (await this.get('editor')) as string
+    const parsed = promptUserEditJsonInTextEditor(original, editor)
     for (const [key, value] of Object.entries(parsed)) {
       const curValue = original[key]
       let changed = false
@@ -206,67 +212,129 @@ export class PresetsSection extends Section {
         presets: [],
         args: cb.registeredArguments.map((arg) => arg.defaultValue || ''),
         options: cb.getAllOptions().reduce((acc, opt) => {
-          acc[opt.attributeName()] = opt.defaultValue || (opt.isBoolean() ? false : null)
+          acc[opt.attributeName()] = opt.defaultValue ?? (opt.isBoolean() ? false : null)
           return acc
         }, {} as OptionValues),
       },
     }
   }
 
-  async initialize(save = true) {
-    const data = await this.db.getObjectDefault<IPresets>(this.prefix(), this.definitions)
-    const presets = Object.assign({}, this.definitions, data)
-    this.definitions.defaults.args.map((arg, i) => {
-      if (presets.defaults.args[i] === undefined) presets.defaults.args[i] = arg
-    })
-    presets.defaults.options = Object.assign({}, this.definitions.defaults.options, presets.defaults.options)
-    await this.db.push(this.prefix(), presets, true)
-    if (save) await this.save()
+  initializeSync() {
+    if (this.isInitialized) return
+    const data = readJsonFileSafeSync(this.parent.parent.filepath) as {
+      presets?: IPresets
+      config?: { disabledBuiltinPresets?: string[] }
+    }
+    const presets = data && data.presets ? Object.assign({}, this.definitions, data.presets) : this.definitions
+    const config = data?.config ?? {}
+    const disabled: string[] = config?.disabledBuiltinPresets ?? []
+    this._initialize(presets, disabled)
+    if (this.isInitialized) return
+    writeJsonFileSafeSync(this.parent.parent.filepath, { config, presets }, { spaces: 2 })
     this.isInitialized = true
   }
 
-  async get<T extends IPreset = IPreset, K extends string | undefined = string | undefined>(
-    key?: K
-  ): Promise<K extends string ? T : Record<string, T>> {
-    type R = K extends string ? T : Record<string, T>
-    if (!this.isInitialized) await this.initialize()
-    return await this.db.getObjectDefault<R>(this.prefix(key), (key ? this.definitions[key] : this.definitions) as Any)
+  async initialize() {
+    if (this.isInitialized) return
+    const data = await this.db.getObjectDefault<IPresets>(this.prefix(), this.definitions)
+    const presets = Object.assign({}, this.definitions, data)
+    const disabled: string[] = await this.parent.config.get('disabledBuiltinPresets')
+    this._initialize(presets, disabled)
+    if (this.isInitialized) return
+    await this.db.push(this.prefix(), presets, true)
+    await this.save()
+    this.isInitialized = true
   }
 
-  async set<T extends IPreset>(key: string, value: T, save = true) {
+  protected _initialize(presets: IPresets, disabled: string[]) {
+    // merge args
+    this.definitions.defaults.args.forEach((arg, i) => {
+      if (presets.defaults.args[i] === undefined) presets.defaults.args[i] = arg
+    })
+    // merge default options
+    presets.defaults.options = Object.assign({}, this.definitions.defaults.options, presets.defaults.options)
+    // remove disabled presets
+    for (const name of disabled) {
+      if (Object.hasOwn(presets, name)) {
+        delete presets[name]
+      }
+    }
+    for (const [name, preset] of Object.entries(presets)) {
+      // find and remove invalid options
+      for (const key of Object.keys(preset.options)) {
+        if (!Object.hasOwn(this.definitions.defaults.options, key)) {
+          delete preset.options[key]
+          console.warn(`In preset, ${name}, deleted invalid option: '${key}'`)
+        }
+      }
+      // find and remove invalid preset references
+      preset.presets = preset.presets.filter((key) => {
+        const bool = Object.hasOwn(presets, key)
+        if (!bool) console.warn(`In preset, ${key}, deleted invalid reference to other preset: '${key}'`)
+        return bool
+      })
+      // validate
+      this.validatePreset(preset)
+    }
+  }
+
+  async getAll(): Promise<IPresets> {
     if (!this.isInitialized) await this.initialize()
-    assertThat(value.summary, isString)
-    assertThat(value.args, Array.isArray)
-    value.args.forEach((arg) => assertThat(arg, isString))
-    assertThat(value.options, isObject)
-    // validate value.options
-    await this.db.push(this.prefix(key), value, true)
+    return await this.db.getObjectDefault<IPresets>(this.prefix(), this.definitions)
+  }
+
+  async get(name: string): Promise<IPreset> {
+    if (!this.isInitialized) await this.initialize()
+    return await this.db.getObjectDefault<IPreset>(this.prefix(name), this.definitions[name])
+  }
+
+  validatePreset(preset: IPreset) {
+    assertThat(preset.summary, isString)
+    assertThat(preset.args, Array.isArray)
+    preset.args.forEach((arg) => assertThat(arg, isString))
+    assertThat(preset.presets, Array.isArray)
+    preset.presets.forEach((pre) => assertThat(pre, isString))
+    assertThat(preset.options, isObject)
+    validateOptions(this.parent.parent, preset.options)
+  }
+
+  async set(name: string, preset: IPreset, save = true) {
+    if (!this.isInitialized) await this.initialize()
+    this.validatePreset(preset)
+    await this.db.push(this.prefix(name), preset, true)
     if (save) await this.save()
+  }
+
+  async setAll(presets: IPresets) {
+    if (!this.isInitialized) await this.initialize()
+    if (!presets['defaults']) throw new JsonConfigFileError('Missing "defaults" preset')
+    const original = await this.getAll()
+    for (const [name, preset] of Object.entries(presets)) {
+      if (JSON.stringify(preset) === JSON.stringify(original[name])) continue
+      await this.set(name, preset, false)
+    }
+    for (const name of Object.keys(original)) {
+      if (Object.hasOwn(presets, name)) continue
+      await this.delete(name, false)
+    }
+    await this.save()
   }
 
   async edit() {
     if (!this.isInitialized) await this.initialize()
-    const original = (await this.get()) as IPresets
-    const json = JSON.stringify(original, null, 2)
-    const userInput = getUserInputFromEditorSync({
-      editor: await this.parent.config.get('editor'),
-      content: json,
-      extension: '.json',
-    })
-    if (!userInput || userInput === json) return
-    const parsed = JSON.parse(userInput) as IPresets
-    if (!parsed['defaults']) throw new JsonConfigFileError('Missing "defaults" preset')
-    for (const [key, value] of Object.entries(parsed)) {
-      const curValue = original[key]
-      if (JSON.stringify(value) !== JSON.stringify(curValue)) {
-        await this.set(key, value, false)
-      }
-    }
-    for (const key of Object.keys(original)) {
-      if (!Object.hasOwn(parsed, key)) {
-        await this.db.delete(this.prefix(key))
-      }
-    }
-    await this.initialize()
+    const original = await this.getAll()
+    const editor = (await this.parent.config.get('editor')) as string
+    const parsed = await promptUserEditJsonInTextEditor(original as unknown as JsonValue, editor)
+    await this.setAll(parsed as unknown as IPresets)
+  }
+
+  override async delete(name: string, save = true) {
+    if (!this.isInitialized) await this.initialize()
+    if (name === 'defaults') throw new JsonConfigFileError('Cannot delete the "defaults" preset.')
+    await super.delete(name, save)
+    if (this.definitions[name] === undefined) return
+    const disabled: string[] = await this.parent.config.get('disabledBuiltinPresets')
+    if (disabled.includes(name)) return
+    await this.parent.config.set('disabledBuiltinPresets', disabled.concat(name))
   }
 }

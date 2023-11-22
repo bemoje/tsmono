@@ -1,6 +1,8 @@
 import { Any } from '@bemoje/util'
 import { createStringParserSelector } from '../util/createStringParserSelector'
+import { createValidatorSelector } from '../util/createValidatorSelector'
 import { Option, OptionValues } from 'commander'
+import { TConfigValidator } from './CommandBuilder'
 import { TStringParser } from '../../parsers/TStringParser'
 
 /**
@@ -10,6 +12,7 @@ import { TStringParser } from '../../parsers/TStringParser'
 export class OptionBuilder {
   $: Option
   customArgParser?: TStringParser<Any>
+  customArgValidator?: TConfigValidator<Any>
   constructor(flags: string) {
     this.$ = new Option(flags)
   }
@@ -98,9 +101,15 @@ export class OptionBuilder {
   }
   get parser() {
     if (this.$.isBoolean() || this.$.negate) {
-      throw new Error('Cannot set parser on boolean option: ' + this.$.name())
+      throw new Error('Cannot set parser on boolean option: ' + this.$.attributeName())
     }
-    return createStringParserSelector.call(this)
+    return createStringParserSelector(this)
+  }
+  get validator() {
+    if (this.$.isBoolean() || this.$.negate) {
+      throw new Error('Cannot set validator on boolean option: ' + this.$.attributeName())
+    }
+    return createValidatorSelector(this)
   }
   getParser<T>(): TStringParser<T> | undefined {
     return this.$.parseArg

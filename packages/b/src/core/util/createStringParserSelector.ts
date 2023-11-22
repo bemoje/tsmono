@@ -6,11 +6,11 @@ import { parseNumber } from '../../parsers/parseNumber'
 import { parseString } from '../../parsers/parseString'
 import { TStringParser } from '../../parsers/TStringParser'
 
-export function createStringParserSelector(this: ArgumentBuilder | OptionBuilder) {
+export function createStringParserSelector(builder: ArgumentBuilder | OptionBuilder) {
   const createChoice = <T>(parser: TStringParser<T>) => {
     return () => {
-      this.customArgParser = parser
-      return this
+      builder.customArgParser = parser
+      return builder
     }
   }
 
