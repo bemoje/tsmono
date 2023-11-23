@@ -1,16 +1,17 @@
-import { createTypedArrayValidator } from '../../parsers/createTypedArrayValidator'
+import { createMixedTypeArrayValidator } from '../../validators/createMixedTypeArrayValidator'
+import { createTypedArrayValidator } from '../../validators/createTypedArrayValidator'
 import { isInteger } from '../../validators/isInteger'
 import { isNumber } from '../../validators/isNumber'
 import { isString } from '../../validators/isString'
-import { JsonValue } from '@bemoje/util'
+import { JsonArray, JsonValue } from '@bemoje/util'
 import { OptionBuilder } from '../CommandBuilder/OptionBuilder'
 import { TConfigValidator } from '../CommandBuilder/CommandBuilder'
 
 export function createValidatorSelector(opt: OptionBuilder) {
-  const createChoice = <O extends JsonValue = JsonValue>(validator: TConfigValidator<O>) => {
+  const createChoice = <O extends JsonValue>(validator: TConfigValidator<O>) => {
     if (!validator.name) throw new Error('Validator must be a named function, eg. "isString"')
     return () => {
-      opt.customArgValidator = validator
+      opt.customArgValidators.push(validator)
       return opt
     }
   }
@@ -20,13 +21,21 @@ export function createValidatorSelector(opt: OptionBuilder) {
       return () => createChoice(validator)()
     },
 
-    string: createChoice(isString),
-    stringArray: createChoice(createTypedArrayValidator([isString])),
+    customTypedArray: <O extends JsonValue = JsonValue>(...validators: TConfigValidator<O>[]) => {
+      return () => createChoice(createTypedArrayValidator(validators))()
+    },
 
-    number: createChoice(isNumber),
-    numberArray: createChoice(createTypedArrayValidator([isNumber])),
+    customMixedTypeArray: <O extends JsonValue = JsonValue>(...validators: TConfigValidator<O>[]) => {
+      return () => createChoice(createMixedTypeArrayValidator(validators))()
+    },
 
-    integer: createChoice(isInteger),
-    integerArray: createChoice(createTypedArrayValidator([Number.isInteger])),
+    isString: createChoice(isString),
+    isStringArray: createChoice(createTypedArrayValidator([isString])),
+
+    isNumber: createChoice(isNumber),
+    isNumberArray: createChoice(createTypedArrayValidator([isNumber])),
+
+    isInteger: createChoice(isInteger),
+    isIntegerArray: createChoice(createTypedArrayValidator([isInteger])),
   }
 }

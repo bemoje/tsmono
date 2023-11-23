@@ -7,8 +7,10 @@ import { OptionValues } from 'commander'
  */
 export function validateOptions(cmd: CommandBuilder, parsedOptions: OptionValues) {
   for (const [key, value] of Object.entries(parsedOptions)) {
-    if (cmd.optValidators[key]) {
-      assertThat(value, cmd.optValidators[key])
+    if (value == null) continue
+    if (!cmd.optValidators[key]) continue
+    for (const validator of cmd.optValidators[key]) {
+      assertThat(value, validator)
     }
   }
   return parsedOptions

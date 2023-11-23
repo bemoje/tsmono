@@ -27,9 +27,9 @@ export class CommandBuilderBase {
     this.$.usage(usage)
     return this
   }
-  getDescription() {
-    return this.$.description()
-  }
+  // getDescription() {
+  //   return this.$.description()
+  // }
   description(description: string) {
     const summary = description.split(/(\. ?|\n|$)/)[0]
     this.$.summary(summary)

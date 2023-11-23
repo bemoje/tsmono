@@ -4,7 +4,7 @@ export type TPresetDefaultValue = boolean | string | number
 export type TPresetDefaultOptions<T extends TPresetDefaultValue = TPresetDefaultValue> = Record<string, T>
 
 export interface IPreset<O extends OptionValues = OptionValues> {
-  summary: string
+  description: string
   presets: string[]
   args: string[]
   options: O

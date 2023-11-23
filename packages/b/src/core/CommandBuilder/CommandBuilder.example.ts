@@ -1,10 +1,16 @@
 import { CommandBuilder } from './CommandBuilder'
 import { parseBoolean } from '../../parsers/parseBoolean'
-import { parseInteger } from '../../parsers/parseInteger'
-import { parseString } from '../../parsers/parseString'
+import { prefixStringsRecursive } from '../util/prefixStringsRecursive'
 
 const cli = new CommandBuilder('cli', (cli) => {
   cli.description('A CLI example')
+
+  cli.action(async (args, opts) => {
+    const name = args.shift()
+    const friends = args.shift()
+    const favNumbers = args
+    console.log({ name, friends, favNumbers, ...opts })
+  })
 
   cli.argument('<name>', (a) => {
     a.description('Your name')
@@ -12,18 +18,19 @@ const cli = new CommandBuilder('cli', (cli) => {
 
   cli.argument('[friends]', (a) => {
     a.description('Comma-delimited list of friends')
-    a.setParser.delimitedStrings(',')
+    a.parser.delimitedStrings(',')
   })
 
   cli.argument('[favNumbers...]', (a) => {
     a.description('Your favorite numbers between 0 and 4')
-    a.setParser.integer()
+    a.parser.integer()
     a.choices(['0', '1', '2', '3', '4'])
   })
 
   cli.option('-a, --age [years]', (o) => {
     o.description('Your age in years.')
     o.parser.integer()
+    o.validator.isInteger()
     o.validator.custom(function isAdult(age: number) {
       return age >= 18
     })
@@ -44,14 +51,20 @@ const cli = new CommandBuilder('cli', (cli) => {
     validate: null,
   })
 
+  cli.preset('benjamin', {
+    description: 'Benjamin',
+    presets: ['old'],
+    args: ['', 'Thomas,Lasse', '0', '3'],
+    options: {},
+  })
   cli.preset('adult', {
-    summary: 'Age is 18',
+    description: 'Age is 18',
     presets: [],
     args: [],
     options: { age: 18 },
   })
   cli.preset('old', {
-    summary: 'Age is 35',
+    description: 'Age is 35',
     presets: [],
     args: [],
     options: { age: 35 },

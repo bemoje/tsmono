@@ -2,7 +2,7 @@ import { Command, OptionValues } from 'commander'
 import { CommandBuilder } from '../CommandBuilder/CommandBuilder'
 import { escapeShellCommandArgument } from './escapeShellCommandArgument'
 import { strSplitCamelCase } from '@bemoje/util'
-import { TPresetDefaultOptions } from '../../cli/bFindIn/lib/core/preset/IPreset'
+import { TPresetDefaultOptions } from '../CommandBuilder/IPreset'
 import { walkAncestors } from './walkAncestors'
 
 /**

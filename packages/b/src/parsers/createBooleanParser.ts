@@ -9,7 +9,7 @@ export function createBooleanParser(
   falseValues: string[] = ['', 'FALSE', 'F', 'NO', 'N', '0']
 ): (string: string) => boolean {
   return function parseBoolean(string: string): boolean {
-    string = string.trim().toUpperCase()
+    string = string.toUpperCase()
     if (falseValues.includes(string)) return false
     if (trueValues.includes(string)) return true
     throw new TypeError(

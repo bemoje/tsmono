@@ -1,5 +1,5 @@
 import { CommandBuilder } from './CommandBuilder'
-import { IPresets } from '../../cli/bFindIn/lib/core/preset/IPreset'
+import { IPresets } from './IPreset'
 import { JsonValue, XtError } from '@bemoje/util'
 import { MethodDisabler } from './MethodDisabler'
 import { Option, OptionValues } from 'commander'
@@ -21,12 +21,10 @@ export function actionWrapper(cb: CommandBuilder) {
     const opts = await mergeOptsAndPresetOpts(cb, presetOpts)
     await handleQuietSilentTrace(cb, args, opts)
     if (opts['dryRun'] && !cb.isPreset) return
-
     try {
       await cb.actionHandler.call(cb, args, opts, cb)
     } catch (error) {
-      if (opts['trace']) console.error(new XtError(error))
-      else console.error('ERROR: ' + (error instanceof Error ? error.message : String(error)))
+      handleError(error, opts)
     }
   }
 }
@@ -51,7 +49,7 @@ async function getPresetArgsAndOpts(
 }
 
 async function mergeArgsAndPresetArgs(cb: CommandBuilder, presetArgs: string[][]) {
-  if (cb.isPreset) return cb.argsParsed
+  if (cb.isPreset) return cb.$.args
   const args: string[] = []
   for (const preArgs of presetArgs.concat([cb.$.args])) {
     preArgs.forEach((preArg, i) => {
@@ -62,7 +60,7 @@ async function mergeArgsAndPresetArgs(cb: CommandBuilder, presetArgs: string[][]
 }
 
 async function mergeOptsAndPresetOpts(cb: CommandBuilder, presetOpts: OptionValues[]) {
-  const opts = cb.isPreset ? Object.assign({}, ...presetOpts, cb.optsWithGlobalsParsed) : cb.optsWithGlobalsParsed
+  const opts = Object.assign({}, ...presetOpts, cb.optsWithGlobalsParsed)
   await deleteOptionsWithDefaultOrNoValue(cb, opts)
   return opts
 }
@@ -90,4 +88,13 @@ async function handleQuietSilentTrace(cb: CommandBuilder, args: JsonValue[], opt
     debugMd.enable()
   }
   console.debug({ name: cb.name, presets: cb.selectedPresets, args, opts, argv: process.argv.slice(2) })
+}
+
+function handleError(error: unknown, opts: OptionValues) {
+  if (opts['trace']) console.error(new XtError(error))
+  else {
+    const name = error instanceof Error ? error.name : 'Error'
+    const msg = error instanceof Error ? error.message : String(error)
+    console.error(name + ': ' + msg)
+  }
 }

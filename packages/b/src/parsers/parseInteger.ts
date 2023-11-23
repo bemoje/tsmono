@@ -1,5 +1,9 @@
-import { assertThat } from '@bemoje/util'
-
 export function parseInteger(string: string): number {
-  return assertThat(Number(string.trim()), Number.isInteger)
+  const errMsg = 'Not an integer. Got: '
+  if (string.includes('.')) throw new TypeError(errMsg + string)
+  string = string.replace(/[^-0-9]/g, '')
+  if (!string) throw new TypeError(errMsg + string)
+  const int = parseInt(string)
+  if (isNaN(int)) throw new TypeError(errMsg + string)
+  return int
 }

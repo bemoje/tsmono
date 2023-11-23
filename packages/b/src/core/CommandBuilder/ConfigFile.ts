@@ -1,14 +1,13 @@
 import fs from 'fs-extra'
 import { addConfigCommands } from './addConfigCommands'
-import { addPresetsCommands } from './addPresetsCommands'
 import {
   Any,
   assertThat,
+  defaultOpenInEditorCommand,
   isObject,
   JsonObject,
   JsonValue,
   promptUserEditJsonInTextEditor,
-  promptUserEditJsonInTextEditorSync,
   readJsonFile,
   readJsonFileSafeSync,
   readJsonFileSync,
@@ -18,16 +17,13 @@ import {
 } from '@bemoje/util'
 import { CommandBuilder, IConfigEntry } from './CommandBuilder'
 import { Config, JsonDB } from 'node-json-db'
-import { defaultOpenInEditorCommand } from '../../../../util/src/os/defaultOpenInEditorCommand'
-import { IPreset, IPresets } from '../../cli/bFindIn/lib/core/preset/IPreset'
+import { createTypedListParser } from '../../parsers/createTypedListParser'
+import { IPreset, IPresets } from './IPreset'
 import { isString } from '../../validators/isString'
 import { OptionValues } from 'commander'
-import { parseCommaDelimitedString } from '../../parsers/parseCommaDelimitedString'
 import { parseString } from '../../parsers/parseString'
 import { realizeLazyProperty } from '../util/realizeLazyProperty'
 import { validateOptions } from '../util/validateOptions'
-
-export class JsonConfigFileError extends XtError {}
 
 /**
  * asdf
@@ -50,6 +46,9 @@ export class ConfigFile {
   }
 }
 
+/**
+ *
+ */
 export class Section {
   protected readonly parent: ConfigFile
   protected readonly name: string
@@ -110,9 +109,12 @@ export class ConfigSection extends Section {
         key: 'disabledBuiltinPresets',
         description: 'List of disabled builtin presets.',
         defaultValue: [],
-        parse: parseCommaDelimitedString,
-        validate: function isStringArray(value: string[]) {
-          return value.every((v) => isString(v))
+        parse: createTypedListParser(',', parseString),
+        validate: function isArrayOfPresetNames(value: string[]) {
+          if (!Array.isArray(value)) return false
+          return value.every((name) => {
+            return Object.hasOwn(parent.presets.definitions, name)
+          })
         },
       }
     }
@@ -177,18 +179,9 @@ export class ConfigSection extends Section {
     await this.initialize()
     const original = (await this.get()) as JsonObject
     const editor = (await this.get('editor')) as string
-    const parsed = promptUserEditJsonInTextEditor(original, editor)
+    const parsed = await promptUserEditJsonInTextEditor(original, editor)
     for (const [key, value] of Object.entries(parsed)) {
-      const curValue = original[key]
-      let changed = false
-      if ((value != null && typeof value === 'object') || (curValue != null && typeof curValue === 'object')) {
-        if (JSON.stringify(value) !== JSON.stringify(curValue)) {
-          changed = true
-        }
-      } else if (value !== curValue) {
-        changed = true
-      }
-      if (changed) {
+      if (JSON.stringify(value) !== JSON.stringify(original[key])) {
         await this.set(key, value, false)
       }
     }
@@ -208,7 +201,7 @@ export class PresetsSection extends Section {
     const cb = this.parent.parent
     this.definitions = {
       defaults: {
-        summary: 'all other presets inherit from this preset',
+        description: 'All presets inherit from this preset',
         presets: [],
         args: cb.registeredArguments.map((arg) => arg.defaultValue || ''),
         options: cb.getAllOptions().reduce((acc, opt) => {
@@ -289,9 +282,15 @@ export class PresetsSection extends Section {
   }
 
   validatePreset(preset: IPreset) {
-    assertThat(preset.summary, isString)
+    assertThat(preset.description, isString)
     assertThat(preset.args, Array.isArray)
-    preset.args.forEach((arg) => assertThat(arg, isString))
+    const regArgs = this.parent.parent.registeredArguments
+    preset.args.forEach((arg, i) => {
+      assertThat(arg, isString)
+      if (arg !== '' && i < regArgs.length && regArgs[i].required) {
+        throw new Error(`Cannot preset required arguments.`)
+      }
+    })
     assertThat(preset.presets, Array.isArray)
     preset.presets.forEach((pre) => assertThat(pre, isString))
     assertThat(preset.options, isObject)
@@ -338,3 +337,5 @@ export class PresetsSection extends Section {
     await this.parent.config.set('disabledBuiltinPresets', disabled.concat(name))
   }
 }
+
+export class JsonConfigFileError extends XtError {}

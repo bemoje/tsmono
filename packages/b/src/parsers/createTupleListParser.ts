@@ -10,18 +10,14 @@ import { createLengthValidator } from '../validators/createLengthValidator'
  * @returns A function that takes a delimited string and returns an array of typed values.
  * @template T - The type of the values in the list.
  */
-export function createTypedListExactlyParser<T extends JsonRawPrimitive = JsonRawPrimitive>(
+export function createTupleListParser<T extends JsonRawPrimitive = JsonRawPrimitive>(
   delimiter: string,
   parsers: ((value: string) => T)[]
 ): (value: string) => T[] {
   const isValidLength = createLengthValidator(parsers.length)
   return function parseList(string: string): T[] {
     return assertThat(
-      string
-        .trim()
-        .split(delimiter)
-        .map((str) => str.trim())
-        .filter((str) => !!str),
+      string.split(delimiter).map((str) => str.trim()),
       isValidLength
     ).map((str, i) => parsers[i](str))
   }

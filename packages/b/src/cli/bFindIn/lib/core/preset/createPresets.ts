@@ -15,7 +15,7 @@ export function createPresets<O extends OptionValues = OptionValues>(
     }
     createPreset<O>(parent, {
       name,
-      summary: preset.description,
+      description: preset.description,
       args: preset.args,
       options: preset.options || ({} as O),
     })

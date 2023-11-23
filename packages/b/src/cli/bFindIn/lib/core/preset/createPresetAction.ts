@@ -1,5 +1,5 @@
 import { Command, OptionValues } from 'commander'
-import { IPreset } from './IPreset'
+import { IPreset } from '../../../../../core/CommandBuilder/IPreset'
 import { optionsToCommandString_old } from '../../../../../core/util/optionsToCommandString'
 import { PRESETS } from '../../bFindInCommand'
 

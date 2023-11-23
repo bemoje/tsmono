@@ -13,10 +13,6 @@ describe(createTypedListParser.name, () => {
     expect(parse(' 1, 2,3 ')).toEqual([1, 2, 3])
   })
 
-  it('should filter out empty values from the string', () => {
-    expect(parse('1,,2,3')).toEqual([1, 2, 3])
-  })
-
   it('should not throw on an empty string', () => {
     expect(() => parse('')).not.toThrow()
   })

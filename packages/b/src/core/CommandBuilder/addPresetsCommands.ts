@@ -1,21 +1,24 @@
 import { CommandBuilder } from './CommandBuilder'
-import { IPresets } from '../../cli/bFindIn/lib/core/preset/IPreset'
+import { IPresets } from './IPreset'
 
 export function addPresetsCommands(cb: CommandBuilder) {
-  if (cb.isPreset || cb.isPresetRelatedCommand) return
+  if (cb.isPreset || cb.isPresetRelatedCommand || cb.isConfigRelatedCommand) return
 
   cb.command('presets', (presets) => {
     presets.isPresetRelatedCommand = true
-
-    presets.description('Manage presets.')
-
-    presets.command('edit', (edit) => {
-      edit.isPresetRelatedCommand = true
-      edit.description('Edit a preset.')
-      edit.action(async () => {
-        await cb.db.presets.edit()
-        console.info(await cb.db.presets.getAll())
-      })
+    presets.description(
+      [
+        'Edit presets in your text editor',
+        '',
+        'A preset consists of pre-set arguments and/or options for a command.',
+        'Additionally, a preset can have other presets as dependencies.',
+        'When running the command, multiple presets can be stacked.',
+        'Required arguments cannot be pre-set.',
+      ].join('\n')
+    )
+    presets.action(async () => {
+      await cb.db.presets.edit()
+      console.info(await cb.db.presets.getAll())
     })
 
     presets.command('list', (list) => {
@@ -33,7 +36,9 @@ export function addPresetsCommands(cb: CommandBuilder) {
     if (name === 'defaults') continue
     cb.command(name, (cmd) => {
       cmd.isPreset = true
-      cmd.description('[Preset]: ' + pre.summary)
+      cmd.$.allowExcessArguments(true)
+      cmd.$.allowUnknownOption(true)
+      cmd.description('[Preset]: ' + pre.description)
       cmd.action(async () => {
         cb.selectedPresets.push(name)
         argv.shift()

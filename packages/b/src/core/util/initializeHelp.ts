@@ -1,6 +1,7 @@
 import { Argument, Command, HelpContext } from 'commander'
 import { colors } from '@bemoje/util'
 import { CommandBuilder } from '../CommandBuilder/CommandBuilder'
+import { prefixStringsRecursive } from './prefixStringsRecursive'
 
 export function initializeHelp(cb: CommandBuilder) {
   if (!helpInformationReplaced) {
@@ -27,6 +28,16 @@ export function initializeHelp(cb: CommandBuilder) {
   cb.$.addHelpCommand('?', 'help')
 
   if (cb.isPreset) return
+
+  if (!cb.parent) {
+    cb.$.addHelpText(
+      'afterAll',
+      'Command Tree:\n' +
+        prefixStringsRecursive(cb)
+          .map((s) => '  ' + s)
+          .join('\n')
+    )
+  }
 
   const help = cb.$.configureHelp()
   help.showGlobalOptions = true

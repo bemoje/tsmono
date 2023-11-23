@@ -1,3 +1,4 @@
+import { Any } from '@bemoje/util'
 import { Argument } from 'commander'
 import { createStringParserSelector } from '../util/createStringParserSelector'
 import { parseString } from '../../parsers/parseString'
@@ -8,8 +9,7 @@ import { TStringParser } from '../../parsers/TStringParser'
  */
 export class ArgumentBuilder {
   $: Argument
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  customArgParser: TStringParser<any> = parseString
+  customArgParser: TStringParser<Any> = parseString
   constructor(name: string) {
     this.$ = new Argument(name)
   }
@@ -17,33 +17,33 @@ export class ArgumentBuilder {
     this.$.description = string
     return this
   }
-  getDescription(): string {
-    return this.$.description
-  }
-  getVariadic(): boolean {
-    return this.$.variadic
-  }
-  getOptional(): boolean {
-    return !this.$.required
-  }
+  // getDescription(): string {
+  //   return this.$.description
+  // }
+  // getVariadic(): boolean {
+  //   return this.$.variadic
+  // }
+  // getOptional(): boolean {
+  //   return !this.$.required
+  // }
   default(value: unknown, description?: string) {
-    if (!this.getOptional()) {
+    if (this.$.required) {
       throw new Error('Cannot set default value on required argument: ' + this.$.name())
     }
     this.$.default(value, description)
     return this
   }
-  getDefault(): unknown | undefined {
-    return this.$.defaultValue
-  }
+  // getDefault(): unknown | undefined {
+  //   return this.$.defaultValue
+  // }
   choices(values: readonly string[]): this {
     this.$.choices(values)
     return this
   }
-  getChoices(): readonly string[] | undefined {
-    return this.$.argChoices
-  }
-  get setParser() {
+  // getChoices(): readonly string[] | undefined {
+  //   return this.$.argChoices
+  // }
+  get parser() {
     return createStringParserSelector(this)
   }
 }

@@ -2,12 +2,14 @@ import { CommandBuilder } from './CommandBuilder'
 
 export function addConfigCommands(cb: CommandBuilder) {
   cb.command('config', (config) => {
-    config.description('Edit the configuration file in your text editor.')
+    config.isConfigRelatedCommand = true
+    config.description('Edit config file in your text editor.')
     config.action(async () => {
       await cb.db.config.edit()
       await printConfig()
     })
     config.command('docs', (docs) => {
+      docs.isConfigRelatedCommand = true
       docs.description('Print config documentation')
       docs.action(async () => {
         const result: Record<string, string> = {}
@@ -18,6 +20,7 @@ export function addConfigCommands(cb: CommandBuilder) {
       })
     })
     config.command('get', (get) => {
+      get.isConfigRelatedCommand = true
       get.description('Print value(s) from the config.')
       get.argument('[key]', (a) => a.description('The key to print the value of. Omit to print all values.'))
       get.action(async (args) => {
@@ -25,6 +28,7 @@ export function addConfigCommands(cb: CommandBuilder) {
       })
     })
     config.command('set', (set) => {
+      set.isConfigRelatedCommand = true
       set.description('Set a value in the config.')
       set.argument('<key>', (a) => a.description('The key to set the value of.'))
       set.argument('<value>', (a) => a.description('The new value.'))
@@ -36,6 +40,7 @@ export function addConfigCommands(cb: CommandBuilder) {
       })
     })
     config.command('reset', (reset) => {
+      reset.isConfigRelatedCommand = true
       reset.description('Reset config value(s) to default(s)')
       reset.argument('[key]', (a) => a.description('The key to reset the value of. Omit to reset all values.'))
       reset.action(async (args) => {

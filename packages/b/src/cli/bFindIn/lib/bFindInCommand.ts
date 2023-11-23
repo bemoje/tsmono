@@ -13,7 +13,7 @@ import {
   writeFileSafe,
 } from '@bemoje/util'
 import { getHomeDirectory } from '@bemoje/util'
-import { IPresets } from './core/preset/IPreset'
+import { IPresets } from '../../../core/CommandBuilder/IPreset'
 import { Option } from 'commander'
 import { optionsToCommandString_old } from '../../../core/util/optionsToCommandString'
 import { parseCommaDelimitedString } from '../../../parsers/parseCommaDelimitedString'
@@ -22,7 +22,7 @@ import { parseNumber } from '../../../parsers/parseNumber'
 export const PRESETS: IPresets<OptionValues> = {
   defaults: {
     name: 'defaults',
-    summary: 'All other presets inherit from this preset',
+    description: 'All other presets inherit from this preset',
     args: ['', ''],
     options: {
       ignoreDirs: 'AppData,node_modules,coverage,docs,doc,cache,dist,logs',

@@ -15,12 +15,8 @@ export function createTypedListParser<T extends JsonRawPrimitive = JsonRawPrimit
 ): (value: string) => T[] {
   return function parseList(string: string): T[] {
     return string
-      .trim()
       .split(delimiter)
       .map((str) => str.trim())
-      .filter((str) => !!str)
-      .map((str) => {
-        return parser(str)
-      })
+      .map(parser)
   }
 }

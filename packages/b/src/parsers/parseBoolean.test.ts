@@ -13,7 +13,6 @@ describe(parseBoolean.name, () => {
 
   describe('when input is a valid false value', () => {
     it('should return false', () => {
-      expect(parseBoolean('')).toBe(false)
       expect(parseBoolean('FALSE')).toBe(false)
       expect(parseBoolean('F')).toBe(false)
       expect(parseBoolean('NO')).toBe(false)
@@ -24,6 +23,7 @@ describe(parseBoolean.name, () => {
 
   describe('when input is not a valid input', () => {
     it('should throw', () => {
+      expect(() => parseBoolean('')).toThrow()
       expect(() => parseBoolean('invalid')).toThrow()
     })
   })

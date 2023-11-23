@@ -12,7 +12,7 @@ import { Command, Option, OptionValues } from 'commander'
 import { CommandBuilderBase } from './CommandBuilderBase'
 import { ConfigFile } from './ConfigFile'
 import { initializeHelp } from '../util/initializeHelp'
-import { IPreset } from '../../cli/bFindIn/lib/core/preset/IPreset'
+import { IPreset } from './IPreset'
 import { OptionBuilder } from './OptionBuilder'
 import { parseArgs } from '../util/parseArgs'
 import { parseOptions } from '../util/parseOptions'
@@ -28,7 +28,7 @@ export class CommandBuilder extends CommandBuilderBase {
   static readonly commandToBuilderMap = new WeakMap<Command, CommandBuilder>()
   readonly argParsers: TStringParser<JsonValue>[] = []
   readonly optParsers: Record<string, TStringParser<JsonValue>> = {}
-  readonly optValidators: Record<string, TConfigValidator<JsonValue>> = {}
+  readonly optValidators: Record<string, TConfigValidator<JsonValue>[]> = {}
   readonly subcommands: CommandBuilder[] = []
   readonly globalOptions = new Set<Option>()
   readonly ignoreGlobalOptions = new Set<Option>()
@@ -36,17 +36,18 @@ export class CommandBuilder extends CommandBuilderBase {
   isPreset = false
   isPresetRelatedCommand = false
   isConfig = false
+  isConfigRelatedCommand = false
 
   constructor(name: string, callback?: (cmd: CommandBuilder) => void, parent: CommandBuilder | null = null) {
     super(name, parent)
     CommandBuilder.commandToBuilderMap.set(this.$, this)
-    initializeHelp(this)
     this.$.action(actionWrapper(this))
     addDefaultGlobalOptions(this)
     if (callback) callback(this)
     addPresetsCommands(this)
     autoAssignMissingOptionFlags(this)
     autoAssignSubCommandAliasesRecursive(this)
+    initializeHelp(this)
   }
 
   get events() {
@@ -111,7 +112,11 @@ export class CommandBuilder extends CommandBuilderBase {
     this.$.addOption(ins.$)
     if (cb) cb(ins, this)
     if (ins.customArgParser) this.optParsers[ins.$.attributeName()] = ins.customArgParser
-    if (ins.customArgValidator) this.optValidators[ins.$.attributeName()] = ins.customArgValidator
+    if (ins.customArgValidators.length) {
+      const name = ins.$.attributeName()
+      if (!this.optValidators[name]) this.optValidators[name] = []
+      this.optValidators[name].push(...ins.customArgValidators)
+    }
     return this
   }
   command(name: string, cb?: (cmd: CommandBuilder) => void): this {
@@ -143,7 +148,7 @@ export class CommandBuilder extends CommandBuilderBase {
   }
 }
 
-export type TConfigValidator<O extends JsonValue = JsonValue> = (value: O) => boolean | string
+export type TConfigValidator<O extends JsonValue = JsonValue> = (value: O) => boolean
 
 export type TConfigParser<O extends JsonValue> = (value: string) => O
 
