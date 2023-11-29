@@ -1,6 +1,6 @@
 import { Command, OptionValues } from 'commander'
 import { createPresetAction } from './createPresetAction'
-import { IPreset } from '../../../../../core/CommandBuilder/IPreset'
+import { IPreset } from '../../../../../types/IPreset'
 import { PRESETS } from '../../bFindInCommand'
 
 export function createPreset<O extends OptionValues = OptionValues>(parent: Command, preset: IPreset<O>) {

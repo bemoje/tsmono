@@ -1,4 +1,6 @@
-import { JsonRawPrimitive } from '@bemoje/util'
+import { JsonArray, JsonRawPrimitive, JsonValue } from '@bemoje/util'
+import { TConfigParser } from '../types/TConfigParser'
+import { TStringParser } from '../types/TStringParser'
 
 /**
  * Creates a parser function that parses a delimited string into a list of typed values.
@@ -9,11 +11,8 @@ import { JsonRawPrimitive } from '@bemoje/util'
  * @returns A function that takes a delimited string and returns an array of typed values.
  * @template T - The type of the values in the list.
  */
-export function createTypedListParser<T extends JsonRawPrimitive = JsonRawPrimitive>(
-  delimiter: string,
-  parser: (value: string) => T
-): (value: string) => T[] {
-  return function parseList(string: string): T[] {
+export function createTypedListParser<T>(delimiter: string, parser: TConfigParser<T>): TStringParser<T[]> {
+  return function parseList(string: string) {
     return string
       .split(delimiter)
       .map((str) => str.trim())

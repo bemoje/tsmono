@@ -1,13 +1,6 @@
-import {
-  assertThat,
-  funSetName,
-  JsonArray,
-  JsonValue,
-  strFirstCharToLowerCase,
-  strFirstCharToUpperCase,
-} from '@bemoje/util'
+import { assertThat, funSetName, JsonValue, strFirstCharToLowerCase, strFirstCharToUpperCase } from '@bemoje/util'
 import { isNamedFunctionArray } from './isNamedFunctionArray'
-import { TConfigValidator } from '../core/CommandBuilder/CommandBuilder'
+import { TConfigValidator } from '../types/TConfigValidator'
 
 /**
  * Creates a validator function that checks whether the input is an array where all elements are valid according to at least one of the provided validators.

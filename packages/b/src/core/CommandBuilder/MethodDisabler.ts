@@ -31,9 +31,12 @@ export class MethodDisabler {
   readonly #noopDescriptor: PropertyDescriptor
   #isEnabled = true
 
+  /**
+   * @param obj - The object on which the method is defined.
+   * @param key - The property name of the method.
+   */
   constructor(obj: Record<ObjectKey, Any>, key: string) {
     assertThat(obj[key], isFunction)
-
     this.#obj = obj
     this.#key = key
     this.#original = obj[key]
@@ -42,40 +45,46 @@ export class MethodDisabler {
       ? (Object.getOwnPropertyDescriptor(obj, key) as PropertyDescriptor)
       : MethodDisabler.#defaultDescriptor(this.#original)
     this.#noopDescriptor = Object.assign({}, this.#originalDescriptor, { value: MethodDisabler.#noop })
-
     // return stored if memoized
     if (MethodDisabler.#memoized.get(obj)?.has(key)) {
       return MethodDisabler.#memoized.get(obj)?.get(key) as this
     }
-
     //memoize
     if (!MethodDisabler.#memoized.has(obj)) MethodDisabler.#memoized.set(obj, new Map())
     const methods = MethodDisabler.#memoized.get(obj) as Map<ObjectKey, MethodDisabler>
     methods.set(key, this)
   }
 
+  /**
+   * Disable the method.
+   */
   disable() {
     if (!this.isEnabled) return
-    this.#set(this.#noopDescriptor)
+    Object.defineProperty(this.#obj, this.#key, this.#noopDescriptor)
     this.#isEnabled = false
   }
 
+  /**
+   * Enable the method.
+   */
   enable() {
     if (this.isEnabled) return
-    if (this.#hasOwn) this.#set(this.#originalDescriptor)
+    if (this.#hasOwn) Object.defineProperty(this.#obj, this.#key, this.#originalDescriptor)
     else delete this.#obj[this.#key]
     this.#isEnabled = true
   }
 
+  /**
+   * The original method before it was disabled.
+   */
   get original() {
     return this.#original
   }
 
+  /**
+   * Whether the method is currently enabled.
+   */
   get isEnabled() {
     return this.#isEnabled
-  }
-
-  #set(des: PropertyDescriptor) {
-    Object.defineProperty(this.#obj, this.#key, des)
   }
 }

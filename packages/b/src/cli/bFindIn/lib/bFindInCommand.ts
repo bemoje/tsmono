@@ -13,10 +13,8 @@ import {
   writeFileSafe,
 } from '@bemoje/util'
 import { getHomeDirectory } from '@bemoje/util'
-import { IPresets } from '../../../core/CommandBuilder/IPreset'
+import { IPresets } from '../../../types/IPresets'
 import { Option } from 'commander'
-import { optionsToCommandString_old } from '../../../core/util/optionsToCommandString'
-import { parseCommaDelimitedString } from '../../../parsers/parseCommaDelimitedString'
 import { parseNumber } from '../../../parsers/parseNumber'
 
 export const PRESETS: IPresets<OptionValues> = {

@@ -1,9 +1,12 @@
-import { CommandBuilder } from './CommandBuilder'
-import { IPresets } from './IPreset'
-import { JsonValue, XtError } from '@bemoje/util'
+import { Any, arrLast } from '@bemoje/util'
+import { assertValidArguments } from '../util/assertValidArguments'
+import { assertValidOptions } from '../util/assertValidOptions'
+import { CommandBuilder, getAllOptions } from './CommandBuilder'
+import { getRootCommand } from '../util/getRootCommand'
+import { hasVariadicArguments } from '../util/hasVariadicArguments'
+import { IPresets } from '../../types/IPresets'
 import { MethodDisabler } from './MethodDisabler'
 import { Option, OptionValues } from 'commander'
-import { parseArgs } from '../util/parseArgs'
 
 const stdoutMd = new MethodDisabler(process.stdout, 'write')
 const stderrMd = new MethodDisabler(process.stderr, 'write')
@@ -15,25 +18,35 @@ debugMd.disable()
  *
  */
 export function actionWrapper(cb: CommandBuilder) {
-  return async () => {
-    const { presetArgs, presetOpts } = await getPresetArgsAndOpts(cb)
-    const args = await mergeArgsAndPresetArgs(cb, presetArgs)
-    const opts = await mergeOptsAndPresetOpts(cb, presetOpts)
-    await handleQuietSilentTrace(cb, args, opts)
-    if (opts['dryRun'] && !cb.isPreset) return
+  cb.$.action(async () => {
     try {
-      await cb.actionHandler.call(cb, args, opts, cb)
+      if (!cb.actionHandler) return cb.$.help()
+      if (cb.isPreset) return await cb.actionHandler([], {}, cb)
+      const [args, opts] = getFinalArgsAndOpts(cb)
+      if (opts['trace']) return
+      await cb.actionHandler(...args, opts, cb)
     } catch (error) {
-      handleError(error, opts)
+      handleError(error)
     }
-  }
+  })
 }
 
-async function getPresetArgsAndOpts(
+function getFinalArgsAndOpts(cb: CommandBuilder) {
+  const [presetArgs, presetOpts, presetOrder] = getPresetArgsAndOpts(cb)
+  const args = mergeArgsAndPresetArgs(cb, presetArgs)
+  const opts = mergeOptsAndPresetOpts(cb, presetOpts)
+  const command = [getRootCommand(cb).name, ...process.argv.slice(2)].join(' ')
+  handleQuietSilentTrace(opts)
+  console.debug({ command, presetOrder, presetArgs, presetOpts, args, opts })
+  console.debug('---------------')
+  return [args, opts]
+}
+
+function getPresetArgsAndOpts(
   cb: CommandBuilder
-): Promise<{ presetArgs: string[][]; presetOpts: OptionValues[] }> {
-  if (cb.isPreset) return { presetArgs: [], presetOpts: [{}] }
-  const presets = (await cb.db.presets.getAll()) as IPresets
+): [presetArgs: string[][], presetOpts: OptionValues[], presetOrder: string[]] {
+  if (!cb.isPresetsEnabled) return [[], [], []]
+  const presets = cb.db.presets.getAll() as IPresets
   const order = new Set<string>()
   for (const name of ['defaults', ...cb.selectedPresets]) {
     for (const n of presets[name].presets.concat(name)) {
@@ -41,42 +54,57 @@ async function getPresetArgsAndOpts(
       order.add(n)
     }
   }
-  const arrOrder = [...order]
-  const presetArgs: string[][] = arrOrder.map((name) => presets[name].args)
-  const presetOpts: OptionValues[] = arrOrder.map((name) => presets[name].options)
-  console.debug({ presetOrder: arrOrder, presetArgs, presetOpts })
-  return { presetArgs, presetOpts }
+  const presetOrder = [...order]
+  const presetArgs: string[][] = presetOrder.map((name) => presets[name].args)
+  const presetOpts: OptionValues[] = presetOrder.map((name) => presets[name].options)
+  return [presetArgs, presetOpts, presetOrder]
 }
 
-async function mergeArgsAndPresetArgs(cb: CommandBuilder, presetArgs: string[][]) {
-  if (cb.isPreset) return cb.$.args
-  const args: string[] = []
-  for (const preArgs of presetArgs.concat([cb.$.args])) {
-    preArgs.forEach((preArg, i) => {
-      if (preArg) args[i] = preArg
+function mergeArgsAndPresetArgs(cb: CommandBuilder, presetArgs: Any[][]) {
+  const merged: Any[] = []
+  for (const args of presetArgs.concat([cb.argsParsed])) {
+    args.forEach((arg, i) => {
+      if (arg != null) merged[i] = arg
     })
   }
-  return parseArgs(cb, args)
+  if (hasVariadicArguments(cb) && merged.length && !Array.isArray(arrLast(merged))) {
+    const rest = merged.splice(cb.$.registeredArguments.length - 1)
+    merged.push(rest.filter((arg) => arg != null))
+  }
+  assertValidArguments(cb, merged)
+  while (merged.length < cb.$.registeredArguments.length) {
+    merged.push(undefined)
+  }
+  return merged.map((arg) => (arg === null ? undefined : arg))
 }
 
-async function mergeOptsAndPresetOpts(cb: CommandBuilder, presetOpts: OptionValues[]) {
+function mergeOptsAndPresetOpts(cb: CommandBuilder, presetOpts: OptionValues[]) {
   const opts = Object.assign({}, ...presetOpts, cb.optsWithGlobalsParsed)
-  await deleteOptionsWithDefaultOrNoValue(cb, opts)
+  deleteOptionsWithDefaultOrNoValue(cb, opts)
+  assertValidOptions(cb, opts)
   return opts
 }
 
-async function deleteOptionsWithDefaultOrNoValue(cb: CommandBuilder, opts: OptionValues) {
-  const optObjs: Option[] = cb.getAllOptions()
+export function optionArrayToObject(array: Option[]) {
+  const result: Record<string, Option> = {}
+  for (const opt of array) {
+    result[opt.attributeName()] = opt
+  }
+  return result
+}
+
+function deleteOptionsWithDefaultOrNoValue(cb: CommandBuilder, opts: OptionValues) {
+  const optMap = optionArrayToObject(getAllOptions(cb))
   for (const [key, value] of Object.entries(opts)) {
-    const optObj = optObjs.find((opt) => opt.attributeName() === key)
-    if (!optObj) throw new Error('Unknown option: ' + key)
-    if (value === false || value == null || value === optObj.defaultValue) {
+    const opt = optMap[key]
+    if (!opt) throw new Error('Unknown option: ' + key)
+    if (value === false || value == null || value === opt.defaultValue) {
       delete opts[key]
     }
   }
 }
 
-async function handleQuietSilentTrace(cb: CommandBuilder, args: JsonValue[], opts: OptionValues) {
+function handleQuietSilentTrace(opts: OptionValues) {
   if (opts['silent']) {
     stdoutMd.disable()
     stderrMd.disable()
@@ -84,15 +112,15 @@ async function handleQuietSilentTrace(cb: CommandBuilder, args: JsonValue[], opt
     stderrMd.disable()
     infoMd.disable()
     debugMd.disable()
-  } else if (opts['trace']) {
+  } else if (opts['debug']) {
     debugMd.enable()
   }
-  console.debug({ name: cb.name, presets: cb.selectedPresets, args, opts, argv: process.argv.slice(2) })
 }
 
-function handleError(error: unknown, opts: OptionValues) {
-  if (opts['trace']) console.error(new XtError(error))
-  else {
+function handleError(error: unknown) {
+  if (/ (-D|--debug)/.test(process.argv.slice(2).join(' '))) {
+    console.error(error)
+  } else {
     const name = error instanceof Error ? error.name : 'Error'
     const msg = error instanceof Error ? error.message : String(error)
     console.error(name + ': ' + msg)

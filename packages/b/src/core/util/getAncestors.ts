@@ -5,6 +5,6 @@ import { walkAncestors } from './walkAncestors'
 /**
  * Get a command's ancestors, optionally starting from the command itself.
  */
-export function getAncestors<C extends Command | CommandBuilder>(cmd: C, options?: { includeSelf?: boolean }) {
-  return [...walkAncestors<C>(cmd, options)]
+export function getAncestors(cmd: CommandBuilder, options?: { includeSelf?: boolean }) {
+  return [...walkAncestors(cmd, options)]
 }

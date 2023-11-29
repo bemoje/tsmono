@@ -1,5 +1,4 @@
-import { Command } from 'commander'
-import { CommandBuilder } from '../CommandBuilder/CommandBuilder'
+import { CommandBuilder, getAllOptions, getGlobalOptions } from '../CommandBuilder/CommandBuilder'
 import { getAncestors } from './getAncestors'
 
 /**
@@ -14,14 +13,15 @@ export function getOptionNames(cmd: CommandBuilder, options: IGetOptionNamesOpti
     throw new Error("At least one of the options must be true: 'short', 'long' or 'attributeName'")
   }
   const names = new Set<string>()
-  const commands = noGlobals ? [cmd] : getAncestors(cmd, { includeSelf: true })
-  commands.forEach((cmd) => {
-    cmd.getAllOptions().forEach((opt) => {
+  getAncestors(cmd, { includeSelf: true })
+    .map((cmd) => cmd.$.options)
+    .flat()
+    .concat(noGlobals ? [] : getGlobalOptions(cmd))
+    .forEach((opt) => {
       if (attributeName) names.add(opt.attributeName())
       if (short && opt.short) names.add(opt.short.replace(/-/g, trimDashes ? '' : '-'))
       if (long && opt.long) names.add(opt.long.replace(/-/g, trimDashes ? '' : '-'))
     })
-  })
   return names
 }
 

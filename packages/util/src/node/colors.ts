@@ -1,7 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Any } from '../types/Any'
+
 const { FORCE_COLOR, NODE_DISABLE_COLORS, NO_COLOR, TERM } = process.env
 
-const enabled =
+let enabled =
   !NODE_DISABLE_COLORS &&
   NO_COLOR == null &&
   TERM !== 'dumb' &&
@@ -39,7 +40,7 @@ const bgBlack = init(40, 49),
   bgCyan = init(46, 49),
   bgWhite = init(47, 49)
 
-function run(arr: any, str: string) {
+function run(arr: Any, str: string) {
   let beg = ''
   let end = ''
   for (let i = 0; i < arr.length; i++) {
@@ -53,8 +54,8 @@ function run(arr: any, str: string) {
   return beg + str + end
 }
 
-function chain(has: any, keys: any) {
-  const o: any = { has, keys }
+function chain(has: Any, keys: Any) {
+  const o: Any = { has, keys }
 
   o.reset = reset.bind(o)
   o.bold = bold.bind(o)
@@ -94,7 +95,7 @@ function init(open: number, close: number) {
     close: `\x1b[${close}m`,
     rgx: new RegExp(`\\x1b\\[${close}m`, 'g'),
   }
-  return function (this: any, txt: string) {
+  return function (this: Any, txt: string) {
     if (this !== void 0 && this.has !== void 0) {
       !!~this.has.indexOf(open) || (this.has.push(open), this.keys.push(blk))
       return txt === void 0 ? this : enabled ? run(this.keys, txt + '') : txt + ''
@@ -103,7 +104,16 @@ function init(open: number, close: number) {
   }
 }
 
+function enable() {
+  enabled = true
+}
+function disable() {
+  enabled = false
+}
+
 export const colors = {
+  enable,
+  disable,
   reset,
   bold,
   dim,

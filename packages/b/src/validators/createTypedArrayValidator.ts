@@ -8,7 +8,7 @@ import {
   strFirstCharToUpperCase,
 } from '@bemoje/util'
 import { isNamedFunctionArray } from './isNamedFunctionArray'
-import { TConfigValidator } from '../core/CommandBuilder/CommandBuilder'
+import { TConfigValidator } from '../types/TConfigValidator'
 
 /**
  * Creates a validator function that checks whether the input is an array where all elements are valid according to every validator provided.

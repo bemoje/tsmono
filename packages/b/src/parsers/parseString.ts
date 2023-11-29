@@ -1,3 +1,3 @@
-export function parseString(string: string): string {
-  return string
+export function parseString<O = string>(string: string): O {
+  return string.trim() as O
 }

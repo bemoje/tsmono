@@ -1,24 +1,28 @@
 import { CommandBuilder } from './CommandBuilder'
 
-export function addDefaultGlobalOptions(cb: CommandBuilder) {
-  if (!cb.parent) {
-    cb.globalOption('-Q, --quiet', (opt) => {
-      opt.description(
-        'Mute stderr and minimuze output to stdout: confirmations, statuses or other unnecessary messages are muted. This is useful when piping.'
-      )
-    })
-    cb.globalOption('-S, --silent', (opt) => {
-      opt.description('Mute stderr and stdout.')
-      opt.conflicts(['quiet'])
-    })
-    cb.globalOption('-T, --trace', (opt) => {
-      opt.description('Output debugging information.')
-      opt.conflicts(['quiet', 'silent'])
-    })
-    cb.globalOption('-D, --dry-run', (opt) => {
-      opt.description(
-        'Simulate command without making changes. If the command does not perform any mutable actions, this flag has no effect.'
-      )
-    })
-  }
+export function addDefaultGlobalOptions(cmd: CommandBuilder) {
+  if (!cmd.isRoot) return
+
+  cmd.globalOption('-h, --help', (opt) => {
+    opt.description('help')
+  })
+
+  cmd.globalOption('-S, --silent', (opt) => {
+    opt.description('Mute stderr and stdout.')
+    opt.conflicts(['quiet'])
+  })
+
+  cmd.globalOption('-D, --debug', (opt) => {
+    opt.description('Output debugging information.')
+  })
+
+  cmd.globalOption('-T, --trace', (opt) => {
+    opt.description('Same as --debug but the command is not executed.')
+    opt.conflicts(['quiet', 'silent'])
+    opt.implies({ debug: true })
+  })
+
+  cmd.globalOption('-Q, --quiet', (opt) => {
+    opt.description('Mute stderr and minimuze output to stdout: confirmations, statuses, etc.')
+  })
 }

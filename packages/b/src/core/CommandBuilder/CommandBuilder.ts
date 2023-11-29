@@ -1,123 +1,151 @@
 import EventEmitter from 'events'
+import fs from 'fs-extra'
 import os from 'os'
 import path from 'path'
 import { actionWrapper } from './actionWrapper'
+import { addConfigCommands } from './addConfigCommands'
 import { addDefaultGlobalOptions } from './addDefaultGlobalOptions'
 import { addPresetsCommands } from './addPresetsCommands'
-import { Any, JsonValue } from '@bemoje/util'
+import { addUtilCommands } from './addUtilCommands'
+import { Any, assertThat, JsonValue } from '@bemoje/util'
 import { ArgumentBuilder } from './ArgumentBuilder'
-import { autoAssignMissingOptionFlags } from '../util/autoAssignMissingOptionFlags'
+import { autoAssignMissingOptionFlagsRecursive } from '../util/autoAssignMissingOptionFlags'
 import { autoAssignSubCommandAliasesRecursive } from '../util/autoAssignSubCommandAliasesRecursive'
-import { Command, Option, OptionValues } from 'commander'
+import { Command, Option } from 'commander'
 import { CommandBuilderBase } from './CommandBuilderBase'
-import { ConfigFile } from './ConfigFile'
+import { getAncestors } from '../util/getAncestors'
+import { getChildren } from '../util/getChildren'
+import { getRootCommand } from '../util/getRootCommand'
+import { IConfigDefinePropertyOptions } from '../../types/IDefinePropertyOptions'
 import { initializeHelp } from '../util/initializeHelp'
-import { IPreset } from './IPreset'
+import { IPresetPartial } from '../../types/IPreset'
+import { JsonFile } from '../db/JsonFile'
 import { OptionBuilder } from './OptionBuilder'
-import { parseArgs } from '../util/parseArgs'
+import { parseArguments } from '../util/parseArguments'
 import { parseOptions } from '../util/parseOptions'
 import { prefixArray } from '../util/prefixArray'
 import { realizeLazyProperty } from '../util/realizeLazyProperty'
-import { TStringParser } from '../../parsers/TStringParser'
+import { TConfigValidator } from '../../types/TConfigValidator'
+import { TStringParser } from '../../types/TStringParser'
 import { walkAncestors } from '../util/walkAncestors'
 
 /**
  * Wrapper around the @see Command class, for more intuitive construction.
  */
 export class CommandBuilder extends CommandBuilderBase {
-  static readonly commandToBuilderMap = new WeakMap<Command, CommandBuilder>()
+  protected static readonly commandToBuilderMap = new WeakMap<Command, CommandBuilder>()
+  static register(cmd: Command, builder: CommandBuilder) {
+    this.commandToBuilderMap.set(cmd, builder)
+  }
+  static find(cmd: Command): CommandBuilder {
+    const ins = this.commandToBuilderMap.get(cmd)
+    if (!ins) throw new Error(`CommandBuilder not found for command ${cmd.name()}`)
+    return ins
+  }
+
+  static dataDirectory = path.join(os.homedir(), 'config', 'cli')
+
   readonly argParsers: TStringParser<JsonValue>[] = []
   readonly optParsers: Record<string, TStringParser<JsonValue>> = {}
+  readonly argValidators: TConfigValidator<JsonValue>[][] = []
   readonly optValidators: Record<string, TConfigValidator<JsonValue>[]> = {}
   readonly subcommands: CommandBuilder[] = []
   readonly globalOptions = new Set<Option>()
   readonly ignoreGlobalOptions = new Set<Option>()
   readonly selectedPresets: string[] = []
   isPreset = false
-  isPresetRelatedCommand = false
-  isConfig = false
-  isConfigRelatedCommand = false
+  isPresetsEnabled = false
+  isConfigEnabled = false
 
   constructor(name: string, callback?: (cmd: CommandBuilder) => void, parent: CommandBuilder | null = null) {
     super(name, parent)
-    CommandBuilder.commandToBuilderMap.set(this.$, this)
-    this.$.action(actionWrapper(this))
-    addDefaultGlobalOptions(this)
-    if (callback) callback(this)
-    addPresetsCommands(this)
-    autoAssignMissingOptionFlags(this)
-    autoAssignSubCommandAliasesRecursive(this)
+    CommandBuilder.register(this.$, this)
+
     initializeHelp(this)
-  }
+    actionWrapper(this)
+    addDefaultGlobalOptions(this)
 
-  get events() {
-    return realizeLazyProperty(this, 'events', new EventEmitter({ captureRejections: true }))
-  }
+    if (callback) callback(this)
 
-  getGlobalOptions(): Option[] {
-    const globals = new Set<Option>()
-    for (const anc of walkAncestors<CommandBuilder>(this)) {
-      for (const gopt of anc.globalOptions) {
-        globals.add(gopt)
-      }
-    }
-    return Array.from(globals)
-  }
+    enablePresetsIfFoundInJsonFile(this)
+    addUtilCommands(this)
+    addConfigCommands(this)
+    addPresetsCommands(this)
 
-  getAllOptions(): Option[] {
-    return this.$.options.concat(this.getGlobalOptions())
+    autoAssignMissingOptionFlagsRecursive(this)
+    autoAssignSubCommandAliasesRecursive(this)
   }
 
   get filepath() {
-    return path.join(os.homedir(), 'config', 'cli', prefixArray(this).join('-')) + '.json'
+    return path.join(CommandBuilder.dataDirectory, prefixArray(this).join('-')) + '.json'
   }
   get db() {
-    return realizeLazyProperty(this, 'db', new ConfigFile(this))
+    return realizeLazyProperty(this, 'db', new JsonFile(this))
   }
 
+  enableConfig() {
+    if (!this.isRoot) getRootCommand(this).enableConfig()
+    this.isConfigEnabled = true
+    return this
+  }
+  enablePresets() {
+    this.enableConfig()
+    this.isPresetsEnabled = true
+    return this
+  }
+  disableConfig() {
+    this.isConfigEnabled = false
+    return this
+  }
+  disablePresets() {
+    this.isPresetsEnabled = false
+    return this
+  }
+  get args() {
+    return this.$.args
+  }
+  get opts() {
+    return this.$.opts()
+  }
   get argsParsed() {
-    return parseArgs(this, this.$.args)
+    return parseArguments(this, this.$.args)
   }
   get optsParsed() {
     return parseOptions(this, this.$.opts())
   }
   get optsWithGlobalsParsed() {
-    const gKeys = this.getGlobalOptions().map((opt) => opt.attributeName())
-    const oKeys = new Set(Object.keys(this.$.opts()))
-    const result = this.$.optsWithGlobals()
-    for (const key of Object.keys(result)) {
-      if (oKeys.has(key) || gKeys.includes(key)) continue
-      delete result[key]
-    }
-    return parseOptions(this, result)
+    return optsWithGlobalsParsed(this)
+  }
+  disableGlobalOptions(names?: string[]) {
+    return disableGlobalOptions(this, names)
   }
 
   argument(name: string, cb?: (arg: ArgumentBuilder, cmd: CommandBuilder) => void): this {
     const ins = new ArgumentBuilder(name)
-    this.$.addArgument(ins.$)
+    this.$.addArgument(ins.get.argument)
     if (cb) cb(ins, this)
-    this.argParsers.push(ins.customArgParser)
+    this.argParsers.push(ins.get.parser)
+    this.argValidators.push(ins.get.validators)
     return this
   }
   option(flags: string, cb?: (opt: OptionBuilder, cmd: CommandBuilder) => void): this {
     const ins = new OptionBuilder(flags)
-    return this.configureOption(ins, cb)
-  }
-  globalOption(flags: string, cb?: (opt: OptionBuilder, cmd: CommandBuilder) => void): this {
-    const ins = new OptionBuilder(flags)
-    this.globalOptions.add(ins.$)
-    return this.configureOption(ins, cb)
-  }
-  protected configureOption(ins: OptionBuilder, cb?: (opt: OptionBuilder, cmd: CommandBuilder) => void): this {
-    this.$.addOption(ins.$)
+    assertThat(this, isOptionNameAvailable, true, ins)
+    this.$.addOption(ins.get.option)
     if (cb) cb(ins, this)
-    if (ins.customArgParser) this.optParsers[ins.$.attributeName()] = ins.customArgParser
-    if (ins.customArgValidators.length) {
-      const name = ins.$.attributeName()
+    if (ins.get.parser) this.optParsers[ins.get.attributeName] = ins.get.parser
+    if (ins.get.validators.length) {
+      const name = ins.get.attributeName
       if (!this.optValidators[name]) this.optValidators[name] = []
-      this.optValidators[name].push(...ins.customArgValidators)
+      this.optValidators[name].push(...ins.get.validators)
     }
     return this
+  }
+  globalOption(flags: string, cb?: (opt: OptionBuilder, cmd: CommandBuilder) => void): this {
+    return this.option(flags, (ins) => {
+      this.globalOptions.add(ins.get.option)
+      if (cb) cb(ins, this)
+    })
   }
   command(name: string, cb?: (cmd: CommandBuilder) => void): this {
     this.subcommands.push(new CommandBuilder(name, cb, this))
@@ -127,12 +155,19 @@ export class CommandBuilder extends CommandBuilderBase {
     this.actionHandler = fn.bind(this)
     return this
   }
-  config<O extends JsonValue>(entry: IConfigEntry<O>) {
-    this.db.config.definitions[entry.key] = entry
+  config(key: string, entry: IConfigDefinePropertyOptions<JsonValue>) {
+    this.enableConfig()
+    this.db.config.defineProperty(key, entry)
     return this
   }
-  preset<O extends OptionValues>(name: string, preset: IPreset<O>) {
-    this.db.presets.definitions[name] = preset
+  preset(name: string, preset: IPresetPartial) {
+    this.enablePresets()
+    this.db.presets.defineProperty(name, {
+      description: preset.description,
+      presets: preset.presets ?? [],
+      args: preset.args ?? [],
+      options: preset.options ?? {},
+    })
     return this
   }
   exportCommand(): Command {
@@ -148,14 +183,52 @@ export class CommandBuilder extends CommandBuilderBase {
   }
 }
 
-export type TConfigValidator<O extends JsonValue = JsonValue> = (value: O) => boolean
+export function isOptionNameAvailable(cmd: CommandBuilder, ob: OptionBuilder) {
+  for (const c of getAncestors(cmd, { includeSelf: true }).concat(getChildren(cmd))) {
+    for (const opt of c.$.options) {
+      if (opt.short && ob.get.short === opt.short) return false
+      if (opt.long && ob.get.long === opt.long) return false
+      if (opt.attributeName() && ob.get.attributeName === opt.attributeName()) return false
+    }
+  }
+  return true
+}
 
-export type TConfigParser<O extends JsonValue> = (value: string) => O
+export function disableGlobalOptions(cmd: CommandBuilder, names?: string[]) {
+  const globals = getGlobalOptions(cmd)
+  names = names || globals.map((opt) => opt.name())
+  for (const name of names) {
+    for (const opt of globals) {
+      if (opt.name() === name || opt.attributeName() === name) {
+        cmd.ignoreGlobalOptions.add(opt)
+      }
+    }
+  }
+  return cmd
+}
 
-export interface IConfigEntry<O extends JsonValue = JsonValue> {
-  key: string
-  description: string
-  defaultValue: O | null
-  parse: TStringParser<O | null>
-  validate: TConfigValidator<O> | null
+export function getGlobalOptions(cmd: CommandBuilder): Option[] {
+  const result: Option[] = []
+  for (const anc of walkAncestors(cmd, { includeSelf: true })) {
+    for (const gopt of anc.globalOptions) {
+      if (!cmd.ignoreGlobalOptions.has(gopt)) {
+        result.push(gopt)
+      }
+    }
+  }
+  return result
+}
+
+export function getAllOptions(cmd: CommandBuilder): Option[] {
+  return cmd.$.options.concat(getGlobalOptions(cmd))
+}
+
+export function optsWithGlobalsParsed(cmd: CommandBuilder) {
+  const result = cmd.$.optsWithGlobals()
+  return parseOptions(cmd, result)
+}
+
+export function enablePresetsIfFoundInJsonFile(cmd: CommandBuilder) {
+  if (!cmd.isPresetsEnabled && !cmd.isPreset && fs.existsSync(cmd.filepath) && cmd.db.db.has('presets'))
+    cmd.enablePresets()
 }

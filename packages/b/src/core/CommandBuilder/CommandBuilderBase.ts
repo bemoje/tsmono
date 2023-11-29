@@ -1,22 +1,23 @@
-import { Command, OptionValues, ParseOptions } from 'commander'
+import { Command, ParseOptions } from 'commander'
 import { CommandBuilder } from './CommandBuilder'
-import { JsonValue } from '@bemoje/util'
 
 export class CommandBuilderBase {
   readonly name: string
   readonly parent: CommandBuilder | null
   readonly $: Command
-  actionHandler: (this: CommandBuilder, args: JsonValue[], opts: OptionValues, cb: CommandBuilder) => Promise<void>
+  actionHandler?: (this: CommandBuilder, ...args: any[]) => Promise<void>
 
   constructor(name: string, parent: CommandBuilder | null = null) {
     this.name = name
     this.parent = parent
     this.$ = new Command(name)
     if (parent) parent.$.addCommand(this.$)
-    this.actionHandler = async () => this.$.help()
   }
 
-  get registeredArguments() {
+  get isRoot() {
+    return this.parent === null
+  }
+  get arguments() {
     return this.$.registeredArguments
   }
   get options() {
@@ -27,10 +28,9 @@ export class CommandBuilderBase {
     this.$.usage(usage)
     return this
   }
-  // getDescription() {
-  //   return this.$.description()
-  // }
-  description(description: string) {
+
+  description(...lines: string[]) {
+    const description = lines.join('\n')
     const summary = description.split(/(\. ?|\n|$)/)[0]
     this.$.summary(summary)
     this.$.description(description)
@@ -39,5 +39,28 @@ export class CommandBuilderBase {
   async parseAsync(argv?: readonly string[], options?: ParseOptions): Promise<this> {
     await this.$.parseAsync(argv, options)
     return this
+  }
+
+  allowExcessArguments(bool = true) {
+    this.$.allowExcessArguments(bool)
+    return this
+  }
+  allowUnknownOption(bool = true) {
+    this.$.allowUnknownOption(bool)
+    return this
+  }
+
+  get get() {
+    return new CommandReader(this.$)
+  }
+}
+
+class CommandReader {
+  constructor(protected readonly $: Command) {}
+  get command() {
+    return this.$
+  }
+  get description() {
+    return this.$.description()
   }
 }

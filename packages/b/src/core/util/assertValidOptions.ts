@@ -5,11 +5,11 @@ import { OptionValues } from 'commander'
 /**
  * Validate ALREADY PARSED options using the validators defined in the command builder.
  */
-export function validateOptions(cmd: CommandBuilder, parsedOptions: OptionValues) {
+export function assertValidOptions(cb: CommandBuilder, parsedOptions: OptionValues) {
   for (const [key, value] of Object.entries(parsedOptions)) {
+    if (!cb.optValidators[key]) continue
     if (value == null) continue
-    if (!cmd.optValidators[key]) continue
-    for (const validator of cmd.optValidators[key]) {
+    for (const validator of cb.optValidators[key]) {
       assertThat(value, validator)
     }
   }

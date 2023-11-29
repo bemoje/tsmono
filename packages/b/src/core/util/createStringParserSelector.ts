@@ -1,15 +1,19 @@
+import { Any } from '@bemoje/util'
 import { ArgumentBuilder } from '../CommandBuilder/ArgumentBuilder'
 import { createTypedListParser } from '../../parsers/createTypedListParser'
 import { OptionBuilder } from '../CommandBuilder/OptionBuilder'
 import { parseInteger } from '../../parsers/parseInteger'
 import { parseNumber } from '../../parsers/parseNumber'
 import { parseString } from '../../parsers/parseString'
-import { TStringParser } from '../../parsers/TStringParser'
+import { TStringParser } from '../../types/TStringParser'
 
-export function createStringParserSelector(builder: ArgumentBuilder | OptionBuilder) {
+export function createStringParserSelector(
+  builder: ArgumentBuilder | OptionBuilder,
+  setCustomParser: (parser: TStringParser<Any>) => void
+) {
   const createChoice = <T>(parser: TStringParser<T>) => {
     return () => {
-      builder.customArgParser = parser
+      setCustomParser(parser)
       return builder
     }
   }

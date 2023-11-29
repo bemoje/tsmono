@@ -14,19 +14,22 @@ import { getSiblings } from './getSiblings'
  * entire command tree is built before invoking this method.
  */
 export function autoAssignSubCommandAliases(cmd: CommandBuilder): void {
-  let isClashing = true
-  const aliases = []
-  for (let i = 0; i < cmd.name.length; i++) {
-    if (isClashing) {
-      const isStillClashing = arrSome(getSiblings(cmd), (sibling) => {
-        return sibling.name.charAt(i) === cmd.name.charAt(i)
+  if (cmd.name.length <= 1) return
+  if (cmd.$.alias()) return
+  const sibAliases = getSiblings(cmd).map((sib) => sib.$.alias())
+  for (let i = 0; i < cmd.name.length - 1; i++) {
+    let cmdAlias = cmd.name.substring(0, i + 1)
+    let isClash = arrSome(sibAliases, (sibAlias) => {
+      return cmdAlias === sibAlias
+    })
+    if (isClash && i === 0) {
+      cmdAlias = cmdAlias.charAt(0).toUpperCase()
+      isClash = arrSome(sibAliases, (sibAlias) => {
+        return cmdAlias === sibAlias
       })
-      if (isStillClashing) continue
-      else isClashing = false
     }
-    const alias = cmd.name.substring(0, i + 1)
-    if (alias === cmd.name) break
-    aliases.push(alias)
+    if (isClash) continue
+    cmd.$.alias(cmdAlias)
+    return
   }
-  cmd.$.aliases(aliases)
 }

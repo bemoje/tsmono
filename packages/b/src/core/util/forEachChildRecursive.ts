@@ -5,19 +5,10 @@ export function forEachChildRecursive(
   callback: (cmd: CommandBuilder) => void | true,
   options?: { includeSelf?: boolean }
 ): void | true {
-  if (options?.includeSelf && !cmd.parent && callback(cmd)) return true
-  const subs = cmd.subcommands
-  for (let i = 0; i < subs.length; i++) {
-    if (callback(subs[i]) || forEachChildRecursive(subs[i], callback)) {
+  if (options?.includeSelf && callback(cmd)) return true
+  for (const sub of cmd.subcommands) {
+    if (callback(sub) || forEachChildRecursive(sub, callback)) {
       return true
     }
-  }
-}
-
-export function* walkChildren(cmd: CommandBuilder, options?: { includeSelf?: boolean }): Generator<CommandBuilder> {
-  if (options?.includeSelf && !cmd.parent) yield cmd
-  for (const sub of cmd.subcommands) {
-    yield sub
-    yield* walkChildren(sub)
   }
 }

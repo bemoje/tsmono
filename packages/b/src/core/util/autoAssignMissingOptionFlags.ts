@@ -1,6 +1,8 @@
-import { Command, Option } from 'commander'
-import { CommandBuilder } from '../CommandBuilder/CommandBuilder'
-import { getOptionNames } from './getOptionNames'
+import { CommandBuilder, getGlobalOptions } from '../CommandBuilder/CommandBuilder'
+import { forEachChildRecursive } from './forEachChildRecursive'
+import { getAncestors } from './getAncestors'
+import { getChildren } from './getChildren'
+import { Option } from 'commander'
 import { setOptionShortName } from './setOptionShortName'
 
 /**
@@ -15,16 +17,23 @@ import { setOptionShortName } from './setOptionShortName'
  * If there are 64 options for the command and no more alphanumeric characters are available,
  * the option is not assigned a short name.
  */
-export function autoAssignMissingOptionFlags(cb: CommandBuilder) {
-  if (cb.isPreset) return
-  const taken = getOptionNames(cb, { short: true, trimDashes: true })
+export function autoAssignMissingOptionFlags(cmd: CommandBuilder) {
+  if (cmd.isPreset) return
+
+  const taken = new Set(
+    getAncestors(cmd, { includeSelf: true })
+      .concat(getChildren(cmd))
+      .map((anc) => anc.$.options)
+      .flat()
+      .map((opt) => opt.short?.replace(/-/g, ''))
+      .filter(Boolean)
+  )
+
   const failed = new Set<Option>()
 
   // assign letter from option name
-  cb.options.forEach((opt) => {
-    if (!opt.long) opt.long = opt.name()
+  cmd.options.forEach((opt) => {
     if (opt.short) return
-    if (opt.hidden) return
     const name = opt.attributeName()
     for (let c = 0; c < name.length; c++) {
       let char = name.charAt(c).toLowerCase()
@@ -53,4 +62,8 @@ export function autoAssignMissingOptionFlags(cb: CommandBuilder) {
       return
     }
   })
+}
+
+export function autoAssignMissingOptionFlagsRecursive(cmd: CommandBuilder) {
+  if (cmd.isRoot) forEachChildRecursive(cmd, autoAssignMissingOptionFlags, { includeSelf: true })
 }

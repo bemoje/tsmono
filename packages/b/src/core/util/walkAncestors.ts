@@ -4,14 +4,11 @@ import { CommandBuilder } from '../CommandBuilder/CommandBuilder'
 /**
  * Returns an iterator that walks the command's ancestors, optionally starting with the command itself.
  */
-export function* walkAncestors<C extends Command | CommandBuilder>(
-  cmd: C,
-  options?: { includeSelf?: boolean }
-): Generator<C> {
+export function* walkAncestors(cmd: CommandBuilder, options?: { includeSelf?: boolean }): Generator<CommandBuilder> {
   if (options?.includeSelf) yield cmd
-  let node = cmd.parent as C
+  let node = cmd.parent
   while (node) {
     yield node
-    node = node.parent as C
+    node = node.parent
   }
 }
