@@ -1,2 +1,2 @@
-import { main } from './core/main'
+import { main } from './cli/main'
 main().catch(console.error)

@@ -1,5 +1,5 @@
 import path from 'path'
-import { autoAssignMissingOptionFlags } from '../../../core/util/autoAssignMissingOptionFlags'
+import { autoAssignMissingOptionFlags } from '../../../core/CommandBuilder/features/autoAssignMissingOptionFlags'
 import { camelCaseOptionLongName } from '../../../core/util/camelCaseOptionLongName'
 import { Command, OptionValues } from 'commander'
 import { createPresetListCommand } from './core/preset/createPresetListCommand'

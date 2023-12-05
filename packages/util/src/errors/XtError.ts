@@ -1,9 +1,9 @@
-import path from 'path'
 import colors from '../node/colors'
-import { setNonEnumerable } from '../object/setNonEnumerable'
+import path from 'path'
 import { isPlainObject } from '../validation/isPlainObject'
 import { isPrimitive } from '../validation/isPrimitive'
-import { parseNodeStackTrace } from './parseNodeStackTrace'
+import { regexEscapeString } from '../regex/regexEscapeString'
+import { setNonEnumerable } from '../object/setNonEnumerable'
 const { bold, gray, red, yellow } = colors
 
 /**
@@ -135,4 +135,20 @@ export class XtError extends Error {
   override valueOf() {
     return this.stack
   }
+}
+
+export function parseNodeStackTrace(stack: string): [string, string][] {
+  if (!stack) return []
+  const nodeRe = /^\s*at (?:((?:\[object object\])?[^\\/]+(?: \[as \S+\])?) )?\(?(.*?):(\d+)(?::(\d+))?\)?\s*$/i
+  const recwd = new RegExp('^' + regexEscapeString(process.cwd() + path.sep), 'i')
+  const frames: [string, string][] = []
+  for (const line of stack.split('\n')) {
+    const parts = nodeRe.exec(line)
+    if (!parts) continue
+    frames.push([
+      parts[1] || '<unknown>',
+      `${(parts[2] || '').replace(recwd, '').replace(/\\\\?/g, '/')}:${+parts[3]}:${parts[4] ? +parts[4] : null}`,
+    ])
+  }
+  return frames
 }

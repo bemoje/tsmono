@@ -1,0 +1,36 @@
+{
+  "name": "@bemoje/cli",
+  "version": "0.0.2",
+  "dependencies": {
+    "@bemoje/util": "latest",
+    "cli-table": "^0.3.11",
+    "commander": "^11.1.0",
+    "lookpath": "^1.2.2"
+  },
+  "type": "commonjs",
+  "main": "./index.cjs",
+  "module": "./index.js",
+  "author": {
+    "name": "Benjamin Møller Jensen",
+    "email": "bemoje@bemoje.net",
+    "url": "https://github.com/bemoje/"
+  },
+  "license": "MIT",
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bemoje/tsmono.git"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/user?u=40752770"
+  },
+  "bugs": {
+    "url": "https://github.com/bemoje/tsmono/issues"
+  },
+  "homepage": "https://github.com/bemoje/tsmono",
+  "devDependencies": {
+    "@types/cli-table": "^0.3.4",
+    "@types/prompts": "^2.4.9"
+  }
+}
