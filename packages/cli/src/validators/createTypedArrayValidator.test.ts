@@ -1,4 +1,3 @@
-import { createLengthValidator } from './createLengthValidator'
 import { createTypedArrayValidator } from './createTypedArrayValidator'
 import { isString } from './isString'
 
@@ -17,7 +16,7 @@ describe(createTypedArrayValidator.name, () => {
   })
 
   it('should have the default name if none provided', () => {
-    expect(isValid.name).toBe('isArrayWhereEachIsIsLengthOf2AndIsString')
+    expect(isValid.name).toBe('isArrayWhereEachIsLengthOf2AndIsString')
   })
 
   it('should have the given name if provided', () => {

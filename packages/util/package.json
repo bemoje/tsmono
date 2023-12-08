@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/util",
-  "version": "0.5.5",
+  "version": "0.5.6",
   "type": "commonjs",
   "main": "./index.cjs",
   "module": "./index.js",
@@ -25,9 +25,11 @@
   "homepage": "https://github.com/bemoje/tsmono",
   "dependencies": {
     "@bemoje/util": "latest",
+    "cli-table": "^0.3.11",
     "fs-extra": "^11.1.1"
   },
   "devDependencies": {
+    "@types/cli-table": "^0.3.4",
     "@types/fs-extra": "^11.0.2"
   }
 }

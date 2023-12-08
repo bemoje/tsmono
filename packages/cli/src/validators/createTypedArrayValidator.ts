@@ -16,7 +16,7 @@ export function createTypedArrayValidator<O extends JsonValue = JsonValue>(
 ): (array: unknown) => boolean {
   if (!name) {
     assertThat(validators, isNamedFunctionArray)
-    name = 'isArrayWhereEachIs' + validators.map((fun) => strFirstCharToUpperCase(fun.name)).join('And')
+    name = 'isArrayWhereEach' + validators.map((fun) => strFirstCharToUpperCase(fun.name)).join('And')
   }
   return funSetName(name, function (array: unknown): boolean {
     return Array.isArray(array) && array.every((value) => validators.every((isValid) => isValid(value)))

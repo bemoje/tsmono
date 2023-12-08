@@ -1,5 +1,4 @@
 import { Any, assertThat, isFunction, ObjectKey, TFunctionNoNew } from '@bemoje/util'
-import { Base } from '../CommandBuilder/Base'
 
 /**
  * A class that creates an object with methods for disabling/enabling a given method on a given object.
@@ -17,7 +16,7 @@ import { Base } from '../CommandBuilder/Base'
  *
  * assert(md.original === process.stdout.write)
  */
-export class MethodDisabler extends Base {
+export class MethodDisabler {
   static #defaultDescriptor(value: Any): PropertyDescriptor {
     return { value, writable: true, enumerable: true, configurable: true }
   }
@@ -37,7 +36,6 @@ export class MethodDisabler extends Base {
    * @param key - The property name of the method.
    */
   constructor(obj: Record<ObjectKey, Any>, key: string) {
-    super()
     assertThat(obj[key], isFunction)
     this.#obj = obj
     this.#key = key
