@@ -1,7 +1,7 @@
-import { Any } from '@bemoje/util'
+import { Any, ErrorParser } from '@bemoje/util'
 import { Command, Option } from 'commander'
 import { CommandBuilder } from './CommandBuilder'
-import { ErrorParser } from '../core/util/ErrorParser'
+import { countInstance } from '../core/counter'
 import { OutputManager } from '../core/OutputManager'
 import { TStringParser } from '../types/TStringParser'
 import { TValidator } from '../types/TValidator'
@@ -19,7 +19,11 @@ export class CommandBuilderMetaData {
   isNative = false
   isInitialized = false
 
-  get actionHandler(): (this: Command, ...args: any[]) => Promise<void> {
+  constructor() {
+    countInstance(CommandBuilderMetaData)
+  }
+
+  get actionHandler(): (this: Command, ...args: any[]) => void | Promise<void> {
     return async function defaultActionHandler(this: Command) {
       this.builder.outputHelp()
     }

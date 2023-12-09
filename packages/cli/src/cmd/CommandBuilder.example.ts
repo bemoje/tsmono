@@ -1,6 +1,8 @@
 import { CLI } from './CLI'
+import { CommandBuilder } from './CommandBuilder'
 import { isBoolean } from '../validators/isBoolean'
 import { parseBoolean } from '../parsers/parseBoolean'
+import { printCounts } from '../core/counter'
 
 async function example() {
   console.time('init')
@@ -97,6 +99,7 @@ async function example() {
   ///////////////////
   console.time('exec')
   await cli.parseAsync()
+  printCounts()
   console.timeEnd('exec')
 }
 

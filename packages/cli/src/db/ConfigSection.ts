@@ -1,23 +1,19 @@
 import { AbstractJsonFileSection } from './AbstractJsonFileSection'
-import { assertThat, JsonValue } from '@bemoje/util'
-import { IConfigDefinePropertyOptions } from '../types/IDefinePropertyOptions'
-import { isString } from '../validators/isString'
+import { assertThat, JsonValue, objAssign } from '@bemoje/util'
+import { countInstance } from '../core/counter'
+import { IConfigDefinePropertyOptions } from '../types/IConfigDefinePropertyOptions'
 import { JsonFile } from './JsonFile'
-import { objAssign } from '../core/util/objAssign'
-import { parseString } from '@bemoje/commander-config'
 import { TStringParser } from '../types/TStringParser'
 import { TValidator } from '../types/TValidator'
 
-/**
- * A class that represents the user-config section of the JSON file used as simple database.
- */
 export class ConfigSection<Val extends JsonValue = JsonValue> extends AbstractJsonFileSection<Val> {
+  readonly parsers: Record<string, TStringParser<Val>> = {}
   readonly descriptions: Record<string, string> = {}
   readonly validators: Record<string, TValidator<Val>> = {}
-  readonly parsers: Record<string, TStringParser<Val>> = {}
 
   constructor(file: JsonFile, name: string, keysAreFixed = true) {
     super(file, name, keysAreFixed)
+    countInstance(ConfigSection)
   }
 
   override assertValid(key: string, value: Val) {
@@ -28,8 +24,8 @@ export class ConfigSection<Val extends JsonValue = JsonValue> extends AbstractJs
   override defineProperty(key: string, options: IConfigDefinePropertyOptions<Val>) {
     const { description, defaultValue, parse, validate } = options
     this.defaultValues[key] = JSON.parse(JSON.stringify(defaultValue))
-    this.parsers[key] = parse ?? parseString
-    this.validators[key] = validate ?? isString
+    if (parse) this.parsers[key] = parse
+    if (validate) this.validators[key] = validate
     this.descriptions[key] = description ?? ''
     this.assertValid(key, options.defaultValue)
   }
@@ -37,8 +33,9 @@ export class ConfigSection<Val extends JsonValue = JsonValue> extends AbstractJs
   override initialize(save = false) {
     if (this.isInitialized) return
     const data = this.file.db.getSafe<typeof this.defaultValues>(this.prefix())
-    const config = objAssign({}, this.defaultValues, data || {})
-    this.file.db.set(this.prefix(), config, save)
+    console.log({ init: this })
+    const result = objAssign({}, JSON.parse(JSON.stringify(this.defaultValues)), data || {})
+    this.file.db.set(this.prefix(), result, save)
     this.isInitialized = true
   }
 

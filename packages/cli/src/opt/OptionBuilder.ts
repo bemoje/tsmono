@@ -1,11 +1,11 @@
 import { CommandBuilder } from '../cmd/CommandBuilder'
-import { optHasArgument } from './util/optHasArgument'
+import { countInstance } from '../core/counter'
 import { Option, OptionValues } from 'commander'
 import { OptionArgumentParserSelector } from './OptionArgumentParserSelector'
 import { OptionArgumentValidatorSelector } from './OptionArgumentValidatorSelector'
 import { OptionReader } from './OptionReader'
-import { realizeLazyProperty } from '../core/util/realizeLazyProperty'
-import { setOptionShortName } from './util/setOptionShortName'
+import { optionUtils } from './optionUtils'
+import { realizeLazyProperty } from '@bemoje/util'
 
 /**
  * Wrapper around the @see Option class, for more intuitive construction.
@@ -15,6 +15,7 @@ export class OptionBuilder {
   readonly $: Option
 
   constructor(readonly cmd: CommandBuilder, flags: string) {
+    countInstance(OptionBuilder)
     this.$ = new Option(flags)
     if (this.$.isBoolean() && this.$.long?.startsWith('--no-')) {
       this.$.default(true)
@@ -46,7 +47,7 @@ export class OptionBuilder {
   //   return this
   // }
   default(value: unknown, description?: string) {
-    if (!optHasArgument(this.$)) {
+    if (!optionUtils.hasArgument(this.$)) {
       throw new Error('Cannot set default value on option without argument: ' + this.$.name())
     }
     if (!this.$.optional) {
@@ -72,7 +73,7 @@ export class OptionBuilder {
     return this
   }
   short(short: string) {
-    setOptionShortName(this.$, short)
+    optionUtils.setShort(this.$, short)
     return this
   }
   get parser() {

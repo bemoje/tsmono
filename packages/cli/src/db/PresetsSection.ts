@@ -1,7 +1,8 @@
 import { AbstractJsonFileSection } from './AbstractJsonFileSection'
+import { countInstance } from '../core/counter'
 import { IPreset } from '../types/IPreset'
 import { JsonFile } from './JsonFile'
-import { objAssign } from '../core/util/objAssign'
+import { objAssign } from '@bemoje/util'
 import { OptionValues } from 'commander'
 
 /**
@@ -10,6 +11,7 @@ import { OptionValues } from 'commander'
 export class PresetsSection extends AbstractJsonFileSection<IPreset> {
   constructor(file: JsonFile, name: string, keysAreFixed = false) {
     super(file, name, keysAreFixed)
+    countInstance(PresetsSection)
 
     this.defineProperty('defaults', {
       description: 'All presets inherit from this preset',

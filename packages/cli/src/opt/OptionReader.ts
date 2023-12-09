@@ -1,8 +1,11 @@
-import { optHasArgument } from './util/optHasArgument'
+import { countInstance } from '../core/counter'
 import { OptionBuilder } from './OptionBuilder'
+import { optionUtils } from './optionUtils'
 
 export class OptionReader {
-  constructor(protected readonly parent: OptionBuilder) {}
+  constructor(protected readonly parent: OptionBuilder) {
+    countInstance(OptionReader)
+  }
 
   get $() {
     return this.parent.$
@@ -62,6 +65,6 @@ export class OptionReader {
     return this.$.defaultValueDescription
   }
   get hasArgument() {
-    return optHasArgument(this.parent.$)
+    return optionUtils.hasArgument(this.parent.$)
   }
 }

@@ -1,4 +1,5 @@
 import { assertThat, isObject, JsonObject, JsonValue, readJsonFileSafeSync, writeJsonFileSafe } from '@bemoje/util'
+import { countInstance } from '../core/counter'
 import { JsonFile } from './JsonFile'
 
 export class JsonDB {
@@ -9,6 +10,7 @@ export class JsonDB {
    */
   constructor(protected readonly file: JsonFile) {
     this.data = readJsonFileSafeSync(this.filepath) ?? {}
+    countInstance(JsonDB)
   }
 
   get filepath() {
@@ -41,7 +43,7 @@ export class JsonDB {
 
   get<T = JsonValue>(prefix?: string): T {
     const value = this.getSafe<T>(prefix)
-    if (value === undefined) throw new Error(`No config entry with key '${prefix}'`)
+    if (value === undefined) throw new Error(`No entry with key '${prefix}'`)
     return value
   }
 

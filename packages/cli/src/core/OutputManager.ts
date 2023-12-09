@@ -1,10 +1,5 @@
-import { Any, colors } from '@bemoje/util'
-import { MethodDisabler } from './util/MethodDisabler'
-
-const stdout = new MethodDisabler(process.stdout, 'write')
-const stderr = new MethodDisabler(process.stderr, 'write')
-const debug = new MethodDisabler(console, 'debug')
-debug.disable()
+import { Any, colors, MethodDisabler } from '@bemoje/util'
+import { countInstance } from './counter'
 
 /**
  *
@@ -20,13 +15,18 @@ export class OutputManager {
   }
 
   readonly colors = colors
-  readonly stdout = stdout
-  readonly stderr = stderr
-  readonly debug = debug
-  debugMsgs: (() => Any)[] = []
+  readonly stdout = new MethodDisabler(process.stdout, 'write')
+  readonly stderr = new MethodDisabler(process.stderr, 'write')
+  readonly debug = new MethodDisabler(console, 'debug')
+  readonly debugMsgQueue: (() => Any)[] = []
+
+  constructor() {
+    countInstance(OutputManager)
+    this.debug.disable()
+  }
 
   reset() {
-    this.colors.enable()
+    this.colors.enabled = true
     this.stdout.enable()
     this.stderr.enable()
     this.debug.disable()
@@ -35,11 +35,11 @@ export class OutputManager {
 
   outputDebug(fn: () => Any) {
     if (this.debug.isEnabled) console.debug(fn())
-    else this.debugMsgs.push(fn)
+    else this.debugMsgQueue.push(fn)
   }
 
-  outputDebugMessages() {
-    this.debugMsgs.forEach((fn) => console.debug(fn()))
-    this.debugMsgs = []
+  drainDebugMessageQueue() {
+    this.debugMsgQueue.forEach((fn) => console.debug(fn()))
+    this.debugMsgQueue.splice(0, this.debugMsgQueue.length)
   }
 }

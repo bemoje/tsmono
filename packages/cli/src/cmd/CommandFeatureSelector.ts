@@ -1,4 +1,5 @@
 import { CommandBuilder } from './CommandBuilder'
+import { countInstance } from '../core/counter'
 
 /**
  *
@@ -10,7 +11,9 @@ export class CommandFeatureSelector {
   isAutoAssignMissingOptionFlagsEnabled = true
   isAutoAssignSubCommandAliasesEnabled = true
 
-  constructor(protected readonly cmd: CommandBuilder) {}
+  constructor(protected readonly cmd: CommandBuilder) {
+    countInstance(CommandFeatureSelector)
+  }
 
   inheritFrom(parentFeatures: CommandFeatureSelector) {
     if (!parentFeatures) return

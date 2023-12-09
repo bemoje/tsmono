@@ -1,7 +1,7 @@
 import { Argument, Command, Help, Option } from 'commander'
 import { colors } from '@bemoje/util'
 
-export const defaultHelpConfiguration = {
+export const DefaultHelpConfig: Partial<Help> = {
   helpWidth: undefined,
   showGlobalOptions: true,
   sortSubcommands: false,

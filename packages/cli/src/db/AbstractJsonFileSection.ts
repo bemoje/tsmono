@@ -29,7 +29,8 @@ export abstract class AbstractJsonFileSection<Val = JsonValue> {
    */
   protected prefix(key?: string) {
     if (this.keysAreFixed && key && !Object.hasOwn(this.defaultValues, key)) {
-      throw new Error(`No config entry with key '${key}'`)
+      console.log({ errorDefVal: this.defaultValues, key })
+      throw new Error(`No entry with key '${key}'`)
     }
     return this.prefixString + '.' + this.name + (key ? '.' + key : '')
   }

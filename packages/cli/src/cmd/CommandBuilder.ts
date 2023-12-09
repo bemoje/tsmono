@@ -1,3 +1,4 @@
+import isAsyncFunction from 'is-async-function'
 import os from 'os'
 import path from 'path'
 import {
@@ -15,48 +16,38 @@ import {
 } from 'commander'
 import {
   Any,
+  arrAssign,
   arrLast,
   arrSome,
   assertThat,
   colors,
   defaultOpenInEditorCommand,
+  ensureThat,
+  formatTableForTerminal,
   isObject,
   JsonValue,
+  objAssign,
   setNonEnumerable,
 } from '@bemoje/util'
 import { ArgumentBuilder } from '../arg/ArgumentBuilder'
-import { arrAssign } from '../core/util/arrAssign'
 import { CommandBuilderMetaData } from './CommandBuilderMetaData'
 import { CommandFeatureSelector } from './CommandFeatureSelector'
-import { defaultHelpConfiguration } from './defaultHelpConfiguration'
-import { ensureThat } from '../core/util/ensureThat'
-import { formatTableForTerminal } from '../core/util/formatTableForTerminal'
-import { IConfigDefinePropertyOptions } from '../types/IDefinePropertyOptions'
+import { countInstance } from '../core/counter'
+import { DefaultHelpConfig } from './DefaultHelpConfig'
+import { IAppDataDefinePropertyOptions } from '../types/IAppDataDefinePropertyOptions'
+import { IConfigDefinePropertyOptions } from '../types/IConfigDefinePropertyOptions'
 import { IPreset, IPresetPartial } from '../types/IPreset'
 import { isArray } from '../validators/isArray'
 import { isString } from '../validators/isString'
 import { isStringArray } from '../validators/isStringArray'
 import { isStringWithNoSpacesOrDashes } from '../validators/isStringWithNoSpacesOrDashes'
 import { JsonFile } from '../db/JsonFile'
-import { objAssign } from '../core/util/objAssign'
 import { OptionBuilder } from '../opt/OptionBuilder'
+import { optionUtils } from '../opt/optionUtils'
 import { OutputManager } from '../core/OutputManager'
 import { overrideCommanderPrototyper } from '../proto/Command'
-import { setOptionShortName } from '../opt/util/setOptionShortName'
 import { splitCombinedArgvShorts } from '../core/splitCombinedArgvShorts'
-
-export {
-  AddHelpTextPosition,
-  Argument,
-  Command,
-  CommanderError,
-  ErrorOptions,
-  HelpConfiguration,
-  HookEvent,
-  Option,
-  OptionValues,
-  OptionValueSource,
-} from 'commander'
+export * from 'commander'
 
 /**
  * Wrapper around the @see Command class, for more intuitive construction.
@@ -64,6 +55,11 @@ export {
 export class CommandBuilder {
   static readonly commanderBackRefs = new WeakMap<Command, CommandBuilder>()
   static dataDirectory = path.join(os.homedir(), 'config', 'cli')
+  static isTestMode = false
+  static testMode() {
+    CommandBuilder.isTestMode = true
+    CommandBuilder.dataDirectory = path.join(os.tmpdir(), 'config', 'cli')
+  }
 
   protected readonly features = new CommandFeatureSelector(this)
   readonly parent: CommandBuilder | null = null
@@ -72,6 +68,7 @@ export class CommandBuilder {
   readonly db = new JsonFile(this)
 
   constructor(name: string, parent?: CommandBuilder) {
+    countInstance(CommandBuilder)
     this.$ = new Command(name)
     CommandBuilder.commanderBackRefs.set(this.$, this)
     if (parent) {
@@ -82,6 +79,18 @@ export class CommandBuilder {
     }
     this.initializeActionWrapper()
     this.initializeHelp()
+    if (CommandBuilder.isTestMode) {
+      this.throwInsteadOfProcessExit()
+      this.errorHandler((err) => {
+        throw err
+      })
+    }
+  }
+
+  throwInsteadOfProcessExit() {
+    this.exitOverride((err) => {
+      throw err
+    })
   }
 
   initializeCommand(callback?: (cmd: CommandBuilder) => void) {
@@ -116,7 +125,7 @@ export class CommandBuilder {
     return this
   }
   aliases(...aliases: string[]) {
-    aliases.forEach(this.assertCommandNameNotReserved)
+    aliases.forEach((alias) => this.assertCommandNameNotReserved(alias))
     this.$.aliases(aliases)
     return this
   }
@@ -150,12 +159,12 @@ export class CommandBuilder {
   option(flags: string, cb?: string | ((opt: OptionBuilder, cmd: this) => void)): this {
     const ins = new OptionBuilder(this, flags)
     if (this.hasIdenticalParentOption(ins.$)) return this
+    this.$.addOption(ins.$)
     if (typeof cb === 'function') {
       cb(ins, this)
     } else if (typeof cb === 'string') {
       ins.description(cb)
     }
-    this.$.addOption(ins.$)
     return this
   }
   globalOption(flags: string, description?: string): this
@@ -183,7 +192,7 @@ export class CommandBuilder {
     ins.initializeCommand(cb)
     return this
   }
-  action<T extends (...args: Any[]) => Promise<void>>(fn: T): this {
+  action<T extends (...args: Any[]) => void | Promise<void>>(fn: T): this {
     Object.defineProperty(this.meta, 'actionHandler', { value: fn, configurable: true })
     return this
   }
@@ -191,7 +200,7 @@ export class CommandBuilder {
     Object.defineProperty(this.meta, 'errorHandler', { value: fn, configurable: true })
     return this
   }
-  appData(key: string, entry: IConfigDefinePropertyOptions<JsonValue>) {
+  appData(key: string, entry: IAppDataDefinePropertyOptions<JsonValue>) {
     this.features.appData(true)
     this.db.appData.defineProperty(key, entry)
     return this
@@ -707,12 +716,12 @@ export class CommandBuilder {
   protected handleOutputOptions() {
     const opts = this.$.optsWithGlobals()
     const om = OutputManager.getInstance().reset()
-    if (opts['disableColor']) om.colors.disable()
+    if (opts['disableColor']) om.colors.enabled = false
     if (opts['disableStderr']) om.stderr.disable()
     if (opts['disableStdout']) om.stdout.disable()
     if (opts['debug']) {
       om.debug.enable()
-      om.outputDebugMessages()
+      om.drainDebugMessageQueue()
     }
   }
 
@@ -919,7 +928,8 @@ export class CommandBuilder {
           set.action(async (key: string, value: string, opts: OptionValues, set: CommandBuilder) => {
             const cmd = set.getClosestNonNativeParent()
             const from = cmd.db.config.get(key)
-            const to = cmd.db.config.parsers[key](value)
+            const parse = cmd.db.config.parsers[key]
+            const to = typeof parse === 'function' ? cmd.db.config.parsers[key](value) : value
             cmd.db.config.set(key, to)
             console.info({ changed: key, from, to })
           })
@@ -1009,7 +1019,7 @@ export class CommandBuilder {
           char = char.toUpperCase()
           if (taken.has(char)) continue
         }
-        setOptionShortName(opt, char)
+        optionUtils.setShort(opt, char)
         taken.add(char)
         return
       }
@@ -1025,7 +1035,7 @@ export class CommandBuilder {
           char = char.toUpperCase()
           if (taken.has(char)) continue
         }
-        setOptionShortName(opt, char)
+        optionUtils.setShort(opt, char)
         taken.add(char)
         return
       }
@@ -1085,15 +1095,30 @@ export class CommandBuilder {
     }
   }
   protected initializeActionWrapper() {
-    this.$.action(async function actionWrapper(this: Command) {
-      try {
-        const cmd = this.builder as CommandBuilder
-        cmd.handleOutputOptions()
-        const [args, opts] = cmd.getParsedValidArgsOptsWithPresets()
-        if (opts['help']) return cmd.outputHelp()
-        return cmd.meta.actionHandler.call(this, ...args, opts, cmd)
-      } catch (error) {
-        this.builder.meta.errorHandler.call(this, error, this.builder)
+    this.$.action(function actionWrapperSync(this: Command) {
+      const cmd = this.builder as CommandBuilder
+      const isAsync = isAsyncFunction(cmd.meta.actionHandler)
+      if (isAsync) {
+        return new Promise((resolve, reject) => {
+          try {
+            cmd.handleOutputOptions()
+            const [args, opts] = cmd.getParsedValidArgsOptsWithPresets()
+            if (opts['help']) resolve(cmd.outputHelp())
+            else resolve(cmd.meta.actionHandler.call(this, ...args, opts, cmd))
+          } catch (error) {
+            this.builder.meta.errorHandler.call(this, error, this.builder)
+            reject(error)
+          }
+        })
+      } else {
+        try {
+          cmd.handleOutputOptions()
+          const [args, opts] = cmd.getParsedValidArgsOptsWithPresets()
+          if (opts['help']) return cmd.outputHelp()
+          cmd.meta.actionHandler.call(this, ...args, opts, cmd)
+        } catch (error) {
+          this.builder.meta.errorHandler.call(this, error, this.builder)
+        }
       }
     })
   }
@@ -1101,7 +1126,7 @@ export class CommandBuilder {
   protected initializeHelp() {
     this.globalOption('-h, --help', 'show help')
     this.$.addHelpCommand('?', 'show help')
-    this.$.configureHelp(defaultHelpConfiguration)
+    this.$.configureHelp(DefaultHelpConfig)
   }
 
   protected inheritParentSettings() {
