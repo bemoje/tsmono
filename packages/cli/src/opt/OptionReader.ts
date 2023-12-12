@@ -1,6 +1,6 @@
 import { countInstance } from '../core/counter'
 import { OptionBuilder } from './OptionBuilder'
-import { optionUtils } from './optionUtils'
+import { OptionHelpers } from './OptionHelpers'
 
 export class OptionReader {
   constructor(protected readonly parent: OptionBuilder) {
@@ -19,9 +19,6 @@ export class OptionReader {
   get optional() {
     return this.$.optional
   }
-  // get negate() {
-  //   return this.$.negate
-  // }
   get mandatory() {
     return this.$.mandatory
   }
@@ -37,9 +34,9 @@ export class OptionReader {
   get long() {
     return this.$.long
   }
-  // get preset() {
-  //   return this.$.presetArg
-  // }
+  get preset() {
+    return this.$.presetArg
+  }
   get default() {
     return this.$.defaultValue
   }
@@ -58,13 +55,10 @@ export class OptionReader {
   get attributeName() {
     return this.$.attributeName()
   }
-  get fullDescription() {
-    return this.$.fullDescription()
-  }
   get defaultValueDescription() {
     return this.$.defaultValueDescription
   }
   get hasArgument() {
-    return optionUtils.hasArgument(this.parent.$)
+    return OptionHelpers.hasArgument(this.parent.$)
   }
 }

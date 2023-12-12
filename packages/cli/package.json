@@ -2,9 +2,12 @@
   "name": "@bemoje/cli",
   "version": "0.0.2",
   "dependencies": {
+    "@bemoje/tscode": "latest",
     "@bemoje/util": "latest",
     "commander": "^11.1.0",
-    "is-async-function": "^2.0.0"
+    "fs-extra": "^11.2.0",
+    "is-async-function": "^2.0.0",
+    "walkdir": "^0.4.1"
   },
   "type": "commonjs",
   "main": "./index.cjs",

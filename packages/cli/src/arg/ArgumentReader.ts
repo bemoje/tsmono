@@ -1,7 +1,10 @@
 import { ArgumentBuilder } from './ArgumentBuilder'
+import { countInstance } from '../core/counter'
 
 export class ArgumentReader {
-  constructor(protected readonly parent: ArgumentBuilder) {}
+  constructor(protected readonly parent: ArgumentBuilder) {
+    countInstance(ArgumentBuilder)
+  }
 
   get $() {
     return this.parent.$

@@ -1,8 +1,8 @@
 import { ArgumentBuilder } from '../arg/ArgumentBuilder'
 import { createTypedArrayValidator } from '../validators/createTypedArrayValidator'
 import { isInteger } from '../validators/isInteger'
-import { isNumber } from '../validators/isNumber'
 import { isString } from '../validators/isString'
+import { isValidNumber } from '../validators/isNumber'
 import { JsonValue } from '@bemoje/util'
 import { OptionBuilder } from '../opt/OptionBuilder'
 import { TValidator } from '../types/TValidator'
@@ -16,7 +16,7 @@ export abstract class ValidatorSelector<Builder extends OptionBuilder | Argument
     return this.custom(isString)
   }
   isNumber() {
-    return this.custom(isNumber)
+    return this.custom(isValidNumber)
   }
   isInteger() {
     return this.custom(isInteger)
@@ -26,7 +26,7 @@ export abstract class ValidatorSelector<Builder extends OptionBuilder | Argument
     return this.arrayWhereEach(isString)
   }
   isNumberArray() {
-    return this.arrayWhereEach(isNumber)
+    return this.arrayWhereEach(isValidNumber)
   }
   isIntegerArray() {
     return this.arrayWhereEach(isInteger)

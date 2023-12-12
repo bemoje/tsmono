@@ -85,6 +85,8 @@ function formatHelp(this: Help, cmd: Command) {
 function subcommandTerm(this: Help, cmd: Command) {
   const args = cmd.registeredArguments.map((arg) => this.argumentTerm(arg)).join(' ')
   const parent = cmd.parent || cmd
+  const hasAliases = !cmd.parent || parent.commands.some((c) => !!c.alias())
+  if (!hasAliases) return cmd.name() + (args ? ' ' + args : '')
   const padsize = Math.max(1, ...parent.commands.map((c) => c.alias()?.length || 1))
   let alias = cmd.alias() || ' '
   alias = alias.padEnd(padsize, ' ') + ' |'
@@ -112,7 +114,11 @@ function visibleOptions(this: Help, cmd: Command) {
 }
 
 function visibleGlobalOptions(this: Help, cmd: Command) {
-  return cmd.builder.getGlobalOptions()
+  const gopts = cmd.builder.getGlobalOptions()
+  if (gopts.find((opt) => opt.long === '--help')) return gopts
+  const help = cmd.options.find((opt) => opt.long === '--help')
+  if (help) gopts.push(help)
+  return gopts
 }
 
 function subcommandDescription(this: Help, cmd: Command) {

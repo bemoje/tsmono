@@ -17,9 +17,14 @@ export class JsonFile {
     countInstance(JsonFile)
   }
 
+  /**
+   * A lazy-loaded instance of the JsonDB instance containing the data.
+   * Upon first property access, it is stored as a property on the instance.
+   * If the command is a subcommand, the root command's JsonDB instance is returned.
+   */
   get db(): JsonDB {
     if (this.cmd.isRoot) {
-      return realizeLazyProperty(this, 'db', new JsonDB(this))
+      return realizeLazyProperty(this, 'db', new JsonDB(this.cmd.dataFilepath, 2))
     } else {
       return this.cmd.root.db.db
     }

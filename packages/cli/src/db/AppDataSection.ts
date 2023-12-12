@@ -1,37 +1,48 @@
 import { AbstractJsonFileSection } from './AbstractJsonFileSection'
 import { countInstance } from '../core/counter'
-import { IAppDataDefinePropertyOptions } from '../types/IAppDataDefinePropertyOptions'
 import { JsonFile } from './JsonFile'
 import { JsonValue } from '@bemoje/util'
 
 /**
- * A class that represents the user-config section of the JSON file used as simple database.
+ * A class that represents the appdata section of the JSON file used as simple database.
  */
 export class AppDataSection<Val extends JsonValue = JsonValue> extends AbstractJsonFileSection<Val> {
-  override readonly defaultValues: Record<string, Val> = {}
+  /**
+   * Creates an instance of AppDataSection.
+   * @param file - The parent JsonFile instance.
+   * @param name - The name of the section.
+   */
   constructor(file: JsonFile, name: string) {
     super(file, name, false)
     countInstance(AppDataSection)
   }
 
+  /**
+   * Does nothing
+   */
   override assertValid() {
     return
   }
 
-  override defineProperty(key: string, options: IAppDataDefinePropertyOptions<Val>) {
-    const { defaultValue } = options
-    this.defaultValues[key] = defaultValue
+  /**
+   * Defines a property for the section.
+   * @param key - The key of the property.
+   */
+  override defineProperty(key: string, value: Val) {
+    if (typeof value === 'object') value = JSON.parse(JSON.stringify(value)) as Val
+    this.defaultValues[key] = value
+    this.isInitialized = false
   }
 
+  /**
+   * Initializes the section.
+   * @param save - Indicates whether to save the section after initialization.
+   * @returns A string if an error occurred during initialization, otherwise void.
+   */
   override initialize(save = false) {
     if (this.isInitialized) return
-    const data = this.file.db.getSafe<typeof this.defaultValues>(this.prefix())
-    if (!data) this.file.db.set(this.prefix(), this.defaultValues, save)
-    console.log({ init: this })
+    const data = this.db.getSafe<typeof this.defaultValues>(this.prefix())
+    if (!data) this.db.set(this.prefix(), this.defaultValues, save)
     this.isInitialized = true
-  }
-
-  get keys() {
-    return [...Object.keys(this.defaultValues)]
   }
 }

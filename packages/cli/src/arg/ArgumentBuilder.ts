@@ -7,7 +7,7 @@ import { countInstance } from '../core/counter'
 import { realizeLazyProperty } from '@bemoje/util'
 
 /**
- * Wrapper around the @see Argument class, for more intuitive construction.
+ * Wrapper around the @see Argument class from 'commander'.
  */
 export class ArgumentBuilder {
   readonly $: Argument
@@ -26,9 +26,6 @@ export class ArgumentBuilder {
   }
 
   default(value: unknown, description?: string) {
-    if (this.$.required) {
-      throw new Error('Cannot set default value on required argument: ' + this.$.name())
-    }
     this.$.default(value, description)
     return this
   }

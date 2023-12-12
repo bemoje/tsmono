@@ -1,15 +1,15 @@
 import { OptionValues } from 'commander'
 
-export interface IPreset<O extends OptionValues = OptionValues> {
+export interface IPreset {
   description: string
   presets: string[]
-  args: OptionValues[keyof OptionValues][]
-  options: O
+  args: string[]
+  options: OptionValues
 }
 
-export interface IPresetPartial<O extends OptionValues = OptionValues> {
+export interface IPresetPartial {
   description: string
   presets?: string[]
-  args?: OptionValues[keyof OptionValues][]
-  options?: O
+  args?: string[]
+  options?: OptionValues
 }

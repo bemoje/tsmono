@@ -249,6 +249,7 @@
     "cli": {
       "tags": [],
       "implicitDependencies": [
+        "tscode",
         "util"
       ],
       "npmScope": "bemoje",

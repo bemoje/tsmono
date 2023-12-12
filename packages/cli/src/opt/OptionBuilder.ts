@@ -3,8 +3,8 @@ import { countInstance } from '../core/counter'
 import { Option, OptionValues } from 'commander'
 import { OptionArgumentParserSelector } from './OptionArgumentParserSelector'
 import { OptionArgumentValidatorSelector } from './OptionArgumentValidatorSelector'
+import { OptionHelpers } from './OptionHelpers'
 import { OptionReader } from './OptionReader'
-import { optionUtils } from './optionUtils'
 import { realizeLazyProperty } from '@bemoje/util'
 
 /**
@@ -17,23 +17,18 @@ export class OptionBuilder {
   constructor(readonly cmd: CommandBuilder, flags: string) {
     countInstance(OptionBuilder)
     this.$ = new Option(flags)
-    if (this.$.isBoolean() && this.$.long?.startsWith('--no-')) {
+    if (!OptionHelpers.hasArgument(this.$) && this.$.long?.startsWith('--no-')) {
       this.$.default(true)
     }
   }
-
   description(string: string) {
     this.$.description = string
     return this
   }
-  // negate(negate = true) {
-  //   this.$.negate = negate
-  //   return this
-  // }
-  // mandatory(mandatory = true) {
-  //   this.$.makeOptionMandatory(mandatory)
-  //   return this
-  // }
+  mandatory(mandatory = true) {
+    this.$.makeOptionMandatory(mandatory)
+    return this
+  }
   hideHelp(hide = true) {
     this.$.hideHelp(hide)
     return this
@@ -42,21 +37,18 @@ export class OptionBuilder {
     this.$.hidden = hidden
     return this
   }
-  // preset(arg: unknown) {
-  //   this.$.preset(arg)
-  //   return this
-  // }
+  preset(arg: unknown) {
+    this.$.preset(arg)
+    return this
+  }
   default(value: unknown, description?: string) {
-    if (!optionUtils.hasArgument(this.$)) {
-      throw new Error('Cannot set default value on option without argument: ' + this.$.name())
-    }
-    if (!this.$.optional) {
-      throw new Error('Cannot set default value on required option: ' + this.$.name())
-    }
     this.$.default(value, description)
     return this
   }
   choices(values: readonly string[]) {
+    if (!OptionHelpers.hasArgument(this.$)) {
+      throw new Error('Cannot set choices on option with no argument: ' + this.$.name())
+    }
     this.$.choices(values)
     return this
   }
@@ -73,18 +65,18 @@ export class OptionBuilder {
     return this
   }
   short(short: string) {
-    optionUtils.setShort(this.$, short)
+    OptionHelpers.setShort(this.$, short)
     return this
   }
   get parser() {
-    if (this.$.isBoolean()) {
-      throw new Error('Cannot set parser on boolean option: ' + this.$.attributeName())
+    if (!OptionHelpers.hasArgument(this.$)) {
+      throw new Error('Cannot set parser on option with no argument: ' + this.$.attributeName())
     }
     return new OptionArgumentParserSelector(this)
   }
   get validator() {
-    if (this.$.isBoolean()) {
-      throw new Error('Cannot set validator on boolean option: ' + this.$.attributeName())
+    if (!OptionHelpers.hasArgument(this.$)) {
+      throw new Error('Cannot set validator on option with no argument: ' + this.$.attributeName())
     }
     return new OptionArgumentValidatorSelector(this)
   }
