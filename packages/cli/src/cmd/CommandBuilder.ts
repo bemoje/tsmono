@@ -24,7 +24,11 @@ import {
   colors,
   ensureThat,
   formatTableForTerminal,
+  isArray,
   isObject,
+  isString,
+  isStringArray,
+  isStringWithNoSpacesOrDashes,
   JsonValue,
   objAssign,
   realizeLazyProperty,
@@ -36,12 +40,8 @@ import { CommandBuilderMetaData } from './CommandBuilderMetaData'
 import { CommandFeatureSelector } from './CommandFeatureSelector'
 import { countInstance } from '../core/counter'
 import { DefaultHelpConfig } from './DefaultHelpConfig'
-import { IConfigDefinePropertyOptions } from '../types/IConfigDefinePropertyOptions'
+import { IConfig } from '../types/IConfig'
 import { IPreset, IPresetPartial } from '../types/IPreset'
-import { isArray } from '../validators/isArray'
-import { isString } from '../validators/isString'
-import { isStringArray } from '../validators/isStringArray'
-import { isStringWithNoSpacesOrDashes } from '../validators/isStringWithNoSpacesOrDashes'
 import { JsonFile } from '../db/JsonFile'
 import { OptionBuilder } from '../opt/OptionBuilder'
 import { OptionHelpers } from '../opt/OptionHelpers'
@@ -233,7 +233,7 @@ export class CommandBuilder {
     this.db.appData.defineProperty(key, value)
     return this
   }
-  config(key: string, entry: IConfigDefinePropertyOptions<JsonValue>) {
+  config(key: string, entry: IConfig<JsonValue>) {
     this.assertNotInitialized()
     this.features.config(true)
     this.db.config.defineProperty(key, entry)

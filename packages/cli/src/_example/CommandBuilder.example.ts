@@ -1,6 +1,5 @@
 import { CLI } from '../cmd/CLI'
-import { isBoolean } from '../validators/isBoolean'
-import { parseBoolean } from '../parsers/parseBoolean'
+import { isBoolean, parseBoolean } from '@bemoje/util'
 import { printCounts } from '../core/counter'
 
 console.time('load')

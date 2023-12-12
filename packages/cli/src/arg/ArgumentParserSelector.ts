@@ -1,7 +1,6 @@
 import { ArgumentBuilder } from './ArgumentBuilder'
-import { JsonValue } from '@bemoje/util'
+import { JsonValue, TStringParser } from '@bemoje/util'
 import { ParserSelector } from '../core/ParserSelector'
-import { TStringParser } from '../types/TStringParser'
 
 export class ArgumentParserSelector extends ParserSelector<ArgumentBuilder> {
   constructor(builder: ArgumentBuilder) {

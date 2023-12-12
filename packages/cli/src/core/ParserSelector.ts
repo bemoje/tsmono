@@ -1,11 +1,6 @@
 import { ArgumentBuilder } from '../arg/ArgumentBuilder'
-import { createTypedListParser } from '../parsers/createTypedListParser'
-import { JsonValue } from '@bemoje/util'
+import { createTypedListParser, JsonValue, parseInteger, parseNumber, parseString, TStringParser } from '@bemoje/util'
 import { OptionBuilder } from '../opt/OptionBuilder'
-import { parseInteger } from '../parsers/parseInteger'
-import { parseNumber } from '../parsers/parseNumber'
-import { parseString } from '../parsers/parseString'
-import { TStringParser } from '../types/TStringParser'
 
 export abstract class ParserSelector<Builder extends ArgumentBuilder | OptionBuilder> {
   constructor(protected readonly builder: Builder) {}

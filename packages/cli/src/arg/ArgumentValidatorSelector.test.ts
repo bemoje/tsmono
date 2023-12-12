@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-import { ArgumentBuilder } from './ArgumentBuilder'
 import { ArgumentValidatorSelector } from './ArgumentValidatorSelector'
 import { CLI } from '../cmd/CLI'
 

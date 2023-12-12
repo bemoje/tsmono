@@ -1,11 +1,6 @@
 import { ArgumentBuilder } from '../arg/ArgumentBuilder'
-import { createTypedArrayValidator } from '../validators/createTypedArrayValidator'
-import { isInteger } from '../validators/isInteger'
-import { isString } from '../validators/isString'
-import { isValidNumber } from '../validators/isNumber'
-import { JsonValue } from '@bemoje/util'
+import { createTypedArrayValidator, isInteger, isString, isValidNumber, JsonValue, TValidator } from '@bemoje/util'
 import { OptionBuilder } from '../opt/OptionBuilder'
-import { TValidator } from '../types/TValidator'
 
 export abstract class ValidatorSelector<Builder extends OptionBuilder | ArgumentBuilder> {
   constructor(protected readonly builder: Builder) {}

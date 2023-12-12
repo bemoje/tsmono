@@ -1,10 +1,8 @@
 import { AbstractJsonFileSection } from './AbstractJsonFileSection'
-import { assertThat, JsonValue, objAssign } from '@bemoje/util'
+import { assertThat, JsonValue, objAssign, TStringParser, TValidator } from '@bemoje/util'
 import { countInstance } from '../core/counter'
-import { IConfigDefinePropertyOptions } from '../types/IConfigDefinePropertyOptions'
+import { IConfig } from '../types/IConfig'
 import { JsonFile } from './JsonFile'
-import { TStringParser } from '../types/TStringParser'
-import { TValidator } from '../types/TValidator'
 
 /**
  * A class that represents the user-config section of the JSON file used as simple database.
@@ -50,7 +48,7 @@ export class ConfigSection<Val extends JsonValue = JsonValue> extends AbstractJs
    * @param key - The key of the property.
    * @param options - The options for the property.
    */
-  override defineProperty(key: string, options: IConfigDefinePropertyOptions<Val>) {
+  override defineProperty(key: string, options: IConfig<Val>) {
     const { description, defaultValue, parse, validate } = options
     this.defaultValues[key] = typeof defaultValue === 'object' ? JSON.parse(JSON.stringify(defaultValue)) : defaultValue
     if (parse) this.parsers[key] = parse

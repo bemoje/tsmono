@@ -12,7 +12,7 @@ import { strFirstCharToUpperCase } from '../string/strFirstCharToUpperCase'
  * @throws TypeError - if no name is provided and not all validators are named functions.
  */
 export function createTypedArrayValidator<O>(
-  validators: ((value: unknown) => boolean)[],
+  validators: ((value: O) => boolean)[],
   name?: string
 ): (array: unknown) => boolean {
   if (!name) {

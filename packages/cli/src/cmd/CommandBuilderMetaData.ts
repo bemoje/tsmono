@@ -1,10 +1,8 @@
-import { Any, ErrorParser } from '@bemoje/util'
+import { Any, ErrorParser, TStringParser, TValidator } from '@bemoje/util'
 import { Command, Option } from 'commander'
 import { CommandBuilder } from './CommandBuilder'
 import { countInstance } from '../core/counter'
 import { OutputManager } from '../core/OutputManager'
-import { TStringParser } from '../types/TStringParser'
-import { TValidator } from '../types/TValidator'
 
 export class CommandBuilderMetaData {
   subcommands: CommandBuilder[] = []
