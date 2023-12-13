@@ -1,7 +1,7 @@
 import { countInstance } from '../core/counter'
 import { OptionBuilder } from './OptionBuilder'
 import { ParserSelector } from '../core/ParserSelector'
-import { TStringParser } from '@bemoje/util'
+import { TStringParser } from '../util/types/TStringParser'
 
 export class OptionArgumentParserSelector extends ParserSelector<OptionBuilder> {
   constructor(builder: OptionBuilder) {

@@ -3,10 +3,10 @@ import { AbstractJsonFileSection } from './AbstractJsonFileSection'
 import { CommandBuilder } from '../cmd/CommandBuilder'
 import { JsonFile } from './JsonFile'
 import { JsonValue } from '../../../util/src'
-import { promptUserEditJsonInTextEditorSync } from '@bemoje/util'
+import { promptUserEditJsonInTextEditorSync } from '../util/fs/promptUserEditInTextEditor/promptUserEditJsonInTextEditorSync'
 
-jest.mock('@bemoje/util', () => ({
-  ...jest.requireActual('@bemoje/util'),
+jest.mock('../util/fs/promptUserEditInTextEditor/promptUserEditJsonInTextEditorSync', () => ({
+  ...jest.requireActual('../util/fs/promptUserEditInTextEditor/promptUserEditJsonInTextEditorSync'),
   promptUserEditJsonInTextEditorSync: jest.fn().mockImplementation(() => {}),
 }))
 
@@ -193,6 +193,8 @@ describe(AbstractJsonFileSection.name, () => {
       const setSpy = jest.spyOn(section, 'set')
       section.update('key', () => 'value', false)
       expect(setSpy).toHaveBeenCalledWith('key', 'value', false)
+      section.update('key', () => 'value', true)
+      expect(setSpy).toHaveBeenCalledWith('key', 'value', true)
     })
   })
 

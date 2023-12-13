@@ -248,10 +248,7 @@
     },
     "cli": {
       "tags": [],
-      "implicitDependencies": [
-        "tscode",
-        "util"
-      ],
+      "implicitDependencies": [],
       "npmScope": "bemoje",
       "projectType": "library"
     }

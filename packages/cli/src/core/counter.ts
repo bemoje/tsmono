@@ -1,4 +1,4 @@
-import { TConstructor } from '@bemoje/util'
+import { TConstructor } from '../util/types/TConstructor'
 
 const counts = new Map<string, number>()
 

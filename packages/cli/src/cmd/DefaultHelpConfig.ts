@@ -1,5 +1,5 @@
+import colors from 'ansi-colors'
 import { Argument, Command, Help, Option } from 'commander'
-import { colors } from '@bemoje/util'
 
 export const DefaultHelpConfig: Partial<Help> = {
   helpWidth: undefined,

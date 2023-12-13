@@ -5,7 +5,7 @@ import { OptionArgumentParserSelector } from './OptionArgumentParserSelector'
 import { OptionArgumentValidatorSelector } from './OptionArgumentValidatorSelector'
 import { OptionHelpers } from './OptionHelpers'
 import { OptionReader } from './OptionReader'
-import { realizeLazyProperty } from '@bemoje/util'
+import { realizeLazyProperty } from '../util/object/realizeLazyProperty'
 
 /**
  * Wrapper around the @see Option class, for more intuitive construction.

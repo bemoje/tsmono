@@ -1,6 +1,6 @@
 import { countInstance } from '../core/counter'
 import { OptionBuilder } from './OptionBuilder'
-import { TValidator } from '@bemoje/util'
+import { TValidator } from '../util/types/TValidator'
 import { ValidatorSelector } from '../core/ValidatorSelector'
 
 export class OptionArgumentValidatorSelector extends ValidatorSelector<OptionBuilder> {

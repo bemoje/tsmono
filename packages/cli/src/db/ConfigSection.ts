@@ -1,8 +1,12 @@
 import { AbstractJsonFileSection } from './AbstractJsonFileSection'
-import { assertThat, JsonValue, objAssign, TStringParser, TValidator } from '@bemoje/util'
 import { countInstance } from '../core/counter'
+import { ensureThat } from '../util/validation/ensureThat'
 import { IConfig } from '../types/IConfig'
 import { JsonFile } from './JsonFile'
+import { JsonValue } from '../util/types/JsonValue'
+import { objAssign } from '../util/object/objAssign'
+import { TStringParser } from '../util/types/TStringParser'
+import { TValidator } from '../util/types/TValidator'
 
 /**
  * A class that represents the user-config section of the JSON file used as simple database.
@@ -40,7 +44,7 @@ export class ConfigSection<Val extends JsonValue = JsonValue> extends AbstractJs
    */
   override assertValid(key: string, value: Val) {
     if (!this.validators[key]) return
-    assertThat(value, this.validators[key])
+    ensureThat(value, this.validators[key])
   }
 
   /**
@@ -50,10 +54,10 @@ export class ConfigSection<Val extends JsonValue = JsonValue> extends AbstractJs
    */
   override defineProperty(key: string, options: IConfig<Val>) {
     const { description, defaultValue, parse, validate } = options
+    this.descriptions[key] = description
     this.defaultValues[key] = typeof defaultValue === 'object' ? JSON.parse(JSON.stringify(defaultValue)) : defaultValue
     if (parse) this.parsers[key] = parse
     if (validate) this.validators[key] = validate
-    this.descriptions[key] = description ?? ''
     this.assertValid(key, options.defaultValue)
   }
 

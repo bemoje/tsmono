@@ -1,7 +1,7 @@
 import { AppDataSection } from './AppDataSection'
 import { CommandBuilder } from '../cmd/CommandBuilder'
 import { ConfigSection } from './ConfigSection'
-import { JsonDB } from '@bemoje/util'
+import { JsonDB } from '../util/db/JsonDB'
 import { JsonFile } from './JsonFile'
 import { PresetsSection } from './PresetsSection'
 

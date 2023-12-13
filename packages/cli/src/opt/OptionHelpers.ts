@@ -1,6 +1,6 @@
-import { arrLast } from '@bemoje/util'
+import { arrLast } from '../util/array/arrLast'
 import { Option } from 'commander'
-import { strEnsureStartsWith } from '@bemoje/util'
+import { strEnsureStartsWith } from '../util/string/strEnsureStartsWith'
 
 /**
  * Extract the argument name from an option's 'flags' string.

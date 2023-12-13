@@ -1,7 +1,7 @@
 import { AbstractJsonFileSection } from './AbstractJsonFileSection'
 import { countInstance } from '../core/counter'
 import { JsonFile } from './JsonFile'
-import { JsonValue } from '@bemoje/util'
+import { JsonValue } from '../util/types/JsonValue'
 
 /**
  * A class that represents the appdata section of the JSON file used as simple database.

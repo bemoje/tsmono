@@ -1,4 +1,6 @@
-import { JsonValue, TStringParser, TValidator } from '@bemoje/util'
+import { JsonValue } from '../util/types/JsonValue'
+import { TStringParser } from '../util/types/TStringParser'
+import { TValidator } from '../util/types/TValidator'
 
 export interface IConfig<Val extends JsonValue> {
   /**

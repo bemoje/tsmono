@@ -1,0 +1,1 @@
+npx tsc packages\cli\src\index.ts --outDir packages\cli\dist --module commonjs --lib es2022 --moduleResolution node --downlevelIteration --esModuleInterop --target ES2022 --allowSyntheticDefaultImports --declaration --sourceMap

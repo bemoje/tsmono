@@ -1,8 +1,11 @@
-import { Any, ErrorParser, TStringParser, TValidator } from '@bemoje/util'
-import { Command, Option } from 'commander'
+import { Any } from '../util/types/Any'
 import { CommandBuilder } from './CommandBuilder'
 import { countInstance } from '../core/counter'
+import { ErrorParser } from '../util/errors/ErrorParser'
+import { Option } from 'commander'
 import { OutputManager } from '../core/OutputManager'
+import { TStringParser } from '../util/types/TStringParser'
+import { TValidator } from '../util/types/TValidator'
 
 export class CommandBuilderMetaData {
   subcommands: CommandBuilder[] = []
@@ -21,19 +24,19 @@ export class CommandBuilderMetaData {
     countInstance(CommandBuilderMetaData)
   }
 
-  get actionHandler(): (this: Command, ...args: any[]) => void | Promise<void> {
-    return async function defaultActionHandler(this: Command) {
-      this.builder.outputHelp()
+  get actionHandler(): (this: CommandBuilder, ...args: any[]) => void | Promise<void> {
+    return async function defaultActionHandler(this: CommandBuilder) {
+      this.outputHelp()
     }
   }
-  get errorHandler(): (this: Command, error: unknown, cmd: CommandBuilder) => void {
-    return function defaultErrorHandler(this: Command, error: unknown) {
+  get errorHandler(): (this: CommandBuilder, error: unknown, cmd: CommandBuilder) => void {
+    return function defaultErrorHandler(this: CommandBuilder, error: unknown) {
       const parsed = new ErrorParser(error)
       if (OutputManager.getInstance().debug.isEnabled) {
         console.error(parsed.prettyStack())
-        this.builder.outputError(parsed.summary())
+        this.outputError(parsed.summary())
       } else {
-        this.builder.outputError(parsed.summary())
+        this.outputError(parsed.summary())
       }
     }
   }

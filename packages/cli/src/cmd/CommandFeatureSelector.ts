@@ -44,7 +44,7 @@ export class CommandFeatureSelector {
    */
   inheritFrom(parentFeatures: CommandFeatureSelector) {
     if (!parentFeatures) return
-    if (this.cmd.isNative) this.isAutoAssignMissingOptionFlagsEnabled = true
+    if (this.cmd.meta.isNative) this.isAutoAssignMissingOptionFlagsEnabled = true
     else this.isAutoAssignMissingOptionFlagsEnabled = parentFeatures.isAutoAssignMissingOptionFlagsEnabled
     this.isAutoAssignSubCommandAliasesEnabled = parentFeatures.isAutoAssignSubCommandAliasesEnabled
     this.isPresetsEnabled = parentFeatures.isPresetsEnabled
@@ -108,7 +108,7 @@ export class CommandFeatureSelector {
    */
   protected setProperty(boolean = true, prop: keyof this, method: string, throwIfNative: boolean) {
     if (this[prop] === boolean) return this
-    if (throwIfNative && this.cmd.isNative) throw new Error(`Cannot configure ${method} for native command.`)
+    if (throwIfNative && this.cmd.meta.isNative) throw new Error(`Cannot configure ${method} for native command.`)
     Object.defineProperty(this, prop, { value: boolean, configurable: true, writable: true, enumerable: true })
     this.cmd.outputDebugMessage('featureEnabled', () => ({ [method]: boolean }))
     return this

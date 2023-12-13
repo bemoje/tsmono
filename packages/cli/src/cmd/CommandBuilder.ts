@@ -1,3 +1,4 @@
+import colors from 'ansi-colors'
 import fs from 'fs-extra'
 import isAsyncFunction from 'is-async-function'
 import os from 'os'
@@ -15,38 +16,35 @@ import {
   OptionValues,
   OptionValueSource,
 } from 'commander'
-import {
-  Any,
-  arrAssign,
-  arrLast,
-  arrSome,
-  assertThat,
-  colors,
-  ensureThat,
-  formatTableForTerminal,
-  isArray,
-  isObject,
-  isString,
-  isStringArray,
-  isStringWithNoSpacesOrDashes,
-  JsonValue,
-  objAssign,
-  realizeLazyProperty,
-  removeFile,
-  setNonEnumerable,
-} from '@bemoje/util'
+import { Any } from '../util/types/Any'
 import { ArgumentBuilder } from '../arg/ArgumentBuilder'
+import { arrAssign } from '../util/object/arrAssign'
+import { arrLast } from '../util/array/arrLast'
+import { arrSome } from '../util/array/arrSome'
 import { CommandBuilderMetaData } from './CommandBuilderMetaData'
+import { commanderBackRefs } from '../proto/overrideCommanderPrototype'
 import { CommandFeatureSelector } from './CommandFeatureSelector'
 import { countInstance } from '../core/counter'
 import { DefaultHelpConfig } from './DefaultHelpConfig'
+import { ensureThat } from '../util/validation/ensureThat'
+import { formatTableForTerminal } from '../util/node/formatTableForTerminal'
 import { IConfig } from '../types/IConfig'
 import { IPreset, IPresetPartial } from '../types/IPreset'
+import { isArray } from '../util/validation/isArray'
+import { isObject } from '../util/validation/isObject'
+import { isString } from '../util/validation/isString'
+import { isStringArray } from '../util/validation/isStringArray'
+import { isStringWithNoSpacesOrDashes } from '../util/validation/isStringWithNoSpacesOrDashes'
 import { JsonFile } from '../db/JsonFile'
+import { JsonValue } from '../util/types/JsonValue'
+import { objAssign } from '../util/object/objAssign'
 import { OptionBuilder } from '../opt/OptionBuilder'
 import { OptionHelpers } from '../opt/OptionHelpers'
 import { OutputManager } from '../core/OutputManager'
-import { overrideCommanderPrototype } from '../proto/overrideCommanderPrototype'
+import { PresetsSection } from '../db/PresetsSection'
+import { realizeLazyProperty } from '../util/object/realizeLazyProperty'
+import { removeFile } from '../util/fs/removeFile/removeFile'
+import { setNonEnumerable } from '../util/object/setNonEnumerable'
 import { splitCombinedArgvShorts } from '../core/splitCombinedArgvShorts'
 export * from 'commander'
 
@@ -54,7 +52,6 @@ export * from 'commander'
  * Wrapper around the @see Command class, for more intuitive construction.
  */
 export class CommandBuilder {
-  static readonly commanderBackRefs = new WeakMap<Command, CommandBuilder>()
   static dataDirectory = path.join(os.homedir(), 'config', 'cli')
 
   protected readonly features = new CommandFeatureSelector(this)
@@ -75,7 +72,7 @@ export class CommandBuilder {
 
     this.meta.isNative = isNative
     this.$ = new Command(name)
-    CommandBuilder.commanderBackRefs.set(this.$, this)
+    commanderBackRefs.set(this.$, this)
 
     if (parent) {
       this.parent = parent
@@ -94,19 +91,23 @@ export class CommandBuilder {
       this.inheritParentHiddenGlobals()
     }
 
-    if (!this.isNative) {
+    if (!this.meta.isNative) {
       this.assertCommandNameNotReserved(this.name)
       this.addUtilCommands()
     }
 
     if (this.features.isAutoAssignSubCommandAliasesEnabled) {
       this.assignSubCommandAliases()
-      this.assertNoDuplicateCommandNames()
+      if (!this.meta.isNative) {
+        this.assertNoDuplicateCommandNames()
+      }
     }
 
     if (this.features.isAutoAssignMissingOptionFlagsEnabled) {
       this.assignMissingOptionFlags()
-      this.assertNoDuplicateOptionNames()
+      if (!this.meta.isNative) {
+        this.assertNoDuplicateOptionNames()
+      }
     }
 
     this.meta.isInitialized = true
@@ -127,6 +128,8 @@ export class CommandBuilder {
   version(string: string) {
     this.assertNotInitialized()
     this.$.version(string)
+    const opt = this.options.find((o) => o.attributeName() === 'version')
+    if (opt) this.meta.globalOptions.push(opt)
     return this
   }
 
@@ -481,7 +484,7 @@ export class CommandBuilder {
       if (!this.meta.optValidators[key]) continue
       if (value == null) continue
       for (const isValid of this.meta.optValidators[key]) {
-        assertThat(value, isValid)
+        ensureThat(value, isValid)
       }
     }
     return parsedOptions
@@ -489,18 +492,14 @@ export class CommandBuilder {
 
   assertValidPreset(key: string, preset: IPreset) {
     const { description, presets, args, options } = preset
-    assertThat(key, isStringWithNoSpacesOrDashes)
-    assertThat(description, isString)
-    assertThat(presets, isStringArray)
-    assertThat(args, isArray)
+    ensureThat(key, isStringWithNoSpacesOrDashes)
+    ensureThat(description, isString)
+    ensureThat(presets, isStringArray)
+    ensureThat(args, isArray)
     this.assertPresetArgsOptional(args)
     this.assertValidArguments(args)
-    assertThat(options, isObject)
+    ensureThat(options, isObject)
     this.assertValidOptions(options)
-  }
-
-  get isNative() {
-    return this.meta.isNative
   }
 
   get name() {
@@ -526,17 +525,17 @@ export class CommandBuilder {
     return this.$
   }
   get hasGrandChildren() {
-    return this.meta.subcommands.some((c) => !!c.meta.subcommands.length)
+    return this.meta.subcommands.some((sub) => !!sub.meta.subcommands.length)
   }
   /**
    * Returns whether a command's last argument is variadic.
    */
-  get hasVariadicArguments() {
+  get isLastArgVariadic() {
     if (!this.arguments.length) return false
     return arrLast(this.arguments as Argument[]).variadic
   }
   get dataFilepath() {
-    return path.join(CommandBuilder.dataDirectory, this.root.name) + '.json'
+    return path.join(CommandBuilder.dataDirectory, this.root.name + '.json')
   }
 
   /**
@@ -600,19 +599,6 @@ export class CommandBuilder {
     return this.getPrefixArray().join(' ')
   }
 
-  /**
-   * Returns a command's and its children's prefix strings.
-   */
-  getPrefixStringsRecursive(filter?: (prefix: string, cmd: CommandBuilder) => boolean) {
-    const result: string[][] = []
-    for (const c of this.getChildrenIterator({ includeSelf: true })) {
-      const prefix = c.getPrefixString()
-      if (filter && !filter(prefix, c)) continue
-      result.push([prefix, c.getSummary()])
-    }
-    return result
-  }
-
   getGlobalOptions(): Option[] {
     const result: Option[] = []
     for (const anc of this.getAncestors({ includeSelf: true }).reverse()) {
@@ -628,18 +614,6 @@ export class CommandBuilder {
   getOwnAndGlobalOptions(): Option[] {
     return this.options.concat(this.getGlobalOptions())
   }
-
-  // forEachChildRecursive(
-  //   callback: (cmd: CommandBuilder) => void | true,
-  //   options?: { includeSelf?: boolean }
-  // ): void | true {
-  //   if (options?.includeSelf && callback(this)) return true
-  //   for (const sub of this.meta.subcommands) {
-  //     if (callback(sub) || sub.forEachChildRecursive(callback)) {
-  //       return true
-  //     }
-  //   }
-  // }
 
   *getChildrenIterator(options?: { includeSelf?: boolean }): Generator<CommandBuilder> {
     if (options?.includeSelf) yield this
@@ -685,7 +659,7 @@ export class CommandBuilder {
   }
   getClosestNonNativeParent() {
     for (const anc of this.getAncestorsIterator({ includeSelf: true })) {
-      if (!anc.isNative) return anc
+      if (!anc.meta.isNative) return anc
     }
     this.throwCommanderError('No non-native parent found')
   }
@@ -733,7 +707,7 @@ export class CommandBuilder {
   }
 
   protected combineVariadicArgs(result: Any[]) {
-    if (this.hasVariadicArguments && result.length && !Array.isArray(arrLast(result))) {
+    if (this.isLastArgVariadic && result.length && !Array.isArray(arrLast(result))) {
       const rest = result.splice(this.arguments.length - 1)
       result.push(rest.filter((arg) => arg != null))
     }
@@ -844,7 +818,12 @@ export class CommandBuilder {
             : (prefix: string) => {
                 return !/ (config|presets|util)( .+)?$/gi.test(prefix)
               }
-          const table = cmd.getPrefixStringsRecursive(filter)
+          const table: string[][] = []
+          for (const c of cmd.getChildrenIterator({ includeSelf: true })) {
+            const prefix = c.getPrefixString()
+            if (filter && !filter(prefix)) continue
+            table.push([prefix, c.getSummary()])
+          }
           const ansi = table.map((row) => {
             const arr = row[0].split(' ')
             const last = arr.pop() as string
@@ -864,7 +843,7 @@ export class CommandBuilder {
       }
 
       function createPresetsCommand(p: CommandBuilder) {
-        const db = cmd.db.presets
+        const db = cmd.db.presets as PresetsSection
         p.alias('p')
         p.description(
           'Edit presets in your text editor',
@@ -1158,31 +1137,29 @@ export class CommandBuilder {
     }
   }
   protected initializeActionWrapper() {
-    this.$.action(function actionWrapperSync(this: Command) {
-      const cmd = this.builder as CommandBuilder
-      // console.log(cmd.meta.actionHandler.toString())
+    this.$.action(() => {
       const isAsync =
-        isAsyncFunction(cmd.meta.actionHandler) ||
-        /^\(.+\) ?=> ?tslib_1\.__awaiter\(/.test(cmd.meta.actionHandler.toString().trim())
+        isAsyncFunction(this.meta.actionHandler) ||
+        /^\(.+\) ?=> ?tslib_1\.__awaiter\(/.test(this.meta.actionHandler.toString().trim())
 
       if (isAsync) {
         try {
-          cmd.handleOutputOptions()
-          const [args, opts] = cmd.getParsedValidArgsOptsWithPresets()
-          if (opts['help']) return Promise.resolve(cmd.outputHelp())
-          return Promise.resolve(cmd.meta.actionHandler.call(this, ...args, opts, cmd))
+          this.handleOutputOptions()
+          const [args, opts] = this.getParsedValidArgsOptsWithPresets()
+          if (opts['help']) return Promise.resolve(this.outputHelp())
+          return Promise.resolve(this.meta.actionHandler.call(this, ...args, opts, this))
         } catch (error) {
-          this.builder.meta.errorHandler.call(this, error, this.builder)
+          this.meta.errorHandler.call(this, error, this)
           return Promise.reject(error)
         }
       } else {
         try {
-          cmd.handleOutputOptions()
-          const [args, opts] = cmd.getParsedValidArgsOptsWithPresets()
-          if (opts['help']) return cmd.outputHelp()
-          cmd.meta.actionHandler.call(this, ...args, opts, cmd)
+          this.handleOutputOptions()
+          const [args, opts] = this.getParsedValidArgsOptsWithPresets()
+          if (opts['help']) return this.outputHelp()
+          this.meta.actionHandler.call(this, ...args, opts, this)
         } catch (error) {
-          this.builder.meta.errorHandler.call(this, error, this.builder)
+          this.meta.errorHandler.call(this, error, this)
         }
       }
     })
@@ -1212,5 +1189,4 @@ export class CommandBuilder {
   }
 }
 
-overrideCommanderPrototype()
 process.argv = splitCombinedArgvShorts(process.argv.slice())

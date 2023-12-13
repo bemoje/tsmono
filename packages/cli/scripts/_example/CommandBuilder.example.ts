@@ -1,6 +1,7 @@
-import { CLI } from '../cmd/CLI'
-import { isBoolean, parseBoolean } from '@bemoje/util'
-import { printCounts } from '../core/counter'
+import { CLI } from '../../src/cmd/CLI'
+import { isBoolean } from '../../src/util/validation/isBoolean'
+import { parseBoolean } from '../../src/util/string-parsers/parseBoolean'
+import { printCounts } from '../../src/core/counter'
 
 console.time('load')
 
@@ -88,7 +89,7 @@ const init = CLI('demo', (c) => {
 console.timeEnd('load')
 
 console.time('init')
-const cli = init()
+export const cli = init()
 console.timeEnd('init')
 
 console.time('exec')

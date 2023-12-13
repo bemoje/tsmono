@@ -2,7 +2,7 @@ import { AbstractJsonFileSection } from './AbstractJsonFileSection'
 import { countInstance } from '../core/counter'
 import { IPreset } from '../types/IPreset'
 import { JsonFile } from './JsonFile'
-import { objAssign } from '@bemoje/util'
+import { objAssign } from '../util/object/objAssign'
 import { OptionValues } from 'commander'
 
 /**
@@ -43,6 +43,7 @@ export class PresetsSection extends AbstractJsonFileSection<IPreset> {
    * @param options - The options for the property.
    */
   override defineProperty(key: string, options: IPreset) {
+    if (this.defaultValues[key]) throw new Error(`Cannot redefine preset '${key}'.`)
     this.defaultValues[key] = JSON.parse(JSON.stringify(options)) as IPreset
     this.assertValid(key, options)
     this.isInitialized = false
@@ -55,7 +56,7 @@ export class PresetsSection extends AbstractJsonFileSection<IPreset> {
    */
   override initialize(save = false) {
     if (this.isInitialized) return
-    const data = this.db.getSafe<IPreset>(this.prefix())
+    const data = this.db.getSafe<Record<string, IPreset>>(this.prefix())
     const presets = objAssign({}, this.defaultValues, data || {})
     const presetNames = Object.keys(presets)
     for (const preset of Object.values(presets)) {

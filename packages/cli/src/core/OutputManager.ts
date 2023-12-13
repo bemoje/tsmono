@@ -1,5 +1,7 @@
-import { Any, colors, MethodDisabler } from '@bemoje/util'
+import colors from 'ansi-colors'
+import { Any } from '../util/types/Any'
 import { countInstance } from './counter'
+import { MethodDisabler } from '../util/function/MethodDisabler'
 
 /**
  * The OutputManager class manages the output of debug messages to the console.
@@ -20,7 +22,7 @@ export class OutputManager {
   }
 
   /**
-   * The colors object from the @bemoje/util package.
+   * Ansi-colors object
    */
   readonly colors = colors
 
@@ -51,6 +53,15 @@ export class OutputManager {
   constructor() {
     countInstance(OutputManager)
     this.debug.disable()
+    colors.enabled = (() => {
+      const { FORCE_COLOR, NODE_DISABLE_COLORS, NO_COLOR, TERM } = process.env
+      return (
+        !NODE_DISABLE_COLORS &&
+        NO_COLOR == null &&
+        TERM !== 'dumb' &&
+        ((FORCE_COLOR != null && FORCE_COLOR !== '0') || (process.stdout && process.stdout.isTTY))
+      )
+    })()
   }
 
   get queueSize() {

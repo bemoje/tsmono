@@ -1,14 +1,14 @@
 {
   "jsc": {
-    "target": "es2017",
+    "target": "es2022",
     "parser": {
       "syntax": "typescript",
-      "decorators": true,
-      "dynamicImport": true
+      "decorators": false,
+      "dynamicImport": false
     },
     "transform": {
-      "decoratorMetadata": true,
-      "legacyDecorator": true
+      "decoratorMetadata": false,
+      "legacyDecorator": false
     },
     "keepClassNames": true,
     "externalHelpers": true,

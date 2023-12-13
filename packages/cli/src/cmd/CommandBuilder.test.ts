@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { colors } from '@bemoje/util'
+import colors from 'ansi-colors'
+import { CLI } from './CLI'
 import { CommandBuilder } from './CommandBuilder'
 import { OutputManager } from '../core/OutputManager'
 
@@ -58,20 +59,20 @@ describe(CommandBuilder.name, () => {
 
   describe('name', () => {
     it('should set name', () => {
-      new CommandBuilder('test', (c) => {
-        expect(c.$.name()).toBe('test')
+      new CommandBuilder('t', (c) => {
+        expect(c.$.name()).toBe('t')
       })
     })
 
     it('should throw if trying to use reserved name', () => {
-      new CommandBuilder('test', (c) => {
+      new CommandBuilder('t', (c) => {
         expect(() => c.command('u', () => {})).toThrow()
         expect(() => c.command('util', () => {})).toThrow()
       })
     })
 
     it('should not throw if trying to use reserved name if native command', () => {
-      new CommandBuilder('test', (c) => {
+      new CommandBuilder('t', (c) => {
         expect(() => c.nativeCommand('u', () => {})).not.toThrow()
         expect(() => c.nativeCommand('util', () => {})).not.toThrow()
       })
@@ -88,14 +89,14 @@ describe(CommandBuilder.name, () => {
     })
 
     it('should throw if trying to use reserved name', () => {
-      new CommandBuilder('test', (c) => {
+      new CommandBuilder('t', (c) => {
         expect(() => c.alias('u')).toThrow()
         expect(() => c.alias('util')).toThrow()
       })
     })
 
     it('should not throw if trying to use reserved name if native command', () => {
-      new CommandBuilder('test', (c) => {
+      new CommandBuilder('t', (c) => {
         expect(() => {
           c.nativeCommand('sub', (c) => {
             c.alias('u')
@@ -116,19 +117,224 @@ describe(CommandBuilder.name, () => {
     })
 
     it('should throw if trying to use reserved name', () => {
-      new CommandBuilder('test', (c) => {
+      new CommandBuilder('t', (c) => {
         expect(() => c.aliases('t', 'u')).toThrow()
         expect(() => c.aliases('tt', 'util')).toThrow()
       })
     })
 
     it('should not throw if trying to use reserved name if native command', () => {
-      new CommandBuilder('test', (c) => {
+      new CommandBuilder('t', (c) => {
         expect(() => {
           c.nativeCommand('sub', (c) => {
             c.aliases('u', 'util')
           })
         }).not.toThrow()
+      })
+    })
+  })
+
+  describe('get root', () => {
+    it('should return self if no parent', () => {
+      new CommandBuilder('t', (c) => {
+        expect(c.root).toBe(c)
+      })
+    })
+
+    it('should return the root', () => {
+      new CommandBuilder('t', (c) => {
+        c.command('sub1', (sub1) => {
+          expect(sub1.root).toBe(c)
+          sub1.command('sub2', (sub2) => {
+            expect(sub2.root).toBe(c)
+          })
+        })
+      })
+    })
+  })
+
+  it('get isRoot', () => {
+    new CommandBuilder('t', (c) => {
+      expect(c.isRoot).toBe(true)
+      c.command('sub', (sub) => {
+        expect(sub.isRoot).toBe(false)
+      })
+    })
+  })
+
+  it('get arguments', () => {
+    new CommandBuilder('t', (c) => {
+      expect(c.arguments).toBe(c.$.registeredArguments)
+    })
+  })
+
+  it('get options', () => {
+    new CommandBuilder('t', (c) => {
+      expect(c.options).toBe(c.$.options)
+    })
+  })
+
+  it('get commander', () => {
+    new CommandBuilder('t', (c) => {
+      expect(c.commander).toBe(c.$)
+    })
+  })
+
+  describe('get hasGrandChildren', () => {
+    it('should return false if has no grandchildren', () => {
+      new CommandBuilder('t', (c) => {
+        expect(c.hasGrandChildren).toBe(false)
+      })
+    })
+
+    it('should return false if has only children', () => {
+      new CommandBuilder('t', (c) => {
+        c.command('child', () => {})
+        expect(c.hasGrandChildren).toBe(false)
+      })
+    })
+
+    it('should return true if has grandchildren', () => {
+      new CommandBuilder('t', (c) => {
+        c.command('child', (s) => {
+          s.command('grand', () => {})
+        })
+        expect(c.hasGrandChildren).toBe(true)
+      })
+    })
+  })
+
+  describe('get isLastArgVariadic', () => {
+    it('should return false if has no variadic', () => {
+      new CommandBuilder('t', (c) => {
+        c.argument('[arg1]')
+        expect(c.isLastArgVariadic).toBe(false)
+      })
+    })
+
+    it('should throw if a variadic arg is not last', () => {
+      new CommandBuilder('t', (c) => {
+        c.argument('[arg1...]')
+        expect(() => c.argument('[arg2]')).toThrow()
+      })
+    })
+
+    it('should return true if last arg is variadic', () => {
+      new CommandBuilder('t', (c) => {
+        c.argument('[arg1]')
+        c.argument('[arg2...]')
+        expect(c.isLastArgVariadic).toBe(true)
+      })
+    })
+  })
+
+  it('getExecutableDir', () => {
+    new CommandBuilder('t', (c) => {
+      const spy = jest.spyOn(c.$, 'executableDir')
+      c.getExecutableDir()
+      expect(spy).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  it('getOptionValue', () => {
+    new CommandBuilder('t', (c) => {
+      const spy = jest.spyOn(c.$, 'getOptionValue')
+      c.getOptionValue('help')
+      expect(spy).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  it('getOptionValueSource', () => {
+    new CommandBuilder('t', (c) => {
+      const spy = jest.spyOn(c.$, 'getOptionValueSource')
+      c.getOptionValueSource('help')
+      expect(spy).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  it('getOptionValueSourceWithGlobals', () => {
+    new CommandBuilder('t', (c) => {
+      const spy = jest.spyOn(c.$, 'getOptionValueSourceWithGlobals')
+      c.getOptionValueSourceWithGlobals('help')
+      expect(spy).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  it('getActionHandler', () => {
+    new CommandBuilder('t', (c) => {
+      const f = () => {}
+      c.action(f)
+      expect(c.getActionHandler()).toBe(f)
+    })
+  })
+
+  it('getDescription', () => {
+    new CommandBuilder('t', (c) => {
+      const spy = jest.spyOn(c.$, 'description')
+      c.getDescription()
+      expect(spy).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  it('getSummary', () => {
+    new CommandBuilder('t', (c) => {
+      const spy = jest.spyOn(c.$, 'summary')
+      c.getSummary()
+      expect(spy).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  it('getVersion', () => {
+    new CommandBuilder('t', (c) => {
+      const spy = jest.spyOn(c.$, 'version')
+      c.getVersion()
+      expect(spy).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  it('getAlias', () => {
+    new CommandBuilder('t', (c) => {
+      const spy = jest.spyOn(c.$, 'alias')
+      c.getAlias()
+      expect(spy).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  it('getAliases', () => {
+    new CommandBuilder('t', (c) => {
+      const spy = jest.spyOn(c.$, 'aliases')
+      c.getAliases()
+      expect(spy).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  describe('getPrefixArray', () => {
+    it('should return own name if root', () => {
+      new CommandBuilder('t', (c) => {
+        expect(c.getPrefixArray()).toEqual(['t'])
+      })
+    })
+
+    it('should return command name path back to root', () => {
+      new CommandBuilder('t', (c) => {
+        c.command('sub1', (sub1) => {
+          expect(sub1.getPrefixArray()).toEqual(['t', 'sub1'])
+          sub1.command('sub2', (sub2) => {
+            expect(sub2.getPrefixArray()).toEqual(['t', 'sub1', 'sub2'])
+          })
+        })
+      })
+    })
+  })
+
+  describe('getPrefixString', () => {
+    it('should join prefixArray with spaces', () => {
+      new CommandBuilder('t', (c) => {
+        c.command('sub1', (sub1) => {
+          sub1.command('sub2', (sub2) => {
+            expect(sub2.getPrefixString()).toBe('t sub1 sub2')
+          })
+        })
       })
     })
   })
@@ -180,7 +386,7 @@ describe(CommandBuilder.name, () => {
 
     describe('disableColor', () => {
       it('should add as global option', () => {
-        const c = new CommandBuilder('t', (c) => {
+        new CommandBuilder('t', (c) => {
           c.enableBuiltinOptions({ disableColor: true })
           const disableColor = c.options.find((o) => o.attributeName() === 'disableColor')
           expect(disableColor!.attributeName()).toBe('disableColor')
@@ -312,12 +518,93 @@ describe(CommandBuilder.name, () => {
     })
 
     it('nested commands', () => {
-      new CommandBuilder('test', (test: CommandBuilder) => {
+      new CommandBuilder('t', (test: CommandBuilder) => {
         test.command('sub1', (sub1) => {
           sub1.command('sub2', (sub2) => {
-            expect(sub2.getPrefixArray()).toEqual(['test', 'sub1', 'sub2'])
+            expect(sub2.getPrefixArray()).toEqual(['t', 'sub1', 'sub2'])
           })
         })
+      })
+    })
+  })
+
+  describe('preset', () => {
+    it('should add preset', () => {
+      new CommandBuilder('t', (c) => {
+        c.preset('abc', { description: 'abc' })
+        expect(c.db.presets.defaultValues['abc']).toEqual({
+          description: 'abc',
+          presets: [],
+          args: [],
+          options: {},
+        })
+      })
+    })
+
+    it('adding preset should enable presets feature', () => {
+      new CommandBuilder('t', function (this: CommandBuilder) {
+        expect(this.features.isPresetsEnabled).toBe(false)
+        this.preset('abc', { description: 'abc' })
+        expect(this.features.isPresetsEnabled).toBe(true)
+      })
+    })
+
+    it('adding preset should add preset ', () => {
+      new CommandBuilder('t', function (this: CommandBuilder) {
+        expect(this.features.isPresetsEnabled).toBe(false)
+        this.preset('abc', { description: 'abc' })
+        expect(this.features.isPresetsEnabled).toBe(true)
+      })
+    })
+
+    it('should throw if preset already exists', () => {
+      new CommandBuilder('t', (c) => {
+        c.preset('abc', { description: 'abc' })
+        expect(() => c.preset('abc', { description: 'a' })).toThrow()
+      })
+    })
+
+    describe('arguments', () => {
+      it('should throw if trying to preset required argument', () => {
+        new CommandBuilder('t', (c) => {
+          c.argument('<arg>')
+          expect(() => c.preset('a', { description: '', args: ['value'] })).toThrow()
+        })
+      })
+
+      let result = ''
+      const init = CLI('t', (c) => {
+        c.argument('[name]')
+        c.action((name: string) => {
+          result = name
+        })
+        c.preset('john', {
+          description: '',
+          args: ['john'],
+        })
+        c.preset('anna', {
+          description: '',
+          args: ['anna'],
+        })
+      })
+
+      it('should parse presets on action', () => {
+        init().parse(['--john'], { from: 'user' })
+        expect(result).toBe('john')
+        init().parse(['--anna'], { from: 'user' })
+        expect(result).toBe('anna')
+      })
+
+      it('should let stacked presets override each other', () => {
+        init().parse('--anna --john'.split(' '), { from: 'user' })
+        expect(result).toBe('john')
+        init().parse('--john --anna'.split(' '), { from: 'user' })
+        expect(result).toBe('anna')
+      })
+
+      it('should always have arguments override preset values', () => {
+        init().parse('mia --john --anna'.split(' '), { from: 'user' })
+        expect(result).toBe('mia')
       })
     })
   })

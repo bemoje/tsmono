@@ -1,7 +1,10 @@
 import { CommandBuilder } from '../cmd/CommandBuilder'
 import { ConfigSection } from './ConfigSection'
-import { createTypedArrayValidator, createTypedListParser, isInteger, parseInteger } from '@bemoje/util'
+import { createTypedArrayValidator } from '../util/validation/createTypedArrayValidator'
+import { createTypedListParser } from '../util/string-parsers/createTypedListParser'
+import { isInteger } from '../util/validation/numbers/isInteger'
 import { JsonFile } from './JsonFile'
+import { parseInteger } from '../util/string-parsers/parseInteger'
 
 describe(ConfigSection.name, () => {
   let file: JsonFile
@@ -81,6 +84,12 @@ describe(ConfigSection.name, () => {
       const spy = jest.spyOn(section.db, 'set')
       section.initialize(true)
       expect(spy).toBeCalledWith(section.prefix(), { key: 1 }, true)
+    })
+  })
+
+  describe('prefix', () => {
+    it('should throw if key does not exist', () => {
+      expect(() => section.prefix('nonexistent')).toThrow()
     })
   })
 })
