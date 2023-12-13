@@ -1,5 +1,5 @@
-import { ObjectKey } from '../types/ObjectKey'
-import { TPlainObject } from '../types/TPlainObject'
+import type { ObjectKey } from '../types/ObjectKey'
+import type { TPlainObject } from '../types/TPlainObject'
 /**
  * Checks if the provided value is a plain object, i.e. an object created by the native base `Object` constructor.
  */

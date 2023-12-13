@@ -1,41 +1,27 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import colors from 'ansi-colors'
 import fs from 'fs-extra'
 import isAsyncFunction from 'is-async-function'
 import os from 'os'
 import path from 'path'
-import {
-  AddHelpTextPosition,
-  Argument,
-  Command,
-  CommanderError,
-  ErrorOptions,
-  HelpConfiguration,
-  HookEvent,
-  InvalidArgumentError,
-  Option,
-  OptionValues,
-  OptionValueSource,
-} from 'commander'
-import { Any } from '../util/types/Any'
+import type { Any } from '../util/types/Any'
 import { ArgumentBuilder } from '../arg/ArgumentBuilder'
 import { arrAssign } from '../util/object/arrAssign'
 import { arrLast } from '../util/array/arrLast'
 import { arrSome } from '../util/array/arrSome'
 import { CommandBuilderMetaData } from './CommandBuilderMetaData'
-import { commanderBackRefs } from '../proto/overrideCommanderPrototype'
 import { CommandFeatureSelector } from './CommandFeatureSelector'
 import { DefaultHelpConfig } from './DefaultHelpConfig'
 import { ensureThat } from '../util/validation/ensureThat'
 import { formatTableForTerminal } from '../util/node/formatTableForTerminal'
-import { IConfig } from '../types/IConfig'
-import { IPreset, IPresetPartial } from '../types/IPreset'
+import type { IConfig } from '../types/IConfig'
+import type { IPreset, IPresetPartial } from '../types/IPreset'
 import { isArray } from '../util/validation/isArray'
 import { isObject } from '../util/validation/isObject'
 import { isString } from '../util/validation/isString'
 import { isStringArray } from '../util/validation/isStringArray'
 import { isStringWithNoSpacesOrDashes } from '../util/validation/isStringWithNoSpacesOrDashes'
 import { JsonFile } from '../db/JsonFile'
-import { JsonValue } from '../util/types/JsonValue'
 import { objAssign } from '../util/object/objAssign'
 import { OptionBuilder } from '../opt/OptionBuilder'
 import { OptionHelpers } from '../opt/OptionHelpers'
@@ -45,40 +31,54 @@ import { realizeLazyProperty } from '../util/object/realizeLazyProperty'
 import { removeFile } from '../util/fs/removeFile/removeFile'
 import { setNonEnumerable } from '../util/object/setNonEnumerable'
 import { splitCombinedArgvShorts } from '../core/splitCombinedArgvShorts'
-export * from 'commander'
+import {
+  type AddHelpTextPosition,
+  Argument,
+  Command,
+  CommanderError,
+  type CommandUnknownOpts,
+  type ErrorOptions,
+  type HelpConfiguration,
+  type HookEvent,
+  InvalidArgumentError,
+  Option,
+  type OptionValues,
+  type OptionValueSource,
+  ParseOptions,
+} from '@commander-js/extra-typings'
+import { type JsonValue } from '../util/types/JsonValue'
 
 /**
  * Wrapper around the @see Command class, for more intuitive construction.
  */
-export class CommandBuilder {
+export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionValues = OptionValues> {
   static dataDirectory = path.join(os.homedir(), 'config', 'cli')
 
   protected readonly features = new CommandFeatureSelector(this)
   readonly parent: CommandBuilder | null = null
-  readonly $: Command
-  readonly meta = new CommandBuilderMetaData()
+  readonly $: Command<Args, Opts>
+  readonly meta = new CommandBuilderMetaData<Args>()
   get db() {
     return realizeLazyProperty(this, 'db', new JsonFile(this))
   }
 
   constructor(
     name: string,
-    callback?: (this: CommandBuilder, cmd: CommandBuilder) => void,
+    callback?: (this: CommandBuilder<Args, Opts>, cmd: CommandBuilder<Args, Opts>) => void,
     parent?: CommandBuilder,
     isNative = false
   ) {
     this.meta.isNative = isNative
-    this.$ = new Command(name)
-    commanderBackRefs.set(this.$, this)
+    this.$ = new Command<Args, Opts>(name)
 
     if (parent) {
       this.parent = parent
       this.parent.meta.subcommands.push(this)
       this.parent.$.addCommand(this.$)
     }
+    commanderBackRefs.set(this.$, this)
 
     this.initializeHelp()
-    this.initializeActionWrapper()
 
     if (callback) callback.call(this, this)
 
@@ -93,21 +93,22 @@ export class CommandBuilder {
       this.addUtilCommands()
     }
 
-    if (this.features.isAutoAssignSubCommandAliasesEnabled) {
-      this.assignSubCommandAliases()
-      if (!this.meta.isNative) {
-        this.assertNoDuplicateCommandNames()
+    if (this.isRoot) {
+      for (const child of this.getChildrenIterator({ includeSelf: true })) {
+        if (child.features.isAutoAssignSubCommandAliasesEnabled) {
+          child.assignSubCommandAliases()
+          if (!child.meta.isNative) {
+            child.assertNoDuplicateCommandNames()
+          }
+        }
+        if (child.features.isAutoAssignMissingOptionFlagsEnabled) {
+          child.assignMissingOptionFlags()
+          if (!child.meta.isNative) {
+            child.assertNoDuplicateOptionNames()
+          }
+        }
       }
     }
-
-    if (this.features.isAutoAssignMissingOptionFlagsEnabled) {
-      this.assignMissingOptionFlags()
-      if (!this.meta.isNative) {
-        this.assertNoDuplicateOptionNames()
-      }
-    }
-
-    this.meta.isInitialized = true
   }
 
   setRecommended() {
@@ -123,7 +124,6 @@ export class CommandBuilder {
   }
 
   version(string: string) {
-    this.assertNotInitialized()
     this.$.version(string)
     const opt = this.options.find((o) => o.attributeName() === 'version')
     if (opt) this.meta.globalOptions.push(opt)
@@ -131,7 +131,6 @@ export class CommandBuilder {
   }
 
   description(...lines: string[]) {
-    this.assertNotInitialized()
     const description = lines.join('\n')
     const summary = description.split(/(\. ?|\n|$)/)[0]
     this.$.summary(summary + '.')
@@ -140,13 +139,11 @@ export class CommandBuilder {
   }
 
   alias(alias: string) {
-    this.assertNotInitialized()
     this.assertCommandNameNotReserved(alias)
     this.$.alias(alias)
     return this
   }
   aliases(...aliases: string[]) {
-    this.assertNotInitialized()
     aliases.forEach((alias) => this.assertCommandNameNotReserved(alias))
     this.$.aliases(aliases)
     return this
@@ -158,7 +155,6 @@ export class CommandBuilder {
     disableStderr?: boolean
     disableStdout?: boolean
   }) {
-    this.assertNotInitialized()
     if (!options || options.debug) this.globalOption('-D, --debug', 'Output debugging information.')
     if (!options || options.disableColor) this.globalOption('-C, --disable-color', 'Disable color in terminal output.')
     if (!options || options.disableStderr) this.globalOption('-E, --disable-stderr', 'Mute all output to stderr.')
@@ -169,7 +165,6 @@ export class CommandBuilder {
   argument(name: string, description?: string): this
   argument(name: string, cb: (opt: ArgumentBuilder, cmd: this) => void): this
   argument(name: string, cb?: string | ((arg: ArgumentBuilder, cmd: this) => void)): this {
-    this.assertNotInitialized()
     const ins = new ArgumentBuilder(this, name)
     this.$.addArgument(ins.$)
     if (typeof cb === 'function') {
@@ -182,7 +177,6 @@ export class CommandBuilder {
   option(flags: string, description?: string): this
   option(flags: string, cb?: (opt: OptionBuilder, cmd: this) => void): this
   option(flags: string, cb?: string | ((opt: OptionBuilder, cmd: this) => void)): this {
-    this.assertNotInitialized()
     const ins = new OptionBuilder(this, flags)
     if (this.hasIdenticalParentOption(ins.$)) return this
     this.$.addOption(ins.$)
@@ -207,40 +201,42 @@ export class CommandBuilder {
       if (opt.hidden) this.meta.hiddenGlobalOptions.add(opt)
     })
   }
-  command(name: string, cb: (this: CommandBuilder, cmd: CommandBuilder) => void): this {
-    this.assertNotInitialized()
-    new CommandBuilder(name, cb, this)
+  command<A extends Any[] = unknown[], O extends OptionValues = OptionValues>(
+    name: string,
+    cb: (this: CommandBuilder<A, O>, cmd: CommandBuilder<A, O>) => void
+  ): this {
+    new CommandBuilder<A, O>(name, cb, this)
     return this
   }
-  nativeCommand(name: string, cb: (this: CommandBuilder, cmd: CommandBuilder) => void): this {
-    this.assertNotInitialized()
-    new CommandBuilder(name, cb, this, true)
+  nativeCommand<A extends Any[] = unknown[], O extends OptionValues = OptionValues>(
+    name: string,
+    cb: (this: CommandBuilder<A, O>, cmd: CommandBuilder<A, O>) => void
+  ): this {
+    new CommandBuilder<A, O>(name, cb, this, true)
     return this
   }
-  action<T extends (...args: Any[]) => void | Promise<void>>(fn: T): this {
-    this.assertNotInitialized()
-    Object.defineProperty(this.meta, 'actionHandler', { value: fn, configurable: true })
+  action(fn: (...args: any[]) => void | Promise<void>): this {
+    const isAsync = isAsyncFunction(fn) || /^\(.+\) ?=> ?tslib_1\.__awaiter\(/.test(fn.toString().trim())
+    this.meta.isActionAsync = isAsync
+    Object.defineProperty(this.meta, 'actionHandler', { value: fn, configurable: false, writable: false })
+    this.initializeActionWrapper(isAsync)
     return this
   }
-  errorHandler(fn: (this: Command, error: unknown, cmd: CommandBuilder) => void) {
-    this.assertNotInitialized()
+  errorHandler(fn: (this: Command, error: unknown, cmd: CommandBuilder<Args, Opts>) => void) {
     Object.defineProperty(this.meta, 'errorHandler', { value: fn, configurable: true })
     return this
   }
   appData(key: string, value: JsonValue) {
-    this.assertNotInitialized()
     this.features.appData(true)
     this.db.appData.defineProperty(key, value)
     return this
   }
   config(key: string, entry: IConfig<JsonValue>) {
-    this.assertNotInitialized()
     this.features.config(true)
     this.db.config.defineProperty(key, entry)
     return this
   }
   preset(name: string, preset: IPresetPartial) {
-    this.assertNotInitialized()
     this.features.presets()
     this.meta.presetOptionKeys.push(name)
     this.db.presets.defineProperty(name, {
@@ -252,27 +248,22 @@ export class CommandBuilder {
     return this
   }
   presetsEnabled(boolean = true) {
-    this.assertNotInitialized()
     this.features.presets(boolean)
     return this
   }
   autoAssignMissingOptionFlags(boolean = true) {
-    this.assertNotInitialized()
     this.features.autoAssignMissingOptionFlags(boolean)
     return this
   }
   autoAssignSubCommandAliases(boolean = true) {
-    this.assertNotInitialized()
     this.features.autoAssignSubCommandAliases(boolean)
     return this
   }
   allowExcessArguments(bool = true) {
-    this.assertNotInitialized()
     this.$.allowExcessArguments(bool)
     return this
   }
   allowUnknownOption(bool = true) {
-    this.assertNotInitialized()
     this.$.allowUnknownOption(bool)
     return this
   }
@@ -280,12 +271,10 @@ export class CommandBuilder {
    * Register callback to use as replacement for calling process.exit.
    */
   exitOverride(callback?: (err: CommanderError) => never | void): this {
-    this.assertNotInitialized()
     this.$.exitOverride(callback)
     return this
   }
   throwInsteadOfProcessExit() {
-    this.assertNotInitialized()
     const onErr = (err: unknown) => {
       throw err
     }
@@ -295,8 +284,10 @@ export class CommandBuilder {
   /**
    * Add hook for life cycle event.
    */
-  hook(event: HookEvent, listener: (thisCommand: Command, actionCommand: Command) => void | Promise<void>): this {
-    this.assertNotInitialized()
+  hook(
+    event: HookEvent,
+    listener: (thisCommand: CommandUnknownOpts, actionCommand: CommandUnknownOpts) => void | Promise<void>
+  ): this {
     this.$.hook(event, listener)
     return this
   }
@@ -306,7 +297,6 @@ export class CommandBuilder {
    * or with a subclass of Help by overriding createHelp().
    */
   configureHelp(configuration: HelpConfiguration): this {
-    this.assertNotInitialized()
     this.$.configureHelp(configuration)
     return this
   }
@@ -315,7 +305,6 @@ export class CommandBuilder {
    * Display the help or a custom message after an error occurs.
    */
   showHelpAfterError(displayHelp?: boolean | string): this {
-    this.assertNotInitialized()
     this.$.showHelpAfterError(displayHelp)
     return this
   }
@@ -324,7 +313,6 @@ export class CommandBuilder {
    * Display suggestion of similar commands for unknown commands, or options for unknown options.
    */
   showSuggestionAfterError(displaySuggestion?: boolean): this {
-    this.assertNotInitialized()
     this.$.showSuggestionAfterError(displaySuggestion)
     return this
   }
@@ -336,7 +324,6 @@ export class CommandBuilder {
    * and 'beforeAll' or 'afterAll' to affect this command and all its subcommands.
    */
   addHelpText(position: AddHelpTextPosition, text: string) {
-    this.assertNotInitialized()
     this.$.addHelpText(position, text)
     return this
   }
@@ -345,7 +332,6 @@ export class CommandBuilder {
   }
 
   hideGlobalOptions(...names: string[]) {
-    this.assertNotInitialized()
     const globals = this.getGlobalOptions()
     names = names.length ? names : globals.map((opt) => opt.attributeName())
     for (const name of names) {
@@ -364,7 +350,6 @@ export class CommandBuilder {
     return this
   }
   unhideGlobalOptions(...names: string[]) {
-    this.assertNotInitialized()
     const globals = this.getGlobalOptions()
     names = names.length ? names : globals.map((opt) => opt.attributeName())
     for (const name of names) {
@@ -385,7 +370,6 @@ export class CommandBuilder {
    * Set the directory for searching for executable subcommands of this command.
    */
   executableDir(path: string): this {
-    this.assertNotInitialized()
     this.$.executableDir(path)
     return this
   }
@@ -394,7 +378,6 @@ export class CommandBuilder {
    * Store option value.
    */
   setOptionValue(key: string, value: unknown): this {
-    this.assertNotInitialized()
     this.$.setOptionValue(key, value)
     return this
   }
@@ -403,12 +386,10 @@ export class CommandBuilder {
    * Store option value and where the value came from.
    */
   setOptionValueWithSource(key: string, value: unknown, source: OptionValueSource): this {
-    this.assertNotInitialized()
     this.$.setOptionValueWithSource(key, value, source)
     return this
   }
   setDataFilepath(filepath: string) {
-    this.assertNotInitialized()
     Object.defineProperty(this, 'dataFilepath', { value: filepath })
     if (Object.hasOwn(this, 'db') && Object.hasOwn(this.db, 'db')) {
       this.db.db.setFilepath(filepath)
@@ -451,7 +432,7 @@ export class CommandBuilder {
   parseOptions(opts: OptionValues) {
     for (const [key, value] of Object.entries(opts)) {
       const parse = this.meta.optParsers[key]
-      opts[key] = parse ? (Array.isArray(value) ? value.map(parse) : parse(value)) : value
+      opts[key] = parse ? (Array.isArray(value) ? value.map(parse) : parse(value as string)) : value
     }
     return opts
   }
@@ -677,8 +658,8 @@ export class CommandBuilder {
     return [args, opts]
   }
 
-  getParsedValidArgsWithPresets<T>(presetArgs: T[][]) {
-    const result: T[] = arrAssign([], ...presetArgs, this.parseArguments(this.$.args))
+  getParsedValidArgsWithPresets(presetArgs: Any[][]) {
+    const result = arrAssign([], ...presetArgs, this.parseArguments(this.$.args))
     this.combineVariadicArgs(result)
     this.assertValidArguments(result)
     return this.padArgsWithUndefinedUntilExpectedLength(result)
@@ -934,55 +915,6 @@ export class CommandBuilder {
             console.info(db.getAll())
           })
         })
-        /*
-        config.option('--editor [cmd]', (o) => {
-          o.description('The command to launch your preferred text editor.')
-        })
-        config.argument('[action]', (a) => {
-          a.description('The action to perform.')
-          a.choices(['edit', 'list', 'get', 'set', 'reset'])
-          a.default('edit')
-        })
-        config.argument('[key]', (a) => {
-          a.description('Property key (if applicable)')
-        })
-        config.argument('[value]', (a) => {
-          a.description('Value to set (if applicable)')
-        })
-        config.action(
-          async (action: string, key: string, value: string, opts: { editor: string }, config: CommandBuilder) => {
-            const cmd = config.getClosestNonNativeParent()
-            const cfg = cmd.db.config
-            if (!action || action === 'edit') {
-              cfg.edit(opts.editor)
-              return console.info(cfg.getAll())
-            } else if (action === 'list') {
-              return console.dir(
-                cfg.keys.map((key: string) => {
-                  return {
-                    key,
-                    description: cfg.descriptions[key],
-                    value: cfg.get(key),
-                    defaultValue: cfg.defaultValues,
-                  }
-                })
-              )
-            } else if (action === 'get') {
-              if (key) return console.log(cfg.get(key))
-              else return console.log(cfg.getAll())
-            } else if (action === 'set') {
-              const from = cfg.get(key)
-              const parse = cfg.parsers[key]
-              const to = typeof parse === 'function' ? cfg.parsers[key](value) : value
-              cfg.set(key, to)
-              return console.info({ changed: key, from, to })
-            } else if (action === 'reset') {
-              if (key) cfg.reset(key)
-              else cfg.resetAll()
-              return console.info(cfg.getAll())
-            }
-          }
-        )*/
       }
     })
   }
@@ -1133,33 +1065,38 @@ export class CommandBuilder {
       }
     }
   }
-  protected initializeActionWrapper() {
-    this.$.action(() => {
-      const isAsync =
-        isAsyncFunction(this.meta.actionHandler) ||
-        /^\(.+\) ?=> ?tslib_1\.__awaiter\(/.test(this.meta.actionHandler.toString().trim())
-
-      if (isAsync) {
-        try {
-          this.handleOutputOptions()
-          const [args, opts] = this.getParsedValidArgsOptsWithPresets()
-          if (opts['help']) return Promise.resolve(this.outputHelp())
-          return Promise.resolve(this.meta.actionHandler.call(this, ...args, opts, this))
-        } catch (error) {
-          this.meta.errorHandler.call(this, error, this)
-          return Promise.reject(error)
-        }
-      } else {
+  protected initializeActionWrapper(isAsync = false) {
+    if (isAsync) {
+      this.$.action(async () => {
         try {
           this.handleOutputOptions()
           const [args, opts] = this.getParsedValidArgsOptsWithPresets()
           if (opts['help']) return this.outputHelp()
-          this.meta.actionHandler.call(this, ...args, opts, this)
+          type TArgs = typeof this.$.args
+          const owg = this.$.optsWithGlobals()
+          type TOpts = typeof owg
+          await this.meta.actionHandler.call(this, ...(args as TArgs), opts as TOpts, this)
         } catch (error) {
           this.meta.errorHandler.call(this, error, this)
         }
-      }
-    })
+      })
+    } else {
+      this.$.action(() => {
+        try {
+          this.handleOutputOptions()
+          const [args, opts] = this.getParsedValidArgsOptsWithPresets()
+          if (opts['help']) return this.outputHelp()
+          // type TArgs = ReturnTypesOfFunctionArray<typeof this.meta.argParsers>
+          // type TOpts = ReturnTypesOfFunctionMap<typeof this.meta.optParsers>
+          type TArgs = typeof this.$.args
+          const owg = this.$.optsWithGlobals()
+          type TOpts = typeof owg
+          this.meta.actionHandler.call(this, ...(args as TArgs), opts as TOpts, this)
+        } catch (error) {
+          this.meta.errorHandler.call(this, error, this)
+        }
+      })
+    }
   }
 
   protected initializeHelp() {
@@ -1182,9 +1119,46 @@ export class CommandBuilder {
       this.throwCommanderError(`Name '${name}' is reserved and is not available as name or alias.`)
     }
   }
-  protected assertNotInitialized() {
-    if (this.meta.isInitialized) this.throwCommanderError('Command already initialized: ' + this.name)
-  }
 }
 
 process.argv = splitCombinedArgvShorts(process.argv.slice())
+
+export const commanderBackRefs = new WeakMap<Command<Any, Any>, CommandBuilder<Any, Any>>()
+const oldParse = Command.prototype.parse
+Command.prototype.parse = function parse(this: Command, argv?: readonly string[], options?: ParseOptions) {
+  if (argv) {
+    argv = splitCombinedArgvShorts(argv.slice())
+    this.builder.meta.rawArgs = argv.slice(options?.from === 'user' ? 0 : 2)
+  } else {
+    this.builder.meta.rawArgs = process.argv.slice(2)
+  }
+  return oldParse.call(this, argv, options)
+}
+
+const oldParseAsync = Command.prototype.parseAsync
+Command.prototype.parseAsync = async function (this: Command, argv?: readonly string[], options?: ParseOptions) {
+  if (argv) {
+    argv = splitCombinedArgvShorts(argv.slice())
+    this.builder.meta.rawArgs = argv.slice(options?.from === 'user' ? 0 : 2)
+  } else {
+    this.builder.meta.rawArgs = process.argv.slice(2)
+  }
+  return await oldParseAsync.call(this, argv, options)
+}
+Object.defineProperty(Command.prototype, 'builder', {
+  get(this: Command) {
+    const ins = commanderBackRefs.get(this)
+    if (!ins) throw new Error(`CommandBuilder not found for command ${this.name()}`)
+    return ins
+  },
+})
+
+declare module '@commander-js/extra-typings' {
+  interface Command {
+    get builder(): CommandBuilder
+  }
+}
+
+export function CLI(name: string, cb: (cmd: CommandBuilder) => void) {
+  return new CommandBuilder(name, cb).commander
+}

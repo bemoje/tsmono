@@ -1,13 +1,14 @@
-import { Any } from '../util/types/Any'
+import type { Any } from '../util/types/Any'
 import { CommandBuilder } from './CommandBuilder'
 import { ErrorParser } from '../util/errors/ErrorParser'
-import { Option } from 'commander'
+import { Option } from '@commander-js/extra-typings'
 import { OutputManager } from '../core/OutputManager'
-import { TStringParser } from '../util/types/TStringParser'
-import { TValidator } from '../util/types/TValidator'
+import type { TStringParser } from '../util/types/TStringParser'
+import type { TValidator } from '../util/types/TValidator'
 
-export class CommandBuilderMetaData {
+export class CommandBuilderMetaData<Args extends Any[] = unknown[]> {
   subcommands: CommandBuilder[] = []
+  optsMap: Record<string, Option> = {}
   globalOptions: Option[] = []
   hiddenGlobalOptions = new Set<Option>()
   presetOptionKeys: string[] = []
@@ -17,7 +18,7 @@ export class CommandBuilderMetaData {
   optValidators: Record<string, TValidator<Any>[]> = {}
   rawArgs: string[] = []
   isNative = false
-  isInitialized = false
+  isActionAsync = false
 
   get actionHandler(): (this: CommandBuilder, ...args: any[]) => void | Promise<void> {
     return async function defaultActionHandler(this: CommandBuilder) {

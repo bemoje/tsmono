@@ -6,17 +6,17 @@ describe('arrSome', () => {
     expect(
       arrSome(arr, (element: any) => {
         return element.length > 5
-      }),
+      })
     ).toBe(false)
     expect(
       arrSome(arr, (element: any) => {
         return element.length === 5
-      }),
+      })
     ).toBe(true)
     expect(
       arrSome([], (element: any) => {
         return element.length === 5
-      }),
+      })
     ).toBe(false)
   })
 

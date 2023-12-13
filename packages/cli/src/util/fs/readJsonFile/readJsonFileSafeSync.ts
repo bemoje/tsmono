@@ -1,5 +1,5 @@
 import fs from 'fs-extra'
-import { IReadJsonFileOptions } from '../types/IReadJsonFileOptions'
+import type { IReadJsonFileOptions } from '../types/IReadJsonFileOptions'
 
 /**
  * Reads a JSON file and then parses it into an object.

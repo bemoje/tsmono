@@ -1,4 +1,4 @@
-import { Any } from '../types/Any'
+import type { Any } from '../types/Any'
 
 /**
  * Creates a function that merges objects based on a predicate function.

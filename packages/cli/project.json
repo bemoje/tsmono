@@ -5,15 +5,16 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nx/rollup:rollup",
+      "executor": "nx:run-script",
       "outputs": ["{options.outputPath}"],
       "options": {
+        "script": "build",
         "outputPath": "dist/packages/cli",
         "main": "packages/cli/src/index.ts",
         "tsConfig": "packages/cli/tsconfig.lib.json",
         "assets": [],
         "project": "packages/cli/package.json",
-        "compiler": "swc",
+        "compiler": "tsc",
         "format": ["cjs", "esm"]
       }
     },

@@ -1,6 +1,6 @@
 import colors from 'ansi-colors'
 import path from 'path'
-import { Any } from '../types/Any'
+import type { Any } from '../types/Any'
 import { isPlainObject } from '../validation/isPlainObject'
 import { isPrimitive } from '../validation/isPrimitive'
 import { regexEscapeString } from '../regex/regexEscapeString'

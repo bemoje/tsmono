@@ -1,5 +1,5 @@
-import { DeepArray } from './DeepArray'
-import { ObjectKey } from './ObjectKey'
+import type { DeepArray } from './DeepArray'
+import type { ObjectKey } from './ObjectKey'
 
 /**
  * Recursively defined object with objects+arrays with values of a given type V.

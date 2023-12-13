@@ -1,5 +1,5 @@
 import { arrLast } from '../util/array/arrLast'
-import { Option } from 'commander'
+import { Option } from '@commander-js/extra-typings'
 import { strEnsureStartsWith } from '../util/string/strEnsureStartsWith'
 
 /**

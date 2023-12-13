@@ -1,5 +1,5 @@
-import { DeepObject } from './DeepObject'
-import { JsonRawPrimitive } from './JsonRawPrimitive'
+import type { DeepObject } from './DeepObject'
+import type { JsonRawPrimitive } from './JsonRawPrimitive'
 
 /**
  * Return-type of parsed JSON object.

@@ -1,6 +1,6 @@
 import { defaultOpenInEditorCommand } from '../../os/defaultOpenInEditorCommand'
 import { execSync } from 'child_process'
-import { IGetUserInputFromEditorOptions } from './IGetUserInputFromEditorOptions'
+import type { IGetUserInputFromEditorOptions } from './IGetUserInputFromEditorOptions'
 import { readFileSync } from '../readFile/readFileSync'
 import { strEnsureStartsWith } from '../../string/strEnsureStartsWith'
 import { tempFileSync } from '../tempFile/tempFileSync'

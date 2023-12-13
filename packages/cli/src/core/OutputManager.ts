@@ -1,5 +1,5 @@
 import colors from 'ansi-colors'
-import { Any } from '../util/types/Any'
+import type { Any } from '../util/types/Any'
 import { MethodDisabler } from '../util/function/MethodDisabler'
 
 /**

@@ -1,9 +1,10 @@
 import { CommandBuilder } from '../cmd/CommandBuilder'
-import { Option, OptionValues } from 'commander'
+import { Option } from '@commander-js/extra-typings'
 import { OptionArgumentParserSelector } from './OptionArgumentParserSelector'
 import { OptionArgumentValidatorSelector } from './OptionArgumentValidatorSelector'
 import { OptionHelpers } from './OptionHelpers'
 import { OptionReader } from './OptionReader'
+import type { OptionValues } from '@commander-js/extra-typings'
 import { realizeLazyProperty } from '../util/object/realizeLazyProperty'
 
 /**

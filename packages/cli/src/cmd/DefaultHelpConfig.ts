@@ -1,7 +1,7 @@
 import colors from 'ansi-colors'
-import { Argument, Command, Help, Option } from 'commander'
+import { Argument, Command, Help, Option } from '@commander-js/extra-typings'
 
-export const DefaultHelpConfig: Partial<Help> = {
+export const DefaultHelpConfig = {
   helpWidth: undefined,
   showGlobalOptions: true,
   sortSubcommands: false,
@@ -82,7 +82,7 @@ function formatHelp(this: Help, cmd: Command) {
   }
 }
 
-function subcommandTerm(this: Help, cmd: Command) {
+function subcommandTerm(this: Help, cmd: Command): string {
   const args = cmd.registeredArguments.map((arg) => this.argumentTerm(arg)).join(' ')
   const parent = cmd.parent || cmd
   const hasAliases = !cmd.parent || parent.commands.some((c) => !!c.alias())

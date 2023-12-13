@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { CommandBuilder } from '../cmd/CommandBuilder'
-import { Option } from 'commander'
+import { Option } from '@commander-js/extra-typings'
 import { OptionArgumentParserSelector } from './OptionArgumentParserSelector'
 import { OptionArgumentValidatorSelector } from './OptionArgumentValidatorSelector'
 import { OptionBuilder } from './OptionBuilder'

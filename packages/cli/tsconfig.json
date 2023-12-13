@@ -1,9 +1,19 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "module": "commonjs",
-    "forceConsistentCasingInFileNames": true,
+    "module": "CommonJS",
+    "target": "ES2022",
     "strict": true,
+    "verbatimModuleSyntax": false,
+    "declaration": true,
+    "sourceMap": true,
+    "declarationMap": true,
+    "sourceRoot": "src",
+
+    // "module": "commonjs",
+    "forceConsistentCasingInFileNames": true,
+    "disableSourceOfProjectReferenceRedirect": true,
+    // "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,

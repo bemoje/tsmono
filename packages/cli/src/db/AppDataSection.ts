@@ -1,6 +1,6 @@
 import { AbstractJsonFileSection } from './AbstractJsonFileSection'
 import { JsonFile } from './JsonFile'
-import { JsonValue } from '../util/types/JsonValue'
+import type { JsonValue } from '../util/types/JsonValue'
 
 /**
  * A class that represents the appdata section of the JSON file used as simple database.
@@ -39,7 +39,7 @@ export class AppDataSection<Val extends JsonValue = JsonValue> extends AbstractJ
    */
   override initialize(save = false) {
     if (this.isInitialized) return
-    const data = this.db.getSafe<typeof this.defaultValues>(this.prefix())
+    const data = this.db.getSafe<Record<string, Val>>(this.prefix())
     if (!data) this.db.set(this.prefix(), this.defaultValues, save)
     this.isInitialized = true
   }

@@ -1,8 +1,8 @@
-import { CLI, CommandBuilder } from '../../src'
+import { CommandBuilder } from '../cmd/CommandBuilder'
 
 console.time('load')
 
-const init = CLI('demo', (c) => {
+const cli = new CommandBuilder('demo', (c) => {
   c.version('0.0.1')
   c.description('A CLI example')
   c.setRecommended()
@@ -23,9 +23,8 @@ const init = CLI('demo', (c) => {
 console.timeEnd('load')
 
 console.time('init')
-const cli = init()
 console.timeEnd('init')
 
 console.time('exec')
-cli.parse()
+cli.$.parse()
 console.timeEnd('exec')

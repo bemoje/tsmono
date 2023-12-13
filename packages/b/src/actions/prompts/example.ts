@@ -1,6 +1,6 @@
-import { execInherit } from '@bemoje/util'
-import { CLI_LIST } from '../../cli/list'
+import { CLI_LIST } from './list'
 import { commandSearchPrompt } from './commandSearchPrompt/commandSearchPrompt'
+import { execInherit } from '@bemoje/util'
 
 commandSearchPrompt(CLI_LIST, {
   defaultValue: 'b',

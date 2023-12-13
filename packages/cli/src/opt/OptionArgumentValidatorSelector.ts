@@ -1,12 +1,12 @@
 import { OptionBuilder } from './OptionBuilder'
-import { TValidator } from '../util/types/TValidator'
+import type { TValidator } from '../util/types/TValidator'
 import { ValidatorSelector } from '../core/ValidatorSelector'
 
 export class OptionArgumentValidatorSelector extends ValidatorSelector<OptionBuilder> {
   constructor(builder: OptionBuilder) {
     super(builder)
   }
-  custom<O>(validator: TValidator<O>) {
+  custom<T>(validator: TValidator<T>) {
     const name = this.builder.$.attributeName()
     const obj = this.builder.cmd.meta.optValidators
     if (!obj[name]) obj[name] = []

@@ -1,4 +1,4 @@
-import { ObjectKey } from '../types/ObjectKey'
+import type { ObjectKey } from '../types/ObjectKey'
 import { objUpdatePropertyDescriptors } from './objUpdatePropertyDescriptors'
 
 /**

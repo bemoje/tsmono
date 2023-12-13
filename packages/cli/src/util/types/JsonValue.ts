@@ -1,6 +1,6 @@
-import { JsonArray } from './JsonArray'
-import { JsonObject } from './JsonObject'
-import { JsonRawPrimitive } from './JsonRawPrimitive'
+import type { JsonArray } from './JsonArray'
+import type { JsonObject } from './JsonObject'
+import type { JsonRawPrimitive } from './JsonRawPrimitive'
 
 /**
  * Any JSON value. Any JSON.parse() return value.

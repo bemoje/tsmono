@@ -1,11 +1,11 @@
 import { AbstractJsonFileSection } from './AbstractJsonFileSection'
 import { ensureThat } from '../util/validation/ensureThat'
-import { IConfig } from '../types/IConfig'
+import type { IConfig } from '../types/IConfig'
 import { JsonFile } from './JsonFile'
-import { JsonValue } from '../util/types/JsonValue'
+import type { JsonValue } from '../util/types/JsonValue'
 import { objAssign } from '../util/object/objAssign'
-import { TStringParser } from '../util/types/TStringParser'
-import { TValidator } from '../util/types/TValidator'
+import type { TStringParser } from '../util/types/TStringParser'
+import type { TValidator } from '../util/types/TValidator'
 
 /**
  * A class that represents the user-config section of the JSON file used as simple database.
@@ -66,7 +66,7 @@ export class ConfigSection<Val extends JsonValue = JsonValue> extends AbstractJs
    */
   override initialize(save = false) {
     if (this.isInitialized) return
-    const data = this.db.getSafe<typeof this.defaultValues>(this.prefix())
+    const data = this.db.getSafe<Record<string, Val>>(this.prefix())
     const result = objAssign({}, JSON.parse(JSON.stringify(this.defaultValues)), data || {})
     this.db.set(this.prefix(), result, save)
     this.isInitialized = true

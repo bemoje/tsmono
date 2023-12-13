@@ -1,8 +1,8 @@
 import { AbstractJsonFileSection } from './AbstractJsonFileSection'
-import { IPreset } from '../types/IPreset'
+import type { IPreset } from '../types/IPreset'
 import { JsonFile } from './JsonFile'
 import { objAssign } from '../util/object/objAssign'
-import { OptionValues } from 'commander'
+import type { OptionValues } from '@commander-js/extra-typings'
 
 /**
  * A class that represents the user-presets section of the JSON file used as simple database.
@@ -75,7 +75,7 @@ export class PresetsSection extends AbstractJsonFileSection<IPreset> {
    * @param values - The values to set.
    * @param save - Indicates whether to save the section after setting the values.
    */
-  override async setAll(presets: typeof this.defaultValues, save = true) {
+  override async setAll(presets: Record<string, IPreset>, save = true) {
     if (!presets['defaults']) presets['defaults'] = JSON.parse(JSON.stringify(this.defaultValues['defaults']))
     super.setAll(presets, save)
   }

@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import colors from 'ansi-colors'
-import { CLI } from './CLI'
 import { CommandBuilder } from './CommandBuilder'
 import { OutputManager } from '../core/OutputManager'
 
@@ -16,10 +15,6 @@ describe(CommandBuilder.name, () => {
         c.version('0.0.0')
         expect(spy).toHaveBeenCalledWith('0.0.0')
       })
-    })
-
-    it('should throw if already initialized', () => {
-      expect(() => new CommandBuilder('t').version('0.0.0')).toThrow()
     })
   })
 
@@ -577,37 +572,38 @@ describe(CommandBuilder.name, () => {
       })
 
       let result = ''
-      const init = CLI('t', (c) => {
-        c.argument('[name]')
-        c.action((name: string) => {
-          result = name
+      const t = () =>
+        new CommandBuilder('t', (c) => {
+          c.argument('[name]')
+          c.action((name: string) => {
+            result = name
+          })
+          c.preset('john', {
+            description: '',
+            args: ['john'],
+          })
+          c.preset('anna', {
+            description: '',
+            args: ['anna'],
+          })
         })
-        c.preset('john', {
-          description: '',
-          args: ['john'],
-        })
-        c.preset('anna', {
-          description: '',
-          args: ['anna'],
-        })
-      })
 
       it('should parse presets on action', () => {
-        init().parse(['--john'], { from: 'user' })
+        t().$.parse(['--john'], { from: 'user' })
         expect(result).toBe('john')
-        init().parse(['--anna'], { from: 'user' })
+        t().$.parse(['--anna'], { from: 'user' })
         expect(result).toBe('anna')
       })
 
       it('should let stacked presets override each other', () => {
-        init().parse('--anna --john'.split(' '), { from: 'user' })
+        t().$.parse('--anna --john'.split(' '), { from: 'user' })
         expect(result).toBe('john')
-        init().parse('--john --anna'.split(' '), { from: 'user' })
+        t().$.parse('--john --anna'.split(' '), { from: 'user' })
         expect(result).toBe('anna')
       })
 
       it('should always have arguments override preset values', () => {
-        init().parse('mia --john --anna'.split(' '), { from: 'user' })
+        t().$.parse('mia --john --anna'.split(' '), { from: 'user' })
         expect(result).toBe('mia')
       })
     })

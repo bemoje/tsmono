@@ -1,4 +1,4 @@
-import { JsonDefinedPrimitive } from './JsonDefinedPrimitive'
+import type { JsonDefinedPrimitive } from './JsonDefinedPrimitive'
 
 /**
  * All supported primitive types in JSON.

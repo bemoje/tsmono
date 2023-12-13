@@ -1,4 +1,4 @@
-import { TStringParser } from '../types/TStringParser'
+import type { TStringParser } from '../types/TStringParser'
 
 /**
  * Creates a parser function that parses a delimited string into a list of typed values.

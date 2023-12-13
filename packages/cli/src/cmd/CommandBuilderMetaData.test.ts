@@ -1,5 +1,5 @@
 import { CommandBuilderMetaData } from './CommandBuilderMetaData'
-import { Option } from 'commander'
+import { Option } from '@commander-js/extra-typings'
 
 describe(CommandBuilderMetaData.name, () => {
   describe('constructor', () => {
@@ -15,7 +15,6 @@ describe(CommandBuilderMetaData.name, () => {
       expect(meta).toHaveProperty('optValidators', {})
       expect(meta).toHaveProperty('rawArgs', [])
       expect(meta).toHaveProperty('isNative', false)
-      expect(meta).toHaveProperty('isInitialized', false)
     })
 
     it('actionHandler', () => {

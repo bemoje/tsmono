@@ -3,9 +3,9 @@ import { createTypedArrayValidator } from '../util/validation/createTypedArrayVa
 import { isInteger } from '../util/validation/numbers/isInteger'
 import { isString } from '../util/validation/isString'
 import { isValidNumber } from '../util/validation/numbers/isValidNumber'
-import { JsonValue } from '../util/types/JsonValue'
+import type { JsonValue } from '../util/types/JsonValue'
 import { OptionBuilder } from '../opt/OptionBuilder'
-import { TValidator } from '../util/types/TValidator'
+import type { TValidator } from '../util/types/TValidator'
 
 export abstract class ValidatorSelector<Builder extends OptionBuilder | ArgumentBuilder> {
   constructor(protected readonly builder: Builder) {}

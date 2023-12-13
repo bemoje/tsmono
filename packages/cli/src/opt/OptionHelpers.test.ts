@@ -1,4 +1,4 @@
-import { Option } from 'commander'
+import { Option } from '@commander-js/extra-typings'
 import { OptionHelpers } from './OptionHelpers'
 
 describe(OptionHelpers.getArgumentName.name, () => {

@@ -1,8 +1,10 @@
-import { CLI, execInherit, printCounts, strSplitCamelCase } from '@bemoje/cli'
+import { CommandBuilder } from '../cmd/CommandBuilder'
+import { execInherit } from '../util/node/execInherit'
+import { strSplitCamelCase } from '../util/string/strSplitCamelCase'
 
 console.time('load')
 
-const init = CLI('bFindIn', (b) => {
+const cli = new CommandBuilder('bFindIn', (b) => {
   b.setRecommended()
   b.version('0.0.1')
   b.description(
@@ -160,6 +162,10 @@ const init = CLI('bFindIn', (b) => {
     description: 'Print matches found in each file',
     options: { count: false, numbers: true, column: true, printLongLines: false, onlyMatching: true, width: 100 },
   })
+  b.preset('#paths', {
+    description: 'Print only paths to files with matches',
+    options: { paths: true, maxCount: 1, silent: true },
+  })
   b.preset('#bin', {
     description: 'Search everything, including zipped, binary, and hidden files.',
     options: {
@@ -189,12 +195,6 @@ const init = CLI('bFindIn', (b) => {
 })
 console.timeEnd('load')
 
-console.time('init')
-const cli = init()
-console.timeEnd('init')
-
 console.time('exec')
-cli.parse()
+cli.$.parse()
 console.timeEnd('exec')
-
-printCounts()

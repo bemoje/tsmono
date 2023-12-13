@@ -1,6 +1,6 @@
 import { BCommand } from './BCommand'
-import { CLI_LIST } from './list'
-import { commandSearchPrompt } from '../actions/prompts/commandSearchPrompt/commandSearchPrompt'
+import { CLI_LIST } from '../src/actions/prompts/list'
+import { commandSearchPrompt } from '../src/actions/prompts/commandSearchPrompt/commandSearchPrompt'
 import { execInherit, prompt } from '@bemoje/util'
 import { trie } from './trie'
 

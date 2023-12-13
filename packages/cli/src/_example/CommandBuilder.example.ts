@@ -1,10 +1,10 @@
-import { CLI } from '../../src/cmd/CLI'
-import { isBoolean } from '../../src/util/validation/isBoolean'
-import { parseBoolean } from '../../src/util/string-parsers/parseBoolean'
+import { CommandBuilder } from '../cmd/CommandBuilder'
+import { isBoolean } from '../util/validation/isBoolean'
+import { parseBoolean } from '../util/string-parsers/parseBoolean'
 
 console.time('load')
 
-const init = CLI('demo', (c) => {
+const cli = new CommandBuilder('demo', (c) => {
   c.version('0.0.1')
   c.description('A CLI example')
   c.setRecommended()
@@ -49,8 +49,8 @@ const init = CLI('demo', (c) => {
       o.description('Your age in years.')
       o.parser.integer()
       o.validator.isInteger()
-      o.validator.custom(function isAdult(age: number) {
-        return age >= 18
+      o.validator.custom(function isAdult(age: unknown) {
+        return (age as number) >= 18
       })
     })
 
@@ -87,10 +87,6 @@ const init = CLI('demo', (c) => {
 })
 console.timeEnd('load')
 
-console.time('init')
-export const cli = init()
-console.timeEnd('init')
-
 console.time('exec')
-cli.parse()
+cli.$.parse()
 console.timeEnd('exec')

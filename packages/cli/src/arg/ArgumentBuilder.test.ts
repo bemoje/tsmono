@@ -1,4 +1,4 @@
-import { Argument } from 'commander'
+import { Argument } from '@commander-js/extra-typings'
 import { ArgumentBuilder } from './ArgumentBuilder'
 import { ArgumentParserSelector } from './ArgumentParserSelector'
 import { ArgumentReader } from './ArgumentReader'

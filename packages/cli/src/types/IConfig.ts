@@ -1,6 +1,6 @@
-import { JsonValue } from '../util/types/JsonValue'
-import { TStringParser } from '../util/types/TStringParser'
-import { TValidator } from '../util/types/TValidator'
+import type { JsonValue } from '../util/types/JsonValue'
+import type { TStringParser } from '../util/types/TStringParser'
+import type { TValidator } from '../util/types/TValidator'
 
 export interface IConfig<Val extends JsonValue> {
   /**

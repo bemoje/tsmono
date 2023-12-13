@@ -1,6 +1,6 @@
 import { OptionBuilder } from './OptionBuilder'
 import { ParserSelector } from '../core/ParserSelector'
-import { TStringParser } from '../util/types/TStringParser'
+import type { TStringParser } from '../util/types/TStringParser'
 
 export class OptionArgumentParserSelector extends ParserSelector<OptionBuilder> {
   constructor(builder: OptionBuilder) {

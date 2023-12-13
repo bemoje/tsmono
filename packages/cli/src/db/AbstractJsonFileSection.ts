@@ -1,7 +1,7 @@
-import { Any } from '../util/types/Any'
+import type { Any } from '../util/types/Any'
 import { defaultOpenInEditorCommand } from '../util/os/defaultOpenInEditorCommand'
 import { JsonFile } from './JsonFile'
-import { JsonValue } from '../util/types/JsonValue'
+import type { JsonValue } from '../util/types/JsonValue'
 import { promptUserEditJsonInTextEditorSync } from '../util/fs/promptUserEditInTextEditor/promptUserEditJsonInTextEditorSync'
 
 /**
@@ -105,8 +105,7 @@ export abstract class AbstractJsonFileSection<Val = JsonValue> {
    */
   getAll() {
     this.initialize(false)
-    return (this.db.getSafe(this.prefix()) ??
-      JSON.parse(JSON.stringify(this.defaultValues))) as typeof this.defaultValues
+    return (this.db.getSafe(this.prefix()) ?? JSON.parse(JSON.stringify(this.defaultValues))) as Record<string, Val>
   }
 
   /**
@@ -214,6 +213,6 @@ export abstract class AbstractJsonFileSection<Val = JsonValue> {
   edit(editor?: string) {
     const original = this.getAll()
     const parsed = promptUserEditJsonInTextEditorSync(original as JsonValue, editor || defaultOpenInEditorCommand())
-    this.setAll(parsed as typeof this.defaultValues)
+    this.setAll(parsed as Record<string, Val>)
   }
 }

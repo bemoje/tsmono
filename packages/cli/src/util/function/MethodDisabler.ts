@@ -1,8 +1,8 @@
-import { Any } from '../types/Any'
+import type { Any } from '../types/Any'
 import { ensureThat } from '../validation/ensureThat'
 import { isFunction } from '../validation/isFunction'
-import { ObjectKey } from '../types/ObjectKey'
-import { TFunctionNoNew } from '../types/TFunctionNoNew'
+import type { ObjectKey } from '../types/ObjectKey'
+import type { TFunctionNoNew } from '../types/TFunctionNoNew'
 
 /**
  * A class that creates an object with methods for disabling/enabling a given method on a given object.

@@ -1,5 +1,5 @@
-import { Any } from '../types/Any'
-import { TConstructor } from '../types/TConstructor'
+import type { Any } from '../types/Any'
+import type { TConstructor } from '../types/TConstructor'
 
 export function ensureThat<T>(
   value: T,

@@ -1,11 +1,6 @@
-import { CLI } from '../../src/cmd/CLI'
-import { execInherit } from '../../src/util/node/execInherit'
-import { printCounts } from '../../src/core/counter'
-import { strSplitCamelCase } from '../../src/util/string/strSplitCamelCase'
+import { CLI, execInherit, strSplitCamelCase } from '@bemoje/cli'
 
-console.time('load')
-
-const init = CLI('bFindIn', (b) => {
+export default CLI('deepfind', (b) => {
   b.setRecommended()
   b.version('0.0.1')
   b.description(
@@ -32,7 +27,7 @@ const init = CLI('bFindIn', (b) => {
   b.option('-m, --max-count <NUM>', (o) => {
     o.description('Skip the rest of a file after NUM matches.')
     o.parser.integer()
-    o.default(10000)
+    o.preset(10000)
   })
   b.option('-w, --word-regexp', 'Only match whole words')
   b.option('--invert-match', 'Match anything except PATTERN')
@@ -46,7 +41,7 @@ const init = CLI('bFindIn', (b) => {
   b.option('--depth <n>', (o) => {
     o.description('Max directory depth.')
     o.parser.integer()
-    o.default(25)
+    o.preset(25)
   })
   b.option('-f, --follow', 'Follow symlinks')
   b.option('--one-device', 'Do not follow links to other devices.')
@@ -81,12 +76,12 @@ const init = CLI('bFindIn', (b) => {
   // context
   b.option('-B, --before <lines>', (o) => {
     o.description('Print lines before match')
-    o.default(0)
+    o.preset(0)
     o.parser.integer()
   })
   b.option('-A, --after <lines>', (o) => {
     o.description('Print lines after match')
-    o.default(0)
+    o.preset(0)
     o.parser.integer()
   })
   b.option('--nobreak', 'Disable printing newlines between matches in different files')
@@ -102,7 +97,7 @@ const init = CLI('bFindIn', (b) => {
   b.option('--print-long-lines', 'Print matches on very long lines (Default: >2k characters)')
   b.option('-C, --context <lines>', (o) => {
     o.description('Print lines before and after matches')
-    o.default(0)
+    o.preset(0)
     o.parser.integer()
   })
   b.option('-H, --noheading', "Disable printing file names before each file's matches")
@@ -118,21 +113,25 @@ const init = CLI('bFindIn', (b) => {
   b.option('--nocolor', 'Disable printing color codes in results')
   b.option('--color-line-number <cc>', (o) => {
     o.description('Color codes for line numbers')
-    o.default('1;33')
+    o.preset('1;33')
   })
   b.option('--color-match <cc>', (o) => {
     o.description('Color codes for result match numbers')
-    o.default('30;43')
+    o.preset('30;43')
   })
   b.option('--color-path <cc>', (o) => {
     o.description('Color codes for path names')
-    o.default('1;32')
+    o.preset('1;32')
   })
   b.option('--color-win-ansi', 'Always use ANSI colors in Windows (except pager/pipe remain ANSI)')
 
   ////////////////
 
   b.action(async (pattern, dirpath, opts) => {
+    for (const key of Reflect.ownKeys(opts)) {
+      if (typeof key !== 'string') continue
+      console.log({ key, value: opts[key], source: b.getOptionValueSource(key) })
+    }
     const args: string[] = []
     for (const [k, value] of Object.entries(opts)) {
       if (k === 'debug') continue
@@ -163,10 +162,6 @@ const init = CLI('bFindIn', (b) => {
     description: 'Print matches found in each file',
     options: { count: false, numbers: true, column: true, printLongLines: false, onlyMatching: true, width: 100 },
   })
-  b.preset('#paths', {
-    description: 'Print only paths to files with matches',
-    options: { paths: true, maxCount: 1, silent: true },
-  })
   b.preset('#bin', {
     description: 'Search everything, including zipped, binary, and hidden files.',
     options: {
@@ -191,17 +186,4 @@ const init = CLI('bFindIn', (b) => {
       ignore: 'node_modules',
     },
   })
-
-  ////////////////
 })
-console.timeEnd('load')
-
-console.time('init')
-const cli = init()
-console.timeEnd('init')
-
-console.time('exec')
-cli.parse()
-console.timeEnd('exec')
-
-printCounts()

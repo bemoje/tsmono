@@ -15,8 +15,8 @@ import {
   writeJsonFileSafe,
 } from '@bemoje/util'
 import { BHelp } from './CommandBuilder/BHelp'
-import { CLI_LIST } from './list'
-import { commandSearchPrompt } from '../actions/prompts/commandSearchPrompt/commandSearchPrompt'
+import { CLI_LIST } from '../src/actions/prompts/list'
+import { commandSearchPrompt } from '../src/actions/prompts/commandSearchPrompt/commandSearchPrompt'
 import { organizeTreePrefixes } from './util/organizeTreePrefixes'
 import { TrieMap } from '@bemoje/trie-map'
 

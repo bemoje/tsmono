@@ -1,5 +1,5 @@
 import fs from 'fs-extra'
-import { Any } from '../../types/Any'
+import type { Any } from '../../types/Any'
 import { getTempDataPath } from '../../path/getTempDataPath'
 import { strEnsureStartsWith } from '../../string/strEnsureStartsWith'
 

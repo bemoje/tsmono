@@ -1,4 +1,4 @@
-import { JsonValue } from '../../types/JsonValue'
+import type { JsonValue } from '../../types/JsonValue'
 import { promptUserEditInTextEditorSync } from './promptUserEditInTextEditorSync'
 
 /**

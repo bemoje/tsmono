@@ -1,7 +1,7 @@
 import { ensureThat } from '../validation/ensureThat'
 import { isObject } from '../validation/isObject'
-import { JsonObject } from '../types/JsonObject'
-import { JsonValue } from '../types/JsonValue'
+import type { JsonObject } from '../types/JsonObject'
+import type { JsonValue } from '../types/JsonValue'
 import { readJsonFileSafeSync } from '../fs/readJsonFile/readJsonFileSafeSync'
 import { writeJsonFileSafe } from '../fs/writeJsonFile/writeJsonFileSafe'
 

@@ -1,4 +1,4 @@
-import { TFunction } from '../types/TFunction'
+import type { TFunction } from '../types/TFunction'
 
 /**
  * Checks if the provided value is a named function.
