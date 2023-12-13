@@ -1,6 +1,6 @@
 import { CLI, execInherit, strSplitCamelCase } from '@bemoje/cli'
 
-export default CLI('deepfind', (b) => {
+export const deepfind = CLI('deepfind', (b) => {
   b.setRecommended()
   b.version('0.0.1')
   b.description(

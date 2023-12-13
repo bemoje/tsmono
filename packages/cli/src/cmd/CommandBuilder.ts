@@ -56,7 +56,7 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
 
   protected readonly features = new CommandFeatureSelector(this)
   readonly parent: CommandBuilder | null = null
-  readonly $: Command<Args, Opts>
+  readonly $: Command
   readonly meta = new CommandBuilderMetaData<Args>()
   get db() {
     return realizeLazyProperty(this, 'db', new JsonFile(this))
@@ -69,7 +69,7 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
     isNative = false
   ) {
     this.meta.isNative = isNative
-    this.$ = new Command<Args, Opts>(name)
+    this.$ = new Command(name)
 
     if (parent) {
       this.parent = parent

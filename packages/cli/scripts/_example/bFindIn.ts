@@ -1,6 +1,6 @@
-import { CommandBuilder } from '../cmd/CommandBuilder'
-import { execInherit } from '../util/node/execInherit'
-import { strSplitCamelCase } from '../util/string/strSplitCamelCase'
+import { CommandBuilder } from '../../src/cmd/CommandBuilder'
+import { execInherit } from '../../src/util/node/execInherit'
+import { strSplitCamelCase } from '../../src/util/string/strSplitCamelCase'
 
 console.time('load')
 

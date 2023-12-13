@@ -2,7 +2,7 @@ import { CLI } from '@bemoje/cli'
 import { Encoding } from 'crypto'
 import { UUID } from '@bemoje/util'
 
-export default CLI('uuid', (c) => {
+export const uuid = CLI('uuid', (c) => {
   c.version('0.0.1')
   c.alias('u')
   c.description(

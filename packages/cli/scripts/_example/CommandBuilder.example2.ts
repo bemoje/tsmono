@@ -1,4 +1,4 @@
-import { CommandBuilder } from '../cmd/CommandBuilder'
+import { CommandBuilder } from '../../src/cmd/CommandBuilder'
 
 console.time('load')
 
