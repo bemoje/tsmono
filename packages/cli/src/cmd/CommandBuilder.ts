@@ -24,7 +24,6 @@ import { arrSome } from '../util/array/arrSome'
 import { CommandBuilderMetaData } from './CommandBuilderMetaData'
 import { commanderBackRefs } from '../proto/overrideCommanderPrototype'
 import { CommandFeatureSelector } from './CommandFeatureSelector'
-import { countInstance } from '../core/counter'
 import { DefaultHelpConfig } from './DefaultHelpConfig'
 import { ensureThat } from '../util/validation/ensureThat'
 import { formatTableForTerminal } from '../util/node/formatTableForTerminal'
@@ -68,8 +67,6 @@ export class CommandBuilder {
     parent?: CommandBuilder,
     isNative = false
   ) {
-    countInstance(CommandBuilder)
-
     this.meta.isNative = isNative
     this.$ = new Command(name)
     commanderBackRefs.set(this.$, this)
@@ -1179,6 +1176,7 @@ export class CommandBuilder {
   }
 
   protected assertCommandNameNotReserved(name: string) {
+    if (this.isRoot) return
     if (this.meta.isNative) return
     if (name === 'u' || name === 'util') {
       this.throwCommanderError(`Name '${name}' is reserved and is not available as name or alias.`)

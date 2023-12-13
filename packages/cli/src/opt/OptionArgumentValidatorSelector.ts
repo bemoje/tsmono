@@ -1,4 +1,3 @@
-import { countInstance } from '../core/counter'
 import { OptionBuilder } from './OptionBuilder'
 import { TValidator } from '../util/types/TValidator'
 import { ValidatorSelector } from '../core/ValidatorSelector'
@@ -6,7 +5,6 @@ import { ValidatorSelector } from '../core/ValidatorSelector'
 export class OptionArgumentValidatorSelector extends ValidatorSelector<OptionBuilder> {
   constructor(builder: OptionBuilder) {
     super(builder)
-    countInstance(OptionArgumentValidatorSelector)
   }
   custom<O>(validator: TValidator<O>) {
     const name = this.builder.$.attributeName()

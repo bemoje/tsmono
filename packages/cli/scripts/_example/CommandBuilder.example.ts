@@ -1,7 +1,6 @@
 import { CLI } from '../../src/cmd/CLI'
 import { isBoolean } from '../../src/util/validation/isBoolean'
 import { parseBoolean } from '../../src/util/string-parsers/parseBoolean'
-import { printCounts } from '../../src/core/counter'
 
 console.time('load')
 
@@ -95,5 +94,3 @@ console.timeEnd('init')
 console.time('exec')
 cli.parse()
 console.timeEnd('exec')
-
-printCounts()

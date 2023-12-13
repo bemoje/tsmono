@@ -3,7 +3,6 @@ import { ArgumentParserSelector } from './ArgumentParserSelector'
 import { ArgumentReader } from './ArgumentReader'
 import { ArgumentValidatorSelector } from './ArgumentValidatorSelector'
 import { CommandBuilder } from '../cmd/CommandBuilder'
-import { countInstance } from '../core/counter'
 import { realizeLazyProperty } from '../util/object/realizeLazyProperty'
 
 /**
@@ -14,7 +13,6 @@ export class ArgumentBuilder {
   readonly index: number
 
   constructor(readonly cmd: CommandBuilder, name: string) {
-    countInstance(ArgumentBuilder)
     this.$ = new Argument(name)
     this.index = cmd.meta.argValidators.length
     cmd.meta.argValidators[this.index] = []

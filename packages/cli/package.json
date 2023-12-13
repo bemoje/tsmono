@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/cli",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "dependencies": {
     "ansi-colors": "^4.1.3",
     "cli-table": "^0.3.11",

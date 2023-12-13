@@ -1,6 +1,5 @@
 import colors from 'ansi-colors'
 import { Any } from '../util/types/Any'
-import { countInstance } from './counter'
 import { MethodDisabler } from '../util/function/MethodDisabler'
 
 /**
@@ -51,7 +50,6 @@ export class OutputManager {
    * console.debug is disabled by default.
    */
   constructor() {
-    countInstance(OutputManager)
     this.debug.disable()
     colors.enabled = (() => {
       const { FORCE_COLOR, NODE_DISABLE_COLORS, NO_COLOR, TERM } = process.env

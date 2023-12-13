@@ -1,11 +1,8 @@
-import { countInstance } from '../core/counter'
 import { OptionBuilder } from './OptionBuilder'
 import { OptionHelpers } from './OptionHelpers'
 
 export class OptionReader {
-  constructor(protected readonly parent: OptionBuilder) {
-    countInstance(OptionReader)
-  }
+  constructor(protected readonly parent: OptionBuilder) {}
 
   get $() {
     return this.parent.$

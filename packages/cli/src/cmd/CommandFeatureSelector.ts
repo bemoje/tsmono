@@ -1,5 +1,4 @@
 import { CommandBuilder } from './CommandBuilder'
-import { countInstance } from '../core/counter'
 
 /**
  * Represents a selector for enabling or disabling command features.
@@ -34,9 +33,7 @@ export class CommandFeatureSelector {
    * Creates a new instance of the CommandFeatureSelector class.
    * @param cmd - The command builder instance.
    */
-  constructor(protected readonly cmd: CommandBuilder) {
-    countInstance(CommandFeatureSelector)
-  }
+  constructor(protected readonly cmd: CommandBuilder) {}
 
   /**
    * Inherits the feature settings from a parent CommandFeatureSelector instance.

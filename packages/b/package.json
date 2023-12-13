@@ -2,11 +2,10 @@
   "name": "@bemoje/b",
   "version": "0.0.2",
   "dependencies": {
-    "@bemoje/commander-config": "latest",
+    "@bemoje/cli": "latest",
     "@bemoje/trie-map": "latest",
     "@bemoje/util": "latest",
     "commander": "^11.1.0",
-    "node-json-db": "^2.3.0",
     "prompts": "^2.4.2"
   },
   "type": "commonjs",

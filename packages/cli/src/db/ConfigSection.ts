@@ -1,5 +1,4 @@
 import { AbstractJsonFileSection } from './AbstractJsonFileSection'
-import { countInstance } from '../core/counter'
 import { ensureThat } from '../util/validation/ensureThat'
 import { IConfig } from '../types/IConfig'
 import { JsonFile } from './JsonFile'
@@ -34,7 +33,6 @@ export class ConfigSection<Val extends JsonValue = JsonValue> extends AbstractJs
    */
   constructor(file: JsonFile, name: string) {
     super(file, name, true)
-    countInstance(ConfigSection)
   }
 
   /**

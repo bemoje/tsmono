@@ -1,5 +1,4 @@
 import { AbstractJsonFileSection } from './AbstractJsonFileSection'
-import { countInstance } from '../core/counter'
 import { IPreset } from '../types/IPreset'
 import { JsonFile } from './JsonFile'
 import { objAssign } from '../util/object/objAssign'
@@ -16,7 +15,6 @@ export class PresetsSection extends AbstractJsonFileSection<IPreset> {
    */
   constructor(file: JsonFile, name: string) {
     super(file, name, false)
-    countInstance(PresetsSection)
     this.defineProperty('defaults', {
       description: 'All presets inherit from this preset',
       presets: [],

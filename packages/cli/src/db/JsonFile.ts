@@ -1,7 +1,6 @@
 import { AppDataSection } from './AppDataSection'
 import { CommandBuilder } from '../cmd/CommandBuilder'
 import { ConfigSection } from './ConfigSection'
-import { countInstance } from '../core/counter'
 import { JsonDB } from '../util/db/JsonDB'
 import { PresetsSection } from './PresetsSection'
 import { realizeLazyProperty } from '../util/object/realizeLazyProperty'
@@ -13,9 +12,7 @@ export class JsonFile {
   /**
    * @param cmd The parent CommandBuilder instance.
    */
-  constructor(readonly cmd: CommandBuilder) {
-    countInstance(JsonFile)
-  }
+  constructor(readonly cmd: CommandBuilder) {}
 
   /**
    * A lazy-loaded instance of the JsonDB instance containing the data.

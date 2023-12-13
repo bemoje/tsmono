@@ -1,6 +1,5 @@
 import { Any } from '../util/types/Any'
 import { CommandBuilder } from './CommandBuilder'
-import { countInstance } from '../core/counter'
 import { ErrorParser } from '../util/errors/ErrorParser'
 import { Option } from 'commander'
 import { OutputManager } from '../core/OutputManager'
@@ -19,10 +18,6 @@ export class CommandBuilderMetaData {
   rawArgs: string[] = []
   isNative = false
   isInitialized = false
-
-  constructor() {
-    countInstance(CommandBuilderMetaData)
-  }
 
   get actionHandler(): (this: CommandBuilder, ...args: any[]) => void | Promise<void> {
     return async function defaultActionHandler(this: CommandBuilder) {

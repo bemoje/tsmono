@@ -1,5 +1,4 @@
 import { CLI } from '../../src/cmd/CLI'
-import { printCounts } from '../../src/core/counter'
 
 console.time('load')
 
@@ -19,5 +18,3 @@ console.timeEnd('init')
 console.time('exec')
 cli.parse()
 console.timeEnd('exec')
-
-printCounts()

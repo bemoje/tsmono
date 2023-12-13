@@ -1,6 +1,4 @@
-import { CLI } from '../cmd/CLI'
-import { CommandBuilder } from '../cmd/CommandBuilder'
-import { printCounts } from '../core/counter'
+import { CLI, CommandBuilder } from '../../src'
 
 console.time('load')
 
@@ -31,5 +29,3 @@ console.timeEnd('init')
 console.time('exec')
 cli.parse()
 console.timeEnd('exec')
-
-printCounts()

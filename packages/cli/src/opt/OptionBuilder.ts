@@ -1,5 +1,4 @@
 import { CommandBuilder } from '../cmd/CommandBuilder'
-import { countInstance } from '../core/counter'
 import { Option, OptionValues } from 'commander'
 import { OptionArgumentParserSelector } from './OptionArgumentParserSelector'
 import { OptionArgumentValidatorSelector } from './OptionArgumentValidatorSelector'
@@ -15,7 +14,6 @@ export class OptionBuilder {
   readonly $: Option
 
   constructor(readonly cmd: CommandBuilder, flags: string) {
-    countInstance(OptionBuilder)
     this.$ = new Option(flags)
     if (!OptionHelpers.hasArgument(this.$) && this.$.long?.startsWith('--no-')) {
       this.$.default(true)

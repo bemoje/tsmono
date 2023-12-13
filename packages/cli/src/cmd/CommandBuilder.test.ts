@@ -90,8 +90,10 @@ describe(CommandBuilder.name, () => {
 
     it('should throw if trying to use reserved name', () => {
       new CommandBuilder('t', (c) => {
-        expect(() => c.alias('u')).toThrow()
-        expect(() => c.alias('util')).toThrow()
+        c.command('sub', (sub) => {
+          expect(() => sub.alias('u')).toThrow()
+          expect(() => sub.alias('util')).toThrow()
+        })
       })
     })
 
@@ -118,16 +120,18 @@ describe(CommandBuilder.name, () => {
 
     it('should throw if trying to use reserved name', () => {
       new CommandBuilder('t', (c) => {
-        expect(() => c.aliases('t', 'u')).toThrow()
-        expect(() => c.aliases('tt', 'util')).toThrow()
+        c.command('sub', (sub) => {
+          expect(() => sub.aliases('t', 'u')).toThrow()
+          expect(() => sub.aliases('tt', 'util')).toThrow()
+        })
       })
     })
 
     it('should not throw if trying to use reserved name if native command', () => {
       new CommandBuilder('t', (c) => {
         expect(() => {
-          c.nativeCommand('sub', (c) => {
-            c.aliases('u', 'util')
+          c.nativeCommand('sub', (sub) => {
+            sub.aliases('u', 'util')
           })
         }).not.toThrow()
       })
