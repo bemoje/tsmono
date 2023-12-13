@@ -1,7 +1,7 @@
 import fs from 'fs-extra'
 import path from 'path'
 import walkdir from 'walkdir'
-import { readFileSafeSync } from '../src/util/fs/readFile/readFileSafeSync'
+import { readFileSafeSync } from '@bemoje/util'
 import { Stats } from 'fs-extra'
 import type { WalkOptions } from 'walkdir'
 
@@ -17,7 +17,7 @@ function tsExtractImports(code: string): ITsExtractImportsResult[] {
   const isLastLineInMulti = /^\} from '/
   const result: ITsExtractImportsResult[] = []
   let isMulti = false
-  let impLines = []
+  let impLines: string[] = []
   const lines = code.split(/\r?\n/)
   for (let l = 0; l < lines.length; l++) {
     const line = lines[l]

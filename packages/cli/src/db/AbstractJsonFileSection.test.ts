@@ -3,10 +3,10 @@ import { AbstractJsonFileSection } from './AbstractJsonFileSection'
 import { CommandBuilder } from '../cmd/CommandBuilder'
 import { JsonFile } from './JsonFile'
 import { JsonValue } from '../../../util/src'
-import { promptUserEditJsonInTextEditorSync } from '../util/fs/promptUserEditInTextEditor/promptUserEditJsonInTextEditorSync'
+import { promptUserEditJsonInTextEditorSync } from '@bemoje/util'
 
-jest.mock('../util/fs/promptUserEditInTextEditor/promptUserEditJsonInTextEditorSync', () => ({
-  ...jest.requireActual('../util/fs/promptUserEditInTextEditor/promptUserEditJsonInTextEditorSync'),
+jest.mock('@bemoje/util', () => ({
+  ...jest.requireActual('@bemoje/util'),
   promptUserEditJsonInTextEditorSync: jest.fn().mockImplementation(() => {}),
 }))
 

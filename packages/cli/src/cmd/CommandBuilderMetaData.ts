@@ -1,10 +1,10 @@
-import type { Any } from '../util/types/Any'
+import type { Any } from '@bemoje/util'
 import { CommandBuilder } from './CommandBuilder'
-import { ErrorParser } from '../util/errors/ErrorParser'
+import { ErrorParser } from '@bemoje/util'
 import { Option } from '@commander-js/extra-typings'
 import { OutputManager } from '../core/OutputManager'
-import type { TStringParser } from '../util/types/TStringParser'
-import type { TValidator } from '../util/types/TValidator'
+import type { TStringParser } from '@bemoje/util'
+import type { TValidator } from '@bemoje/util'
 
 export class CommandBuilderMetaData<Args extends Any[] = unknown[]> {
   subcommands: CommandBuilder[] = []

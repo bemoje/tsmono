@@ -1,7 +1,6 @@
 import { CommandBuilder } from '../../src/cmd/CommandBuilder'
 
 console.time('load')
-
 const cli = new CommandBuilder('demo', (c) => {
   c.version('0.0.1')
   c.description('A CLI example')
@@ -22,9 +21,8 @@ const cli = new CommandBuilder('demo', (c) => {
 })
 console.timeEnd('load')
 
-console.time('init')
-console.timeEnd('init')
-
-console.time('exec')
-cli.$.parse()
-console.timeEnd('exec')
+function example() {
+  console.time('exec')
+  cli.$.parse()
+  console.timeEnd('exec')
+}

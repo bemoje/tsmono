@@ -3,7 +3,7 @@ import { ArgumentParserSelector } from './ArgumentParserSelector'
 import { ArgumentReader } from './ArgumentReader'
 import { ArgumentValidatorSelector } from './ArgumentValidatorSelector'
 import { CommandBuilder } from '../cmd/CommandBuilder'
-import { realizeLazyProperty } from '../util/object/realizeLazyProperty'
+import { realizeLazyProperty } from '@bemoje/util'
 
 /**
  * Wrapper around the @see Argument class from 'commander'.

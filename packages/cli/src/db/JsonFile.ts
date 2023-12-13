@@ -1,9 +1,8 @@
 import { AppDataSection } from './AppDataSection'
 import { CommandBuilder } from '../cmd/CommandBuilder'
 import { ConfigSection } from './ConfigSection'
-import { JsonDB } from '../util/db/JsonDB'
+import { JsonDB, realizeLazyProperty } from '@bemoje/util'
 import { PresetsSection } from './PresetsSection'
-import { realizeLazyProperty } from '../util/object/realizeLazyProperty'
 
 /**
  * A class that represents the JSON file used as a simple database.

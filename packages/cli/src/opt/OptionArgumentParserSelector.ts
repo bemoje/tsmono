@@ -1,6 +1,6 @@
 import { OptionBuilder } from './OptionBuilder'
 import { ParserSelector } from '../core/ParserSelector'
-import type { TStringParser } from '../util/types/TStringParser'
+import type { TStringParser } from '@bemoje/util'
 
 export class OptionArgumentParserSelector extends ParserSelector<OptionBuilder> {
   constructor(builder: OptionBuilder) {

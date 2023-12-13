@@ -1,6 +1,6 @@
 import colors from 'ansi-colors'
-import type { Any } from '../util/types/Any'
-import { MethodDisabler } from '../util/function/MethodDisabler'
+import type { Any } from '@bemoje/util'
+import { MethodDisabler } from '@bemoje/util'
 
 /**
  * The OutputManager class manages the output of debug messages to the console.

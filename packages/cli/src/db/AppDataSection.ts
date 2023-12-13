@@ -1,6 +1,6 @@
 import { AbstractJsonFileSection } from './AbstractJsonFileSection'
 import { JsonFile } from './JsonFile'
-import type { JsonValue } from '../util/types/JsonValue'
+import { JsonValue } from '@bemoje/util'
 
 /**
  * A class that represents the appdata section of the JSON file used as simple database.

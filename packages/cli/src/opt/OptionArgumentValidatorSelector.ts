@@ -1,5 +1,5 @@
 import { OptionBuilder } from './OptionBuilder'
-import type { TValidator } from '../util/types/TValidator'
+import type { TValidator } from '@bemoje/util'
 import { ValidatorSelector } from '../core/ValidatorSelector'
 
 export class OptionArgumentValidatorSelector extends ValidatorSelector<OptionBuilder> {

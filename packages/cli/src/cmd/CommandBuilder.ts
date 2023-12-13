@@ -4,32 +4,32 @@ import fs from 'fs-extra'
 import isAsyncFunction from 'is-async-function'
 import os from 'os'
 import path from 'path'
-import type { Any } from '../util/types/Any'
+import type { Any } from '@bemoje/util'
 import { ArgumentBuilder } from '../arg/ArgumentBuilder'
-import { arrAssign } from '../util/object/arrAssign'
-import { arrLast } from '../util/array/arrLast'
-import { arrSome } from '../util/array/arrSome'
+import { arrAssign } from '@bemoje/util'
+import { arrLast } from '@bemoje/util'
+import { arrSome } from '@bemoje/util'
 import { CommandBuilderMetaData } from './CommandBuilderMetaData'
 import { CommandFeatureSelector } from './CommandFeatureSelector'
 import { DefaultHelpConfig } from './DefaultHelpConfig'
-import { ensureThat } from '../util/validation/ensureThat'
-import { formatTableForTerminal } from '../util/node/formatTableForTerminal'
+import { ensureThat } from '@bemoje/util'
+import { formatTableForTerminal } from '@bemoje/util'
 import type { IConfig } from '../types/IConfig'
 import type { IPreset, IPresetPartial } from '../types/IPreset'
-import { isArray } from '../util/validation/isArray'
-import { isObject } from '../util/validation/isObject'
-import { isString } from '../util/validation/isString'
-import { isStringArray } from '../util/validation/isStringArray'
-import { isStringWithNoSpacesOrDashes } from '../util/validation/isStringWithNoSpacesOrDashes'
+import { isArray } from '@bemoje/util'
+import { isObject } from '@bemoje/util'
+import { isString } from '@bemoje/util'
+import { isStringArray } from '@bemoje/util'
+import { isStringWithNoSpacesOrDashes } from '@bemoje/util'
 import { JsonFile } from '../db/JsonFile'
-import { objAssign } from '../util/object/objAssign'
+import { objAssign } from '@bemoje/util'
 import { OptionBuilder } from '../opt/OptionBuilder'
 import { OptionHelpers } from '../opt/OptionHelpers'
 import { OutputManager } from '../core/OutputManager'
 import { PresetsSection } from '../db/PresetsSection'
-import { realizeLazyProperty } from '../util/object/realizeLazyProperty'
-import { removeFile } from '../util/fs/removeFile/removeFile'
-import { setNonEnumerable } from '../util/object/setNonEnumerable'
+import { realizeLazyProperty } from '@bemoje/util'
+import { removeFile } from '@bemoje/util'
+import { setNonEnumerable } from '@bemoje/util'
 import { splitCombinedArgvShorts } from '../core/splitCombinedArgvShorts'
 import {
   type AddHelpTextPosition,
@@ -46,7 +46,7 @@ import {
   type OptionValueSource,
   ParseOptions,
 } from '@commander-js/extra-typings'
-import { type JsonValue } from '../util/types/JsonValue'
+import { type JsonValue } from '@bemoje/util'
 
 /**
  * Wrapper around the @see Command class, for more intuitive construction.
@@ -1119,13 +1119,54 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
       this.throwCommanderError(`Name '${name}' is reserved and is not available as name or alias.`)
     }
   }
-}
 
-process.argv = splitCombinedArgvShorts(process.argv.slice())
+  /**
+   * Parse `argv`, setting options and invoking commands when defined.
+   *
+   * The default expectation is that the arguments are from node and have the application as argv[0]
+   * and the script being run in argv[1], with user parameters after that.
+   *
+   * @example
+   * ```
+   * program.parse(process.argv);
+   * program.parse(); // implicitly use process.argv and auto-detect node vs electron conventions
+   * program.parse(my-args, { from: 'user' }); // just user supplied arguments, nothing special about argv[0]
+   * ```
+   *
+   * @returns `this` command for chaining
+   */
+  parse(argv?: readonly string[], options?: ParseOptions): this {
+    this.$.parse(argv, options)
+    return this
+  }
+
+  /**
+   * Parse `argv`, setting options and invoking commands when defined.
+   *
+   * Use parseAsync instead of parse if any of your action handlers are async. Returns a Promise.
+   *
+   * The default expectation is that the arguments are from node and have the application as argv[0]
+   * and the script being run in argv[1], with user parameters after that.
+   *
+   * @example
+   * ```
+   * program.parseAsync(process.argv);
+   * program.parseAsync(); // implicitly use process.argv and auto-detect node vs electron conventions
+   * program.parseAsync(my-args, { from: 'user' }); // just user supplied arguments, nothing special about argv[0]
+   * ```
+   *
+   * @returns Promise
+   */
+  async parseAsync(argv?: readonly string[], options?: ParseOptions): Promise<this> {
+    await this.$.parseAsync(argv, options)
+    return this
+  }
+}
 
 export const commanderBackRefs = new WeakMap<Command<Any, Any>, CommandBuilder<Any, Any>>()
 const oldParse = Command.prototype.parse
 Command.prototype.parse = function parse(this: Command, argv?: readonly string[], options?: ParseOptions) {
+  if (!argv) argv = process.argv
   if (argv) {
     argv = splitCombinedArgvShorts(argv.slice())
     this.builder.meta.rawArgs = argv.slice(options?.from === 'user' ? 0 : 2)
@@ -1137,6 +1178,7 @@ Command.prototype.parse = function parse(this: Command, argv?: readonly string[]
 
 const oldParseAsync = Command.prototype.parseAsync
 Command.prototype.parseAsync = async function (this: Command, argv?: readonly string[], options?: ParseOptions) {
+  if (!argv) argv = process.argv
   if (argv) {
     argv = splitCombinedArgvShorts(argv.slice())
     this.builder.meta.rawArgs = argv.slice(options?.from === 'user' ? 0 : 2)
@@ -1160,5 +1202,5 @@ declare module '@commander-js/extra-typings' {
 }
 
 export function CLI(name: string, cb: (cmd: CommandBuilder) => void) {
-  return new CommandBuilder(name, cb).commander
+  return new CommandBuilder(name, cb)
 }

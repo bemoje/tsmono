@@ -1,7 +1,5 @@
-import { CommandBuilder } from '../cmd/CommandBuilder'
-import { isBoolean } from '../util/validation/isBoolean'
-import { parseBoolean } from '../util/string-parsers/parseBoolean'
-
+import { CommandBuilder } from '../../src/cmd/CommandBuilder'
+import { isBoolean, parseBoolean } from '@bemoje/util'
 console.time('load')
 
 const cli = new CommandBuilder('demo', (c) => {
@@ -85,8 +83,10 @@ const cli = new CommandBuilder('demo', (c) => {
     n
   })
 })
-console.timeEnd('load')
 
-console.time('exec')
-cli.$.parse()
-console.timeEnd('exec')
+function example() {
+  console.timeEnd('load')
+  console.time('exec')
+  cli.$.parse()
+  console.timeEnd('exec')
+}

@@ -1,7 +1,7 @@
 import { AbstractJsonFileSection } from './AbstractJsonFileSection'
 import type { IPreset } from '../types/IPreset'
 import { JsonFile } from './JsonFile'
-import { objAssign } from '../util/object/objAssign'
+import { objAssign } from '@bemoje/util'
 import type { OptionValues } from '@commander-js/extra-typings'
 
 /**

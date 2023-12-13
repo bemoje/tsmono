@@ -1,8 +1,5 @@
-import type { Any } from '../util/types/Any'
-import { defaultOpenInEditorCommand } from '../util/os/defaultOpenInEditorCommand'
+import { Any, defaultOpenInEditorCommand, JsonValue, promptUserEditJsonInTextEditorSync } from '@bemoje/util'
 import { JsonFile } from './JsonFile'
-import type { JsonValue } from '../util/types/JsonValue'
-import { promptUserEditJsonInTextEditorSync } from '../util/fs/promptUserEditInTextEditor/promptUserEditJsonInTextEditorSync'
 
 /**
  * A class that represents a section of the JSON file used as a simple database.

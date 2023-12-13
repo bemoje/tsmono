@@ -1,6 +1,6 @@
 import { ArgumentBuilder } from './ArgumentBuilder'
-import { arrLast } from '../util/array/arrLast'
-import type { TValidator } from '../util/types/TValidator'
+import { arrLast } from '@bemoje/util'
+import type { TValidator } from '@bemoje/util'
 import { ValidatorSelector } from '../core/ValidatorSelector'
 
 export class ArgumentValidatorSelector extends ValidatorSelector<ArgumentBuilder> {

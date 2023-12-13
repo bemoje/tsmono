@@ -1,11 +1,7 @@
 import { AbstractJsonFileSection } from './AbstractJsonFileSection'
-import { ensureThat } from '../util/validation/ensureThat'
+import { ensureThat, JsonValue, objAssign, TStringParser, TValidator } from '@bemoje/util'
 import type { IConfig } from '../types/IConfig'
 import { JsonFile } from './JsonFile'
-import type { JsonValue } from '../util/types/JsonValue'
-import { objAssign } from '../util/object/objAssign'
-import type { TStringParser } from '../util/types/TStringParser'
-import type { TValidator } from '../util/types/TValidator'
 
 /**
  * A class that represents the user-config section of the JSON file used as simple database.

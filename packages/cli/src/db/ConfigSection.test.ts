@@ -1,10 +1,10 @@
 import { CommandBuilder } from '../cmd/CommandBuilder'
 import { ConfigSection } from './ConfigSection'
-import { createTypedArrayValidator } from '../util/validation/createTypedArrayValidator'
-import { createTypedListParser } from '../util/string-parsers/createTypedListParser'
-import { isInteger } from '../util/validation/numbers/isInteger'
+import { createTypedArrayValidator } from '@bemoje/util'
+import { createTypedListParser } from '@bemoje/util'
+import { isInteger } from '@bemoje/util'
 import { JsonFile } from './JsonFile'
-import { parseInteger } from '../util/string-parsers/parseInteger'
+import { parseInteger } from '@bemoje/util'
 
 describe(ConfigSection.name, () => {
   let file: JsonFile

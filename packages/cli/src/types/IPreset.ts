@@ -1,4 +1,4 @@
-import type { Any } from '../util/types/Any'
+import type { Any } from '@bemoje/util'
 import type { OptionValues } from '@commander-js/extra-typings'
 
 export interface IPreset {

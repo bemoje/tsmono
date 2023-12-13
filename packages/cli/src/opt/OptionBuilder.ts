@@ -5,7 +5,7 @@ import { OptionArgumentValidatorSelector } from './OptionArgumentValidatorSelect
 import { OptionHelpers } from './OptionHelpers'
 import { OptionReader } from './OptionReader'
 import type { OptionValues } from '@commander-js/extra-typings'
-import { realizeLazyProperty } from '../util/object/realizeLazyProperty'
+import { realizeLazyProperty } from '@bemoje/util'
 
 /**
  * Wrapper around the @see Option class, for more intuitive construction.

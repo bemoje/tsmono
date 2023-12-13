@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/cli",
-  "version": "0.0.9",
+  "version": "0.0.11",
   "scripts": {
     "build:cjs": "rimraf ../../dist/packages/cli/cjs && npx tsc src/index.ts --outDir ../../dist/packages/cli/cjs --module commonjs --lib es2022 --moduleResolution node --downlevelIteration --esModuleInterop --target ES2022 --allowSyntheticDefaultImports --moduleResolution node --sourceMap",
     "build:esm": "rimraf ../../dist/packages/cli/esm && npx tsc src/index.ts --outDir ../../dist/packages/cli/esm --module es2022 --lib es2022 --moduleResolution node --downlevelIteration --esModuleInterop --target ES2022 --allowSyntheticDefaultImports --moduleResolution node --sourceMap",
@@ -8,9 +8,9 @@
     "build": "npm run build:cjs && npm run build:esm && npm run build:types"
   },
   "dependencies": {
+    "@bemoje/util": "latest",
     "@commander-js/extra-typings": "^11.1.0",
     "ansi-colors": "^4.1.3",
-    "cli-table": "^0.3.11",
     "fs-extra": "^11.2.0",
     "is-async-function": "^2.0.0"
   },
