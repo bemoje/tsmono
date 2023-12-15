@@ -304,8 +304,13 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
   }
 
   usageExamples(...examples: { command: string; description?: string }[]) {
-    const table = examples.map(({ command, description }) => [command, description ?? ''])
-    this.addHelpText('after', 'Usage Examples:\n' + formatTableForTerminal(table, ['command', 'description']))
+    const table = examples.map(({ command, description }) => {
+      if (command.length + (description?.length || 0) > 100) {
+        this.throwCommanderError(`Usage example description too long: ${command}`)
+      }
+      return [command, description ?? '']
+    })
+    this.description(this.$.description() + '\n\n' + 'Usage Examples:\n' + formatTableForTerminal(table))
     return this
   }
 
