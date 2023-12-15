@@ -48,6 +48,7 @@ function formatHelp(this: Help, cmd: Command) {
       'Options:',
       'Global Options:',
       'Preset Options:',
+      'Usage Examples:',
     ]
     const blocks: Record<string, unknown> = {}
     let lastAddedBlock = 'Description:'

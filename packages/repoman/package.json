@@ -6,12 +6,11 @@
   },
   "preferGlobal": true,
   "dependencies": {
-    "@bemoje/commander-config": "latest",
+    "@bemoje/cli": "latest",
     "@bemoje/fswalk": "latest",
     "@bemoje/trie-map": "latest",
     "@bemoje/tscode": "latest",
     "@bemoje/util": "latest",
-    "commander": "^11.0.0",
     "fs-extra": "^11.1.1",
     "snake-case": "^3.0.4",
     "strip-comments": "^2.0.1",

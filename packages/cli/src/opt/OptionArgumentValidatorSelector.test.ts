@@ -27,10 +27,10 @@ describe(OptionArgumentValidatorSelector.name, () => {
 
   it('should throw if invalid', () => {
     const run = new CommandBuilder('t', (c) => {
-      c.throwInsteadOfProcessExit()
+      c.throwRatherThanExitProcess()
       c.option('--i <int>', (a) => a.parser.number().validator.isInteger())
       c.action(() => {})
-      c.throwInsteadOfProcessExit()
+      c.throwRatherThanExitProcess()
     })
     expect(() => run.$.parse('--i 3.2'.split(' '), { from: 'user' })).toThrow()
   })
@@ -58,7 +58,7 @@ describe(OptionArgumentValidatorSelector.name, () => {
     const run = new CommandBuilder('t', (c) => {
       c.option('--i <ints>', (a) => a.parser.delimitedIntegers().validator.isIntegerArray())
       c.action(() => {})
-      c.throwInsteadOfProcessExit()
+      c.throwRatherThanExitProcess()
       OutputManager.getInstance().stderr.disable()
     })
     expect(() => run.$.parse(['--i 3,q,7'], { from: 'user' })).toThrow()
@@ -68,7 +68,7 @@ describe(OptionArgumentValidatorSelector.name, () => {
     const run = new CommandBuilder('t', (c) => {
       c.option('--a <arg>', (a) => a.validator.custom((arg) => arg === 'abc'))
       c.action(() => {})
-      c.throwInsteadOfProcessExit()
+      c.throwRatherThanExitProcess()
     })
     expect(() => run.$.parse('--a ab'.split(' '), { from: 'user' })).toThrow()
   })
@@ -80,7 +80,7 @@ describe(OptionArgumentValidatorSelector.name, () => {
         a.validator.custom((arg: string) => arg.length >= 3)
       })
       c.action(() => {})
-      c.throwInsteadOfProcessExit()
+      c.throwRatherThanExitProcess()
     })
     expect(() => run.$.parse('--a ab'.split(' '), { from: 'user' })).toThrow()
     expect(() => run.$.parse('--a abc'.split(' '), { from: 'user' })).toThrow()

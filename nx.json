@@ -213,7 +213,7 @@
     "repoman": {
       "tags": [],
       "implicitDependencies": [
-        "commander-config",
+        "cli",
         "fswalk",
         "trie-map",
         "tscode",

@@ -1,6 +1,6 @@
-import { colors } from '@bemoje/util'
-import { createSearchPromptObject } from '../searchPrompt/core/createSearchPromptObject'
-import { ISearchPromptOptions } from '../searchPrompt/core/ISearchPromptOptions'
+import colors from 'ansi-colors'
+import { createSearchPromptObject } from '../../searchPrompt/core/createSearchPromptObject'
+import { ISearchPromptOptions } from '../../searchPrompt/core/ISearchPromptOptions'
 import { PromptObject } from 'prompts'
 
 /**
@@ -18,7 +18,7 @@ export function createCommandSearchPromptObject(
   options: Omit<ISearchPromptOptions, 'keywordDelimiter' | 'preRender'>
 ): PromptObject {
   return createSearchPromptObject(name, data, {
-    keywordDelimiter: ' ',
+    separator: ' ',
     preRender: (parsed: string[]): string[] => {
       if (!parsed.length) return parsed
       return parsed.map((str: string, i) => {

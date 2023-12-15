@@ -1,6 +1,6 @@
-import { colors, execute, readJsonFileSync, updateJsonFileSync } from '@bemoje/util'
 import fs from 'fs-extra'
 import path from 'path'
+import { colors, execute, readJsonFileSync, updateJsonFileSync } from '@bemoje/util'
 import { getImportedAllNonRelative } from './getImportedAllNonRelative'
 import { getPackages } from './getPackages'
 const { gray, magenta: green } = colors
@@ -44,20 +44,20 @@ export function fixDependencies() {
     })
   })
 
-  status('ensuring all own-dependencies are set to latest')
-  getPackages().forEach(({ pkg, rootdir, name, pkgpath }) => {
-    if (!pkg.dependencies) return
-    for (const dep of Object.keys(pkg.dependencies)) {
-      if (dep.startsWith('@bemoje') && pkg.dependencies[dep] !== 'latest') {
-        console.log(`${name} not using latest of: ${dep}`)
-        pkg.dependencies[dep] = 'latest'
-        fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
-        execute(`npm update ${dep}`, {
-          cwd: rootdir,
-        })
-      }
-    }
-  })
+  // status('ensuring all own-dependencies are set to latest')
+  // getPackages().forEach(({ pkg, rootdir, name, pkgpath }) => {
+  //   if (!pkg.dependencies) return
+  //   for (const dep of Object.keys(pkg.dependencies)) {
+  //     if (dep.startsWith('@bemoje') && pkg.dependencies[dep] !== 'latest') {
+  //       console.log(`${name} not using latest of: ${dep}`)
+  //       pkg.dependencies[dep] = 'latest'
+  //       fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
+  //       execute(`npm update ${dep}`, {
+  //         cwd: rootdir,
+  //       })
+  //     }
+  //   }
+  // })
 
   status('ensuring all implicit dependencies are updated in nx.json')
   const nxJsonPath = path.join(cwd, 'nx.json')

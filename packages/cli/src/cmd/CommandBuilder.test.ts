@@ -607,5 +607,19 @@ describe(CommandBuilder.name, () => {
         expect(result).toBe('mia')
       })
     })
+
+    it('user confirmation', () => {
+      const cli = new CommandBuilder('demo', (c) => {
+        c.argument('[filepath]', (a) => {
+          a.description('The file to delete')
+          a.userMustConfirmIf({
+            predicate: (value) => value.includes('backup'),
+            message: 'Are you sure you want to delete a backup file?',
+          })
+        })
+      })
+      // cli.parseAsync(['backup.txt'], { from: 'user' })
+      // TODO: how to test this?
+    })
   })
 })

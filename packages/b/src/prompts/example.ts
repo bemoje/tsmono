@@ -8,8 +8,8 @@ import { searchPrompt } from './searchPrompt/searchPrompt'
  */
 function commandSearchPromptExample() {
   commandSearchPrompt(CLI_LIST, {
-    defaultValue: 'b',
-    maxResults: 15,
+    initial: 'b',
+    limit: 15,
     filtering: {
       startsWith: true,
       includes: true,
@@ -35,3 +35,5 @@ function searchPromptExample() {
 }
 
 // searchPromptExample()
+
+//

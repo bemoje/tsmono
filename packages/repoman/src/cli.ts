@@ -1,2 +1,2 @@
-import { main } from './lib/core/main'
+import { main } from './lib/main'
 main()

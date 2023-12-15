@@ -1,14 +1,14 @@
 /* eslint-disable no-useless-escape */
-import { colors, execute, updateFileSafeSync, updateFileSync, writePrettyJsonFileSync } from '@bemoje/util'
 import path from 'path'
-import { PackageHashes } from '../util/PackageHashes'
 import { allPackageNames } from '../util/allPackageNames'
+import { colors, execute, updateFileSafeSync, updateFileSync, writeJsonFileSafeSync } from '@bemoje/util'
+import { docs } from './docs'
 import { getPackages } from '../util/getPackages'
 import { implicitDependenciesRecursive } from '../util/implicitDependenciesRecursive'
+import { PackageHashes } from '../util/PackageHashes'
+import { prepub } from './prepub'
 import { semverVersionBump } from '../util/semverVersionBump'
 import { updateImplicitDependencies } from '../util/updateImplicitDependencies'
-import { docs } from './docs'
-import { prepub } from './prepub'
 const { gray, magenta: green, red, magenta: magenta } = colors
 
 export function publish(level: string, packages?: string[], options: { ignoreHash?: boolean } = {}) {
@@ -32,16 +32,12 @@ export function publish(level: string, packages?: string[], options: { ignoreHas
     console.log(gray('  - ' + 'Bump semver version'))
     const original = String(pkg.version)
     pkg.version = semverVersionBump(original, level as 'major' | 'minor' | 'patch')
-    writePrettyJsonFileSync(pkgpath, pkg)
+    writeJsonFileSafeSync(pkgpath, pkg, { spaces: 2 })
 
     console.log(gray('    - ' + 'Update package.json version in dist directory.'))
-    updateFileSync(
-      path.join(distdir, 'package.json'),
-      (src) => {
-        return src.replace(/"version"\: "\d+\.\d+\.\d+"/, `"version": "${pkg.version}"`)
-      },
-      JSON.stringify(pkg, null, 2)
-    )
+    updateFileSync(path.join(distdir, 'package.json'), (src) => {
+      return src.replace(/"version"\: "\d+\.\d+\.\d+"/, `"version": "${pkg.version}"`)
+    })
 
     if (pkg.preferGlobal) {
       console.log(gray('    - ' + 'Update version of CLIs in dist directory.'))
@@ -65,7 +61,7 @@ export function publish(level: string, packages?: string[], options: { ignoreHas
     } catch (error) {
       console.error('    - ' + red('Could not publish ' + name + '. Reverting version to ' + original + '.'))
       pkg.version = original
-      writePrettyJsonFileSync(pkgpath, pkg)
+      writeJsonFileSafeSync(pkgpath, pkg, { spaces: 2 })
       return
     }
 

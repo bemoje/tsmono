@@ -22,7 +22,7 @@ describe(ArgumentValidatorSelector.name, () => {
     const run = new CommandBuilder('t', (c) => {
       c.argument('<int>', (a) => a.parser.number().validator.isInteger())
       c.action(() => {})
-      c.throwInsteadOfProcessExit()
+      c.throwRatherThanExitProcess()
     })
     expect(() => run.$.parse(['3.2'], { from: 'user' })).toThrow()
   })
@@ -50,7 +50,7 @@ describe(ArgumentValidatorSelector.name, () => {
     const run = new CommandBuilder('t', (c) => {
       c.argument('<ints>', (a) => a.parser.delimitedIntegers().validator.isIntegerArray())
       c.action(() => {})
-      c.throwInsteadOfProcessExit()
+      c.throwRatherThanExitProcess()
     })
     expect(() => run.$.parse(['3,q,7'], { from: 'user' })).toThrow()
   })
@@ -59,7 +59,7 @@ describe(ArgumentValidatorSelector.name, () => {
     const run = new CommandBuilder('t', (c) => {
       c.argument('<arg>', (a) => a.validator.custom((arg) => arg === 'abc'))
       c.action(() => {})
-      c.throwInsteadOfProcessExit()
+      c.throwRatherThanExitProcess()
     })
     expect(() => run.$.parse(['ab'], { from: 'user' })).toThrow()
   })
@@ -71,7 +71,7 @@ describe(ArgumentValidatorSelector.name, () => {
         a.validator.custom((arg: string) => arg.length >= 3)
       })
       c.action(() => {})
-      c.throwInsteadOfProcessExit()
+      c.throwRatherThanExitProcess()
     })
     expect(() => run.$.parse(['ab'], { from: 'user' })).toThrow()
     expect(() => run.$.parse(['abc'], { from: 'user' })).toThrow()

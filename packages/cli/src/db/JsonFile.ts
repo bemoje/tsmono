@@ -20,7 +20,7 @@ export class JsonFile {
    */
   get db(): JsonDB {
     if (this.cmd.isRoot) {
-      return realizeLazyProperty(this, 'db', new JsonDB(this.cmd.dataFilepath, 2))
+      return realizeLazyProperty(this, 'db', new JsonDB(this.cmd.jsonFilepath, 2))
     } else {
       return this.cmd.root.db.db
     }

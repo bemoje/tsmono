@@ -1,4 +1,5 @@
 import type { Any } from '@bemoje/util'
+import { ArgumentBuilder } from '../arg/ArgumentBuilder'
 import { CommandBuilder } from './CommandBuilder'
 import { ErrorParser } from '@bemoje/util'
 import { Option } from '@commander-js/extra-typings'
@@ -12,6 +13,7 @@ export class CommandBuilderMetaData<Args extends Any[] = unknown[]> {
   globalOptions: Option[] = []
   hiddenGlobalOptions = new Set<Option>()
   presetOptionKeys: string[] = []
+  argBuilders: ArgumentBuilder[] = []
   argParsers: TStringParser<Any>[] = []
   argValidators: TValidator<Any>[][] = []
   optParsers: Record<string, TStringParser<Any>> = {}

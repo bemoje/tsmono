@@ -5,6 +5,7 @@ const cli = new CommandBuilder('demo', (c) => {
   c.version('0.0.1')
   c.description('A CLI example')
   c.setRecommended()
+
   c.command('nothing', function (this: CommandBuilder) {
     this.features
   })
@@ -17,7 +18,6 @@ const cli = new CommandBuilder('demo', (c) => {
 
   c.appData('count1', { defaultValue: 0 })
   c.appData('count2', { defaultValue: 0 })
-  console.log(c.dataFilepath)
 })
 console.timeEnd('load')
 
@@ -26,3 +26,4 @@ function example() {
   cli.$.parse()
   console.timeEnd('exec')
 }
+example()

@@ -20,6 +20,12 @@ export class OptionBuilder {
       this.$.default(true)
     }
   }
+  get hasValidators() {
+    return this.cmd.meta.optValidators[this.$.attributeName()]?.length > 0
+  }
+  get hasParser() {
+    return this.cmd.meta.optParsers[this.$.attributeName()] !== undefined
+  }
   description(string: string) {
     this.$.description = string
     return this

@@ -11,11 +11,21 @@ import { realizeLazyProperty } from '@bemoje/util'
 export class ArgumentBuilder {
   readonly $: Argument
   readonly index: number
+  userConfirmation?: { predicate: (arg: string) => boolean; message: string }
 
   constructor(readonly cmd: CommandBuilder, name: string) {
     this.$ = new Argument(name)
     this.index = cmd.meta.argValidators.length
     cmd.meta.argValidators[this.index] = []
+    this.cmd.meta.argBuilders.push(this)
+  }
+
+  get hasValidators() {
+    return this.cmd.meta.argValidators[this.index].length > 0
+  }
+
+  get hasParser() {
+    return this.cmd.meta.argParsers[this.index] !== undefined
   }
 
   description(string: string) {
@@ -43,5 +53,13 @@ export class ArgumentBuilder {
 
   get get() {
     return realizeLazyProperty(this, 'get', new ArgumentReader(this))
+  }
+
+  /**
+   * Only works with async actionHandlers.
+   */
+  userMustConfirmIf(options: { predicate: (arg: string) => boolean; message: string }) {
+    this.userConfirmation = options
+    return this
   }
 }

@@ -4,6 +4,7 @@ import fs from 'fs-extra'
 import isAsyncFunction from 'is-async-function'
 import os from 'os'
 import path from 'path'
+import prompts from 'prompts'
 import type { Any } from '@bemoje/util'
 import { ArgumentBuilder } from '../arg/ArgumentBuilder'
 import { arrAssign } from '@bemoje/util'
@@ -70,13 +71,13 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
   ) {
     this.meta.isNative = isNative
     this.$ = new Command(name)
+    commanderBackRefs.set(this.$, this)
 
     if (parent) {
       this.parent = parent
       this.parent.meta.subcommands.push(this)
       this.parent.$.addCommand(this.$)
     }
-    commanderBackRefs.set(this.$, this)
 
     this.initializeHelp()
 
@@ -101,6 +102,7 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
             child.assertNoDuplicateCommandNames()
           }
         }
+
         if (child.features.isAutoAssignMissingOptionFlagsEnabled) {
           child.assignMissingOptionFlags()
           if (!child.meta.isNative) {
@@ -119,10 +121,18 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
   }
 
   deleteDataFile() {
-    const filepath = this.dataFilepath
+    const filepath = this.jsonFilepath
     if (fs.existsSync(filepath)) removeFile(filepath)
   }
 
+  /**
+   * Set the program version to `str`.
+   *
+   * This method auto-registers the "-V, --version" flag
+   * which will print the version number when passed.
+   *
+   * You can optionally supply the  flags and description to override the defaults.
+   */
   version(string: string) {
     this.$.version(string)
     const opt = this.options.find((o) => o.attributeName() === 'version')
@@ -130,6 +140,11 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
     return this
   }
 
+  /**
+   * Set the description. If more than one sentence or string is given,
+   * then the first will be used as summary and the whole text as description.
+   * @param lines - description lines
+   */
   description(...lines: string[]) {
     const description = lines.join('\n')
     const summary = description.split(/(\. ?|\n|$)/)[0]
@@ -138,14 +153,32 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
     return this
   }
 
+  /**
+   * Set an alias for the command.
+   * You may call more than once to add multiple aliases.
+   * Only the first alias is shown in the auto-generated help.
+   */
   alias(alias: string) {
     this.assertCommandNameNotReserved(alias)
     this.$.alias(alias)
     return this
   }
+
+  /**
+   * Set aliases for the command. This overwrites all previously set aliases.
+   * Only the first alias is shown in the auto-generated help.
+   */
   aliases(...aliases: string[]) {
     aliases.forEach((alias) => this.assertCommandNameNotReserved(alias))
     this.$.aliases(aliases)
+    return this
+  }
+
+  /**
+   * Set the command usage.
+   */
+  usage(str: string): this {
+    this.$.usage(str)
     return this
   }
 
@@ -162,6 +195,12 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
     return this
   }
 
+  /**
+   * Create a new argument.
+   * @param name - argument name
+   * @param description - describe the argument
+   * @param cb - callback to configure the argument
+   */
   argument(name: string, description?: string): this
   argument(name: string, cb: (opt: ArgumentBuilder, cmd: this) => void): this
   argument(name: string, cb?: string | ((arg: ArgumentBuilder, cmd: this) => void)): this {
@@ -172,8 +211,24 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
     } else if (typeof cb === 'string') {
       ins.description(cb)
     }
+    if (ins.$.variadic && !ins.hasParser && !ins.hasValidators) {
+      ins.parser.string()
+      ins.validator.isStringArray()
+    }
     return this
   }
+
+  /**
+   * Define option with `flags`, `description`, and optional argument parsing function or `defaultValue` or both.
+   * The `flags` string contains the short and/or long flags, separated by comma, a pipe or space. A required
+   * option-argument is indicated by `<>` and an optional option-argument by `[]`.
+   * @example ```js
+   * program
+   *     .option('-p, --pepper', 'add pepper')
+   *     .option('-p, --pizza-type <TYPE>', 'type of pizza') // required argument
+   *     .option('-c, --cheese [CHEESE]', 'add extra cheese') // optional
+   * ```
+   */
   option(flags: string, description?: string): this
   option(flags: string, cb?: (opt: OptionBuilder, cmd: this) => void): this
   option(flags: string, cb?: string | ((opt: OptionBuilder, cmd: this) => void)): this {
@@ -185,8 +240,16 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
     } else if (typeof cb === 'string') {
       ins.description(cb)
     }
+    if (ins.$.variadic && !ins.hasParser && !ins.hasValidators) {
+      ins.parser.string()
+      ins.validator.isStringArray()
+    }
     return this
   }
+
+  /**
+   * The same as .option() except that the option will be inherited by subcommands.
+   */
   globalOption(flags: string, description?: string): this
   globalOption(flags: string, cb?: (opt: OptionBuilder, cmd: this) => void): this
   globalOption(flags: string, cb?: string | ((opt: OptionBuilder, cmd: this) => void)): this {
@@ -198,9 +261,16 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
       } else if (typeof cb === 'string') {
         ins.description(cb)
       }
+
       if (opt.hidden) this.meta.hiddenGlobalOptions.add(opt)
     })
   }
+
+  /**
+   * Create a subcommand.
+   * @param flags - command name and arguments, args are  `<required>` or `[optional]` and last may also be `variadic...`
+   * @param description - describe the command
+   */
   command<A extends Any[] = unknown[], O extends OptionValues = OptionValues>(
     name: string,
     cb: (this: CommandBuilder<A, O>, cmd: CommandBuilder<A, O>) => void
@@ -208,6 +278,12 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
     new CommandBuilder<A, O>(name, cb, this)
     return this
   }
+
+  /**
+   * Create a native subcommand.
+   * @param flags - command name and arguments, args are  `<required>` or `[optional]` and last may also be `variadic...`
+   * @param description - describe the command
+   */
   nativeCommand<A extends Any[] = unknown[], O extends OptionValues = OptionValues>(
     name: string,
     cb: (this: CommandBuilder<A, O>, cmd: CommandBuilder<A, O>) => void
@@ -215,6 +291,10 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
     new CommandBuilder<A, O>(name, cb, this, true)
     return this
   }
+
+  /**
+   * Register callback function for the command to execute when invoked.
+   */
   action(fn: (...args: any[]) => void | Promise<void>): this {
     const isAsync = isAsyncFunction(fn) || /^\(.+\) ?=> ?tslib_1\.__awaiter\(/.test(fn.toString().trim())
     this.meta.isActionAsync = isAsync
@@ -222,20 +302,30 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
     this.initializeActionWrapper(isAsync)
     return this
   }
+
+  usageExamples(...examples: { command: string; description?: string }[]) {
+    const table = examples.map(({ command, description }) => [command, description ?? ''])
+    this.addHelpText('after', 'Usage Examples:\n' + formatTableForTerminal(table, ['command', 'description']))
+    return this
+  }
+
   errorHandler(fn: (this: Command, error: unknown, cmd: CommandBuilder<Args, Opts>) => void) {
     Object.defineProperty(this.meta, 'errorHandler', { value: fn, configurable: true })
     return this
   }
+
   appData(key: string, value: JsonValue) {
     this.features.appData(true)
     this.db.appData.defineProperty(key, value)
     return this
   }
+
   config(key: string, entry: IConfig<JsonValue>) {
     this.features.config(true)
     this.db.config.defineProperty(key, entry)
     return this
   }
+
   preset(name: string, preset: IPresetPartial) {
     this.features.presets()
     this.meta.presetOptionKeys.push(name)
@@ -247,26 +337,69 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
     })
     return this
   }
+
   presetsEnabled(boolean = true) {
     this.features.presets(boolean)
     return this
   }
+
   autoAssignMissingOptionFlags(boolean = true) {
     this.features.autoAssignMissingOptionFlags(boolean)
     return this
   }
+
   autoAssignSubCommandAliases(boolean = true) {
     this.features.autoAssignSubCommandAliases(boolean)
     return this
   }
+
+  /**
+   * Allow excess command-arguments on the command line. Pass false to make excess arguments an error.
+   *
+   * @returns `this` command for chaining
+   */
   allowExcessArguments(bool = true) {
     this.$.allowExcessArguments(bool)
     return this
   }
+
+  /**
+   * Allow unknown options on the command line.
+   *
+   * @returns `this` command for chaining
+   */
   allowUnknownOption(bool = true) {
     this.$.allowUnknownOption(bool)
     return this
   }
+
+  /**
+   * Enable positional options. Positional means global options are specified before subcommands which lets
+   * subcommands reuse the same option names, and also enables subcommands to turn on passThroughOptions.
+   *
+   * The default behaviour is non-positional and global options may appear anywhere on the command line.
+   *
+   * @returns `this` command for chaining
+   */
+  enablePositionalOptions(positional?: boolean): this {
+    this.$.enablePositionalOptions(positional)
+    return this
+  }
+
+  /**
+   * Pass through options that come after command-arguments rather than treat them as command-options,
+   * so actual command-options come before command-arguments. Turning this on for a subcommand requires
+   * positional options to have been enabled on the program (parent commands).
+   *
+   * The default behaviour is non-positional and options may appear before or after command-arguments.
+   *
+   * @returns `this` command for chaining
+   */
+  passThroughOptions(passThrough?: boolean): this {
+    this.$.passThroughOptions(passThrough)
+    return this
+  }
+
   /**
    * Register callback to use as replacement for calling process.exit.
    */
@@ -274,13 +407,7 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
     this.$.exitOverride(callback)
     return this
   }
-  throwInsteadOfProcessExit() {
-    const onErr = (err: unknown) => {
-      throw err
-    }
-    this.exitOverride(onErr)
-    this.errorHandler(onErr)
-  }
+
   /**
    * Add hook for life cycle event.
    */
@@ -318,6 +445,20 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
   }
 
   /**
+   * Override default decision whether to add implicit help command.
+   * @example ```
+   * addHelpCommand() // force on
+   * addHelpCommand(false); // force off
+   * addHelpCommand('help [cmd]', 'display help for [cmd]'); // force on with custom details
+   * ```
+   * @returns `this` command for chaining
+   */
+  addHelpCommand(enableOrNameAndArgs?: string | boolean, description?: string): this {
+    this.$.addHelpCommand(enableOrNameAndArgs, description)
+    return this
+  }
+
+  /**
    * Add additional text to be displayed with the built-in help.
    *
    * Position is 'before' or 'after' to affect just this command,
@@ -327,6 +468,7 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
     this.$.addHelpText(position, text)
     return this
   }
+
   throwCommanderError(message: string, exitCode = 1, type = 'error'): never {
     throw new CommanderError(exitCode, type, message)
   }
@@ -347,8 +489,10 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
 
       if (!found) this.throwCommanderError(`Unknown global option name: ${name} for command, ${this.name}`)
     }
+
     return this
   }
+
   unhideGlobalOptions(...names: string[]) {
     const globals = this.getGlobalOptions()
     names = names.length ? names : globals.map((opt) => opt.attributeName())
@@ -362,10 +506,13 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
           break
         }
       }
+
       if (!found) this.throwCommanderError(`Unknown global option name: ${name} for command, ${this.name}`)
     }
+
     return this
   }
+
   /**
    * Set the directory for searching for executable subcommands of this command.
    */
@@ -389,6 +536,7 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
     this.$.setOptionValueWithSource(key, value, source)
     return this
   }
+
   setDataFilepath(filepath: string) {
     Object.defineProperty(this, 'dataFilepath', { value: filepath })
     if (Object.hasOwn(this, 'db') && Object.hasOwn(this.db, 'db')) {
@@ -407,7 +555,7 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
    * Output help information for this command.
    */
   outputHelp() {
-    console.log(this.getRenderedHelp())
+    console.log(this.getHelpInformation())
   }
 
   /**
@@ -422,7 +570,7 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
     return args.map((arg, i) => {
       if (!arg) return arg
       const parse = this.meta.argParsers[i > last ? last : i]
-      return parse ? (Array.isArray(arg) ? arg.map(parse) : parse(arg)) : arg
+      return parse ? (Array.isArray(arg) ? arg.map((a) => parse(a)) : parse(arg)) : arg
     })
   }
 
@@ -432,8 +580,9 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
   parseOptions(opts: OptionValues) {
     for (const [key, value] of Object.entries(opts)) {
       const parse = this.meta.optParsers[key]
-      opts[key] = parse ? (Array.isArray(value) ? value.map(parse) : parse(value as string)) : value
+      opts[key] = parse ? (Array.isArray(value) ? value.map((o) => parse(o)) : parse(value as string)) : value
     }
+
     return opts
   }
 
@@ -465,6 +614,7 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
         ensureThat(value, isValid)
       }
     }
+
     return parsedOptions
   }
 
@@ -480,9 +630,18 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
     this.assertValidOptions(options)
   }
 
+  throwRatherThanExitProcess() {
+    const throwError = (error: unknown) => {
+      throw error
+    }
+    this.errorHandler(throwError)
+    this.exitOverride(throwError)
+  }
+
   get name() {
     return this.$.name()
   }
+
   /**
    * Get the command at the root of the command tree.
    */
@@ -490,21 +649,27 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
     if (this.isRoot) return this
     return this.getAncestors().pop() as CommandBuilder
   }
+
   get isRoot() {
     return !this.parent
   }
+
   get arguments() {
     return this.$.registeredArguments
   }
+
   get options() {
     return this.$.options
   }
+
   get commander() {
     return this.$
   }
+
   get hasGrandChildren() {
     return this.meta.subcommands.some((sub) => !!sub.meta.subcommands.length)
   }
+
   /**
    * Returns whether a command's last argument is variadic.
    */
@@ -512,7 +677,8 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
     if (!this.arguments.length) return false
     return arrLast(this.arguments as Argument[]).variadic
   }
-  get dataFilepath() {
+
+  get jsonFilepath() {
     return path.join(CommandBuilder.dataDirectory, this.root.name + '.json')
   }
 
@@ -522,6 +688,7 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
   getExecutableDir(): string | null {
     return this.$.executableDir()
   }
+
   /**
    * Retrieve option value.
    */
@@ -542,21 +709,27 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
   getOptionValueSourceWithGlobals(key: string): OptionValueSource | undefined {
     return this.$.getOptionValueSourceWithGlobals(key)
   }
+
   getActionHandler() {
     return this.meta.actionHandler
   }
+
   getDescription() {
     return this.$.description()
   }
+
   getSummary() {
     return this.$.summary()
   }
+
   getVersion() {
     return this.$.version()
   }
+
   getAlias() {
     return this.$.alias()
   }
+
   getAliases() {
     return this.$.aliases()
   }
@@ -586,6 +759,7 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
         }
       }
     }
+
     return result
   }
 
@@ -635,22 +809,61 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
   getSiblings() {
     return [...this.getSiblingsIterator()]
   }
-  getClosestNonNativeParent() {
-    for (const anc of this.getAncestorsIterator({ includeSelf: true })) {
-      if (!anc.meta.isNative) return anc
-    }
-    this.throwCommanderError('No non-native parent found')
-  }
 
-  getRenderedHelp() {
+  /**
+   * Render the help string for the command.
+   */
+  getHelpInformation() {
     return this.$.helpInformation()
   }
 
-  getOptsWithGlobalsParsed() {
+  getOptsWithGlobals() {
     return this.parseOptions(this.$.optsWithGlobals())
   }
 
-  getParsedValidArgsOptsWithPresets(): [Any[], OptionValues] {
+  /**
+   * Parse `argv`, setting options and invoking commands when defined.
+   *
+   * The default expectation is that the arguments are from node and have the application as argv[0]
+   * and the script being run in argv[1], with user parameters after that.
+   *
+   * @example
+   * ```
+   * program.parse(process.argv);
+   * program.parse(); // implicitly use process.argv and auto-detect node vs electron conventions
+   * program.parse(my-args, { from: 'user' }); // just user supplied arguments, nothing special about argv[0]
+   * ```
+   *
+   * @returns `this` command for chaining
+   */
+  parse(argv?: readonly string[], options?: ParseOptions): this {
+    this.$.parse(argv, options)
+    return this
+  }
+
+  /**
+   * Parse `argv`, setting options and invoking commands when defined.
+   *
+   * Use parseAsync instead of parse if any of your action handlers are async. Returns a Promise.
+   *
+   * The default expectation is that the arguments are from node and have the application as argv[0]
+   * and the script being run in argv[1], with user parameters after that.
+   *
+   * @example
+   * ```
+   * program.parseAsync(process.argv);
+   * program.parseAsync(); // implicitly use process.argv and auto-detect node vs electron conventions
+   * program.parseAsync(my-args, { from: 'user' }); // just user supplied arguments, nothing special about argv[0]
+   * ```
+   *
+   * @returns Promise
+   */
+  async parseAsync(argv?: readonly string[], options?: ParseOptions): Promise<this> {
+    await this.$.parseAsync(argv, options)
+    return this
+  }
+
+  protected getParsedValidArgsOptsWithPresets(): [Any[], OptionValues] {
     const [presetArgs, presetOpts, presetOrder] = this.getPresetArgsAndOpts()
     const args = this.getParsedValidArgsWithPresets(presetArgs)
     const opts = this.getParsedValidOptsWithPresets(presetOpts)
@@ -658,22 +871,22 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
     return [args, opts]
   }
 
-  getParsedValidArgsWithPresets(presetArgs: Any[][]) {
+  protected getParsedValidArgsWithPresets(presetArgs: Any[][]) {
     const result = arrAssign([], ...presetArgs, this.parseArguments(this.$.args))
     this.combineVariadicArgs(result)
     this.assertValidArguments(result)
     return this.padArgsWithUndefinedUntilExpectedLength(result)
   }
 
-  getParsedValidOptsWithPresets(presetOpts: OptionValues[]) {
-    const parsed = this.getOptsWithGlobalsParsed()
+  protected getParsedValidOptsWithPresets(presetOpts: OptionValues[]) {
+    const parsed = this.getOptsWithGlobals()
     const opts = presetOpts.length ? objAssign({}, ...presetOpts, parsed) : parsed
-    this.deleteOptionsWithDefaultOrNoValue(opts)
+    this.hideOptionsWithDefaultOrNoValueOrArePresets(opts)
     this.assertValidOptions(opts)
     return opts
   }
 
-  getPresetArgsAndOpts(): [presetArgs: string[][], presetOpts: OptionValues[], presetOrder: string[]] {
+  protected getPresetArgsAndOpts(): [presetArgs: string[][], presetOpts: OptionValues[], presetOrder: string[]] {
     if (!this.features.isPresetsEnabled) return [[], [], []]
     const presets = this.db.presets.getAll()
     const opts = this.$.optsWithGlobals()
@@ -689,6 +902,7 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
       const rest = result.splice(this.arguments.length - 1)
       result.push(rest.filter((arg) => arg != null))
     }
+
     return result
   }
 
@@ -703,6 +917,7 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
       if (this.features.isPresetsEnabled) {
         this.outputDebugMessage('parsePresets', () => ({ presetOrder, presetArgs, presetOpts }))
       }
+
       this.outputDebugMessage('parseArgsOpts', () => {
         return {
           args,
@@ -713,18 +928,21 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
     }
   }
 
-  protected deleteOptionsWithDefaultOrNoValue(opts: OptionValues) {
-    const names = new Set(this.getOwnAndGlobalOptions().map((o) => o.attributeName()))
+  protected hideOptionsWithDefaultOrNoValueOrArePresets(opts: OptionValues) {
+    const allOpts = this.getOwnAndGlobalOptions()
+    const optMap = Object.fromEntries(allOpts.map((o) => [o.attributeName(), o]))
     for (const [key, value] of Object.entries(opts)) {
-      if (!names.has(key) || value === false || value == null) {
+      if (value == null || !optMap[key] || optMap[key].defaultValue === value) {
         setNonEnumerable(opts, key)
       }
     }
+
     for (const key of this.meta.presetOptionKeys) {
       if (Object.hasOwn(opts, key)) {
         setNonEnumerable(opts, key)
       }
     }
+
     return opts
   }
 
@@ -764,18 +982,21 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
     }
 
     this.nativeCommand('util', (u) => {
-      const cmd = u.getClosestNonNativeParent()
+      const cmd = u.parent as CommandBuilder
       u.alias('u')
       u.description('Utility commands.')
       if (cmd.features.isConfigEnabled) {
         u.nativeCommand('config', createConfigCommand)
       }
+
       if (cmd.features.isPresetsEnabled && cmd.meta.hasCustomActionHandler) {
         u.nativeCommand('presets', createPresetsCommand)
       }
+
       if (cmd.hasGrandChildren) {
         u.nativeCommand('list', createUtilListCommand)
       }
+
       if (cmd.features.isConfigEnabled || cmd.features.isPresetsEnabled || cmd.features.isAppDataEnabled) {
         u.nativeCommand('filepath', createUtilFilepathCommand)
       }
@@ -783,7 +1004,7 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
       function createUtilFilepathCommand(f: CommandBuilder) {
         f.alias('f')
         f.description('Print filepath to JSON file containing user data, eg. config and presets.')
-        f.action(async () => console.log(cmd.dataFilepath))
+        f.action(async () => console.log(cmd.jsonFilepath))
       }
 
       function createUtilListCommand(l: CommandBuilder) {
@@ -796,12 +1017,14 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
             : (prefix: string) => {
                 return !/ (config|presets|util)( .+)?$/gi.test(prefix)
               }
+
           const table: string[][] = []
           for (const c of cmd.getChildrenIterator({ includeSelf: true })) {
             const prefix = c.getPrefixString()
             if (filter && !filter(prefix)) continue
             table.push([prefix, c.getSummary()])
           }
+
           const ansi = table.map((row) => {
             const arr = row[0].split(' ')
             const last = arr.pop() as string
@@ -813,6 +1036,7 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
             } else if (/ (util|config|presets)/.test(row[0])) {
               col = colors.dim
             }
+
             row[0] = arr.map(colors.dim).concat(col(last)).join(' ')
             return row
           })
@@ -855,6 +1079,7 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
               implied[preset] = true
               db.get(preset).presets.forEach((k) => recurse(k))
             }
+
             recurse(key)
             o.implies(implied)
           })
@@ -930,7 +1155,7 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
    * This method creates the aliases, ensuring there are no clashes with sublings, why it is important that the
    * entire command tree is built before invoking this method.
    */
-  protected assignSubCommandAliases() {
+  assignSubCommandAliases() {
     if (this.getAlias() || this.name.length <= 1) return this
     const sibAliases = this.getSiblings()
       .map((sib) => sib.getAliases())
@@ -946,10 +1171,12 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
           return cmdAlias === sibAlias
         })
       }
+
       if (isClash) continue
       this.alias(cmdAlias)
       return this
     }
+
     return this
   }
 
@@ -965,7 +1192,7 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
    * If there are 64 options for the command and no more alphanumeric characters are available,
    * the option is not assigned a short name.
    */
-  protected assignMissingOptionFlags() {
+  assignMissingOptionFlags() {
     const taken = new Set<string>()
     for (const anc of this.getAncestorsIterator({ includeSelf: true })) {
       anc.options.forEach((opt) => {
@@ -986,10 +1213,12 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
           char = char.toUpperCase()
           if (taken.has(char)) continue
         }
+
         OptionHelpers.setShort(opt, char)
         taken.add(char)
         return
       }
+
       failed.add(opt)
     })
 
@@ -1002,6 +1231,7 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
           char = char.toUpperCase()
           if (taken.has(char)) continue
         }
+
         OptionHelpers.setShort(opt, char)
         taken.add(char)
         return
@@ -1026,14 +1256,17 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
         }
       }
     }
+
     return false
   }
+
   protected assertNoDuplicateOptionNames() {
     const throwErr = (cmd: CommandBuilder, opt: string, anc?: CommandBuilder) => {
       this.throwCommanderError(
         `Duplicate option names > cmd: ${cmd.name}, ${anc ? `anc: ${anc.name}, ` : ''}opt: ${opt}`
       )
     }
+
     const set = new Set<string>()
     for (const opt of this.options) {
       if (opt.name() === 'help') continue
@@ -1041,30 +1274,54 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
         if (set.has(opt.short)) throwErr(this, opt.short)
         set.add(opt.short)
       }
+
       if (opt.long) {
         if (set.has(opt.long)) throwErr(this, opt.long)
         set.add(opt.long)
       }
+
       if (opt.attributeName()) {
         if (set.has(opt.attributeName())) throwErr(this, opt.attributeName())
         set.add(opt.attributeName())
       }
     }
+
     for (const anc of this.getAncestorsIterator()) {
       for (const opt of anc.$.options) {
         if (opt.short && set.has(opt.short)) {
           if (opt.short !== 'V') continue
           throwErr(this, opt.short, anc)
         }
+
         if (opt.long && set.has(opt.long)) {
           throwErr(this, opt.long, anc)
         }
+
         if (opt.attributeName() && set.has(opt.attributeName())) {
           throwErr(this, opt.attributeName(), anc)
         }
       }
     }
   }
+
+  async getUserConfirmations<A extends Any[] = Args>(args: A) {
+    for (let i = 0; i < args.length; i++) {
+      const arg = args[i]
+      const argb = this.meta.argBuilders[i]
+      if (!argb || !argb.userConfirmation) continue
+      const { predicate, message } = argb.userConfirmation
+      if (predicate(arg)) {
+        const result = await prompts({
+          type: 'confirm',
+          name: 'isConfirmed',
+          message,
+          initial: true,
+        })
+        if (!result.isConfirmed) this.outputError('Aborted.')
+      }
+    }
+  }
+
   protected initializeActionWrapper(isAsync = false) {
     if (isAsync) {
       this.$.action(async () => {
@@ -1072,10 +1329,9 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
           this.handleOutputOptions()
           const [args, opts] = this.getParsedValidArgsOptsWithPresets()
           if (opts['help']) return this.outputHelp()
-          type TArgs = typeof this.$.args
-          const owg = this.$.optsWithGlobals()
-          type TOpts = typeof owg
-          await this.meta.actionHandler.call(this, ...(args as TArgs), opts as TOpts, this)
+          await this.getUserConfirmations(args)
+          const optswg = this.$.optsWithGlobals()
+          await this.meta.actionHandler.call(this, ...(args as typeof this.$.args), opts as typeof optswg, this)
         } catch (error) {
           this.meta.errorHandler.call(this, error, this)
         }
@@ -1086,8 +1342,6 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
           this.handleOutputOptions()
           const [args, opts] = this.getParsedValidArgsOptsWithPresets()
           if (opts['help']) return this.outputHelp()
-          // type TArgs = ReturnTypesOfFunctionArray<typeof this.meta.argParsers>
-          // type TOpts = ReturnTypesOfFunctionMap<typeof this.meta.optParsers>
           type TArgs = typeof this.$.args
           const owg = this.$.optsWithGlobals()
           type TOpts = typeof owg
@@ -1119,48 +1373,6 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
       this.throwCommanderError(`Name '${name}' is reserved and is not available as name or alias.`)
     }
   }
-
-  /**
-   * Parse `argv`, setting options and invoking commands when defined.
-   *
-   * The default expectation is that the arguments are from node and have the application as argv[0]
-   * and the script being run in argv[1], with user parameters after that.
-   *
-   * @example
-   * ```
-   * program.parse(process.argv);
-   * program.parse(); // implicitly use process.argv and auto-detect node vs electron conventions
-   * program.parse(my-args, { from: 'user' }); // just user supplied arguments, nothing special about argv[0]
-   * ```
-   *
-   * @returns `this` command for chaining
-   */
-  parse(argv?: readonly string[], options?: ParseOptions): this {
-    this.$.parse(argv, options)
-    return this
-  }
-
-  /**
-   * Parse `argv`, setting options and invoking commands when defined.
-   *
-   * Use parseAsync instead of parse if any of your action handlers are async. Returns a Promise.
-   *
-   * The default expectation is that the arguments are from node and have the application as argv[0]
-   * and the script being run in argv[1], with user parameters after that.
-   *
-   * @example
-   * ```
-   * program.parseAsync(process.argv);
-   * program.parseAsync(); // implicitly use process.argv and auto-detect node vs electron conventions
-   * program.parseAsync(my-args, { from: 'user' }); // just user supplied arguments, nothing special about argv[0]
-   * ```
-   *
-   * @returns Promise
-   */
-  async parseAsync(argv?: readonly string[], options?: ParseOptions): Promise<this> {
-    await this.$.parseAsync(argv, options)
-    return this
-  }
 }
 
 export const commanderBackRefs = new WeakMap<Command<Any, Any>, CommandBuilder<Any, Any>>()
@@ -1173,6 +1385,7 @@ Command.prototype.parse = function parse(this: Command, argv?: readonly string[]
   } else {
     this.builder.meta.rawArgs = process.argv.slice(2)
   }
+
   return oldParse.call(this, argv, options)
 }
 
@@ -1185,6 +1398,7 @@ Command.prototype.parseAsync = async function (this: Command, argv?: readonly st
   } else {
     this.builder.meta.rawArgs = process.argv.slice(2)
   }
+
   return await oldParseAsync.call(this, argv, options)
 }
 Object.defineProperty(Command.prototype, 'builder', {
