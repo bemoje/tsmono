@@ -1,11 +1,11 @@
-import { colors, updateJsonFileSync } from '@bemoje/util'
+import { Any, colors, updateJsonFileSync } from '@bemoje/util'
 import { getPackages } from './getPackages'
 
 export function fixPackageJson() {
   console.log(colors.magenta('Fixing package jsons...'))
 
   getPackages().forEach(({ pkgpath }) => {
-    updateJsonFileSync(pkgpath, (pkg) => {
+    updateJsonFileSync(pkgpath, (pkg: Any) => {
       pkg.author = {
         name: 'Benjamin Møller Jensen',
         email: 'bemoje@bemoje.net',

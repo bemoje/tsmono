@@ -1,6 +1,6 @@
 import fs from 'fs-extra'
 import path from 'path'
-import { colors, execute, readJsonFileSync, updateJsonFileSync } from '@bemoje/util'
+import { Any, colors, execute, readJsonFileSync, updateJsonFileSync } from '@bemoje/util'
 import { getImportedAllNonRelative } from './getImportedAllNonRelative'
 import { getPackages } from './getPackages'
 const { gray, magenta: green } = colors
@@ -61,9 +61,9 @@ export function fixDependencies() {
 
   status('ensuring all implicit dependencies are updated in nx.json')
   const nxJsonPath = path.join(cwd, 'nx.json')
-  updateJsonFileSync(nxJsonPath, (nxJson: Record<string, unknown>) => {
+  updateJsonFileSync(nxJsonPath, (nxJson: Any) => {
     if (!nxJson.projects) throw new Error('Could not find projects in nx.json')
-    const nxProjects = nxJson.projects as Record<string, unknown>
+    const nxProjects = nxJson.projects as Any
     getPackages().forEach(({ pkg, name, rootdir }) => {
       if (!nxProjects[name]) {
         nxProjects[name] = {
@@ -73,8 +73,8 @@ export function fixDependencies() {
           projectType: 'library',
         }
       }
-      const nxProject = nxProjects[name] as Record<string, unknown>
-      const project: Record<string, unknown> = readJsonFileSync(path.join(rootdir, 'project.json'))
+      const nxProject = nxProjects[name] as Any
+      const project: Any = readJsonFileSync(path.join(rootdir, 'project.json'))
       if (!project.projectType) throw new Error('Could not find projectType in project.json for package: ' + name)
       nxProject.projectType = project.projectType
       nxProject.implicitDependencies = Object.keys(pkg.dependencies || {})

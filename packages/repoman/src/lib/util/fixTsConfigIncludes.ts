@@ -1,6 +1,6 @@
-import { colors, readJsonFileSync } from '@bemoje/util'
-import fs from 'fs-extra'
 import * as path from 'path'
+import fs from 'fs-extra'
+import { Any, colors, readJsonFileSync } from '@bemoje/util'
 import { getPackages } from './getPackages'
 const { gray, magenta: green } = colors
 
@@ -11,7 +11,7 @@ export function fixTsConfigIncludes() {
     // lib
     const libfname = 'tsconfig.lib.json'
     const libpath = path.join(rootdir, libfname)
-    const lib: Record<string, unknown> = readJsonFileSync(libpath)
+    const lib: Any = readJsonFileSync(libpath)
 
     const libinc = ['src/**/*.ts']
     if (!lib.include || !Array.isArray(lib.include)) lib.include = []
@@ -32,7 +32,7 @@ export function fixTsConfigIncludes() {
     // spec
     const specfname = 'tsconfig.spec.json'
     const specpath = path.join(rootdir, specfname)
-    const spec: Record<string, unknown> = readJsonFileSync(specpath)
+    const spec: Any = readJsonFileSync(specpath)
 
     const specinc = ['jest.config.ts', 'src/**/*.test.ts', 'src/**/*.spec.ts', 'src/**/*.d.ts']
     if (!spec.include || !Array.isArray(spec.include)) spec.include = []

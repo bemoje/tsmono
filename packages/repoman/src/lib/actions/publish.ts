@@ -11,7 +11,8 @@ import { semverVersionBump } from '../util/semverVersionBump'
 import { updateImplicitDependencies } from '../util/updateImplicitDependencies'
 const { gray, magenta: green, red, magenta: magenta } = colors
 
-export function publish(level: string, packages?: string[], options: { ignoreHash?: boolean } = {}) {
+export function publish(packages: string[], options: { level?: string; ignoreHash?: boolean } = {}) {
+  const level = options?.level || 'patch'
   const _packages = packages ? [...packages, ...implicitDependenciesRecursive(...packages)] : allPackageNames()
 
   // prepub

@@ -121,7 +121,7 @@ export function createPackage(name: string) {
 
   fixPackageJson()
 
-  updateJsonFileSync(path.join(process.cwd(), 'package.json'), (pkg) => {
+  updateJsonFileSync(path.join(process.cwd(), 'package.json'), (pkg: Any) => {
     const deps = pkg.dependencies as Record<string, string>
     deps['@bemoje/' + name] = 'latest'
     return pkg

@@ -1,6 +1,6 @@
-import { colors } from '@bemoje/util'
 import fs from 'fs-extra'
 import path from 'path'
+import { Any, colors } from '@bemoje/util'
 import { getPackages } from './getPackages'
 
 const { gray, magenta: green } = colors
@@ -19,7 +19,7 @@ export function fixReadmes() {
   })
 }
 
-function readme(pkg: Record<string, any>): string {
+function readme(pkg: Any): string {
   const shortname = pkg.name.replace('@bemoje/', '')
   return `# ${pkg.name}
 

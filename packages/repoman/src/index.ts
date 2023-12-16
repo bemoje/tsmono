@@ -1,3 +1,4 @@
+export * from './cli'
 export * from './lib/actions/build'
 export * from './lib/actions/createPackage'
 export * from './lib/actions/deletePackage'
