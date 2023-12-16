@@ -1,7 +1,8 @@
+import { Any } from '@bemoje/util'
 import { TrieMap } from './TrieMap'
 
 describe('TrieMap', () => {
-  let trie: TrieMap<any>
+  let trie: TrieMap<Any>
 
   beforeEach(() => {
     trie = new TrieMap()
@@ -16,9 +17,7 @@ describe('TrieMap', () => {
   })
 
   it('(static method) fromJSON', () => {
-    trie.set(['a'], 'value')
-    const json = JSON.stringify(trie)
-    expect(TrieMap.fromJSON(json).count).toBe(1)
+    expect(TrieMap.fromJSON(trie.set(['a'], 'value').toJson()).count).toBe(1)
   })
 
   it('(getter) count', () => {
@@ -46,7 +45,7 @@ describe('TrieMap', () => {
   })
 
   describe('(methods) set/has/get', () => {
-    const testWith = (prefix: string[], value?: any) => {
+    const testWith = (prefix: string[], value?: Any) => {
       expect(trie.has(prefix)).toBe(false)
       trie.set(prefix, value || prefix.join('.'))
       const v = trie.get(prefix)
@@ -81,6 +80,18 @@ describe('TrieMap', () => {
       expect(() => {
         trie.get(['a'])
       }).not.toThrowError()
+    })
+
+    it('invalid characters - sentinel', () => {
+      expect(() => {
+        trie.get([String.fromCharCode(0)])
+      }).toThrowError('Illegal prefix key. Single character string of CharCode 0 is reserved')
+      expect(() => {
+        trie.set([String.fromCharCode(0)], true)
+      }).toThrowError('Illegal prefix key. Single character string of CharCode 0 is reserved')
+      expect(() => {
+        trie.has([String.fromCharCode(0)])
+      }).toThrowError('Illegal prefix key. Single character string of CharCode 0 is reserved')
     })
   })
 
@@ -140,7 +151,7 @@ describe('TrieMap', () => {
   })
 
   it('(method) forEach', () => {
-    const data: Array<any> = [
+    const data: Array<Any> = [
       [['a'], 'a'],
       [['b'], 'a'],
       [['a', 'a'], 'aa'],
@@ -148,7 +159,7 @@ describe('TrieMap', () => {
       [['a', 'b', 'c'], 'abc'],
     ].sort()
     trie.load(data)
-    let res: Array<any> = []
+    let res: Array<Any> = []
     trie.forEach([], (value, prefix) => {
       res.push([prefix, value])
     })
@@ -160,10 +171,7 @@ describe('TrieMap', () => {
       res.push([prefix, value])
       return
     })
-    expect(res.sort()).toStrictEqual([
-      [['a'], 'a'],
-      [['b'], 'a'],
-    ])
+    expect(res.sort()).toStrictEqual([[['a'], 'a']])
   })
 
   it('(method) updateAll', () => {
@@ -179,7 +187,7 @@ describe('TrieMap', () => {
   })
 
   it('(method) getValues', () => {
-    const data: Array<any> = [
+    const data: Array<Any> = [
       [['a'], 'a'],
       [['b'], 'a'],
       [['a', 'a'], 'aa'],
@@ -198,7 +206,7 @@ describe('TrieMap', () => {
       [['a', 'a', 'a'], false],
       [['a', 'b', 'c'], true],
     ])
-    const res: Array<any> = []
+    const res: Array<Any> = []
     trie.find([], true, (_, prefix) => {
       res.push([prefix])
     })

@@ -1,6 +1,6 @@
-import { MS_IN_SECOND, round } from '@bemoje/util'
 import { getIndexSize } from './getIndexSize'
 import { IBuildIndexStats } from './IBuildIndexStats'
+import { MS_IN_SECOND, round } from '@bemoje/util'
 
 export async function printStats(t0: number, stats: IBuildIndexStats): Promise<void> {
   const entries = Object.entries(stats.fileTypes).sort((a, b) => b[1] - a[1])

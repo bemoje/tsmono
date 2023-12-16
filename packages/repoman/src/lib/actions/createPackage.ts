@@ -9,7 +9,7 @@ import {
 } from '@bemoje/util'
 import { fixPackageJson } from '../util/fixPackageJson'
 
-export function createPackage(name: string) {
+export function createPackage(name: string, options: { isCli?: boolean } = {}) {
   if (!name) throw new Error('No name provided')
 
   execute(
@@ -39,9 +39,10 @@ export function createPackage(name: string) {
         outputs: ['{options.outputPath}'],
         options: {
           script: 'build',
-          project: 'packages/cli/package.json',
+          project: `packages/${name}/package.json`,
         },
       }
+      if (options.isCli) project.projectType = 'application'
       return project
     },
     '{}'
@@ -60,6 +61,7 @@ export function createPackage(name: string) {
       pkg.module = 'esm/index.js'
       pkg.types = 'types/index.d.ts'
       pkg.type = 'commonjs'
+      if (options.isCli) pkg.preferGlobal = true
       return pkg
     },
     '{}'

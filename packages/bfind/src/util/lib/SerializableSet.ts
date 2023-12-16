@@ -1,6 +1,7 @@
+import { Any } from '@bemoje/util'
+
 export class SerializableSet<T> extends Set<T> {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(...args: any[]) {
+  constructor(...args: Any[]) {
     super(...args)
   }
   toJSON() {

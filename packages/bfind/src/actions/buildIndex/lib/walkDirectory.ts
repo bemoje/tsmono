@@ -1,21 +1,24 @@
-import { TrieMap } from '@bemoje/trie-map'
-import { colors, FSPathFilter, isWindows, memoryUsage, pathExtname, round } from '@bemoje/util'
 import path from 'path'
 import walkdir from 'walkdir'
-import { config } from '../../core/config'
-import { normalizeKeys } from '../../util/normalizeKeys'
+import { colors, FSPathFilter, isWindows, memoryUsage, pathExtname, round } from '@bemoje/util'
+import { CommandBuilder } from '@bemoje/cli'
 import { IBuildIndexStats } from './IBuildIndexStats'
+import { normalizeKeys } from '../../../util/lib/normalizeKeys'
+import { TrieMap } from '@bemoje/trie-map'
 
 const isWin = isWindows()
 const regexReplace = /\\+/g
 
 export function walkDirectory(
+  cmd: CommandBuilder,
   dirpath: string,
   filter: FSPathFilter,
   stats: IBuildIndexStats,
   PATHS: string[],
   TRIE: TrieMap<Set<number>>
 ): Promise<void> {
+  const config = cmd.root.db.config
+
   return new Promise((resolve, reject) => {
     if (isWin) dirpath = dirpath.replace(regexReplace, '/')
     const walker = walkdir(dirpath, {
@@ -45,7 +48,7 @@ export function walkDirectory(
       }
       const index = stats.filesIndexed++
       PATHS[index] = fspath
-      const normalized = normalizeKeys(path.basename(fspath), stat.isDirectory())
+      const normalized = normalizeKeys(cmd, path.basename(fspath), stat.isDirectory())
       for (const word of normalized) {
         stats.keywordsIndexed++
         for (let j = 0; j < word.length - 1; j++) {
@@ -71,11 +74,8 @@ export function walkDirectory(
       }
     })
 
-    if (config.userconfig.get('print-scan-errors')) {
+    if (config.get('printScanErrors') === true) {
       walker.on('error', reject)
-    }
-
-    if (config.userconfig.get('print-scan-errors')) {
       walker.on('fail', (path) => console.log('Failed to read path: ' + path))
     }
 

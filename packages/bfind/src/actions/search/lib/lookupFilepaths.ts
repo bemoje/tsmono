@@ -1,8 +1,15 @@
+import { CommandBuilder } from '@bemoje/cli'
 import { setUnion } from '@bemoje/util'
-import { config } from '../../core/config'
 
-export function lookupFilepaths(keywords: string[], indices: Array<Set<number>>, PATHS: string[]): Array<string> {
-  const isInsensitive = config.userconfig.get('case-insensitive') as boolean
+export function lookupFilepaths(
+  cmd: CommandBuilder,
+  keywords: string[],
+  indices: Array<Set<number>>,
+  PATHS: string[]
+): Array<string> {
+  const config = cmd.root.db.config
+
+  const isInsensitive = config.get<boolean>('caseInsensitive') === true
   const filepaths: string[] = []
   for (const i of setUnion(indices)) {
     const filepath = PATHS[i]

@@ -11,6 +11,7 @@
     "bfind": {
       "tags": [],
       "implicitDependencies": [
+        "cli",
         "commander-config",
         "trie-map",
         "util"
@@ -176,7 +177,9 @@
     },
     "trie-map": {
       "tags": [],
-      "implicitDependencies": [],
+      "implicitDependencies": [
+        "util"
+      ],
       "npmScope": "bemoje",
       "projectType": "library"
     },

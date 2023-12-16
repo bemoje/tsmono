@@ -1,8 +1,8 @@
-import { arrSum, bytesToMegabytes, round } from '@bemoje/util'
 import fsp from 'fs-extra'
 import path from 'path'
-import { FILE_LIST_FILEPATH } from '../../constants/FILE_LIST_FILEPATH'
-import { WORD_TRIE_DIRPATH } from '../../constants/WORD_TRIE_DIRPATH'
+import { arrSum, bytesToMegabytes, round } from '@bemoje/util'
+import { FILE_LIST_FILEPATH } from '../../../constants/lib/FILE_LIST_FILEPATH'
+import { WORD_TRIE_DIRPATH } from '../../../constants/lib/WORD_TRIE_DIRPATH'
 
 export async function getIndexSize(): Promise<number> {
   const trieFnames = await fsp.readdir(WORD_TRIE_DIRPATH)

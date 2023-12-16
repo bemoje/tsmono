@@ -1,7 +1,7 @@
+import fs from 'fs-extra'
+import { FILE_LIST_FILEPATH } from '../../../constants/lib/FILE_LIST_FILEPATH'
 import { gracefulProcessExit } from '@bemoje/commander-config'
 import { readJsonFile } from '@bemoje/util'
-import fs from 'fs-extra'
-import { FILE_LIST_FILEPATH } from '../../constants/FILE_LIST_FILEPATH'
 
 export async function loadIndexPaths(): Promise<string[]> {
   if (!fs.existsSync(FILE_LIST_FILEPATH)) {

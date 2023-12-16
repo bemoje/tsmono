@@ -1,6 +1,6 @@
-import { colors } from '@bemoje/util'
+import colors from 'ansi-colors'
 import fs from 'fs-extra'
-import { FILE_LIST_FILEPATH } from '../../../constants/FILE_LIST_FILEPATH'
+import { FILE_LIST_FILEPATH } from '../../../../constants/lib/FILE_LIST_FILEPATH'
 
 export function printIndexAge() {
   const indexAge = Math.floor((Date.now() - fs.statSync(FILE_LIST_FILEPATH).mtimeMs) / 1000 / 60 / 60 / 24)

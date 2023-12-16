@@ -1,7 +1,7 @@
-import { TrieMap } from '@bemoje/trie-map'
 import fs from 'fs-extra'
 import path from 'path'
-import { WORD_TRIE_DIRPATH } from '../../constants/WORD_TRIE_DIRPATH'
+import { TrieMap } from '@bemoje/trie-map'
+import { WORD_TRIE_DIRPATH } from '../../../constants/lib/WORD_TRIE_DIRPATH'
 
 export async function loadIndexTrie(normalized: Set<string>): Promise<TrieMap<Array<number>>> {
   const TRIE = new TrieMap<Array<number>>()

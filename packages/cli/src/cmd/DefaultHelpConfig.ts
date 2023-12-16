@@ -84,14 +84,15 @@ function formatHelp(this: Help, cmd: Command) {
 }
 
 function subcommandTerm(this: Help, cmd: Command): string {
+  const name = cmd.name()
   const args = cmd.registeredArguments.map((arg) => this.argumentTerm(arg)).join(' ')
   const parent = cmd.parent || cmd
   const hasAliases = !cmd.parent || parent.commands.some((c) => !!c.alias())
-  if (!hasAliases) return cmd.name() + (args ? ' ' + args : '')
+  if (!hasAliases) return name + (args ? ' ' + args : '')
   const padsize = Math.max(1, ...parent.commands.map((c) => c.alias()?.length || 1))
-  let alias = cmd.alias() || ' '
-  alias = alias.padEnd(padsize, ' ') + ' |'
-  return alias + cmd.name() + (args ? ' ' + args : '')
+  let alias = name.length === 1 ? name : cmd.alias() || ' '
+  alias = name === '?' ? '' : alias.padEnd(padsize, ' ') + ' |'
+  return alias + name + (args ? ' ' + args : '')
 }
 
 function argumentTerm(this: Help, arg: Argument) {

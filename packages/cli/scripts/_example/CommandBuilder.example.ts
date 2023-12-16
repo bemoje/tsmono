@@ -9,6 +9,7 @@ const cli = new CommandBuilder('demo', (c) => {
   // c.action(() => {})
 
   c.command('hello', (h) => {
+    h.alias('he')
     h.description('just prints hello')
     h.argument('[name]')
     h.action((name?: string) => {
@@ -90,3 +91,5 @@ function example() {
   cli.$.parse()
   console.timeEnd('exec')
 }
+
+example()

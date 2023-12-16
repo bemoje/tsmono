@@ -7,7 +7,7 @@
     "build": {
       "executor": "nx:run-script",
       "outputs": ["{options.outputPath}"],
-      "options": { "script": "build", "project": "packages/cli/package.json" }
+      "options": { "script": "build", "project": "packages/cli-prompt/package.json" }
     },
     "lint": {
       "executor": "@nx/linter:eslint",

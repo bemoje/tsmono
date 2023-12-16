@@ -17,6 +17,7 @@
   "license": "MIT",
   "keywords": [],
   "dependencies": {
+    "@bemoje/util": "^0.5.12",
     "tslib": "^2.3.0"
   },
   "repository": {

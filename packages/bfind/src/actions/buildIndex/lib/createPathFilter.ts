@@ -1,23 +1,25 @@
+import { CommandBuilder } from '@bemoje/cli'
 import { FSPathFilter, normalizeFileExtension } from '@bemoje/util'
-import { config } from '../../core/config'
-import { normalizePathSep } from '../../util/normalizePathSep'
+import { normalizePathSep } from '../../../util/lib/normalizePathSep'
 
-export function createPathFilter(): FSPathFilter {
+export function createPathFilter(cmd: CommandBuilder): FSPathFilter {
+  const config = cmd.root.db.config
+
   const filter = new FSPathFilter()
-  filter.isCaseInsensitive = config.userconfig.get('case-insensitive')
+  filter.isCaseInsensitive = config.get('caseInsensitive')
 
-  config.userconfig.get('ignore-dirpaths').forEach((reg: string) => {
+  config.get<string[]>('ignoreDirpaths').forEach((reg: string) => {
     const regex = new RegExp(reg, filter.isCaseInsensitive ? 'i' : '')
     filter.ignoreDirpathRegex(regex)
   })
 
-  config.userconfig.get('ignore-filepaths').forEach((reg: string) => {
+  config.get<string[]>('ignoreFilepaths').forEach((reg: string) => {
     const regex = new RegExp(reg, filter.isCaseInsensitive ? 'i' : '')
     filter.ignoreFilepathRegex(regex)
   })
 
-  const extensions = config.userconfig
-    .get('ignore-file-extensions')
+  const extensions = config
+    .get<string[]>('ignoreFileExtensions')
     .map(normalizeFileExtension)
     .filter((ext) => ext.length > 1)
     .map((ext) => ext.slice(1))
@@ -26,7 +28,7 @@ export function createPathFilter(): FSPathFilter {
   const regex = new RegExp('\\.(' + extensions + ')$', 'i')
   filter.ignoreFilenameRegex(regex)
 
-  if (config.userconfig.get('print-scan-ignored')) {
+  if (config.get('printScanIgnored')) {
     filter.on('invalid', (type, fspath) => {
       console.log(`Ignored ${type}: ${normalizePathSep(fspath)}`)
     })

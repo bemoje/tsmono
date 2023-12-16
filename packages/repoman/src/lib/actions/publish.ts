@@ -13,7 +13,7 @@ const { gray, magenta: green, red, magenta: magenta } = colors
 
 export function publish(packages: string[], options: { level?: string; ignoreHash?: boolean } = {}) {
   const level = options?.level || 'patch'
-  const _packages = packages ? [...packages, ...implicitDependenciesRecursive(...packages)] : allPackageNames()
+  const _packages = packages.length ? [...packages, ...implicitDependenciesRecursive(...packages)] : allPackageNames()
 
   // prepub
   prepub(packages)

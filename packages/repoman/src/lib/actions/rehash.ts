@@ -3,7 +3,7 @@ import path from 'path'
 import { getPackages } from '../util/getPackages'
 import { hashPackage } from '../util/hashPackage'
 
-export function rehash(packages?: string[]) {
+export function rehash(packages: string[]) {
   const hashesPath = path.join(process.cwd(), 'scripts', 'data', 'hashes.json')
   const hashes = JSON.parse(fs.readFileSync(hashesPath, 'utf8'))
   getPackages(packages).forEach(({ name }) => {

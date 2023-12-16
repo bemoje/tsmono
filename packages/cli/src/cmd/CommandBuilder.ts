@@ -306,7 +306,7 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
   usageExamples(...examples: { command: string; description?: string }[]) {
     const table = examples.map(({ command, description }) => {
       if (command.length + (description?.length || 0) > 100) {
-        this.throwCommanderError(`Usage example description too long: ${command}`)
+        throw new Error(`Usage example description too long: ${command}`)
       }
       return [command, description ?? '']
     })
@@ -492,7 +492,7 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
         }
       }
 
-      if (!found) this.throwCommanderError(`Unknown global option name: ${name} for command, ${this.name}`)
+      if (!found) throw new Error(`Unknown global option name: ${name} for command, ${this.name}`)
     }
 
     return this
@@ -1250,9 +1250,7 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
   protected assertNoDuplicateCommandNames() {
     const names = this.$.commands.map((sub) => sub.aliases().concat(sub.name())).flat()
     if (names.length !== new Set(names).size) {
-      this.throwCommanderError(
-        `Duplicate subcommand names/aliases found for command, ${this.name}: ${names.join(', ')}`
-      )
+      throw new Error(`Duplicate subcommand names/aliases found for command, ${this.name}: ${names.join(', ')}`)
     }
   }
   protected hasIdenticalParentOption(option: Option) {
@@ -1270,9 +1268,7 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
 
   protected assertNoDuplicateOptionNames() {
     const throwErr = (cmd: CommandBuilder, opt: string, anc?: CommandBuilder) => {
-      this.throwCommanderError(
-        `Duplicate option names > cmd: ${cmd.name}, ${anc ? `anc: ${anc.name}, ` : ''}opt: ${opt}`
-      )
+      throw new Error(`Duplicate option names > cmd: ${cmd.name}, ${anc ? `anc: ${anc.name}, ` : ''}opt: ${opt}`)
     }
 
     const set = new Set<string>()
@@ -1359,7 +1355,7 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
     if (this.isRoot) return
     if (this.meta.isNative) return
     if (name === 'u' || name === 'util') {
-      this.throwCommanderError(`Name '${name}' is reserved and is not available as name or alias.`)
+      throw new Error(`Name '${name}' is reserved and is not available as name or alias.`)
     }
   }
 }

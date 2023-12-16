@@ -1,9 +1,9 @@
-import { TrieMap } from '@bemoje/trie-map'
-import { emptyDirectory } from '@bemoje/util'
 import fs from 'fs-extra'
 import path from 'path'
-import { FILE_LIST_FILEPATH } from '../../constants/FILE_LIST_FILEPATH'
-import { WORD_TRIE_DIRPATH } from '../../constants/WORD_TRIE_DIRPATH'
+import { emptyDirectory } from '@bemoje/util'
+import { FILE_LIST_FILEPATH } from '../../../constants/lib/FILE_LIST_FILEPATH'
+import { TrieMap } from '@bemoje/trie-map'
+import { WORD_TRIE_DIRPATH } from '../../../constants/lib/WORD_TRIE_DIRPATH'
 
 export async function saveIndex(FILEPATHS: string[], TRIE: TrieMap<Set<number>>): Promise<void> {
   await emptyDirectory(WORD_TRIE_DIRPATH)

@@ -1,7 +1,8 @@
+import { CommandBuilder } from '@bemoje/cli'
 import { default as fs, default as fsp } from 'fs-extra'
-import { config } from '../../../core/config'
 
-export async function sortByLastModified(filepaths: string[]): Promise<[fs.Stats, string][]> {
+export async function sortByLastModified(cmd: CommandBuilder, filepaths: string[]): Promise<[fs.Stats, string][]> {
+  const config = cmd.root.db.config
   const stats: [fs.Stats, string][] = []
   for (const fspath of filepaths) {
     try {
@@ -11,5 +12,5 @@ export async function sortByLastModified(filepaths: string[]): Promise<[fs.Stats
     }
   }
   stats.sort((a, b) => a[0].mtimeMs - b[0].mtimeMs)
-  return stats.slice(stats.length - config.userconfig.get('max-results'))
+  return stats.slice(stats.length - config.get<number>('maxResults'))
 }
