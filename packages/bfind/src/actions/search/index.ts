@@ -20,13 +20,9 @@ export async function search(keys: string[], o: ISearchOptions = {}, cmd: Comman
   const TRIE = await loadIndexTrie(normalized)
   const FILEPATHS = await loadIndexPaths()
 
-  console.log({ normalized, TRIE: TRIE.root, TRIECOUNT: TRIE.count, FILEPATHS: FILEPATHS.length })
-
   // search index
   const indices = lookupIndices(normalized, TRIE)
   let results = lookupFilepaths(cmd, keys, indices, FILEPATHS)
-
-  console.log({ results: results.length, indices: indices.length })
 
   // filter result
   if (o.extensions) results = filterByExtension(results, o)

@@ -7,7 +7,7 @@
     "importHelpers": true,
     "target": "ES2015",
     "module": "CommonJS",
-    "lib": ["ESNext", "DOM"],
+    "lib": ["ES2022", "DOM"],
     "types": ["node"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,

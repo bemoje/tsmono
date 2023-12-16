@@ -2,7 +2,7 @@ import fs from 'fs-extra'
 import { asyncTasksLimit } from '@bemoje/util'
 import { CommandBuilder } from '@bemoje/cli'
 import { createPathFilter } from './lib/createPathFilter'
-import { gracefulProcessExit } from '@bemoje/commander-config'
+import { gracefulProcessExit } from '../../util'
 import { IBuildIndexStats } from './lib/IBuildIndexStats'
 import { printStats } from './lib/printStats'
 import { saveIndex } from './lib/saveIndex'
@@ -15,7 +15,7 @@ export async function buildIndex(opts: unknown, cmd: CommandBuilder): Promise<vo
   console.log(config.getAll())
 
   // graceful exit on error
-  process.on('uncaughtException', (error: unknown) => {
+  process.on('uncaughtException', (error: Error) => {
     if (config.get('printScanErrors')) {
       gracefulProcessExit(error['message'] ? error['message'] : error)
     }

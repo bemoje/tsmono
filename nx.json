@@ -12,7 +12,6 @@
       "tags": [],
       "implicitDependencies": [
         "cli",
-        "commander-config",
         "trie-map",
         "util"
       ],

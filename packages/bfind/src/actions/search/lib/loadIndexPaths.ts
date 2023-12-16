@@ -1,6 +1,6 @@
 import fs from 'fs-extra'
 import { FILE_LIST_FILEPATH } from '../../../constants/lib/FILE_LIST_FILEPATH'
-import { gracefulProcessExit } from '@bemoje/commander-config'
+import { gracefulProcessExit } from '../../../util/lib/gracefulProcessExit'
 import { readJsonFile } from '@bemoje/util'
 
 export async function loadIndexPaths(): Promise<string[]> {

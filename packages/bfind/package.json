@@ -1,14 +1,20 @@
 {
   "name": "@bemoje/bfind",
-  "version": "0.3.8",
+  "version": "0.3.10",
   "description": "CLI for very fast file search. File contents are not indexed - only file and directory names. Directories are highlighted in blue in search results. Search results are sorted by last modified date. Regex ignore patterns are configurable in CLI or the JSON config file. Each argument is a search term. If multiple terms are provided, they all must be present in the filepath to be considered a search hit.",
+  "scripts": {
+    "build:cjs": "rimraf ../../dist/packages/bfind/cjs && npx tsc src/index.ts --outDir ../../dist/packages/bfind/cjs --module commonjs --lib es2022 --moduleResolution node --downlevelIteration --esModuleInterop --target ES2022 --allowSyntheticDefaultImports --moduleResolution node --sourceMap",
+    "build:esm": "rimraf ../../dist/packages/bfind/esm && npx tsc src/index.ts --outDir ../../dist/packages/bfind/esm --module es2022 --lib es2022 --moduleResolution node --downlevelIteration --esModuleInterop --target ES2022 --allowSyntheticDefaultImports --moduleResolution node --sourceMap",
+    "build:types": "rimraf ../../dist/packages/bfind/types && npx tsc src/index.ts --outDir ../../dist/packages/bfind/types --module es2022 --lib es2022 --moduleResolution node --downlevelIteration --esModuleInterop --target ES2022 --allowSyntheticDefaultImports --moduleResolution node --declaration --declarationMap --emitDeclarationOnly",
+    "build": "npm run build:cjs && npm run build:esm && npm run build:types"
+  },
   "main": "./index.cjs.js",
   "module": "./index.esm.js",
+  "type": "commonjs",
   "bin": {
     "bfind": "bin/index.js"
   },
   "preferGlobal": true,
-  "scripts": {},
   "author": {
     "name": "Benjamin Møller Jensen",
     "email": "bemoje@bemoje.net",
@@ -17,9 +23,8 @@
   "license": "MIT",
   "keywords": [],
   "dependencies": {
-    "@bemoje/cli": "^0.0.15",
-    "@bemoje/commander-config": "latest",
-    "@bemoje/trie-map": "latest",
+    "@bemoje/cli": "latest",
+    "@bemoje/trie-map": "^1.4.9",
     "@bemoje/util": "latest",
     "ansi-colors": "^4.1.3",
     "fs-extra": "^11.1.1",
@@ -38,7 +43,6 @@
     "url": "https://github.com/bemoje/tsmono/issues"
   },
   "homepage": "https://github.com/bemoje/tsmono",
-  "type": "commonjs",
   "typings": "./src/index.d.ts",
   "devDependencies": {
     "@types/fs-extra": "^11.0.2",

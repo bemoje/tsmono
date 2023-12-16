@@ -5,16 +5,11 @@
   "projectType": "application",
   "targets": {
     "build": {
-      "executor": "@nx/rollup:rollup",
+      "executor": "nx:run-script",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/packages/bfind",
-        "main": "packages/bfind/src/index.ts",
-        "tsConfig": "packages/bfind/tsconfig.lib.json",
-        "assets": [],
-        "project": "packages/bfind/package.json",
-        "compiler": "tsc",
-        "format": ["cjs", "esm"]
+        "script": "build",
+        "project": "packages/bfind/package.json"
       }
     },
     "publish": {
