@@ -15,9 +15,9 @@ export async function updateJsonFile(
   update: (
     o: Record<string | number, unknown>
   ) => Record<string | number, unknown> | Promise<Record<string | number, unknown>>,
-  options?: { read?: IJFReadOptions; write?: IJFWriteOptions }
+  options: { read?: IJFReadOptions; write?: IJFWriteOptions } = {}
 ): Promise<void> {
-  const parsed = await fs.readJson(filepath, options ? options.read : void 0)
+  const parsed = await fs.readJson(filepath, options.read)
   const retval = await update(parsed)
-  await fs.writeJson(filepath, retval, options ? options.write : void 0)
+  await fs.writeJson(filepath, retval, options.write || { spaces: 2 })
 }

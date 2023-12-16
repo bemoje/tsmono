@@ -34,7 +34,7 @@ export function createPackage(name: string) {
   updateJsonFileSafeSync(
     path.join(libRoot, 'project.json'),
     (project: Any) => {
-      project.target.build = {
+      project.targets.build = {
         executor: 'nx:run-script',
         outputs: ['{options.outputPath}'],
         options: {
@@ -56,6 +56,10 @@ export function createPackage(name: string) {
         'build:types': `rimraf ../../dist/packages/${name}/types && npx tsc src/index.ts --outDir ../../dist/packages/${name}/types --module es2022 --lib es2022 --moduleResolution node --downlevelIteration --esModuleInterop --target ES2022 --allowSyntheticDefaultImports --moduleResolution node --declaration --declarationMap --emitDeclarationOnly`,
         build: 'npm run build:cjs && npm run build:esm && npm run build:types',
       }
+      pkg.main = 'cjs/index.js'
+      pkg.module = 'esm/index.js'
+      pkg.types = 'types/index.d.ts'
+      pkg.type = 'commonjs'
       return pkg
     },
     '{}'
@@ -95,7 +99,7 @@ export function createPackage(name: string) {
   )
 
   writeFileSafeSync(
-    path.join(libRoot, 'jest.config.js'),
+    path.join(libRoot, 'jest.config.ts'),
     [
       '/* eslint-disable */',
       'export default {',
@@ -121,5 +125,11 @@ export function createPackage(name: string) {
     const deps = pkg.dependencies as Record<string, string>
     deps['@bemoje/' + name] = 'latest'
     return pkg
+  })
+
+  execute('npm publish --access public', {
+    cwd: path.join(process.cwd(), 'dist', 'packages', name),
+    noEcho: true,
+    silent: true,
   })
 }

@@ -14,9 +14,9 @@ import type { IJFWriteOptions } from '../types/IJFWriteOptions'
 export function updateJsonFileSync(
   filepath: string,
   update: (o: Record<string | number, unknown>) => Record<string | number, unknown>,
-  options?: { read?: IJFReadOptions; write?: IJFWriteOptions }
+  options: { read?: IJFReadOptions; write?: IJFWriteOptions } = {}
 ): void {
-  const parsed = fs.readJsonSync(filepath, options ? options.read : void 0)
+  const parsed = fs.readJsonSync(filepath, options.read)
   const retval = update(parsed)
-  fs.writeJsonSync(filepath, retval, options ? options.write : void 0)
+  fs.writeJsonSync(filepath, retval, options.write || { spaces: 2 })
 }

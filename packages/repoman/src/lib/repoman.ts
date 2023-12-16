@@ -52,7 +52,7 @@ function addBuildCommand(r: CommandBuilder) {
     b.action(build)
     b.usageExamples(
       { command: 'rman build', description: 'Run build for all packages.' },
-      { command: 'rman build pack1,pack2', description: "Run build for packages 'pack1' and 'pack2'." }
+      { command: 'rman build pack1 pack2', description: "Run build for packages 'pack1' and 'pack2'." }
     )
   })
 }
@@ -66,7 +66,7 @@ function addTestCommand(r: CommandBuilder) {
     t.action(test)
     t.usageExamples(
       { command: 'rman test', description: 'Run tests for all packages.' },
-      { command: 'rman test pack1,pack2', description: "Run tests for packages 'pack1' and 'pack2'." }
+      { command: 'rman test pack1 pack2', description: "Run tests for packages 'pack1' and 'pack2'." }
     )
   })
 }
@@ -79,7 +79,7 @@ function addLintCommand(r: CommandBuilder) {
     l.action(lint)
     l.usageExamples(
       { command: 'rman lint', description: 'Run lint for all packages.' },
-      { command: 'rman lint pack1,pack2', description: "Run lint for packages 'pack1' and 'pack2'." }
+      { command: 'rman lint pack1 pack2', description: "Run lint for packages 'pack1' and 'pack2'." }
     )
   })
 }
@@ -127,12 +127,8 @@ function addForEachCommand(r: CommandBuilder) {
     f.usageExamples(
       { command: 'rman foreach npm install', description: "Run 'npm install' in the root directory of each package." },
       {
-        command: 'rman foreach -p pack1,pack2 npm install',
+        command: 'rman foreach npm install -p pack1 pack2',
         description: "Run 'npm install' for only the 'pack1' and 'pack2' packages.",
-      },
-      {
-        command: 'rman foreach -i pack1,pack2 npm install',
-        description: "Run 'npm install' for all packages except for the 'pack1' and 'pack2' packages.",
       }
     )
   })
@@ -155,7 +151,7 @@ function addPrecommitCommand(r: CommandBuilder) {
     p.action(prepub)
     p.usageExamples(
       { command: 'rman precommit', description: 'Run precommit for all packages.' },
-      { command: 'rman precommit pack1,pack2', description: "Run precommit for packages 'pack1' and 'pack2'." }
+      { command: 'rman precommit pack1 pack2', description: "Run precommit for packages 'pack1' and 'pack2'." }
     )
   })
 }
@@ -173,11 +169,10 @@ function addPublishCommand(r: CommandBuilder) {
     p.option('-i, --ignore-hash', 'Ignore hashes so publish even if the hash determines it is not necessary.')
     p.action(publish)
     p.usageExamples(
-      { command: 'rman publish patch', description: 'Publish new version (patch) of all packages with changes.' },
+      { command: 'rman publish', description: 'Publish new version (patch) of all packages with changes.' },
       {
-        command: 'rman publish minor pack1,pack2',
-        description:
-          "Publish new version (minor) of packages 'pack1', 'pack2' and their dependencies if they have changes.",
+        command: 'rman publish -l minor pack1 pack2',
+        description: "Publish minor version of 'pack1', 'pack2' + their deps.",
       }
     )
   })
@@ -194,12 +189,8 @@ function addWipeModulesCommand(r: CommandBuilder) {
     w.action(wipeNodeModules)
     w.usageExamples(
       {
-        command: 'rman wipe-modules -l -r',
-        description: 'Delete all node_modules in all packages and repo root, including all package-lock.json files.',
-      },
-      {
-        command: 'rman wipe-modules my-package -l',
-        description: "Delete all node_modules and package-lock.json in the package, 'my-package'",
+        command: 'rman wipe-modules pack1 -l',
+        description: "Delete all node_modules and package-lock.json in 'pack1'",
       },
       { command: 'rman wipe-modules -s bemoje', description: 'Delete @bemoje scoped node_modules in all packages.' }
     )
@@ -219,7 +210,7 @@ function addRehashCommand(r: CommandBuilder) {
     r.action(rehash)
     r.usageExamples(
       { command: 'rman rehash', description: 'Rehash all packages.' },
-      { command: 'rman rehash pack1,pack2', description: "Rehash packages 'pack1' and 'pack2'." }
+      { command: 'rman rehash pack1 pack2', description: "Rehash packages 'pack1' and 'pack2'." }
     )
   })
 }
@@ -272,10 +263,7 @@ function addCreatePackageCommand(r: CommandBuilder) {
     c.aliases('cp', 'createpackage')
     c.argument('<name>', 'The name of the package.')
     c.action(createPackage)
-    c.usageExamples(
-      { command: 'rman create-package pack1', description: 'Create a new package named pack1.' },
-      { command: 'rman create-package pack1,pack2', description: "Create packages named 'pack1' and 'pack2'." }
-    )
+    c.usageExamples({ command: 'rman create-package pack1', description: 'Create a new package named pack1.' })
   })
 }
 
@@ -285,10 +273,7 @@ function addDeletePackageCommand(r: CommandBuilder) {
     d.aliases('dp', 'deletepackage')
     d.argument('<name>', 'The name of the package.')
     d.action(deletePackage)
-    d.usageExamples(
-      { command: 'rman delete-package pack1', description: 'Delete the package named pack1.' },
-      { command: 'rman delete-package pack1,pack2', description: "Delete the packages named 'pack1' and 'pack2'." }
-    )
+    d.usageExamples({ command: 'rman delete-package pack1', description: 'Delete the package named pack1.' })
   })
 }
 

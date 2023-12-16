@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/cli",
-  "version": "0.0.13",
+  "version": "0.0.15",
   "scripts": {
     "build:cjs": "rimraf ../../dist/packages/cli/cjs && npx tsc src/index.ts --outDir ../../dist/packages/cli/cjs --module commonjs --lib es2022 --moduleResolution node --downlevelIteration --esModuleInterop --target ES2022 --allowSyntheticDefaultImports --moduleResolution node --sourceMap",
     "build:esm": "rimraf ../../dist/packages/cli/esm && npx tsc src/index.ts --outDir ../../dist/packages/cli/esm --module es2022 --lib es2022 --moduleResolution node --downlevelIteration --esModuleInterop --target ES2022 --allowSyntheticDefaultImports --moduleResolution node --sourceMap",

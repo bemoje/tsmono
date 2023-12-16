@@ -11,7 +11,6 @@ import { realizeLazyProperty } from '@bemoje/util'
 export class ArgumentBuilder {
   readonly $: Argument
   readonly index: number
-  userConfirmation?: { predicate: (arg: string) => boolean; message: string }
 
   constructor(readonly cmd: CommandBuilder, name: string) {
     this.$ = new Argument(name)
@@ -53,13 +52,5 @@ export class ArgumentBuilder {
 
   get get() {
     return realizeLazyProperty(this, 'get', new ArgumentReader(this))
-  }
-
-  /**
-   * Only works with async actionHandlers.
-   */
-  userMustConfirmIf(options: { predicate: (arg: string) => boolean; message: string }) {
-    this.userConfirmation = options
-    return this
   }
 }

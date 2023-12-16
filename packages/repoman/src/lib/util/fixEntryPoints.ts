@@ -1,6 +1,6 @@
-import { colors } from '@bemoje/util'
 import fs from 'fs-extra'
 import path from 'path'
+import { arrSome, colors } from '@bemoje/util'
 import { getPackages } from './getPackages'
 import { walkTsFiles } from './walkTsFiles'
 const { gray, magenta: green, red } = colors
@@ -12,12 +12,23 @@ export function fixEntryPoints(silent = false) {
     // .filter(({ pkg }) => !pkg.bin)
     .forEach(({ rootdir, name }) => {
       const srcdir = path.join(rootdir, 'src')
-      const fpaths = walkTsFiles(
-        srcdir,
-        (filepath) => !filepath.endsWith('index.ts') && path.dirname(filepath) !== srcdir
-      )
+      const indexFileDirs: string[] = []
+      const fpaths = walkTsFiles(srcdir, (filepath) => {
+        if (filepath.endsWith('index.ts')) {
+          if (path.dirname(filepath) === srcdir) return false
+          indexFileDirs.push(path.dirname(filepath))
+        }
+        return true
+      }).filter((filepath) => {
+        if (filepath.endsWith('index.ts')) return true
+        return !arrSome(indexFileDirs, (indexFile) => filepath.startsWith(indexFile))
+      })
       const lines = fpaths.map((fpath) => {
-        const relative = fpath.replace(srcdir, '').replace(/\.ts$/i, '').replace(/\\/g, '/')
+        const relative = fpath
+          .replace(srcdir, '')
+          .replace(/\.ts$/i, '')
+          .replace(/\\/g, '/')
+          .replace(/\/index$/, '')
         return `export * from '.${relative}'`
       })
       const indexPath = path.join(srcdir, 'index.ts')

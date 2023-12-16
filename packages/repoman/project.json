@@ -5,17 +5,11 @@
   "projectType": "application",
   "targets": {
     "build": {
-      "executor": "@nx/rollup:rollup",
+      "executor": "nx:run-script",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/packages/repoman",
-        "main": "packages/repoman/src/index.ts",
-        "tsConfig": "packages/repoman/tsconfig.lib.json",
-        "assets": [],
-        "external": ["fs", "path", "fs-extra"],
-        "project": "packages/repoman/package.json",
-        "compiler": "swc",
-        "format": ["cjs", "esm"]
+        "script": "build",
+        "project": "packages/repoman/package.json"
       }
     },
     "lint": {

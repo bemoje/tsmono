@@ -903,11 +903,14 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
   }
 
   protected combineVariadicArgs(result: Any[]) {
-    if (this.isLastArgVariadic && result.length && !Array.isArray(arrLast(result))) {
-      const rest = result.splice(this.arguments.length - 1)
-      result.push(rest.filter((arg) => arg != null))
+    if (this.isLastArgVariadic) {
+      if (result.length && !Array.isArray(arrLast(result))) {
+        const rest = result.splice(this.arguments.length - 1)
+        result.push(rest.filter((arg) => arg != null))
+      } else {
+        result.push([])
+      }
     }
-
     return result
   }
 
@@ -1309,24 +1312,6 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
     }
   }
 
-  async getUserConfirmations<A extends Any[] = Args>(args: A) {
-    for (let i = 0; i < args.length; i++) {
-      const arg = args[i]
-      const argb = this.meta.argBuilders[i]
-      if (!argb || !argb.userConfirmation) continue
-      const { predicate, message } = argb.userConfirmation
-      if (predicate(arg)) {
-        const result = await prompts({
-          type: 'confirm',
-          name: 'isConfirmed',
-          message,
-          initial: true,
-        })
-        if (!result.isConfirmed) this.outputError('Aborted.')
-      }
-    }
-  }
-
   protected initializeActionWrapper(isAsync = false) {
     if (isAsync) {
       this.$.action(async () => {
@@ -1334,7 +1319,6 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
           this.handleOutputOptions()
           const [args, opts] = this.getParsedValidArgsOptsWithPresets()
           if (opts['help']) return this.outputHelp()
-          await this.getUserConfirmations(args)
           const optswg = this.$.optsWithGlobals()
           await this.meta.actionHandler.call(this, ...(args as typeof this.$.args), opts as typeof optswg, this)
         } catch (error) {

@@ -5,14 +5,9 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nx/js:tsc",
+      "executor": "nx:run-script",
       "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "dist/packages/trie-map",
-        "main": "packages/trie-map/src/index.ts",
-        "tsConfig": "packages/trie-map/tsconfig.lib.json",
-        "assets": ["packages/trie-map/*.md"]
-      }
+      "options": { "script": "build", "project": "packages/trie-map/package.json" }
     },
     "publish": {
       "command": "node tools/scripts/publish.mjs trie-map {args.ver} {args.tag}",

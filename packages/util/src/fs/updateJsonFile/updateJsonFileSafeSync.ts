@@ -17,14 +17,14 @@ export function updateJsonFileSafeSync(
   filepath: string,
   update: (src: Record<string | number, unknown>) => Record<string | number, unknown>,
   defaultJson: string,
-  options?: { read?: IJFReadOptions; write?: IJsonOutputOptions }
+  options: { read?: IJFReadOptions; write?: IJsonOutputOptions } = {}
 ): void {
   let parsed: Record<string | number, unknown>
   try {
-    parsed = fs.readJsonSync(filepath, options ? options.read : void 0)
+    parsed = fs.readJsonSync(filepath, options.read)
   } catch (e) {
     parsed = JSON.parse(defaultJson)
   }
   const retval = update(parsed)
-  fs.outputJsonSync(filepath, retval, options ? options.write : void 0)
+  fs.outputJsonSync(filepath, retval, options.write || { spaces: 2 })
 }

@@ -1,8 +1,14 @@
 {
   "name": "@bemoje/repoman",
-  "version": "0.0.55",
+  "version": "0.0.56",
   "bin": {
     "rman": "./bin/index.js"
+  },
+  "scripts": {
+    "build:cjs": "rimraf ../../dist/packages/repoman/cjs && npx tsc src/index.ts --outDir ../../dist/packages/repoman/cjs --module commonjs --lib es2022 --moduleResolution node --downlevelIteration --esModuleInterop --target ES2022 --allowSyntheticDefaultImports --moduleResolution node --sourceMap",
+    "build:esm": "rimraf ../../dist/packages/repoman/esm && npx tsc src/index.ts --outDir ../../dist/packages/repoman/esm --module es2022 --lib es2022 --moduleResolution node --downlevelIteration --esModuleInterop --target ES2022 --allowSyntheticDefaultImports --moduleResolution node --sourceMap",
+    "build:types": "rimraf ../../dist/packages/repoman/types && npx tsc src/index.ts --outDir ../../dist/packages/repoman/types --module es2022 --lib es2022 --moduleResolution node --downlevelIteration --esModuleInterop --target ES2022 --allowSyntheticDefaultImports --moduleResolution node --declaration --declarationMap --emitDeclarationOnly",
+    "build": "npm run build:cjs && npm run build:esm && npm run build:types"
   },
   "preferGlobal": true,
   "dependencies": {
@@ -16,10 +22,10 @@
     "strip-comments": "^2.0.1",
     "walkdir": "^0.4.1"
   },
+  "main": "cjs/index.js",
+  "module": "esm/index.js",
+  "types": "types/index.d.ts",
   "type": "commonjs",
-  "main": "./index.cjs",
-  "module": "./index.esm.js",
-  "typings": "./src/index.d.ts",
   "author": {
     "name": "Benjamin Møller Jensen",
     "email": "bemoje@bemoje.net",

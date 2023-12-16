@@ -1,5 +1,5 @@
 import fs from 'fs'
-import { prompt } from './prompt'
+import { prompt } from '../src/prompt'
 
 async function example() {
   // TextPrompt

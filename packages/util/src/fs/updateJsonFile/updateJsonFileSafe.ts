@@ -19,14 +19,14 @@ export async function updateJsonFileSafe(
     src: Record<string | number, unknown>
   ) => Record<string | number, unknown> | Promise<Record<string | number, unknown>>,
   defaultJson: string,
-  options?: { read?: IJFReadOptions; write?: IJsonOutputOptions }
+  options: { read?: IJFReadOptions; write?: IJsonOutputOptions } = {}
 ): Promise<void> {
   let parsed: Record<string | number, unknown>
   try {
-    parsed = await fs.readJson(filepath, options ? options.read : void 0)
+    parsed = await fs.readJson(filepath, options.read)
   } catch (e) {
     parsed = JSON.parse(defaultJson)
   }
   const retval = await update(parsed)
-  await fs.outputJson(filepath, retval, options ? options.write : void 0)
+  await fs.outputJson(filepath, retval, options.write || { spaces: 2 })
 }

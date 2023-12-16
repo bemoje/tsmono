@@ -18,7 +18,6 @@ describe('TrieMap', () => {
   it('(static method) fromJSON', () => {
     trie.set(['a'], 'value')
     const json = JSON.stringify(trie)
-    console.log(json)
     expect(TrieMap.fromJSON(json).count).toBe(1)
   })
 

@@ -1,9 +1,14 @@
 {
   "name": "@bemoje/trie-map",
-  "version": "1.4.12",
+  "version": "1.4.14",
   "description": "A fast trie map data structure.",
   "main": "./src/index.js",
-  "scripts": {},
+  "scripts": {
+    "build:cjs": "rimraf ../../dist/packages/trie-map/cjs && npx tsc src/index.ts --outDir ../../dist/packages/trie-map/cjs --module commonjs --lib es2022 --moduleResolution node --downlevelIteration --esModuleInterop --target ES2022 --allowSyntheticDefaultImports --moduleResolution node --sourceMap",
+    "build:esm": "rimraf ../../dist/packages/trie-map/esm && npx tsc src/index.ts --outDir ../../dist/packages/trie-map/esm --module es2022 --lib es2022 --moduleResolution node --downlevelIteration --esModuleInterop --target ES2022 --allowSyntheticDefaultImports --moduleResolution node --sourceMap",
+    "build:types": "rimraf ../../dist/packages/trie-map/types && npx tsc src/index.ts --outDir ../../dist/packages/trie-map/types --module es2022 --lib es2022 --moduleResolution node --downlevelIteration --esModuleInterop --target ES2022 --allowSyntheticDefaultImports --moduleResolution node --declaration --declarationMap --emitDeclarationOnly",
+    "build": "npm run build:cjs && npm run build:esm && npm run build:types"
+  },
   "author": {
     "name": "Benjamin Møller Jensen",
     "email": "bemoje@bemoje.net",

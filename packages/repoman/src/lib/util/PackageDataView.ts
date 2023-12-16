@@ -1,12 +1,12 @@
-import { readJsonFileSync } from '@bemoje/util'
 import path from 'path'
-import { INxProjectJson } from '../types/INxProjectJson'
-import { IPackageJson } from '../types/IPackageJson'
-import { ITSConfig } from '../types/ITSConfig'
 import { implicitDependencies } from './implicitDependencies'
 import { implicitDependenciesRecursive } from './implicitDependenciesRecursive'
 import { implicitDependents } from './implicitDependents'
 import { implicitDependentsRecursive } from './implicitDependentsRecursive'
+import { INxProjectJson } from '../types/INxProjectJson'
+import { IPackageJson } from '../types/IPackageJson'
+import { ITSConfig } from '../types/ITSConfig'
+import { readJsonFileSync } from '@bemoje/util'
 
 /**
  * A data view for an NX repository app or library package.
