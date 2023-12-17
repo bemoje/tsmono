@@ -2,6 +2,7 @@ import path from 'path'
 import { build } from './actions/build'
 import { CLI, CommandBuilder } from '@bemoje/cli'
 import { createPackage } from './actions/createPackage'
+import { createRepoFiles } from './actions/createRepoFiles'
 import { deletePackage } from './actions/deletePackage'
 import { docs } from './actions/docs'
 import { fixAll } from './actions/fixAll'
@@ -66,6 +67,7 @@ function initCommands(r: CommandBuilder) {
   addLintCommand(r)
   addDocsCommand(r)
   addFixCommand(r)
+  addCreateRepoFilesCommand(r)
   addForEachCommand(r)
   addDevCommand(r)
   addPrecommitCommand(r)
@@ -150,6 +152,15 @@ function addFixCommand(r: CommandBuilder) {
       { command: 'rman fix', description: 'Run all commands.' },
       { command: 'rman fix --readmes --deps', description: 'Run the readmes and deps commands.' }
     )
+  })
+}
+
+function addCreateRepoFilesCommand(r: CommandBuilder) {
+  r.command('createRepoFiles', (b) => {
+    b.description('Create repo files for all or selected packages.')
+    b.alias('crf')
+    b.argument('[packages...]', 'Names of packages to include. If omitted, all packages are included.')
+    b.action(verifyCorrectDirectory(createRepoFiles))
   })
 }
 

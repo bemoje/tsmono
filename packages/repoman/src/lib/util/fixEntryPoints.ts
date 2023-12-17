@@ -14,9 +14,12 @@ export function fixEntryPoints(silent = false) {
       const srcdir = path.join(rootdir, 'src')
       const indexFileDirs: string[] = []
       const fpaths = walkTsFiles(srcdir, (filepath) => {
+        const isSrcRoot = path.dirname(filepath) === srcdir
         if (filepath.endsWith('index.ts')) {
-          if (path.dirname(filepath) === srcdir) return false
+          if (isSrcRoot) return false
           indexFileDirs.push(path.dirname(filepath))
+        } else if (filepath.endsWith('cli.ts') && isSrcRoot) {
+          return false
         }
         return true
       }).filter((filepath) => {

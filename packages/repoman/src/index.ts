@@ -1,6 +1,6 @@
-export * from './cli'
 export * from './lib/actions/build'
 export * from './lib/actions/createPackage'
+export * from './lib/actions/createRepoFiles'
 export * from './lib/actions/deletePackage'
 export * from './lib/actions/docs'
 export * from './lib/actions/fixAll'

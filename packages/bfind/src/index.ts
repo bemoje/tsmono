@@ -1,6 +1,5 @@
 export * from './actions/buildIndex'
 export * from './actions/search'
-export * from './cli'
 export * from './constants'
 export * from './core/bfind'
 export * from './core/main'

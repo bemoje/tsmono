@@ -1,6 +1,6 @@
 import fs from 'fs-extra'
 import path from 'path'
-import { colors, createDirectorySync, execute } from '@bemoje/util'
+import { colors, execute } from '@bemoje/util'
 import { deleteTmpDir } from '../util/deleteTmpDir'
 import { getPackages } from '../util/getPackages'
 
@@ -21,10 +21,10 @@ export function build(names: string[]) {
       //   fs.copySync(path.join(rootdir, 'bin'), path.join(distdir, 'bin'))
       // } else {
       // }
-      const binIndex = ['#!/usr/bin/env node', `require('../${pkg.main}').main();`].join('\n')
-      const distbin = path.join(distdir, 'bin')
-      createDirectorySync(distbin)
-      fs.writeFileSync(path.join(distbin, 'index.js'), binIndex, 'utf8')
+      // const binIndex = ['#!/usr/bin/env node', `require('../${pkg.main}').main();`].join('\n')
+      // const distbin = path.join(distdir, 'bin')
+      // createDirectorySync(distbin)
+      // fs.writeFileSync(path.join(distbin, 'index.js'), binIndex, 'utf8')
     }
   })
 

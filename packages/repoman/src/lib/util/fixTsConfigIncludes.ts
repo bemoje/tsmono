@@ -1,6 +1,6 @@
 import * as path from 'path'
 import fs from 'fs-extra'
-import { Any, colors, readJsonFileSync } from '@bemoje/util'
+import { Any, colors, readJsonFileSafeSync, readJsonFileSync } from '@bemoje/util'
 import { getPackages } from './getPackages'
 const { gray, magenta: green } = colors
 
@@ -11,22 +11,23 @@ export function fixTsConfigIncludes() {
     // lib
     const libfname = 'tsconfig.lib.json'
     const libpath = path.join(rootdir, libfname)
-    const lib: Any = readJsonFileSync(libpath)
+    const lib: Any = readJsonFileSafeSync(libpath)
+    if (lib) {
+      const libinc = ['src/**/*.ts']
+      if (!lib.include || !Array.isArray(lib.include)) lib.include = []
+      if ((lib.include as string[]).join(',') !== libinc.join(',')) {
+        lib.include = libinc
+        fs.writeFileSync(libpath, JSON.stringify(lib, null, 2), 'utf8')
+        console.log(gray('- fixed ' + libfname + ' in package: ' + name))
+      }
 
-    const libinc = ['src/**/*.ts']
-    if (!lib.include || !Array.isArray(lib.include)) lib.include = []
-    if ((lib.include as string[]).join(',') !== libinc.join(',')) {
-      lib.include = libinc
-      fs.writeFileSync(libpath, JSON.stringify(lib, null, 2), 'utf8')
-      console.log(gray('- fixed ' + libfname + ' in package: ' + name))
-    }
-
-    const libexc = ['jest.config.ts', 'src/**/*.spec.ts', 'src/**/*.test.ts']
-    if (!lib.exclude || !Array.isArray(lib.exclude)) lib.exclude = []
-    if ((lib.exclude as string[]).join(',') !== libexc.join(',')) {
-      lib.exclude = libexc
-      fs.writeFileSync(libpath, JSON.stringify(lib, null, 2), 'utf8')
-      console.log(gray('- fixed ' + libfname + ' in package: ' + name))
+      const libexc = ['jest.config.ts', 'src/**/*.spec.ts', 'src/**/*.test.ts']
+      if (!lib.exclude || !Array.isArray(lib.exclude)) lib.exclude = []
+      if ((lib.exclude as string[]).join(',') !== libexc.join(',')) {
+        lib.exclude = libexc
+        fs.writeFileSync(libpath, JSON.stringify(lib, null, 2), 'utf8')
+        console.log(gray('- fixed ' + libfname + ' in package: ' + name))
+      }
     }
 
     // spec

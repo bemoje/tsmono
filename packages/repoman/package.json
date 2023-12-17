@@ -1,16 +1,13 @@
 {
   "name": "@bemoje/repoman",
-  "version": "0.0.61",
-  "bin": {
-    "rman": "./bin/index.js"
-  },
+  "version": "0.0.62",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
   "scripts": {
-    "build:cjs": "rimraf ../../dist/packages/repoman/cjs && npx tsc src/index.ts --outDir ../../dist/packages/repoman/cjs --module commonjs --lib es2022 --moduleResolution node --downlevelIteration --esModuleInterop --target ES2022 --allowSyntheticDefaultImports --moduleResolution node --sourceMap",
+    "build:cjs": "rimraf ../../dist/packages/repoman/cjs && npx tsc src/index.ts --outDir ../../dist/packages/repoman/cjs --lib es2022 --moduleResolution node --downlevelIteration --esModuleInterop --target ES2022 --allowSyntheticDefaultImports --moduleResolution node --sourceMap --module commonjs --declaration --declarationMap",
     "build:esm": "rimraf ../../dist/packages/repoman/esm && npx tsc src/index.ts --outDir ../../dist/packages/repoman/esm --module es2022 --lib es2022 --moduleResolution node --downlevelIteration --esModuleInterop --target ES2022 --allowSyntheticDefaultImports --moduleResolution node --sourceMap",
-    "build:types": "rimraf ../../dist/packages/repoman/types && npx tsc src/index.ts --outDir ../../dist/packages/repoman/types --module es2022 --lib es2022 --moduleResolution node --downlevelIteration --esModuleInterop --target ES2022 --allowSyntheticDefaultImports --moduleResolution node --declaration --declarationMap --emitDeclarationOnly",
-    "build": "npm run build:cjs && npm run build:esm && npm run build:types"
+    "build": "npm run build:cjs"
   },
-  "preferGlobal": true,
   "dependencies": {
     "@bemoje/cli": "latest",
     "@bemoje/fswalk": "latest",
@@ -22,28 +19,5 @@
     "strip-comments": "^2.0.1",
     "walkdir": "^0.4.1"
   },
-  "main": "cjs/index.js",
-  "module": "esm/index.js",
-  "types": "types/index.d.ts",
-  "type": "commonjs",
-  "author": {
-    "name": "Benjamin Møller Jensen",
-    "email": "bemoje@bemoje.net",
-    "url": "https://github.com/bemoje/"
-  },
-  "license": "MIT",
-  "keywords": [],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bemoje/tsmono.git"
-  },
-  "funding": {
-    "type": "patreon",
-    "url": "https://www.patreon.com/user?u=40752770"
-  },
-  "bugs": {
-    "url": "https://github.com/bemoje/tsmono/issues"
-  },
-  "homepage": "https://github.com/bemoje/tsmono",
   "devDependencies": {}
 }

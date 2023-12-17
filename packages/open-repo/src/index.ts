@@ -1,4 +1,3 @@
-export * from './cli'
 export * from './core/config'
 export * from './core/main'
 export * from './lib/getRepo'
