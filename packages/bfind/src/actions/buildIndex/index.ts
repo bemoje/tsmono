@@ -12,8 +12,6 @@ import { walkDirectory } from './lib/walkDirectory'
 export async function buildIndex(opts: unknown, cmd: CommandBuilder): Promise<void> {
   const config = cmd.root.db.config
 
-  console.log(config.getAll())
-
   // graceful exit on error
   process.on('uncaughtException', (error: Error) => {
     if (config.get('printScanErrors')) {

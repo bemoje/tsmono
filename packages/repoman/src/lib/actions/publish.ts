@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable no-useless-escape */
 import path from 'path'
 import { allPackageNames } from '../util/allPackageNames'
@@ -43,10 +44,10 @@ export function publish(packages: string[], options: { level?: string; ignoreHas
     if (pkg.preferGlobal) {
       console.log(gray('    - ' + 'Update version of CLIs in dist directory.'))
       const regVersion = /\((\'|\")0\.0\.0(\'|\")\)/
-      updateFileSafeSync(path.join(distdir, 'index.cjs.js'), (src) => {
+      updateFileSafeSync(path.join(distdir, pkg.main!), (src) => {
         return src.replace(regVersion, `('${pkg.version}')`)
       })
-      updateFileSafeSync(path.join(distdir, 'index.esm.js'), (src) => {
+      updateFileSafeSync(path.join(distdir, pkg.module!), (src) => {
         return src.replace(regVersion, `('${pkg.version}')`)
       })
     }

@@ -8,8 +8,6 @@
     "build:types": "rimraf ../../dist/packages/bfind/types && npx tsc src/index.ts --outDir ../../dist/packages/bfind/types --module es2022 --lib es2022 --moduleResolution node --downlevelIteration --esModuleInterop --target ES2022 --allowSyntheticDefaultImports --moduleResolution node --declaration --declarationMap --emitDeclarationOnly",
     "build": "npm run build:cjs && npm run build:esm && npm run build:types"
   },
-  "main": "./index.cjs.js",
-  "module": "./index.esm.js",
   "type": "commonjs",
   "bin": {
     "bfind": "bin/index.js"

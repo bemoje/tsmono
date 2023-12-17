@@ -3,5 +3,5 @@ export interface ISearchOptions {
   cwd?: boolean
   dir?: string
   extensions?: string[]
-  fterms?: string[]
+  fileSearchTerms?: string[]
 }

@@ -52,7 +52,7 @@
     "@bemoje/subtitles": "latest",
     "@bemoje/table": "latest",
     "@bemoje/terminal-gpt": "latest",
-    "@bemoje/trie-map": "latest",
+    "@bemoje/trie-map": "^1.4.9",
     "@bemoje/tscode": "latest",
     "@bemoje/tsdoc": "latest",
     "@bemoje/util": "latest",

@@ -1114,7 +1114,7 @@ export class CommandBuilder<Args extends Any[] = unknown[], Opts extends OptionV
               key,
               description: db.descriptions[key],
               value: db.get(key),
-              defaultValue: db.defaultValues,
+              defaultValue: db.defaultValues[key],
             }))
             console.dir(result, { depth: null })
           })

@@ -12,6 +12,9 @@ export async function updateImplicitDependencies(names?: string[]) {
       return latestVersion !== installedVersion
     })
     if (!deps.length) return
-    execute(`npm update ${deps.join(' ')}`, { silent: true, fadedOutput: true, cwd: rootdir })
+    const pkgdeps = o.pkg.dependencies
+    if (!pkgdeps) throw new Error('no dependencies defined in package.json')
+    const filtDeps = deps.filter((dep) => pkgdeps[dep] === 'latest')
+    execute(`npm update ${filtDeps.join(' ')}`, { silent: true, fadedOutput: true, cwd: rootdir })
   })
 }

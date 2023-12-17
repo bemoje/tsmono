@@ -2,9 +2,10 @@ import { asyncTasksLimit, readFileSafe, regexEscapeString } from '@bemoje/util'
 import { ISearchOptions } from '../ISearchOptions'
 
 export async function filterByFileContents(filepaths: string[], options: ISearchOptions): Promise<string[]> {
-  const regterms = options.fterms.map((fterm) => {
+  const regterms = options.fileSearchTerms?.map((fterm) => {
     return new RegExp(regexEscapeString(fterm), 'i')
   })
+  if (!regterms) return filepaths
 
   const results: string[] = []
   const tasks = filepaths.map((fpath) => async () => {

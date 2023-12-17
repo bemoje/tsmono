@@ -27,7 +27,7 @@ export async function search(keys: string[], o: ISearchOptions = {}, cmd: Comman
   // filter result
   if (o.extensions) results = filterByExtension(results, o)
   if (o.dir || o.cwd) results = filterByDirectory(results, o)
-  if (o.fterms) results = await filterByFileContents(results, o)
+  if (o.fileSearchTerms) results = await filterByFileContents(results, o)
 
   // print result
   if (o.pipe) return printResultsUnformatted(results)
