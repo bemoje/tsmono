@@ -2,7 +2,15 @@
 /* eslint-disable no-useless-escape */
 import path from 'path'
 import { allPackageNames } from '../util/allPackageNames'
-import { colors, execute, updateFileSafeSync, updateFileSync, writeJsonFileSafeSync } from '@bemoje/util'
+import {
+  Any,
+  colors,
+  execute,
+  readJsonFileSafeSync,
+  updateFileSafeSync,
+  updateFileSync,
+  writeJsonFileSafeSync,
+} from '@bemoje/util'
 import { docs } from './docs'
 import { getPackages } from '../util/getPackages'
 import { implicitDependenciesRecursive } from '../util/implicitDependenciesRecursive'
@@ -37,19 +45,24 @@ export function publish(packages: string[], options: { level?: string; ignoreHas
     writeJsonFileSafeSync(pkgpath, pkg, { spaces: 2 })
 
     console.log(gray('    - ' + 'Update package.json version in dist directory.'))
-    updateFileSync(path.join(distdir, 'package.json'), (src) => {
+    const distPkgPath = path.join(distdir, 'package.json')
+    updateFileSync(distPkgPath, (src) => {
       return src.replace(/"version"\: "\d+\.\d+\.\d+"/, `"version": "${pkg.version}"`)
     })
+    const distPkg: Any = readJsonFileSafeSync(distPkgPath)
+    if (!distPkg) throw new Error('Missing dist package.json')
 
-    if (pkg.preferGlobal) {
+    if (distPkg.preferGlobal) {
       console.log(gray('    - ' + 'Update version of CLIs in dist directory.'))
       const regVersion = /\((\'|\")0\.0\.0(\'|\")\)/
-      updateFileSafeSync(path.join(distdir, pkg.main!), (src) => {
+      updateFileSafeSync(path.join(distdir, distPkg.main!), (src) => {
         return src.replace(regVersion, `('${pkg.version}')`)
       })
-      updateFileSafeSync(path.join(distdir, pkg.module!), (src) => {
-        return src.replace(regVersion, `('${pkg.version}')`)
-      })
+      if (distPkg.module) {
+        updateFileSafeSync(path.join(distdir, distPkg.module!), (src) => {
+          return src.replace(regVersion, `('${pkg.version}')`)
+        })
+      }
     }
 
     try {
@@ -70,7 +83,7 @@ export function publish(packages: string[], options: { level?: string; ignoreHas
     console.log(gray('  - ' + 'Update hash'))
     hashes.updateHash(name)
 
-    if (pkg.preferGlobal) {
+    if (distPkg.preferGlobal) {
       console.log(
         gray('  - ' + 'has preferGlobal option. Will be installed globally after all packages are published.')
       )
