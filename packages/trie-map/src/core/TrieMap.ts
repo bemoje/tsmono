@@ -352,7 +352,7 @@ export class TrieMap<T> {
     if (value !== undefined) {
       this.set(prefix, f(value, prefix))
     }
-    ;(function recurse(node) {
+    function recurse(node: Record<string, Any>) {
       for (const key in node) {
         prefix.push(key)
         const value = node[key][SENTINEL]
@@ -364,7 +364,8 @@ export class TrieMap<T> {
         }
         prefix.pop()
       }
-    })(this.getNode(prefix) || {})
+    }
+    recurse(this.getNode(prefix) || {})
     return this
   }
 

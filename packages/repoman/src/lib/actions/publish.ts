@@ -70,7 +70,7 @@ export function publish(packages: string[], options: { level?: string; ignoreHas
       execute('npm publish --access public', {
         cwd: distdir,
         noEcho: true,
-        silent: true,
+        silent: false,
       })
       console.log(gray('    - ' + 'Successfully published ' + pkg.name + '@' + pkg.version))
     } catch (error) {

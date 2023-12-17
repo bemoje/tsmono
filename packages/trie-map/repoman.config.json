@@ -1,0 +1,12 @@
+{
+  "name": "trie-map",
+  "type": "library",
+  "npm": {
+    "publish": true,
+    "name": "@bemoje/trie-map",
+    "usesNodeInternals": false,
+    "bin": "",
+    "license": "MIT",
+    "keywords": []
+  }
+}

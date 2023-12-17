@@ -1,38 +1,16 @@
 {
   "name": "@bemoje/trie-map",
-  "version": "1.4.14",
-  "description": "A fast trie map data structure.",
-  "main": "./src/index.js",
+  "version": "1.5.0",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
   "scripts": {
-    "build:cjs": "rimraf ../../dist/packages/trie-map/cjs && npx tsc src/index.ts --outDir ../../dist/packages/trie-map/cjs --module commonjs --lib es2022 --moduleResolution node --downlevelIteration --esModuleInterop --target ES2022 --allowSyntheticDefaultImports --moduleResolution node --sourceMap",
-    "build:esm": "rimraf ../../dist/packages/trie-map/esm && npx tsc src/index.ts --outDir ../../dist/packages/trie-map/esm --module es2022 --lib es2022 --moduleResolution node --downlevelIteration --esModuleInterop --target ES2022 --allowSyntheticDefaultImports --moduleResolution node --sourceMap",
-    "build:types": "rimraf ../../dist/packages/trie-map/types && npx tsc src/index.ts --outDir ../../dist/packages/trie-map/types --module es2022 --lib es2022 --moduleResolution node --downlevelIteration --esModuleInterop --target ES2022 --allowSyntheticDefaultImports --moduleResolution node --declaration --declarationMap --emitDeclarationOnly",
-    "build": "npm run build:cjs && npm run build:esm && npm run build:types"
+    "build:cjs": "rimraf ../../dist/packages/trie-map/cjs && npx tsc src/index.ts --outDir ../../dist/packages/trie-map/cjs --lib es2022 --moduleResolution node --downlevelIteration --esModuleInterop --target ES2022 --allowSyntheticDefaultImports --moduleResolution node --sourceMap --module commonjs --declaration --declarationMap",
+    "build:esm": "rimraf ../../dist/packages/trie-map/esm && npx tsc src/index.ts --outDir ../../dist/packages/trie-map/esm --lib es2022 --moduleResolution node --downlevelIteration --esModuleInterop --target ES2022 --allowSyntheticDefaultImports --moduleResolution node --sourceMap --module es2022",
+    "build": "npm run build:cjs && npm run build:esm"
   },
-  "author": {
-    "name": "Benjamin Møller Jensen",
-    "email": "bemoje@bemoje.net",
-    "url": "https://github.com/bemoje/"
-  },
-  "license": "MIT",
-  "keywords": [],
   "dependencies": {
     "@bemoje/util": "^0.5.12",
     "tslib": "^2.3.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bemoje/tsmono.git"
-  },
-  "funding": {
-    "type": "patreon",
-    "url": "https://www.patreon.com/user?u=40752770"
-  },
-  "bugs": {
-    "url": "https://github.com/bemoje/tsmono/issues"
-  },
-  "homepage": "https://github.com/bemoje/tsmono",
-  "type": "commonjs",
-  "typings": "./src/index.d.ts",
   "devDependencies": {}
 }
