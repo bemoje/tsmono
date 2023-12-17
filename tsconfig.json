@@ -1,7 +1,6 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "rootDir": ".",
     "sourceMap": true,
     "moduleResolution": "node",
     "importHelpers": true,
@@ -28,7 +27,7 @@
       "@bemoje/b": ["packages/b/src/index.ts"],
       "@bemoje/bfind": ["packages/bfind/src/index.ts"],
       "@bemoje/cli": ["packages/cli/src/index.ts"],
-      "@bemoje/cli-prompt": ["packages/cli-prompt/src/index.ts"],
+      "@bemoje/cli-prompt": ["packages/cli-prompt"],
       "@bemoje/commander-config": ["packages/commander-config/src/index.ts"],
       "@bemoje/dlfiles": ["packages/dlfiles/src/index.ts"],
       "@bemoje/excel-util": ["packages/excel-util/src/index.ts"],

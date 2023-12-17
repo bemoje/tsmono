@@ -22,7 +22,7 @@ export class SearchPrompt<T extends string = string> extends AbstractUserPrompt<
    */
   choices(data: string[]) {
     Object.defineProperty(this.data, 'choices', {
-      value: data,
+      value: ['<-'].concat(data),
     })
     return this
   }

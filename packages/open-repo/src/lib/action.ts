@@ -1,14 +1,15 @@
-import { readDirectoryStatsSafe } from '@bemoje/util'
-import { config } from '../core/config'
+import { CommandBuilder } from '@bemoje/cli'
 import { getRepo } from './getRepo'
 import { openRepoInIde } from './openRepoInIde'
 import { promptUser } from './promptUser'
+import { readDirectoryStats } from '@bemoje/util'
 
-export async function openRepo(search?: string) {
-  const rootdir = config.userconfig.get('rootdir')
-  const IDE = config.userconfig.get('IDE')
+export async function action(search: string, _: unknown, cmd: CommandBuilder) {
+  const config = cmd.root.db.config
+  const rootdir = config.get<string>('rootdir')
+  const IDE = config.get<string>('IDE')
 
-  const dirnames = (await readDirectoryStatsSafe(rootdir))
+  const dirnames = (await readDirectoryStats(rootdir))
     .filter((stat) => stat.isDirectory())
     .sort((a, b) => a.birthtimeMs - b.birthtimeMs)
     .map((stat) => stat.name)
@@ -18,6 +19,5 @@ export async function openRepo(search?: string) {
     if (dirname) return openRepoInIde(rootdir, IDE, dirname)
   }
   const dirname = await promptUser(dirnames)
-  console.log({ dirname })
   return openRepoInIde(rootdir, IDE, dirname)
 }

@@ -1,0 +1,12 @@
+{
+  "name": "open-repo",
+  "type": "application",
+  "npm": {
+    "publish": true,
+    "name": "@bemoje/open-repo",
+    "usesNodeInternals": true,
+    "bin": "repo",
+    "license": "MIT",
+    "keywords": []
+  }
+}
