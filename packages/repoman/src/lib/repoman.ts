@@ -1,3 +1,4 @@
+import path from 'path'
 import { build } from './actions/build'
 import { CLI, CommandBuilder } from '@bemoje/cli'
 import { createPackage } from './actions/createPackage'
@@ -5,6 +6,7 @@ import { deletePackage } from './actions/deletePackage'
 import { docs } from './actions/docs'
 import { fixAll } from './actions/fixAll'
 import { forEach } from './actions/forEach'
+import { isStringArray } from '@bemoje/util'
 import { lint } from './actions/lint'
 import { openCoverage } from './actions/openCoverage'
 import { openDocs } from './actions/openDocs'
@@ -23,7 +25,42 @@ export const repoman = CLI('rman', (r) => {
   r.description('Tools for management of an NX mono-repo.')
   r.enableBuiltinOptions()
   r.presetsEnabled(true)
+  initConfig(r)
+  initCommands(r)
+})
 
+function initConfig(r: CommandBuilder) {
+  r.config('repoRootDirs', {
+    description:
+      'Enter your monorepo root directories. If provided, as a safety measure: if running a command outside these directories, either an error will be thrown if multiple directories are given. If one is given, the command will be run with the given root directory as the current working directory.',
+    defaultValue: [],
+    parse: (string: string) => string.split(','),
+    validate: isStringArray,
+  })
+}
+
+function verifyCorrectDirectory(action: (...args: any[]) => void) {
+  return function (...args: any[]) {
+    const cmd = args.pop() as CommandBuilder
+    const repoRootDirs = cmd.root.db.config.get<string[]>('repoRootDirs').map((dir) => path.normalize(dir))
+    const cwd = process.cwd()
+    if (repoRootDirs && repoRootDirs.length && !repoRootDirs.includes(cwd)) {
+      if (repoRootDirs.length === 1) {
+        process.chdir(repoRootDirs[0])
+      } else if (repoRootDirs.length > 1) {
+        console.error(
+          'You are not in the root directory of the monorepo.',
+          'Please change directory to one of the following:',
+          repoRootDirs.join(', ')
+        )
+        process.exit(1)
+      }
+    }
+    action(...args)
+  }
+}
+
+function initCommands(r: CommandBuilder) {
   addBuildCommand(r)
   addTestCommand(r)
   addLintCommand(r)
@@ -42,14 +79,14 @@ export const repoman = CLI('rman', (r) => {
   addDepsCommand(r)
   addOpenDocsCommand(r)
   addOpenCoverageCommand(r)
-})
+}
 
 function addBuildCommand(r: CommandBuilder) {
   r.command('build', (b) => {
     b.description('Run build for all or selected packages.')
     b.alias('b')
     b.argument('[packages...]', 'Names of packages to include. If omitted, all packages are included.')
-    b.action(build)
+    b.action(verifyCorrectDirectory(build))
     b.usageExamples(
       { command: 'rman build', description: 'Run build for all packages.' },
       { command: 'rman build pack1 pack2', description: "Run build for packages 'pack1' and 'pack2'." }
@@ -63,7 +100,7 @@ function addTestCommand(r: CommandBuilder) {
     t.alias('t')
     t.argument('[packages...]', 'Names of packages to include. If omitted, all packages are included.')
     t.option('-c, --coverage', 'Whether to emit coverage.')
-    t.action(test)
+    t.action(verifyCorrectDirectory(test))
     t.usageExamples(
       { command: 'rman test', description: 'Run tests for all packages.' },
       { command: 'rman test pack1 pack2', description: "Run tests for packages 'pack1' and 'pack2'." }
@@ -76,7 +113,7 @@ function addLintCommand(r: CommandBuilder) {
     l.description('Run lint for all or selected packages.')
     l.alias('l')
     l.argument('[packages...]', 'Names of packages to include. If omitted, all packages are included.')
-    l.action(lint)
+    l.action(verifyCorrectDirectory(lint))
     l.usageExamples(
       { command: 'rman lint', description: 'Run lint for all packages.' },
       { command: 'rman lint pack1 pack2', description: "Run lint for packages 'pack1' and 'pack2'." }
@@ -88,7 +125,7 @@ function addDocsCommand(r: CommandBuilder) {
   r.command('docs', (d) => {
     d.description('Generate docs for all packages.')
     d.alias('d')
-    d.action(docs)
+    d.action(verifyCorrectDirectory(docs))
     d.usageExamples({ command: 'rman docs', description: 'Generate docs for all packages.' })
   })
 }
@@ -108,7 +145,7 @@ function addFixCommand(r: CommandBuilder) {
     )
     f.option('-e, --entrypoints', 'Re-generate all index.ts entrypoints in all packages.')
     f.option('-p, --package-jsons', 'Ensure that various meta data is added to all package.json files.')
-    f.action(fixAll)
+    f.action(verifyCorrectDirectory(fixAll))
     f.usageExamples(
       { command: 'rman fix', description: 'Run all commands.' },
       { command: 'rman fix --readmes --deps', description: 'Run the readmes and deps commands.' }
@@ -123,7 +160,7 @@ function addForEachCommand(r: CommandBuilder) {
     f.argument('[command...]', 'The command to run. Args are concatenated so no need to wrap in quotes.')
     f.option('-p, --packages <names...>', 'Names of packages to include.')
     f.option('-i, --ignore <names...>', 'Names of packages to ignore.')
-    f.action(forEach)
+    f.action(verifyCorrectDirectory(forEach))
     f.usageExamples(
       { command: 'rman foreach npm install', description: "Run 'npm install' in the root directory of each package." },
       {
@@ -139,7 +176,7 @@ function addDevCommand(r: CommandBuilder) {
     d.description('Run rman in dev mode')
     d.alias('D')
     d.argument('[paths...]', 'Path segments to search for.')
-    d.action(rmandev)
+    d.action(verifyCorrectDirectory(rmandev))
   })
 }
 
@@ -148,7 +185,7 @@ function addPrecommitCommand(r: CommandBuilder) {
     p.description('Run lint, test, build, docs and fix.')
     p.aliases('pre', 'prepub', 'pre-publish')
     p.argument('[packages...]', 'Names of packages to include. If omitted, all packages are included.')
-    p.action(prepub)
+    p.action(verifyCorrectDirectory(prepub))
     p.usageExamples(
       { command: 'rman precommit', description: 'Run precommit for all packages.' },
       { command: 'rman precommit pack1 pack2', description: "Run precommit for packages 'pack1' and 'pack2'." }
@@ -167,7 +204,7 @@ function addPublishCommand(r: CommandBuilder) {
       a.default('patch')
     })
     p.option('-i, --ignore-hash', 'Ignore hashes so publish even if the hash determines it is not necessary.')
-    p.action(publish)
+    p.action(verifyCorrectDirectory(publish))
     p.usageExamples(
       { command: 'rman publish', description: 'Publish new version (patch) of all packages with changes.' },
       {
@@ -186,7 +223,7 @@ function addWipeModulesCommand(r: CommandBuilder) {
     w.option('-s, --scope <scope>', 'Delete only node_modules within a given scope, which could also be your own.')
     w.option('-l, --package-lock', 'Delete the package-lock.json files, too.')
     w.option('-r, --root', 'Perform these actions in the root directory of the monorepo, too.')
-    w.action(wipeNodeModules)
+    w.action(verifyCorrectDirectory(wipeNodeModules))
     w.usageExamples(
       {
         command: 'rman wipe-modules pack1 -l',
@@ -207,7 +244,7 @@ function addRehashCommand(r: CommandBuilder) {
     )
     r.aliases('rh')
     r.argument('[packages...]', 'Names of packages to include. If omitted, all packages are included.')
-    r.action(rehash)
+    r.action(verifyCorrectDirectory(rehash))
     r.usageExamples(
       { command: 'rman rehash', description: 'Rehash all packages.' },
       { command: 'rman rehash pack1 pack2', description: "Rehash packages 'pack1' and 'pack2'." }
@@ -226,7 +263,7 @@ function addRuntsCommand(r: CommandBuilder) {
     r.aliases('ts')
     r.argument('[paths...]', 'Path segments to search for.')
     r.option('-s, --script', 'Search in ./scripts instead of ./packages.')
-    r.action(ts)
+    r.action(verifyCorrectDirectory(ts))
     r.usageExamples(
       { command: 'rman ts somefile.ts', description: "Find and run filepath containing 'somefile.ts'." },
       { command: 'rman ts src index.ts', description: "Find and run filepath containing 'src/index.ts'." }
@@ -246,7 +283,7 @@ function addTestFileCommand(r: CommandBuilder) {
     t.argument('[paths...]', 'Path segments to search for.')
     t.option('-d, --dir', 'Test all files in the directory where the file is found.')
     t.option('-c, --coverage', 'Whether to emit coverage.')
-    t.action(testfile)
+    t.action(verifyCorrectDirectory(testfile))
     t.usageExamples(
       { command: 'rman testfile file.test.ts', description: "Find and run filepath containing 'file.test.ts'." },
       {
@@ -262,7 +299,7 @@ function addCreatePackageCommand(r: CommandBuilder) {
     c.description('Create a package.')
     c.aliases('cp', 'createpackage')
     c.argument('<name>', 'The name of the package.')
-    c.action(createPackage)
+    c.action(verifyCorrectDirectory(createPackage))
     c.usageExamples({ command: 'rman create-package pack1', description: 'Create a new package named pack1.' })
   })
 }
@@ -272,7 +309,7 @@ function addDeletePackageCommand(r: CommandBuilder) {
     d.description('Delete a package.')
     d.aliases('dp', 'deletepackage')
     d.argument('<name>', 'The name of the package.')
-    d.action(deletePackage)
+    d.action(verifyCorrectDirectory(deletePackage))
     d.usageExamples({ command: 'rman delete-package pack1', description: 'Delete the package named pack1.' })
   })
 }
@@ -282,7 +319,7 @@ function addDepsCommand(r: CommandBuilder) {
     d.description('Print useful details about package dependencies.')
     d.aliases('pd', 'package-deps', 'packagedeps')
     d.argument('[package]', 'The name of the package.')
-    d.action(packageDependencies)
+    d.action(verifyCorrectDirectory(packageDependencies))
     d.usageExamples(
       { command: 'rman deps', description: 'Print dependency information.' },
       {
@@ -297,7 +334,7 @@ function addOpenDocsCommand(r: CommandBuilder) {
   r.command('openDocs', (o) => {
     o.description('Open the docs website in the browser.')
     o.aliases('od')
-    o.action(openDocs)
+    o.action(verifyCorrectDirectory(openDocs))
     o.usageExamples(
       { command: 'rman open-docs', description: 'Open docs website.' },
       { command: 'rman open-docs', description: 'Open docs website.' }
@@ -310,7 +347,7 @@ function addOpenCoverageCommand(r: CommandBuilder) {
     o.description('Open the coverage report in the browser.')
     o.aliases('oc')
     o.argument('[package]', 'The name of the package.')
-    o.action(openCoverage)
+    o.action(verifyCorrectDirectory(openCoverage))
     o.usageExamples(
       { command: 'rman open-coverage', description: 'Open coverage report.' },
       { command: 'rman open-coverage my-package', description: "Open coverage report for 'my-package'." }
