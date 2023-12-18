@@ -7,7 +7,7 @@ import { PackageDataView } from '../util/PackageDataView'
 export function build(names: string[]) {
   console.log(colors.magenta('Finalizing dist directory...'))
   getPackages(names).forEach((o) => {
-    emptyDirectorySync(o.distDir)
+    // emptyDirectorySync(o.distDir)
     copyReadmeToDist(o)
     createPackageJsonNpm(o)
     createDistBinDir(o)
