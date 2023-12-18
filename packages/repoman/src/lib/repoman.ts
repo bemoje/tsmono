@@ -22,7 +22,7 @@ import { ts } from './actions/ts'
 import { wipeNodeModules } from './actions/wipeNodeModules'
 
 export const repoman = CLI('rman', (r) => {
-  r.version('0.0.0')
+  r.version('0.0.70')
   r.description('Tools for management of an NX mono-repo.')
   r.enableBuiltinOptions()
   r.presetsEnabled(true)
@@ -57,7 +57,17 @@ function verifyCorrectDirectory(action: (...args: any[]) => void) {
         process.exit(1)
       }
     }
-    action(...args)
+    action(...args, cmd)
+  }
+}
+
+function handlePackages(action: (...args: any[]) => void) {
+  return function (...args: any[]) {
+    const cmd = args.pop() as CommandBuilder
+    const opts = args.pop() as { packages?: string[] }
+    const packages = args.pop() as string[]
+    if (opts.packages) packages.push(...opts.packages)
+    action(packages, opts, cmd)
   }
 }
 
@@ -88,7 +98,8 @@ function addBuildCommand(r: CommandBuilder) {
     b.description('Run build for all or selected packages.')
     b.alias('b')
     b.argument('[packages...]', 'Names of packages to include. If omitted, all packages are included.')
-    b.action(verifyCorrectDirectory(build))
+    b.option('-p, --packages <names...>', 'Names of packages to include. Save as passing them as arguments.')
+    b.action(handlePackages(verifyCorrectDirectory(build)))
     b.usageExamples(
       { command: 'rman build', description: 'Run build for all packages.' },
       { command: 'rman build pack1 pack2', description: "Run build for packages 'pack1' and 'pack2'." }
@@ -101,8 +112,9 @@ function addTestCommand(r: CommandBuilder) {
     t.description('Run tests for all or selected packages.')
     t.alias('t')
     t.argument('[packages...]', 'Names of packages to include. If omitted, all packages are included.')
+    t.option('-p, --packages <names...>', 'Names of packages to include. Save as passing them as arguments.')
     t.option('-c, --coverage', 'Whether to emit coverage.')
-    t.action(verifyCorrectDirectory(test))
+    t.action(handlePackages(verifyCorrectDirectory(test)))
     t.usageExamples(
       { command: 'rman test', description: 'Run tests for all packages.' },
       { command: 'rman test pack1 pack2', description: "Run tests for packages 'pack1' and 'pack2'." }
@@ -115,7 +127,8 @@ function addLintCommand(r: CommandBuilder) {
     l.description('Run lint for all or selected packages.')
     l.alias('l')
     l.argument('[packages...]', 'Names of packages to include. If omitted, all packages are included.')
-    l.action(verifyCorrectDirectory(lint))
+    l.option('-p, --packages <names...>', 'Names of packages to include. Save as passing them as arguments.')
+    l.action(handlePackages(verifyCorrectDirectory(lint)))
     l.usageExamples(
       { command: 'rman lint', description: 'Run lint for all packages.' },
       { command: 'rman lint pack1 pack2', description: "Run lint for packages 'pack1' and 'pack2'." }
@@ -160,7 +173,8 @@ function addCreateRepoFilesCommand(r: CommandBuilder) {
     b.description('Create repo files for all or selected packages.')
     b.alias('crf')
     b.argument('[packages...]', 'Names of packages to include. If omitted, all packages are included.')
-    b.action(verifyCorrectDirectory(createRepoFiles))
+    b.option('-p, --packages <names...>', 'Names of packages to include. Save as passing them as arguments.')
+    b.action(handlePackages(verifyCorrectDirectory(createRepoFiles)))
   })
 }
 
@@ -196,7 +210,8 @@ function addPrecommitCommand(r: CommandBuilder) {
     p.description('Run lint, test, build, docs and fix.')
     p.aliases('pre', 'prepub', 'pre-publish')
     p.argument('[packages...]', 'Names of packages to include. If omitted, all packages are included.')
-    p.action(verifyCorrectDirectory(prepub))
+    p.option('-p, --packages <names...>', 'Names of packages to include. Save as passing them as arguments.')
+    p.action(handlePackages(verifyCorrectDirectory(prepub)))
     p.usageExamples(
       { command: 'rman precommit', description: 'Run precommit for all packages.' },
       { command: 'rman precommit pack1 pack2', description: "Run precommit for packages 'pack1' and 'pack2'." }
@@ -209,13 +224,14 @@ function addPublishCommand(r: CommandBuilder) {
     p.description('Publish all or selected packages to NPM.')
     p.aliases('pub', 'npmpublish', 'npm-publish')
     p.argument('[packages...]', 'Names of packages to include. If omitted, all packages are included.')
+    p.option('-p, --packages <names...>', 'Names of packages to include. Save as passing them as arguments.')
     p.option('-l, --level <value>', (a) => {
       a.description('The semver level to bump.')
       a.choices(['major', 'minor', 'patch'])
       a.default('patch')
     })
     p.option('-i, --ignore-hash', 'Ignore hashes so publish even if the hash determines it is not necessary.')
-    p.action(verifyCorrectDirectory(publish))
+    p.action(handlePackages(verifyCorrectDirectory(publish)))
     p.usageExamples(
       { command: 'rman publish', description: 'Publish new version (patch) of all packages with changes.' },
       {
@@ -231,10 +247,11 @@ function addWipeModulesCommand(r: CommandBuilder) {
     w.description('Clear node_modules.')
     w.aliases('wm')
     w.argument('[packages...]', 'Names of packages to include. If omitted, all packages are included.')
+    w.option('-p, --packages <names...>', 'Names of packages to include. Save as passing them as arguments.')
     w.option('-s, --scope <scope>', 'Delete only node_modules within a given scope, which could also be your own.')
     w.option('-l, --package-lock', 'Delete the package-lock.json files, too.')
     w.option('-r, --root', 'Perform these actions in the root directory of the monorepo, too.')
-    w.action(verifyCorrectDirectory(wipeNodeModules))
+    w.action(handlePackages(verifyCorrectDirectory(wipeNodeModules)))
     w.usageExamples(
       {
         command: 'rman wipe-modules pack1 -l',
@@ -255,7 +272,8 @@ function addRehashCommand(r: CommandBuilder) {
     )
     r.aliases('rh')
     r.argument('[packages...]', 'Names of packages to include. If omitted, all packages are included.')
-    r.action(verifyCorrectDirectory(rehash))
+    r.option('-p, --packages <names...>', 'Names of packages to include. Save as passing them as arguments.')
+    r.action(handlePackages(verifyCorrectDirectory(rehash)))
     r.usageExamples(
       { command: 'rman rehash', description: 'Rehash all packages.' },
       { command: 'rman rehash pack1 pack2', description: "Rehash packages 'pack1' and 'pack2'." }

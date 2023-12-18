@@ -6,11 +6,13 @@ import {
   Any,
   colors,
   execute,
+  readFileSafeSync,
   readJsonFileSafeSync,
-  updateFileSafeSync,
   updateFileSync,
+  writeFileSafeSync,
   writeJsonFileSafeSync,
 } from '@bemoje/util'
+import { build } from './build'
 import { docs } from './docs'
 import { getPackages } from '../util/getPackages'
 import { implicitDependenciesRecursive } from '../util/implicitDependenciesRecursive'
@@ -24,6 +26,21 @@ const { gray, magenta: green, red, magenta: magenta } = colors
 export function publish(packages: string[], options: { level?: string; ignoreHash?: boolean } = {}) {
   const level = options?.level || 'patch'
   const _packages = packages.length ? [...packages, ...implicitDependenciesRecursive(...packages)] : allPackageNames()
+
+  getPackages(packages).forEach((o) => {
+    if (!o.repomanConfigJson.npm.bin) return
+    walkDirectorySync(o.srcdir, {}, (filepath, stats) => {
+      if (!stats.isFile()) return
+      if (filepath.endsWith('.test.ts')) return
+      const code = readFileSafeSync(filepath)
+      if (!code) return
+      const re = /\.version\('[0-9]+\.[0-9]+\.[0-9]'\)/
+      if (!re.test(code)) return
+      const newVersion = semverVersionBump(o.packageJson.version || '0.0.0', level as 'major' | 'minor' | 'patch')
+      const newCode = code.replace(re, `.version('${newVersion}')`)
+      writeFileSafeSync(filepath, newCode)
+    })
+  })
 
   // prepub
   prepub(packages)
@@ -101,9 +118,14 @@ export function publish(packages: string[], options: { level?: string; ignoreHas
   }
 
   console.log(green('Ensuring latest version of implicit dependencies are installed in all packages.'))
-  updateImplicitDependencies()
+  const set = getPackages(packages).reduce((set, o) => {
+    o.implicitDependents(true).forEach((n) => set.add(n))
+    return set
+  }, new Set<string>())
+  updateImplicitDependencies([...set])
 
-  prepub(packages)
+  console.log(green('Building packages.'))
+  build(packages)
 
   if (installGlobally.length) {
     console.log(green('Install CLI packages globally: ' + installGlobally.join(', ')))
