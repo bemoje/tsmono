@@ -1,6 +1,7 @@
 {
   "name": "repoman",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "root": "packages/repoman",
   "sourceRoot": "packages/repoman/src",
   "projectType": "application",
   "targets": {

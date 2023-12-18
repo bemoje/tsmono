@@ -70,9 +70,9 @@ export class JsonDB {
    * @throws An error if no entry is found at the specified key.
    */
   get<T = JsonValue>(prefix?: string): T {
-    const value = this.getSafe<T>(prefix)
+    const value = this.getSafe(prefix)
     if (value === undefined) throw new Error(`No entry at '${prefix}'`)
-    return this.cloneDeep(value)
+    return this.cloneDeep(value) as T
   }
 
   /**

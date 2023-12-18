@@ -1,7 +1,7 @@
-import { removeFileSync } from '@bemoje/util'
 import fs from 'fs-extra'
 import path from 'path'
 import { getPackages } from '../util/getPackages'
+import { removeFileSync } from '@bemoje/util'
 
 export function wipeNodeModules(
   packages: string[],
@@ -11,7 +11,7 @@ export function wipeNodeModules(
   return
   if (options.scope) {
     const scope = '@' + options.scope
-    getPackages(packages).forEach(({ name, rootdir }) => {
+    getPackages(packages).forEach(({ name, pkgRootDir: rootdir }) => {
       const dir = path.join(rootdir, 'node_modules', scope)
       const plock = path.join(rootdir, 'package-lock.json')
       if (fs.existsSync(dir)) {
@@ -37,7 +37,7 @@ export function wipeNodeModules(
       }
     }
   } else {
-    getPackages(packages).forEach(({ name, rootdir }) => {
+    getPackages(packages).forEach(({ name, pkgRootDir: rootdir }) => {
       const dir = path.join(rootdir, 'node_modules')
       const plock = path.join(rootdir, 'package-lock.json')
       if (fs.existsSync(dir)) {

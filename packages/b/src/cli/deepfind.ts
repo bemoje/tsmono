@@ -1,4 +1,5 @@
-import { CLI, execInherit, strSplitCamelCase } from '@bemoje/cli'
+import { CLI } from '@bemoje/cli'
+import { execInherit, strSplitCamelCase } from '@bemoje/util'
 
 export const deepfind = CLI('deepfind', (b) => {
   b.setRecommended()
@@ -136,7 +137,7 @@ export const deepfind = CLI('deepfind', (b) => {
     for (const [k, value] of Object.entries(opts)) {
       if (k === 'debug') continue
       let key = strSplitCamelCase(k)
-        .map((s) => s.trim())
+        .map((s: string) => s.trim())
         .join('-')
         .toLowerCase()
       if (key === 'ext') key = 'file-search-regex'

@@ -1,6 +1,6 @@
-import { Constructor, colors, strWrapInAngleBrackets, strWrapInBrackets } from '@bemoje/util'
-import { Argument, Command, Option } from 'commander'
 import PromptType from 'prompts'
+import { Any, colors, strWrapInAngleBrackets, strWrapInBrackets, TConstructor } from '@bemoje/util'
+import { Argument, Command, Option } from 'commander'
 let i = 0
 /**
  * Create a command.
@@ -35,13 +35,13 @@ export interface ICommandUsage {
 }
 
 export interface IUserPrompt {
-  type: 'auto' | PromptType
+  type: 'auto' | typeof PromptType
 }
 
-export interface ICommandArgument<T = any> {
+export interface ICommandArgument<T = Any> {
   name: string
   description: string
-  type?: Constructor
+  type?: TConstructor
   isOptional?: boolean
   isRest?: boolean
   isCommaDelimited?: boolean

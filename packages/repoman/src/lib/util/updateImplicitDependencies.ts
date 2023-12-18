@@ -5,7 +5,7 @@ import { packageVersionsMap } from './packageVersionsMap'
 export async function updateImplicitDependencies(names?: string[]) {
   const versions = packageVersionsMap()
   getPackages(names).map((o) => {
-    const { rootdir } = o
+    const { pkgRootDir: rootdir } = o
     const deps = o.implicitDependencies(true).filter((dep) => {
       const latestVersion = versions.get(dep)
       const installedVersion = o.installedVersionOf(dep)

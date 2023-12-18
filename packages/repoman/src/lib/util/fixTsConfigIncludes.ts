@@ -7,7 +7,7 @@ const { gray, magenta: green } = colors
 export function fixTsConfigIncludes() {
   console.log(green('Fixing tsconfig includes...'))
 
-  getPackages().forEach(({ name, rootdir }) => {
+  getPackages().forEach(({ name, pkgRootDir: rootdir }) => {
     // lib
     const libfname = 'tsconfig.lib.json'
     const libpath = path.join(rootdir, libfname)

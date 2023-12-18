@@ -9,7 +9,7 @@
     "build": "npm run build:cjs && npm run build:esm"
   },
   "dependencies": {
-    "@bemoje/util": "^0.5.12",
+    "@bemoje/util": "latest",
     "tslib": "^2.3.0"
   },
   "devDependencies": {}

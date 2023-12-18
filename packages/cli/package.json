@@ -1,13 +1,10 @@
 {
   "name": "@bemoje/cli",
-  "version": "0.0.18",
-  "main": "src/index.ts",
-  "types": "src/index.ts",
+  "version": "0.0.19",
   "scripts": {
-    "build:cjs": "rimraf ../../dist/packages/cli/cjs && npx tsc src/index.ts --outDir ../../dist/packages/cli/cjs --module commonjs --lib es2022 --moduleResolution node --downlevelIteration --esModuleInterop --target ES2022 --allowSyntheticDefaultImports --moduleResolution node --sourceMap",
-    "build:esm": "rimraf ../../dist/packages/cli/esm && npx tsc src/index.ts --outDir ../../dist/packages/cli/esm --module es2022 --lib es2022 --moduleResolution node --downlevelIteration --esModuleInterop --target ES2022 --allowSyntheticDefaultImports --moduleResolution node --sourceMap",
-    "build:types": "rimraf ../../dist/packages/cli/types && npx tsc src/index.ts --outDir ../../dist/packages/cli/types --module es2022 --lib es2022 --moduleResolution node --downlevelIteration --esModuleInterop --target ES2022 --allowSyntheticDefaultImports --moduleResolution node --declaration --declarationMap --emitDeclarationOnly",
-    "build": "npm run build:cjs && npm run build:esm && npm run build:types"
+    "build:cjs": "rimraf ../../dist/packages/cli/cjs && npx tsc src/index.ts --outDir ../../dist/packages/cli/cjs --lib esnext --moduleResolution node --downlevelIteration --esModuleInterop --target es2022 --allowSyntheticDefaultImports --importHelpers --moduleResolution node --sourceMap --module commonjs --declaration --declarationMap",
+    "build:esm": "rimraf ../../dist/packages/cli/esm && npx tsc src/index.ts --outDir ../../dist/packages/cli/esm --lib esnext --moduleResolution node --downlevelIteration --esModuleInterop --target es2022 --allowSyntheticDefaultImports --importHelpers --moduleResolution node --sourceMap --module es2022",
+    "build": "npm run build:cjs && npm run build:esm"
   },
   "dependencies": {
     "@bemoje/util": "latest",
@@ -16,25 +13,6 @@
     "fs-extra": "^11.2.0",
     "is-async-function": "^2.0.0"
   },
-  "author": {
-    "name": "Benjamin Møller Jensen",
-    "email": "bemoje@bemoje.net",
-    "url": "https://github.com/bemoje/"
-  },
-  "license": "MIT",
-  "keywords": [],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bemoje/tsmono.git"
-  },
-  "funding": {
-    "type": "patreon",
-    "url": "https://www.patreon.com/user?u=40752770"
-  },
-  "bugs": {
-    "url": "https://github.com/bemoje/tsmono/issues"
-  },
-  "homepage": "https://github.com/bemoje/tsmono",
   "devDependencies": {
     "@types/cli-table": "^0.3.4",
     "@types/is-async-function": "^2.0.2",

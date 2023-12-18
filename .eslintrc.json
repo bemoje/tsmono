@@ -15,7 +15,20 @@
           { "args": "after-used", "vars": "local", "argsIgnorePattern": "^(_|args)" }
         ],
         "@typescript-eslint/no-extra-semi": "warn",
-        "@typescript-eslint/no-namespace": "warn"
+        "@typescript-eslint/no-namespace": "warn",
+        "@nx/enforce-module-boundaries": [
+          "error",
+          {
+            "enforceBuildableLibDependency": true,
+            "allow": [],
+            "depConstraints": [
+              {
+                "sourceTag": "*",
+                "onlyDependOnLibsWithTags": ["*"]
+              }
+            ]
+          }
+        ]
       }
     },
     {

@@ -1,8 +1,9 @@
-import { BCommand } from './BCommand'
-import { CLI_LIST } from '../src/actions/prompts/list'
-import { commandSearchPrompt } from '../src/actions/prompts/commandSearchPrompt/commandSearchPrompt'
-import { execInherit, prompt } from '@bemoje/util'
-import { trie } from './trie'
+/*
+import { BCommand } from './BCommand';
+import { CLI_LIST } from '../src/actions/prompts/list';
+import { commandSearchPrompt } from '../src/actions/prompts/commandSearchPrompt/commandSearchPrompt';
+import { execInherit, prompt } from '@bemoje/util';
+import { trie } from './trie';
 
 export async function main() {
   const program = new BCommand('b')
@@ -211,3 +212,5 @@ export async function main() {
 // })
 // program.helpInformation()
 // program.parse()
+
+*/

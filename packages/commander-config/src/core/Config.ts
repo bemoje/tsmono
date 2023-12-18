@@ -54,7 +54,7 @@ export class Config {
       this.userconfig.getOrElse(name, () => options.default)
     }
 
-    this.userconfig.on('set', (time, k: string, v: Record<string, any>) => {
+    this.userconfig.on('set', (time: number, k: string, v: Record<string, any>) => {
       if (this.definitions[k]) {
         const validate = this.definitions[k].validate
         if (validate) validate(k, v)

@@ -1,0 +1,12 @@
+{
+  "name": "cli",
+  "type": "library",
+  "npm": {
+    "publish": true,
+    "name": "@bemoje/cli",
+    "usesNodeInternals": true,
+    "bin": "",
+    "license": "MIT",
+    "keywords": []
+  }
+}

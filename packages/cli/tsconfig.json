@@ -1,23 +1,10 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "module": "CommonJS",
-    "target": "ES2022",
-    "lib": ["es2022"],
-    "strict": true,
-    "verbatimModuleSyntax": false,
-    "declaration": true,
-    "sourceMap": true,
-    "declarationMap": true,
-    "sourceRoot": "src",
-    "forceConsistentCasingInFileNames": true,
-    "disableSourceOfProjectReferenceRedirect": false,
-    "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
+    "outDir": "../../dist/tsc-out"
   },
   "files": [],
-  "include": [],
-  "references": []
+  "include": [
+    "src/**/*.ts"
+  ]
 }

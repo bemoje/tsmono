@@ -1,14 +1,14 @@
-import { colors, isLinux } from '@bemoje/util'
-import { execSync } from 'child_process'
-import type { IGptPreset } from '../types/IGptPreset'
-import { sendChatRequest } from '../util/sendChatRequest'
 import { appendSystemMessage } from './util/appendSystemMessage'
+import { colors, isLinux } from '@bemoje/util'
 import { createChatRequest } from './util/createChatRequest'
 import { createDirectories } from './util/createDirectories'
+import { execSync } from 'child_process'
 import { getPromptPlaceholder } from './util/getPromptPlaceholder'
 import { getUserPrompt } from './util/getUserPrompt'
+import type { IGptPreset } from '../types/IGptPreset'
 import { mergeSettingsWithDefaults } from './util/mergeSettingsWithDefaults'
 import { saveInteraction } from './util/saveInteraction'
+import { sendChatRequest } from '../util/sendChatRequest'
 const { cyan, magenta: green } = colors
 
 /**
@@ -37,7 +37,7 @@ export async function presets(preset: string, prompt?: string, is16k = false, is
   request.messages?.push({ role: 'assistant', content: response })
   if (settings.terminalOutput) console.log(cyan('\n' + response + '\n'))
   // save data
-  const textPath = saveInteraction(jsondir, textdir, settings.markdownOutput, request)
+  const textPath = saveInteraction(jsondir, textdir, settings.markdownOutput || false, request)
   // user output
   if (settings.openResponseIn === 'none') return
   execSync(`${settings.openResponseIn} "${textPath}${isLinux() ? ' &' : ''}"`, { stdio: 'inherit' })

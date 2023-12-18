@@ -1,10 +1,10 @@
-import { colors, strRepeat } from '@bemoje/util'
+import { Any, colors, strRepeat } from '@bemoje/util'
 import { Command } from 'commander'
+import { config } from './config'
 import { createPreset } from './actions/createPreset'
 import { onCustomPreset } from './actions/onCustomPreset'
-import { removePreset } from './actions/removePreset'
-import { config } from './config'
 import { presets } from './presets/presets'
+import { removePreset } from './actions/removePreset'
 
 /**
  * Runs the program
@@ -48,7 +48,7 @@ export function main() {
   for (const [preset, settings] of Object.entries({ ...examples, ...custom })) {
     program
       .command(preset)
-      .description(colors.red(settings['description']))
+      .description(colors.red((settings as Record<string, Any>)['description']))
       .argument('[options]', universalCommandOptions)
       .argument('[prompt...]', 'Optional prompt. Omit to edit in your text-editor.', '')
       .action(async (opts: string[], prompt: string[]) => {

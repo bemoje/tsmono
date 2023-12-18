@@ -1,4 +1,4 @@
-import { JsonValue } from '@bemoje/util'
+import { JsonValue } from '../../types/JsonValue'
 import { promptUserEditInTextEditorSync } from './promptUserEditInTextEditorSync'
 
 /**

@@ -1,7 +1,7 @@
 import { colors } from '@bemoje/util'
 import { config } from '../config'
-import { ISendChatRequestOptions } from '../types/ISendChatRequestOptions'
 import { getApiClient } from './getApiClient'
+import { ISendChatRequestOptions } from '../types/ISendChatRequestOptions'
 const { blue } = colors
 
 /**
@@ -27,7 +27,7 @@ export async function sendChatRequest(options: ISendChatRequestOptions): Promise
   const request_tokens = instruction_tokens + prompt_tokens
   const inputTokensResponseTokensScalar = settings.inputTokensResponseTokensScalar
   const maxExpectedResponseTokens =
-    settings.maxExpectedResponseTokens + Math.floor(prompt_tokens * inputTokensResponseTokensScalar)
+    (settings.maxExpectedResponseTokens || 0) + Math.floor(prompt_tokens * (inputTokensResponseTokensScalar || 0))
   const gpt_model_selection_cutoff_tokens = Math.max(0, 8000 - maxExpectedResponseTokens - prompt_tokens)
   const max_tokens = 16000 - maxExpectedResponseTokens
   const above_cutoff = request_tokens > gpt_model_selection_cutoff_tokens

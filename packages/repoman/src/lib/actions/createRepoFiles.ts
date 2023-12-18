@@ -1,47 +1,37 @@
-import path from 'path'
-import { Any, readJsonFileSafeSync, removeFileSync, writeFileSafeSync, writeJsonFileSafeSync } from '@bemoje/util'
+import { Any, removeFileSync, writeFileSafeSync, writeJsonFileSafeSync } from '@bemoje/util'
 import { getPackages } from '../util/getPackages'
 import { PackageDataView } from '../util/PackageDataView'
 
 export function createRepoFiles(names: string[]) {
   getPackages(names).forEach((o) => {
-    const config: Any = readJsonFileSafeSync(o.rootdirPath('repoman.config.json'))
+    const config = o.repomanConfigJson
     if (!config) throw new Error('Missing repoman.config.json')
 
-    const pkgRepoRoot = readJsonFileSafeSync(path.join(process.cwd(), 'package.json')) || {}
-    const curPkgRepo = o.packageJson
-    const pkgRepo = createPackageJsonRepo(config, curPkgRepo)
-
-    writeJsonFileSafeSync(o.packageJsonPath, pkgRepo, { spaces: 2 })
-    writeJsonFileSafeSync(o.projectJsonPath, createProjectJson(config), { spaces: 2 })
-    writeJsonFileSafeSync(o.tsconfigPath, createTsConfigJson(config), { spaces: 2 })
-    writeJsonFileSafeSync(o.tsconfigSpecPath, createTsConfigSpecJson(config), { spaces: 2 })
-    writeJsonFileSafeSync(o.rootdirPath('.eslintrc.json'), createEslintrcJson(config), { spaces: 2 })
-    writeFileSafeSync(o.rootdirPath('jest.config.ts'), createJestConfigTs(config))
-
-    if (config.npm.publish) {
-      writeJsonFileSafeSync(
-        o.distsPath(config.name, 'package.json'),
-        createPackageJsonNpm(config, pkgRepoRoot, pkgRepo),
-        {
-          spaces: 2,
-        }
-      )
-      createDistBinDir(o.distsPath(config.name, 'bin', 'index.js'))
-    }
-
+    createPackageJsonRepo(o)
+    createProjectJson(o)
+    createTsConfigJson(o)
+    createTsConfigSpecJson(o)
+    createTsConfigLibJson(o)
+    createEslintrcJson(o)
+    createJestConfigTs(o)
     deleteIrrelevantFiles(o)
+    if (config.npm.publish) {
+      //
+    }
   })
 }
 
-function createPackageJsonRepo(config: Any, curPkgRepo: Any = {}) {
+function createPackageJsonRepo(o: PackageDataView) {
+  const config = o.repomanConfigJson
+  const curPkgRepo = o.packageJson
   const pkgRepo: Any = {}
   const buildScriptBase = (dir: string) =>
-    `rimraf ../../dist/packages/${config.name}/${dir} && npx tsc src/index.ts --outDir ../../dist/packages/${config.name}/${dir} --lib es2022 --moduleResolution node --downlevelIteration --esModuleInterop --target ES2022 --allowSyntheticDefaultImports --moduleResolution node --sourceMap`
+    `rimraf ../../dist/packages/${config.name}/${dir} && npx tsc src/index.ts --outDir ../../dist/packages/${config.name}/${dir} --lib esnext --moduleResolution node --downlevelIteration --esModuleInterop --target es2022 --allowSyntheticDefaultImports --importHelpers --moduleResolution node --sourceMap`
+
   pkgRepo.name = '@bemoje/' + config.name
   pkgRepo.version = curPkgRepo.version || '0.0.1'
-  pkgRepo.main = 'src/index.ts'
-  pkgRepo.types = 'src/index.ts'
+  // pkgRepo.main = 'src/index.ts'
+  // pkgRepo.types = 'src/index.ts'
   pkgRepo.scripts = curPkgRepo.scripts || {}
   if (config.npm.publish) {
     pkgRepo.scripts['build'] = 'npm run build:cjs'
@@ -56,45 +46,15 @@ function createPackageJsonRepo(config: Any, curPkgRepo: Any = {}) {
   }
   pkgRepo.dependencies = curPkgRepo.dependencies || {}
   pkgRepo.devDependencies = curPkgRepo.devDependencies || {}
-  return pkgRepo
+  writeJsonFileSafeSync(o.packageJsonPath, pkgRepo, { spaces: 2 })
 }
 
-function createPackageJsonNpm(config: Any, pkgRepoRoot: Any, pkgRepo: Any) {
-  const pkgNpm: Any = {}
-  if (config.npm.publish) {
-    pkgNpm.name = config.npm.name
-    pkgNpm.version = pkgRepo.version
-    pkgNpm.type = 'commonjs'
-    pkgNpm.main = 'cjs/index.js'
-    if (!config.npm.bin) {
-      pkgNpm.module = 'esm/index.js'
-    }
-    pkgNpm.types = 'cjs/index.d.ts'
-    if (config.npm.bin) {
-      pkgNpm.bin = {}
-      pkgNpm.bin[config.npm.bin] = './bin/index.js'
-      pkgNpm.preferGlobal = true
-      pkgNpm.dependencies = pkgRepo.dependencies
-    }
-    pkgNpm.license = config.npm.license
-    pkgNpm.keywords = config.npm.keywords
-    pkgNpm.author = pkgRepoRoot.author
-    pkgNpm.repository = pkgRepoRoot.repository
-    pkgNpm.funding = pkgRepoRoot.funding
-    pkgNpm.bugs = pkgRepoRoot.bugs
-    pkgNpm.homepage = pkgRepoRoot.homepage
-  }
-  return pkgNpm
-}
-
-function createDistBinDir(distPath: string) {
-  writeFileSafeSync(distPath, ['#!/usr/bin/env node', "require('../cjs/index.js').main();"].join('\n'))
-}
-
-function createProjectJson(config: Any) {
+function createProjectJson(o: PackageDataView) {
+  const config = o.repomanConfigJson
   const obj: Any = {
     name: config.name,
     $schema: '../../node_modules/nx/schemas/project-schema.json',
+    root: `packages/${config.name}`,
     sourceRoot: `packages/${config.name}/src`,
     projectType: config.type,
     targets: {
@@ -132,70 +92,99 @@ function createProjectJson(config: Any) {
       },
     }
   }
-  return obj
+  writeJsonFileSafeSync(o.projectJsonPath, obj, { spaces: 2 })
 }
 
-function createTsConfigJson(config: Any) {
-  return {
-    extends: '../../tsconfig.json',
-    compilerOptions: {},
-    files: [],
-    include: [],
-    references: [],
-  }
-}
-
-function createTsConfigSpecJson(config: Any) {
-  return {
-    extends: './tsconfig.json',
-    compilerOptions: {
-      outDir: '../../dist/out-tsc',
-      types: ['jest', 'node'],
+function createTsConfigJson(o: PackageDataView) {
+  writeJsonFileSafeSync(
+    o.tsconfigPath,
+    {
+      extends: '../../tsconfig.json',
+      compilerOptions: {
+        outDir: '../../dist/tsc-out',
+      },
+      files: [],
+      include: ['src/**/*.ts'],
     },
-    include: ['jest.config.ts', 'src/**/*.test.ts', 'src/**/*.spec.ts', 'src/**/*.d.ts'],
-  }
+    { spaces: 2 }
+  )
 }
 
-function createEslintrcJson(config: Any) {
-  return {
-    extends: ['../../.eslintrc.json'],
-    ignorePatterns: ['!**/*'],
-    overrides: [
-      {
-        files: ['*.ts', '*.tsx', '*.js', '*.jsx'],
-        rules: {},
-      },
-      {
-        files: ['*.ts', '*.tsx'],
-        rules: {},
-      },
-      {
-        files: ['*.js', '*.jsx'],
-        rules: {},
-      },
-      {
-        files: ['*.json'],
-        parser: 'jsonc-eslint-parser',
-        rules: {},
-      },
-    ],
-  }
+function createTsConfigLibJson(o: PackageDataView) {
+  writeJsonFileSafeSync(
+    o.tsconfigLibPath,
+    {
+      extends: './tsconfig.json',
+      compilerOptions: {},
+      include: ['src/**/*.ts'],
+      exclude: ['jest.config.ts', 'src/**/*.spec.ts', 'src/**/*.test.ts'],
+    },
+    { spaces: 2 }
+  )
 }
 
-function createJestConfigTs(config: Any) {
-  return [
-    `export default {`,
-    `  displayName: '${config.name}',`,
-    `  preset: '../../jest.preset.js',`,
-    `  moduleFileExtensions: ['ts', 'js', 'html'],`,
-    `  testEnvironment: 'node',`,
-    `  coverageDirectory: '../../coverage/packages/${config.name}',`,
-    `}`,
-  ].join('\n')
+function createTsConfigSpecJson(o: PackageDataView) {
+  writeJsonFileSafeSync(
+    o.tsconfigSpecPath,
+    {
+      extends: './tsconfig.json',
+      compilerOptions: {
+        types: ['jest', 'node'],
+      },
+      include: ['jest.config.ts', 'src/**/*.test.ts', 'src/**/*.spec.ts', 'src/**/*.d.ts', 'src/**/*.ts'],
+    },
+    { spaces: 2 }
+  )
+}
+
+function createEslintrcJson(o: PackageDataView) {
+  writeJsonFileSafeSync(
+    o.eslintrcJsonPath,
+    {
+      extends: ['../../.eslintrc.json'],
+      ignorePatterns: ['!**/*'],
+      overrides: [
+        {
+          files: ['*.ts', '*.tsx', '*.js', '*.jsx'],
+          rules: {},
+        },
+        {
+          files: ['*.ts', '*.tsx'],
+          rules: {},
+        },
+        {
+          files: ['*.js', '*.jsx'],
+          rules: {},
+        },
+        {
+          files: ['*.json'],
+          parser: 'jsonc-eslint-parser',
+          rules: {},
+        },
+      ],
+    },
+    { spaces: 2 }
+  )
+}
+
+function createJestConfigTs(o: PackageDataView) {
+  const config = o.repomanConfigJson
+  writeFileSafeSync(
+    o.jestConfigJsonPath,
+    [
+      `export default {`,
+      `  displayName: '${config.name}',`,
+      `  preset: '../../jest.preset.js',`,
+      `  moduleFileExtensions: ['ts', 'js', 'html'],`,
+      `  testEnvironment: 'node',`,
+      `  coverageDirectory: '../../coverage/packages/${config.name}',`,
+      `}`,
+    ].join('\n')
+  )
 }
 
 function deleteIrrelevantFiles(o: PackageDataView) {
-  const filenames = ['.swcrc', 'tsconfig.lib.json']
+  const filenames = ['.swcrc']
   for (const filename of filenames) {
     removeFileSync(o.rootdirPath(filename))
   }

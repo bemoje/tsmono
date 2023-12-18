@@ -8,7 +8,7 @@ const { gray, magenta: green } = colors
 export function fixReadmes() {
   console.log(green('Fixing readmes...'))
 
-  getPackages().forEach(({ rootdir, pkg, name }) => {
+  getPackages().forEach(({ pkgRootDir: rootdir, pkg, name }) => {
     const content = readme(pkg).trim()
     const fpath = path.join(rootdir, 'README.md')
     const cur = fs.existsSync(fpath) ? fs.readFileSync(fpath, 'utf8').trim() : ''

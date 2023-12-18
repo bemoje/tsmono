@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { assertThat } from '../validation/assertThat'
 import { createLengthValidator } from '../validation/createLengthValidator'
 import { JsonRawPrimitive } from '../types/JsonRawPrimitive'
@@ -20,6 +21,7 @@ export function createTupleListParser<T extends JsonRawPrimitive = JsonRawPrimit
     return assertThat(
       string.split(delimiter).map((str) => str.trim()),
       isValidLength
+      // @ts-ignore
     ).map((str, i) => parsers[i](str))
   }
 }

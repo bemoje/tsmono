@@ -21,7 +21,7 @@ export function fixDependencies() {
   status('ensuring all dependencies are installed')
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   const builtins = new Set(require('module').builtinModules)
-  getPackages().forEach(({ pkg, rootdir, name }) => {
+  getPackages().forEach(({ pkg, pkgRootDir: rootdir, name }) => {
     const impext = getImportedAllNonRelative(rootdir)
     const filter = (imp: string) => !builtins.has(imp)
 
@@ -44,27 +44,27 @@ export function fixDependencies() {
     })
   })
 
-  // status('ensuring all own-dependencies are set to latest')
-  // getPackages().forEach(({ pkg, rootdir, name, pkgpath }) => {
-  //   if (!pkg.dependencies) return
-  //   for (const dep of Object.keys(pkg.dependencies)) {
-  //     if (dep.startsWith('@bemoje') && pkg.dependencies[dep] !== 'latest') {
-  //       console.log(`${name} not using latest of: ${dep}`)
-  //       pkg.dependencies[dep] = 'latest'
-  //       fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
-  //       execute(`npm update ${dep}`, {
-  //         cwd: rootdir,
-  //       })
-  //     }
-  //   }
-  // })
+  status('ensuring all own-dependencies are set to latest')
+  getPackages().forEach(({ pkg, pkgRootDir, name, pkgpath }) => {
+    if (!pkg.dependencies) return
+    for (const dep of Object.keys(pkg.dependencies)) {
+      if (dep.startsWith('@bemoje') && pkg.dependencies[dep] !== 'latest') {
+        console.log(`${name} not using latest of: ${dep}`)
+        pkg.dependencies[dep] = 'latest'
+        fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
+        execute(`npm update ${dep}`, {
+          cwd: pkgRootDir,
+        })
+      }
+    }
+  })
 
   status('ensuring all implicit dependencies are updated in nx.json')
   const nxJsonPath = path.join(cwd, 'nx.json')
   updateJsonFileSync(nxJsonPath, (nxJson: Any) => {
     if (!nxJson.projects) throw new Error('Could not find projects in nx.json')
     const nxProjects = nxJson.projects as Any
-    getPackages().forEach(({ pkg, name, rootdir }) => {
+    getPackages().forEach(({ pkg, name, pkgRootDir: rootdir }) => {
       if (!nxProjects[name]) {
         nxProjects[name] = {
           tags: [],

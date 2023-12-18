@@ -35,7 +35,7 @@ export function publish(packages: string[], options: { level?: string; ignoreHas
   const successful: string[] = []
 
   console.log(green('Publishing packages with changes to NPM...'))
-  getPackages(_packages).forEach(({ name, pkgpath, pkg, distdir }) => {
+  getPackages(_packages).forEach(({ name, pkgpath, pkg, distDir: distdir }) => {
     if (!options.ignoreHash && hashes.currentHash(name) === hashes.hash(name)) return
 
     console.log(gray('- ') + magenta(name))

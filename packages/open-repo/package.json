@@ -8,9 +8,9 @@
     "build:cjs": "rimraf ../../dist/packages/open-repo/cjs && npx tsc src/index.ts --outDir ../../dist/packages/open-repo/cjs --lib es2022 --moduleResolution node --downlevelIteration --esModuleInterop --target ES2022 --allowSyntheticDefaultImports --moduleResolution node --sourceMap --module commonjs --declaration --declarationMap"
   },
   "dependencies": {
-    "@bemoje/cli": "^0.0.17",
-    "@bemoje/cli-prompt": "^0.0.2",
-    "@bemoje/util": "^0.6.0"
+    "@bemoje/cli": "latest",
+    "@bemoje/cli-prompt": "latest",
+    "@bemoje/util": "latest"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.2"

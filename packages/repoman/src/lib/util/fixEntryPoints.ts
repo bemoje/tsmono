@@ -10,7 +10,7 @@ export function fixEntryPoints(silent = false) {
 
   getPackages()
     // .filter(({ pkg }) => !pkg.bin)
-    .forEach(({ rootdir, name }) => {
+    .forEach(({ pkgRootDir: rootdir, name }) => {
       const srcdir = path.join(rootdir, 'src')
       const indexFileDirs: string[] = []
       const fpaths = walkTsFiles(srcdir, (filepath) => {
