@@ -1,9 +1,8 @@
 {
   "name": "@bemoje/repoman",
-  "version": "0.0.70",
+  "version": "0.0.71",
   "scripts": {
-    "build:cjs": "rimraf ../../dist/packages/repoman/cjs && npx tsc src/index.ts --outDir ../../dist/packages/repoman/cjs --lib esnext --moduleResolution node --downlevelIteration --esModuleInterop --target es2022 --allowSyntheticDefaultImports --importHelpers --moduleResolution node --sourceMap --module commonjs --declaration --declarationMap",
-    "build": "npm run build:cjs"
+    "build": "rimraf ../../dist/packages/repoman/cjs && npx tsc src/index.ts --outDir ../../dist/packages/repoman/cjs --lib esnext --moduleResolution node --downlevelIteration --esModuleInterop --target es2022 --allowSyntheticDefaultImports --skipLibCheck --importHelpers --moduleResolution node --sourceMap --module commonjs --declaration --declarationMap"
   },
   "dependencies": {
     "@bemoje/cli": "latest",
@@ -15,6 +14,7 @@
     "fs-extra": "^11.1.1",
     "snake-case": "^3.0.4",
     "strip-comments": "^2.0.1",
+    "tslib": "^2.6.2",
     "walkdir": "^0.4.1"
   },
   "devDependencies": {}

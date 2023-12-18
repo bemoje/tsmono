@@ -26,19 +26,19 @@ function createPackageJsonRepo(o: PackageDataView) {
   const curPkgRepo = o.packageJson
   const pkgRepo: Any = {}
   const buildScriptBase = (dir: string) =>
-    `rimraf ../../dist/packages/${config.name}/${dir} && npx tsc src/index.ts --outDir ../../dist/packages/${config.name}/${dir} --lib esnext --moduleResolution node --downlevelIteration --esModuleInterop --target es2022 --allowSyntheticDefaultImports --importHelpers --moduleResolution node --sourceMap`
+    `rimraf ../../dist/packages/${config.name}/${dir} && npx tsc src/index.ts --outDir ../../dist/packages/${config.name}/${dir} --lib esnext --moduleResolution node --downlevelIteration --esModuleInterop --target es2022 --allowSyntheticDefaultImports --skipLibCheck --importHelpers --moduleResolution node --sourceMap`
 
   pkgRepo.name = '@bemoje/' + config.name
   pkgRepo.version = curPkgRepo.version || '0.0.1'
   // pkgRepo.main = 'src/index.ts'
   // pkgRepo.types = 'src/index.ts'
-  pkgRepo.scripts = curPkgRepo.scripts || {}
+  pkgRepo.scripts = {}
   if (config.npm.publish) {
-    pkgRepo.scripts['build'] = 'npm run build:cjs'
-    pkgRepo.scripts['build:cjs'] = buildScriptBase('cjs') + ' --module commonjs --declaration --declarationMap'
+    // pkgRepo.scripts['build'] = 'npm run build:cjs'
+    pkgRepo.scripts['build'] = buildScriptBase('cjs') + ' --module commonjs --declaration --declarationMap'
     if (!config.npm.bin) {
-      pkgRepo.scripts['build:esm'] = buildScriptBase('esm') + ' --module es2022'
-      pkgRepo.scripts['build'] += ' && npm run build:esm'
+      // pkgRepo.scripts['build:esm'] = buildScriptBase('esm') + ' --module es2022'
+      // pkgRepo.scripts['build'] += ' && npm run build:esm'
     }
     if (pkgRepo.scripts['build:types']) {
       delete pkgRepo.scripts['build:types']
@@ -139,7 +139,7 @@ function createTsConfigSpecJson(o: PackageDataView) {
       compilerOptions: {
         types: ['jest', 'node'],
       },
-      include: ['jest.config.ts', 'src/**/*.test.ts', 'src/**/*.spec.ts', 'src/**/*.d.ts', 'src/**/*.ts'],
+      include: ['jest.config.ts', 'src/**/*.test.ts', 'src/**/*.spec.ts', 'src/**/*.d.ts'],
     },
     { spaces: 2 }
   )

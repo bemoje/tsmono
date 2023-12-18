@@ -1,33 +1,14 @@
 {
   "name": "@bemoje/zip",
-  "version": "0.0.4",
+  "version": "0.0.5",
+  "scripts": {
+    "build": "rimraf ../../dist/packages/zip/cjs && npx tsc src/index.ts --outDir ../../dist/packages/zip/cjs --lib esnext --moduleResolution node --downlevelIteration --esModuleInterop --target es2022 --allowSyntheticDefaultImports --skipLibCheck --importHelpers --moduleResolution node --sourceMap --module commonjs --declaration --declarationMap"
+  },
   "dependencies": {
     "extract-zip": "^2.0.1",
     "fs-extra": "^11.1.1",
-    "tslib": "^2.3.0"
+    "tslib": "^2.6.2"
   },
-  "type": "commonjs",
-  "main": "./src/index.js",
-  "typings": "./src/index.d.ts",
-  "author": {
-    "name": "Benjamin Møller Jensen",
-    "email": "bemoje@bemoje.net",
-    "url": "https://github.com/bemoje/"
-  },
-  "license": "MIT",
-  "keywords": [],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bemoje/tsmono.git"
-  },
-  "funding": {
-    "type": "patreon",
-    "url": "https://www.patreon.com/user?u=40752770"
-  },
-  "bugs": {
-    "url": "https://github.com/bemoje/tsmono/issues"
-  },
-  "homepage": "https://github.com/bemoje/tsmono",
   "devDependencies": {
     "@types/fs-extra": "^11.0.2"
   }

@@ -1,0 +1,12 @@
+{
+  "name": "bfind",
+  "type": "application",
+  "npm": {
+    "publish": true,
+    "name": "@bemoje/bfind",
+    "usesNodeInternals": true,
+    "bin": "bfind",
+    "license": "MIT",
+    "keywords": []
+  }
+}

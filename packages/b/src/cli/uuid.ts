@@ -3,7 +3,7 @@ import { Encoding } from 'crypto'
 import { UUID } from '@bemoje/util'
 
 export const uuid = CLI('uuid', (c) => {
-  c.version('0.0.1')
+  c.version('0.0.3')
   c.alias('u')
   c.description(
     'Generate a UUID string (Universally Unique Identifier).',

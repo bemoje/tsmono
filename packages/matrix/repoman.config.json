@@ -1,0 +1,12 @@
+{
+  "name": "matrix",
+  "type": "library",
+  "npm": {
+    "publish": true,
+    "name": "@bemoje/matrix",
+    "usesNodeInternals": false,
+    "bin": "",
+    "license": "MIT",
+    "keywords": []
+  }
+}

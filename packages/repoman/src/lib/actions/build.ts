@@ -29,7 +29,7 @@ function createPackageJsonNpm(o: PackageDataView) {
   pkgNpm.type = 'commonjs'
   pkgNpm.main = 'cjs/index.js'
   if (!config.npm.bin) {
-    pkgNpm.module = 'esm/index.js'
+    // pkgNpm.module = 'esm/index.js'
   }
   pkgNpm.types = 'cjs/index.d.ts'
   if (config.npm.bin) {

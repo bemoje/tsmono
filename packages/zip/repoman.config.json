@@ -1,9 +1,9 @@
 {
-  "name": "util",
+  "name": "zip",
   "type": "library",
   "npm": {
     "publish": true,
-    "name": "@bemoje/util",
+    "name": "@bemoje/zip",
     "usesNodeInternals": true,
     "bin": "",
     "license": "MIT",

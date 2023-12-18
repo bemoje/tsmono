@@ -16,7 +16,7 @@ import { search } from '../actions/search'
 import { wipeIndex } from '../util/lib/wipeIndex'
 
 export const bfind = CLI('bfind', (c) => {
-  c.version('0.0.0')
+  c.version('0.3.12')
   c.description(
     [
       'Fast (instantaneous) file search anywhere in your system.',

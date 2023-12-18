@@ -1,36 +1,12 @@
 {
   "name": "@bemoje/split-sentences",
-  "version": "0.1.8",
-  "description": "Split a text string into sentences.",
-  "main": "./src/index.js",
-  "scripts": {},
-  "author": {
-    "name": "Benjamin Møller Jensen",
-    "email": "bemoje@bemoje.net",
-    "url": "https://github.com/bemoje/"
+  "version": "0.1.9",
+  "scripts": {
+    "build": "rimraf ../../dist/packages/split-sentences/cjs && npx tsc src/index.ts --outDir ../../dist/packages/split-sentences/cjs --lib esnext --moduleResolution node --downlevelIteration --esModuleInterop --target es2022 --allowSyntheticDefaultImports --skipLibCheck --importHelpers --moduleResolution node --sourceMap --module commonjs --declaration --declarationMap"
   },
-  "license": "MIT",
-  "keywords": [],
   "dependencies": {
     "sentence-splitter": "^4.2.1",
-    "tslib": "^2.3.0"
+    "tslib": "^2.6.2"
   },
-  "directories": {
-    "doc": "docs"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bemoje/tsmono.git"
-  },
-  "funding": {
-    "type": "patreon",
-    "url": "https://www.patreon.com/user?u=40752770"
-  },
-  "bugs": {
-    "url": "https://github.com/bemoje/tsmono/issues"
-  },
-  "homepage": "https://github.com/bemoje/tsmono",
-  "type": "commonjs",
-  "typings": "./src/index.d.ts",
   "devDependencies": {}
 }

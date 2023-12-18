@@ -1,8 +1,5 @@
-import fs from 'fs';
-import path from 'path';
-import { connect, model, Schema } from 'mongoose';
-path
-fs
+import fs from 'fs'
+import { connect, model, Schema } from 'mongoose'
 
 const datapath = 'C:/Users/bemoj/Desktop/FBDATA/dest/output/human-readable/threads/Lauritz Andersen.json'
 const data = JSON.parse(fs.readFileSync(datapath, 'utf8'))
@@ -35,13 +32,13 @@ async function run() {
   //   session.startTransaction();
   //   const savingsColl = client.db("bank").collection("savings_accounts");
   //   await savingsColl.findOneAndUpdate(
-  //     {account_id: "9876"}, 
-  //     {$inc: {amount: -100 }}, 
+  //     {account_id: "9876"},
+  //     {$inc: {amount: -100 }},
   //     { session });
   //   const checkingColl = client.db("bank").collection("checking_accounts");
   //   await checkingColl.findOneAndUpdate(
-  //     {account_id: "9876"}, 
-  //     {$inc: {amount: 100 }}, 
+  //     {account_id: "9876"},
+  //     {$inc: {amount: 100 }},
   //     { session });
   //   // ... perform other operations
   //   await session.commitTransaction();

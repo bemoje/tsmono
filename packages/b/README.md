@@ -20,7 +20,7 @@ This library is published in the NPM registry and can be installed using any com
 
 #### NPM
 ```sh
-npm install -g @bemoje/b
+npm install @bemoje/b
 ```
 
 
@@ -31,4 +31,4 @@ Please let me know of any bugs or [issues](https://github.com/bemoje/tsmono/issu
 Contributors are welcome to open a [pull request](https://github.com/bemoje/tsmono/pulls).
 
 ## License
-Released under the [MIT License](./LICENSE).
+Released under the [undefined License](./LICENSE).

@@ -1,36 +1,15 @@
 {
   "name": "@bemoje/pdf-util",
-  "version": "0.1.8",
-  "description": "PDF utilities for parsing, merging, splitting, and more.",
-  "main": "./src/index.js",
-  "scripts": {},
-  "author": {
-    "name": "Benjamin Møller Jensen",
-    "email": "bemoje@bemoje.net",
-    "url": "https://github.com/bemoje/"
+  "version": "0.1.9",
+  "scripts": {
+    "build": "rimraf ../../dist/packages/pdf-util/cjs && npx tsc src/index.ts --outDir ../../dist/packages/pdf-util/cjs --lib esnext --moduleResolution node --downlevelIteration --esModuleInterop --target es2022 --allowSyntheticDefaultImports --skipLibCheck --importHelpers --moduleResolution node --sourceMap --module commonjs --declaration --declarationMap"
   },
-  "license": "MIT",
-  "keywords": [],
   "dependencies": {
     "fs-extra": "^11.1.1",
     "pdf-lib": "^1.17.1",
     "pdf-parse": "^1.1.1",
-    "tslib": "^2.3.0"
+    "tslib": "^2.6.2"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bemoje/tsmono.git"
-  },
-  "funding": {
-    "type": "patreon",
-    "url": "https://www.patreon.com/user?u=40752770"
-  },
-  "bugs": {
-    "url": "https://github.com/bemoje/tsmono/issues"
-  },
-  "homepage": "https://github.com/bemoje/tsmono",
-  "type": "commonjs",
-  "typings": "./src/index.d.ts",
   "devDependencies": {
     "@types/fs-extra": "^11.0.2",
     "@types/pdf-parse": "^1.1.1"

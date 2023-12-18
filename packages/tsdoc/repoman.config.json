@@ -1,0 +1,12 @@
+{
+  "name": "tsdoc",
+  "type": "library",
+  "npm": {
+    "publish": true,
+    "name": "@bemoje/tsdoc",
+    "usesNodeInternals": true,
+    "bin": "",
+    "license": "MIT",
+    "keywords": []
+  }
+}

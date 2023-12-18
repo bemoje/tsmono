@@ -1,6 +1,6 @@
 # @bemoje/bfind
 
-CLI for very fast file search. File contents are not indexed - only file and directory names. Directories are highlighted in blue in search results. Search results are sorted by last modified date. Regex ignore patterns are configurable in CLI or the JSON config file. Each argument is a search term. If multiple terms are provided, they all must be present in the filepath to be considered a search hit.
+
 
 ![npm (scoped)](https://img.shields.io/npm/v/%40bemoje/trie-map)
 ![npm bundle size (scoped)](https://img.shields.io/bundlephobia/minzip/%40bemoje/bfind)
@@ -20,7 +20,7 @@ This library is published in the NPM registry and can be installed using any com
 
 #### NPM
 ```sh
-npm install -g @bemoje/bfind
+npm install @bemoje/bfind
 ```
 
 
@@ -31,4 +31,4 @@ Please let me know of any bugs or [issues](https://github.com/bemoje/tsmono/issu
 Contributors are welcome to open a [pull request](https://github.com/bemoje/tsmono/pulls).
 
 ## License
-Released under the [MIT License](./LICENSE).
+Released under the [undefined License](./LICENSE).

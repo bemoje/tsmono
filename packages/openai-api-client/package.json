@@ -1,38 +1,17 @@
 {
   "name": "@bemoje/openai-api-client",
-  "version": "0.2.15",
-  "description": "API client for openai with various built-in functionality, such as caching, auto-retry, etc.",
-  "main": "./src/index.js",
-  "scripts": {},
-  "author": {
-    "name": "Benjamin Møller Jensen",
-    "email": "bemoje@bemoje.net",
-    "url": "https://github.com/bemoje/"
+  "version": "0.2.16",
+  "scripts": {
+    "build": "rimraf ../../dist/packages/openai-api-client/cjs && npx tsc src/index.ts --outDir ../../dist/packages/openai-api-client/cjs --lib esnext --moduleResolution node --downlevelIteration --esModuleInterop --target es2022 --allowSyntheticDefaultImports --skipLibCheck --importHelpers --moduleResolution node --sourceMap --module commonjs --declaration --declarationMap"
   },
-  "license": "MIT",
-  "keywords": [],
   "dependencies": {
     "@bemoje/api-util": "latest",
     "@bemoje/util": "latest",
     "fs-extra": "^11.1.1",
     "gpt-3-encoder": "^1.1.4",
     "openai": "^3.3.0",
-    "tslib": "^2.3.0"
+    "tslib": "^2.6.2"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bemoje/tsmono.git"
-  },
-  "funding": {
-    "type": "patreon",
-    "url": "https://www.patreon.com/user?u=40752770"
-  },
-  "bugs": {
-    "url": "https://github.com/bemoje/tsmono/issues"
-  },
-  "homepage": "https://github.com/bemoje/tsmono",
-  "type": "commonjs",
-  "typings": "./src/index.d.ts",
   "devDependencies": {
     "@types/async-retry": "^1.4.5",
     "@types/fs-extra": "^11.0.2"

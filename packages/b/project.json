@@ -1,32 +1,27 @@
 {
   "name": "b",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "root": "packages/b",
   "sourceRoot": "packages/b/src",
   "projectType": "application",
   "targets": {
-    "build": {
-      "executor": "@nx/rollup:rollup",
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "dist/packages/b",
-        "main": "packages/b/src/index.ts",
-        "tsConfig": "packages/b/tsconfig.lib.json",
-        "assets": [],
-        "project": "packages/b/package.json",
-        "compiler": "tsc",
-        "format": ["cjs", "esm"]
-      }
-    },
     "lint": {
       "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["packages/b/**/*.ts", "packages/b/package.json"]
+        "lintFilePatterns": [
+          "packages/b/**/*.ts",
+          "packages/b/package.json"
+        ]
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "packages/b/jest.config.ts",
         "passWithNoTests": true
@@ -36,6 +31,16 @@
           "ci": true,
           "codeCoverage": true
         }
+      }
+    },
+    "build": {
+      "executor": "nx:run-script",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "script": "build",
+        "project": "packages/b/package.json"
       }
     }
   },

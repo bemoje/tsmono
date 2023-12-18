@@ -1,6 +1,6 @@
 # @bemoje/markdown
 
-Markdown parsing tools/util.
+
 
 ![npm (scoped)](https://img.shields.io/npm/v/%40bemoje/trie-map)
 ![npm bundle size (scoped)](https://img.shields.io/bundlephobia/minzip/%40bemoje/markdown)
@@ -31,4 +31,4 @@ Please let me know of any bugs or [issues](https://github.com/bemoje/tsmono/issu
 Contributors are welcome to open a [pull request](https://github.com/bemoje/tsmono/pulls).
 
 ## License
-Released under the [MIT License](./LICENSE).
+Released under the [undefined License](./LICENSE).

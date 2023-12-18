@@ -1,14 +1,12 @@
 {
   "name": "@bemoje/trie-map",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "scripts": {
-    "build:cjs": "rimraf ../../dist/packages/trie-map/cjs && npx tsc src/index.ts --outDir ../../dist/packages/trie-map/cjs --lib esnext --moduleResolution node --downlevelIteration --esModuleInterop --target es2022 --allowSyntheticDefaultImports --importHelpers --moduleResolution node --sourceMap --module commonjs --declaration --declarationMap",
-    "build:esm": "rimraf ../../dist/packages/trie-map/esm && npx tsc src/index.ts --outDir ../../dist/packages/trie-map/esm --lib esnext --moduleResolution node --downlevelIteration --esModuleInterop --target es2022 --allowSyntheticDefaultImports --importHelpers --moduleResolution node --sourceMap --module es2022",
-    "build": "npm run build:cjs && npm run build:esm"
+    "build": "rimraf ../../dist/packages/trie-map/cjs && npx tsc src/index.ts --outDir ../../dist/packages/trie-map/cjs --lib esnext --moduleResolution node --downlevelIteration --esModuleInterop --target es2022 --allowSyntheticDefaultImports --skipLibCheck --importHelpers --moduleResolution node --sourceMap --module commonjs --declaration --declarationMap"
   },
   "dependencies": {
     "@bemoje/util": "latest",
-    "tslib": "^2.3.0"
+    "tslib": "^2.6.2"
   },
   "devDependencies": {}
 }

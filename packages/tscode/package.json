@@ -1,14 +1,12 @@
 {
   "name": "@bemoje/tscode",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "scripts": {
-    "build": "npm run build:cjs && npm run build:esm",
-    "build:cjs": "rimraf ../../dist/packages/tscode/cjs && npx tsc src/index.ts --outDir ../../dist/packages/tscode/cjs --lib esnext --moduleResolution node --downlevelIteration --esModuleInterop --target es2022 --allowSyntheticDefaultImports --importHelpers --moduleResolution node --sourceMap --module commonjs --declaration --declarationMap",
-    "build:esm": "rimraf ../../dist/packages/tscode/esm && npx tsc src/index.ts --outDir ../../dist/packages/tscode/esm --lib esnext --moduleResolution node --downlevelIteration --esModuleInterop --target es2022 --allowSyntheticDefaultImports --importHelpers --moduleResolution node --sourceMap --module es2022"
+    "build": "rimraf ../../dist/packages/tscode/cjs && npx tsc src/index.ts --outDir ../../dist/packages/tscode/cjs --lib esnext --moduleResolution node --downlevelIteration --esModuleInterop --target es2022 --allowSyntheticDefaultImports --skipLibCheck --importHelpers --moduleResolution node --sourceMap --module commonjs --declaration --declarationMap"
   },
   "dependencies": {
     "@bemoje/util": "latest",
-    "tslib": "^2.3.0"
+    "tslib": "^2.6.2"
   },
   "devDependencies": {}
 }

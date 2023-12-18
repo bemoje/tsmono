@@ -1,3 +1,4 @@
+export const LAIUGALAS = ''
 /*
 import { BCommand } from './BCommand';
 import { CLI_LIST } from '../src/actions/prompts/list';

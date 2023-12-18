@@ -1,32 +1,27 @@
 {
   "name": "mongo",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "root": "packages/mongo",
   "sourceRoot": "packages/mongo/src",
   "projectType": "library",
   "targets": {
-    "build": {
-      "executor": "@nx/rollup:rollup",
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "dist/packages/mongo",
-        "main": "packages/mongo/src/index.ts",
-        "tsConfig": "packages/mongo/tsconfig.lib.json",
-        "assets": [],
-        "project": "packages/mongo/package.json",
-        "compiler": "swc",
-        "format": ["cjs", "esm"]
-      }
-    },
     "lint": {
       "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["packages/mongo/**/*.ts", "packages/mongo/package.json"]
+        "lintFilePatterns": [
+          "packages/mongo/**/*.ts",
+          "packages/mongo/package.json"
+        ]
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "packages/mongo/jest.config.ts",
         "passWithNoTests": true
@@ -36,6 +31,16 @@
           "ci": true,
           "codeCoverage": true
         }
+      }
+    },
+    "build": {
+      "executor": "nx:run-script",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "script": "build",
+        "project": "packages/mongo/package.json"
       }
     }
   },
