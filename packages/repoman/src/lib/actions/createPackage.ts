@@ -6,7 +6,9 @@ import {
   updateJsonFileSafeSync,
   updateJsonFileSync,
   writeFileSafeSync,
+  writeJsonFileSafeSync,
 } from '@bemoje/util'
+import { createRepoFiles } from './createRepoFiles'
 import { fixPackageJson } from '../util/fixPackageJson'
 
 export function createPackage(name: string, options: { isCli?: boolean } = {}) {
@@ -51,12 +53,6 @@ export function createPackage(name: string, options: { isCli?: boolean } = {}) {
   updateJsonFileSafeSync(
     path.join(libRoot, 'package.json'),
     (pkg: Any) => {
-      pkg.scripts = {
-        'build:cjs': `rimraf ../../dist/packages/${name}/cjs && npx tsc src/index.ts --outDir ../../dist/packages/${name}/cjs --module commonjs --lib es2022 --moduleResolution node --downlevelIteration --esModuleInterop --target ES2022 --allowSyntheticDefaultImports --moduleResolution node --sourceMap`,
-        'build:esm': `rimraf ../../dist/packages/${name}/esm && npx tsc src/index.ts --outDir ../../dist/packages/${name}/esm --module es2022 --lib es2022 --moduleResolution node --downlevelIteration --esModuleInterop --target ES2022 --allowSyntheticDefaultImports --moduleResolution node --sourceMap`,
-        'build:types': `rimraf ../../dist/packages/${name}/types && npx tsc src/index.ts --outDir ../../dist/packages/${name}/types --module es2022 --lib es2022 --moduleResolution node --downlevelIteration --esModuleInterop --target ES2022 --allowSyntheticDefaultImports --moduleResolution node --declaration --declarationMap --emitDeclarationOnly`,
-        build: 'npm run build:cjs && npm run build:esm && npm run build:types',
-      }
       pkg.main = 'cjs/index.js'
       pkg.module = 'esm/index.js'
       pkg.types = 'types/index.d.ts'
@@ -128,6 +124,21 @@ export function createPackage(name: string, options: { isCli?: boolean } = {}) {
     deps['@bemoje/' + name] = 'latest'
     return pkg
   })
+
+  const config = {
+    name: name,
+    type: options.isCli ? 'application' : 'library',
+    npm: {
+      publish: true,
+      name: '@bemoje/' + name,
+      usesNodeInternals: true,
+      bin: options.isCli ? name : '',
+      license: 'MIT',
+      keywords: [],
+    },
+  }
+  writeJsonFileSafeSync(path.join(libRoot, 'repoman.json'), config, { spaces: 2 })
+  createRepoFiles([name])
 
   execute('npm publish --access public', {
     cwd: path.join(process.cwd(), 'dist', 'packages', name),
