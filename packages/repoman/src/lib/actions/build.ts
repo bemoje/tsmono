@@ -20,32 +20,31 @@ export function build(names: string[]) {
 
 function createPackageJsonNpm(o: PackageDataView) {
   const config = o.repomanConfigJson
+  if (!config.npm.publish) return
   const pkgRepoRoot = o.monorepoPackageJson
   const pkgRepo = o.packageJson
   const pkgNpm: IPackageJson = {}
-  if (config.npm.publish) {
-    pkgNpm.name = config.npm.name
-    pkgNpm.version = pkgRepo.version
-    pkgNpm.type = 'commonjs'
-    pkgNpm.main = 'cjs/index.js'
-    if (!config.npm.bin) {
-      pkgNpm.module = 'esm/index.js'
-    }
-    pkgNpm.types = 'cjs/index.d.ts'
-    if (config.npm.bin) {
-      pkgNpm.bin = {}
-      pkgNpm.bin[config.npm.bin] = './bin/index.js'
-      pkgNpm.preferGlobal = true
-      pkgNpm.dependencies = pkgRepo.dependencies
-    }
-    pkgNpm.license = config.npm.license
-    pkgNpm.keywords = config.npm.keywords
-    pkgNpm.author = pkgRepoRoot.author
-    pkgNpm.repository = pkgRepoRoot.repository
-    pkgNpm.funding = pkgRepoRoot.funding
-    pkgNpm.bugs = pkgRepoRoot.bugs
-    pkgNpm.homepage = pkgRepoRoot.homepage
+  pkgNpm.name = config.npm.name
+  pkgNpm.version = pkgRepo.version
+  pkgNpm.type = 'commonjs'
+  pkgNpm.main = 'cjs/index.js'
+  if (!config.npm.bin) {
+    pkgNpm.module = 'esm/index.js'
   }
+  pkgNpm.types = 'cjs/index.d.ts'
+  if (config.npm.bin) {
+    pkgNpm.bin = {}
+    pkgNpm.bin[config.npm.bin] = './bin/index.js'
+    pkgNpm.preferGlobal = true
+  }
+  pkgNpm.dependencies = pkgRepo.dependencies
+  pkgNpm.license = config.npm.license
+  pkgNpm.keywords = config.npm.keywords
+  pkgNpm.author = pkgRepoRoot.author
+  pkgNpm.repository = pkgRepoRoot.repository
+  pkgNpm.funding = pkgRepoRoot.funding
+  pkgNpm.bugs = pkgRepoRoot.bugs
+  pkgNpm.homepage = pkgRepoRoot.homepage
   writeJsonFileSafeSync(o.distPackageJsonPath, pkgNpm, { spaces: 2 })
 }
 

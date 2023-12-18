@@ -1,12 +1,10 @@
 {
   "name": "@bemoje/cli-prompt",
   "version": "0.0.3",
-  "main": "src/index.ts",
-  "types": "src/index.ts",
   "scripts": {
     "build": "npm run build:cjs && npm run build:esm",
-    "build:cjs": "rimraf ../../dist/packages/cli-prompt/cjs && npx tsc src/index.ts --outDir ../../dist/packages/cli-prompt/cjs --lib es2022 --moduleResolution node --downlevelIteration --esModuleInterop --target ES2022 --allowSyntheticDefaultImports --moduleResolution node --sourceMap --module commonjs --declaration --declarationMap",
-    "build:esm": "rimraf ../../dist/packages/cli-prompt/esm && npx tsc src/index.ts --outDir ../../dist/packages/cli-prompt/esm --lib es2022 --moduleResolution node --downlevelIteration --esModuleInterop --target ES2022 --allowSyntheticDefaultImports --moduleResolution node --sourceMap --module es2022"
+    "build:cjs": "rimraf ../../dist/packages/cli-prompt/cjs && npx tsc src/index.ts --outDir ../../dist/packages/cli-prompt/cjs --lib esnext --moduleResolution node --downlevelIteration --esModuleInterop --target es2022 --allowSyntheticDefaultImports --importHelpers --moduleResolution node --sourceMap --module commonjs --declaration --declarationMap",
+    "build:esm": "rimraf ../../dist/packages/cli-prompt/esm && npx tsc src/index.ts --outDir ../../dist/packages/cli-prompt/esm --lib esnext --moduleResolution node --downlevelIteration --esModuleInterop --target es2022 --allowSyntheticDefaultImports --importHelpers --moduleResolution node --sourceMap --module es2022"
   },
   "dependencies": {
     "@bemoje/util": "latest",

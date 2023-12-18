@@ -1,11 +1,9 @@
 {
   "name": "@bemoje/open-repo",
   "version": "1.2.3",
-  "main": "src/index.ts",
-  "types": "src/index.ts",
   "scripts": {
     "build": "npm run build:cjs",
-    "build:cjs": "rimraf ../../dist/packages/open-repo/cjs && npx tsc src/index.ts --outDir ../../dist/packages/open-repo/cjs --lib es2022 --moduleResolution node --downlevelIteration --esModuleInterop --target ES2022 --allowSyntheticDefaultImports --moduleResolution node --sourceMap --module commonjs --declaration --declarationMap"
+    "build:cjs": "rimraf ../../dist/packages/open-repo/cjs && npx tsc src/index.ts --outDir ../../dist/packages/open-repo/cjs --lib esnext --moduleResolution node --downlevelIteration --esModuleInterop --target es2022 --allowSyntheticDefaultImports --importHelpers --moduleResolution node --sourceMap --module commonjs --declaration --declarationMap"
   },
   "dependencies": {
     "@bemoje/cli": "latest",

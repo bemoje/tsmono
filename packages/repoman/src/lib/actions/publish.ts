@@ -18,6 +18,7 @@ import { PackageHashes } from '../util/PackageHashes'
 import { prepub } from './prepub'
 import { semverVersionBump } from '../util/semverVersionBump'
 import { updateImplicitDependencies } from '../util/updateImplicitDependencies'
+import { walkDirectorySync } from '@bemoje/fswalk'
 const { gray, magenta: green, red, magenta: magenta } = colors
 
 export function publish(packages: string[], options: { level?: string; ignoreHash?: boolean } = {}) {
@@ -51,19 +52,6 @@ export function publish(packages: string[], options: { level?: string; ignoreHas
     })
     const distPkg: Any = readJsonFileSafeSync(distPkgPath)
     if (!distPkg) throw new Error('Missing dist package.json')
-
-    if (distPkg.preferGlobal) {
-      console.log(gray('    - ' + 'Update version of CLIs in dist directory.'))
-      const regVersion = /\((\'|\")0\.0\.0(\'|\")\)/
-      updateFileSafeSync(path.join(distdir, distPkg.main!), (src) => {
-        return src.replace(regVersion, `('${pkg.version}')`)
-      })
-      if (distPkg.module) {
-        updateFileSafeSync(path.join(distdir, distPkg.module!), (src) => {
-          return src.replace(regVersion, `('${pkg.version}')`)
-        })
-      }
-    }
 
     try {
       console.log(gray('  - ' + 'npm update'))

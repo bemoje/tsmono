@@ -1,11 +1,14 @@
+import colors from 'ansi-colors'
 import { Any, removeFileSync, writeFileSafeSync, writeJsonFileSafeSync } from '@bemoje/util'
+import { existsSync } from 'fs'
 import { getPackages } from '../util/getPackages'
 import { PackageDataView } from '../util/PackageDataView'
 
 export function createRepoFiles(names: string[]) {
-  getPackages(names).forEach((o) => {
-    const config = o.repomanConfigJson
-    if (!config) throw new Error('Missing repoman.config.json')
+  getPackages(names.length ? names : undefined).forEach((o) => {
+    if (!existsSync(o.repomanConfigJsonPath)) {
+      return console.error(colors.red(o.name + ' missing repoman.config.json'))
+    }
 
     createPackageJsonRepo(o)
     createProjectJson(o)
@@ -15,9 +18,6 @@ export function createRepoFiles(names: string[]) {
     createEslintrcJson(o)
     createJestConfigTs(o)
     deleteIrrelevantFiles(o)
-    if (config.npm.publish) {
-      //
-    }
   })
 }
 
@@ -104,7 +104,15 @@ function createTsConfigJson(o: PackageDataView) {
         outDir: '../../dist/tsc-out',
       },
       files: [],
-      include: ['src/**/*.ts'],
+      include: [],
+      references: [
+        {
+          path: './tsconfig.lib.json',
+        },
+        {
+          path: './tsconfig.spec.json',
+        },
+      ],
     },
     { spaces: 2 }
   )

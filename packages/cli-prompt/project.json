@@ -1,6 +1,7 @@
 {
   "name": "cli-prompt",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "root": "packages/cli-prompt",
   "sourceRoot": "packages/cli-prompt/src",
   "projectType": "library",
   "targets": {

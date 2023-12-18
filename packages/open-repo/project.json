@@ -1,6 +1,7 @@
 {
   "name": "open-repo",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "root": "packages/open-repo",
   "sourceRoot": "packages/open-repo/src",
   "projectType": "application",
   "targets": {

@@ -4,7 +4,13 @@
     "outDir": "../../dist/tsc-out"
   },
   "files": [],
-  "include": [
-    "src/**/*.ts"
+  "include": [],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
   ]
 }

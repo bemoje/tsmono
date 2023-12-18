@@ -2,8 +2,7 @@
 import { AbstractJsonFileSection } from './AbstractJsonFileSection'
 import { CommandBuilder } from '../cmd/CommandBuilder'
 import { JsonFile } from './JsonFile'
-import { JsonValue } from '../../../util/src'
-import { promptUserEditJsonInTextEditorSync } from '@bemoje/util'
+import { JsonValue, promptUserEditJsonInTextEditorSync } from '@bemoje/util'
 
 jest.mock('@bemoje/util', () => ({
   ...jest.requireActual('@bemoje/util'),
