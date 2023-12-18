@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/open-repo",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "scripts": {
     "build": "npm run build:cjs",
     "build:cjs": "rimraf ../../dist/packages/open-repo/cjs && npx tsc src/index.ts --outDir ../../dist/packages/open-repo/cjs --lib esnext --moduleResolution node --downlevelIteration --esModuleInterop --target es2022 --allowSyntheticDefaultImports --importHelpers --moduleResolution node --sourceMap --module commonjs --declaration --declarationMap"

@@ -7,6 +7,7 @@ import { readDirectoryStats } from '@bemoje/util'
 export async function action(search: string, _: unknown, cmd: CommandBuilder) {
   const config = cmd.root.db.config
   const rootdir = config.get<string>('rootdir')
+  if (!rootdir) throw new Error('No rootdir configured')
   const IDE = config.get<string>('IDE')
 
   const dirnames = (await readDirectoryStats(rootdir))
