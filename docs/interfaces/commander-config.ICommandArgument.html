@@ -15,13 +15,18 @@
 <li><a href="../modules.html">@bemoje/source</a></li>
 <li><a href="../modules/commander-config.html">commander-config</a></li>
 <li><a href="commander-config.ICommandArgument.html">ICommandArgument</a></li></ul>
-<h1>Interface ICommandArgument</h1></div>
+<h1>Interface ICommandArgument&lt;T&gt;</h1></div> 
+<section class="tsd-panel">
+<h4>Type Parameters</h4>
+<ul class="tsd-type-parameter-list">
+<li>
+<h4><span class="tsd-kind-type-parameter">T</span> = <a href="../types/util.Any.html" class="tsd-signature-type tsd-kind-type-alias">Any</a></h4></li></ul></section> 
 <section class="tsd-panel tsd-hierarchy">
 <h4>Hierarchy</h4>
 <ul class="tsd-hierarchy">
 <li><span class="target">ICommandArgument</span></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/bemoje/tsmono/blob/1bcff7c9/packages/commander-config/src/util/createCommand.ts#L36">packages/commander-config/src/util/createCommand.ts:36</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/bemoje/tsmono/blob/26ad9ccb/packages/commander-config/src/util/createCommand.ts#L41">packages/commander-config/src/util/createCommand.ts:41</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -36,6 +41,10 @@
 <a href="commander-config.ICommandArgument.html#isOptional" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>is<wbr/>Optional?</span></a>
 <a href="commander-config.ICommandArgument.html#isRest" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>is<wbr/>Rest?</span></a>
 <a href="commander-config.ICommandArgument.html#name" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>name</span></a>
+<a href="commander-config.ICommandArgument.html#parser" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>parser?</span></a>
+<a href="commander-config.ICommandArgument.html#prompt" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>prompt?</span></a>
+<a href="commander-config.ICommandArgument.html#type" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>type?</span></a>
+<a href="commander-config.ICommandArgument.html#validators" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>validators?</span></a>
 </div></section></div></details></section></section>
 <section class="tsd-panel-group tsd-member-group">
 <h2>Properties</h2>
@@ -43,44 +52,94 @@
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>choices</span><a href="#choices" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">choices</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/bemoje/tsmono/blob/1bcff7c9/packages/commander-config/src/util/createCommand.ts#L46">packages/commander-config/src/util/createCommand.ts:46</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/bemoje/tsmono/blob/26ad9ccb/packages/commander-config/src/util/createCommand.ts#L53">packages/commander-config/src/util/createCommand.ts:53</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="default" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>default</span><a href="#default" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
-<div class="tsd-signature"><span class="tsd-kind-property">default</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-symbol">{ </span><br/><span>    </span><span class="tsd-kind-property">description</span><span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span><br/><span>    </span><span class="tsd-kind-property">value</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">; </span><br/><span class="tsd-signature-symbol">}</span></div>
+<div class="tsd-signature"><span class="tsd-kind-property">default</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-symbol">{ </span><br/><span>    </span><span class="tsd-kind-property">description</span><span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span><br/><span>    </span><span class="tsd-kind-property">value</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span><br/><span class="tsd-signature-symbol">}</span></div>
 <div class="tsd-type-declaration">
 <h4>Type declaration</h4>
 <ul class="tsd-parameters">
 <li class="tsd-parameter">
 <h5><code class="tsd-tag ts-flagOptional">Optional</code> <span class="tsd-kind-property">description</span><span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5></li>
 <li class="tsd-parameter">
-<h5><span class="tsd-kind-property">value</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">unknown</span></h5></li></ul></div><aside class="tsd-sources">
+<h5><span class="tsd-kind-property">value</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5></li></ul></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/bemoje/tsmono/blob/1bcff7c9/packages/commander-config/src/util/createCommand.ts#L42">packages/commander-config/src/util/createCommand.ts:42</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/bemoje/tsmono/blob/26ad9ccb/packages/commander-config/src/util/createCommand.ts#L48">packages/commander-config/src/util/createCommand.ts:48</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="description-1" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>description</span><a href="#description-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">description</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/bemoje/tsmono/blob/1bcff7c9/packages/commander-config/src/util/createCommand.ts#L38">packages/commander-config/src/util/createCommand.ts:38</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/bemoje/tsmono/blob/26ad9ccb/packages/commander-config/src/util/createCommand.ts#L43">packages/commander-config/src/util/createCommand.ts:43</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="isCommaDelimited" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>is<wbr/>Comma<wbr/>Delimited</span><a href="#isCommaDelimited" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">is<wbr/>Comma<wbr/>Delimited</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/bemoje/tsmono/blob/1bcff7c9/packages/commander-config/src/util/createCommand.ts#L41">packages/commander-config/src/util/createCommand.ts:41</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/bemoje/tsmono/blob/26ad9ccb/packages/commander-config/src/util/createCommand.ts#L47">packages/commander-config/src/util/createCommand.ts:47</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="isOptional" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>is<wbr/>Optional</span><a href="#isOptional" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">is<wbr/>Optional</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/bemoje/tsmono/blob/1bcff7c9/packages/commander-config/src/util/createCommand.ts#L39">packages/commander-config/src/util/createCommand.ts:39</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/bemoje/tsmono/blob/26ad9ccb/packages/commander-config/src/util/createCommand.ts#L45">packages/commander-config/src/util/createCommand.ts:45</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="isRest" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>is<wbr/>Rest</span><a href="#isRest" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">is<wbr/>Rest</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/bemoje/tsmono/blob/1bcff7c9/packages/commander-config/src/util/createCommand.ts#L40">packages/commander-config/src/util/createCommand.ts:40</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/bemoje/tsmono/blob/26ad9ccb/packages/commander-config/src/util/createCommand.ts#L46">packages/commander-config/src/util/createCommand.ts:46</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="name" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>name</span><a href="#name" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">name</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/bemoje/tsmono/blob/1bcff7c9/packages/commander-config/src/util/createCommand.ts#L37">packages/commander-config/src/util/createCommand.ts:37</a></li></ul></aside></section></section></div>
+<li>Defined in <a href="https://github.com/bemoje/tsmono/blob/26ad9ccb/packages/commander-config/src/util/createCommand.ts#L42">packages/commander-config/src/util/createCommand.ts:42</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member"><a id="parser" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>parser</span><a href="#parser" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">parser</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">value</span>, <span class="tsd-kind-parameter">self</span><span class="tsd-signature-symbol">?</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type tsd-kind-type-parameter">T</span><span class="tsd-signature-symbol">)</span></div>
+<div class="tsd-type-declaration">
+<h4>Type declaration</h4>
+<ul class="tsd-parameters">
+<li class="tsd-parameter-signature">
+<ul class="tsd-signatures">
+<li class="tsd-signature" id="parser.__type-1.__type-2"><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">value</span>, <span class="tsd-kind-parameter">self</span><span class="tsd-signature-symbol">?</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type tsd-kind-type-parameter">T</span></li>
+<li class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">value</span>: <span class="tsd-signature-type">string</span></h5></li>
+<li>
+<h5><code class="tsd-tag ts-flagOptional">Optional</code> <span class="tsd-kind-parameter">self</span>: <span class="tsd-signature-type ">Argument</span></h5></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type tsd-kind-type-parameter">T</span></h4></li></ul></li></ul></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/bemoje/tsmono/blob/26ad9ccb/packages/commander-config/src/util/createCommand.ts#L54">packages/commander-config/src/util/createCommand.ts:54</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member"><a id="prompt" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>prompt</span><a href="#prompt" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">prompt</span><span class="tsd-signature-symbol">?:</span> <a href="commander-config.IUserPrompt.html" class="tsd-signature-type tsd-kind-interface">IUserPrompt</a></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/bemoje/tsmono/blob/26ad9ccb/packages/commander-config/src/util/createCommand.ts#L52">packages/commander-config/src/util/createCommand.ts:52</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member"><a id="type" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>type</span><a href="#type" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">type</span><span class="tsd-signature-symbol">?:</span> <a href="../types/util.TConstructor.html" class="tsd-signature-type tsd-kind-type-alias">TConstructor</a></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/bemoje/tsmono/blob/26ad9ccb/packages/commander-config/src/util/createCommand.ts#L44">packages/commander-config/src/util/createCommand.ts:44</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member"><a id="validators" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>validators</span><a href="#validators" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">validators</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">value</span>, <span class="tsd-kind-parameter">self</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span></div>
+<div class="tsd-type-declaration">
+<h4>Type declaration</h4>
+<ul class="tsd-parameters">
+<li class="tsd-parameter-signature">
+<ul class="tsd-signatures">
+<li class="tsd-signature"><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">value</span>, <span class="tsd-kind-parameter">self</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span></li>
+<li class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">value</span>: <span class="tsd-signature-type tsd-kind-type-parameter">T</span></h5></li>
+<li>
+<h5><span class="tsd-kind-parameter">self</span>: <span class="tsd-signature-type ">Argument</span></h5></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span></h4></li></ul></li></ul></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/bemoje/tsmono/blob/26ad9ccb/packages/commander-config/src/util/createCommand.ts#L55">packages/commander-config/src/util/createCommand.ts:55</a></li></ul></aside></section></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -106,12 +165,19 @@
 <li><a href="#isCommaDelimited" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>is<wbr/>Comma<wbr/>Delimited</span></a></li>
 <li><a href="#isOptional" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>is<wbr/>Optional</span></a></li>
 <li><a href="#isRest" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>is<wbr/>Rest</span></a></li>
-<li><a href="#name" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>name</span></a></li></ul></div></details></div>
+<li><a href="#name" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>name</span></a></li>
+<li><a href="#parser" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>parser</span></a></li>
+<li><a href="#prompt" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>prompt</span></a></li>
+<li><a href="#type" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>type</span></a></li>
+<li><a href="#validators" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>validators</span></a></li></ul></div></details></div>
 <div class="site-menu">
 <nav class="tsd-navigation"><a href="../modules.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-4"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-package)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M9.33 16V7.24H10.77L13.446 14.74C13.43 14.54 13.41 14.296 13.386 14.008C13.37 13.712 13.354 13.404 13.338 13.084C13.33 12.756 13.326 12.448 13.326 12.16V7.24H14.37V16H12.93L10.266 8.5C10.282 8.692 10.298 8.936 10.314 9.232C10.33 9.52 10.342 9.828 10.35 10.156C10.366 10.476 10.374 10.784 10.374 11.08V16H9.33Z" fill="var(--color-text)"></path></g></svg><span>@bemoje/source</span></a>
 <ul class="tsd-small-nested-navigation">
 <li><a href="../modules/api-util.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>api-<wbr/>util</span></a></li>
+<li><a href="../modules/b.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>b</span></a></li>
 <li><a href="../modules/bfind.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>bfind</span></a></li>
+<li><a href="../modules/cli.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>cli</span></a></li>
+<li><a href="../modules/cli-prompt.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>cli-<wbr/>prompt</span></a></li>
 <li>
 <details class="tsd-index-accordion" open data-key="commander-config"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="#icon-chevronDown"></use></svg><a href="../modules/commander-config.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>commander-<wbr/>config</span></a></summary>
 <div class="tsd-accordion-details">
@@ -124,6 +190,7 @@
 <li><a href="commander-config.IConfigSetting.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>IConfig<wbr/>Setting</span></a></li>
 <li><a href="commander-config.IConfigSettings.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>IConfig<wbr/>Settings</span></a></li>
 <li><a href="commander-config.IGetUserInputFromEditorOptions.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>IGet<wbr/>User<wbr/>Input<wbr/>From<wbr/>Editor<wbr/>Options</span></a></li>
+<li><a href="commander-config.IUserPrompt.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>IUser<wbr/>Prompt</span></a></li>
 <li><a href="../functions/commander-config.allHelp.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-64"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-function)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M9.39 16V7.24H14.55V8.224H10.446V11.128H14.238V12.112H10.47V16H9.39Z" fill="var(--color-text)"></path></g></svg><span>all<wbr/>Help</span></a></li>
 <li><a href="../functions/commander-config.createCommand.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>create<wbr/>Command</span></a></li>
 <li><a href="../functions/commander-config.failValidation.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>fail<wbr/>Validation</span></a></li>
@@ -149,10 +216,12 @@
 <li><a href="../functions/commander-config.validateStringArrayNotEmpty.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>validate<wbr/>String<wbr/>Array<wbr/>Not<wbr/>Empty</span></a></li>
 <li><a href="../functions/commander-config.validateStringType.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>validate<wbr/>String<wbr/>Type</span></a></li>
 <li><a href="../functions/commander-config.validateWith.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>validate<wbr/>With</span></a></li></ul></div></details></li>
+<li><a href="../modules/dlfiles.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>dlfiles</span></a></li>
 <li><a href="../modules/excel-util.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>excel-<wbr/>util</span></a></li>
 <li><a href="../modules/fswalk.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>fswalk</span></a></li>
 <li><a href="../modules/markdown.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>markdown</span></a></li>
 <li><a href="../modules/matrix.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>matrix</span></a></li>
+<li><a href="../modules/mongo.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>mongo</span></a></li>
 <li><a href="../modules/open-repo.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>open-<wbr/>repo</span></a></li>
 <li><a href="../modules/openai-api-client.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>openai-<wbr/>api-<wbr/>client</span></a></li>
 <li><a href="../modules/pdf-util.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>pdf-<wbr/>util</span></a></li>

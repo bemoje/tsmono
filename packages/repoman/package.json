@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/repoman",
-  "version": "0.0.72",
+  "version": "0.0.73",
   "scripts": {
     "build": "rimraf ../../dist/packages/repoman/cjs && npx tsc src/index.ts --outDir ../../dist/packages/repoman/cjs --lib esnext --moduleResolution node --downlevelIteration --esModuleInterop --target es2022 --allowSyntheticDefaultImports --skipLibCheck --importHelpers --moduleResolution node --sourceMap --module commonjs --declaration --declarationMap"
   },

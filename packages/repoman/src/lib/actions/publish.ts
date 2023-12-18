@@ -43,7 +43,7 @@ export function publish(packages: string[], options: { level?: string; ignoreHas
   })
 
   // prepub
-  // prepub(packages)
+  prepub(packages)
 
   // hashes
   const hashes = new PackageHashes()
@@ -124,8 +124,8 @@ export function publish(packages: string[], options: { level?: string; ignoreHas
   }, new Set<string>())
   updateImplicitDependencies([...set])
 
-  console.log(green('Building packages.'))
-  build(packages)
+  // console.log(green('Building packages.'))
+  // build(packages)
 
   if (installGlobally.length) {
     console.log(green('Install CLI packages globally: ' + installGlobally.join(', ')))

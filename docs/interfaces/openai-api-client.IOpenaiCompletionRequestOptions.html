@@ -23,7 +23,7 @@
 <ul class="tsd-hierarchy">
 <li><span class="target">IOpenaiCompletionRequestOptions</span></li></ul></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/bemoje/tsmono/blob/1bcff7c9/packages/openai-api-client/src/lib/types/IOpenaiCompletionRequestOptions.ts#L5">packages/openai-api-client/src/lib/types/IOpenaiCompletionRequestOptions.ts:5</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/bemoje/tsmono/blob/26ad9ccb/packages/openai-api-client/src/lib/types/IOpenaiCompletionRequestOptions.ts#L5">packages/openai-api-client/src/lib/types/IOpenaiCompletionRequestOptions.ts:5</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -56,7 +56,7 @@
 <h2>Properties</h2>
 <section class="tsd-panel tsd-member tsd-is-inherited tsd-is-external"><a id="best_of" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>best-<wbr/>of</span><a href="#best_of" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></h3>
-<div class="tsd-signature"><span class="tsd-kind-property">best-<wbr/>of</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">number</span></div>
+<div class="tsd-signature"><span class="tsd-kind-property">best-<wbr/>of</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 <div class="tsd-comment tsd-typography"><p>Generates <code>best_of</code> completions server-side and returns the &quot;best&quot; (the one with the highest log probability per token). Results cannot be streamed.  When used with <code>n</code>, <code>best_of</code> controls the number of candidate completions and <code>n</code> specifies how many to return – <code>best_of</code> must be greater than <code>n</code>.  <strong>Note:</strong> Because this parameter generates many completions, it can quickly consume your token quota. Use carefully and ensure that you have reasonable settings for <code>max_tokens</code> and <code>stop</code>.</p>
 </div>
 <div class="tsd-comment tsd-typography">
@@ -72,10 +72,10 @@
 </div>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/bemoje/tsmono/blob/1bcff7c9/packages/openai-api-client/src/lib/types/IOpenaiCompletionRequestOptions.ts#L29">packages/openai-api-client/src/lib/types/IOpenaiCompletionRequestOptions.ts:29</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/bemoje/tsmono/blob/26ad9ccb/packages/openai-api-client/src/lib/types/IOpenaiCompletionRequestOptions.ts#L29">packages/openai-api-client/src/lib/types/IOpenaiCompletionRequestOptions.ts:29</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited tsd-is-external"><a id="echo" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>echo</span><a href="#echo" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
-<div class="tsd-signature"><span class="tsd-kind-property">echo</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span></div>
+<div class="tsd-signature"><span class="tsd-kind-property">echo</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span></div>
 <div class="tsd-comment tsd-typography"><p>Echo back the prompt in addition to the completion</p>
 </div>
 <div class="tsd-comment tsd-typography">
@@ -86,7 +86,7 @@
 <li>Defined in packages/openai-api-client/node_modules/openai/dist/api.d.ts:723</li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited tsd-is-external"><a id="frequency_penalty" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>frequency-<wbr/>penalty</span><a href="#frequency_penalty" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
-<div class="tsd-signature"><span class="tsd-kind-property">frequency-<wbr/>penalty</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">number</span></div>
+<div class="tsd-signature"><span class="tsd-kind-property">frequency-<wbr/>penalty</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 <div class="tsd-comment tsd-typography"><p>Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model&#39;s likelihood to repeat the same line verbatim.  <a href="/docs/api-reference/parameter-details">See more information about frequency and presence penalties.</a></p>
 </div>
 <div class="tsd-comment tsd-typography">
@@ -102,10 +102,10 @@
 </div>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/bemoje/tsmono/blob/1bcff7c9/packages/openai-api-client/src/lib/types/IOpenaiCompletionRequestOptions.ts#L24">packages/openai-api-client/src/lib/types/IOpenaiCompletionRequestOptions.ts:24</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/bemoje/tsmono/blob/26ad9ccb/packages/openai-api-client/src/lib/types/IOpenaiCompletionRequestOptions.ts#L24">packages/openai-api-client/src/lib/types/IOpenaiCompletionRequestOptions.ts:24</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited tsd-is-external"><a id="logit_bias" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>logit-<wbr/>bias</span><a href="#logit_bias" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
-<div class="tsd-signature"><span class="tsd-kind-property">logit-<wbr/>bias</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">object</span></div>
+<div class="tsd-signature"><span class="tsd-kind-property">logit-<wbr/>bias</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">object</span></div>
 <div class="tsd-comment tsd-typography"><p>Modify the likelihood of specified tokens appearing in the completion.  Accepts a json object that maps tokens (specified by their token ID in the GPT tokenizer) to an associated bias value from -100 to 100. You can use this <a href="/tokenizer?view=bpe">tokenizer tool</a> (which works for both GPT-2 and GPT-3) to convert text to token IDs. Mathematically, the bias is added to the logits generated by the model prior to sampling. The exact effect will vary per model, but values between -1 and 1 should decrease or increase likelihood of selection; values like -100 or 100 should result in a ban or exclusive selection of the relevant token.  As an example, you can pass <code>{\&quot;50256\&quot;: -100}</code> to prevent the &lt;|endoftext|&gt; token from being generated.</p>
 </div>
 <div class="tsd-comment tsd-typography">
@@ -116,7 +116,7 @@
 <li>Defined in packages/openai-api-client/node_modules/openai/dist/api.d.ts:753</li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited tsd-is-external"><a id="logprobs" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>logprobs</span><a href="#logprobs" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
-<div class="tsd-signature"><span class="tsd-kind-property">logprobs</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">number</span></div>
+<div class="tsd-signature"><span class="tsd-kind-property">logprobs</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 <div class="tsd-comment tsd-typography"><p>Include the log probabilities on the <code>logprobs</code> most likely tokens, as well the chosen tokens. For example, if <code>logprobs</code> is 5, the API will return a list of the 5 most likely tokens. The API will always return the <code>logprob</code> of the sampled token, so there may be up to <code>logprobs+1</code> elements in the response.  The maximum value for <code>logprobs</code> is 5.</p>
 </div>
 <div class="tsd-comment tsd-typography">
@@ -127,7 +127,7 @@
 <li>Defined in packages/openai-api-client/node_modules/openai/dist/api.d.ts:717</li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited tsd-is-external"><a id="max_tokens" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>max-<wbr/>tokens</span><a href="#max_tokens" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
-<div class="tsd-signature"><span class="tsd-kind-property">max-<wbr/>tokens</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">number</span></div>
+<div class="tsd-signature"><span class="tsd-kind-property">max-<wbr/>tokens</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 <div class="tsd-comment tsd-typography"><p>The maximum number of <a href="/tokenizer">tokens</a> to generate in the completion.  The token count of your prompt plus <code>max_tokens</code> cannot exceed the model&#39;s context length. <a href="https://github.com/openai/openai-cookbook/blob/main/examples/How_to_count_tokens_with_tiktoken.ipynb">Example Python code</a> for counting tokens.</p>
 </div>
 <div class="tsd-comment tsd-typography">
@@ -143,10 +143,10 @@
 </div>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/bemoje/tsmono/blob/1bcff7c9/packages/openai-api-client/src/lib/types/IOpenaiCompletionRequestOptions.ts#L9">packages/openai-api-client/src/lib/types/IOpenaiCompletionRequestOptions.ts:9</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/bemoje/tsmono/blob/26ad9ccb/packages/openai-api-client/src/lib/types/IOpenaiCompletionRequestOptions.ts#L9">packages/openai-api-client/src/lib/types/IOpenaiCompletionRequestOptions.ts:9</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited tsd-is-external"><a id="n" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>n</span><a href="#n" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
-<div class="tsd-signature"><span class="tsd-kind-property">n</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">number</span></div>
+<div class="tsd-signature"><span class="tsd-kind-property">n</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 <div class="tsd-comment tsd-typography"><p>How many completions to generate for each prompt.  <strong>Note:</strong> Because this parameter generates many completions, it can quickly consume your token quota. Use carefully and ensure that you have reasonable settings for <code>max_tokens</code> and <code>stop</code>.</p>
 </div>
 <div class="tsd-comment tsd-typography">
@@ -157,7 +157,7 @@
 <li>Defined in packages/openai-api-client/node_modules/openai/dist/api.d.ts:705</li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited tsd-is-external"><a id="presence_penalty" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>presence-<wbr/>penalty</span><a href="#presence_penalty" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
-<div class="tsd-signature"><span class="tsd-kind-property">presence-<wbr/>penalty</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">number</span></div>
+<div class="tsd-signature"><span class="tsd-kind-property">presence-<wbr/>penalty</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 <div class="tsd-comment tsd-typography"><p>Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model&#39;s likelihood to talk about new topics.  <a href="/docs/api-reference/parameter-details">See more information about frequency and presence penalties.</a></p>
 </div>
 <div class="tsd-comment tsd-typography">
@@ -168,7 +168,7 @@
 <li>Defined in packages/openai-api-client/node_modules/openai/dist/api.d.ts:735</li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited tsd-is-external"><a id="prompt" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>prompt</span><a href="#prompt" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
-<div class="tsd-signature"><span class="tsd-kind-property">prompt</span><span class="tsd-signature-symbol">?:</span> <a href="../types/openai-api-client.openai.CreateCompletionRequestPrompt.html" class="tsd-signature-type tsd-kind-type-alias">CreateCompletionRequestPrompt</a></div>
+<div class="tsd-signature"><span class="tsd-kind-property">prompt</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><a href="../types/openai-api-client.openai.CreateCompletionRequestPrompt.html" class="tsd-signature-type tsd-kind-type-alias">CreateCompletionRequestPrompt</a></div>
 <div class="tsd-comment tsd-typography">
 <h4>Memberof</h4><p>CreateCompletionRequest</p>
 </div><aside class="tsd-sources">
@@ -182,7 +182,7 @@
 </div>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/bemoje/tsmono/blob/1bcff7c9/packages/openai-api-client/src/lib/types/IOpenaiCompletionRequestOptions.ts#L14">packages/openai-api-client/src/lib/types/IOpenaiCompletionRequestOptions.ts:14</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/bemoje/tsmono/blob/26ad9ccb/packages/openai-api-client/src/lib/types/IOpenaiCompletionRequestOptions.ts#L14">packages/openai-api-client/src/lib/types/IOpenaiCompletionRequestOptions.ts:14</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="retry" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>retry</span><a href="#retry" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">retry</span><span class="tsd-signature-symbol">?:</span> <a href="api-util.IAsyncRetryOptions.html" class="tsd-signature-type tsd-kind-interface">IAsyncRetryOptions</a></div>
@@ -190,10 +190,10 @@
 </div>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/bemoje/tsmono/blob/1bcff7c9/packages/openai-api-client/src/lib/types/IOpenaiCompletionRequestOptions.ts#L19">packages/openai-api-client/src/lib/types/IOpenaiCompletionRequestOptions.ts:19</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/bemoje/tsmono/blob/26ad9ccb/packages/openai-api-client/src/lib/types/IOpenaiCompletionRequestOptions.ts#L19">packages/openai-api-client/src/lib/types/IOpenaiCompletionRequestOptions.ts:19</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited tsd-is-external"><a id="stop" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>stop</span><a href="#stop" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
-<div class="tsd-signature"><span class="tsd-kind-property">stop</span><span class="tsd-signature-symbol">?:</span> <a href="../types/openai-api-client.openai.CreateCompletionRequestStop.html" class="tsd-signature-type tsd-kind-type-alias">CreateCompletionRequestStop</a></div>
+<div class="tsd-signature"><span class="tsd-kind-property">stop</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><a href="../types/openai-api-client.openai.CreateCompletionRequestStop.html" class="tsd-signature-type tsd-kind-type-alias">CreateCompletionRequestStop</a></div>
 <div class="tsd-comment tsd-typography">
 <h4>Memberof</h4><p>CreateCompletionRequest</p>
 </div><aside class="tsd-sources">
@@ -202,7 +202,7 @@
 <li>Defined in packages/openai-api-client/node_modules/openai/dist/api.d.ts:729</li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited tsd-is-external"><a id="stream" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>stream</span><a href="#stream" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
-<div class="tsd-signature"><span class="tsd-kind-property">stream</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span></div>
+<div class="tsd-signature"><span class="tsd-kind-property">stream</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span></div>
 <div class="tsd-comment tsd-typography"><p>Whether to stream back partial progress. If set, tokens will be sent as data-only <a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format">server-sent events</a> as they become available, with the stream terminated by a <code>data: [DONE]</code> message. <a href="https://github.com/openai/openai-cookbook/blob/main/examples/How_to_stream_completions.ipynb">Example Python code</a>.</p>
 </div>
 <div class="tsd-comment tsd-typography">
@@ -213,7 +213,7 @@
 <li>Defined in packages/openai-api-client/node_modules/openai/dist/api.d.ts:711</li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited tsd-is-external"><a id="suffix" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>suffix</span><a href="#suffix" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
-<div class="tsd-signature"><span class="tsd-kind-property">suffix</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span></div>
+<div class="tsd-signature"><span class="tsd-kind-property">suffix</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 <div class="tsd-comment tsd-typography"><p>The suffix that comes after a completion of inserted text.</p>
 </div>
 <div class="tsd-comment tsd-typography">
@@ -224,7 +224,7 @@
 <li>Defined in packages/openai-api-client/node_modules/openai/dist/api.d.ts:681</li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited tsd-is-external"><a id="temperature" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>temperature</span><a href="#temperature" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
-<div class="tsd-signature"><span class="tsd-kind-property">temperature</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">number</span></div>
+<div class="tsd-signature"><span class="tsd-kind-property">temperature</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 <div class="tsd-comment tsd-typography"><p>What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.  We generally recommend altering this or <code>top_p</code> but not both.</p>
 </div>
 <div class="tsd-comment tsd-typography">
@@ -235,7 +235,7 @@
 <li>Defined in packages/openai-api-client/node_modules/openai/dist/api.d.ts:693</li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited tsd-is-external"><a id="top_p" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>top-<wbr/>p</span><a href="#top_p" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
-<div class="tsd-signature"><span class="tsd-kind-property">top-<wbr/>p</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">number</span></div>
+<div class="tsd-signature"><span class="tsd-kind-property">top-<wbr/>p</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 <div class="tsd-comment tsd-typography"><p>An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered.  We generally recommend altering this or <code>temperature</code> but not both.</p>
 </div>
 <div class="tsd-comment tsd-typography">
@@ -298,12 +298,17 @@
 <nav class="tsd-navigation"><a href="../modules.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-4"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-package)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M9.33 16V7.24H10.77L13.446 14.74C13.43 14.54 13.41 14.296 13.386 14.008C13.37 13.712 13.354 13.404 13.338 13.084C13.33 12.756 13.326 12.448 13.326 12.16V7.24H14.37V16H12.93L10.266 8.5C10.282 8.692 10.298 8.936 10.314 9.232C10.33 9.52 10.342 9.828 10.35 10.156C10.366 10.476 10.374 10.784 10.374 11.08V16H9.33Z" fill="var(--color-text)"></path></g></svg><span>@bemoje/source</span></a>
 <ul class="tsd-small-nested-navigation">
 <li><a href="../modules/api-util.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>api-<wbr/>util</span></a></li>
+<li><a href="../modules/b.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>b</span></a></li>
 <li><a href="../modules/bfind.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>bfind</span></a></li>
+<li><a href="../modules/cli.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>cli</span></a></li>
+<li><a href="../modules/cli-prompt.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>cli-<wbr/>prompt</span></a></li>
 <li><a href="../modules/commander-config.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>commander-<wbr/>config</span></a></li>
+<li><a href="../modules/dlfiles.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>dlfiles</span></a></li>
 <li><a href="../modules/excel-util.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>excel-<wbr/>util</span></a></li>
 <li><a href="../modules/fswalk.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>fswalk</span></a></li>
 <li><a href="../modules/markdown.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>markdown</span></a></li>
 <li><a href="../modules/matrix.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>matrix</span></a></li>
+<li><a href="../modules/mongo.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>mongo</span></a></li>
 <li><a href="../modules/open-repo.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>open-<wbr/>repo</span></a></li>
 <li>
 <details class="tsd-index-accordion" open data-key="openai-api-client"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="#icon-chevronDown"></use></svg><a href="../modules/openai-api-client.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>openai-<wbr/>api-<wbr/>client</span></a></summary>
