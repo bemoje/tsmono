@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/trie-map",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "scripts": {
     "build:cjs": "rimraf ../../dist/packages/trie-map/cjs && npx tsc src/index.ts --outDir ../../dist/packages/trie-map/cjs --lib esnext --moduleResolution node --downlevelIteration --esModuleInterop --target es2022 --allowSyntheticDefaultImports --importHelpers --moduleResolution node --sourceMap --module commonjs --declaration --declarationMap",
     "build:esm": "rimraf ../../dist/packages/trie-map/esm && npx tsc src/index.ts --outDir ../../dist/packages/trie-map/esm --lib esnext --moduleResolution node --downlevelIteration --esModuleInterop --target es2022 --allowSyntheticDefaultImports --importHelpers --moduleResolution node --sourceMap --module es2022",
