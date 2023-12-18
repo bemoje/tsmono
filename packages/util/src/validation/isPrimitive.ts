@@ -1,4 +1,4 @@
-import { TPrimitive } from '../object/types/TPrimitive'
+import { TPrimitive } from '../types/TPrimitive'
 
 /**
  * Checks if the provided value is a primitive type (null, undefined, bigint, boolean, number, string or symbol).

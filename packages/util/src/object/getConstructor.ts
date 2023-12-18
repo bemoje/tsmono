@@ -1,4 +1,4 @@
-import { ConstructorOf } from './types/ConstructorOf'
+import { TConstructorOf } from '../types/TConstructorOf'
 
 /**
  * Returns the constructor of the given object.
@@ -11,6 +11,6 @@ import { ConstructorOf } from './types/ConstructorOf'
  * //=> true
  * ```
  */
-export function getConstructor<T>(o: T): ConstructorOf<T> {
+export function getConstructor<T>(o: T): TConstructorOf<T> {
   return Object.getPrototypeOf(o).constructor
 }

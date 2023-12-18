@@ -1,4 +1,4 @@
-import { assertion } from '../validation/assertion'
+import { assertThat } from '../validation/assertThat'
 import { isValidNumber } from '../validation/numbers/isValidNumber'
 
 /**
@@ -17,8 +17,8 @@ import { isValidNumber } from '../validation/numbers/isValidNumber'
  * ```
  */
 export function roundWith(number: number, precision: number, round: (n: number) => number = Math.round): number {
-  assertion(number, isValidNumber)
-  assertion(precision, Number.isInteger)
+  assertThat(number, isValidNumber)
+  assertThat(precision, Number.isInteger)
   const pair1 = (number + 'e').split('e')
   const pair2 = (round(+(pair1[0] + 'e' + (+pair1[1] + precision))) + 'e').split('e')
   return +(pair2[0] + 'e' + (+pair2[1] - precision))

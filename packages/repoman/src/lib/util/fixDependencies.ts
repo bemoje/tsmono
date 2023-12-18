@@ -1,9 +1,9 @@
-import { colors, execute, readJsonFileSync, updateJsonFileSync } from '@bemoje/util'
-import fs from 'fs'
+import fs from 'fs-extra'
 import path from 'path'
+import { Any, colors, execute, readJsonFileSync, updateJsonFileSync } from '@bemoje/util'
 import { getImportedAllNonRelative } from './getImportedAllNonRelative'
 import { getPackages } from './getPackages'
-const { gray, green } = colors
+const { gray, magenta: green } = colors
 
 const cwd = process.cwd()
 
@@ -21,7 +21,7 @@ export function fixDependencies() {
   status('ensuring all dependencies are installed')
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   const builtins = new Set(require('module').builtinModules)
-  getPackages().forEach(({ pkg, rootdir, name }) => {
+  getPackages().forEach(({ pkg, pkgRootDir: rootdir, name }) => {
     const impext = getImportedAllNonRelative(rootdir)
     const filter = (imp: string) => !builtins.has(imp)
 
@@ -45,7 +45,7 @@ export function fixDependencies() {
   })
 
   status('ensuring all own-dependencies are set to latest')
-  getPackages().forEach(({ pkg, rootdir, name, pkgpath }) => {
+  getPackages().forEach(({ pkg, pkgRootDir, name, pkgpath }) => {
     if (!pkg.dependencies) return
     for (const dep of Object.keys(pkg.dependencies)) {
       if (dep.startsWith('@bemoje') && pkg.dependencies[dep] !== 'latest') {
@@ -53,7 +53,7 @@ export function fixDependencies() {
         pkg.dependencies[dep] = 'latest'
         fs.writeFileSync(pkgpath, JSON.stringify(pkg, null, 2), 'utf8')
         execute(`npm update ${dep}`, {
-          cwd: rootdir,
+          cwd: pkgRootDir,
         })
       }
     }
@@ -61,10 +61,10 @@ export function fixDependencies() {
 
   status('ensuring all implicit dependencies are updated in nx.json')
   const nxJsonPath = path.join(cwd, 'nx.json')
-  updateJsonFileSync(nxJsonPath, (nxJson: Record<string, unknown>) => {
+  updateJsonFileSync(nxJsonPath, (nxJson: Any) => {
     if (!nxJson.projects) throw new Error('Could not find projects in nx.json')
-    const nxProjects = nxJson.projects as Record<string, unknown>
-    getPackages().forEach(({ pkg, name, rootdir }) => {
+    const nxProjects = nxJson.projects as Any
+    getPackages().forEach(({ pkg, name, pkgRootDir: rootdir }) => {
       if (!nxProjects[name]) {
         nxProjects[name] = {
           tags: [],
@@ -73,8 +73,8 @@ export function fixDependencies() {
           projectType: 'library',
         }
       }
-      const nxProject = nxProjects[name] as Record<string, unknown>
-      const project: Record<string, unknown> = readJsonFileSync(path.join(rootdir, 'project.json'))
+      const nxProject = nxProjects[name] as Any
+      const project: Any = readJsonFileSync(path.join(rootdir, 'project.json'))
       if (!project.projectType) throw new Error('Could not find projectType in project.json for package: ' + name)
       nxProject.projectType = project.projectType
       nxProject.implicitDependencies = Object.keys(pkg.dependencies || {})

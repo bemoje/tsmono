@@ -1,5 +1,5 @@
+import { ObjectKey } from '../types/ObjectKey'
 import { objEntriesArray } from './objEntriesArray'
-import { ObjectKey } from './types/ObjectKey'
 
 /**
  * Reverses the order of the properties in the given object.

@@ -1,14 +1,22 @@
+import { Any } from '../types/Any'
 import { objFilter } from './objFilter'
 
-describe('objFilter', () => {
-  it('should return an empty object if the input object is empty', () => {
-    const result = objFilter({}, (value: any) => value > 0)
-    expect(result).toEqual({})
+describe(objFilter.name, () => {
+  it('can filter properties', () => {
+    const o = { a: 25, b: 'asd', c: true }
+    const res = objFilter(o, (value, key) => value === 25 && key === 'a')
+    expect(res).toEqual({ a: 25 })
   })
 
-  it('should return an object with properties that passed the test', () => {
-    const result = objFilter({ a: 1, b: 2, c: 3 }, (value) => value > 1)
-    expect(result).toEqual({ b: 2, c: 3 })
+  it('is immutable', () => {
+    const o = { a: 25, b: 'asd', c: true }
+    const res = objFilter(o, (value, key) => value === 25 && key === 'a')
+    expect(res).not.toBe(o)
+  })
+
+  it('should return an empty object if the input object is empty', () => {
+    const result = objFilter({}, (value: Any) => value > 0)
+    expect(result).toEqual({})
   })
 
   it('should return an empty object if no properties passed the test', () => {
@@ -17,10 +25,10 @@ describe('objFilter', () => {
   })
 
   it('should use the provided getKeys function if provided', () => {
-    const getKeys = jest.fn().mockReturnValue(['a', 'b'])
-    const result = objFilter({ a: 1, b: 2, c: 3 }, (value) => value > 1, getKeys)
-    expect(result).toEqual({ b: 2 })
-    expect(getKeys).toHaveBeenCalledWith({ a: 1, b: 2, c: 3 })
+    const o = { a: 1, b: 2 }
+    Object.defineProperty(o, 'c', { value: 2, enumerable: false })
+    const res = objFilter(o, (value) => value === 2, Reflect.ownKeys)
+    expect(res).toEqual({ b: 2, c: 2 })
   })
 
   it('should call the callback function with the correct arguments', () => {

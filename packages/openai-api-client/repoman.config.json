@@ -1,0 +1,12 @@
+{
+  "name": "openai-api-client",
+  "type": "library",
+  "npm": {
+    "publish": true,
+    "name": "@bemoje/openai-api-client",
+    "usesNodeInternals": true,
+    "bin": "",
+    "license": "MIT",
+    "keywords": []
+  }
+}

@@ -1,5 +1,6 @@
+import { Any } from '../types/Any'
+import { ObjectKey } from '../types/ObjectKey'
 import { objFilter } from './objFilter'
-import { ObjectKey } from './types/ObjectKey'
 
 /**
  * Deletes specified keys from an object. This function takes an object and an array of keys to be deleted from the object. It returns a new object with the specified keys removed.
@@ -13,6 +14,8 @@ import { ObjectKey } from './types/ObjectKey'
  * //=> { b: 2 }
  * ```
  */
-export function objOmitKeys<K extends ObjectKey, V>(obj: Record<K, V>, ...keys: string[]): Record<K, V> {
-  return objFilter<any>(obj, (_, key: string) => !keys.includes(key)) as Record<K, V>
+export function objOmitKeys<O extends Record<ObjectKey, Any>>(obj: O, ...keys: ObjectKey[]) {
+  return objFilter<O>(obj, (_, key) => {
+    return !keys.includes(key)
+  })
 }

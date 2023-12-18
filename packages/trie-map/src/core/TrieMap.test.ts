@@ -1,7 +1,8 @@
+import { Any } from '@bemoje/util'
 import { TrieMap } from './TrieMap'
 
 describe('TrieMap', () => {
-  let trie: TrieMap<any>
+  let trie: TrieMap<Any>
 
   beforeEach(() => {
     trie = new TrieMap()
@@ -44,7 +45,7 @@ describe('TrieMap', () => {
   })
 
   describe('(methods) set/has/get', () => {
-    const testWith = (prefix: string[], value?: any) => {
+    const testWith = (prefix: string[], value?: Any) => {
       expect(trie.has(prefix)).toBe(false)
       trie.set(prefix, value || prefix.join('.'))
       const v = trie.get(prefix)
@@ -150,7 +151,7 @@ describe('TrieMap', () => {
   })
 
   it('(method) forEach', () => {
-    const data: Array<any> = [
+    const data: Array<Any> = [
       [['a'], 'a'],
       [['b'], 'a'],
       [['a', 'a'], 'aa'],
@@ -158,7 +159,7 @@ describe('TrieMap', () => {
       [['a', 'b', 'c'], 'abc'],
     ].sort()
     trie.load(data)
-    let res: Array<any> = []
+    let res: Array<Any> = []
     trie.forEach([], (value, prefix) => {
       res.push([prefix, value])
     })
@@ -186,7 +187,7 @@ describe('TrieMap', () => {
   })
 
   it('(method) getValues', () => {
-    const data: Array<any> = [
+    const data: Array<Any> = [
       [['a'], 'a'],
       [['b'], 'a'],
       [['a', 'a'], 'aa'],
@@ -205,7 +206,7 @@ describe('TrieMap', () => {
       [['a', 'a', 'a'], false],
       [['a', 'b', 'c'], true],
     ])
-    const res: Array<any> = []
+    const res: Array<Any> = []
     trie.find([], true, (_, prefix) => {
       res.push([prefix])
     })

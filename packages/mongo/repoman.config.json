@@ -1,0 +1,12 @@
+{
+  "name": "mongo",
+  "type": "library",
+  "npm": {
+    "publish": true,
+    "name": "@bemoje/mongo",
+    "usesNodeInternals": true,
+    "bin": "",
+    "license": "MIT",
+    "keywords": []
+  }
+}

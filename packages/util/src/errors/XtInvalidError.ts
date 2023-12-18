@@ -18,9 +18,12 @@ export class XtInvalidError extends XtError {
   /**
    * Returns a new XtInvalidError instance.
    */
-  constructor(value: unknown, validator: string | ((...args: any[]) => boolean), expectation = true) {
-    const vname = typeof validator === 'string' ? validator : validator.name
+  constructor(value: unknown, validator: string | ((...args: any[]) => boolean | string), expectation = true) {
+    if (typeof validator === 'string') {
+      super(`${validator}. Got: ${value}`)
+      return this
+    }
     const q = typeof value === 'string' ? '"' : ''
-    super(`Expected '${vname}' to be '${expectation}' for input: ${q + value + q}`)
+    super(`Expected '${validator.name}' to be '${expectation}' for input: ${q + value + q}`)
   }
 }

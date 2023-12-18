@@ -1,11 +1,11 @@
-import { Stats } from 'fs'
+import { Stats } from 'fs-extra'
 import type { WalkOptions } from 'walkdir'
 import walkdir from 'walkdir'
 
 export function walkTsFiles(
   srcdir: string,
   filter: (filepath: string, stat: Stats) => boolean = () => true,
-  options: WalkOptions = {},
+  options: WalkOptions = {}
 ): string[] {
   const result: string[] = []
   walkdir.sync(srcdir, options, (filepath, stat) => {

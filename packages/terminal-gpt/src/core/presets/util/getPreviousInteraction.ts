@@ -1,5 +1,5 @@
 import { readJsonFileSync } from '@bemoje/util'
-import fs from 'fs'
+import fs from 'fs-extra'
 import path from 'path'
 import { IGptInteraction } from '../../types/IGptInteraction'
 

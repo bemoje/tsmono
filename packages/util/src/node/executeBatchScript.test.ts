@@ -1,5 +1,5 @@
 import { execFileSync } from 'child_process'
-import fs from 'fs'
+import fs from 'fs-extra'
 import { executeBatchScript } from './executeBatchScript'
 import { IExecuteBatchScriptOptions } from './types/IExecuteBatchScriptOptions'
 

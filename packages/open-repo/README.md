@@ -1,6 +1,6 @@
 # @bemoje/open-repo
 
-CLI-shorthand to opening a local repository in your IDE.
+
 
 ![npm (scoped)](https://img.shields.io/npm/v/%40bemoje/trie-map)
 ![npm bundle size (scoped)](https://img.shields.io/bundlephobia/minzip/%40bemoje/open-repo)
@@ -20,7 +20,7 @@ This library is published in the NPM registry and can be installed using any com
 
 #### NPM
 ```sh
-npm install -g @bemoje/open-repo
+npm install @bemoje/open-repo
 ```
 
 
@@ -31,4 +31,4 @@ Please let me know of any bugs or [issues](https://github.com/bemoje/tsmono/issu
 Contributors are welcome to open a [pull request](https://github.com/bemoje/tsmono/pulls).
 
 ## License
-Released under the [MIT License](./LICENSE).
+Released under the [undefined License](./LICENSE).

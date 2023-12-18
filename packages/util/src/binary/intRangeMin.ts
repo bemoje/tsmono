@@ -1,4 +1,4 @@
-import { assertion } from '../validation/assertion'
+import { assertThat } from '../validation/assertThat'
 import { isPositiveInteger } from '../validation/numbers/isPositiveInteger'
 
 /**
@@ -9,6 +9,6 @@ import { isPositiveInteger } from '../validation/numbers/isPositiveInteger'
  * @returns The minimum value of the integer range.
  */
 export function intRangeMin(sign: 'signed' | 'unsigned', bits: number): number {
-  assertion(bits, isPositiveInteger)
+  assertThat(bits, isPositiveInteger)
   return sign === 'unsigned' ? 0 : -Math.pow(2, bits - 1)
 }

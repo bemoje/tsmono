@@ -1,5 +1,5 @@
 import { findFile } from '@bemoje/fswalk'
-import { absoluteToRelativePath, XtError } from '@bemoje/util'
+import { pathAbsoluteToRelativeCwd, XtError } from '@bemoje/util'
 import { execSync } from 'child_process'
 import path from 'path'
 
@@ -13,7 +13,7 @@ export async function testfile(args: string[], options: { coverage?: boolean; di
     },
   })
   if (!fpath) throw new Error('File not found: ' + search)
-  const relative = absoluteToRelativePath(options.dir ? path.dirname(fpath) : fpath).replace(/\\/g, '/')
+  const relative = pathAbsoluteToRelativeCwd(options.dir ? path.dirname(fpath) : fpath).replace(/\\/g, '/')
   console.log({ found: path.basename(relative) })
   const command = 'jest ' + relative + (coverage ? ' --coverage' : '')
   try {

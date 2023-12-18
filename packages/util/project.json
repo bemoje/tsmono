@@ -1,33 +1,27 @@
 {
   "name": "util",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "root": "packages/util",
   "sourceRoot": "packages/util/src",
   "projectType": "library",
   "targets": {
-    "build": {
-      "executor": "@nx/rollup:rollup",
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "dist/packages/util",
-        "main": "packages/util/src/index.ts",
-        "tsConfig": "packages/util/tsconfig.lib.json",
-        "assets": [],
-        "project": "packages/util/package.json",
-        "compiler": "swc",
-        "external": [],
-        "format": ["cjs", "esm"]
-      }
-    },
     "lint": {
       "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["packages/util/**/*.ts", "packages/util/package.json"]
+        "lintFilePatterns": [
+          "packages/util/**/*.ts",
+          "packages/util/package.json"
+        ]
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "packages/util/jest.config.ts",
         "passWithNoTests": true
@@ -37,6 +31,16 @@
           "ci": true,
           "codeCoverage": true
         }
+      }
+    },
+    "build": {
+      "executor": "nx:run-script",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "script": "build",
+        "project": "packages/util/package.json"
       }
     }
   },

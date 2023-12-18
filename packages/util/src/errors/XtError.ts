@@ -1,9 +1,9 @@
-import path from 'path'
 import colors from '../node/colors'
-import { setNonEnumerable } from '../object/setNonEnumerable'
+import path from 'path'
 import { isPlainObject } from '../validation/isPlainObject'
 import { isPrimitive } from '../validation/isPrimitive'
-import { parseNodeStackTrace } from './parseNodeStackTrace'
+import { regexEscapeString } from '../regex/regexEscapeString'
+import { setNonEnumerable } from '../object/setNonEnumerable'
 const { bold, gray, red, yellow } = colors
 
 /**
@@ -25,11 +25,12 @@ export class XtError extends Error {
    * @param error The error or error message.
    */
   constructor(error: string | Error | unknown) {
-    if (error instanceof XtError) return error
     const isErr = error instanceof Error
-    super(isErr ? (error as Error).message : String(error))
-    this.name = isErr ? error.name : this.constructor.name
-    const stack = isErr ? error.stack || this.stack : this.stack
+    const isXtErr = error instanceof XtError
+    super(isErr ? (error as Error).message : error ? error.toString() : String(error))
+    if (isXtErr) Object.assign(this, error)
+    this.name = this.constructor.name
+    const stack = isErr ? (isXtErr ? this.stack : error.stack) : this.stack
     this.frames = parseNodeStackTrace(stack || '')
     Object.defineProperty(this, 'stack', {
       get() {
@@ -45,7 +46,9 @@ export class XtError extends Error {
     const offset = 2 + this.frames.reduce((acc: number, frame) => Math.max(acc, frame[0].length), 0)
 
     // type and message
-    const result = [bold(red(this.name)) + ': ' + ' '.repeat(offset - this.name.length) + red(this.message)]
+    const result = [
+      bold(red(this.name)) + ': ' + ' '.repeat(Math.max(0, offset - this.name.length)) + red(this.message),
+    ]
 
     // stack trace
     result.push(yellow('stack') + ':')
@@ -132,4 +135,20 @@ export class XtError extends Error {
   override valueOf() {
     return this.stack
   }
+}
+
+export function parseNodeStackTrace(stack: string): [string, string][] {
+  if (!stack) return []
+  const nodeRe = /^\s*at (?:((?:\[object object\])?[^\\/]+(?: \[as \S+\])?) )?\(?(.*?):(\d+)(?::(\d+))?\)?\s*$/i
+  const recwd = new RegExp('^' + regexEscapeString(process.cwd() + path.sep), 'i')
+  const frames: [string, string][] = []
+  for (const line of stack.split('\n')) {
+    const parts = nodeRe.exec(line)
+    if (!parts) continue
+    frames.push([
+      parts[1] || '<unknown>',
+      `${(parts[2] || '').replace(recwd, '').replace(/\\\\?/g, '/')}:${+parts[3]}:${parts[4] ? +parts[4] : null}`,
+    ])
+  }
+  return frames
 }

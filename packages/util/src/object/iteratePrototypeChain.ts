@@ -40,3 +40,14 @@ export function* iteratePrototypeChain(object: Record<string, any>): Generator<R
     objectOrNull = Reflect.getPrototypeOf(objectOrNull)
   }
 }
+
+export function* iteratePrototypeChain2(object: Record<string, any>): Generator<Record<string, any>> {
+  const self = object
+  let objectOrNull: Record<string, any> | null = object
+  while (objectOrNull) {
+    if (self !== objectOrNull) {
+      yield objectOrNull
+    }
+    objectOrNull = Reflect.getPrototypeOf(objectOrNull)
+  }
+}

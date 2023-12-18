@@ -2,19 +2,13 @@
   "projects": {
     "api-util": {
       "tags": [],
-      "implicitDependencies": [
-        "util"
-      ],
+      "implicitDependencies": ["util"],
       "npmScope": "bemoje",
       "projectType": "library"
     },
     "bfind": {
       "tags": [],
-      "implicitDependencies": [
-        "commander-config",
-        "trie-map",
-        "util"
-      ],
+      "implicitDependencies": ["cli", "trie-map", "util"],
       "npmScope": "bemoje",
       "projectType": "application"
     },
@@ -26,49 +20,37 @@
     },
     "commander-config": {
       "tags": [],
-      "implicitDependencies": [
-        "util"
-      ],
+      "implicitDependencies": ["util"],
       "npmScope": "bemoje",
       "projectType": "library"
     },
     "errors": {
       "tags": [],
-      "implicitDependencies": [
-        "util"
-      ],
+      "implicitDependencies": ["util"],
       "npmScope": "bemoje",
       "projectType": "library"
     },
     "excel-util": {
       "tags": [],
-      "implicitDependencies": [
-        "util"
-      ],
+      "implicitDependencies": ["util"],
       "npmScope": "bemoje",
       "projectType": "library"
     },
     "fspath": {
       "tags": [],
-      "implicitDependencies": [
-        "util"
-      ],
+      "implicitDependencies": ["util"],
       "npmScope": "bemoje",
       "projectType": "library"
     },
     "fspath-filter": {
       "tags": [],
-      "implicitDependencies": [
-        "util"
-      ],
+      "implicitDependencies": ["util"],
       "npmScope": "bemoje",
       "projectType": "library"
     },
     "fswalk": {
       "tags": [],
-      "implicitDependencies": [
-        "util"
-      ],
+      "implicitDependencies": ["util"],
       "npmScope": "bemoje",
       "projectType": "library"
     },
@@ -80,17 +62,13 @@
     },
     "log": {
       "tags": [],
-      "implicitDependencies": [
-        "util"
-      ],
+      "implicitDependencies": ["util"],
       "npmScope": "bemoje",
       "projectType": "library"
     },
     "markdown": {
       "tags": [],
-      "implicitDependencies": [
-        "util"
-      ],
+      "implicitDependencies": ["util"],
       "npmScope": "bemoje",
       "projectType": "library"
     },
@@ -108,19 +86,13 @@
     },
     "open-repo": {
       "tags": [],
-      "implicitDependencies": [
-        "commander-config",
-        "util"
-      ],
+      "implicitDependencies": ["cli", "cli-prompt", "util"],
       "npmScope": "bemoje",
       "projectType": "application"
     },
     "openai-api-client": {
       "tags": [],
-      "implicitDependencies": [
-        "api-util",
-        "util"
-      ],
+      "implicitDependencies": ["api-util", "util"],
       "npmScope": "bemoje",
       "projectType": "library"
     },
@@ -138,9 +110,7 @@
     },
     "sorted-array": {
       "tags": [],
-      "implicitDependencies": [
-        "util"
-      ],
+      "implicitDependencies": ["util"],
       "npmScope": "bemoje",
       "projectType": "library"
     },
@@ -152,9 +122,7 @@
     },
     "subtitles": {
       "tags": [],
-      "implicitDependencies": [
-        "util"
-      ],
+      "implicitDependencies": ["util"],
       "npmScope": "bemoje",
       "projectType": "library"
     },
@@ -166,33 +134,25 @@
     },
     "terminal-gpt": {
       "tags": [],
-      "implicitDependencies": [
-        "commander-config",
-        "openai-api-client",
-        "util"
-      ],
+      "implicitDependencies": ["commander-config", "openai-api-client", "util"],
       "npmScope": "bemoje",
       "projectType": "application"
     },
     "trie-map": {
       "tags": [],
-      "implicitDependencies": [],
+      "implicitDependencies": ["util"],
       "npmScope": "bemoje",
       "projectType": "library"
     },
     "tscode": {
       "tags": [],
-      "implicitDependencies": [
-        "util"
-      ],
+      "implicitDependencies": ["util"],
       "npmScope": "bemoje",
       "projectType": "library"
     },
     "tsdoc": {
       "tags": [],
-      "implicitDependencies": [
-        "util"
-      ],
+      "implicitDependencies": ["util"],
       "npmScope": "bemoje",
       "projectType": "library"
     },
@@ -210,15 +170,39 @@
     },
     "repoman": {
       "tags": [],
-      "implicitDependencies": [
-        "commander-config",
-        "fswalk",
-        "trie-map",
-        "tscode",
-        "util"
-      ],
+      "implicitDependencies": ["cli", "fswalk", "trie-map", "tscode", "util"],
       "npmScope": "bemoje",
       "projectType": "application"
+    },
+    "dlfiles": {
+      "tags": [],
+      "implicitDependencies": ["util"],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "b": {
+      "tags": [],
+      "implicitDependencies": ["cli", "util"],
+      "npmScope": "bemoje",
+      "projectType": "application"
+    },
+    "mongo": {
+      "tags": [],
+      "implicitDependencies": [],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "cli": {
+      "tags": [],
+      "implicitDependencies": ["util"],
+      "npmScope": "bemoje",
+      "projectType": "library"
+    },
+    "cli-prompt": {
+      "tags": [],
+      "implicitDependencies": ["util"],
+      "npmScope": "bemoje",
+      "projectType": "library"
     }
   },
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
@@ -229,21 +213,13 @@
     "default": {
       "runner": "nx-cloud",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e"
-        ],
+        "cacheableOperations": ["build", "lint", "test", "e2e"],
         "accessToken": "Y2MzYWY3OTQtYWU5My00NWQzLTg3NDctOTBjNjQ3NWU3OGQ0fHJlYWQtd3JpdGU="
       }
     }
   },
   "namedInputs": {
-    "default": [
-      "{projectRoot}/**/*",
-      "sharedGlobals"
-    ],
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
     "production": [
       "default",
       "!{projectRoot}/.eslintrc.json",
@@ -257,27 +233,14 @@
   },
   "targetDefaults": {
     "build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "inputs": [
-        "production",
-        "^production"
-      ]
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
     },
     "lint": {
-      "inputs": [
-        "default",
-        "{workspaceRoot}/.eslintrc.json",
-        "{workspaceRoot}/.eslintignore"
-      ]
+      "inputs": ["default", "{workspaceRoot}/.eslintrc.json", "{workspaceRoot}/.eslintignore"]
     },
     "test": {
-      "inputs": [
-        "default",
-        "^production",
-        "{workspaceRoot}/jest.preset.js"
-      ]
+      "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"]
     }
   },
   "workspaceLayout": {

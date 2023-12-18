@@ -1,3 +1,5 @@
+import { Any } from '@bemoje/util'
+
 const SENTINEL = String.fromCharCode(0)
 
 /**
@@ -40,7 +42,7 @@ export class TrieMap<T> {
   /**
    * The TrieMap data structure root.
    */
-  public root: Record<string, any>
+  public root: Record<string, Any>
 
   /**
    * Creates a new TrieMap instance.
@@ -350,7 +352,7 @@ export class TrieMap<T> {
     if (value !== undefined) {
       this.set(prefix, f(value, prefix))
     }
-    ;(function recurse(node) {
+    function recurse(node: Record<string, Any>) {
       for (const key in node) {
         prefix.push(key)
         const value = node[key][SENTINEL]
@@ -362,7 +364,8 @@ export class TrieMap<T> {
         }
         prefix.pop()
       }
-    })(this.getNode(prefix) || {})
+    }
+    recurse(this.getNode(prefix) || {})
     return this
   }
 
@@ -559,7 +562,7 @@ export class TrieMap<T> {
     return JSON.stringify(this, null, pretty ? 2 : void 0)
   }
 
-  protected setNode(prefix: string[]): Record<string, any> {
+  protected setNode(prefix: string[]): Record<string, Any> {
     let node = this.root
     for (let i = 0; i < prefix.length; i++) {
       node = node[prefix[i]] || (node[prefix[i]] = Object.create(null))
@@ -567,7 +570,7 @@ export class TrieMap<T> {
     return node
   }
 
-  protected getNode(prefix: string[]): Record<string, any> | undefined {
+  protected getNode(prefix: string[]): Record<string, Any> | undefined {
     let node = this.root
     for (let i = 0; i < prefix.length; i++) {
       node = node[prefix[i]]
@@ -578,23 +581,23 @@ export class TrieMap<T> {
     return node
   }
 
-  protected setNodeValue(node: Record<string, any>, value: T): void {
+  protected setNodeValue(node: Record<string, Any>, value: T): void {
     node[SENTINEL] = value
   }
 
-  protected updateNodeValue(node: Record<string, any>, f: (value: T) => T): void {
+  protected updateNodeValue(node: Record<string, Any>, f: (value: T) => T): void {
     node[SENTINEL] = f(node[SENTINEL])
   }
 
-  protected getNodeValue(node: Record<string, any>): T | undefined {
+  protected getNodeValue(node: Record<string, Any>): T | undefined {
     return node[SENTINEL]
   }
 
-  protected deleteNodeValue(node: Record<string, any>): boolean {
+  protected deleteNodeValue(node: Record<string, Any>): boolean {
     return Reflect.deleteProperty(node, SENTINEL)
   }
 
-  protected hasNodeValue(node: Record<string, any>): boolean {
+  protected hasNodeValue(node: Record<string, Any>): boolean {
     return Object.hasOwn(node, SENTINEL)
   }
 

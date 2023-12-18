@@ -1,0 +1,48 @@
+{
+  "name": "dlfiles",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "root": "packages/dlfiles",
+  "sourceRoot": "packages/dlfiles/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "packages/dlfiles/**/*.ts",
+          "packages/dlfiles/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
+      "options": {
+        "jestConfig": "packages/dlfiles/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "build": {
+      "executor": "nx:run-script",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "script": "build",
+        "project": "packages/dlfiles/package.json"
+      }
+    }
+  },
+  "tags": []
+}

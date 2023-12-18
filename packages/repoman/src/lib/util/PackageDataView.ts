@@ -1,12 +1,13 @@
-import { readJsonFileSync } from '@bemoje/util'
 import path from 'path'
-import { INxProjectJson } from '../types/INxProjectJson'
-import { IPackageJson } from '../types/IPackageJson'
-import { ITSConfig } from '../types/ITSConfig'
+import { Any, readFileSync, readJsonFileSync } from '@bemoje/util'
 import { implicitDependencies } from './implicitDependencies'
 import { implicitDependenciesRecursive } from './implicitDependenciesRecursive'
 import { implicitDependents } from './implicitDependents'
 import { implicitDependentsRecursive } from './implicitDependentsRecursive'
+import { INxProjectJson } from '../types/INxProjectJson'
+import { IPackageJson } from '../types/IPackageJson'
+import { IRepomanConfig } from '../types/IRepomanConfig'
+import { ITSConfig } from '../types/ITSConfig'
 
 /**
  * A data view for an NX repository app or library package.
@@ -17,6 +18,25 @@ export class PackageDataView {
    * @param name - The name of the package.
    */
   constructor(public name: string) {}
+
+  /**
+   * './packages'
+   */
+  get monorepoRootDirPath(): string {
+    return path.join(process.cwd())
+  }
+
+  monorepoPath(...paths: string[]): string {
+    return path.join(this.monorepoRootDirPath, ...paths)
+  }
+
+  get monorepoPackageJsonPath(): string {
+    return this.monorepoPath('package.json')
+  }
+
+  get monorepoPackageJson(): IPackageJson {
+    return readJsonFileSync(this.monorepoPackageJsonPath)
+  }
 
   /**
    * './packages'
@@ -35,7 +55,7 @@ export class PackageDataView {
   /**
    * './packages/...<paths>'
    */
-  get rootdir(): string {
+  get pkgRootDir(): string {
     return this.packagesPath(this.name)
   }
 
@@ -43,7 +63,18 @@ export class PackageDataView {
    * './packages/...<paths>'
    */
   rootdirPath(...paths: string[]): string {
-    return path.join(this.rootdir, ...paths)
+    return path.join(this.pkgRootDir, ...paths)
+  }
+
+  /**
+   * './packages/...<paths>'
+   */
+  get repomanConfigJsonPath(): string {
+    return this.rootdirPath('repoman.config.json')
+  }
+
+  get repomanConfigJson(): IRepomanConfig {
+    return readJsonFileSync(this.repomanConfigJsonPath)
   }
 
   /**
@@ -51,6 +82,17 @@ export class PackageDataView {
    */
   get packageJsonPath(): string {
     return this.rootdirPath('package.json')
+  }
+
+  /**
+   * './packages/<name>/package.json'
+   */
+  get readmeMdPath(): string {
+    return this.rootdirPath('README.md')
+  }
+
+  get readmeMd(): string {
+    return readFileSync(this.readmeMdPath)
   }
 
   /**
@@ -86,6 +128,20 @@ export class PackageDataView {
    */
   get tsconfigSpecPath(): string {
     return this.rootdirPath('tsconfig.spec.json')
+  }
+
+  /**
+   * './packages/<name>/.eslint.json'
+   */
+  get eslintrcJsonPath(): string {
+    return this.rootdirPath('.eslintrc.json')
+  }
+
+  /**
+   * './packages/<name>/tsconfig.spec.json'
+   */
+  get jestConfigJsonPath(): string {
+    return this.rootdirPath('jest.config.ts')
   }
 
   /**
@@ -154,7 +210,7 @@ export class PackageDataView {
   /**
    * './dist/packages'
    */
-  get distsdir(): string {
+  get distRootDir(): string {
     return path.join(process.cwd(), 'dist', 'packages')
   }
 
@@ -162,13 +218,13 @@ export class PackageDataView {
    * './dist/packages/...<paths>'
    */
   distsPath(...paths: string[]): string {
-    return path.join(this.distsdir, ...paths)
+    return path.join(this.distRootDir, ...paths)
   }
 
   /**
    * './dist/packages/<name>'
    */
-  get distdir(): string {
+  get distDir(): string {
     return this.distsPath(this.name)
   }
 
@@ -176,7 +232,7 @@ export class PackageDataView {
    * './dist/packages/<name>/...<paths>'
    */
   distPath(...paths: string[]): string {
-    return path.join(this.distdir, ...paths)
+    return path.join(this.distDir, ...paths)
   }
 
   /**
@@ -186,11 +242,26 @@ export class PackageDataView {
     return this.distPath('package.json')
   }
 
+  get distReadmeMdPath(): string {
+    return this.distPath('README.md')
+  }
+
+  get distReadmeMd(): string {
+    return readFileSync(this.distReadmeMdPath)
+  }
+
   /**
    * JSON.parse('./dist/packages/<name>/package.json')
    */
   get distPackageJson(): IPackageJson {
     return readJsonFileSync(this.distPackageJsonPath)
+  }
+
+  /**
+   * './dist/packages/<name>/bin/index.js'
+   */
+  get distBinIndexJsPath(): string {
+    return this.distPath('bin', 'index.js')
   }
 
   /**

@@ -1,0 +1,12 @@
+{
+  "name": "b",
+  "type": "application",
+  "npm": {
+    "publish": true,
+    "name": "@bemoje/b",
+    "usesNodeInternals": true,
+    "bin": "b",
+    "license": "MIT",
+    "keywords": []
+  }
+}

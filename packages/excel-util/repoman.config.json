@@ -1,0 +1,12 @@
+{
+  "name": "excel-util",
+  "type": "library",
+  "npm": {
+    "publish": true,
+    "name": "@bemoje/excel-util",
+    "usesNodeInternals": true,
+    "bin": "",
+    "license": "MIT",
+    "keywords": []
+  }
+}

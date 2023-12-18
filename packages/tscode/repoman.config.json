@@ -1,0 +1,12 @@
+{
+  "name": "tscode",
+  "type": "library",
+  "npm": {
+    "publish": true,
+    "name": "@bemoje/tscode",
+    "usesNodeInternals": true,
+    "bin": "",
+    "license": "MIT",
+    "keywords": []
+  }
+}

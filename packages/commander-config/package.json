@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/commander-config",
-  "version": "0.3.19",
+  "version": "0.4.0",
   "description": "Easy setup of CLI config files when using the commander package.",
   "main": "index.cjs.js",
   "module": "index.esm.js",
@@ -15,7 +15,9 @@
   "dependencies": {
     "@bemoje/util": "latest",
     "commander": "^11.0.0",
-    "tslib": "^2.3.0"
+    "fs-extra": "^11.1.1",
+    "prompts": "^2.4.2",
+    "tslib": "^2.6.2"
   },
   "repository": {
     "type": "git",
@@ -31,5 +33,7 @@
   "homepage": "https://github.com/bemoje/tsmono",
   "type": "commonjs",
   "typings": "./src/index.d.ts",
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.2"
+  }
 }

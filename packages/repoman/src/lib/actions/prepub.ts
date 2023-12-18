@@ -1,10 +1,10 @@
-import { execute } from '@bemoje/util'
 import { build } from './build'
+import { execute } from '@bemoje/util'
 import { fixAll } from './fixAll'
 import { lint } from './lint'
 import { test } from './tests'
 
-export function prepub(names?: string[]) {
+export function prepub(names: string[]) {
   fixAll()
   if (names && names.length === 1) {
     execute('nx run-many -t lint,test' + (names ? ' -p ' + names.join(',') : ''))

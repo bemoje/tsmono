@@ -1,5 +1,5 @@
-import { TimeInterval } from '@bemoje/util'
 import { AbstractSubtitle } from '../core/AbstractSubtitle'
+import { TimeInterval } from '@bemoje/util'
 
 /**
  * Represents a single subtitle in the SRT format.
@@ -17,7 +17,7 @@ export class SRTSubtitle extends AbstractSubtitle {
   /**
    * Renders the subtitle as a string in the SRT format.
    */
-  toString(): string {
+  override toString(): string {
     return `${this.interval.toString(' --> ', ',')}\n${this.text}`
   }
 }

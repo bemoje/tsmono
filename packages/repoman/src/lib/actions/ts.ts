@@ -1,5 +1,5 @@
 import { findFile } from '@bemoje/fswalk'
-import { absoluteToRelativePath } from '@bemoje/util'
+import { pathAbsoluteToRelativeCwd } from '@bemoje/util'
 import { execSync } from 'child_process'
 import path from 'path'
 
@@ -16,7 +16,7 @@ export async function ts(args: string[], options: { script?: boolean } = {}): Pr
     },
   })
   if (!fpath) throw new Error('File not found: ' + search)
-  const relative = absoluteToRelativePath(fpath).replace(/\\/g, '/')
+  const relative = pathAbsoluteToRelativeCwd(fpath).replace(/\\/g, '/')
   console.log({ found: relative })
   const command =
     'node node_modules/ts-node/dist/bin.js -P tsconfig' + (options.script ? '.scripts' : '') + '.json ' + relative

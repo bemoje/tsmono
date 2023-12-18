@@ -1,4 +1,4 @@
-import { assertion } from '../validation/assertion'
+import { assertThat } from '../validation/assertThat'
 
 /**
  * Round a given number to a given nearest whole number.
@@ -15,7 +15,7 @@ import { assertion } from '../validation/assertion'
  * ```
  */
 export function roundToNearest(integer: number, nearest = 1): number {
-  assertion(integer, Number.isInteger)
-  assertion(nearest, Number.isInteger)
+  assertThat(integer, Number.isInteger)
+  assertThat(nearest, Number.isInteger)
   return Math.round(integer / nearest) * nearest
 }

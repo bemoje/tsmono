@@ -37,17 +37,13 @@ export class MonitoredFunction<F extends (...args: any[]) => any = (...args: any
       events.emit('call', e)
       let retval
       const t0 = Date.now()
-      if (events.listenerCount('error')) {
-        try {
-          retval = fun.call(this, ...args)
-        } catch (err: unknown) {
-          e.tte = Date.now() - t0
-          e.error = err
-          events.emit('error', e as FunctionErrorEvent<F>)
-          throw err
-        }
-      } else {
+      try {
         retval = fun.call(this, ...args)
+      } catch (err: unknown) {
+        e.tte = Date.now() - t0
+        e.error = err
+        events.emit('error', e as FunctionErrorEvent<F>)
+        throw err
       }
       e.tte = Date.now() - t0
       e.retval = retval

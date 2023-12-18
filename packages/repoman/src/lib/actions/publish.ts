@@ -1,18 +1,46 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable no-useless-escape */
-import { colors, execute, updateFileSafeSync, updateFileSync, writePrettyJsonFileSync } from '@bemoje/util'
 import path from 'path'
-import { PackageHashes } from '../util/PackageHashes'
 import { allPackageNames } from '../util/allPackageNames'
+import {
+  Any,
+  colors,
+  execute,
+  readFileSafeSync,
+  readJsonFileSafeSync,
+  updateFileSync,
+  writeFileSafeSync,
+  writeJsonFileSafeSync,
+} from '@bemoje/util'
+import { build } from './build'
+import { docs } from './docs'
 import { getPackages } from '../util/getPackages'
 import { implicitDependenciesRecursive } from '../util/implicitDependenciesRecursive'
+import { PackageHashes } from '../util/PackageHashes'
+import { prepub } from './prepub'
 import { semverVersionBump } from '../util/semverVersionBump'
 import { updateImplicitDependencies } from '../util/updateImplicitDependencies'
-import { docs } from './docs'
-import { prepub } from './prepub'
-const { gray, green, red, magenta } = colors
+import { walkDirectorySync } from '@bemoje/fswalk'
+const { gray, magenta: green, red, magenta: magenta } = colors
 
-export function publish(level: string, packages?: string[], options: { ignoreHash?: boolean } = {}) {
-  const _packages = packages ? [...packages, ...implicitDependenciesRecursive(...packages)] : allPackageNames()
+export function publish(packages: string[], options: { level?: string; ignoreHash?: boolean } = {}) {
+  const level = options?.level || 'patch'
+  const _packages = packages.length ? [...packages, ...implicitDependenciesRecursive(...packages)] : allPackageNames()
+
+  getPackages(packages).forEach((o) => {
+    if (!o.repomanConfigJson.npm.bin) return
+    walkDirectorySync(o.srcdir, {}, (filepath, stats) => {
+      if (!stats.isFile()) return
+      if (filepath.endsWith('.test.ts')) return
+      const code = readFileSafeSync(filepath)
+      if (!code) return
+      const re = /\.version\('[0-9]+\.[0-9]+\.[0-9]'\)/
+      if (!re.test(code)) return
+      const newVersion = semverVersionBump(o.packageJson.version || '0.0.0', level as 'major' | 'minor' | 'patch')
+      const newCode = code.replace(re, `.version('${newVersion}')`)
+      writeFileSafeSync(filepath, newCode)
+    })
+  })
 
   // prepub
   prepub(packages)
@@ -25,54 +53,42 @@ export function publish(level: string, packages?: string[], options: { ignoreHas
   const successful: string[] = []
 
   console.log(green('Publishing packages with changes to NPM...'))
-  getPackages(_packages).forEach(({ name, pkgpath, pkg, distdir }) => {
+  getPackages(_packages).forEach(({ name, pkgpath, pkg, distDir }) => {
     if (!options.ignoreHash && hashes.currentHash(name) === hashes.hash(name)) return
 
     console.log(gray('- ') + magenta(name))
     console.log(gray('  - ' + 'Bump semver version'))
     const original = String(pkg.version)
     pkg.version = semverVersionBump(original, level as 'major' | 'minor' | 'patch')
-    writePrettyJsonFileSync(pkgpath, pkg)
+    writeJsonFileSafeSync(pkgpath, pkg, { spaces: 2 })
 
     console.log(gray('    - ' + 'Update package.json version in dist directory.'))
-    updateFileSync(
-      path.join(distdir, 'package.json'),
-      (src) => {
-        return src.replace(/"version"\: "\d+\.\d+\.\d+"/, `"version": "${pkg.version}"`)
-      },
-      JSON.stringify(pkg, null, 2)
-    )
-
-    if (pkg.preferGlobal) {
-      console.log(gray('    - ' + 'Update version of CLIs in dist directory.'))
-      const regVersion = /\((\'|\")0\.0\.0(\'|\")\)/
-      updateFileSafeSync(path.join(distdir, 'index.cjs.js'), (src) => {
-        return src.replace(regVersion, `('${pkg.version}')`)
-      })
-      updateFileSafeSync(path.join(distdir, 'index.esm.js'), (src) => {
-        return src.replace(regVersion, `('${pkg.version}')`)
-      })
-    }
+    const distPkgPath = path.join(distDir, 'package.json')
+    updateFileSync(distPkgPath, (src) => {
+      return src.replace(/"version"\: "\d+\.\d+\.\d+"/, `"version": "${pkg.version}"`)
+    })
+    const distPkg: Any = readJsonFileSafeSync(distPkgPath)
+    if (!distPkg) throw new Error('Missing dist package.json')
 
     try {
       console.log(gray('  - ' + 'npm update'))
       execute('npm publish --access public', {
-        cwd: distdir,
+        cwd: distDir,
         noEcho: true,
-        silent: true,
+        silent: false,
       })
       console.log(gray('    - ' + 'Successfully published ' + pkg.name + '@' + pkg.version))
     } catch (error) {
       console.error('    - ' + red('Could not publish ' + name + '. Reverting version to ' + original + '.'))
       pkg.version = original
-      writePrettyJsonFileSync(pkgpath, pkg)
+      writeJsonFileSafeSync(pkgpath, pkg, { spaces: 2 })
       return
     }
 
     console.log(gray('  - ' + 'Update hash'))
     hashes.updateHash(name)
 
-    if (pkg.preferGlobal) {
+    if (distPkg.preferGlobal) {
       console.log(
         gray('  - ' + 'has preferGlobal option. Will be installed globally after all packages are published.')
       )
@@ -102,9 +118,14 @@ export function publish(level: string, packages?: string[], options: { ignoreHas
   }
 
   console.log(green('Ensuring latest version of implicit dependencies are installed in all packages.'))
-  updateImplicitDependencies()
+  const set = getPackages(packages).reduce((set, o) => {
+    o.implicitDependents(true).forEach((n) => set.add(n))
+    return set
+  }, new Set<string>())
+  updateImplicitDependencies([...set])
 
-  prepub(packages)
+  // console.log(green('Building packages.'))
+  // build(packages)
 
   if (installGlobally.length) {
     console.log(green('Install CLI packages globally: ' + installGlobally.join(', ')))

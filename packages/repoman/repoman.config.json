@@ -1,0 +1,12 @@
+{
+  "name": "repoman",
+  "type": "application",
+  "npm": {
+    "publish": true,
+    "name": "@bemoje/repoman",
+    "usesNodeInternals": true,
+    "bin": "rman",
+    "license": "MIT",
+    "keywords": []
+  }
+}

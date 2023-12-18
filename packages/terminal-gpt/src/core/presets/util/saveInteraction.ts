@@ -1,6 +1,6 @@
 import { IOpenaiChatRequestOptions } from '@bemoje/openai-api-client'
 import { prettyIsoDateString } from '@bemoje/util'
-import fs from 'fs'
+import fs from 'fs-extra'
 import path from 'path'
 import { IGptInteraction } from '../../types/IGptInteraction'
 import { interactionAsMarkdown } from './interactionAsMarkdown'

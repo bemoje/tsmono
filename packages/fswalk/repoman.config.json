@@ -1,0 +1,12 @@
+{
+  "name": "fswalk",
+  "type": "library",
+  "npm": {
+    "publish": true,
+    "name": "@bemoje/fswalk",
+    "usesNodeInternals": true,
+    "bin": "",
+    "license": "MIT",
+    "keywords": []
+  }
+}

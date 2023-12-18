@@ -1,6 +1,6 @@
 import { AbstractApiClient, IAsyncRetryOptions, IResponseCacheOptions } from '@bemoje/api-util'
 import { objOmitKeysMutable, randomIntBetween } from '@bemoje/util'
-import fs from 'fs'
+import fs from 'fs-extra'
 import { encode } from 'gpt-3-encoder'
 import * as openai from 'openai'
 import { Configuration, OpenAIApi } from 'openai'

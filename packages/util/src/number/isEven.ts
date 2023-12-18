@@ -1,4 +1,4 @@
-import { assertion } from '../validation/assertion'
+import { assertThat } from '../validation/assertThat'
 
 /**
  * Checks if a number is even.
@@ -14,6 +14,6 @@ import { assertion } from '../validation/assertion'
  * ```
  */
 export function isEven(n: number): boolean {
-  assertion(n, Number.isInteger)
+  assertThat(n, Number.isInteger)
   return n % 2 === 0
 }

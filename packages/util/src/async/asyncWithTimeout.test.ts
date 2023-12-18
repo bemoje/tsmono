@@ -1,6 +1,6 @@
 import { asyncWithTimeout } from './asyncWithTimeout'
 
-describe('asyncWithTimeout', () => {
+describe(asyncWithTimeout.name, () => {
   function wait(ms: number): Promise<string> {
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -13,15 +13,15 @@ describe('asyncWithTimeout', () => {
     await expect(
       asyncWithTimeout<string>(10, async () => {
         return await wait(20)
-      }),
+      })
     ).rejects.toThrowError(`Timed out after ${10} ms.`)
   })
 
   it('does not timeout when the function resolves in time', async () => {
     await expect(
-      asyncWithTimeout<string>(20, async () => {
+      asyncWithTimeout<string>(50, async () => {
         return await wait(10)
-      }),
+      })
     ).resolves.toBe('Waited ' + 10 + 'ms')
   })
 

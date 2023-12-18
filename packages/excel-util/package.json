@@ -1,35 +1,14 @@
 {
   "name": "@bemoje/excel-util",
-  "version": "0.1.10",
-  "description": "CSV and Excel utilities for parsing, reading, writing.",
-  "main": "./src/index.js",
-  "scripts": {},
-  "author": {
-    "name": "Benjamin Møller Jensen",
-    "email": "bemoje@bemoje.net",
-    "url": "https://github.com/bemoje/"
+  "version": "0.1.12",
+  "scripts": {
+    "build": "rimraf ../../dist/packages/excel-util/cjs && npx tsc src/index.ts --outDir ../../dist/packages/excel-util/cjs --lib esnext --moduleResolution node --downlevelIteration --esModuleInterop --target es2022 --allowSyntheticDefaultImports --skipLibCheck --importHelpers --moduleResolution node --sourceMap --module commonjs --declaration --declarationMap"
   },
-  "license": "MIT",
-  "keywords": [],
   "dependencies": {
     "@bemoje/util": "latest",
     "csv-parser": "^3.0.0",
     "exceljs": "^4.3.0",
-    "tslib": "^2.3.0"
+    "tslib": "^2.6.2"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bemoje/tsmono.git"
-  },
-  "funding": {
-    "type": "patreon",
-    "url": "https://www.patreon.com/user?u=40752770"
-  },
-  "bugs": {
-    "url": "https://github.com/bemoje/tsmono/issues"
-  },
-  "homepage": "https://github.com/bemoje/tsmono",
-  "type": "commonjs",
-  "typings": "./src/index.d.ts",
   "devDependencies": {}
 }

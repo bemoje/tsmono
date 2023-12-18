@@ -1,0 +1,12 @@
+{
+  "name": "pdf-util",
+  "type": "library",
+  "npm": {
+    "publish": true,
+    "name": "@bemoje/pdf-util",
+    "usesNodeInternals": true,
+    "bin": "",
+    "license": "MIT",
+    "keywords": []
+  }
+}

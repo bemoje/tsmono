@@ -1,6 +1,6 @@
 /* eslint-disable no-useless-escape */
 import { colors, execute, strReplaceAll } from '@bemoje/util'
-import fs from 'fs'
+import fs from 'fs-extra'
 import path from 'path'
 import { snakeCase } from 'snake-case'
 import walkdir from 'walkdir'
@@ -8,7 +8,7 @@ import { getPackages } from '../util/getPackages'
 
 let retry = false
 export function docs() {
-  console.log(colors.green('Generating docs...'))
+  console.log(colors.magenta('Generating docs...'))
 
   const pkgspath = path.join(process.cwd(), 'packages')
   const indexpath = path.join(pkgspath, 'index.ts')

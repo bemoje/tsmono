@@ -1,0 +1,21 @@
+{
+  "name": "@bemoje/cli",
+  "version": "0.0.22",
+  "scripts": {
+    "build": "rimraf ../../dist/packages/cli/cjs && npx tsc src/index.ts --outDir ../../dist/packages/cli/cjs --lib esnext --moduleResolution node --downlevelIteration --esModuleInterop --target es2022 --allowSyntheticDefaultImports --skipLibCheck --importHelpers --moduleResolution node --sourceMap --module commonjs --declaration --declarationMap"
+  },
+  "dependencies": {
+    "@bemoje/util": "latest",
+    "@commander-js/extra-typings": "^11.1.0",
+    "ansi-colors": "^4.1.3",
+    "fs-extra": "^11.2.0",
+    "is-async-function": "^2.0.0",
+    "tslib": "^2.6.2"
+  },
+  "devDependencies": {
+    "@types/cli-table": "^0.3.4",
+    "@types/is-async-function": "^2.0.2",
+    "@types/prompts": "^2.4.9",
+    "rimraf": "^5.0.5"
+  }
+}

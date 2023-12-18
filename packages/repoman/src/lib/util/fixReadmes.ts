@@ -1,14 +1,14 @@
-import { colors } from '@bemoje/util'
-import fs from 'fs'
+import fs from 'fs-extra'
 import path from 'path'
+import { Any, colors } from '@bemoje/util'
 import { getPackages } from './getPackages'
 
-const { gray, green } = colors
+const { gray, magenta: green } = colors
 
 export function fixReadmes() {
   console.log(green('Fixing readmes...'))
 
-  getPackages().forEach(({ rootdir, pkg, name }) => {
+  getPackages().forEach(({ pkgRootDir: rootdir, pkg, name }) => {
     const content = readme(pkg).trim()
     const fpath = path.join(rootdir, 'README.md')
     const cur = fs.existsSync(fpath) ? fs.readFileSync(fpath, 'utf8').trim() : ''
@@ -19,7 +19,7 @@ export function fixReadmes() {
   })
 }
 
-function readme(pkg: Record<string, any>): string {
+function readme(pkg: Any): string {
   const shortname = pkg.name.replace('@bemoje/', '')
   return `# ${pkg.name}
 

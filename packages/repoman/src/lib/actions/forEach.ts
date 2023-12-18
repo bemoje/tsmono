@@ -5,7 +5,7 @@ export function forEach(args: string[], options: IForEachOptions = {}) {
   console.log({ args, options })
   const command = args.join(' ')
   console.log()
-  getPackages(options.packages).forEach(({ name, rootdir }) => {
+  getPackages(options.packages).forEach(({ name, pkgRootDir: rootdir }) => {
     // if (packages && !packages.includes(name)) return
     if (options.ignore && options.ignore.includes(name)) return
     execute(command, { cwd: rootdir })

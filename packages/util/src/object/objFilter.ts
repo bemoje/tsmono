@@ -1,10 +1,10 @@
+import { ObjectKey } from '../types/ObjectKey'
+import { TPlainObject } from '../types/TPlainObject'
+
 /**
- * Filters the properties of an object based on a callback function.
+ * Immutably filters the properties of an object based on a predicate function.
  * @param object The object to filter.
- * @param callback The callback function used to filter the object properties.
- * @template T - The type of the values in the object.
- * @param - The function to get the keys of the object. Defaults to `Object.keys`.
- * @returns A new object with the properties that passed the test. If no properties passed the test, an empty object will be returned.
+ * @param predicate The callback function used to filter the object properties.
  * @param getKeys The function used to get the keys of the object.
  * @example ```ts
  * const obj = { a: 1, b: 2, c: 3 };
@@ -12,15 +12,15 @@
  * //=> { b: 2, c: 3 }
  * ```
  */
-export function objFilter<T>(
-  object: Record<string, T>,
-  callback: (value: T, key: string) => boolean,
-  getKeys: (obj: typeof object) => Iterable<string> = Object.keys,
-): Record<string, T> {
-  const result: Record<string, T> = {}
+export function objFilter<T extends TPlainObject = TPlainObject>(
+  object: T,
+  predicate: (value: T[keyof T], key: keyof T) => boolean,
+  getKeys: (value: T) => ObjectKey[] = Object.keys
+) {
+  const result: Partial<T> = {}
   for (const key of getKeys(object)) {
-    if (callback(object[key], key)) {
-      result[key] = object[key]
+    if (predicate(object[key], key)) {
+      Reflect.set(result, key, object[key])
     }
   }
   return result

@@ -1,6 +1,6 @@
 # @bemoje/openai-api-client
 
-API client for openai with various built-in functionality, such as caching, auto-retry, etc.
+
 
 ![npm (scoped)](https://img.shields.io/npm/v/%40bemoje/trie-map)
 ![npm bundle size (scoped)](https://img.shields.io/bundlephobia/minzip/%40bemoje/openai-api-client)
@@ -31,4 +31,4 @@ Please let me know of any bugs or [issues](https://github.com/bemoje/tsmono/issu
 Contributors are welcome to open a [pull request](https://github.com/bemoje/tsmono/pulls).
 
 ## License
-Released under the [MIT License](./LICENSE).
+Released under the [undefined License](./LICENSE).

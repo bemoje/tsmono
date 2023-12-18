@@ -1,0 +1,12 @@
+{
+  "name": "@bemoje/mongo",
+  "version": "0.0.3",
+  "scripts": {
+    "build": "rimraf ../../dist/packages/mongo/cjs && npx tsc src/index.ts --outDir ../../dist/packages/mongo/cjs --lib esnext --moduleResolution node --downlevelIteration --esModuleInterop --target es2022 --allowSyntheticDefaultImports --skipLibCheck --importHelpers --moduleResolution node --sourceMap --module commonjs --declaration --declarationMap"
+  },
+  "dependencies": {
+    "mongoose": "^7.6.3",
+    "tslib": "^2.6.2"
+  },
+  "devDependencies": {}
+}

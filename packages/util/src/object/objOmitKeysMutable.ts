@@ -1,3 +1,6 @@
+import { Any } from '../types/Any'
+import { ObjectKey } from '../types/ObjectKey'
+
 /**
  * Deletes the specified keys from an object in a mutable way.
  * @param obj The object from which to delete the keys.
@@ -10,8 +13,9 @@
  * //=> { b: 2 }
  * ```
  */
-export function objOmitKeysMutable<V>(obj: Record<string, V>, ...keys: string[]): Record<string, V> {
+export function objOmitKeysMutable<O extends Record<ObjectKey, Any>>(obj: O, ...keys: ObjectKey[]) {
   for (const key of keys) {
+    if (!Object.hasOwn(obj, key)) continue
     Reflect.deleteProperty(obj, key)
   }
   return obj

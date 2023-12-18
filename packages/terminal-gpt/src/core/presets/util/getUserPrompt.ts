@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import fs from 'fs'
+import fs from 'fs-extra'
 import path from 'path'
 import { IGptPreset } from '../../types/IGptPreset'
 import { userInput } from '../../util/userInput'

@@ -6,5 +6,7 @@
  * @returns A boolean indicating whether the current platform is Windows.
  */
 export function isWindows(): boolean {
-  return process && (process.platform === 'win32' || /^(msys|cygwin)$/.test(process.env['OSTYPE'] || ''))
+  return isWin
 }
+
+const isWin = process && (process.platform === 'win32' || /^(msys|cygwin)$/.test(process.env['OSTYPE'] || ''))

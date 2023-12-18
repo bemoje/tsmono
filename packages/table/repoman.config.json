@@ -1,0 +1,12 @@
+{
+  "name": "table",
+  "type": "library",
+  "npm": {
+    "publish": true,
+    "name": "@bemoje/table",
+    "usesNodeInternals": false,
+    "bin": "",
+    "license": "MIT",
+    "keywords": []
+  }
+}

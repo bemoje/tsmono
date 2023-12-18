@@ -1,0 +1,12 @@
+{
+  "name": "cli-prompt",
+  "type": "library",
+  "npm": {
+    "publish": true,
+    "name": "@bemoje/cli-prompt",
+    "usesNodeInternals": true,
+    "bin": "",
+    "license": "MIT",
+    "keywords": []
+  }
+}

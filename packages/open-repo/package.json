@@ -1,41 +1,16 @@
 {
   "name": "@bemoje/open-repo",
-  "version": "1.1.15",
-  "description": "CLI-shorthand to opening a local repository in your IDE.",
-  "main": "index.cjs.js",
-  "module": "index.esm.js",
-  "bin": {
-    "repo": "./bin/index.js"
+  "version": "1.2.7",
+  "scripts": {
+    "build": "rimraf ../../dist/packages/open-repo/cjs && npx tsc src/index.ts --outDir ../../dist/packages/open-repo/cjs --lib esnext --moduleResolution node --downlevelIteration --esModuleInterop --target es2022 --allowSyntheticDefaultImports --skipLibCheck --importHelpers --moduleResolution node --sourceMap --module commonjs --declaration --declarationMap"
   },
-  "preferGlobal": true,
-  "scripts": {},
-  "author": {
-    "name": "Benjamin Møller Jensen",
-    "email": "bemoje@bemoje.net",
-    "url": "https://github.com/bemoje/"
-  },
-  "license": "MIT",
-  "keywords": [],
   "dependencies": {
-    "@bemoje/commander-config": "latest",
+    "@bemoje/cli": "latest",
+    "@bemoje/cli-prompt": "latest",
     "@bemoje/util": "latest",
-    "commander": "^11.0.0",
-    "prompt": "^1.3.0",
-    "tslib": "^2.3.0"
+    "tslib": "^2.6.2"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bemoje/tsmono.git"
-  },
-  "funding": {
-    "type": "patreon",
-    "url": "https://www.patreon.com/user?u=40752770"
-  },
-  "bugs": {
-    "url": "https://github.com/bemoje/tsmono/issues"
-  },
-  "homepage": "https://github.com/bemoje/tsmono",
-  "type": "commonjs",
-  "typings": "./src/index.d.ts",
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.2"
+  }
 }

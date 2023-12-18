@@ -1,0 +1,14 @@
+{
+  "name": "@bemoje/dlfiles",
+  "version": "0.0.5",
+  "scripts": {
+    "build": "rimraf ../../dist/packages/dlfiles/cjs && npx tsc src/index.ts --outDir ../../dist/packages/dlfiles/cjs --lib esnext --moduleResolution node --downlevelIteration --esModuleInterop --target es2022 --allowSyntheticDefaultImports --skipLibCheck --importHelpers --moduleResolution node --sourceMap --module commonjs --declaration --declarationMap"
+  },
+  "dependencies": {
+    "@bemoje/util": "latest",
+    "axios": "^1.5.1",
+    "fs-extra": "^11.1.1",
+    "tslib": "^2.6.2"
+  },
+  "devDependencies": {}
+}

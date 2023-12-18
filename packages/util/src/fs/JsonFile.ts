@@ -1,18 +1,8 @@
 import { EventEmitter } from 'events'
-import fs from 'fs'
+import fs from 'fs-extra'
 import path from 'path'
-import { readJsonFileSync } from './readJsonFileSync'
-import { writeJsonFileSync } from './writeJsonFileSync'
-import { writePrettyJsonFileSync } from './writePrettyJsonFileSync'
-
-function deepClone(obj: any): any | string {
-  if (typeof obj !== 'object' || obj === null) return obj
-  try {
-    return JSON.parse(JSON.stringify(obj))
-  } catch (error) {
-    return ''
-  }
-}
+import { readJsonFileSync } from './readJsonFile/readJsonFileSync'
+import { writeJsonFileSync } from './writeJsonFile/writeJsonFileSync'
 
 /**
  * Represents a JSON file manager that ensures immutable data since everything is serialized and deserialized before receiving or returning any data.
@@ -157,7 +147,7 @@ export class JsonFile<T extends Record<string, any>> extends EventEmitter {
    */
   saveFile(): void {
     if (this.prettyPrint) {
-      writePrettyJsonFileSync(this.filepath, this.#data)
+      writeJsonFileSync(this.filepath, this.#data, { spaces: 2 })
     } else {
       writeJsonFileSync(this.filepath, this.#data)
     }
@@ -168,5 +158,14 @@ export class JsonFile<T extends Record<string, any>> extends EventEmitter {
    */
   loadFile(): void {
     this.#data = readJsonFileSync(this.filepath) as T
+  }
+}
+
+function deepClone(obj: any): any | string {
+  if (typeof obj !== 'object' || obj === null) return obj
+  try {
+    return JSON.parse(JSON.stringify(obj))
+  } catch (error) {
+    return ''
   }
 }

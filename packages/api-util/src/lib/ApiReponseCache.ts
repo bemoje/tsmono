@@ -1,6 +1,6 @@
 import { getAppDataPath } from '@bemoje/util'
 import EventEmitter from 'events'
-import * as fs from 'fs'
+import fs from 'fs-extra'
 import { Level } from 'level'
 import hash from 'object-hash'
 import path from 'path'

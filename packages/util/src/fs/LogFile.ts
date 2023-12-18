@@ -1,4 +1,4 @@
-import fs from 'fs'
+import fs from 'fs-extra'
 import path from 'path'
 import readline from 'readline'
 
@@ -28,7 +28,7 @@ export class LogFile<T> {
    * @returns A promise that resolves when the log entry is appended.
    */
   async append(data: T, time = Date.now()): Promise<void> {
-    await fs.promises.appendFile(this.filepath, time + '|' + JSON.stringify(data) + '\n', 'utf8')
+    await fs.appendFile(this.filepath, time + '|' + JSON.stringify(data) + '\n', 'utf8')
   }
 
   /**

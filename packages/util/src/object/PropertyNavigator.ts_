@@ -1,0 +1,534 @@
+import { isObject } from '../validation/isObject'
+import { isPrimitive } from '../validation/isPrimitive'
+import { iteratePrototypeChain2 } from './iteratePrototypeChain'
+import { setNonEnumerable } from './setNonEnumerable'
+
+interface IObjKeysOptions {
+  ownEnum: boolean
+  ownNonEnum: boolean
+
+  ownEnumSymbols: boolean
+  ownNonEnumSymbols: boolean
+
+  protoEnum: boolean
+  protoNonEnum: boolean
+
+  protoEnumSymbols: boolean
+  protoNonEnumSymbols: boolean
+
+  ownPropertyKeys: boolean
+  ownPropertySymbols: boolean
+  prototype: boolean
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type PlainObject = NonPrimitive
+
+const SimplePropertyRetriever = {
+  getOwnEnumerables(obj: PlainObject) {
+    return this._getPropertyNames(obj, true, false, this._enumerable)
+    // Or could use for...in filtered with Object.hasOwn or just this: return Object.keys(obj:PlainObject);
+  },
+  getOwnNonenumerables(obj: PlainObject) {
+    return this._getPropertyNames(obj, true, false, this._notEnumerable)
+  },
+  getOwnEnumerablesAndNonenumerables(obj: PlainObject) {
+    return this._getPropertyNames(obj, true, false, this._enumerableAndNotEnumerable)
+    // Or just use: return Object.getOwnPropertyNames(obj:PlainObject);
+  },
+  getPrototypeEnumerables(obj: PlainObject) {
+    return this._getPropertyNames(obj, false, true, this._enumerable)
+  },
+  getPrototypeNonenumerables(obj: PlainObject) {
+    return this._getPropertyNames(obj, false, true, this._notEnumerable)
+  },
+  getPrototypeEnumerablesAndNonenumerables(obj: PlainObject) {
+    return this._getPropertyNames(obj, false, true, this._enumerableAndNotEnumerable)
+  },
+  getOwnAndPrototypeEnumerables(obj: PlainObject) {
+    return this._getPropertyNames(obj, true, true, this._enumerable)
+    // Or could use unfiltered for...in
+  },
+  getOwnAndPrototypeNonenumerables(obj: PlainObject) {
+    return this._getPropertyNames(obj, true, true, this._notEnumerable)
+  },
+  getOwnAndPrototypeEnumerablesAndNonenumerables(obj: PlainObject) {
+    return this._getPropertyNames(obj, true, true, this._enumerableAndNotEnumerable)
+  },
+  // Private static property checker callbacks
+  _enumerable(obj: PlainObject, prop: string) {
+    return isEnum.call(obj, prop)
+  },
+  _notEnumerable(obj: PlainObject, prop: string) {
+    return !isEnum.call(obj, prop)
+  },
+  _enumerableAndNotEnumerable(obj: PlainObject, prop: string) {
+    return true
+  },
+  // Inspired by http://stackoverflow.com/a/8024294/271577
+  _getPropertyNames(obj: PlainObject, iterateSelf: boolean, iteratePrototype: boolean, shouldInclude: any) {
+    const props: string[] = []
+    do {
+      if (iterateSelf) {
+        Object.getOwnPropertyNames(obj).forEach((prop) => {
+          if (props.indexOf(prop) === -1 && shouldInclude(obj, prop)) {
+            props.push(prop)
+          }
+        })
+      }
+      if (!iteratePrototype) {
+        break
+      }
+      iterateSelf = true
+      obj = Object.getPrototypeOf(obj)
+    } while (obj)
+    return props
+  },
+}
+
+class Wow extends Date {
+  public publicWow = 'wow'
+  protected protectedWow = 'wow'
+  private privateWow = 'wow'
+  get woooow() {
+    return 'hehe'
+  }
+}
+class DATE extends Wow {
+  constructor() {
+    super()
+    Object.defineProperty(this, 'secretNonEnumProp', {
+      enumerable: false,
+      value: 'omfg secret',
+    })
+  }
+}
+const dins = new DATE()
+
+const shouldInclude = (obj: PlainObject, prop: string) => {
+  if (prop.startsWith('__')) return false
+  return true
+}
+
+const opts = {
+  own: true,
+  proto: true,
+  enum: true,
+  nonEnum: true,
+  names: true,
+  symbols: true,
+  descriptors: true,
+}
+
+interface IGetOwnOptions {
+  enumKeys: string[]
+  enum: {
+    keys?: boolean
+  }
+  nonEnum: {
+    keys?: boolean
+    symbols?: boolean
+    descriptors?: boolean
+  }
+}
+
+interface IGetProtoOptions {
+  enum: {
+    keys?: boolean
+  }
+  nonEnum: {
+    keys?: boolean
+    symbols?: boolean
+    descriptors?: boolean
+  }
+}
+
+interface IGetStaticOptions {
+  enum: {
+    keys?: boolean
+  }
+  nonEnum: {
+    keys?: boolean
+    symbols?: boolean
+    descriptors?: boolean
+  }
+}
+
+// ownEnumKeys
+// ownNonEnumKeys
+// ownNonEnumSymbols
+// ownNonEnumDescriptors
+// protoEnumKeys
+// protoNonEnumKeys
+// protoNonEnumSymbols
+// protoNonEnumDescriptors
+// staticEnumKeys
+// staticNonEnumKeys
+// staticNonEnumSymbols
+// staticNonEnumDescriptors
+
+const props = {
+  own: {
+    enum: {
+      keys: true,
+    },
+    nonEnum: {
+      keys: true,
+      symbols: true,
+      descriptors: true,
+    },
+  },
+  proto: {
+    enum: {
+      keys: true,
+    },
+    nonEnum: {
+      keys: true,
+      symbols: true,
+      descriptors: true,
+    },
+  },
+  static: {
+    enum: {
+      keys: true,
+    },
+    nonEnum: {
+      keys: true,
+      symbols: true,
+      descriptors: true,
+    },
+  },
+}
+type NonPrimitive = Record<string | number | symbol, any>
+type Constructor<T = NonPrimitive> = new (...args: any[]) => T
+
+export function superClasses(o: Constructor | NonPrimitive): Array<Constructor> {
+  if (typeof o === 'function') {
+    if (!o.name || o === Object) {
+      return []
+    }
+    return [o].concat(superClasses(Object.getPrototypeOf(o))) as Array<Constructor>
+  }
+
+  if (isObject(o)) {
+    return superClasses(o.constructor as any)
+  }
+
+  return []
+}
+
+const oNavMap = new WeakMap<NonPrimitive, PropertyNavigator>()
+const navMeta = new WeakMap<PropertyNavigator, NavMeta>()
+
+const isEnum = Object.prototype.propertyIsEnumerable
+
+interface NavMeta {
+  depth?: number
+  oHost?: NonPrimitive
+  oHostProp?: string | symbol | number
+  navParent?: PropertyNavigator
+  iterationOptions?: IIterationOptions
+}
+
+export class PropertyNavigator {
+  protected static maxDepth = 0
+  protected static instances = 0
+  protected readonly o: NonPrimitive
+
+  constructor(o: NonPrimitive, meta?: NavMeta) {
+    PropertyNavigator.instances++
+    if (meta) {
+      if (!meta.depth) meta.depth = 0
+      else meta.depth++
+      if (PropertyNavigator.maxDepth < meta.depth) {
+        PropertyNavigator.maxDepth = meta.depth
+        console.log({ maxDepth: PropertyNavigator.maxDepth, instances: PropertyNavigator.instances })
+      }
+    }
+
+    oNavMap.set(o, this)
+    navMeta.set(this, meta || { depth: 0, iterationOptions: PropertyNavigator.defaultIterationOptions })
+    this.o = o
+    setNonEnumerable(this, 'o')
+  }
+
+  private get meta(): NavMeta | undefined {
+    const meta = navMeta.get(this)
+    if (!meta) this.destroy()
+    return undefined
+  }
+
+  destroy(): void {
+    const o = this.o
+    if (o) oNavMap.delete(o)
+    navMeta.delete(this)
+    for (const key of Reflect.ownKeys(this)) {
+      Reflect.deleteProperty(this, key)
+    }
+  }
+
+  private get oHost(): NonPrimitive | undefined {
+    const meta = this.meta
+    if (!meta) return undefined
+    return meta.oHost
+  }
+
+  private get oHostProp(): string | symbol | number | undefined {
+    const meta = this.meta
+    if (!meta) return undefined
+    return meta.oHostProp
+  }
+
+  private get navParent(): PropertyNavigator | undefined {
+    const meta = this.meta
+    if (!meta) return undefined
+    return meta.navParent
+  }
+
+  get isRoot() {
+    return !this.navParent
+  }
+
+  get proto() {
+    return this.o?.constructor
+  }
+  get navProto(): PropertyNavigator {
+    const proto = this.o.constructor
+    return new PropertyNavigator(proto, {
+      oHost: proto?.constructor,
+      oHostProp: 'prototype',
+      navParent: this,
+    })
+  }
+  walkProto() {
+    return 0
+  }
+
+  get class() {
+    return this.o.constructor
+  }
+  get superClass() {
+    return this.class.constructor
+  }
+  walkSuper(callback: (ctor: Constructor, nav: (target: Constructor) => PropertyNavigator) => true | void): void {
+    for (const ctor of superClasses(this.o)) {
+      callback(ctor, (target: Constructor) => {
+        return new PropertyNavigator(target, {
+          oHost: ctor.prototype,
+          oHostProp: 'constructor',
+          navParent: this,
+        })
+      })
+    }
+  }
+
+  get props() {
+    return Reflect.ownKeys(this.o)
+  }
+  get enumProps() {
+    return Reflect.ownKeys(this.o).filter((prop) => !isEnum.call(this.o, prop))
+  }
+  get nonEnumProps() {
+    return Reflect.ownKeys(this.o).filter((prop) => isEnum.call(this.o, prop))
+  }
+
+  get keys() {
+    return Object.getOwnPropertyNames(this.o)
+  }
+  get enumKeys() {
+    return Object.keys(this.o)
+  }
+  get nonEnumKeys() {
+    return Object.getOwnPropertyNames(this.o).filter((k) => !isEnum.call(this.o, k))
+  }
+
+  get symbols() {
+    return Object.getOwnPropertySymbols(this.o)
+  }
+
+  getDescriptor(key: string | symbol) {
+    return Reflect.getOwnPropertyDescriptor(this.o, key)
+  }
+  get descriptors() {
+    return Object.getOwnPropertyDescriptors(this.o)
+  }
+  static readonly defaultIterationOptions: IIterationOptions = {
+    own: true,
+    proto: true,
+    enum: true,
+    nonEnum: true,
+    names: true,
+    symbols: true,
+    descriptors: true,
+  }
+
+  protected get iterationOptions(): IIterationOptions {
+    const meta = this.meta
+    if (meta) {
+      if (meta.iterationOptions) return meta.iterationOptions
+      if (this.isRoot) return PropertyNavigator.defaultIterationOptions
+      const parent = meta.navParent
+      if (parent) return parent.iterationOptions
+    }
+
+    if (!meta || this.isRoot) return PropertyNavigator.defaultIterationOptions
+    return meta.navParent?.iterationOptions || PropertyNavigator.defaultIterationOptions
+  }
+
+  iterate(
+    callback: (key: string | number | symbol, value: NonPrimitive, nav?: PropertyNavigator) => true | void,
+    iterationOptions?: IIterationOptions
+  ) {
+    const getNav = (key: string | number | symbol) => {
+      return (target: NonPrimitive) => {
+        const navMeta: NavMeta = {
+          depth: this.meta?.depth || 1,
+          oHost: this.o,
+          oHostProp: key,
+          navParent: this,
+        }
+        if (iterationOptions) navMeta.iterationOptions = iterationOptions
+        return new PropertyNavigator(target, navMeta)
+      }
+    }
+    const o = this.o
+    const keys = Reflect.ownKeys(o)
+    for (const key of keys) {
+      const value: NonPrimitive = o[key]
+      if (oNavMap.has(value)) continue
+      if (isPrimitive(value)) {
+        callback(key, value)
+      } else {
+        const navMeta: NavMeta = {
+          depth: this.meta?.depth || 1,
+          oHost: this.o,
+          oHostProp: key,
+          navParent: this,
+        }
+        if (iterationOptions) navMeta.iterationOptions = iterationOptions
+
+        const shouldStopIteration = callback(key, value, new PropertyNavigator(value, navMeta))
+        if (shouldStopIteration) return
+      }
+    }
+  }
+}
+
+interface IIterationOptions {
+  own: boolean
+  proto: boolean
+  enum: boolean
+  nonEnum: boolean
+  names: boolean
+  symbols: boolean
+  descriptors: boolean
+}
+
+function getProps() {
+  Object.getOwnPropertyNames(dins)
+    .filter((prop) => !isEnum.call(dins, prop))
+    .sort()
+    .join(', ')
+}
+
+function example() {
+  console.log({
+    ownEnum1: SimplePropertyRetriever.getOwnEnumerables(dins).sort().join(', '),
+    ownEnum2: [...Object.keys(dins)].sort().join(', '),
+  })
+
+  console.log({
+    ownNonEnum1: SimplePropertyRetriever.getOwnNonenumerables(dins).sort().join(', '),
+    ownNonEnum2: Object.getOwnPropertyNames(dins)
+      .filter((prop) => !isEnum.call(dins, prop))
+      .sort()
+      .join(', '),
+  })
+
+  console.log({
+    ownEnumNonEnum1: SimplePropertyRetriever.getOwnEnumerablesAndNonenumerables(dins).sort().join(', '),
+    ownEnumNonEnum2: Object.getOwnPropertyNames(dins).sort().join(', '),
+  })
+
+  console.log({
+    protoEnum1: SimplePropertyRetriever.getPrototypeEnumerables(dins).sort().join(', '),
+    protoEnum2: [
+      ...[...iteratePrototypeChain2(dins)].reduce((set: any, o: any) => {
+        Object.keys(o).forEach((prop) => set.add(prop))
+        return set
+      }, new Set<string>()),
+    ]
+      .sort()
+      .join(', '),
+  })
+
+  console.log({
+    protoNonEnum1: SimplePropertyRetriever.getPrototypeNonenumerables(dins).sort().join(', '),
+    protoNonEnum2: [
+      ...[...iteratePrototypeChain2(dins)].reduce((set: any, o: any) => {
+        Object.getOwnPropertyNames(o).forEach((prop) => {
+          if (!isEnum.call(o, prop)) {
+            set.add(prop)
+          }
+        })
+        return set
+      }, new Set<string>()),
+    ]
+      .sort()
+      .join(', '),
+  })
+  console.log({
+    protoEnumNonEnum1: SimplePropertyRetriever.getPrototypeEnumerablesAndNonenumerables(dins).sort().join(', '),
+    protoEnumNonEnum2: [
+      ...[...iteratePrototypeChain2(dins)].reduce((set: any, o: any) => {
+        Object.getOwnPropertyNames(o).forEach((prop) => set.add(prop))
+        return set
+      }, new Set<string>()),
+    ]
+      .sort()
+      .join(', '),
+  })
+  console.log({
+    ownProtoEnum1: SimplePropertyRetriever.getOwnAndPrototypeEnumerables(dins).sort().join(', '),
+    ownProtoEnum2: 1,
+  })
+  console.log({
+    ownProtoNonEnum1: SimplePropertyRetriever.getOwnAndPrototypeNonenumerables(dins).sort().join(', '),
+    ownProtoNonEnum2: 1,
+  })
+  console.log({
+    ownProtoEnumNonEnum1: SimplePropertyRetriever.getOwnAndPrototypeEnumerablesAndNonenumerables(dins)
+      .sort()
+      .join(', '),
+    ownProtoEnumNonEnum2: 1000,
+  })
+
+  // SimplePropertyRetriever.getOwnNonenumerables(dins)
+  // SimplePropertyRetriever.getOwnEnumerablesAndNonenumerables(dins)
+  // SimplePropertyRetriever.getPrototypeEnumerables(dins)
+  // SimplePropertyRetriever.getPrototypeNonenumerables(dins)
+  // SimplePropertyRetriever.getPrototypeEnumerablesAndNonenumerables(dins)
+  // SimplePropertyRetriever.getOwnAndPrototypeEnumerables(dins)
+  // SimplePropertyRetriever.getOwnAndPrototypeNonenumerables(dins)
+  // SimplePropertyRetriever.getOwnAndPrototypeEnumerablesAndNonenumerables(dins)
+
+  const nav = new PropertyNavigator(globalThis, {})
+  console.log(nav)
+
+  let count = 0
+  function callback(key: any, value: any, nav: any) {
+    count++
+    if (count % 100 === 0) console.log({ count, key })
+    if (nav) {
+      nav.iterate(callback2)
+    }
+  }
+  function callback2(key: any, value: any, nav: any) {
+    count++
+    if (count % 100 === 0) console.log({ count, key })
+    if (nav) {
+      nav.iterate(callback)
+    }
+  }
+  nav.iterate(callback)
+}

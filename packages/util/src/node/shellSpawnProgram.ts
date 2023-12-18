@@ -11,9 +11,9 @@ export function shellSpawnProgram(command: string, ...args: string[]): Promise<s
     const noInherit = args.indexOf('--no-inherit')
     if (noInherit !== -1) {
       args.splice(noInherit, 1)
-      child = spawn(command, args)
+      child = spawn(command, args, { shell: true })
     } else {
-      child = spawn(command, args, { stdio: 'inherit' })
+      child = spawn(command, args, { stdio: 'inherit', shell: true })
     }
 
     child.on('error', (error) => {

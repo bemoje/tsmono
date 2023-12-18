@@ -1,5 +1,5 @@
+import { ObjectKey } from '../types/ObjectKey'
 import { objUpdatePropertyDescriptors } from './objUpdatePropertyDescriptors'
-import { ObjectKey } from './types/ObjectKey'
 
 /**
  * Sets the enumerable property of the specified properties of an object to true.

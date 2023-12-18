@@ -1,6 +1,6 @@
-import { execSync } from 'child_process'
-import fs from 'fs'
+import fs from 'fs-extra'
 import path from 'path'
+import { execSync } from 'child_process'
 import { IGetUserInputFromEditorOptions } from './IGetUserInputFromEditorOptions'
 
 export function getUserInputFromEditorSync(options: IGetUserInputFromEditorOptions): string {

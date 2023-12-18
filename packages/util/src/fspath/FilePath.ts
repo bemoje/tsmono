@@ -1,5 +1,6 @@
-import fs from 'fs'
+import fs from 'fs-extra'
 import path from 'path'
+import { pathExtname } from '../path/pathExtname'
 import { AbstractFsPath } from './core/AbstractFsPath'
 import { BlockDevicePath } from './core/BlockDevicePath'
 import { CharacterDevicePath } from './core/CharacterDevicePath'
@@ -72,16 +73,16 @@ export class DirectoryPath extends AbstractFsPath {
   }
 
   /**
-   * Asynchronously reads the directory with fs.promises.readdir and returns its contents as as FsObject instances.
+   * Asynchronously reads the directory with fs.readdir and returns its contents as as FsObject instances.
    * @throws If the path does not exist.
    */
   async readdir(): Promise<AbstractFsPath[]> {
     return await Promise.all(
       (
-        await fs.promises.readdir(this.dirpath)
+        await fs.readdir(this.dirpath)
       ).map(async (filename: string) => {
         const absolute = path.join(this.dirpath, filename)
-        const stat = await fs.promises.stat(absolute)
+        const stat = await fs.stat(absolute)
         return instantiateCorrectFsPathSubclass(absolute, stat)
       })
     )
@@ -135,7 +136,7 @@ export class FilePath extends AbstractFsPath {
    * @returns The file extension, including the leading dot.
    */
   get extension(): string {
-    return path.extname(this.filepath)
+    return pathExtname(this.filepath)
   }
 
   /**
@@ -147,11 +148,11 @@ export class FilePath extends AbstractFsPath {
   }
 
   /**
-   * Read the file asynchronously with fs.promises.readFile.
+   * Read the file asynchronously with fs.readFile.
    * @param encoding The encoding to use. If none is specified, a Buffer is returned.
    */
   async readFile(encoding?: NodeJsBufferEncoding): Promise<string | Buffer> {
-    return fs.promises.readFile(this.filepath, encoding)
+    return fs.readFile(this.filepath, encoding)
   }
 
   /**
@@ -163,11 +164,11 @@ export class FilePath extends AbstractFsPath {
   }
 
   /**
-   * Read the file asynchronously as a string with fs.promises.readFile.
+   * Read the file asynchronously as a string with fs.readFile.
    * @param encoding The encoding to use. Defaults to 'utf8'.
    */
   async readFileString(encoding: NodeJsBufferEncoding = 'utf8'): Promise<string> {
-    return fs.promises.readFile(this.filepath, encoding)
+    return fs.readFile(this.filepath, encoding)
   }
 
   /**
@@ -182,14 +183,14 @@ export class FilePath extends AbstractFsPath {
   }
 
   /**
-   * Write or overwrite the file asynchronously with fs.promises.writeFile.
+   * Write or overwrite the file asynchronously with fs.writeFile.
    * If the directory path does not exist, it is created and no error is thrown.
    * @param data A string or Buffer to write to the file.
    * @param encoding The encoding to use. Defaults to 'utf8'.
    */
   async writeFile(data: string | NodeJS.ArrayBufferView, encoding: NodeJsBufferEncoding = 'utf8'): Promise<void> {
-    await fs.promises.mkdir(this.parentPath, { recursive: true })
-    await fs.promises.writeFile(this.filepath, data, encoding)
+    await fs.mkdir(this.parentPath, { recursive: true })
+    await fs.writeFile(this.filepath, data, encoding)
   }
 }
 

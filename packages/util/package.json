@@ -1,28 +1,17 @@
 {
   "name": "@bemoje/util",
-  "version": "0.1.4",
-  "type": "commonjs",
-  "main": "./index.cjs",
-  "module": "./index.js",
-  "author": {
-    "name": "Benjamin Møller Jensen",
-    "email": "bemoje@bemoje.net",
-    "url": "https://github.com/bemoje/"
+  "version": "0.6.7",
+  "scripts": {
+    "build": "rimraf ../../dist/packages/util/cjs && npx tsc src/index.ts --outDir ../../dist/packages/util/cjs --lib esnext --moduleResolution node --downlevelIteration --esModuleInterop --target es2022 --allowSyntheticDefaultImports --skipLibCheck --importHelpers --moduleResolution node --sourceMap --module commonjs --declaration --declarationMap"
   },
-  "license": "MIT",
-  "keywords": [],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bemoje/tsmono.git"
+  "dependencies": {
+    "ansi-colors": "^4.1.3",
+    "cli-table": "^0.3.11",
+    "fs-extra": "^11.1.1",
+    "tslib": "^2.6.2"
   },
-  "funding": {
-    "type": "patreon",
-    "url": "https://www.patreon.com/user?u=40752770"
-  },
-  "bugs": {
-    "url": "https://github.com/bemoje/tsmono/issues"
-  },
-  "homepage": "https://github.com/bemoje/tsmono",
-  "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/cli-table": "^0.3.4",
+    "@types/fs-extra": "^11.0.2"
+  }
 }

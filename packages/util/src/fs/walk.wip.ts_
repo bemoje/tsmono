@@ -1,0 +1,110 @@
+import { TrieMap } from '@bemoje/trie-map'
+import fs from 'fs-extra'
+import path from 'path'
+import { handlePromise } from '../function/handlePromise'
+import { tryCatch } from '../function/tryCatch'
+import { tryCatchWrapAsync } from '../function/tryCatchWrapAsync'
+import { memoryUsage } from '../node/memoryUsage'
+import { round } from '../number/round'
+import { PromiseQueue } from '../queue/PromiseQueue'
+import { isValidNumber } from '../validation/numbers/isValidNumber'
+path
+fs
+handlePromise
+tryCatch
+
+const readdir = tryCatchWrapAsync(fs.promises.readdir)
+
+const FILE = Symbol('file')
+const DIRECTORY = Symbol('directory')
+const SCANFAIL = Symbol('failed')
+
+const trie = new TrieMap<symbol | Record<string, any>>()
+
+async function walk(root = process.cwd()) {
+  const dirString = root
+  const dirArray = [root.split(/[\\/]+/).join('/')]
+
+  const t0 = Date.now()
+
+  const queue = new PromiseQueue({ concurrency: 1000 })
+
+  const initialMemory = memoryUsage() as unknown as Record<string, number>
+
+  const stats = {
+    cnt: {
+      directories: 0,
+      files: 0,
+      other: 0,
+      failed: 0,
+    },
+    speed: {
+      elapsed: 0,
+      fsoReads: 0,
+      fsoPerSec: 0,
+    },
+    memory: memoryUsage() as unknown as Record<string, number>,
+  }
+  const { cnt, speed } = stats
+
+  const doStats = () => {
+    if (speed.fsoReads === cnt.directories + cnt.files + cnt.other) {
+      clearInterval(id)
+    }
+    speed.elapsed = round((Date.now() - t0) / 1000, 2)
+    speed.fsoReads = cnt.directories + cnt.files + cnt.other
+    speed.fsoPerSec = round(speed.fsoReads / speed.elapsed, 2)
+    stats.memory = memoryUsage() as unknown as Record<string, number>
+    for (const [key] of Object.keys(stats.memory)) {
+      const diff = stats.memory[key] - initialMemory[key]
+      if (isValidNumber(diff)) stats.memory[key] = diff
+    }
+    console.log(stats)
+  }
+
+  const id = setInterval(doStats, 500)
+
+  async function recurse(dirString: string, dirArray: string[]): Promise<void> {
+    const dirents = (await readdir(dirString, { withFileTypes: true })) as fs.Dirent[] | undefined
+
+    const dirfiles: Record<string, any> = {}
+    if (dirents) {
+      trie.set(dirArray, dirfiles)
+      cnt.directories++
+    } else {
+      trie.set(dirArray, SCANFAIL)
+      cnt.directories++
+      cnt.failed++
+      return
+    }
+
+    for (let i = 0; i < dirents.length; i++) {
+      if (dirents[i].isFile()) {
+        cnt.files++
+        // trie.set(dirArray.concat(dirents[i].name), FILE)
+        // const size = fs.stat(dirString + '/' + dirents[i].name).then((stat) => stat.size)
+        dirfiles[dirents[i].name] = FILE
+      } else if (dirents[i].isDirectory()) {
+        const promise = handlePromise(recurse(dirString + '/' + dirents[i].name, dirArray.concat(dirents[i].name)))
+        if (dirArray.length < 5) {
+          await promise
+        }
+      } else {
+        cnt.other++
+      }
+    }
+  }
+
+  await recurse(dirString, dirArray)
+  // clearInterval(id)
+  doStats()
+
+  await queue.onIdle()
+
+  const t1 = Date.now()
+  trie.set(['asd', String.fromCharCode(0)], SCANFAIL)
+  console.log('done', Date.now() - t1, 'ms')
+}
+
+const root = path.join('C:', 'Users', 'bemoj')
+walk(root).catch(console.error)

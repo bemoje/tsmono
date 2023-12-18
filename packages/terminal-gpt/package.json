@@ -22,7 +22,8 @@
     "@bemoje/openai-api-client": "latest",
     "@bemoje/util": "latest",
     "commander": "^11.0.0",
-    "tslib": "^2.3.0"
+    "fs-extra": "^11.1.1",
+    "tslib": "^2.6.2"
   },
   "repository": {
     "type": "git",
@@ -37,5 +38,7 @@
   },
   "homepage": "https://github.com/bemoje/tsmono",
   "type": "commonjs",
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.2"
+  }
 }
