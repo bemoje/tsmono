@@ -43,7 +43,7 @@ export function publish(packages: string[], options: { level?: string; ignoreHas
   })
 
   // prepub
-  prepub(packages)
+  // prepub(packages)
 
   // hashes
   const hashes = new PackageHashes()
@@ -53,7 +53,7 @@ export function publish(packages: string[], options: { level?: string; ignoreHas
   const successful: string[] = []
 
   console.log(green('Publishing packages with changes to NPM...'))
-  getPackages(_packages).forEach(({ name, pkgpath, pkg, distDir: distdir }) => {
+  getPackages(_packages).forEach(({ name, pkgpath, pkg, distDir }) => {
     if (!options.ignoreHash && hashes.currentHash(name) === hashes.hash(name)) return
 
     console.log(gray('- ') + magenta(name))
@@ -63,7 +63,7 @@ export function publish(packages: string[], options: { level?: string; ignoreHas
     writeJsonFileSafeSync(pkgpath, pkg, { spaces: 2 })
 
     console.log(gray('    - ' + 'Update package.json version in dist directory.'))
-    const distPkgPath = path.join(distdir, 'package.json')
+    const distPkgPath = path.join(distDir, 'package.json')
     updateFileSync(distPkgPath, (src) => {
       return src.replace(/"version"\: "\d+\.\d+\.\d+"/, `"version": "${pkg.version}"`)
     })
@@ -73,7 +73,7 @@ export function publish(packages: string[], options: { level?: string; ignoreHas
     try {
       console.log(gray('  - ' + 'npm update'))
       execute('npm publish --access public', {
-        cwd: distdir,
+        cwd: distDir,
         noEcho: true,
         silent: false,
       })

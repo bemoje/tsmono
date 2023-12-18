@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/b",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "scripts": {
     "build": "rimraf ../../dist/packages/b/cjs && npx tsc src/index.ts --outDir ../../dist/packages/b/cjs --lib esnext --moduleResolution node --downlevelIteration --esModuleInterop --target es2022 --allowSyntheticDefaultImports --skipLibCheck --importHelpers --moduleResolution node --sourceMap --module commonjs --declaration --declarationMap"
   },

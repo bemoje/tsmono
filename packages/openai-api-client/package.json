@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/openai-api-client",
-  "version": "0.2.16",
+  "version": "0.2.17",
   "scripts": {
     "build": "rimraf ../../dist/packages/openai-api-client/cjs && npx tsc src/index.ts --outDir ../../dist/packages/openai-api-client/cjs --lib esnext --moduleResolution node --downlevelIteration --esModuleInterop --target es2022 --allowSyntheticDefaultImports --skipLibCheck --importHelpers --moduleResolution node --sourceMap --module commonjs --declaration --declarationMap"
   },

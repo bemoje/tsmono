@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/cli-prompt",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "scripts": {
     "build": "rimraf ../../dist/packages/cli-prompt/cjs && npx tsc src/index.ts --outDir ../../dist/packages/cli-prompt/cjs --lib esnext --moduleResolution node --downlevelIteration --esModuleInterop --target es2022 --allowSyntheticDefaultImports --skipLibCheck --importHelpers --moduleResolution node --sourceMap --module commonjs --declaration --declarationMap"
   },

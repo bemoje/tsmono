@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/bfind",
-  "version": "0.3.12",
+  "version": "0.3.13",
   "scripts": {
     "build": "rimraf ../../dist/packages/bfind/cjs && npx tsc src/index.ts --outDir ../../dist/packages/bfind/cjs --lib esnext --moduleResolution node --downlevelIteration --esModuleInterop --target es2022 --allowSyntheticDefaultImports --skipLibCheck --importHelpers --moduleResolution node --sourceMap --module commonjs --declaration --declarationMap"
   },

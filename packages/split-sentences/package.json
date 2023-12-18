@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/split-sentences",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "scripts": {
     "build": "rimraf ../../dist/packages/split-sentences/cjs && npx tsc src/index.ts --outDir ../../dist/packages/split-sentences/cjs --lib esnext --moduleResolution node --downlevelIteration --esModuleInterop --target es2022 --allowSyntheticDefaultImports --skipLibCheck --importHelpers --moduleResolution node --sourceMap --module commonjs --declaration --declarationMap"
   },

@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/pdf-util",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "scripts": {
     "build": "rimraf ../../dist/packages/pdf-util/cjs && npx tsc src/index.ts --outDir ../../dist/packages/pdf-util/cjs --lib esnext --moduleResolution node --downlevelIteration --esModuleInterop --target es2022 --allowSyntheticDefaultImports --skipLibCheck --importHelpers --moduleResolution node --sourceMap --module commonjs --declaration --declarationMap"
   },

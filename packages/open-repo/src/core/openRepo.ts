@@ -3,7 +3,7 @@ import { CLI } from '@bemoje/cli'
 
 export const openRepo = CLI('openRepo', (c) => {
   c.description('Shortcut to opening a local repository in VS Code.')
-  c.version('1.2.6')
+  c.version('1.2.7')
   c.enableBuiltinOptions()
   c.argument('[search]', 'A full or partial directory name of the repository to find and open.')
   c.action(action)

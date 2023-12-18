@@ -1,6 +1,6 @@
 {
   "name": "@bemoje/matrix",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "scripts": {
     "build": "rimraf ../../dist/packages/matrix/cjs && npx tsc src/index.ts --outDir ../../dist/packages/matrix/cjs --lib esnext --moduleResolution node --downlevelIteration --esModuleInterop --target es2022 --allowSyntheticDefaultImports --skipLibCheck --importHelpers --moduleResolution node --sourceMap --module commonjs --declaration --declarationMap"
   },

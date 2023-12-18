@@ -3,7 +3,7 @@ import { execInherit, strSplitCamelCase } from '@bemoje/util'
 
 export const deepfind = CLI('deepfind', (b) => {
   b.setRecommended()
-  b.version('0.0.3')
+  b.version('0.0.4')
   b.description(
     [
       "Search for 'PATTERN' inside files in 'DIRPATH'.",
