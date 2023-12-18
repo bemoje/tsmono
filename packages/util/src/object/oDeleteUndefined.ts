@@ -1,4 +1,6 @@
-import { ObjectKey, objFilter, TPlainObject } from '@bemoje/util'
+import { ObjectKey } from '../types/ObjectKey'
+import { objFilter } from './objFilter'
+import { TPlainObject } from '../types/TPlainObject'
 
 /**
  * Delete all undefined own properties from an object.

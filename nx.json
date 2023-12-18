@@ -207,9 +207,7 @@
     },
     "util": {
       "tags": [],
-      "implicitDependencies": [
-        "util"
-      ],
+      "implicitDependencies": [],
       "npmScope": "bemoje",
       "projectType": "library"
     },

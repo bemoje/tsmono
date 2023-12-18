@@ -1,6 +1,7 @@
 import assert from 'assert'
-import type { Any, ObjectKey } from '@bemoje/util'
+import { Any } from '../types/Any'
 import { MethodDisabler } from './MethodDisabler'
+import { ObjectKey } from '../types/ObjectKey'
 
 describe(MethodDisabler.name, () => {
   it('TSDOC @example', () => {

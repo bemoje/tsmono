@@ -1,9 +1,9 @@
-import { UUID } from '../binary/UUID'
-import { SERIALIZABLE_CLASSES } from './core/SERIALIZABLE_CLASSES'
 import { formatJson } from './formatJson'
+import { ISerializable } from './types/ISerializable'
 import { safeJsonParse } from './safeJsonParse'
 import { safeJsonStringify } from './safeJsonStringify'
-import { ISerializable } from './types/ISerializable'
+import { SERIALIZABLE_CLASSES } from './core/SERIALIZABLE_CLASSES'
+import { UUID } from '../binary/UUID'
 
 /**
  * Base class for serializable classes.
@@ -163,9 +163,6 @@ export abstract class Serializable implements ISerializable {
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private __proto__: any
-
   /**
    * The name of the class of the instance.
    */
@@ -181,7 +178,7 @@ export abstract class Serializable implements ISerializable {
    * Creates a new instance.
    */
   constructor() {
-    this.type = this.proto.constructor.name
+    this.type = this.constructor.name
     this.id = UUID(128, 'base64url')
     this.initializeClass()
     this.class.instances[this.id] = this
@@ -191,14 +188,14 @@ export abstract class Serializable implements ISerializable {
    * Returns the prototype of the instance.
    */
   get proto() {
-    return this.__proto__
+    return Object.getPrototypeOf(this)
   }
 
   /**
    * Returns the class constructor.
    */
   get class() {
-    return this.__proto__.constructor
+    return Object.getPrototypeOf(this).constructor
   }
 
   /**
